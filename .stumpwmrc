@@ -30,9 +30,10 @@
   (run-or-raise "emacs -rv" '(:class "Emacs")))
 
 ;; Another way to declare a shortcut for launching google-chrome
-(defprogram-shortcut :chrome :command "chromium-browser" 
+(defprogram-shortcut :chromium :command "chromium-browser" 
                      :props '(:class "Chromium")
                      :map *root-map* :key (kbd "b"))
+
 ;; conkeror powaaaa!
 ;;(defprogram-shortcut :chrome :command "conkeror" 
 ;;  :props '(:class "conkeror")
