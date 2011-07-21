@@ -1,35 +1,5 @@
 ;; Hey, Emacs! This is a -*- lisp -*- file!
 
-(clear-window-placement-rules)
-
-;; For this to work, you have to create a screen like that:
-;;
-;; +-----------------------------------------------+
-;; |0                                              |
-;; |              Main area  (Emacs, ...)          |
-;; |                                               |
-;; |                                               |
-;; |                                               |
-;; +-----------------+-----+-----------------+-----+
-;; |1                |3    |2                |4    |
-;; |                 |     |                 |     |
-;; |     term        | dock|      term       |trash|
-;; +-----------------+-----+-----------------+-----+
-;;
-;; And then dump it to ~/.stumpwm.screendump
-;;
-;; To do that:
-;;   * C-t ;
-;;   * dump-screen-to-file
-
-(define-frame-preference "Default"
-  ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :title "emacs")
-  (0 t   t :title "firefox")
-  (3 t   t :class "stalonetray")
-  (4 t   t :title "nautilus")
-  (1 t   t :title "gnome-terminal"))
-
 (setf *frame-number-map* "abcdefghijklmnopqrst")
 
 (setf *window-format* "%m%n%s nm=%50t cl=%c id=%i")
