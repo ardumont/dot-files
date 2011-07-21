@@ -40,7 +40,7 @@
 ;;  :map *root-map* :key (kbd "d")
 ;; )
 
-# Add the ide to the keybinding i (C-t i)
+;; the ide to the keybinding i (C-t i)
 (defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh" 
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
