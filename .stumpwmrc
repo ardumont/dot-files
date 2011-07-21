@@ -45,6 +45,16 @@
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
 
+;; gnome-volume-control
+(defprogram-shortcut :volume-control :command "gnome-volume-control" 
+                     :props '(:class "Gnome-Volume-Control")
+                     :map *root-map* :key (kbd ","))
+
+;; Totem
+(defprogram-shortcut :video-player :command "totem" 
+                     :props '(:class "Totem")
+                     :map *root-map* :key (kbd "."))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
