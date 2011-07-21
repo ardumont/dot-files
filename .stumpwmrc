@@ -39,6 +39,11 @@
 ;;  :map *root-map* :key (kbd "d")
 ;; )
 
+# Add the ide to the keybinding i (C-t i)
+(defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh" 
+                     :props '(:class "Eclipse")
+                     :map *root-map* :key (kbd "i"))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
