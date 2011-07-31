@@ -55,11 +55,18 @@
                      :props '(:class "Totem")
                      :map *root-map* :key (kbd "."))
 
-;; Intellij-idea
+;; Intellij-idea (C-t j)
 (defcommand intellij-idea () ()
   "run an intellij-idea instance or switch to it, if it is already running."
   (run-or-raise "~/bin/idea.sh" '(:class "Intellij-Idea")))
 (define-key *root-map* (kbd "j") "intellij-idea")
+
+;; Intellij-idea (C-t d)
+(defcommand squirrel-sql () ()
+  "run a squirrel-sql instance or switch to it, if it is already running."
+  (run-or-raise "~/bin/squirrel-sql.sh" '(:class "Squirrel-sql")))
+(define-key *root-map* (kbd "d") "squirrel-sql")
+
 
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
