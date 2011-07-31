@@ -15,10 +15,10 @@
 (defcommand term1 () ()
   "run term emul"
   (run-or-raise "gnome-terminal" '(:class "Term1")))
-(run-commands "term1"))
+(run-commands "term1")
 
 (defcommand xterm-1 () ()
-  "run an xterm instance or switch to it, if it is already running.")
+  "run an xterm instance or switch to it, if it is already running."
   (run-or-raise "gnome-terminal --title=xterm1" '(:class "Gnome-terminal")))
 (define-key *root-map* (kbd "x") "xterm-1")
 
@@ -54,9 +54,10 @@
 (defprogram-shortcut :video-player :command "totem" 
                      :props '(:class "Totem")
                      :map *root-map* :key (kbd "."))
+
 ;; Intellij-idea
 (defcommand intellij-idea () ()
-  "run an intellij-idea instance or switch to it, if it is already running.")
+  "run an intellij-idea instance or switch to it, if it is already running."
   (run-or-raise "~/bin/idea.sh" '(:class "Intellij-Idea")))
 (define-key *root-map* (kbd "j") "intellij-idea")
 
