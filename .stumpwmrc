@@ -15,11 +15,11 @@
 (defcommand term1 () ()
   "run term emul"
   (run-or-raise "gnome-terminal" '(:class "Term1")))
-(run-commands "term1")
+(run-commands "term1"))
 
 (defcommand xterm-1 () ()
-  "run an xterm instance or switch to it, if it is already running."
-  (run-or-raise "xterm -name xterm1" '(:instance "xterm1")))
+  "run an xterm instance or switch to it, if it is already running.")
+  (run-or-raise "gnome-terminal --title=xterm1" '(:class "Gnome-terminal")))
 (define-key *root-map* (kbd "x") "xterm-1")
 
 ;; frame selection
