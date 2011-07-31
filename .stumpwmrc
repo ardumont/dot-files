@@ -4,7 +4,7 @@
 
 (setf *window-format* "%m%n%s nm=%50t cl=%c id=%i")
 
-(run-commands "restore-from-file ~/.stumpwm.screendump")
+;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
 ;; specific commands that permits to run or raise the same instance of programs
 (defcommand firefox () ()
