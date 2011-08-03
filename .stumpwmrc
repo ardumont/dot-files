@@ -62,7 +62,7 @@
 
 ;; Intellij-idea (C-t d)
 (defprogram-shortcut :squirrel-sql :command "~/bin/squirrel-sql.sh" 
-                     :props '(:class "Squirrel-Sql")
+                     :props '(:class "net-sourceforge-squirrel_sql-client-Main")
                      :map *root-map* :key (kbd "d"))
 
 ;;Set the mouse policy to focus follows mouse;
