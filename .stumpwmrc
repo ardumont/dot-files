@@ -57,7 +57,7 @@
 
 ;; Intellij-idea (C-t j)
 (defprogram-shortcut :intellij-idea :command "~/bin/idea.sh" 
-                     :props '(:class "Intellij-Idea")
+                     :props '(:class "java-lang-Thread")
                      :map *root-map* :key (kbd "j"))
 
 ;; Intellij-idea (C-t d)
