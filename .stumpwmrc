@@ -15,6 +15,7 @@
 (defcommand term1 () ()
   "run term emul"
   (run-or-raise "gnome-terminal" '(:class "Term1")))
+
 (run-commands "term1")
 
 (defcommand xterm-1 () ()
@@ -66,10 +67,12 @@
                      :map *root-map* :key (kbd "d"))
 
 ;;Set the mouse policy to focus follows mouse;
-(setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
+(setf *mouse-focus-policy* :click) ;; :click, :ignore, :sloppy
 
 ;; Launch commands
+
 (run-shell-command "stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t")
+
 (run-shell-command "/usr/bin/gnome-settings-daemon")
 (run-shell-command "/usr/bin/nm-applet &")
 (run-shell-command "/usr/bin/bluetooth-applet &")
