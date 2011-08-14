@@ -14,12 +14,12 @@
 
 (defcommand term1 () ()
   "run term emul"
-  (run-or-raise "gnome-terminal" '(:class "Term1")))
+  (run-or-raise "gnome-terminal --hide-menubar" '(:class "Term1")))
 (run-commands "term1")
 
 (defcommand xterm-1 () ()
   "run an xterm instance or switch to it, if it is already running."
-  (run-or-raise "gnome-terminal --title=xterm1" '(:class "Gnome-terminal")))
+  (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
 (define-key *root-map* (kbd "x") "xterm-1")
 
 ;; frame selection
@@ -35,10 +35,10 @@
                      :map *root-map* :key (kbd "b"))
 
 ;; conkeror powaaaa!
-;;(defprogram-shortcut :chrome :command "conkeror" 
-;;  :props '(:class "conkeror")
-;;  :map *root-map* :key (kbd "d")
-;; )
+(defprogram-shortcut :conkeror :command "conkeror" 
+  :props '(:class "Conkeror")
+  :map *root-map* :key (kbd "c")
+)
 
 ;; the ide to the keybinding i (C-t i)
 (defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh" 
