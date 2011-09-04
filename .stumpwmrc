@@ -34,7 +34,7 @@
                      :props '(:class "Chromium")
                      :map *root-map* :key (kbd "b"))
 
-;; conkeror powaaaa!
+;; conkeror - keyboard-driven navigator - C-t c
 (defprogram-shortcut :conkeror :command "conkeror" 
   :props '(:class "Conkeror")
   :map *root-map* :key (kbd "c")
@@ -61,9 +61,14 @@
                      :map *root-map* :key (kbd "j"))
 
 ;; Intellij-idea (C-t d)
-(defprogram-shortcut :squirrel-sql :command "~/bin/squirrel-sql.sh" 
+(defprogram-shortcut :squirrel-sql :command "~/applications/bin/squirrel-sql.sh" 
                      :props '(:class "net-sourceforge-squirrel_sql-client-Main")
                      :map *root-map* :key (kbd "d"))
+
+;; File explorer nautilus (C-t n)
+(defprogram-shortcut :nautilus :command "nautilus" 
+                     :props '(:instance "nautilus")
+                     :map *root-map* :key (kbd "n"))
 
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
