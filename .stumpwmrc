@@ -75,6 +75,11 @@
                      :props '(:instance "transmission-gtk")
                      :map *root-map* :key (kbd "/"))
 
+;; transmission-gtk (C-t C-e)
+(defprogram-shortcut :evince :command "evince" 
+                     :props '(:instance "evince")
+                     :map *root-map* :key (stumpwm:kbd "C-e"))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
