@@ -30,53 +30,53 @@
   (run-or-raise "emacs" '(:class "Emacs")))
 
 ;; Another way to declare a shortcut for launching google-chrome
-(defprogram-shortcut :chromium :command "chromium-browser" 
+(defprogram-shortcut :chromium :command "chromium-browser"
                      :props '(:class "Chromium")
                      :map *root-map* :key (kbd "b"))
 
 ;; conkeror - keyboard-driven navigator - C-t c
-(defprogram-shortcut :conkeror :command "conkeror" 
+(defprogram-shortcut :conkeror :command "conkeror"
   :props '(:class "Conkeror")
   :map *root-map* :key (kbd "c")
 )
 
 ;; the ide to the keybinding i (C-t i)
-(defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh" 
+(defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh"
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
 
 ;; gnome-volume-control
-(defprogram-shortcut :volume-control :command "gnome-volume-control" 
+(defprogram-shortcut :volume-control :command "gnome-volume-control"
                      :props '(:class "Gnome-Volume-Control")
                      :map *root-map* :key (kbd ","))
 
 ;; Totem
-(defprogram-shortcut :video-player :command "totem" 
+(defprogram-shortcut :video-player :command "totem"
                      :props '(:class "Totem")
                      :map *root-map* :key (kbd "."))
 
 ;; Intellij-idea (C-t j)
-(defprogram-shortcut :intellij-idea :command "~/bin/idea.sh" 
+(defprogram-shortcut :intellij-idea :command "~/bin/idea.sh"
                      :props '(:class "java-lang-Thread")
                      :map *root-map* :key (kbd "j"))
 
 ;; Intellij-idea (C-t d)
-(defprogram-shortcut :squirrel-sql :command "~/applications/bin/squirrel-sql.sh" 
+(defprogram-shortcut :squirrel-sql :command "~/applications/bin/squirrel-sql.sh"
                      :props '(:class "net-sourceforge-squirrel_sql-client-Main")
                      :map *root-map* :key (kbd "d"))
 
 ;; File explorer nautilus (C-t n)
-(defprogram-shortcut :nautilus :command "nautilus" 
+(defprogram-shortcut :nautilus :command "nautilus"
                      :props '(:instance "nautilus")
                      :map *root-map* :key (kbd "n"))
 
 ;; transmission-gtk (C-t /)
-(defprogram-shortcut :torrent :command "transmission-gtk" 
+(defprogram-shortcut :torrent :command "transmission-gtk"
                      :props '(:instance "transmission-gtk")
                      :map *root-map* :key (kbd "/"))
 
 ;; transmission-gtk (C-t C-e)
-(defprogram-shortcut :evince :command "evince" 
+(defprogram-shortcut :evince :command "evince"
                      :props '(:instance "evince")
                      :map *root-map* :key (stumpwm:kbd "C-e"))
 
