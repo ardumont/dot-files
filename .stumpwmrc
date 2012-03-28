@@ -69,8 +69,8 @@
                      :props '(:instance "transmission-gtk")
                      :map *root-map* :key (kbd "/"))
 
-;; transmission-gtk (C-t C-e)
-(defprogram-shortcut :evince :command "evince"
+;; pdf reader evince (C-t C-e)
+(defprogram-shortcut :evince :command "evince" 
                      :props '(:instance "evince")
                      :map *root-map* :key (stumpwm:kbd "C-e"))
 
