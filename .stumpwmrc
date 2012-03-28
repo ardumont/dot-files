@@ -8,13 +8,13 @@
 
 (defcommand xterm-1 () ()
   "run an xterm instance or switch to it, if it is already running."
-  (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
+  (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar -x byobu" '(:class "Gnome-terminal")))
 (define-key *root-map* (kbd "x") "xterm-1")
 
 ;; frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
-;; redefining the emacs command
+;; emacs command
 (defcommand emacs () ()
   "Start Emacs or switch to it, if it is already running."
   (run-or-raise "emacs -rv" '(:class "Emacs")))
