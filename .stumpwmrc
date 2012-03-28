@@ -6,12 +6,6 @@
 
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
-;; specific commands that permits to run or raise the same instance of programs
-(defcommand firefox () ()
-  "Start Firefox or switch to it, if it is already running."
-  (run-or-raise "firefox" '(:class "Firefox")))
-(define-key *root-map* (kbd "f") "firefox")
-
 (defcommand xterm-1 () ()
   "run an xterm instance or switch to it, if it is already running."
   (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
@@ -23,6 +17,11 @@
 (defcommand emacs () ()  ;! redefining emacs command
   "Start Emacs or switch to it, if it is already running."
   (run-or-raise "emacs" '(:class "Emacs")))
+
+;; firefox
+(defprogram-shortcut :firefox :command "firefox" 
+                     :props '(:class "Firefox")
+                     :map *root-map* :key (kbd "f"))
 
 ;; Another way to declare a shortcut for launching google-chrome
 (defprogram-shortcut :chromium :command "chromium-browser"
