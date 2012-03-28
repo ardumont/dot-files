@@ -35,10 +35,9 @@
                      :map *root-map* :key (kbd "b"))
 
 ;; conkeror - keyboard-driven navigator - C-t c
-(defprogram-shortcut :conkeror :command "conkeror"
-  :props '(:class "Conkeror")
-  :map *root-map* :key (kbd "c")
-)
+(defprogram-shortcut :conkeror :command "conkeror" 
+                     :props '(:class "Conkeror")
+                     :map *root-map* :key (kbd "c"))
 
 ;; the ide to the keybinding i (C-t i)
 (defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh"
