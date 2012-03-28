@@ -74,6 +74,11 @@
                      :props '(:instance "evince")
                      :map *root-map* :key (stumpwm:kbd "C-e"))
 
+;; image reader eog (C-t C-o)
+(defprogram-shortcut :eog :command "eog" 
+                     :props '(:instance "eog")
+                     :map *root-map* :key (stumpwm:kbd "C-o"))
+
 ;; Squirrel-sql
 '(defprogram-shortcut :squirrel-sql :command "~/applications/bin/squirrel-sql.sh" 
                      :props '(:class "net-sourceforge-squirrel_sql-client-Main")
