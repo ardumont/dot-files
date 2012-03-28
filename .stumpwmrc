@@ -59,11 +59,6 @@
                      :props '(:class "java-lang-Thread")
                      :map *root-map* :key (kbd "j"))
 
-;; Intellij-idea (C-t d)
-(defprogram-shortcut :squirrel-sql :command "~/applications/bin/squirrel-sql.sh"
-                     :props '(:class "net-sourceforge-squirrel_sql-client-Main")
-                     :map *root-map* :key (kbd "d"))
-
 ;; File explorer nautilus (C-t n)
 (defprogram-shortcut :nautilus :command "nautilus"
                      :props '(:instance "nautilus")
