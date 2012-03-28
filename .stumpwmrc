@@ -14,9 +14,10 @@
 ;; frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
-(defcommand emacs () ()  ;! redefining emacs command
+;; redefining the emacs command
+(defcommand emacs () ()
   "Start Emacs or switch to it, if it is already running."
-  (run-or-raise "emacs" '(:class "Emacs")))
+  (run-or-raise "emacs -rv" '(:class "Emacs")))
 
 ;; firefox
 (defprogram-shortcut :firefox :command "firefox" 
