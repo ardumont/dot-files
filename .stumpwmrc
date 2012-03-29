@@ -74,11 +74,6 @@
                      :props '(:instance "eog")
                      :map *root-map* :key (stumpwm:kbd "C-o"))
 
-;; Squirrel-sql
-'(defprogram-shortcut :squirrel-sql :command "~/applications/bin/squirrel-sql.sh" 
-                     :props '(:class "net-sourceforge-squirrel_sql-client-Main")
-                     :map *root-map* :key (kbd "d"))
-
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
