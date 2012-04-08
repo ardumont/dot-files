@@ -88,7 +88,6 @@
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
 ;; Launch commands
-(run-shell-command "stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t")
 (run-shell-command "/usr/bin/gnome-settings-daemon")
 (run-shell-command "/usr/bin/nm-applet &")
 (run-shell-command "/usr/bin/bluetooth-applet &")
