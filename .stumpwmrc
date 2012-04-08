@@ -11,15 +11,15 @@
   (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar -x byobu" '(:class "Gnome-terminal")))
 (define-key *root-map* (kbd "x") "xterm-1")
 
-;; frame selection
+;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
-;; emacs command
+;; Emacs command
 (defcommand emacs () ()
   "Start Emacs or switch to it, if it is already running."
   (run-or-raise "emacs -rv" '(:class "Emacs")))
 
-;; firefox
+;; Firefox
 (defprogram-shortcut :firefox :command "firefox" 
                      :props '(:class "Firefox")
                      :map *root-map* :key (kbd "f"))
@@ -34,22 +34,22 @@
                      :props '(:instance "google-chrome")
                      :map *root-map* :key (stumpwm:kbd "C-b"))
 
-;; conkeror - keyboard-driven navigator - C-t c
+;; Conkeror - keyboard-driven navigator - C-t c
 (defprogram-shortcut :conkeror :command "conkeror" 
                      :props '(:class "Conkeror")
                      :map *root-map* :key (kbd "c"))
 
-;; the ide to the keybinding i (C-t i)
+;; IDE to the keybinding i (C-t i)
 (defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh"
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
 
-;; gnome-control-center
+;; Gnome-control-center (C-t ,)
 (defprogram-shortcut :gnome-control-center :command "gnome-control-center" 
                      :props '(:class "Gnome-Control-Center")
                      :map *root-map* :key (kbd ","))
 
-;; Totem
+;; Totem (C-t .)
 (defprogram-shortcut :video-player :command "totem"
                      :props '(:class "Totem")
                      :map *root-map* :key (kbd "."))
@@ -64,22 +64,22 @@
                      :props '(:instance "nautilus")
                      :map *root-map* :key (kbd "n"))
 
-;; transmission-gtk (C-t /)
+;; Transmission-gtk (C-t /)
 (defprogram-shortcut :torrent :command "transmission-gtk"
                      :props '(:instance "transmission-gtk")
                      :map *root-map* :key (kbd "/"))
 
-;; pdf reader evince (C-t C-e)
+;; PDF reader evince (C-t C-e)
 (defprogram-shortcut :evince :command "evince" 
                      :props '(:instance "evince")
                      :map *root-map* :key (stumpwm:kbd "C-e"))
 
-;; image reader eog (C-t C-o)
+;; Image reader eog (C-t C-o)
 (defprogram-shortcut :eog :command "eog" 
                      :props '(:instance "eog")
                      :map *root-map* :key (stumpwm:kbd "C-o"))
 
-;; image reader eog (C-t C-o)
+;; Add a binding for gnome-screenshot (C-t C-s)
 (defprogram-shortcut :screenshot :command "gnome-screenshot" 
                      :props '(:instance "gnome-screenshot")
                      :map *root-map* :key (stumpwm:kbd "C-s"))
