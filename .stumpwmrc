@@ -79,6 +79,11 @@
                      :props '(:instance "eog")
                      :map *root-map* :key (stumpwm:kbd "C-o"))
 
+;; image reader eog (C-t C-o)
+(defprogram-shortcut :screenshot :command "gnome-screenshot" 
+                     :props '(:instance "gnome-screenshot")
+                     :map *root-map* :key (stumpwm:kbd "C-s"))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
