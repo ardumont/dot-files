@@ -84,6 +84,11 @@
                      :props '(:instance "gnome-screenshot")
                      :map *root-map* :key (stumpwm:kbd "C-s"))
 
+;; yEd (C-t y)
+(defprogram-shortcut :yEd :command "~/bin/yed.sh" 
+                     :props '(:instance "sun-awt-X11-XFramePeer")
+                     :map *root-map* :key (kbd "y"))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
