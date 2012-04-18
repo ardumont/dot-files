@@ -19,6 +19,8 @@
   "Start Emacs or switch to it, if it is already running."
   (run-or-raise "emacs.sh" '(:class "Emacs")))
 
+(define-key *root-map* (kbd "e") "emacs")
+
 ;; Firefox
 (defprogram-shortcut :firefox :command "firefox" 
                      :props '(:class "Firefox")
