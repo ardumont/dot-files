@@ -40,7 +40,7 @@
                      :map *root-map* :key (kbd "c"))
 
 ;; IDE to the keybinding i (C-t i)
-(defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh"
+(defprogram-shortcut :eclipse :command "ide-eclipse.sh"
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
 
@@ -55,7 +55,7 @@
                      :map *root-map* :key (kbd "."))
 
 ;; Intellij-idea (C-t j)
-(defprogram-shortcut :intellij-idea :command "~/bin/idea.sh"
+(defprogram-shortcut :intellij-idea :command "idea.sh"
                      :props '(:class "java-lang-Thread")
                      :map *root-map* :key (kbd "j"))
 
