@@ -17,7 +17,7 @@
 ;; Emacs command
 (defcommand emacs () ()
   "Start Emacs or switch to it, if it is already running."
-  (run-or-raise "emacs.sh" '(:class "Emacs")))
+  (run-or-raise "~/bin/emacs.sh" '(:class "Emacs")))
 
 (define-key *root-map* (kbd "e") "emacs")
 
@@ -42,7 +42,7 @@
                      :map *root-map* :key (kbd "c"))
 
 ;; IDE to the keybinding i (C-t i)
-(defprogram-shortcut :eclipse :command "ide-eclipse.sh"
+(defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh"
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
 
@@ -57,7 +57,7 @@
                      :map *root-map* :key (kbd "."))
 
 ;; Intellij-idea (C-t j)
-(defprogram-shortcut :intellij-idea :command "idea.sh"
+(defprogram-shortcut :intellij-idea :command "~/bin/idea.sh"
                      :props '(:class "java-lang-Thread")
                      :map *root-map* :key (kbd "j"))
 
