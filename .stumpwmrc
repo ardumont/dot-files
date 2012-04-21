@@ -17,7 +17,9 @@
 ;; Emacs command
 (defcommand emacs () ()
   "Start Emacs or switch to it, if it is already running."
-  (run-or-raise "emacs -rv" '(:class "Emacs")))
+  (run-or-raise "~/bin/emacs.sh" '(:class "Emacs")))
+
+(define-key *root-map* (kbd "e") "emacs")
 
 ;; Firefox
 (defprogram-shortcut :firefox :command "firefox" 
