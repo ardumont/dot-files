@@ -15,11 +15,9 @@
 (define-key *root-map* (kbd "o") "fselect")
 
 ;; Emacs command
-(defcommand emacs () ()
-  "Start Emacs or switch to it, if it is already running."
-  (run-or-raise "~/bin/emacs.sh" '(:class "Emacs")))
-
-(define-key *root-map* (kbd "e") "emacs")
+(defprogram-shortcut :emacs :command "~/bin/emacs.sh" 
+                     :props '(:class "Emacs")
+                     :map *root-map* :key (kbd "e"))
 
 ;; Firefox
 (defprogram-shortcut :firefox :command "firefox" 
