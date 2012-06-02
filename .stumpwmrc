@@ -89,6 +89,11 @@
                      :props '(:instance "sun-awt-X11-XFramePeer")
                      :map *root-map* :key (kbd "y"))
 
+;; arduino ide (C-t C-c)
+(defprogram-shortcut :arduino :command "arduino"
+                     :props '(:class "processing-app-Base")
+                     :map *root-map* :key (stumpwm:kbd "C-c"))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
