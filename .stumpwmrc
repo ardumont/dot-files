@@ -15,12 +15,12 @@
 (define-key *root-map* (kbd "o") "fselect")
 
 ;; Emacs command
-(defprogram-shortcut :emacs :command "~/bin/emacs.sh" 
+(defprogram-shortcut :emacs :command "~/bin/emacs.sh"
                      :props '(:class "Emacs")
                      :map *root-map* :key (kbd "e"))
 
 ;; Firefox
-(defprogram-shortcut :firefox :command "firefox" 
+(defprogram-shortcut :firefox :command "firefox"
                      :props '(:class "Firefox")
                      :map *root-map* :key (kbd "f"))
 
@@ -31,11 +31,11 @@
 
 ;; Another way to declare a shortcut for launching google-chrome
 (defprogram-shortcut :chrome :command "google-chrome"
-                     :props '(:instance "google-chrome")
+                     :props '(:instance "x-www-browser")
                      :map *root-map* :key (stumpwm:kbd "C-b"))
 
 ;; Conkeror - keyboard-driven navigator - C-t c
-(defprogram-shortcut :conkeror :command "conkeror" 
+(defprogram-shortcut :conkeror :command "conkeror"
                      :props '(:class "Conkeror")
                      :map *root-map* :key (kbd "c"))
 
@@ -45,7 +45,7 @@
                      :map *root-map* :key (kbd "i"))
 
 ;; Gnome-control-center (C-t ,)
-(defprogram-shortcut :gnome-control-center :command "gnome-control-center" 
+(defprogram-shortcut :gnome-control-center :command "gnome-control-center"
                      :props '(:class "Gnome-Control-Center")
                      :map *root-map* :key (kbd ","))
 
@@ -70,22 +70,22 @@
                      :map *root-map* :key (kbd "/"))
 
 ;; PDF reader evince (C-t C-e)
-(defprogram-shortcut :evince :command "evince" 
+(defprogram-shortcut :evince :command "evince"
                      :props '(:instance "evince")
                      :map *root-map* :key (stumpwm:kbd "C-e"))
 
 ;; Image reader eog (C-t C-o)
-(defprogram-shortcut :eog :command "eog" 
+(defprogram-shortcut :eog :command "eog"
                      :props '(:instance "eog")
                      :map *root-map* :key (stumpwm:kbd "C-o"))
 
 ;; Add a binding for gnome-screenshot (C-t C-s)
-(defprogram-shortcut :screenshot :command "gnome-screenshot" 
+(defprogram-shortcut :screenshot :command "gnome-screenshot"
                      :props '(:instance "gnome-screenshot")
                      :map *root-map* :key (stumpwm:kbd "C-s"))
 
 ;; yEd (C-t y)
-(defprogram-shortcut :yEd :command "~/bin/yed.sh" 
+(defprogram-shortcut :yEd :command "~/bin/yed.sh"
                      :props '(:instance "sun-awt-X11-XFramePeer")
                      :map *root-map* :key (kbd "y"))
 
