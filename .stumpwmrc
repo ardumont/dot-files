@@ -94,6 +94,11 @@
                      :props '(:class "processing-app-Base")
                      :map *root-map* :key (stumpwm:kbd "C-c"))
 
+;; fritzing (C-t C-f)
+(defprogram-shortcut :fritzing :command "~/applications/fritzing/Fritzing"
+                     :props '(:instance "Fritzing")
+                     :map *root-map* :key (stumpwm:kbd "C-f"))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
