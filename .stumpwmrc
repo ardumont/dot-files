@@ -31,7 +31,7 @@
 
 ;; Another way to declare a shortcut for launching google-chrome
 (defprogram-shortcut :chrome :command "google-chrome"
-                     :props '(:instance "x-www-browser")
+                     :props '(:instance "google-chrome")
                      :map *root-map* :key (stumpwm:kbd "C-b"))
 
 ;; Conkeror - keyboard-driven navigator - C-t c
