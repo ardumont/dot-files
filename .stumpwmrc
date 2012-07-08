@@ -99,6 +99,11 @@
                      :props '(:instance "Fritzing")
                      :map *root-map* :key (stumpwm:kbd "C-f"))
 
+;; Virtualbox (C-t C-v)
+(defprogram-shortcut :virtualbox :command "virtualbox"
+                     :props '(:instance "Qt-subapplication")
+                     :map *root-map* :key (stumpwm:kbd "C-v"))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
 
