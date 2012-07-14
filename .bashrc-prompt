@@ -1,0 +1,65 @@
+# ~/.bash_prompt: executed by bashrc
+
+# some intelligent method to set the prompt
+prompt_command () {
+    RET=$?
+    if [ $RET -eq 0 ]; then # set an error string for the prompt, if applicable
+        ERRPROMPT=""
+    else
+        ERRPROMPT='($RET) '
+    fi
+
+    if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
+        BRANCH=" \$(__git_ps1 '(%s) ')" 
+    fi
+
+    # setup preferences
+    local TIME=`fmt_time` # format time for prompt string
+    local LOAD=`uptime|awk '{min=NF-2;print $min}'`
+    # set the titlebar to the last 2 fields of pwd
+    local TITLEBAR='\[\e]2;`pwdtail`\a\]'
+
+    # colors
+    local GREEN="\[\033[0;32m\]"
+    local DKGREEN="\[\033[1;32m\]"
+    local CYAN="\[\033[0;36m\]"
+    local DKCYAN="\[\033[1;36m\]"
+    local BLUE="\[\033[0;34m\]"
+    local DKBLUE="\[\033[1;34m\]"
+    local GRAY="\[\033[0;37m\]"
+    local DKGRAY="\[\033[1;30m\]"
+    local WHITE="\[\033[1;37m\]"
+    local RED="\[\033[0;31m\]"
+    local DKRED="\[\033[1;31m\]"
+
+    # return color to Terminal setting for text color
+    local DEFAULT="\[\033[0;39m\]"
+    # delete ${TITLEBAR} because it doesn't work inside the shell emacs or in the tty screen
+    export PS1="${DKBLUE}\u${DKBLUE}@${DKBLUE}\
+\h${DKCYAN}(${LOAD}) ${WHITE}${TIME} ${DKRED}$ERRPROMPT${DKBLUE}\
+\w${DKGREEN}${BRANCH}${DEFAULT}$ "
+}
+PROMPT_COMMAND=prompt_command
+
+# Format time just the way I likes it
+fmt_time () {
+    date +"%H:%M:%S"
+}
+
+# Returns the last 2 fields of the working directory
+pwdtail () {
+    pwd|awk -F/ '{nlast = NF -1;print $nlast"/"$NF}'
+}
+
+# Gets the current 1m avg CPU load
+chkload () {
+    local CURRLOAD=`uptime|awk '{print $8}'`
+    if [ "$CURRLOAD" -gt "1" ]; then
+        local OUTP="HIGH"
+    elif [ "$CURRLOAD" -lt "1" ]; then
+        local OUTP="NORMAL"
+    else
+        local OUTP="UNKNOWN"
+    fi
+    echo $CURRLOAD
+}

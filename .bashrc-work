@@ -1,0 +1,20 @@
+# wikeo
+[ -d $HOME/repositories/pro/wikeo-core ] && export WIKEO_HOME=~/repositories/pro/wikeo-core
+
+# for work
+[ -f ~/work/bin/.bash_aliases-work ] && . ~/work/bin/.bash_aliases-work
+
+#export EC2_URL="https://ec2.eu-west-1.amazonaws.com"
+#export EC2_PRIVATE_KEY="~/.ec2/pk-ZO3OHQXKW7UHZZWBVMKI3HXFRIEFCRYJ.pem"
+#export EC2_CERT="~/.ec2/cert-ZO3OHQXKW7UHZZWBVMKI3HXFRIEFCRYJ.pem"
+#export EC2_ACCNO="1564-5328-2821"
+#export ACCESS_KEY="AKIAJIJ334IOTI5NOYIQ"
+#export SECRET_KEY="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"
+
+# install wikeo in cluster mode
+export WIKEO_DEPLOY_HOME=/home/tony/repositories/pro/wikeo-deploy
+
+[ -f ~/work/bin/work-ssh-add.sh ] && ~/work/bin/work-ssh-add.sh
+
+[ -f ~/work/bin/work-setup.sh ] && ~/work/bin/work-setup.sh
+
