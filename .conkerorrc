@@ -1,0 +1,88 @@
+/* ------------------------------------------------------------------------- */
+/*                     Conkeror config file                                  */
+/* ------------------------------------------------------------------------- */
+
+/* ------------------- url conmpletion --------------------------------------*/
+
+url_completion_use_history = true;
+
+/* mode-line widget config  ----------------------------------*/
+
+/* ------------------- buffer count indicator ----------------------------------*/
+
+add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
+
+/* ------------------- buffer loading indicator  ----------------------------------*/
+
+add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
+
+/* ------------------- remove useless clock ----------------------------------*/
+
+remove_hook("mode_line_hook", mode_line_adder(clock_widget));
+
+/* Displaying Favicons */
+
+require("favicon");
+
+/* ---------------- favicon in mode line */
+
+/* Doesn't seems to work
+add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
+*/
+
+/* ---------------- favicon in mini buffer */
+
+read_buffer_show_icons = true;
+
+/* ---------------- display tabs */
+
+require("new-tabs.js");
+
+/* web jumps */
+
+/* -------------- imdb */
+/* type 'i your film' in the mini buffer to search 'your film'  on imdb*/
+
+define_webjump("i", "http://imdb.com/find?q=%s");
+define_webjump("g", "http://www.google.fr/search?q=%s");
+define_webjump("w", "http://en.wikipedia.org?search=%s");
+
+
+
+/* TODO : add : 
+   - w wikipedia
+   - a amazon */
+
+/* javascript injection (jquery) */
+/*
+To use this,
+
+  M-x jquery-here
+  jq: $("h1").css("backgroundColor", "blue");
+  */
+function install_jquery(d) {
+    var script_el = d.createElementNS(XHTML_NS, "script");
+    script_el.setAttribute("language", "javascript");
+    script_el.setAttribute("type", "text/javascript");
+    script_el.setAttribute("src", "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js");
+    d.body.appendChild(script_el);
+}
+
+function jquery_this_doc(d, js_code) {
+    install_jquery(d);
+    var script_el = d.createElementNS(XHTML_NS, "script");
+    script_el.textContent = js_code;
+    d.body.appendChild(script_el);
+}
+
+interactive("jquery-here",
+            "load jquery.js into this page, then your command",
+            function(I) {
+                jquery_this_doc(I.buffer.document, (yield I.minibuffer.read($prompt = "jq: ", $history = "jquery-here")));
+                // Providing a $history is what allows editing/replay of earlier commands
+            });
+
+/* 
+
+  */
+
