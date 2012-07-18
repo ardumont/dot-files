@@ -13,6 +13,9 @@ alias rgrep='rgrep --color=auto'
 alias em='emacs -nw'
 alias emc='emacs-clojure.sh'
 
+# vagrant
+alias v='vagrant'
+
 #### Alias for changing directory
 
 # cd ..
@@ -52,4 +55,3 @@ alias gst='git status'
 
 # git commit -v
 alias gci='git commit -v'
-
