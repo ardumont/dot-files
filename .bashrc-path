@@ -24,3 +24,6 @@
 
 # Add lein to the path
 [ -d $HOME/.lein ] && export PATH=$HOME/.lein:$HOME/.lein/bin:$HOME/.lein/plugins:$PATH
+
+# vagrant
+[ -d /opt/vagrant/bin ] && export PATH=/opt/vagrant/bin:$PATH
