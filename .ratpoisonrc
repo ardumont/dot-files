@@ -1,5 +1,5 @@
-bind x   exec gnome-terminal
-bind e   exec emacs
+bind x   exec gnome-terminal --hide-menubar -x tmux
+bind e   exec ~/bin/emacs.sh
 bind c   exec conkeror
 bind ,   exec gnome-control-center
 bind .   exec totem
@@ -17,3 +17,7 @@ bind C-s exec gnome-screenshot
 bind C-e exec evince
 bind C-f exec firefox
 bind C-b exec google-chrome
+
+
+gnome-panel &
+gnome-terminal --hide-menubar -x tmux
