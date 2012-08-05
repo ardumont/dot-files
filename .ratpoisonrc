@@ -18,6 +18,9 @@ bind C-e exec evince
 bind C-f exec firefox
 bind C-b exec google-chrome
 
+# switch between screens
+bind x nextscreen
+binx z prevscreen
 
 gnome-panel &
 gnome-terminal --hide-menubar -x tmux
