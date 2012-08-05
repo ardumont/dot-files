@@ -22,5 +22,7 @@ bind C-b exec google-chrome
 bind x nextscreen
 binx z prevscreen
 
-gnome-panel &
-gnome-terminal --hide-menubar -x tmux
+# start some programs by default
+gnome-power-manager&
+gnome-panel&
+gnome-terminal --hide-menubar -x tmux&
