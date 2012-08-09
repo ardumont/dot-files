@@ -1,5 +1,6 @@
 # binding to call programs
 bind x     exec ~/bin/runorraise gnome-terminal --hide-menubar -x tmux
+bind b     exec ~/bin/runorraise chromium-browser
 bind e     exec ~/bin/runorraise emacs
 bind c     exec ~/bin/runorraise conkeror
 bind f     exec ~/bin/runorraise firefox
@@ -10,9 +11,9 @@ bind i     exec ~/bin/runorraise ~/bin/ide-eclipse.sh
 bind j     exec ~/bin/runorraise ~/bin/idea.sh
 bind n     exec ~/bin/runorraise nautilus
 bind y     exec ~/bin/runorraise ~/bin/yed.sh
+
 bind C-f   exec ~/bin/runorraise ~/applications/fritzing/Fritzing
 bind C-v   exec ~/bin/runorraise virtualbox
-
 bind C-c exec ~/bin/runorraise arduino
 bind C-o exec ~/bin/runorraise eog
 bind C-s exec ~/bin/runorraise gnome-screenshot
