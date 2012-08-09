@@ -88,6 +88,3 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
-
-# To remap my keyboard (CAPSLOCK is CTRL, ALT-GR is ALT)
-[ -f ~/bin/remap-alt-gr-and-capslock.sh ] && ! shopt -oq posix && . ~/bin/remap-alt-gr-and-capslock.sh
