@@ -31,6 +31,6 @@ bind r restart
 binx z prevscreen
 
 # start some programs by default
-gnome-power-manager &
-gnome-panel &
-gnome-terminal --hide-menubar -x tmux &
+exec gnome-power-manager &
+#exec gnome-panel &
+exec gnome-terminal --hide-menubar -x tmux &
