@@ -19,8 +19,14 @@ bind C-e exec ~/bin/runorraise evince
 bind C-f exec ~/bin/runorraise firefox
 bind C-b exec ~/bin/runorraise google-chrome
 
+##aliasing keys within ratpoison
+###make semicolon invoke ratpoison command, and colon shell command.
+bind semicolon colon
+bind colon exec
+bind r restart
+
 # switch between screens
-bind x nextscreen
+#bind x nextscreen
 binx z prevscreen
 
 # start some programs by default
