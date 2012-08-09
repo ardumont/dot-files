@@ -1,23 +1,23 @@
 # binding to call programs
-bind x   exec gnome-terminal --hide-menubar -x tmux
-bind e   exec ~/bin/emacs.sh
-bind c   exec conkeror
-bind ,   exec gnome-control-center
-bind .   exec totem
-bind /   exec transmission-gtk
-bind i   exec ~/bin/ide-eclipse.sh
-bind j   exec ~/bin/idea.sh
-bind n   exec nautilus
-bind y   exec ~/bin/yed.sh
-bind C-f exec ~/applications/fritzing/Fritzing
-bind C-v exec virtualbox
+bind x   exec runorraise gnome-terminal --hide-menubar -x tmux
+bind e   exec runorraise emacs
+bind c   exec runorraise conkeror
+bind ,   exec runorraise gnome-control-center
+bind .   exec runorraise totem
+bind /   exec runorraise transmission-gtk
+bind i   exec runorraise ~/bin/ide-eclipse.sh
+bind j   exec runorraise ~/bin/idea.sh
+bind n   exec runorraise nautilus
+bind y   exec runorraise ~/bin/yed.sh
+bind C-f exec runorraise ~/applications/fritzing/Fritzing
+bind C-v exec runorraise virtualbox
 
-bind C-c exec arduino
-bind C-o exec eog
-bind C-s exec gnome-screenshot
-bind C-e exec evince
-bind C-f exec firefox
-bind C-b exec google-chrome
+bind C-c exec runorraise arduino
+bind C-o exec runorraise eog
+bind C-s exec runorraise gnome-screenshot
+bind C-e exec runorraise evince
+bind C-f exec runorraise firefox
+bind C-b exec runorraise google-chrome
 
 # switch between screens
 bind x nextscreen
