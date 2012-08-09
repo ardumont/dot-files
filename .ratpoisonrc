@@ -1,16 +1,17 @@
 # binding to call programs
-bind x   exec ~/bin/runorraise gnome-terminal --hide-menubar -x tmux
-bind e   exec ~/bin/runorraise emacs
-bind c   exec ~/bin/runorraise conkeror
-bind ,   exec ~/bin/runorraise gnome-control-center
-bind .   exec ~/bin/runorraise totem
-bind /   exec ~/bin/runorraise transmission-gtk
-bind i   exec ~/bin/runorraise ~/bin/ide-eclipse.sh
-bind j   exec ~/bin/runorraise ~/bin/idea.sh
-bind n   exec ~/bin/runorraise nautilus
-bind y   exec ~/bin/runorraise ~/bin/yed.sh
-bind C-f exec ~/bin/runorraise ~/applications/fritzing/Fritzing
-bind C-v exec ~/bin/runorraise virtualbox
+bind x     exec ~/bin/runorraise gnome-terminal --hide-menubar -x tmux
+bind e     exec ~/bin/runorraise emacs
+bind c     exec ~/bin/runorraise conkeror
+bind f     exec ~/bin/runorraise firefox
+bind comma exec ~/bin/runorraise gnome-control-center
+bind dot   exec ~/bin/runorraise totem
+bind slash exec ~/bin/runorraise transmission-gtk
+bind i     exec ~/bin/runorraise ~/bin/ide-eclipse.sh
+bind j     exec ~/bin/runorraise ~/bin/idea.sh
+bind n     exec ~/bin/runorraise nautilus
+bind y     exec ~/bin/runorraise ~/bin/yed.sh
+bind C-f   exec ~/bin/runorraise ~/applications/fritzing/Fritzing
+bind C-v   exec ~/bin/runorraise virtualbox
 
 bind C-c exec ~/bin/runorraise arduino
 bind C-o exec ~/bin/runorraise eog
@@ -30,6 +31,6 @@ bind r restart
 binx z prevscreen
 
 # start some programs by default
-gnome-power-manager&
-gnome-panel&
-gnome-terminal --hide-menubar -x tmux&
+gnome-power-manager &
+gnome-panel &
+gnome-terminal --hide-menubar -x tmux &
