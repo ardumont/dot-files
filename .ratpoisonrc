@@ -12,8 +12,8 @@ bind j     exec ~/bin/runorraise ~/bin/idea.sh
 bind n     exec ~/bin/runorraise nautilus
 bind y     exec ~/bin/runorraise ~/bin/yed.sh
 
-bind C-f   exec ~/bin/runorraise ~/applications/fritzing/Fritzing
-bind C-v   exec ~/bin/runorraise virtualbox
+bind C-f exec ~/bin/runorraise ~/applications/fritzing/Fritzing
+bind C-v exec ~/bin/runorraise virtualbox
 bind C-c exec ~/bin/runorraise arduino
 bind C-o exec ~/bin/runorraise eog
 bind C-s exec ~/bin/runorraise gnome-screenshot
