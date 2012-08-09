@@ -1,23 +1,23 @@
 # binding to call programs
-bind x   exec runorraise gnome-terminal --hide-menubar -x tmux
-bind e   exec runorraise emacs
-bind c   exec runorraise conkeror
-bind ,   exec runorraise gnome-control-center
-bind .   exec runorraise totem
-bind /   exec runorraise transmission-gtk
-bind i   exec runorraise ~/bin/ide-eclipse.sh
-bind j   exec runorraise ~/bin/idea.sh
-bind n   exec runorraise nautilus
-bind y   exec runorraise ~/bin/yed.sh
-bind C-f exec runorraise ~/applications/fritzing/Fritzing
-bind C-v exec runorraise virtualbox
+bind x   exec ~/bin/runorraise gnome-terminal --hide-menubar -x tmux
+bind e   exec ~/bin/runorraise emacs
+bind c   exec ~/bin/runorraise conkeror
+bind ,   exec ~/bin/runorraise gnome-control-center
+bind .   exec ~/bin/runorraise totem
+bind /   exec ~/bin/runorraise transmission-gtk
+bind i   exec ~/bin/runorraise ~/bin/ide-eclipse.sh
+bind j   exec ~/bin/runorraise ~/bin/idea.sh
+bind n   exec ~/bin/runorraise nautilus
+bind y   exec ~/bin/runorraise ~/bin/yed.sh
+bind C-f exec ~/bin/runorraise ~/applications/fritzing/Fritzing
+bind C-v exec ~/bin/runorraise virtualbox
 
-bind C-c exec runorraise arduino
-bind C-o exec runorraise eog
-bind C-s exec runorraise gnome-screenshot
-bind C-e exec runorraise evince
-bind C-f exec runorraise firefox
-bind C-b exec runorraise google-chrome
+bind C-c exec ~/bin/runorraise arduino
+bind C-o exec ~/bin/runorraise eog
+bind C-s exec ~/bin/runorraise gnome-screenshot
+bind C-e exec ~/bin/runorraise evince
+bind C-f exec ~/bin/runorraise firefox
+bind C-b exec ~/bin/runorraise google-chrome
 
 # switch between screens
 bind x nextscreen
