@@ -121,8 +121,8 @@
 
 (replace-hook *key-press-hook* 'key-press-hook)
 
-;;Set the mouse policy to focus follows mouse;
-(setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
+;;Set the mouse focus policy to ignore the mouse
+(setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
 
 ;; Launch commands
 (run-shell-command "/usr/bin/gnome-settings-daemon")
