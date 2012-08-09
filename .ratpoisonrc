@@ -11,6 +11,7 @@ bind i     exec ~/bin/runorraise ~/bin/ide-eclipse.sh
 bind j     exec ~/bin/runorraise ~/bin/idea.sh
 bind n     exec ~/bin/runorraise nautilus
 bind y     exec ~/bin/runorraise ~/bin/yed.sh
+bind T     exec stalonetray
 
 bind C-f exec ~/bin/runorraise ~/applications/fritzing/Fritzing
 bind C-v exec ~/bin/runorraise virtualbox
@@ -32,6 +33,7 @@ bind r restart
 binx z prevscreen
 
 # start some programs by default
+exec stalonetray &
 exec gnome-settings-daemon &
 exec gnome-power-manager &
 exec nm-applet &
