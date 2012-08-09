@@ -32,6 +32,11 @@ bind r restart
 binx z prevscreen
 
 # start some programs by default
+exec gnome-settings-daemon &
 exec gnome-power-manager &
-#exec gnome-panel &
+exec nm-applet &
+exec dropbox start &
+exec nautilus --no-default-window &
 exec gnome-terminal &
+#exec gnome-panel &
+
