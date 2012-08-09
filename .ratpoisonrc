@@ -1,3 +1,4 @@
+# binding to call programs
 bind x   exec gnome-terminal --hide-menubar -x tmux
 bind e   exec ~/bin/emacs.sh
 bind c   exec conkeror
