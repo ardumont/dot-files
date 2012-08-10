@@ -3,7 +3,6 @@ set border 0
 set padding 0 0 0 0
 set barpadding 0 0
 
-
 # binding to call programs
 bind x     exec ~/bin/runorraise gnome-terminal --hide-menubar -x tmux
 bind b     exec ~/bin/runorraise chromium-browser
