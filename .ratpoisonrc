@@ -3,6 +3,11 @@ set border 0
 set padding 0 0 0 0
 set barpadding 0 0
 
+##There are three different ways ratpoison can "name" frames.
+##By title, name, or class. Title gets you gunk like "emacs@localhost.localdomain";
+##but name and class give you the sensible "emacs" or "Emacs".
+set winname class
+
 # binding to call programs
 bind x     exec ~/bin/runorraise gnome-terminal
 bind b     exec ~/bin/runorraise chromium-browser
