@@ -13,7 +13,6 @@ set winname class
 
 # binding to call programs
 bind x     exec ~/bin/runorraise gnome-terminal
-bind b     exec ~/bin/runorraise chromium-browser
 bind e     exec ~/bin/runorraise emacs
 bind c     exec ~/bin/runorraise conkeror
 bind f     exec ~/bin/runorraise firefox
