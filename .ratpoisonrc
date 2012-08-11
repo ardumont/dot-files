@@ -24,7 +24,7 @@ bind i     exec ~/bin/runorraise eclipse
 bind j     exec ~/bin/runorraise idea.sh
 bind n     exec ~/bin/runorraise nautilus
 bind y     exec ~/bin/runorraise yed.sh
-bind T     exec stalonetray
+bind T     exec ~/bin/runorraise stalonetray
 
 bind C-f exec ~/bin/runorraise Fritzing
 bind C-v exec ~/bin/runorraise virtualbox
