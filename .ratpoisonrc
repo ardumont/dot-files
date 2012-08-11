@@ -1,3 +1,9 @@
+# My personal setup for ratpoison
+##
+# Transcript from my stumpwm setup https://github.com/ardumont/dot-files/blob/master/.stumpwmrc
+##
+# dependence script run-or-raise.sh to simulate the stumpwm killing feature - https://github.com/ardumont/sh/blob/master/run-or-raise.sh
+
 # removing border
 set border 0
 set padding 0 0 0 0
