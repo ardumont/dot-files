@@ -6,9 +6,7 @@ set barpadding 0 0
 # Change the PATH so that i can switch easily between application window
 setenv PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:~/bin/:~/applications/eclipse/:~/applications/fritzing
 
-##There are three different ways ratpoison can "name" frames.
-##By title, name, or class. Title gets you gunk like "emacs@localhost.localdomain";
-##but name and class give you the sensible "emacs" or "Emacs".
+# the naming convention
 set winname class
 
 # binding to call programs
