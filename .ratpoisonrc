@@ -3,37 +3,31 @@ set border 0
 set padding 0 0 0 0
 set barpadding 0 0
 
-# Change the PATH so that i can switch easily between application window
-setenv PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:~/bin/:~/applications/eclipse/:~/applications/fritzing
-
 # the naming convention
 set winname class
 
 # binding to call programs
-bind x     exec ~/bin/runorraise gnome-terminal
-bind e     exec ~/bin/runorraise emacs
-bind c     exec ~/bin/runorraise conkeror
-bind f     exec ~/bin/runorraise firefox
-bind comma exec ~/bin/runorraise gnome-control-center
-bind dot   exec ~/bin/runorraise totem
-bind slash exec ~/bin/runorraise transmission-gtk
-# Launch one instance of eclipse
-bind I     exec ~/applications/eclipse/eclipse
-# Now run or raise to each eclipse instances
-bind i     exec ~/bin/runorraise eclipse
-bind j     exec ~/bin/runorraise idea.sh
-bind n     exec ~/bin/runorraise nautilus
-bind y     exec ~/bin/runorraise yed.sh
-bind T     exec ~/bin/runorraise stalonetray
+bind x     exec ~/bin/run-or-raise.sh gnome-terminal
+bind e     exec ~/bin/run-or-raise.sh emacs
+bind c     exec ~/bin/run-or-raise.sh conkeror
+bind f     exec ~/bin/run-or-raise.sh firefox
+bind comma exec ~/bin/run-or-raise.sh gnome-control-center
+bind dot   exec ~/bin/run-or-raise.sh totem
+bind slash exec ~/bin/run-or-raise.sh transmission-gtk
+bind i     exec ~/bin/run-or-raise.sh eclipse ~/applications/eclipse/eclipse
+bind j     exec ~/bin/run-or-raise.sh idea.sh
+bind n     exec ~/bin/run-or-raise.sh nautilus
+bind y     exec ~/bin/run-or-raise.sh yed ~/applications/yEd/yEd
+bind T     exec ~/bin/run-or-raise.sh stalonetray
 
-bind C-f exec ~/bin/runorraise Fritzing
-bind C-v exec ~/bin/runorraise virtualbox
-bind C-c exec ~/bin/runorraise arduino
-bind C-o exec ~/bin/runorraise eog
-bind C-s exec ~/bin/runorraise gnome-screenshot
-bind C-e exec ~/bin/runorraise evince
-bind C-f exec ~/bin/runorraise firefox
-bind C-b exec ~/bin/runorraise google-chrome
+bind C-f exec ~/bin/run-or-raise.sh Fritzing ~/applications/fritzing/Fritzing
+bind C-v exec ~/bin/run-or-raise.sh virtualbox
+bind C-c exec ~/bin/run-or-raise.sh arduino
+bind C-o exec ~/bin/run-or-raise.sh eog
+bind C-s exec ~/bin/run-or-raise.sh gnome-screenshot
+bind C-e exec ~/bin/run-or-raise.sh evince
+bind C-f exec ~/bin/run-or-raise.sh firefox
+bind C-b exec ~/bin/run-or-raise.sh google-chrome
 
 ##aliasing keys within ratpoison
 ###make semicolon invoke ratpoison command, and colon shell command.
@@ -46,10 +40,10 @@ bind r restart
 bind z prevscreen
 
 # start some programs by default
-exec ~/bin/run-or-raise stalonetray &
-exec ~/bin/run-or-raise gnome-settings-daemon &
-exec ~/bin/run-or-raise gnome-power-manager &
-exec ~/bin/run-or-raise nm-applet &
+exec ~/bin/run-or-raise.sh stalonetray &
+exec ~/bin/run-or-raise.sh gnome-settings-daemon &
+exec ~/bin/run-or-raise.sh gnome-power-manager &
+exec ~/bin/run-or-raise.sh nm-applet &
 exec dropbox start &
 exec nautilus --no-default-window &
 exec gnome-terminal --hide-menubar -x tmux&
