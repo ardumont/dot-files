@@ -19,7 +19,7 @@ bind f     exec ~/bin/runorraise firefox
 bind comma exec ~/bin/runorraise gnome-control-center
 bind dot   exec ~/bin/runorraise totem
 bind slash exec ~/bin/runorraise transmission-gtk
-bind i     exec ~/bin/runorraise ~/applications/eclipse/eclipse
+bind i     exec ~/bin/runorraise eclipse
 bind j     exec ~/bin/runorraise idea.sh
 bind n     exec ~/bin/runorraise nautilus
 bind y     exec ~/bin/runorraise yed.sh
