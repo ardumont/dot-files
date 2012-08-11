@@ -17,6 +17,9 @@ bind f     exec ~/bin/runorraise firefox
 bind comma exec ~/bin/runorraise gnome-control-center
 bind dot   exec ~/bin/runorraise totem
 bind slash exec ~/bin/runorraise transmission-gtk
+# Launch one instance of eclipse
+bind I     exec ~/applications/eclipse/eclipse
+# Now run or raise to each eclipse instances
 bind i     exec ~/bin/runorraise eclipse
 bind j     exec ~/bin/runorraise idea.sh
 bind n     exec ~/bin/runorraise nautilus
