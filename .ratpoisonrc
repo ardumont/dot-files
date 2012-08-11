@@ -46,10 +46,10 @@ bind r restart
 bind z prevscreen
 
 # start some programs by default
-exec stalonetray &
-exec gnome-settings-daemon &
-exec gnome-power-manager &
-exec nm-applet &
+exec ~/bin/run-or-raise stalonetray &
+exec ~/bin/run-or-raise gnome-settings-daemon &
+exec ~/bin/run-or-raise gnome-power-manager &
+exec ~/bin/run-or-raise nm-applet &
 exec dropbox start &
 exec nautilus --no-default-window &
 exec gnome-terminal --hide-menubar -x tmux&
