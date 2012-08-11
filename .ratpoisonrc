@@ -4,7 +4,7 @@ set padding 0 0 0 0
 set barpadding 0 0
 
 # Change the PATH so that i can switch easily between application window
-ratpoison -c "setenv PATH ~/bin/:~/applications/eclipse/:~/applications/fritzing:$PATH"
+setenv PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:~/bin/:~/applications/eclipse/:~/applications/fritzing
 
 ##There are three different ways ratpoison can "name" frames.
 ##By title, name, or class. Title gets you gunk like "emacs@localhost.localdomain";
@@ -19,7 +19,7 @@ bind f     exec ~/bin/runorraise firefox
 bind comma exec ~/bin/runorraise gnome-control-center
 bind dot   exec ~/bin/runorraise totem
 bind slash exec ~/bin/runorraise transmission-gtk
-bind i     exec ~/bin/runorraise eclipse
+bind i     exec ~/bin/runorraise ~/applications/eclipse/eclipse
 bind j     exec ~/bin/runorraise idea.sh
 bind n     exec ~/bin/runorraise nautilus
 bind y     exec ~/bin/runorraise yed.sh
