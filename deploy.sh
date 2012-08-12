@@ -49,3 +49,7 @@ ln -s $REPO_DOTFILES/.git-completion.bash $HOME/
 
 rm $HOME/.conkerorrc
 ln -s $REPO_DOTFILES/.conkerorrc $HOME/
+
+mkdir -p ~/.lein
+rm $HOME/.lein/profiles.clj
+ln -s $REPO_DOTFILES/profiles.clj $HOME/.lein/profiles.clj
