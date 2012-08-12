@@ -13,7 +13,7 @@
 
 (defcommand ssh-add () ()
   "run the ~/bin/ssh-add.sh script."
-  (run-shell-command "~/bin/ssh-add.sh"))
+  (run-shell-command "~/bin/ssh/ssh-add.sh"))
 (define-key *root-map* (kbd "A") "ssh-add")
 
 (defcommand source-bashrc () ()
