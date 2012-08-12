@@ -2,7 +2,7 @@
 ##
 # Transcript from my stumpwm setup https://github.com/ardumont/dot-files/blob/master/.stumpwmrc
 ##
-# dependence script run-or-raise.sh to simulate the stumpwm killing feature - https://github.com/ardumont/sh/blob/master/run-or-raise.sh
+# dependence script run-or-raise.sh to simulate the stumpwm killing feature - https://github.com/ardumont/sh/blob/master/ratpoison/run-or-raise.sh
 
 # removing border
 set border 0
@@ -13,29 +13,29 @@ set barpadding 0 0
 set winname class
 
 # binding to call programs
-bind x     exec ~/bin/run-or-raise.sh gnome-terminal
-bind e     exec ~/bin/run-or-raise.sh emacs
-bind c     exec ~/bin/run-or-raise.sh conkeror
-bind f     exec ~/bin/run-or-raise.sh firefox
-bind comma exec ~/bin/run-or-raise.sh gnome-control-center
-bind dot   exec ~/bin/run-or-raise.sh totem
-bind slash exec ~/bin/run-or-raise.sh transmission-gtk
-bind i     exec ~/bin/run-or-raise.sh eclipse ~/applications/eclipse/eclipse
-bind j     exec ~/bin/run-or-raise.sh idea.sh
-bind n     exec ~/bin/run-or-raise.sh nautilus
-bind y     exec ~/bin/run-or-raise.sh yed ~/applications/yEd/yEd
-bind T     exec ~/bin/run-or-raise.sh stalonetray
-bind A     exec ~/bin/ssh-add.sh
-bind B     exec ~/bin/remap-alt-gr-and-capslock.sh
+bind x     exec ~/bin/ratpoison/run-or-raise.sh gnome-terminal
+bind e     exec ~/bin/ratpoison/run-or-raise.sh emacs
+bind c     exec ~/bin/ratpoison/run-or-raise.sh conkeror
+bind f     exec ~/bin/ratpoison/run-or-raise.sh firefox
+bind comma exec ~/bin/ratpoison/run-or-raise.sh gnome-control-center
+bind dot   exec ~/bin/ratpoison/run-or-raise.sh totem
+bind slash exec ~/bin/ratpoison/run-or-raise.sh transmission-gtk
+bind i     exec ~/bin/ratpoison/run-or-raise.sh eclipse ~/bin/ide/eclipse.sh
+bind j     exec ~/bin/ratpoison/run-or-raise.sh idea.sh
+bind n     exec ~/bin/ratpoison/run-or-raise.sh nautilus
+bind y     exec ~/bin/ratpoison/run-or-raise.sh yed ~/bin/app/yed.sh
+bind T     exec ~/bin/ratpoison/run-or-raise.sh stalonetray
+bind A     exec ~/bin/ratpoison/ssh-add.sh
+bind B     exec ~/bin/ratpoison/remap-alt-gr-and-capslock.sh
 
-bind C-f exec ~/bin/run-or-raise.sh Fritzing ~/applications/fritzing/Fritzing
-bind C-v exec ~/bin/run-or-raise.sh virtualbox
-bind C-c exec ~/bin/run-or-raise.sh arduino
-bind C-o exec ~/bin/run-or-raise.sh eog
-bind C-s exec ~/bin/run-or-raise.sh gnome-screenshot
-bind C-e exec ~/bin/run-or-raise.sh evince
-bind C-f exec ~/bin/run-or-raise.sh firefox
-bind C-b exec ~/bin/run-or-raise.sh google-chrome
+bind C-f exec ~/bin/ratpoison/run-or-raise.sh Fritzing ~/applications/fritzing/Fritzing
+bind C-v exec ~/bin/ratpoison/run-or-raise.sh virtualbox
+bind C-c exec ~/bin/ratpoison/run-or-raise.sh arduino
+bind C-o exec ~/bin/ratpoison/run-or-raise.sh eog
+bind C-s exec ~/bin/ratpoison/run-or-raise.sh gnome-screenshot
+bind C-e exec ~/bin/ratpoison/run-or-raise.sh evince
+bind C-f exec ~/bin/ratpoison/run-or-raise.sh firefox
+bind C-b exec ~/bin/ratpoison/run-or-raise.sh google-chrome
 
 ##aliasing keys within ratpoison
 ###make semicolon invoke ratpoison command, and colon shell command.
@@ -44,10 +44,10 @@ bind colon exec
 bind r restart
 
 # start some programs by default
-exec ~/bin/run-or-raise.sh stalonetray &
-exec ~/bin/run-or-raise.sh gnome-settings-daemon &
-exec ~/bin/run-or-raise.sh gnome-power-manager &
-exec ~/bin/run-or-raise.sh nm-applet &
+exec ~/bin/ratpoison/run-or-raise.sh stalonetray &
+exec ~/bin/ratpoison/run-or-raise.sh gnome-settings-daemon &
+exec ~/bin/ratpoison/run-or-raise.sh gnome-power-manager &
+exec ~/bin/ratpoison/run-or-raise.sh nm-applet &
 exec dropbox start &
 exec nautilus --no-default-window &
 exec gnome-terminal --hide-menubar&
