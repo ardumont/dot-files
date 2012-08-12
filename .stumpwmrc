@@ -11,6 +11,11 @@
   (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar -x tmux" '(:class "Gnome-terminal")))
 (define-key *root-map* (kbd "x") "xterm-1")
 
+(defcommand ssh-add () ()
+  "run the ~/bin/ssh-add.sh script."
+  (run-shell-command "~/bin/ssh-add.sh"))
+(define-key *root-map* (kbd "A") "ssh-add")
+
 (defcommand source-bashrc () ()
   "source the .bashrc files."
   (run-shell-command "source ~/.bashrc"))
