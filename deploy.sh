@@ -2,6 +2,7 @@
 
 # This script aims at deploying the links to your home
 # Use: /path/to/the/script/$0
+# Example: ~/repo/perso/dot-files/deploy.sh
 # The use of the absolute name for calling the script is unavoidable
 
 REPO_WORK=$SRC/work/bin
