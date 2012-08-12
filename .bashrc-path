@@ -3,6 +3,14 @@
 
 # Personal shell scripts
 [ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
+[ -d $HOME/bin/app ] && export PATH=$HOME/bin/app:$PATH
+[ -d $HOME/bin/deploy ] && export PATH=$HOME/bin/deploy:$PATH
+[ -d $HOME/bin/dev ] && export PATH=$HOME/bin/dev:$PATH
+[ -d $HOME/bin/git ] && export PATH=$HOME/bin/git:$PATH
+[ -d $HOME/bin/ide ] && export PATH=$HOME/bin/ide:$PATH
+[ -d $HOME/bin/mvn ] && export PATH=$HOME/bin/mvn:$PATH
+[ -d $HOME/bin/tmux ] && export PATH=$HOME/bin/tmux:$PATH
+[ -d $HOME/bin/utils ] && export PATH=$HOME/bin/utils:$PATH
 
 # Team shell scripts
 [ -d $HOME/team/bin ] && export PATH=$HOME/team/bin:$PATH
