@@ -90,4 +90,4 @@ fi
 [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
 
 # To remap my keyboard (CAPSLOCK is CTRL, ALT-GR is ALT)
-[ -f ~/bin/remap-alt-gr-and-capslock.sh ] && ! shopt -oq posix && . ~/bin/remap-alt-gr-and-capslock.sh
+[ -f ~/bin/kbd/remap-alt-gr-and-capslock.sh ] && ! shopt -oq posix && . ~/bin/kbd/remap-alt-gr-and-capslock.sh
