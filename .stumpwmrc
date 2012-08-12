@@ -25,7 +25,7 @@
 (define-key *root-map* (kbd "o") "fselect")
 
 ;; Emacs command
-(defprogram-shortcut :emacs :command "~/bin/emacs.sh"
+(defprogram-shortcut :emacs :command "emacs"
                      :props '(:class "Emacs")
                      :map *root-map* :key (kbd "e"))
 
@@ -45,7 +45,7 @@
                      :map *root-map* :key (kbd "c"))
 
 ;; IDE to the keybinding i (C-t i)
-(defprogram-shortcut :eclipse :command "~/bin/ide-eclipse.sh"
+(defprogram-shortcut :eclipse :command "~/bin/ide/eclipse.sh"
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
 
@@ -60,7 +60,7 @@
                      :map *root-map* :key (kbd "."))
 
 ;; Intellij-idea (C-t j)
-(defprogram-shortcut :intellij-idea :command "~/bin/idea.sh"
+(defprogram-shortcut :intellij-idea :command "~/bin/ide/idea.sh"
                      :props '(:class "java-lang-Thread")
                      :map *root-map* :key (kbd "j"))
 
@@ -90,7 +90,7 @@
                      :map *root-map* :key (stumpwm:kbd "C-s"))
 
 ;; yEd (C-t y)
-(defprogram-shortcut :yEd :command "~/bin/yed.sh"
+(defprogram-shortcut :yEd :command "~/bin/app/yed.sh"
                      :props '(:instance "sun-awt-X11-XFramePeer")
                      :map *root-map* :key (kbd "y"))
 
