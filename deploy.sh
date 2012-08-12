@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# This script aims at deploying the links to your home
+# Use: /path/to/the/script/$0
+# The use of the absolute name for calling the script is unavoidable
+
 REPO_WORK=$SRC/work/bin
 REPO_DOTFILES=$(dirname $0)
 
-# $HOME/.stumpwmrc
 rm $HOME/.stumpwmrc
 ln -s $REPO_DOTFILES/.stumpwmrc $HOME/
 
