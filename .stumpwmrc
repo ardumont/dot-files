@@ -6,10 +6,10 @@
 
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
-(defcommand xterm-1 () ()
+(defcommand terminal () ()
   "run an xterm instance or switch to it, if it is already running."
-  (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar -x tmux" '(:class "Gnome-terminal")))
-(define-key *root-map* (kbd "x") "xterm-1")
+  (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
+(define-key *root-map* (kbd "x") "terminal")
 
 (defcommand ssh-add () ()
   "run the ~/bin/ssh-add.sh script."
@@ -114,7 +114,6 @@
 
 ;; Launch commands
 (run-shell-command "/usr/bin/gnome-settings-daemon")
-(run-shell-command "gnome-terminal --hide-menubar -x tmux&")
 (run-shell-command "/usr/bin/nm-applet &")
 (run-shell-command "/usr/bin/bluetooth-applet &")
 (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
@@ -122,3 +121,4 @@
 (run-shell-command "gnome-panel &")
 (run-shell-command "dropbox start")
 (run-shell-command "nautilus --no-default-window")
+(terminal)
