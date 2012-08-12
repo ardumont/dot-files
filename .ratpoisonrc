@@ -43,10 +43,6 @@ bind semicolon colon
 bind colon exec
 bind r restart
 
-# switch between screens
-#bind x nextscreen
-bind z prevscreen
-
 # start some programs by default
 exec ~/bin/run-or-raise.sh stalonetray &
 exec ~/bin/run-or-raise.sh gnome-settings-daemon &
