@@ -11,6 +11,11 @@
   (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar -x tmux" '(:class "Gnome-terminal")))
 (define-key *root-map* (kbd "x") "xterm-1")
 
+(defcommand source-bashrc () ()
+  "source the .bashrc files."
+  (run-shell-command "source ~/.bashrc"))
+(define-key *root-map* (kbd "B") "source-bashrc")
+
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
