@@ -25,7 +25,7 @@ bind j     exec ~/bin/ratpoison/run-or-raise.sh idea.sh
 bind n     exec ~/bin/ratpoison/run-or-raise.sh nautilus
 bind y     exec ~/bin/ratpoison/run-or-raise.sh yed ~/bin/app/yed.sh
 bind T     exec ~/bin/ratpoison/run-or-raise.sh stalonetray
-bind A     exec ~/bin/ratpoison/ssh-add.sh
+bind A     exec ~/bin/ssh/ssh-add.sh
 bind B     exec ~/bin/ratpoison/remap-alt-gr-and-capslock.sh
 
 bind C-f exec ~/bin/ratpoison/run-or-raise.sh Fritzing ~/applications/fritzing/Fritzing
