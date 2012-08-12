@@ -50,6 +50,6 @@ exec ~/bin/run-or-raise.sh gnome-power-manager &
 exec ~/bin/run-or-raise.sh nm-applet &
 exec dropbox start &
 exec nautilus --no-default-window &
-exec gnome-terminal --hide-menubar -x tmux&
+exec gnome-terminal --hide-menubar&
 #exec gnome-panel &
 
