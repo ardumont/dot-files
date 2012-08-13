@@ -28,7 +28,7 @@
 [ -d /usr/lib/jvm/java-6-sun ] && export JAVA_HOME=/usr/lib/jvm/java-6-sun
 
 # maven 3
-[ -d $HOME/applications/apache-maven-3.0.3 ] && export PATH=$HOME/applications/apache-maven-3.0.3/bin:$PATH
+[ -d $HOME/applications/apache-maven ] && export PATH=$HOME/applications/apache-maven/bin:$PATH
 
 # Add lein to the path
 [ -d $HOME/.lein ] && export PATH=$HOME/.lein:$HOME/.lein/bin:$HOME/.lein/plugins:$PATH
