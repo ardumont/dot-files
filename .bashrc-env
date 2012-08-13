@@ -7,8 +7,8 @@ export LC_MESSAGES="en_US.UTF-8"
 export MANPAGER="/usr/bin/most -s"
 
 # emacs as the core editor for all
-export EDITOR="emacsclient -t"
+#export EDITOR="emacsclient -t"
 
 export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 
-export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
