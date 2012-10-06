@@ -11,7 +11,7 @@ alias rgrep='rgrep --color=auto'
 
 # emacs for the win
 alias em='emacs -nw'
-alias emc='emacs-clojure.sh'
+alias emc='emacs -e nrepl-jack-in'
 
 # vagrant
 alias v='vagrant'
@@ -20,30 +20,22 @@ alias v='vagrant'
 
 # cd ..
 alias cd..='cd ..'
+alias cd.='cd .'
 
 # cd ~/org
-alias cdorg='cd $HOME/org'
+alias cdo='cd $HOME/org'
 
 # cd ~/bin
-alias cdbin='cd $HOME/bin'
+alias cdb='cd $HOME/bin'
 
 # cd ~/work/bin
-alias cdwbin='cd $HOME/work/bin'
+alias cdwb='cd $HOME/work/bin'
 
 # cd ~/.m2
 alias cdm2='cd $HOME/.m2'
 
 # cd ~/.ssh
 alias cdssh='cd $HOME/.ssh'
-
-# projectsion
-alias pr.cd='cd $HOME/repositories/perso/ProjectionReloaded/pr-parent'
-
-# twitalize
-alias twit.cd='cd $HOME/repositories/perso/twitalyse'
-
-# cd into repository stumpwm
-alias stump.cd='cd $HOME/Dropbox/repositories/git/stumpwm-config'
 
 ################ Git aliases
 
@@ -55,3 +47,6 @@ alias gst='git status'
 
 # git commit -v
 alias gci='git commit -v'
+
+# git diff
+alias gdf='git diff'
