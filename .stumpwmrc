@@ -35,6 +35,11 @@
                      :map *root-map* :key (kbd "f"))
 
 ;; Another way to declare a shortcut for launching google-chrome
+(defprogram-shortcut :chrome :command "chromium-browser"
+                     :props '(:instance "chromium-browser")
+                     :map *root-map* :key (kbd "b"))
+
+;; Another way to declare a shortcut for launching google-chrome
 (defprogram-shortcut :chrome :command "google-chrome"
                      :props '(:instance "google-chrome")
                      :map *root-map* :key (stumpwm:kbd "C-b"))
