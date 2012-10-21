@@ -10,8 +10,8 @@ alias egrep='egrep --color=auto'
 alias rgrep='rgrep --color=auto'
 
 # emacs for the win
-alias em='emacs -nw'
-alias emc='emacs -e nrepl-jack-in'
+alias em='emacsclient -nw'
+alias emc='emacsclient -c'
 
 # vagrant
 alias v='vagrant'
