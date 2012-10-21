@@ -7,7 +7,7 @@ export LC_MESSAGES="en_US.UTF-8"
 export MANPAGER="/usr/bin/most -s"
 
 # emacs as the core editor for all
-#export EDITOR="emacsclient -t"
+export EDITOR="emacsclient -nw"
 
 export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 
