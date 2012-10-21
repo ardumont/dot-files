@@ -25,7 +25,7 @@
 (define-key *root-map* (kbd "o") "fselect")
 
 ;; Emacs command
-(defprogram-shortcut :emacs :command "emacs"
+(defprogram-shortcut :emacs :command "emacsclient -c"
                      :props '(:class "Emacs")
                      :map *root-map* :key (kbd "e"))
 
@@ -121,4 +121,6 @@
 (run-shell-command "gnome-panel &")
 (run-shell-command "dropbox start")
 (run-shell-command "nautilus --no-default-window")
+;; start an emacs server in background
+(run-shell-command "emacs --daemon &")
 (terminal)
