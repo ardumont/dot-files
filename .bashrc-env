@@ -12,3 +12,6 @@ export EDITOR="emacsclient -nw"
 export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 
 #export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
+
+# force the 256 color on the terminal
+export TERM=screen-256color
