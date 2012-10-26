@@ -4,7 +4,7 @@
             [lein-difftest "1.3.7"]
             [lein-marginalia "0.7.1"]
             [lein-pprint "1.1.1"]
-            [lein-midje "2.0.0-SNAPSHOT"]
+            #_ [lein-midje "2.0.0-SNAPSHOT"]
             [lein-noir "1.2.1"]
             [com.stuartsierra/lazytest "1.2.3"]
             [org.cloudhoist/pallet-lein "0.5.0"]
