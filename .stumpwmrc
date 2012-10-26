@@ -16,10 +16,10 @@
   (run-shell-command "~/bin/ssh/ssh-add.sh"))
 (define-key *root-map* (kbd "A") "ssh-add")
 
-(defcommand source-bashrc () ()
-  "source the .bashrc files."
-  (run-shell-command "source ~/.bashrc"))
-(define-key *root-map* (kbd "B") "source-bashrc")
+(defcommand ssh-add-list () ()
+  "run the ~/bin/ssh-add.sh script."
+  (run-shell-command "zenity --info --text \"$(ssh-add -L)\""))
+(define-key *root-map* (kbd "B") "ssh-add-list")
 
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
