@@ -37,6 +37,15 @@ alias cdm2='cd $HOME/.m2'
 # cd ~/.ssh
 alias cdssh='cd $HOME/.ssh'
 
+# cd ~/repo/perso
+alias cdp='cd $HOME/repo/perso'
+
+# cd ~/repo/perso/lazyposse
+alias cdl='cd $HOME/repo/perso/lazyposse'
+
+# cd ~/repo/pro/wikeo
+alias cdw='cd $HOME/repo/pro/wikeo'
+
 ################ Git aliases
 
 # gitk --all
