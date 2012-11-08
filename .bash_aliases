@@ -59,3 +59,7 @@ alias gci='git commit -v'
 
 # git diff
 alias gdf='git diff'
+
+# pretty log
+alias gl='git log --oneline --graph --remotes --decorate --all'
+
