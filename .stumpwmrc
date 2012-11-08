@@ -65,8 +65,8 @@
                      :map *root-map* :key (kbd "."))
 
 ;; Intellij-idea (C-t j)
-(defprogram-shortcut :intellij-idea :command "~/bin/ide/idea.sh"
-                     :props '(:class "java-lang-Thread")
+(defprogram-shortcut :intellij-idea :command "~/applications/idea/bin/idea.sh"
+                     :props '(:class "jetbrains-idea-ce")
                      :map *root-map* :key (kbd "j"))
 
 ;; File explorer nautilus (C-t n)
