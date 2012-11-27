@@ -10,5 +10,6 @@
             [org.cloudhoist/pallet-lein "0.5.0"]
             [pallet/lein-template "0.2.3"]]
   :search-page-size "30"
-  :repositories {"stuart" "http://stuartsierra.com/maven2"}}}
-
+  :repositories {"stuart"              "http://stuartsierra.com/maven2"
+                 "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
+                 "google-api-services" "http://google-api-client-libraries.appspot.com/mavenrepo"}}}
