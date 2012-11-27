@@ -10,7 +10,7 @@ prompt_command () {
     fi
 
     if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
-        BRANCH=" \$(__git_ps1 '(%s) ')" 
+        BRANCH=" \$(__git_ps1 '(%s) ')"
     fi
 
     # setup preferences
@@ -63,3 +63,4 @@ chkload () {
     fi
     echo $CURRLOAD
 }
+# `if [ $? = 0 ]; then echo \e[33\;40m\\^\\_\\^\e[0m; else echo \e[36\;40m\\-\e[0m\\_\e[36\;40m\\-\e[0m; fi` \[\033[38m\]\u \[\033[0;36m\]\j \[\033[1;32m\]\!\[\033[01;34m\] \w \[\033[31m\]`ruby -e "print (%x{git branch 2> /dev/null}.split(%q{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')"`\[\033[37m\]$\[\033[00m\]
