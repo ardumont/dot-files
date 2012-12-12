@@ -35,3 +35,6 @@
 
 # vagrant
 [ -d /opt/vagrant/bin ] && export PATH=/opt/vagrant/bin:$PATH
+
+# android tools
+[ -d $HOME/applications/adt-bundle-linux-x86/sdk/platform-tools ] && export PATH=$HOME/applications/adt-bundle-linux-x86/sdk/platform-tools:$PATH
