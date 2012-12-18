@@ -26,6 +26,11 @@
   (run-shell-command "zenity --info --text \"$(cat /etc/environment)\""))
 (define-key *root-map* (kbd "E") "cat-etc-environment")
 
+(defcommand cat-etc-hosts () ()
+  "cat /etc/hosts"
+  (run-shell-command "zenity --info --text \"$(cat /etc/hosts)\""))
+(define-key *root-map* (kbd "H") "cat-etc-hosts")
+
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
