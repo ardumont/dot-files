@@ -11,10 +11,10 @@
   (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
 (define-key *root-map* (kbd "x") "terminal")
 
-(defcommand ssh-add () ()
-  "run the ~/bin/ssh-add.sh script."
+(defcommand ssh-add-identities () ()
+  "Add the identities present in ~/.ssh-agent-identities script."
   (run-shell-command "~/bin/ssh/ssh-add.sh"))
-(define-key *root-map* (kbd "A") "ssh-add")
+(define-key *root-map* (kbd "A") "ssh-add-identities")
 
 (defcommand ssh-add-list () ()
   "run the ~/bin/ssh-add.sh script."
