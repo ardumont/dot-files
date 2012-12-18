@@ -31,6 +31,11 @@
   (run-shell-command "zenity --info --text \"$(cat /etc/hosts)\""))
 (define-key *root-map* (kbd "H") "cat-etc-hosts")
 
+(defcommand sbin-ifconfig () ()
+  "cat /etc/hosts"
+  (run-shell-command "zenity --info --text \"$(/sbin/ifconfig)\""))
+(define-key *root-map* (kbd "I") "sbin-ifconfig")
+
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
