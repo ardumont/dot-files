@@ -41,6 +41,16 @@
   (run-shell-command "zenity --info --text \"$(/usr/bin/acpi -b)\""))
 (define-key *root-map* (kbd "B") "acpi-cmd")
 
+(defcommand dec-brightness () ()
+  "brightness decrement"
+  (run-shell-command "~/brightness/dec.sh"))
+(define-key *root-map* (kbd "F5") "dec-brightness")
+
+(defcommand inc-brightness () ()
+  "brightness increment"
+  (run-shell-command "~/bin/brightness/inc.sh"))
+(define-key *root-map* (kbd "F6") "inc-brightness")
+
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
