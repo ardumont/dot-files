@@ -19,7 +19,7 @@
 (defcommand ssh-add-list () ()
   "run the ~/bin/ssh-add.sh script."
   (run-shell-command "zenity --info --text \"$(ssh-add -L)\""))
-(define-key *root-map* (kbd "B") "ssh-add-list")
+(define-key *root-map* (kbd "K") "ssh-add-list")
 
 (defcommand cat-etc-environment () ()
   "Display the content of the file /etc/environment."
@@ -35,6 +35,11 @@
   "cat /etc/hosts"
   (run-shell-command "zenity --info --text \"$(/sbin/ifconfig)\""))
 (define-key *root-map* (kbd "I") "sbin-ifconfig")
+
+(defcommand acpi () ()
+  "acpi -b"
+  (run-shell-command "zenity --info --text \"$(acpi -b)\""))
+(define-key *root-map* (kbd "B") "acpi")
 
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
