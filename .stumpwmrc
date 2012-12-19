@@ -36,10 +36,10 @@
   (run-shell-command "zenity --info --text \"$(/sbin/ifconfig)\""))
 (define-key *root-map* (kbd "I") "sbin-ifconfig")
 
-(defcommand acpi () ()
+(defcommand acpi-cmd () ()
   "acpi -b"
-  (run-shell-command "zenity --info --text \"$(acpi -b)\""))
-(define-key *root-map* (kbd "B") "acpi")
+  (run-shell-command "zenity --info --text \"$(/usr/bin/acpi -b)\""))
+(define-key *root-map* (kbd "B") "acpi-cmd")
 
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
