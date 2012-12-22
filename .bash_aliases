@@ -48,6 +48,9 @@ alias cdw='cd $HOME/repo/pro/wikeo'
 
 ################ Git aliases
 
+# use hub to access easily github
+alias git='hub'
+
 # gitk --all
 alias gitka='gitk --all'
 
