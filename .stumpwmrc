@@ -43,12 +43,12 @@
 
 (defcommand dec-brightness () ()
   "brightness decrement"
-  (run-shell-command "~/brightness/dec.sh"))
+  (run-shell-command "for i in {1..5}; do ~/bin/brightness/dec.sh; done"))
 (define-key *root-map* (kbd "F5") "dec-brightness")
 
 (defcommand inc-brightness () ()
   "brightness increment"
-  (run-shell-command "~/bin/brightness/inc.sh"))
+  (run-shell-command "for i in {1..5}; do ~/bin/brightness/inc.sh; done"))
 (define-key *root-map* (kbd "F6") "inc-brightness")
 
 ;; Frame selection
