@@ -60,6 +60,12 @@ alias gst='git status'
 # git commit -v
 alias gci='git commit -v'
 
+# git checkout
+alias gco='git checkout'
+
+# git branch
+alias gbr='git branch'
+
 # git diff
 alias gdf='git diff'
 
