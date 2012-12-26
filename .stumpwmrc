@@ -36,6 +36,8 @@
   (run-shell-command "gksudo ~/bin/proxy/proxy.sh off && killall nm-applet"))
 (define-key *root-map* (kbd "P") "switch-to-no-proxy")
 
+(define-key *root-map* (kbd "L") "loadrc")
+
 (defcommand cat-etc-hosts () ()
   "cat /etc/hosts"
   (run-shell-command "zenity --info --text \"$(cat /etc/hosts)\""))
