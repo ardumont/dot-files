@@ -26,6 +26,16 @@
   (run-shell-command "zenity --info --text \"$(cat /etc/environment)\""))
 (define-key *root-map* (kbd "E") "cat-etc-environment")
 
+(defcommand switch-to-proxy () ()
+  "Switch to proxy."
+  (run-shell-command "gksudo ~/bin/proxy/proxy.sh on && killall nm-applet"))
+(define-key *root-map* (kbd "p") "switch-to-proxy")
+
+(defcommand switch-to-no-proxy () ()
+  "Switch to no proxy."
+  (run-shell-command "gksudo ~/bin/proxy/proxy.sh off && killall nm-applet"))
+(define-key *root-map* (kbd "P") "switch-to-no-proxy")
+
 (defcommand cat-etc-hosts () ()
   "cat /etc/hosts"
   (run-shell-command "zenity --info --text \"$(cat /etc/hosts)\""))
