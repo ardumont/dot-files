@@ -9,7 +9,7 @@
 ;; ----------------- zenity commands
 
 (defcommand touchpad (status) ()
-  "Activate/Deactivate the touchpad depending on the status parameter"
+  "Activate/Deactivate the touchpad depending on the status parameter (on/off)."
   (run-shell-command (concatenate 'string "~/bin/stumpwm/touchpad.sh " status)))
 
 ;; (defcommand name (args) (interactive-args) "doc-string" (body))
