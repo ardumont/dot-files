@@ -147,12 +147,12 @@
                      :map *root-map* :key (stumpwm:kbd "C-c"))
 
 ;; pinta - lightweight drawing soft (C-t d)
-(defprogram-shortcut :arduino :command "pinta"
+(defprogram-shortcut :pinta :command "pinta"
                      :props '(:instance "Pinta")
                      :map *root-map* :key (kbd "d"))
 
 ;; gimp - not so lightweight drawing soft (C-t C-d)
-(defprogram-shortcut :arduino :command "gimp"
+(defprogram-shortcut :gimp :command "gimp"
                      :props '(:instance "gimp")
                      :map *root-map* :key (stumpwm:kbd "C-d"))
 
