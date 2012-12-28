@@ -151,6 +151,11 @@
                      :props '(:instance "Pinta")
                      :map *root-map* :key (kbd "d"))
 
+;; gimp - not so lightweight drawing soft (C-t C-d)
+(defprogram-shortcut :arduino :command "gimp"
+                     :props '(:instance "gimp")
+                     :map *root-map* :key (stumpwm:kbd "C-d"))
+
 ;; fritzing (C-t C-f)
 (defprogram-shortcut :fritzing :command "~/applications/fritzing/Fritzing"
                      :props '(:instance "Fritzing")
