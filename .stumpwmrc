@@ -6,21 +6,13 @@
 
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
+;; ----------------- zenity commands
+
 ;; (defcommand name (args) (interactive-args) "doc-string" (body))
 ;; wrapper around the zenity cli
 (defcommand zenity (command) ()
   "Wrap a call to the cli and output the result into a zenity window"
   (run-shell-command (concatenate 'string "zenity --info --text \"$(" command ")\"")))
-
-(defcommand terminal () ()
-  "run an xterm instance or switch to it, if it is already running."
-  (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
-(define-key *root-map* (kbd "x") "terminal")
-
-(defcommand ssh-add-identities () ()
-  "Add the identities present in ~/.ssh-agent-identities script."
-  (run-shell-command "~/bin/ssh/ssh-add.sh"))
-(define-key *root-map* (kbd "A") "ssh-add-identities")
 
 (defcommand ssh-add-list () ()
   "run the ~/bin/ssh-add.sh script."
@@ -31,18 +23,6 @@
   "Display the content of the file /etc/environment."
   (zenity "cat /etc/environment"))
 (define-key *root-map* (kbd "E") "cat-etc-environment")
-
-(defcommand switch-to-proxy () ()
-  "Switch to proxy."
-  (run-shell-command "gksudo ~/bin/proxy/proxy.sh on && killall nm-applet"))
-(define-key *root-map* (kbd "p") "switch-to-proxy")
-
-(defcommand switch-to-no-proxy () ()
-  "Switch to no proxy."
-  (run-shell-command "gksudo ~/bin/proxy/proxy.sh off && killall nm-applet"))
-(define-key *root-map* (kbd "P") "switch-to-no-proxy")
-
-(define-key *root-map* (kbd "L") "loadrc")
 
 (defcommand cat-etc-hosts () ()
   "cat /etc/hosts"
@@ -58,6 +38,30 @@
   "acpi -b"
   (zenity "/usr/bin/acpi -b"))
 (define-key *root-map* (kbd "B") "acpi-cmd")
+
+;; ----------------- normal commands
+
+(defcommand terminal () ()
+  "run an xterm instance or switch to it, if it is already running."
+  (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
+(define-key *root-map* (kbd "x") "terminal")
+
+(defcommand ssh-add-identities () ()
+  "Add the identities present in ~/.ssh-agent-identities script."
+  (run-shell-command "~/bin/ssh/ssh-add.sh"))
+(define-key *root-map* (kbd "A") "ssh-add-identities")
+
+(defcommand switch-to-proxy () ()
+  "Switch to proxy."
+  (run-shell-command "gksudo ~/bin/proxy/proxy.sh on && killall nm-applet"))
+(define-key *root-map* (kbd "p") "switch-to-proxy")
+
+(defcommand switch-to-no-proxy () ()
+  "Switch to no proxy."
+  (run-shell-command "gksudo ~/bin/proxy/proxy.sh off && killall nm-applet"))
+(define-key *root-map* (kbd "P") "switch-to-no-proxy")
+
+(define-key *root-map* (kbd "L") "loadrc")
 
 (defcommand dec-brightness () ()
   "brightness decrement"
