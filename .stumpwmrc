@@ -146,6 +146,11 @@
                      :props '(:class "processing-app-Base")
                      :map *root-map* :key (stumpwm:kbd "C-c"))
 
+;; pinta - lightweight drawing soft (C-t d)
+(defprogram-shortcut :arduino :command "pinta"
+                     :props '(:instance "Pinta")
+                     :map *root-map* :key (kbd "d"))
+
 ;; fritzing (C-t C-f)
 (defprogram-shortcut :fritzing :command "~/applications/fritzing/Fritzing"
                      :props '(:instance "Fritzing")
