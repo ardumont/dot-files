@@ -6,12 +6,12 @@
 
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
+;; (defcommand name (args) (interactive-args) "doc-string" (body))
 ;; wrapper around the zenity cli
 (defcommand zenity (command) ()
   "Wrap a call to the cli and output the result into a zenity window"
   (run-shell-command (concatenate 'string "zenity --info --text \"$(" command ")\"")))
 
-;; (defcommand name (args) (interactive-args) "doc-string" (body))
 (defcommand terminal () ()
   "run an xterm instance or switch to it, if it is already running."
   (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
