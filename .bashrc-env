@@ -15,3 +15,6 @@ export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 
 # force the 256 color on the terminal
 export TERM=screen-256color
+
+# java
+export JAVA_HOME=/usr/lib/jvm/java-6-oracle/
