@@ -30,6 +30,7 @@
 
 # java config
 [ -d /usr/lib/jvm/java-6-sun ] && export JAVA_HOME=/usr/lib/jvm/java-6-sun
+[ -d /usr/lib/jvm/java-6-oracle ] && export JAVA_HOME=/usr/lib/jvm/java-6-oracle
 
 # maven 3
 [ -d $HOME/applications/apache-maven-3.0.4 ] && export PATH=$HOME/applications/apache-maven-3.0.4/bin:$PATH
