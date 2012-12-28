@@ -4,9 +4,24 @@
 
 (setf *window-format* "%m%n%s nm=%50t cl=%c id=%i")
 
+;;; Window Appearance
+;; The width in pixels given to the borders of regular windows.
+(setf *normal-border-width* 0)
+;; The width in pixels given to the borders of windows with maxsize or ratio hints.
+(setf *maxsize-border-width* 0)
+;; The width in pixels given to the borders of transient or pop-up windows.
+(setf *transient-border-width* 0)
+
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
 (in-package :stumpwm)
+
+(defun shell-command (command)
+  "Run a shell command and display output to screen.
+   This must be used in a functional side-effects-free style!
+   If a program does not exit, Stumpwm might hang!"
+  (check-type command string)
+  (echo-string (current-screen) (run-shell-command command t)))
 
 ;; ----------------- function
 
@@ -88,6 +103,12 @@
   "brightness increment"
   (run-shell-command "for i in {1..5}; do ~/bin/brightness/inc.sh; done"))
 (define-key *root-map* (kbd "F6") "inc-brightness")
+
+(defcommand top () ()
+  "Display a single 'top' frame."
+  (shell-command "top -b -n 1 -c -d 1"))
+
+(define-key *root-map* (kbd "^") "top")
 
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
