@@ -15,6 +15,7 @@
 [ -d $HOME/bin/db ] && export PATH=$HOME/bin/db:$PATH
 [ -d $HOME/bin/haskell ] && export PATH=$HOME/bin/haskell:$PATH
 [ -d $HOME/bin/mvn ] && export PATH=$HOME/bin/mvn:$PATH
+[ -d $HOME/bin/stumpwm ] && export PATH=$HOME/bin/stumpwm:$PATH
 
 # Team shell scripts
 [ -d $HOME/team/bin ] && export PATH=$HOME/team/bin:$PATH
