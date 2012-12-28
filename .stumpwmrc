@@ -6,11 +6,13 @@
 
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
-;; ----------------- zenity commands
+;; ----------------- function
 
 (defcommand touchpad (status) ()
   "Activate/Deactivate the touchpad depending on the status parameter (on/off)."
   (run-shell-command (concatenate 'string "~/bin/stumpwm/touchpad.sh " status)))
+
+;; ----------------- zenity commands
 
 ;; (defcommand name (args) (interactive-args) "doc-string" (body))
 ;; wrapper around the zenity cli
