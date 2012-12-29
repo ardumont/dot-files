@@ -84,7 +84,7 @@
 
 ;; C-t I - Display the network properties
 (defcommand sbin-ifconfig () ()
-  "cat /etc/hosts"
+  "/sbin/ifconfig"
   (zenity "/sbin/ifconfig"))
 (define-key *root-map* (kbd "I") "sbin-ifconfig")
 
