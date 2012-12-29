@@ -23,25 +23,30 @@
   (check-type command string)
   (echo-string (current-screen) (run-shell-command command t)))
 
+(defun run-shl (&rest cmd)
+  "A simpler command to run-shell-command with multiple params"
+  (run-shell-command (apply #'concatenate 'string cmd)))
+
 ;; ----------------- personal functions
 
-(defcommand toggle-touchpad-manual (status) ()
+(defun toggle-touchpad-manual (status)
   "Activate/Deactivate the touchpad depending on the status parameter (0/1)."
-  (run-shell-command (concatenate 'string "~/bin/stumpwm/toggle-touchpad-manual.sh " status))
-  (if (equal "0" status) (banish)))
+  (run-shl "~/bin/stumpwm/toggle-touchpad-manual.sh " status)
+  ;; banish the mouse from the screen when we deactivate the touchpad
+  (if (equal "0" status) (stumpwm::banish)))
 
 ;; (defcommand name (args) (interactive-args) "doc-string" (body))
 ;; wrapper around the zenity cli
 (defcommand zenity (command) ()
    "Wrap a call to the cli and output the result into a zenity window"
-   (run-shell-command (concatenate 'string "zenity --info --text \"$(" command ")\"")))
+   (run-shl "zenity --info --text \"$(" command ")\""))
 
 ;; ----------------- personal functions
 
 (defcommand toggle-touchpad-auto () ()
   "Activate/Deactivate automatically the touchpad depending on the current status."
-  (run-shell-command (concatenate 'string "~/bin/stumpwm/toggle-touchpad.sh"))
-  (banish))
+  (run-shl "~/bin/stumpwm/toggle-touchpad.sh")
+  (stumpwm::banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
 ;; ----------------- zenity commands
