@@ -75,3 +75,7 @@ alias gl='git log --oneline --graph --remotes --decorate --all'
 # git fetch
 alias gf='git fetch'
 alias gfa='git fetch --all'
+
+# git push
+alias gpo='git push origin'
+alias gpu='git push upstream'
