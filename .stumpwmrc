@@ -55,6 +55,7 @@
 
 ;; ----------------- personal functions
 
+;; C-t T - Toggle on/off the touchpad
 (defcommand toggle-touchpad-auto () ()
   "Activate/Deactivate automatically the touchpad depending on the current status."
   (run-shl "~/bin/stumpwm/toggle-touchpad.sh")
@@ -63,26 +64,31 @@
 
 ;; ----------------- zenity commands
 
+;; C-t K - Display the keys the user-agent holds
 (defcommand ssh-add-list () ()
   "run the ~/bin/ssh-add.sh script."
   (zenity "ssh-add -L"))
 (define-key *root-map* (kbd "K") "ssh-add-list")
 
+;; C-t E - Display the contents of the /etc/environment
 (defcommand cat-etc-environment () ()
   "Display the content of the file /etc/environment."
   (zenity "cat /etc/environment"))
 (define-key *root-map* (kbd "E") "cat-etc-environment")
 
+;; C-t H - Display the contents of /etc/hosts
 (defcommand cat-etc-hosts () ()
   "cat /etc/hosts"
   (zenity "cat /etc/hosts"))
 (define-key *root-map* (kbd "H") "cat-etc-hosts")
 
+;; C-t I - Display the network properties
 (defcommand sbin-ifconfig () ()
   "cat /etc/hosts"
   (zenity "/sbin/ifconfig"))
 (define-key *root-map* (kbd "I") "sbin-ifconfig")
 
+;; C-t B - Display the battery stat
 (defcommand acpi-cmd () ()
   "acpi -b"
   (zenity "/usr/bin/acpi -b"))
@@ -90,11 +96,13 @@
 
 ;; ----------------- run-or-raise commands
 
+;; C-t x - Terminal and switch off the touchpad
 (defcommand terminal () ()
   "Run an xterm instance or if already running, switch to it."
   (roraise-and-touchpad-off "gnome-terminal --hide-menubar" "Gnome-terminal"))
 (define-key *root-map* (kbd "x") "terminal")
 
+;; C-t e - Emacs and switch off the touchpad
 (defcommand myemacs () ()
   "Run an xterm instance or if already running, switch to it."
   ;; raise emacs
@@ -121,133 +129,124 @@
 
 ;; ----------------- run-shell-commands commands
 
+;; C-t A - Load the identities from the ~/.ssh-agent-identities file
 (defcommand ssh-add-identities () ()
   "Add the identities present in ~/.ssh-agent-identities script."
   (run-shell-command "~/bin/ssh/ssh-add.sh"))
 (define-key *root-map* (kbd "A") "ssh-add-identities")
 
+;; C-t p - Activate the proxy (ask for su rights)
 (defcommand switch-to-proxy () ()
   "Switch to proxy."
   (run-shell-command "gksudo ~/bin/proxy/proxy.sh on && killall nm-applet"))
 (define-key *root-map* (kbd "p") "switch-to-proxy")
 
+;; C-t P - Deactivate the proxy
 (defcommand switch-to-no-proxy () ()
   "Switch to no proxy."
   (run-shell-command "gksudo ~/bin/proxy/proxy.sh off && killall nm-applet"))
 (define-key *root-map* (kbd "P") "switch-to-no-proxy")
 
+;; C-t L - Reload the ~/.stumpwmrc configuration
 (define-key *root-map* (kbd "L") "loadrc")
 
+;; C-t F6 - Decrement the brightness
 (defcommand dec-brightness () ()
-  "brightness decrement"
+  "Brightness decrement"
   (run-shell-command "for i in {1..5}; do ~/bin/brightness/dec.sh; done"))
 (define-key *root-map* (kbd "F5") "dec-brightness")
 
+;; C-t F5 - Increment the brightness
 (defcommand inc-brightness () ()
-  "brightness increment"
+  "Brightness increment"
   (run-shell-command "for i in {1..5}; do ~/bin/brightness/inc.sh; done"))
 (define-key *root-map* (kbd "F6") "inc-brightness")
 
+;; C-t ^ - top
 (defcommand top () ()
   "Display a single 'top' frame."
   (shell-command "top -b -n 1 -c -d 1"))
-
 (define-key *root-map* (kbd "^") "top")
 
-;; Frame selection
+;; C-t o - Frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
-;; Firefox
-(defprogram-shortcut :firefox :command "firefox"
-                     :props '(:class "Firefox")
-                     :map *root-map* :key (kbd "f"))
-
-;; Another way to declare a shortcut for launching google-chrome
-(defprogram-shortcut :chrome :command "chromium-browser"
-                     :props '(:instance "chromium-browser")
-                     :map *root-map* :key (kbd "b"))
-
-;; Another way to declare a shortcut for launching google-chrome
-(defprogram-shortcut :chrome :command "google-chrome --no-proxy-server"
-                     :props '(:instance "google-chrome")
-                     :map *root-map* :key (stumpwm:kbd "C-b"))
-
-;; Conkeror - keyboard-driven navigator - C-t c
+;; C-t c - Conkeror - keyboard-driven navigator
 (defprogram-shortcut :conkeror :command "conkeror"
                      :props '(:class "Conkeror")
                      :map *root-map* :key (kbd "c"))
 
-;; IDE to the keybinding i (C-t i)
+;; C-t i - IDE to the keybinding i
 (defprogram-shortcut :eclipse :command "~/bin/ide/eclipse.sh"
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
 
-;; Gnome-control-center (C-t ,)
+;; C-t , - Gnome-control-center
 (defprogram-shortcut :gnome-control-center :command "gnome-control-center"
                      :props '(:class "Gnome-Control-Center")
                      :map *root-map* :key (kbd ","))
 
-;; Totem (C-t .)
+;; C-t . - Totem
 (defprogram-shortcut :video-player :command "totem"
                      :props '(:class "Totem")
                      :map *root-map* :key (kbd "."))
 
-;; Intellij-idea (C-t j)
+;; C-t j - Intellij-idea
 (defprogram-shortcut :intellij-idea :command "~/applications/idea/bin/idea.sh"
                      :props '(:class "jetbrains-idea-ce")
                      :map *root-map* :key (kbd "j"))
 
-;; File explorer nautilus (C-t n)
+;; C-t n - File explorer nautilus
 (defprogram-shortcut :nautilus :command "nautilus"
                      :props '(:instance "nautilus")
                      :map *root-map* :key (kbd "n"))
 
-;; Transmission-gtk (C-t /)
+;; C-t / - Transmission-gtk
 (defprogram-shortcut :torrent :command "transmission-gtk"
                      :props '(:instance "transmission-gtk")
                      :map *root-map* :key (kbd "/"))
 
-;; PDF reader evince (C-t C-e)
+;; C-t C-e - PDF reader evince
 (defprogram-shortcut :evince :command "evince"
                      :props '(:instance "evince")
                      :map *root-map* :key (stumpwm:kbd "C-e"))
 
-;; Image reader eog (C-t C-o)
+;; C-t C-o - Image reader eog
 (defprogram-shortcut :eog :command "eog"
                      :props '(:instance "eog")
                      :map *root-map* :key (stumpwm:kbd "C-o"))
 
-;; Add a binding for gnome-screenshot (C-t C-s)
+;; C-t C-s - Add a binding for gnome-screenshot
 (defprogram-shortcut :screenshot :command "gnome-screenshot"
                      :props '(:instance "gnome-screenshot")
                      :map *root-map* :key (stumpwm:kbd "C-s"))
 
-;; yEd (C-t y)
+;; C-t y - yEd
 (defprogram-shortcut :yEd :command "~/bin/app/yed.sh"
                      :props '(:instance "sun-awt-X11-XFramePeer")
                      :map *root-map* :key (kbd "y"))
 
-;; arduino ide (C-t C-c)
+;; C-t C-c - arduino ide
 (defprogram-shortcut :arduino :command "arduino"
                      :props '(:class "processing-app-Base")
                      :map *root-map* :key (stumpwm:kbd "C-c"))
 
-;; pinta - lightweight drawing soft (C-t d)
+;; C-t d - pinta - lightweight drawing soft
 (defprogram-shortcut :pinta :command "pinta"
                      :props '(:instance "Pinta")
                      :map *root-map* :key (kbd "d"))
 
-;; gimp - not so lightweight drawing soft (C-t C-d)
+;; C-t C-d - gimp - not so lightweight drawing soft
 (defprogram-shortcut :gimp :command "gimp"
                      :props '(:instance "gimp")
                      :map *root-map* :key (stumpwm:kbd "C-d"))
 
-;; fritzing (C-t C-f)
+;; C-t C-f - fritzing
 (defprogram-shortcut :fritzing :command "~/applications/fritzing/Fritzing"
                      :props '(:instance "Fritzing")
                      :map *root-map* :key (stumpwm:kbd "C-f"))
 
-;; Virtualbox (C-t C-v)
+;; C-t C-v - Virtualbox
 (defprogram-shortcut :virtualbox :command "virtualbox"
                      :props '(:instance "Qt-subapplication")
                      :map *root-map* :key (stumpwm:kbd "C-v"))
