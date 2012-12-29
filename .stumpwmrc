@@ -23,27 +23,28 @@
   (check-type command string)
   (echo-string (current-screen) (run-shell-command command t)))
 
-;; ----------------- function
+;; ----------------- personal functions
 
 (defcommand toggle-touchpad-manual (status) ()
   "Activate/Deactivate the touchpad depending on the status parameter (0/1)."
   (run-shell-command (concatenate 'string "~/bin/stumpwm/toggle-touchpad-manual.sh " status))
   (if (equal "0" status) (banish)))
 
-(defcommand toggle-touchpad-auto () ()
-  "Activate/Deactivate automatically the touchpad depending on the current status."
-  (run-shell-command (concatenate 'string "~/bin/stumpwm/toggle-touchpad.sh"))
-  (banish))
-
-(define-key *root-map* (kbd "T") "toggle-touchpad-auto")
-
-;; ----------------- zenity commands
-
 ;; (defcommand name (args) (interactive-args) "doc-string" (body))
 ;; wrapper around the zenity cli
 (defcommand zenity (command) ()
    "Wrap a call to the cli and output the result into a zenity window"
-  (run-shell-command (concatenate 'string "zenity --info --text \"$(" command ")\"")))
+   (run-shell-command (concatenate 'string "zenity --info --text \"$(" command ")\"")))
+
+;; ----------------- personal functions
+
+(defcommand toggle-touchpad-auto () ()
+  "Activate/Deactivate automatically the touchpad depending on the current status."
+  (run-shell-command (concatenate 'string "~/bin/stumpwm/toggle-touchpad.sh"))
+  (banish))
+(define-key *root-map* (kbd "T") "toggle-touchpad-auto")
+
+;; ----------------- zenity commands
 
 (defcommand ssh-add-list () ()
   "run the ~/bin/ssh-add.sh script."
