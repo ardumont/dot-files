@@ -109,6 +109,13 @@
   (roraise-and-touchpad-off "emacsclient -c" "Emacs24"))
 (define-key *root-map* (kbd "e") "myemacs")
 
+;; C-t c - Conkeror - keyboard-driven navigator
+(defcommand conkeror () ()
+  "Run a conkeror instance or if already running, switch to it."
+  ;; raise emacs
+  (roraise-and-touchpad-off "conkeror" "Conkeror"))
+(define-key *root-map* (kbd "c") "conkeror")
+
 ;; C-t f - Firefox
 (defcommand firefox () ()
   "Run a firefox instance or if already running, switch to it."
@@ -170,11 +177,6 @@
 
 ;; C-t o - Frame selection
 (define-key *root-map* (kbd "o") "fselect")
-
-;; C-t c - Conkeror - keyboard-driven navigator
-(defprogram-shortcut :conkeror :command "conkeror"
-                     :props '(:class "Conkeror")
-                     :map *root-map* :key (kbd "c"))
 
 ;; C-t i - IDE to the keybinding i
 (defprogram-shortcut :eclipse :command "~/bin/ide/eclipse.sh"
