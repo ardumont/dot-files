@@ -124,7 +124,7 @@
 ;; C-t C-b - Google-chrome
 (defcommand google-chrome () ()
   "Run a google-chrome instance or if already running, switch to it."
-  (roraise-and-touchpad-on "google-chrome --no-proxy-server" "Google-Chrome"))
+  (roraise-and-touchpad-on "google-chrome --no-proxy-server" "Google-chrome"))
 (define-key *root-map* (kbd "C-b") "google-chrome")
 
 ;; ----------------- run-shell-commands commands
