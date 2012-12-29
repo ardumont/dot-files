@@ -137,13 +137,13 @@
 (defcommand chromium-browser () ()
   "Run a chromium instance or if already running, switch to it."
   (roraise-and-touchpad-on "chromium-browser" "Chromium-browser"))
-(define-key *root-map* (kbd "b") "chromium-browser")
+(define-key *root-map* (kbd "C-b") "chromium-browser")
 
 ;; C-t C-b - Google-chrome
 (defcommand google-chrome () ()
   "Run a google-chrome instance or if already running, switch to it."
   (roraise-and-touchpad-on "google-chrome --no-proxy-server" "Google-chrome"))
-(define-key *root-map* (kbd "C-b") "google-chrome")
+(define-key *root-map* (kbd "b") "google-chrome")
 
 ;; C-t , - Gnome-control-center
 (defcommand gnome-control-center () ()
