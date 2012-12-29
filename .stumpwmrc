@@ -178,7 +178,7 @@
 ;; C-t o - Frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
-;; C-t i - IDE to the keybinding i
+;; C-t i - IDE java (unfortunately)
 (defprogram-shortcut :eclipse :command "~/bin/ide/eclipse.sh"
                      :props '(:class "Eclipse")
                      :map *root-map* :key (kbd "i"))
