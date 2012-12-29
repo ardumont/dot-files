@@ -35,6 +35,12 @@
   ;; banish the mouse from the screen when we deactivate the touchpad
   (if (equal "0" status) (stumpwm::banish)))
 
+(defmacro roraise-and-touchpad-off (command class)
+  "Wrap a call to the run-or-raise command but before toggle off the touchpad."
+  `(progn
+     (toggle-touchpad-manual "0")
+     (run-or-raise ,command '(:class ,class))))
+
 ;; (defcommand name (args) (interactive-args) "doc-string" (body))
 ;; wrapper around the zenity cli
 (defcommand zenity (command) ()
@@ -76,12 +82,20 @@
   (zenity "/usr/bin/acpi -b"))
 (define-key *root-map* (kbd "B") "acpi-cmd")
 
-;; ----------------- normal commands
+;; ----------------- run-or-raise commands
 
 (defcommand terminal () ()
   "run an xterm instance or switch to it, if it is already running."
-  (run-or-raise "gnome-terminal --title=xterm1 --hide-menubar" '(:class "Gnome-terminal")))
+  (roraise-and-touchpad-off "gnome-terminal --hide-menubar" "Gnome-terminal"))
 (define-key *root-map* (kbd "x") "terminal")
+
+(defcommand myemacs () ()
+  "run an xterm instance or switch to it, if it is already running."
+  ;; raise emacs
+  (roraise-and-touchpad-off "emacsclient -c" "Emacs24"))
+(define-key *root-map* (kbd "e") "myemacs")
+
+;; ----------------- run-shell-commands commands
 
 (defcommand ssh-add-identities () ()
   "Add the identities present in ~/.ssh-agent-identities script."
@@ -118,11 +132,6 @@
 
 ;; Frame selection
 (define-key *root-map* (kbd "o") "fselect")
-
-;; Emacs command
-(defprogram-shortcut :emacs :command "emacsclient -c"
-                     :props '(:class "Emacs")
-                     :map *root-map* :key (kbd "e"))
 
 ;; Firefox
 (defprogram-shortcut :firefox :command "firefox"
