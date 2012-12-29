@@ -41,6 +41,12 @@
      (toggle-touchpad-manual "0")
      (run-or-raise ,command '(:class ,class))))
 
+(defmacro roraise-and-touchpad-on (command class)
+  "Wrap a call to the run-or-raise command but before toggle off the touchpad."
+  `(progn
+     (toggle-touchpad-manual "1")
+     (run-or-raise ,command '(:class ,class))))
+
 ;; (defcommand name (args) (interactive-args) "doc-string" (body))
 ;; wrapper around the zenity cli
 (defcommand zenity (command) ()
@@ -85,15 +91,33 @@
 ;; ----------------- run-or-raise commands
 
 (defcommand terminal () ()
-  "run an xterm instance or switch to it, if it is already running."
+  "Run an xterm instance or if already running, switch to it."
   (roraise-and-touchpad-off "gnome-terminal --hide-menubar" "Gnome-terminal"))
 (define-key *root-map* (kbd "x") "terminal")
 
 (defcommand myemacs () ()
-  "run an xterm instance or switch to it, if it is already running."
+  "Run an xterm instance or if already running, switch to it."
   ;; raise emacs
   (roraise-and-touchpad-off "emacsclient -c" "Emacs24"))
 (define-key *root-map* (kbd "e") "myemacs")
+
+;; C-t f - Firefox
+(defcommand firefox () ()
+  "Run a firefox instance or if already running, switch to it."
+  (roraise-and-touchpad-on "firefox" "Firefox"))
+(define-key *root-map* (kbd "f") "firefox")
+
+;; C-t b - Chromium
+(defcommand chromium-browser () ()
+  "Run a chromium instance or if already running, switch to it."
+  (roraise-and-touchpad-on "chromium-browser" "Chromium-browser"))
+(define-key *root-map* (kbd "b") "chromium-browser")
+
+;; C-t C-b - Google-chrome
+(defcommand google-chrome () ()
+  "Run a google-chrome instance or if already running, switch to it."
+  (roraise-and-touchpad-on "google-chrome --no-proxy-server" "Google-Chrome"))
+(define-key *root-map* (kbd "C-b") "google-chrome")
 
 ;; ----------------- run-shell-commands commands
 
