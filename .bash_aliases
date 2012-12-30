@@ -1,13 +1,15 @@
 # some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias lla='ls -lA'
+alias ll='ls -lA'
 alias l='ls -CF'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias rgrep='rgrep --color=auto'
+
+alias mount='mount | column -t'
+
+alias wget='wget -c'
 
 # emacs for the win
 alias em='emacsclient -nw'
@@ -20,6 +22,7 @@ alias v='vagrant'
 
 # cd ..
 alias cd..='cd ..'
+alias ..='cd ..'
 alias cd.='cd .'
 
 # cd ~/org
