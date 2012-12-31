@@ -18,6 +18,10 @@ alias emc='emacsclient -c'
 # vagrant
 alias v='vagrant'
 
+# aptitude
+alias sp='aptitude search'
+alias in='sudo aptitude install'
+
 #### Alias for changing directory
 
 # cd ..
