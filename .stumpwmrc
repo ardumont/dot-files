@@ -275,6 +275,12 @@
   (run-shell-command "~/bin/wifi/wifi-off.sh"))
 (define-key *root-map* (kbd "o") "wifi-off")
 
+;; C-t O - wifi on
+(defcommand wifi-on () ()
+  "wifi on"
+  (run-shell-command "~/bin/wifi/wifi-on.sh"))
+(define-key *root-map* (kbd "O") "wifi-on")
+
 ;; C-t ^ - top
 (defcommand top () ()
   "Display a single 'top' frame."
