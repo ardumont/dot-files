@@ -240,16 +240,16 @@
 ;; C-t L - Reload the ~/.stumpwmrc configuration
 (define-key *root-map* (kbd "L") "loadrc")
 
-;; C-t F6 - Decrement the brightness
+;; C-t F6 - Decrement the brightness by 5
 (defcommand dec-brightness () ()
   "Brightness decrement"
-  (run-shell-command "for i in {1..5}; do ~/bin/brightness/dec.sh; done"))
+  (run-shell-command "~/bin/brightness/dec-brightness.sh 5"))
 (define-key *root-map* (kbd "F5") "dec-brightness")
 
-;; C-t F5 - Increment the brightness
+;; C-t F5 - Increment the brightness by 5
 (defcommand inc-brightness () ()
   "Brightness increment"
-  (run-shell-command "for i in {1..5}; do ~/bin/brightness/inc.sh; done"))
+  (run-shell-command "~/bin/brightness/inc-brightness.sh 5"))
 (define-key *root-map* (kbd "F6") "inc-brightness")
 
 ;; C-t ^ - top
