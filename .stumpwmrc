@@ -258,6 +258,11 @@
   (run-shell-command "~/bin/brightness/min-brightness.sh"))
 (define-key *root-map* (kbd "m") "min-brightness")
 
+(defcommand half-brightness () ()
+  "Half screen brightness"
+  (run-shell-command "~/bin/brightness/half-brightness.sh"))
+(define-key *root-map* (kbd "C-M") "half-brightness")
+
 ;; C-t M - Max brightness
 (defcommand max-brightness () ()
   "Maxiumum screen brightness"
