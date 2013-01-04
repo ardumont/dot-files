@@ -310,12 +310,12 @@
 (setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
 
 ;; Launch commands
+(relaunch-panel)
 (run-shell-command "/usr/bin/gnome-settings-daemon")
 (run-shell-command "killall nm-applet && /usr/bin/nm-applet &")
 (run-shell-command "/usr/bin/bluetooth-applet &")
 (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
 (run-shell-command "gnome-power-manager")
-(run-shell-command "gnome-panel --replace &")
 (run-shell-command "dropbox start")
 (run-shell-command "nautilus --no-default-window")
 ;; start an emacs server in background
