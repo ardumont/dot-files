@@ -281,6 +281,12 @@
   (run-shell-command "~/bin/wifi/wifi-on.sh"))
 (define-key *root-map* (kbd "O") "wifi-on")
 
+;; C-t C-p - relaunch panel
+(defcommand relaunch-panel () ()
+  "Relaunch panel"
+  (run-shell-command "~/bin/panel/relaunch-panel.sh"))
+(define-key *root-map* (kbd "C-p") "relaunch-panel")
+
 ;; C-t ^ - top
 (defcommand top () ()
   "Display a single 'top' frame."
