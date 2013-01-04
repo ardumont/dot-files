@@ -252,6 +252,12 @@
   (run-shell-command "~/bin/brightness/inc-brightness.sh 5"))
 (define-key *root-map* (kbd "F6") "inc-brightness")
 
+;; C-t m - Min brightness
+(defcommand min-brightness () ()
+  "Brightness increment"
+  (run-shell-command "~/bin/brightness/min-brightness.sh 5"))
+(define-key *root-map* (kbd "m") "min-brightness")
+
 ;; C-t ^ - top
 (defcommand top () ()
   "Display a single 'top' frame."
