@@ -254,9 +254,15 @@
 
 ;; C-t m - Min brightness
 (defcommand min-brightness () ()
-  "Brightness increment"
-  (run-shell-command "~/bin/brightness/min-brightness.sh 5"))
+  "Minimum screen brightness"
+  (run-shell-command "~/bin/brightness/min-brightness.sh"))
 (define-key *root-map* (kbd "m") "min-brightness")
+
+;; C-t M - Max brightness
+(defcommand max-brightness () ()
+  "Maxiumum screen brightness"
+  (run-shell-command "~/bin/brightness/max-brightness.sh"))
+(define-key *root-map* (kbd "M") "max-brightness")
 
 ;; C-t ^ - top
 (defcommand top () ()
