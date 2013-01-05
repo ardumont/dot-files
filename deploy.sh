@@ -39,6 +39,9 @@ ln -s $REPO_DOTFILES/.ratpoisonrc $HOME/
 rm $HOME/.xmodmaprc
 ln -s $REPO_DOTFILES/.xmodmaprc $HOME/
 
+rm $HOME/.keysnail.js
+ln -s $REPO_DOTFILES/.keysnail.js $HOME/
+
 if [ -f $REPO_WORK/.bashrc-work ]; then
     rm $HOME/.bashrc-work
     ln -s $REPO_WORK/.bashrc-work $HOME/
