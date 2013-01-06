@@ -39,6 +39,9 @@ ln -s $REPO_DOTFILES/.ratpoisonrc $HOME/
 rm $HOME/.xmodmaprc
 ln -s $REPO_DOTFILES/.xmodmaprc $HOME/
 
+rm $HOME/.vimrc
+ln -s $REPO_DOTFILES/.vimrc $HOME/
+
 rm $HOME/.keysnail.js
 ln -s $REPO_DOTFILES/.keysnail.js $HOME/
 
