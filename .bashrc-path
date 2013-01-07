@@ -16,6 +16,7 @@
 [ -d $HOME/bin/haskell ] && export PATH=$HOME/bin/haskell:$PATH
 [ -d $HOME/bin/mvn ] && export PATH=$HOME/bin/mvn:$PATH
 [ -d $HOME/bin/stumpwm ] && export PATH=$HOME/bin/stumpwm:$PATH
+[ -d /usr/local/heroku/bin ] && export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
 
 # Team shell scripts
 [ -d $HOME/team/bin ] && export PATH=$HOME/team/bin:$PATH
