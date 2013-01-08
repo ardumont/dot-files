@@ -277,7 +277,7 @@
 
 ;; C-t M - Max brightness
 (defcommand max-brightness () ()
-  "Maxiumum screen brightness"
+  "Maximum screen brightness"
   (run-shell-command "~/bin/brightness/max-brightness.sh"))
 (define-key *root-map* (kbd "M") "max-brightness")
 
