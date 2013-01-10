@@ -229,6 +229,12 @@
   (roraise-and-touchpad-on-instance "virtualbox" "Qt-subapplication"))
 (define-key *root-map* (kbd "C-v") "virtualbox")
 
+;; C-t C-c - skype
+(defcommand skype () ()
+  "Run a skype instance or if already running, switch to it."
+  (roraise-and-touchpad-on "/usr/bin/skype" "Skype"))
+(define-key *root-map* (kbd "C-c") "skype")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
