@@ -193,11 +193,11 @@
   (roraise-and-touchpad-on "evince" "Evince"))
 (define-key *root-map* (kbd "C-e") "evince")
 
-;; C-t C-o - Image reader eog
+;; C-t C-i - Image reader eog
 (defcommand eog () ()
   "Run a eog instance or if already running, switch to it."
   (roraise-and-touchpad-on "eog" "Eog"))
-(define-key *root-map* (kbd "C-o") "eog")
+(define-key *root-map* (kbd "C-i") "eog")
 
 ;; C-t y - yEd
 (defcommand yEd () ()
