@@ -287,11 +287,11 @@
   (run-shell-command "~/bin/brightness/max-brightness.sh"))
 (define-key *root-map* (kbd "M") "max-brightness")
 
-;; C-t o - wifi off
+;; C-t C-o - wifi off
 (defcommand wifi-off () ()
   "wifi off"
   (run-shell-command "~/bin/wifi/wifi-off.sh"))
-(define-key *root-map* (kbd "o") "wifi-off")
+(define-key *root-map* (kbd "C-o") "wifi-off")
 
 ;; C-t O - wifi on
 (defcommand wifi-on () ()
