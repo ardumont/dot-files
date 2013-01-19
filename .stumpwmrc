@@ -187,6 +187,12 @@
   (roraise-and-touchpad-on "~/applications/idea/bin/idea.sh" "jetbrains-idea-ce"))
 (define-key *root-map* (kbd "j") "intellij-idea")
 
+;; C-t C-x - Xephyr
+(defcommand xephyr () ()
+  "Run a xephyr instance or if already running, switch to it."
+  (roraise-and-touchpad-on-instance "~/bin/xephyr/xephyr.sh" "Xephyr"))
+(define-key *root-map* (kbd "C-x") "xephyr")
+
 ;; C-t . - video player
 (defcommand video-player () ()
   "Run a video-player instance or if already running, switch to it."
