@@ -175,6 +175,12 @@
   (roraise-and-touchpad-on-instance "nautilus" "nautilus"))
 (define-key *root-map* (kbd "n") "nautilus")
 
+;; C-t n - File explorer thunar
+(defcommand thunar () ()
+  "Run a nautilus instance or if already running, switch to it."
+  (roraise-and-touchpad-on-instance "thunar" "thunar"))
+(define-key *root-map* (kbd "n") "thunar")
+
 ;; C-t j - Intellij-idea
 (defcommand intellij-idea () ()
   "Run a intellij-idea instance or if already running, switch to it."
