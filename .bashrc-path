@@ -1,7 +1,9 @@
-# set PATH so it includes user's private bin if it exists
-# environment variables
+# adding personal folders to the initial PATH environment variables
 
+###
 # Personal shell scripts in $HOME/bin/
+###
+
 HOMEBIN=$HOME/bin/
 
 [ -d $HOMEBIN ] && export PATH=$HOMEBIN:$PATH
@@ -12,33 +14,12 @@ do
     [ -d $FOLDER ] && export PATH="$FOLDER:$PATH"
 done
 
-# heroku
-[ -d /usr/local/heroku/bin ] && export PATH="/usr/local/heroku/bin:$PATH" ### Added by the Heroku Toolbelt
+###
+# Personal shell scripts in $HOME/bin/
+###
 
-# Team shell scripts
-[ -d $HOME/team/bin ] && export PATH=$HOME/team/bin:$PATH
+FILES="/usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOME/applications/wine $HOME/applications/bin /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-6-oracle $HOME/applications/apache-maven-3.0.4 $HOME/.lein $HOME/.lein/bin $HOME/.lein/plugins /opt/vagrant/bin $HOME/applications/adt-bundle-linux-x85/sdk/platform-tools"
 
-# Work shell scripts
-[ -d $HOME/work/bin ] && export PATH=$HOME/work/bin:$PATH
-
-# Specific to wine (some times, it's useful... It has been a long time since i use this...)
-[ -d $HOME/applications/wine ] && export PATH=$HOME/applications/wine:$PATH
-
-# Specific folder for links on application launcher
-[ -d $HOME/applications/bin ] && export PATH=$HOME/applications/bin:$PATH
-
-# java config
-[ -d /usr/lib/jvm/java-6-sun ] && export JAVA_HOME=/usr/lib/jvm/java-6-sun
-[ -d /usr/lib/jvm/java-6-oracle ] && export JAVA_HOME=/usr/lib/jvm/java-6-oracle
-
-# maven 3
-[ -d $HOME/applications/apache-maven-3.0.4 ] && export PATH=$HOME/applications/apache-maven-3.0.4/bin:$PATH
-
-# Add lein to the path
-[ -d $HOME/.lein ] && export PATH=$HOME/.lein:$HOME/.lein/bin:$HOME/.lein/plugins:$PATH
-
-# vagrant
-[ -d /opt/vagrant/bin ] && export PATH=/opt/vagrant/bin:$PATH
-
-# android tools
-[ -d $HOME/applications/adt-bundle-linux-x86/sdk/platform-tools ] && export PATH=$HOME/applications/adt-bundle-linux-x86/sdk/platform-tools:$PATH
+for d in $FILES; do
+    [ -d $d ] && export PATH="$d:$PATH"
+done
