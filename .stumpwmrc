@@ -323,13 +323,14 @@
   (shell-command "top -b -n 1 -c -d 1"))
 (define-key *root-map* (kbd "^") "top")
 
+;; C-t C-s - Take a snapshot for the current window
+(defcommand screenshot () ()
+  "Take a screenshot for the current window."
+  (shell-command "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png"))
+(define-key *root-map* (kbd "C-s") "screenshot")
+
 ;; C-t o - Frame selection
 (define-key *root-map* (kbd "o") "fselect")
-
-;; C-t C-s - Add a binding for gnome-screenshot
-(defprogram-shortcut :screenshot :command "gnome-screenshot"
-                     :props '(:instance "gnome-screenshot")
-                     :map *root-map* :key (stumpwm:kbd "C-s"))
 
 ;; C-t C-c - arduino ide
 (defprogram-shortcut :arduino :command "arduino"
