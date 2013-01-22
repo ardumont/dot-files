@@ -253,6 +253,12 @@
   (roraise-and-touchpad-on "/usr/bin/skype" "Skype"))
 (define-key *root-map* (kbd "C-c") "skype")
 
+;; C-t C-a - audacious
+(defcommand audacious () ()
+  "Run an audacious instance or if already running, switch to it."
+  (roraise-and-touchpad-on "/usr/bin/audacious" "Audacious"))
+(define-key *root-map* (kbd "C-a") "audacious")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
