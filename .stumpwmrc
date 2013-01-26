@@ -259,6 +259,12 @@
   (roraise-and-touchpad-on "/usr/bin/audacious" "Audacious"))
 (define-key *root-map* (kbd "C-a") "audacious")
 
+;; C-t C-j - jconsole
+(defcommand jconsole () ()
+  "Run a jconsole instance or if already running, switch to it."
+  (roraise-and-touchpad-on "/usr/bin/jconsole" "sun-tools-jconsole-JConsole"))
+(define-key *root-map* (kbd "C-j") "jconsole")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
