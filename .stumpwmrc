@@ -179,7 +179,7 @@
 ;; (defcommand intellij-idea () ()
 ;;   "Run a intellij-idea instance or if already running, switch to it."
 ;;   (roraise-and-touchpad-on "~/applications/idea/bin/idea.sh" "jetbrains-idea-ce"))
-(define-key *root-map* (kbd "j") "xephyr")
+;;(define-key *root-map* (kbd "j") "xephyr")
 
 ;; C-t n - File explorer nautilus
 (defcommand nautilus () ()
@@ -264,6 +264,12 @@
   "Run a jconsole instance or if already running, switch to it."
   (roraise-and-touchpad-on "/usr/bin/jconsole" "sun-tools-jconsole-JConsole"))
 (define-key *root-map* (kbd "C-j") "jconsole")
+
+;; C-t j - jvisualvm
+(defcommand jvisualvm () ()
+  "Run a jvisualvm instance or if already running, switch to it."
+  (roraise-and-touchpad-on "/usr/bin/jvisualvm" "java-lang-Thread"))
+(define-key *root-map* (kbd "j") "jvisualvm")
 
 ;; ----------------- run-shell-commands commands
 
