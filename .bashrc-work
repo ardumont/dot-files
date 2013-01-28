@@ -7,6 +7,6 @@
 # install wikeo in cluster mode
 export WIKEO_DEPLOY_HOME=/home/tony/repositories/pro/wikeo-deploy
 
-[ -f ~/work/bin/work-ssh-add.sh ] && ~/work/bin/work-ssh-add.sh
+#[ -f ~/work/bin/work-ssh-add.sh ] && ~/work/bin/work-ssh-add.sh
 
-[ -f ~/work/bin/work-setup.sh ] && ~/work/bin/work-setup.sh
+#[ -f ~/work/bin/work-setup.sh ] && ~/work/bin/work-setup.sh
