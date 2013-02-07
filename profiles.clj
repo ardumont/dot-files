@@ -9,7 +9,8 @@
             [lein-noir "1.2.1"]
             [com.stuartsierra/lazytest "1.2.3"]
             [org.cloudhoist/pallet-lein "0.5.0"]
-            [pallet/lein-template "0.2.3"]]
+            [pallet/lein-template "0.2.3"]
+            [hiccup-bridge "1.0.0-SNAPSHOT"]]
   ;; :dependencies [[ritz/ritz-nrepl-middleware "0.6.0"]]
   ;; :repl-options {:nrepl-middleware
   ;;                [ritz.nrepl.middleware.javadoc/wrap-javadoc
