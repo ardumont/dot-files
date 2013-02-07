@@ -236,10 +236,16 @@
 (define-key *root-map* (kbd "C-d") "gimp")
 
 ;; C-t C-f - fritzing
-(defcommand fritzing () ()
-  "Run a fritzing instance or if already running, switch to it."
-  (roraise-and-touchpad-on "~/applications/fritzing/Fritzing" "Fritzing"))
-(define-key *root-map* (kbd "C-f") "fritzing")
+;; (defcommand fritzing () ()
+;;   "Run a fritzing instance or if already running, switch to it."
+;;   (roraise-and-touchpad-on "~/applications/fritzing/Fritzing" "Fritzing"))
+;; (define-key *root-map* (kbd "C-f") "fritzing")
+
+;; C-t C-f - filezilla
+(defcommand filezilla () ()
+  "Run a filezilla instance or if already running, switch to it."
+  (roraise-and-touchpad-on-instance "/usr/bin/filezilla" "filezilla"))
+(define-key *root-map* (kbd "C-f") "filezilla")
 
 ;; C-t C-v - Virtualbox
 (defcommand virtualbox () ()
