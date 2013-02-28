@@ -1,6 +1,6 @@
 {:user
  {:plugins [[lein-swank "1.4.4"]
-;;             [lein-ritz "0.6.0"]
+            ;;             [lein-ritz "0.6.0"]
             [lein-cljs "0.2.2"]
             [lein-difftest "1.3.7"]
             [lein-marginalia "0.7.1"]
@@ -18,4 +18,6 @@
   :search-page-size "30"
   :repositories {"stuart"              "http://stuartsierra.com/maven2"
                  "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
-                 "google-api-services" "http://google-api-client-libraries.appspot.com/mavenrepo"}}}
+                 "google-api-services" "http://google-api-client-libraries.appspot.com/mavenrepo"
+                 "sonatype"            "http://oss.sonatype.org/content/repositories/releases"
+                 "sonatype-snapshots"  "http://oss.sonatype.org/content/repositories/snapshots"}}}
