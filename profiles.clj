@@ -9,7 +9,7 @@
             [lein-noir "1.2.1"]
             [com.stuartsierra/lazytest "1.2.3"]
             [org.cloudhoist/pallet-lein "0.5.0"]
-            [pallet/lein-template "0.2.3"]
+            [pallet/lein-template "0.2.10"]
             [hiccup-bridge "1.0.0-SNAPSHOT"]
             [lein-cljsbuild "0.3.0"]
             [lein-droid "0.1.0-beta6"]]
