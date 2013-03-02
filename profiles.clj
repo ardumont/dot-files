@@ -1,6 +1,6 @@
 {:user
  {:plugins [[lein-swank                "1.4.4"]
-;;            [lein-ritz                 "0.6.0"]
+            [lein-ritz                 "0.7.0"]
             [lein-cljs                 "0.2.2"]
             [lein-difftest             "1.3.7"]
             [lein-marginalia           "0.7.1"]
@@ -13,11 +13,12 @@
             [hiccup-bridge             "1.0.0-SNAPSHOT"]
             [lein-cljsbuild            "0.3.0"]
             [lein-droid                "0.1.0-beta6"]]
-  ;; :dependencies [[ritz/ritz-nrepl-middleware "0.6.0"]]
-  ;; :repl-options {:nrepl-middleware
-  ;;                [ritz.nrepl.middleware.javadoc/wrap-javadoc
-  ;;                 ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
-  ;; :hooks [ritz.add-sources]
+  :dependencies [[ritz/ritz-nrepl-middleware "0.7.0"]
+                 [clojure-complete           "0.2.2"]]
+  :repl-options {:nrepl-middleware
+                 [ritz.nrepl.middleware.javadoc/wrap-javadoc
+                  ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
+  :hooks [ritz.add-sources]
   :search-page-size "30"
   :repositories {"stuart"              "http://stuartsierra.com/maven2"
                  "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
