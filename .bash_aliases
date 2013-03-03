@@ -1,5 +1,5 @@
 # some more ls aliases
-alias ll='ls -lA'
+alias ll='ls -lAh'
 alias l='ls -CF'
 
 alias grep='grep --color=auto'
