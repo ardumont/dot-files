@@ -80,8 +80,8 @@ alias gdf='git diff'
 alias gl='git log --oneline --graph --remotes --decorate --all'
 
 # git fetch
-alias gf='git fetch'
-alias gfa='git fetch --all'
+alias gf='git fetch -p'
+alias gfa='git fetch --all -p'
 
 # git push
 alias gpo='git push origin'
