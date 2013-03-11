@@ -18,7 +18,6 @@
   :repl-options {:nrepl-middleware
                  [ritz.nrepl.middleware.javadoc/wrap-javadoc
                   ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
-  :hooks [ritz.add-sources]
   :search-page-size "30"
   :repositories {"stuart"              "http://stuartsierra.com/maven2"
                  "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
