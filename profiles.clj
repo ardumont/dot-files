@@ -12,7 +12,9 @@
                   [hiccup-bridge             "1.0.0-SNAPSHOT"]
                   [lein-cljsbuild            "0.3.0"]
                   [lein-droid                "0.1.0-beta6"]
-                  [lein-pedantic             "0.0.5"]]
+                  [lein-pedantic             "0.0.5"]
+                  [lein-outdated             "1.0.0"]
+                  ]
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
         :dependencies [[ritz/ritz-nrepl-middleware "0.7.0"]
