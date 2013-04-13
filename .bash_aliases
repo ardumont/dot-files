@@ -27,6 +27,9 @@ alias in='sudo aptitude install'
 # cd ..
 alias cd..='cd ..'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 alias cd.='cd .'
 
 # cd ~/org
