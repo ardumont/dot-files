@@ -1,3 +1,13 @@
+# a function to simplify the aliasing of directory movement with a predetermined path
+# $1 will be the prefix directory (fixed by the alias)
+# $2 will be the directory asked by the user when calling the alias
+# Example:
+# cdr my-haskell-lab will go to ~/repo/perso/my-haskell-lab
+# cdp test           will go to ~/repo/pro/test
+function mcd() {
+  cd $1 && cd $2
+}
+
 # some more ls aliases
 alias ll='ls -lAh'
 alias l='ls -CF'
@@ -31,6 +41,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias cd.='cd .'
+
+# aliasing to go fast inside my personal repositories (Use: cdr my-haskell-lab)
+alias cdr='mcd ~/repo/perso'
+alias cdp='mcd ~/repo/pro'
 
 # cd ~/org
 alias cdo='cd $HOME/org'
