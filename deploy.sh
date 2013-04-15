@@ -12,7 +12,7 @@ create-links-from-list() {
         # destroy any existing file
         rm -f $HOME/$i
         # then create the link
-        ln -s $REPO_DOTFILES/$i $HOME/
+        ln -nsf $REPO_DOTFILES/$i $HOME/
     done
 }
 
@@ -41,4 +41,4 @@ fi
 
 mkdir -p ~/.lein
 rm -f $HOME/.lein/profiles.clj
-ln -s $REPO_DOTFILES/profiles.clj $HOME/.lein/profiles.clj
+ln -nsf $REPO_DOTFILES/profiles.clj $HOME/.lein/profiles.clj
