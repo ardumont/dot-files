@@ -31,7 +31,6 @@ alias v='vagrant'
 # aptitude
 alias sp='aptitude search'
 alias in='sudo aptitude install'
-alias j='autojump'
 
 #### Alias for changing directory
 

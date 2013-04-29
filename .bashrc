@@ -93,3 +93,6 @@ fi
 
 # To remap my keyboard (CAPSLOCK is CTRL, ALT-GR is ALT)
 [ -f ~/bin/kbd/remap-alt-gr-and-capslock.sh ] && ! shopt -oq posix && . ~/bin/kbd/remap-alt-gr-and-capslock.sh
+
+# autojump (sudo aptitude install autojump) your way in your filesystem
+[ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
