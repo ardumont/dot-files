@@ -17,3 +17,6 @@ export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 
 # force the 256 color on the terminal
 export TERM=screen-256color
+
+# OPAM configuration
+. ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

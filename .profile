@@ -13,6 +13,3 @@ if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     [ -f ~/.bashrc ] && . ~/.bashrc
 fi
-
-# OPAM configuration
-. ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
