@@ -20,3 +20,6 @@ export TERM=screen-256color
 
 # OPAM configuration
 . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+# fix awt and stumpwm trouble!!!
+export _JAVA_AWT_WM_NONREPARENTING=1
