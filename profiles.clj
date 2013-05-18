@@ -4,7 +4,7 @@
                   [lein-difftest             "1.3.7"]
                   [lein-marginalia           "0.7.1"]
                   [lein-pprint               "1.1.1"]
-                  [lein-midje                "2.0.4"]
+                  [lein-midje                "3.0.1"]
                   [lein-noir                 "1.2.1"]
                   [com.stuartsierra/lazytest "1.2.3"]
                   [com.palletops/pallet-lein "0.6.0-beta.7"]
