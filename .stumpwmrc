@@ -276,6 +276,12 @@
   (roraise-and-touchpad-on "/usr/bin/jvisualvm" "java-lang-Thread"))
 (define-key *root-map* (kbd "j") "jvisualvm")
 
+;; C-t u - unetbootin
+(defcommand unetbootin () ()
+  "Run an unetbootin instance or if already running, switch to it."
+  (roraise-and-touchpad-on-instance "unetbootin" "unetbootin"))
+(define-key *root-map* (kbd "u") "unetbootin")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
