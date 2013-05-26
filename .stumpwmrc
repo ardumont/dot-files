@@ -135,7 +135,6 @@
 ;; C-t c - Conkeror - keyboard-driven navigator
 (defcommand conkeror () ()
   "Run a conkeror instance or if already running, switch to it."
-  ;; raise emacs
   (roraise-and-touchpad-off "conkeror" "Conkeror"))
 (define-key *root-map* (kbd "c") "conkeror")
 
