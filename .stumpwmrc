@@ -276,6 +276,12 @@
   (roraise-and-touchpad-on-instance "unetbootin" "unetbootin"))
 (define-key *root-map* (kbd "u") "unetbootin")
 
+;; C-t / - transmission-gtk
+(defcommand transmission () ()
+  "Run a transmission instance or if already running, switch to it."
+  (roraise-and-touchpad-on-instance "/usr/bin/transmission-gtk" "transmission-gtk"))
+(define-key *root-map* (kbd "/") "transmission")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
