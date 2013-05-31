@@ -282,6 +282,12 @@
   (roraise-and-touchpad-on-instance "/usr/bin/transmission-gtk" "transmission-gtk"))
 (define-key *root-map* (kbd "/") "transmission")
 
+;; C-t C-S
+(defcommand suspend () ()
+  "Suspend"
+  (run-shell-command "gksudo pm-suspend"))
+(define-key *root-map* (kbd "C-S") "suspend")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
