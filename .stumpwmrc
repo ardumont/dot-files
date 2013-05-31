@@ -288,6 +288,12 @@
   (run-shell-command "gksudo pm-suspend"))
 (define-key *root-map* (kbd "C-S") "suspend")
 
+;; C-t C-H
+(defcommand hibernate () ()
+  "Hibernate"
+  (run-shell-command "gksudo pm-hibernate"))
+(define-key *root-map* (kbd "C-H") "hibernate")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
