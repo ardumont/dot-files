@@ -17,11 +17,12 @@
                   ]
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
-        :dependencies [[ritz/ritz-nrepl-middleware "0.7.0"]
+        :dependencies [
+                       ;; [ritz/ritz-nrepl-middleware "0.7.0"]
                        [clojure-complete           "0.2.2"]]
-        :repl-options {:nrepl-middleware
-                       [ritz.nrepl.middleware.javadoc/wrap-javadoc
-                        ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
+        ;; :repl-options {:nrepl-middleware
+        ;;                [ritz.nrepl.middleware.javadoc/wrap-javadoc
+        ;;                 ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
         :search-page-size "30"
         :repositories {"stuart"              "http://stuartsierra.com/maven2"
                        "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
