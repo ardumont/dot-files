@@ -300,6 +300,12 @@
   (roraise-and-touchpad-on-instance "gksudo /usr/sbin/gparted" "gpartedbin"))
 (define-key *root-map* (kbd "C-g") "gparted")
 
+;; C-t F
+(defcommand file-progress () ()
+  "file-progress window when copying or moving files"
+  (roraise-and-touchpad-on-instance "" "file_progress"))
+(define-key *root-map* (kbd "F") "file-progress")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
