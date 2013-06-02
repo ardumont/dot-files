@@ -294,6 +294,12 @@
   (run-shell-command "gksudo pm-hibernate"))
 (define-key *root-map* (kbd "C-H") "hibernate")
 
+;; C-t C-g
+(defcommand gparted () ()
+  "gparted"
+  (roraise-and-touchpad-on-instance "gksudo /usr/sbin/gparted" "gpartedbin"))
+(define-key *root-map* (kbd "C-g") "gparted")
+
 ;; ----------------- run-shell-commands commands
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
