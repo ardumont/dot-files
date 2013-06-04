@@ -169,11 +169,10 @@
 (define-key *root-map* (kbd "C-x") "xephyr")
 
 ;; C-t i - IDE java (unfortunately)
-(defcommand eclipse () ()
-  "Run a eclipse instance or if already running, switch to it."
-  (roraise-and-touchpad-on "~/bin/ide/eclipse.sh" "Eclipse"))
-;; (define-key *root-map* (kbd "i") "xephyr")
-(define-key *root-map* (kbd "i") "eclipse")
+;; (defcommand eclipse () ()
+;;   "Run a eclipse instance or if already running, switch to it."
+;;   (roraise-and-touchpad-on "~/bin/ide/eclipse.sh" "Eclipse"))
+(define-key *root-map* (kbd "i") "xephyr")
 
 ;; C-t j - Intellij-idea
 ;; (defcommand intellij-idea () ()
