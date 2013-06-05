@@ -294,11 +294,11 @@
   (run-shell-command "gksudo pm-hibernate"))
 (define-key *root-map* (kbd "C-H") "hibernate")
 
-;; C-t C-g
+;; C-t G
 (defcommand gparted () ()
   "gparted"
   (roraise-and-touchpad-on-instance "gksudo /usr/sbin/gparted" "gpartedbin"))
-(define-key *root-map* (kbd "C-g") "gparted")
+(define-key *root-map* (kbd "G") "gparted")
 
 ;; C-t F
 (defcommand file-progress () ()
