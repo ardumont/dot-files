@@ -1,4 +1,4 @@
-;; Hey, Emacs! This is a -*- lisp -*- file!
+;; -*- lisp -*-
 
 (setf *frame-number-map* "abcdefghijklmnopqrst")
 
@@ -15,6 +15,7 @@
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
 (in-package :stumpwm)
+
 
 ;; (load "/usr/share/common-lisp/source/slime/swank-loader.lisp")
 ;; (swank-loader:init)
