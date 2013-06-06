@@ -82,38 +82,6 @@
   (stumpwm::banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
-;; ----------------- zenity commands
-
-;; C-t K - Display the keys the user-agent holds
-(defcommand ssh-add-list () ()
-  "run the ~/bin/ssh-add.sh script."
-  (zenity "ssh-add -L"))
-(define-key *root-map* (kbd "K") "ssh-add-list")
-
-;; C-t E - Display the contents of the /etc/environment
-(defcommand cat-etc-environment () ()
-  "Display the content of the file /etc/environment."
-  (zenity "cat /etc/environment"))
-(define-key *root-map* (kbd "E") "cat-etc-environment")
-
-;; C-t H - Display the contents of /etc/hosts
-(defcommand cat-etc-hosts () ()
-  "cat /etc/hosts"
-  (zenity "cat /etc/hosts"))
-(define-key *root-map* (kbd "H") "cat-etc-hosts")
-
-;; C-t I - Display the network properties
-(defcommand sbin-ifconfig () ()
-  "/sbin/ifconfig"
-  (zenity "/sbin/ifconfig"))
-(define-key *root-map* (kbd "I") "sbin-ifconfig")
-
-;; C-t B - Display the battery stat
-(defcommand acpi-cmd () ()
-  "acpi -b"
-  (zenity "/usr/bin/acpi -b"))
-(define-key *root-map* (kbd "B") "acpi-cmd")
-
 ;; ----------------- run-or-raise commands
 
 ;; (defcommand TEMPLATE () ()
