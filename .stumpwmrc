@@ -1,5 +1,10 @@
 ;; -*- lisp -*-
 
+(load "~/quicklisp/setup.lisp");; lisp package manager loading
+(ql:quickload :fset)           ;; loading the fset library that extends the default common-lisp data structure
+
+(in-package :fset-user)        ;; load the common-lisp way the library
+
 (setf *frame-number-map* "abcdefghijklmnopqrst")
 
 (setf *window-format* "%m%n%s nm=%50t cl=%c id=%i")
@@ -15,7 +20,6 @@
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
 (in-package :stumpwm)
-
 
 ;; (load "/usr/share/common-lisp/source/slime/swank-loader.lisp")
 ;; (swank-loader:init)
