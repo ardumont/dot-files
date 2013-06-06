@@ -132,7 +132,7 @@
 
 ;; C-t e - Emacs and switch off the touchpad
 (defcommand myemacs () ()
-  "Run an xterm instance or if already running, switch to it."
+  "Run an emacs instance or if already running, switch to it."
   ;; raise emacs
   (roraise-and-touchpad-off "emacsclient -c" "Emacs24"))
 (define-key *root-map* (kbd "e") "myemacs")
@@ -166,6 +166,60 @@
   "Run a gnome-control-center instance or if already running, switch to it."
   (roraise-and-touchpad-on "gnome-control-center" "Gnome-Control-Center"))
 (define-key *root-map* (kbd ",") "gnome-control-center")
+
+;; C-t . - video player
+(defcommand video-player () ()
+  "Run a video-player instance or if already running, switch to it."
+  (roraise-and-touchpad-on "totem" "Totem"))
+(define-key *root-map* (kbd ".") "video-player")
+
+;; C-t C-e - PDF reader evince
+(defcommand evince () ()
+  "Run a evince instance or if already running, switch to it."
+  (roraise-and-touchpad-on "evince" "Evince"))
+(define-key *root-map* (kbd "C-e") "evince")
+
+;; C-t C-i - Image reader eog
+(defcommand eog () ()
+  "Run a eog instance or if already running, switch to it."
+  (roraise-and-touchpad-on "eog" "Eog"))
+(define-key *root-map* (kbd "C-i") "eog")
+
+;; C-t d - pinta - lightweight drawing soft
+(defcommand pinta () ()
+  "Run a pinta instance or if already running, switch to it."
+  (roraise-and-touchpad-on "pinta" "Pinta"))
+(define-key *root-map* (kbd "d") "pinta")
+
+;; C-t C-d - gimp - not so lightweight drawing soft
+(defcommand gimp () ()
+  "Run a gimp instance or if already running, switch to it."
+  (roraise-and-touchpad-on "gimp" "Gimp"))
+(define-key *root-map* (kbd "C-d") "gimp")
+
+;; C-t C-c - skype
+(defcommand skype () ()
+  "Run a skype instance or if already running, switch to it."
+  (roraise-and-touchpad-on "/usr/bin/skype" "Skype"))
+(define-key *root-map* (kbd "C-c") "skype")
+
+;; C-t C-a - audacious
+(defcommand audacious () ()
+  "Run an audacious instance or if already running, switch to it."
+  (roraise-and-touchpad-on "/usr/bin/audacious" "Audacious"))
+(define-key *root-map* (kbd "C-a") "audacious")
+
+;; C-t C-j - jconsole
+(defcommand jconsole () ()
+  "Run a jconsole instance or if already running, switch to it."
+  (roraise-and-touchpad-on "/usr/bin/jconsole" "sun-tools-jconsole-JConsole"))
+(define-key *root-map* (kbd "C-j") "jconsole")
+
+;; C-t j - jvisualvm
+(defcommand jvisualvm () ()
+  "Run a jvisualvm instance or if already running, switch to it."
+  (roraise-and-touchpad-on "/usr/bin/jvisualvm" "java-lang-Thread"))
+(define-key *root-map* (kbd "j") "jvisualvm")
 
 ;; C-t C-x - Xephyr
 (defcommand xephyr () ()
@@ -202,41 +256,11 @@
   (roraise-and-touchpad-on-instance "thunar" "thunar"))
 (define-key *root-map* (kbd "N") "thunar")
 
-;; C-t . - video player
-(defcommand video-player () ()
-  "Run a video-player instance or if already running, switch to it."
-  (roraise-and-touchpad-on "totem" "Totem"))
-(define-key *root-map* (kbd ".") "video-player")
-
-;; C-t C-e - PDF reader evince
-(defcommand evince () ()
-  "Run a evince instance or if already running, switch to it."
-  (roraise-and-touchpad-on "evince" "Evince"))
-(define-key *root-map* (kbd "C-e") "evince")
-
-;; C-t C-i - Image reader eog
-(defcommand eog () ()
-  "Run a eog instance or if already running, switch to it."
-  (roraise-and-touchpad-on "eog" "Eog"))
-(define-key *root-map* (kbd "C-i") "eog")
-
 ;; C-t y - yEd
 (defcommand yEd () ()
   "Run a yEd instance or if already running, switch to it."
   (roraise-and-touchpad-on-instance "yed.sh" "sun-awt-X11-XFramePeer"))
 (define-key *root-map* (kbd "y") "yed")
-
-;; C-t d - pinta - lightweight drawing soft
-(defcommand pinta () ()
-  "Run a pinta instance or if already running, switch to it."
-  (roraise-and-touchpad-on "pinta" "Pinta"))
-(define-key *root-map* (kbd "d") "pinta")
-
-;; C-t C-d - gimp - not so lightweight drawing soft
-(defcommand gimp () ()
-  "Run a gimp instance or if already running, switch to it."
-  (roraise-and-touchpad-on "gimp" "Gimp"))
-(define-key *root-map* (kbd "C-d") "gimp")
 
 ;; C-t C-f - fritzing
 ;; (defcommand fritzing () ()
@@ -256,30 +280,6 @@
   (roraise-and-touchpad-on-instance "virtualbox" "Qt-subapplication"))
 (define-key *root-map* (kbd "C-v") "virtualbox")
 
-;; C-t C-c - skype
-(defcommand skype () ()
-  "Run a skype instance or if already running, switch to it."
-  (roraise-and-touchpad-on "/usr/bin/skype" "Skype"))
-(define-key *root-map* (kbd "C-c") "skype")
-
-;; C-t C-a - audacious
-(defcommand audacious () ()
-  "Run an audacious instance or if already running, switch to it."
-  (roraise-and-touchpad-on "/usr/bin/audacious" "Audacious"))
-(define-key *root-map* (kbd "C-a") "audacious")
-
-;; C-t C-j - jconsole
-(defcommand jconsole () ()
-  "Run a jconsole instance or if already running, switch to it."
-  (roraise-and-touchpad-on "/usr/bin/jconsole" "sun-tools-jconsole-JConsole"))
-(define-key *root-map* (kbd "C-j") "jconsole")
-
-;; C-t j - jvisualvm
-(defcommand jvisualvm () ()
-  "Run a jvisualvm instance or if already running, switch to it."
-  (roraise-and-touchpad-on "/usr/bin/jvisualvm" "java-lang-Thread"))
-(define-key *root-map* (kbd "j") "jvisualvm")
-
 ;; C-t u - unetbootin
 (defcommand unetbootin () ()
   "Run an unetbootin instance or if already running, switch to it."
@@ -291,18 +291,6 @@
   "Run a transmission instance or if already running, switch to it."
   (roraise-and-touchpad-on-instance "/usr/bin/transmission-gtk" "transmission-gtk"))
 (define-key *root-map* (kbd "/") "transmission")
-
-;; C-t C-S
-(defcommand suspend () ()
-  "Suspend"
-  (run-shell-command "gksudo pm-suspend"))
-(define-key *root-map* (kbd "C-S") "suspend")
-
-;; C-t C-H
-(defcommand hibernate () ()
-  "Hibernate"
-  (run-shell-command "gksudo pm-hibernate"))
-(define-key *root-map* (kbd "C-H") "hibernate")
 
 ;; C-t G
 (defcommand gparted () ()
@@ -317,6 +305,18 @@
 (define-key *root-map* (kbd "F") "file-progress")
 
 ;; ----------------- run-shell-commands commands
+
+;; C-t C-S
+(defcommand suspend () ()
+  "Suspend"
+  (run-shell-command "gksudo pm-suspend"))
+(define-key *root-map* (kbd "C-S") "suspend")
+
+;; C-t C-H
+(defcommand hibernate () ()
+  "Hibernate"
+  (run-shell-command "gksudo pm-hibernate"))
+(define-key *root-map* (kbd "C-H") "hibernate")
 
 ;; C-t A - Load the identities from the ~/.ssh-agent-identities file
 (defcommand ssh-add-identities () ()
@@ -335,9 +335,6 @@
   "Switch to no proxy."
   (run-shell-command "gksudo ~/bin/proxy/proxy.sh off && killall nm-applet"))
 (define-key *root-map* (kbd "P") "switch-to-no-proxy")
-
-;; C-t L - Reload the ~/.stumpwmrc configuration
-(define-key *root-map* (kbd "L") "loadrc")
 
 ;; C-t F6 - Decrement the brightness by 5
 (defcommand dec-brightness () ()
@@ -400,6 +397,9 @@
 
 ;; C-t o - Frame selection
 (define-key *root-map* (kbd "o") "fselect")
+
+;; C-t L - Reload the ~/.stumpwmrc configuration
+(define-key *root-map* (kbd "L") "loadrc")
 
 ;; C-t C-c - arduino ide
 (defprogram-shortcut :arduino :command "arduino"
