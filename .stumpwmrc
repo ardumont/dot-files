@@ -52,13 +52,13 @@
   (if (equal "0" status) (stumpwm::banish)))
 
 (defmacro roraise-and-touchpad-off (command class)
-  "Wrap a call to the run-or-raise command but before toggle off the touchpad."
+  "Wrap a call to the run-or-raise command but before toggle off the touchpad (works with window class names)."
   `(progn
      (toggle-touchpad-manual "0")
      (run-or-raise ,command '(:class ,class))))
 
 (defmacro roraise-and-touchpad-on (command class)
-  "Wrap a call to the run-or-raise command but before toggle off the touchpad."
+  "Wrap a call to the run-or-raise command but before toggle on the touchpad (works with window class name)."
   `(progn
      (toggle-touchpad-manual "1")
      (run-or-raise ,command '(:class ,class))))
@@ -434,6 +434,8 @@
                                        (relaunch-panel       "Relaunch panel"                                                "~/bin/panel/relaunch-panel.sh"                        "C-p")))
       (fset:with :shell-command      '((top                  "Display a single 'top' frame."             "top -b -n 1 -c -d 1"                                                  "^")
                                        (screenshot           "Take a screenshot for the current window." "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png" "C-s")))))
+
+;; zenity - shell command with result inside a pop-up window
 
 (defmacro zenity-cmd (fn-name doc-string command binding)
   (let ((tempvar (gensym)))
