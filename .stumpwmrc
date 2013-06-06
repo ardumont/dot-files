@@ -427,10 +427,7 @@
   (let ((cmds (fset:lookup map-setup :zenity)))
     (mapcar
      (lambda (l)
-       (let ((fn-name    (first l))
-             (doc-string (second l))
-             (cmd        (third l))
-             (binding    (fourth l)))
+       (destructuring-bind (fn-name doc-string cmd binding) l
          (zenity-cmd fn-name doc-string cmd binding)))
      cmds)))
 
@@ -451,10 +448,7 @@
   (let ((cmds (fset:lookup map-setup :ror-touchpad-off)))
     (mapcar
      (lambda (l)
-       (let ((fn-name    (first l))
-             (cmd        (second l))
-             (class      (third l))
-             (binding    (fourth l)))
+       (destructuring-bind (fn-name cmd class binding) l
          (ror-touchpad-off fn-name cmd class binding)))
      cmds)))
 
