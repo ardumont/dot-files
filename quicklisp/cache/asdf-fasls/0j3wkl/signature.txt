@@ -1,0 +1,4 @@
+lisp-implementation-type: SBCL
+lisp-implementation-version: 1.0.57.0.debian
+machine-type: X86-64
+machine-version: Intel(R) Core(TM) i5-3317U CPU @ 1.70GHz
