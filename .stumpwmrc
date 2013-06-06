@@ -168,6 +168,11 @@
   (roraise-and-touchpad-on-instance "~/bin/xephyr/xephyr.sh" "Xephyr"))
 (define-key *root-map* (kbd "C-x") "xephyr")
 
+(defcommand wireshark () ()
+  "Run a wireshark instance or if already running, switch to it."
+  (roraise-and-touchpad-on-instance "gksudo wireshark" "wireshark"))
+(define-key *root-map* (kbd "C-w") "wireshark")
+
 ;; C-t i - IDE java (unfortunately)
 ;; (defcommand eclipse () ()
 ;;   "Run a eclipse instance or if already running, switch to it."
