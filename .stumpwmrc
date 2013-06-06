@@ -403,7 +403,6 @@
 (relaunch-panel)
 (run-shell-command "/usr/bin/gnome-settings-daemon")
 (run-shell-command "killall nm-applet && /usr/bin/nm-applet &")
-(run-shell-command "/usr/bin/bluetooth-applet &")
 (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
 (run-shell-command "gnome-power-manager")
 (run-shell-command "dropbox start")
