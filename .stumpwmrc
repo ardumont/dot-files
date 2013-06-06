@@ -76,8 +76,6 @@
    "Wrap a call to the cli and output the result into a zenity window"
    (run-shl "zenity --info --text \"$(" command ")\""))
 
-;; ----------------- personal functions
-
 ;; C-t T - Toggle on/off the touchpad
 (defcommand toggle-touchpad-auto () ()
   "Activate/Deactivate automatically the touchpad depending on the current status."
