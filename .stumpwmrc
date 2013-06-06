@@ -84,30 +84,6 @@
 
 ;; ----------------- run-or-raise commands
 
-;; (defcommand TEMPLATE () ()
-;;   "Run a TEMPLATE instance or if already running, switch to it."
-;;   (roraise-and-touchpad-on "COMMAND" "CLASS"))
-;; (define-key *root-map* (kbd "KEYBOARD") "TEMPLATE")
-
-;; C-t x - Terminal and switch off the touchpad
-(defcommand terminal () ()
-  "Run an xterm instance or if already running, switch to it."
-  (roraise-and-touchpad-off "gnome-terminal --hide-menubar" "Gnome-terminal"))
-(define-key *root-map* (kbd "x") "terminal")
-
-;; C-t e - Emacs and switch off the touchpad
-(defcommand myemacs () ()
-  "Run an emacs instance or if already running, switch to it."
-  ;; raise emacs
-  (roraise-and-touchpad-off "emacsclient -c" "Emacs24"))
-(define-key *root-map* (kbd "e") "myemacs")
-
-;; C-t c - Conkeror - keyboard-driven navigator
-(defcommand conkeror () ()
-  "Run a conkeror instance or if already running, switch to it."
-  (roraise-and-touchpad-off "conkeror" "Conkeror"))
-(define-key *root-map* (kbd "c") "conkeror")
-
 ;; C-t f - Firefox
 (defcommand firefox () ()
   "Run a firefox instance or if already running, switch to it."
@@ -459,3 +435,27 @@
      cmds)))
 
 (zenity-category stumpwm-setup)
+
+;; ror-touchpad-off - command that run-or-raise a window by its class name and deactivate the touchpad
+
+(defmacro ror-touchpad-off (fn-name command class binding)
+  (let ((tempvar (gensym)))
+    `(progn
+       (let ((,tempvar ,fn-name))
+         (defcommand ,tempvar () ()
+           (roraise-and-touchpad-off ,command ,class))
+         (define-key *root-map* (kbd ,binding) (symbol-name ,fn-name))))))
+
+(defun ror-touchpad-off-category (map-setup)
+  "Deal with zenity category"
+  (let ((cmds (fset:lookup map-setup :ror-touchpad-off)))
+    (mapcar
+     (lambda (l)
+       (let ((fn-name    (first l))
+             (cmd        (second l))
+             (class      (third l))
+             (binding    (fourth l)))
+         (ror-touchpad-off fn-name cmd class binding)))
+     cmds)))
+
+(ror-touchpad-off-category stumpwm-setup)
