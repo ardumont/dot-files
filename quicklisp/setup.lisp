@@ -134,3 +134,5 @@ compiling asdf.lisp to a FASL and then loading it."
   (asdf:oos 'asdf:load-op "quicklisp" :verbose nil))
 
 (quicklisp:setup)
+
+(load "~/quicklisp/clojurify.lisp")
