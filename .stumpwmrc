@@ -82,85 +82,7 @@
   (stumpwm::banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
-;; ----------------- run-or-raise commands
-
-;; C-t f - Firefox
-(defcommand firefox () ()
-  "Run a firefox instance or if already running, switch to it."
-  (roraise-and-touchpad-on "firefox" "Firefox"))
-(define-key *root-map* (kbd "f") "firefox")
-
-;; C-t b - Chromium
-(defcommand chromium-browser () ()
-  "Run a chromium instance or if already running, switch to it."
-  (roraise-and-touchpad-on "chromium-browser" "Chromium-browser"))
-(define-key *root-map* (kbd "C-b") "chromium-browser")
-
-;; C-t C-b - Google-chrome
-(defcommand google-chrome () ()
-  "Run a google-chrome instance or if already running, switch to it."
-  (roraise-and-touchpad-on "google-chrome --no-proxy-server" "Google-chrome"))
-(define-key *root-map* (kbd "b") "google-chrome")
-
-;; C-t , - Gnome-control-center
-(defcommand gnome-control-center () ()
-  "Run a gnome-control-center instance or if already running, switch to it."
-  (roraise-and-touchpad-on "gnome-control-center" "Gnome-Control-Center"))
-(define-key *root-map* (kbd ",") "gnome-control-center")
-
-;; C-t . - video player
-(defcommand video-player () ()
-  "Run a video-player instance or if already running, switch to it."
-  (roraise-and-touchpad-on "totem" "Totem"))
-(define-key *root-map* (kbd ".") "video-player")
-
-;; C-t C-e - PDF reader evince
-(defcommand evince () ()
-  "Run a evince instance or if already running, switch to it."
-  (roraise-and-touchpad-on "evince" "Evince"))
-(define-key *root-map* (kbd "C-e") "evince")
-
-;; C-t C-i - Image reader eog
-(defcommand eog () ()
-  "Run a eog instance or if already running, switch to it."
-  (roraise-and-touchpad-on "eog" "Eog"))
-(define-key *root-map* (kbd "C-i") "eog")
-
-;; C-t d - pinta - lightweight drawing soft
-(defcommand pinta () ()
-  "Run a pinta instance or if already running, switch to it."
-  (roraise-and-touchpad-on "pinta" "Pinta"))
-(define-key *root-map* (kbd "d") "pinta")
-
-;; C-t C-d - gimp - not so lightweight drawing soft
-(defcommand gimp () ()
-  "Run a gimp instance or if already running, switch to it."
-  (roraise-and-touchpad-on "gimp" "Gimp"))
-(define-key *root-map* (kbd "C-d") "gimp")
-
-;; C-t C-c - skype
-(defcommand skype () ()
-  "Run a skype instance or if already running, switch to it."
-  (roraise-and-touchpad-on "/usr/bin/skype" "Skype"))
-(define-key *root-map* (kbd "C-c") "skype")
-
-;; C-t C-a - audacious
-(defcommand audacious () ()
-  "Run an audacious instance or if already running, switch to it."
-  (roraise-and-touchpad-on "/usr/bin/audacious" "Audacious"))
-(define-key *root-map* (kbd "C-a") "audacious")
-
-;; C-t C-j - jconsole
-(defcommand jconsole () ()
-  "Run a jconsole instance or if already running, switch to it."
-  (roraise-and-touchpad-on "/usr/bin/jconsole" "sun-tools-jconsole-JConsole"))
-(define-key *root-map* (kbd "C-j") "jconsole")
-
-;; C-t j - jvisualvm
-(defcommand jvisualvm () ()
-  "Run a jvisualvm instance or if already running, switch to it."
-  (roraise-and-touchpad-on "/usr/bin/jvisualvm" "java-lang-Thread"))
-(define-key *root-map* (kbd "j") "jvisualvm")
+;; implementation
 
 ;; C-t C-x - Xephyr
 (defcommand xephyr () ()
@@ -453,3 +375,24 @@
      cmds)))
 
 (ror-touchpad-off-category stumpwm-setup)
+
+;; ror-touchpad-on - command that run-or-raise a window by its class name and activate the touchpad
+
+(defmacro ror-touchpad-on (fn-name command class binding)
+  (let ((tempvar (gensym)))
+    `(progn
+       (let ((,tempvar ,fn-name))
+         (defcommand ,tempvar () ()
+           (roraise-and-touchpad-on ,command ,class))
+         (define-key *root-map* (kbd ,binding) (symbol-name ,fn-name))))))
+
+(defun ror-touchpad-on-category (map-setup)
+  "Deal with zenity category"
+  (let ((cmds (fset:lookup map-setup :ror-touchpad-on)))
+    (mapcar
+     (lambda (l)
+       (destructuring-bind (fn-name cmd class binding) l
+         (ror-touchpad-on fn-name cmd class binding)))
+     cmds)))
+
+(ror-touchpad-on-category stumpwm-setup)
