@@ -1,3 +1,4 @@
+;; -*- lisp -*-
 
 ;;; The following lines added by ql:add-to-init-file:
 #-quicklisp
@@ -5,4 +6,3 @@
                                        (user-homedir-pathname))))
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
-
