@@ -82,91 +82,6 @@
   (stumpwm::banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
-;; implementation
-
-;; C-t C-x - Xephyr
-(defcommand xephyr () ()
-  "Run a xephyr instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "~/bin/xephyr/xephyr.sh" "Xephyr"))
-(define-key *root-map* (kbd "C-x") "xephyr")
-
-(defcommand wireshark () ()
-  "Run a wireshark instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "gksudo wireshark" "wireshark"))
-(define-key *root-map* (kbd "C-w") "wireshark")
-
-;; C-t i - IDE java (unfortunately)
-;; (defcommand eclipse () ()
-;;   "Run a eclipse instance or if already running, switch to it."
-;;   (roraise-and-touchpad-on "~/bin/ide/eclipse.sh" "Eclipse"))
-(define-key *root-map* (kbd "i") "xephyr")
-
-;; C-t j - Intellij-idea
-;; (defcommand intellij-idea () ()
-;;   "Run a intellij-idea instance or if already running, switch to it."
-;;   (roraise-and-touchpad-on "~/applications/idea/bin/idea.sh" "jetbrains-idea-ce"))
-;;(define-key *root-map* (kbd "j") "xephyr")
-
-;; C-t n - File explorer nautilus
-(defcommand nautilus () ()
-  "Run a nautilus instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "nautilus" "nautilus"))
-(define-key *root-map* (kbd "n") "nautilus")
-
-;; C-t N - File explorer thunar
-(defcommand thunar () ()
-  "Run a thunar instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "thunar" "thunar"))
-(define-key *root-map* (kbd "N") "thunar")
-
-;; C-t y - yEd
-(defcommand yEd () ()
-  "Run a yEd instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "yed.sh" "sun-awt-X11-XFramePeer"))
-(define-key *root-map* (kbd "y") "yed")
-
-;; C-t C-f - fritzing
-;; (defcommand fritzing () ()
-;;   "Run a fritzing instance or if already running, switch to it."
-;;   (roraise-and-touchpad-on "~/applications/fritzing/Fritzing" "Fritzing"))
-;; (define-key *root-map* (kbd "C-f") "fritzing")
-
-;; C-t C-f - filezilla
-(defcommand filezilla () ()
-  "Run a filezilla instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "/usr/bin/filezilla" "filezilla"))
-(define-key *root-map* (kbd "C-f") "filezilla")
-
-;; C-t C-v - Virtualbox
-(defcommand virtualbox () ()
-  "Run a virtualbox instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "virtualbox" "Qt-subapplication"))
-(define-key *root-map* (kbd "C-v") "virtualbox")
-
-;; C-t u - unetbootin
-(defcommand unetbootin () ()
-  "Run an unetbootin instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "unetbootin" "unetbootin"))
-(define-key *root-map* (kbd "u") "unetbootin")
-
-;; C-t / - transmission-gtk
-(defcommand transmission () ()
-  "Run a transmission instance or if already running, switch to it."
-  (roraise-and-touchpad-on-instance "/usr/bin/transmission-gtk" "transmission-gtk"))
-(define-key *root-map* (kbd "/") "transmission")
-
-;; C-t G
-(defcommand gparted () ()
-  "gparted"
-  (roraise-and-touchpad-on-instance "gksudo /usr/sbin/gparted" "gpartedbin"))
-(define-key *root-map* (kbd "G") "gparted")
-
-;; C-t F
-(defcommand file-progress () ()
-  "file-progress window when copying or moving files"
-  (roraise-and-touchpad-on-instance "" "file_progress"))
-(define-key *root-map* (kbd "F") "file-progress")
-
 ;; ----------------- run-shell-commands commands
 
 ;; C-t C-S
@@ -272,18 +187,6 @@
 ;;Set the mouse focus policy to ignore the mouse
 (setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
 
-;; Launch commands
-(relaunch-panel)
-(run-shell-command "/usr/bin/gnome-settings-daemon")
-(run-shell-command "killall nm-applet && /usr/bin/nm-applet &")
-(run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
-(run-shell-command "gnome-power-manager")
-(run-shell-command "dropbox start")
-(run-shell-command "nautilus --no-default-window")
-;; start an emacs server in background
-(run-shell-command "emacs --daemon &")
-(terminal)
-
 (setf stumpwm-setup
   (-> (fset:empty-map)
       (fset:with :zenity             '((ssh-add-list         "List the keys the user-agent holds"      "ssh-add -L"           "K")
@@ -342,7 +245,14 @@
          (defcommand ,tempvar () ()
            ,doc-string
            (zenity ,command))
-         (define-key *root-map* (kbd ,binding) (symbol-name ,fn-name))))))
+         (define-key *root-map* (kbd ,binding) ,tempvar)))))
+
+(defmacro zenity-cmd (fn-name doc-string command binding)
+  `(progn
+     (defcommand ,fn-name () ()
+       ,doc-string
+       (zenity ,command))
+     (define-key *root-map* (kbd ,binding) (-> ,fn-name string-downcase))))
 
 (defun zenity-category (map-setup)
   "Deal with zenity category"
@@ -353,17 +263,15 @@
          (zenity-cmd fn-name doc-string cmd binding)))
      cmds)))
 
-(zenity-category stumpwm-setup)
-
 ;; ror-touchpad-off - command that run-or-raise a window by its class name and deactivate the touchpad
 
 (defmacro ror-touchpad-off (fn-name command class binding)
   (let ((tempvar (gensym)))
     `(progn
-       (let ((,tempvar ,fn-name))
+       (let ((,tempvar (make-symbol ,fn-name)))
          (defcommand ,tempvar () ()
            (roraise-and-touchpad-off ,command ,class))
-         (define-key *root-map* (kbd ,binding) (symbol-name ,fn-name))))))
+         (define-key *root-map* (kbd ,binding) ,fn-name)))))
 
 (defun ror-touchpad-off-category (map-setup)
   "Deal with zenity category"
@@ -374,17 +282,15 @@
          (ror-touchpad-off fn-name cmd class binding)))
      cmds)))
 
-(ror-touchpad-off-category stumpwm-setup)
-
 ;; ror-touchpad-on - command that run-or-raise a window by its class name and activate the touchpad
 
 (defmacro ror-touchpad-on (fn-name command class binding)
   (let ((tempvar (gensym)))
     `(progn
-       (let ((,tempvar ,fn-name))
+       (let ((,tempvar (make-symbol ,fn-name)))
          (defcommand ,tempvar () ()
            (roraise-and-touchpad-on ,command ,class))
-         (define-key *root-map* (kbd ,binding) (symbol-name ,fn-name))))))
+         (define-key *root-map* (kbd ,binding) ,fn-name)))))
 
 (defun ror-touchpad-on-category (map-setup)
   "Deal with zenity category"
@@ -395,4 +301,54 @@
          (ror-touchpad-on fn-name cmd class binding)))
      cmds)))
 
-(ror-touchpad-on-category stumpwm-setup)
+
+;; ror-id-touchpad-on - command that run-or-raise a window by its instance name and activate the touchpad
+
+(defmacro ror-id-touchpad-on (fn-name command instance binding)
+  (let ((tempvar (gensym)))
+    `(progn
+       (let ((,tempvar (make-symbol ,fn-name)))
+         (defcommand ,tempvar () ()
+           (roraise-and-touchpad-on-instance ,command ,instance))
+         (define-key *root-map* (kbd ,binding) ,fn-name)))))
+
+(defun ror-id-touchpad-on-category (map-setup)
+  "Deal with zenity category"
+  (let ((cmds (fset:lookup map-setup :ror-id-touchpad-on)))
+    (mapcar
+     (lambda (l)
+       (destructuring-bind (fn-name cmd instance binding) l
+         (ror-id-touchpad-on fn-name cmd instance binding)))
+     cmds)))
+
+(zenity-category stumpwm-setup)
+;;(ror-touchpad-off-category stumpwm-setup)
+;;(ror-touchpad-on-category stumpwm-setup)
+;;(ror-id-touchpad-on-category stumpwm-setup)
+
+;; ========================== Fixed binding
+
+;; C-t i - IDE java (unfortunately)
+;; (defcommand eclipse () ()
+;;   "Run a eclipse instance or if already running, switch to it."
+;;   (roraise-and-touchpad-on "~/bin/ide/eclipse.sh" "Eclipse"))
+(define-key *root-map* (kbd "i") "xephyr")
+
+;; C-t j - Intellij-idea
+;; (defcommand intellij-idea () ()
+;;   "Run a intellij-idea instance or if already running, switch to it."
+;;   (roraise-and-touchpad-on "~/applications/idea/bin/idea.sh" "jetbrains-idea-ce"))
+;;(define-key *root-map* (kbd "j") "xephyr")
+
+;; ========================== Launch commands
+
+(relaunch-panel)
+(run-shell-command "/usr/bin/gnome-settings-daemon")
+(run-shell-command "killall nm-applet && /usr/bin/nm-applet &")
+(run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
+(run-shell-command "gnome-power-manager")
+(run-shell-command "dropbox start")
+(run-shell-command "nautilus --no-default-window")
+;; start an emacs server in background
+(run-shell-command "emacs --daemon &")
+;;(terminal)
