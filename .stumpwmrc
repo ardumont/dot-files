@@ -201,8 +201,8 @@
 ;; ========================== setup
 
 ;; xenity - shell command with output inside a zenity popup window
-(zenity-category ((ssh-add-12           "List the keys the user-agent holds"      "ssh-add -L"           "q")
-                  (cat-etc-environment2 "Display the content of /etc/environment" "cat /etc/environment" "E")
+(zenity-category ((ssh-add-list         "List the keys the user-agent holds"      "ssh-add -L"           "K")
+                  (cat-etc-environment  "Display the content of /etc/environment" "cat /etc/environment" "E")
                   (cat-etc-hosts        "Display the content of /etc/hosts"       "cat /etc/hosts"       "H")
                   (sbin-ifconfig        "/sbin/ifconfig"                          "/sbin/ifconfig"       "I")
                   (acpi-cmd             "Display battery"                         "/usr/bin/acpi -b"     "B")))
