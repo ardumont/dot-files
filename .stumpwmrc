@@ -196,45 +196,37 @@
                                        (cat-etc-environment2 "Display the content of /etc/environment" "cat /etc/environment" "E")
                                        (cat-etc-hosts        "Display the content of /etc/hosts"       "cat /etc/hosts"       "H")
                                        (sbin-ifconfig        "/sbin/ifconfig"                          "/sbin/ifconfig"       "I")
-;;                                       (acpi-cmd             "Display battery"                         "/usr/bin/acpi -b"     "B")
+                                       (acpi-cmd             "Display battery"                         "/usr/bin/acpi -b"     "B")
                                        ))))
+
+(defmacro mapcro (macro args)
+  "Iterate over a list of list of parameters and executes the macro 'macro' on such args."
+  `(progn
+     ,@(mapcar
+        (lambda (&rest x) `(,macro ,@x)) args)))
 
 ;; zenity - shell command with result inside a pop-up window
 
-(defmacro zenity-cmd (fn-name doc-string command binding)
-  `(progn
-     (defcommand ,fn-name () ()
-       ,doc-string
-       (zenity ,command))
-     (define-key *root-map* (kbd ,binding) (string-downcase (symbol-name ',fn-name)))))
+(defmacro zenity-cmd (cmd)
+  (destructuring-bind (fn-name doc-string command binding) cmd
+    `(progn
+       (defcommand ,fn-name () ()
+         ,doc-string
+         (zenity ,command))
+       (define-key *root-map* (kbd ,binding) (string-downcase (symbol-name ',fn-name))))))
 
 ;; (macroexpand-1
-;;   '(zenity-cmd sshadd "list ssh identities held by agent" "ssh-add -L" "q"))
-;; (macroexpand-1
-;;  '(zenity-cmd cat-etc-environment  "Display the content of /etc/environment" "cat /etc/environment" "E"))
-;; (macroexpand-1
-;;  '(zenity-cmd acpi-cmd "Display battery" "/usr/bin/acpi -b" "B"))
-
-(defun zenity-category (data)
-  "Deal with zenity category"
-  (mapcar
-   (lambda (c)
-     (destructuring-bind (fn doc cmd bdg) c
-       (zenity-cmd fn doc cmd bdg)))
-   data))
-
-(defun zenity-category (data)
-  "Deal with zenity category"
-  (loop for (fn doc cmd bdg) in data
-        collect (zenity-cmd fn doc cmd bdg)))
-
-(zenity-category (fset:lookup stumpwm-setup :zenity))
-(zenity-cmd ssh-add-list        "list ssh identities held by agent" "ssh-add -L" "q")
-(zenity-cmd cat-etc-environment "Display the content of /etc/environment" "cat /etc/environment" "E")
-(zenity-cmd  acpi-cmd           "Display battery" "/usr/bin/acpi -b" "B")
+;;  '(zenity-cmd (sshadd "list ssh identities held by agent" "ssh-add -L" "q")))
 
 ;; (macroexpand-1
-;;   '(zenity-category (fset:lookup stumpwm-setup :zenity)))
+;;  '(mapcro
+;;    zenity-cmd
+;;    ((ssh-add-list          "List the keys the user-agent holds"      "ssh-add -L"           "q")
+;;     (cat-etc-environment10 "Display the content of /etc/environment" "cat /etc/environment" "E")
+;;     (cat-etc-hosts10       "Display the content of /etc/hosts"       "cat /etc/hosts"       "H")
+;;     (sbin-ifconfig10       "/sbin/ifconfig"                          "/sbin/ifconfig"       "I")
+;;     (acpi-cmd10            "Display battery"                         "/usr/bin/acpi -b"     "B"))))
+
 
 ;; ========================== Fixed binding
 
