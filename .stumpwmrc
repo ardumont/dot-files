@@ -3,6 +3,9 @@
 (load "~/quicklisp/setup.lisp")
 (ql:quickload :fset)
 (ql:quickload :swank)
+(ql:quickload :clx)
+(ql:quickload :cl-ppcre)
+(ql:quickload :stumpwm)
 
 (defun swank ()
   (setf *top-level-error-action* :break)
