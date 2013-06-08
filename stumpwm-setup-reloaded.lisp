@@ -58,3 +58,11 @@
        (:shell-command
         '((top                  "Display a single 'top' frame."             "top -b -n 1 -c -d 1"                                                  "^")
           (screenshot           "Take a screenshot for the current window." "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png" "C-s")))))
+
+;; (defmacro category (data kind)
+;;   "Deal with the category `kind"
+;;   (let ((valsym (gensym)))
+;;     `(let ((,valsym (fset:lookup ,data ,kind))
+;;            (mapcro zenity-cmd ,@valsym)))))
+
+;; (macroexpand-1 '(category *stumpwm-setup* :zenity))
