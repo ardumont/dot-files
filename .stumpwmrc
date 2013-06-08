@@ -1,9 +1,21 @@
 ;; -*- lisp -*-
 
-(load "~/quicklisp/setup.lisp");; lisp package manager loading
+(load "~/quicklisp/setup.lisp")
 (ql:quickload :fset)
+;; (ql:quickload :swank)
+
+;; (defun swank ()
+;;   (setf *top-level-error-action* :break)
+;;   (swank:create-server :port 4005
+;;                        :style swank:*communication-style*
+;;                        :dont-close t)
+;;   (echo-string (current-screen)
+;;                "Starting swank. M-x slime-connect RET RET, then (in-package stumpwm)."))
+
+;;(swank)
 
 (in-package :stumpwm)
+
 (use-package :ql-clj)
 
 (setf *frame-number-map* "abcdefghijklmnopqrst")
@@ -19,18 +31,6 @@
 (setf *transient-border-width* 0)
 
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
-
-;; (load "/usr/share/common-lisp/source/slime/swank-loader.lisp")
-;; (swank-loader:init)
-
-;; (defcommand swank () ()
-;;   (setf stumpwm:*top-level-error-action* :break)
-;;   (swank:create-server :port 4005
-;;                        :style swank:*communication-style*
-;;                        :dont-close t)
-;;   (echo-string (current-screen)
-;;                "Starting swank. M-x slime-connect RET RET, then (in-package stumpwm)."))
-;; (swank)
 
 (defun shell-command (command)
   "Run a shell command and display output to screen.
