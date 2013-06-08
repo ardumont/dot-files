@@ -85,18 +85,6 @@
   (stumpwm::banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
-;; C-t ^ - top
-(defcommand top () ()
-  "Display a single 'top' frame."
-  (shell-command "top -b -n 1 -c -d 1"))
-(define-key *root-map* (kbd "^") "top")
-
-;; C-t C-s - Take a snapshot for the current window
-(defcommand screenshot () ()
-  "Take a screenshot for the current window."
-  (shell-command "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png"))
-(define-key *root-map* (kbd "C-s") "screenshot")
-
 ;; C-t o - Frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
@@ -196,6 +184,19 @@
 (defmacro run-shell-command-category (data)
   `(mapcro run-shell-command-cmd ,data))
 
+;; ========================== shell-command
+
+(defmacro shell-command-cmd (metacmd)
+  (destructuring-bind (fn-name doc-string command binding) metacmd
+    `(progn
+       (defcommand ,fn-name () ()
+         ,doc-string
+         (shell-command ,command))
+       (define-key *root-map* (kbd ,binding) (string-downcase (symbol-name ',fn-name))))))
+
+(defmacro shell-command-category (data)
+  `(mapcro shell-command-cmd ,data))
+
 ;; ========================== setup
 
 ;; xenity - shell command with output inside a zenity popup window
@@ -206,14 +207,12 @@
                   (acpi-cmd             "Display battery"                         "/usr/bin/acpi -b"     "B")))
 
 ;; run-or-raise application based on the class name of the window + deactivating the touchpad
-
 (ror-tpd-off-category
                  ((terminal             "terminal" "gnome-terminal --hide-menubar" "Gnome-terminal" "x")
                   (myemacs              "emacs"    "emacsclient -c"                "Emacs24"        "e")
                   (conkeror             "conkeror" "conkeror"                      "Conkeror"       "c")))
 
 ;; run-or-raise application based on the class name of the window + activating the touchpad
-
 (ror-tpd-on-category
                  ((firefox              "firefox"              "firefox"                         "Firefox"                     "f")
                   (chromium-browser     "chrome"               "google-chrome --no-proxy-server" "Google-chrome"               "b")
@@ -228,6 +227,7 @@
                   (jconsole             "jconsole"             "/usr/bin/jconsole"               "sun-tools-jconsole-JConsole" "C-j")
                   (jvisualvm            "jvisualvm"            "/usr/bin/jvisualvm"              "java-lang-Thread"            "j")))
 
+;; run-or-raise application based on the instance of the window + activating the touchpad
 (ror-id-tpd-on-category
                  ((xephyr               "xephyr.sh"        "~/bin/xephyr/xephyr.sh"    "Xephyr"                 "C-x")
                   (wireshark            "wireshark"        "gksudo wireshark"          "wireshark"              "C-w")
@@ -241,6 +241,7 @@
                   (gparted              "gparted"          "gksudo /usr/sbin/gparted"  "gpartedbin"             "G")
                   (file-progress        "file progress"    ""                          "file_progress"          "F")))
 
+;; run shell command
 (run-shell-command-category
                   ((suspend              "Suspend"                                                       "gksudo pm-suspend"                                    "C-S")
                    (hibernate            "Hibernate"                                                     "gksudo pm-hibernate"                                  "C-H")
@@ -255,6 +256,11 @@
                    (wifi-off             "wifi off"                                                      "~/bin/wifi/wifi-off.sh"                               "C-o")
                    (wifi-on              "wifi on"                                                       "~/bin/wifi/wifi-on.sh"                                "O")
                    (relaunch-panel       "Relaunch panel"                                                "~/bin/panel/relaunch-panel.sh"                        "C-p")))
+
+(shell-command-category
+                 ((top                  "Display a single 'top' frame."             "top -b -n 1 -c -d 1"                                                  "^")
+                  (screenshot           "Take a screenshot for the current window." "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png" "C-s")))
+
 ;; ========================== Fixed binding
 
 ;; C-t i - IDE java (unfortunately)
