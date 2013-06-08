@@ -190,15 +190,6 @@
 ;;Set the mouse focus policy to ignore the mouse
 (setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
 
-(setf stumpwm-setup
-  (-> (fset:empty-map)
-      (fset:with :zenity             '((ssh-add-list2        "List the keys the user-agent holds"      "ssh-add -L"           "q")
-                                       (cat-etc-environment2 "Display the content of /etc/environment" "cat /etc/environment" "E")
-                                       (cat-etc-hosts        "Display the content of /etc/hosts"       "cat /etc/hosts"       "H")
-                                       (sbin-ifconfig        "/sbin/ifconfig"                          "/sbin/ifconfig"       "I")
-                                       (acpi-cmd             "Display battery"                         "/usr/bin/acpi -b"     "B")
-                                       ))))
-
 (defmacro mapcro (macro args)
   "Iterate over a list of list of parameters and executes the macro 'macro' on such args."
   `(progn
@@ -227,6 +218,16 @@
 ;;     (sbin-ifconfig10       "/sbin/ifconfig"                          "/sbin/ifconfig"       "I")
 ;;     (acpi-cmd10            "Display battery"                         "/usr/bin/acpi -b"     "B"))))
 
+(defmacro zenity-category (data)
+  `(mapcro zenity-cmd ,data))
+
+;; ========================== setup
+
+(zenity-category ((ssh-add-12           "List the keys the user-agent holds"      "ssh-add -L"           "q")
+                  (cat-etc-environment2 "Display the content of /etc/environment" "cat /etc/environment" "E")
+                  (cat-etc-hosts        "Display the content of /etc/hosts"       "cat /etc/hosts"       "H")
+                  (sbin-ifconfig        "/sbin/ifconfig"                          "/sbin/ifconfig"       "I")
+                  (acpi-cmd             "Display battery"                         "/usr/bin/acpi -b"     "B")))
 
 ;; ========================== Fixed binding
 
