@@ -35,6 +35,8 @@
 
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
+;; ========= personal functions
+
 (defun shell-command (command)
   "Run a shell command and display output to screen.
    This must be used in a functional side-effects-free style!
@@ -46,13 +48,11 @@
   "A simpler command to run-shell-command with multiple params"
   (run-shell-command (apply #'concatenate 'string cmd)))
 
-;; ----------------- personal functions
-
 (defun toggle-touchpad-manual (status)
   "Activate/Deactivate the touchpad depending on the status parameter (0/1)."
   (run-shl "~/bin/stumpwm/toggle-touchpad-manual.sh " status)
   ;; banish the mouse from the screen when we deactivate the touchpad
-  (if (equal "0" status) (stumpwm::banish)))
+  (if (equal "0" status) (banish)))
 
 (defmacro roraise-and-touchpad-off (command class)
   "Wrap a call to the run-or-raise command but before toggle off the touchpad (works with window class names)."
@@ -72,7 +72,6 @@
      (toggle-touchpad-manual "1")
      (run-or-raise ,command '(:instance ,instance))))
 
-;; (defcommand name (args) (interactive-args) "doc-string" (body))
 ;; wrapper around the zenity cli
 (defcommand zenity (command) ()
    "Wrap a call to the cli and output the result into a zenity window"
@@ -82,7 +81,7 @@
 (defcommand toggle-touchpad-auto () ()
   "Activate/Deactivate automatically the touchpad depending on the current status."
   (run-shl "~/bin/stumpwm/toggle-touchpad.sh")
-  (stumpwm::banish))
+  (banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
 ;; C-t o - Frame selection
@@ -94,16 +93,17 @@
 ;;Set the mouse focus policy to ignore the mouse
 (setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
 
-;; map over macro
+;;
 
 (defmacro mapcro (macro args)
-  "Iterate over a list of list of parameters and executes the macro 'macro' on such args."
+  "A macro is not a first class citizen, thus map over macro is not possible.
+   Here is a macro that does such job.
+   Iterate over a list of list of parameters and executes the macro 'macro' on such args."
   `(progn
      ,@(mapcar
         (lambda (&rest x) `(,macro ,@x)) args)))
 
 ;; zenity - shell command with result inside a pop-up window
-
 (defmacro zenity-cmd (metacmd)
   (destructuring-bind (fn-name doc-string command binding) metacmd
     `(progn
