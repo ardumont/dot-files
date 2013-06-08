@@ -91,11 +91,6 @@
 ;; C-t L - Reload the ~/.stumpwmrc configuration
 (define-key *root-map* (kbd "L") "loadrc")
 
-;; C-t C-c - arduino ide
-(defprogram-shortcut :arduino :command "arduino"
-                     :props '(:class "processing-app-Base")
-                     :map *root-map* :key (stumpwm:kbd "C-c"))
-
 ;;Set the mouse focus policy to ignore the mouse
 (setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
 
@@ -225,7 +220,8 @@
                   (skype                "skype"                "/usr/bin/skype"                  "Skype"                       "C-c")
                   (audacious            "audacious"            "/usr/bin/audacious"              "Audacious"                   "C-a")
                   (jconsole             "jconsole"             "/usr/bin/jconsole"               "sun-tools-jconsole-JConsole" "C-j")
-                  (jvisualvm            "jvisualvm"            "/usr/bin/jvisualvm"              "java-lang-Thread"            "j")))
+                  (jvisualvm            "jvisualvm"            "/usr/bin/jvisualvm"              "java-lang-Thread"            "j")
+                  (arduino              "arduino ide"          "arduino"                         "processing-appBase"          "C-c")))
 
 ;; run-or-raise application based on the instance of the window + activating the touchpad
 (ror-id-tpd-on-category
