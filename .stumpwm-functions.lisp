@@ -49,7 +49,6 @@
   (banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
-;; C-t o - Frame selection
 ;; ========================== macro definition
 
 (defmacro mapcro (macro args)
