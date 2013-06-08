@@ -223,13 +223,34 @@
 (defmacro zenity-category (data)
   `(mapcro zenity-cmd ,data))
 
+;; ========================== run-or-raise-touchpad-off
+
+(defmacro ror-touchpad-off-cmd (metacmd)
+  (destructuring-bind (fn-name doc-string command class binding) metacmd
+    `(progn
+       (defcommand ,fn-name () ()
+         ,doc-string
+         (roraise-and-touchpad-off ,command ,class))
+       (define-key *root-map* (kbd ,binding) (string-downcase (symbol-name ',fn-name))))))
+
+(defmacro ror-tpd-off-category (data)
+  `(mapcro ror-touchpad-off-cmd ,data))
+
 ;; ========================== setup
 
+;; xenity - shell command with output inside a zenity popup window
 (zenity-category ((ssh-add-12           "List the keys the user-agent holds"      "ssh-add -L"           "q")
                   (cat-etc-environment2 "Display the content of /etc/environment" "cat /etc/environment" "E")
                   (cat-etc-hosts        "Display the content of /etc/hosts"       "cat /etc/hosts"       "H")
                   (sbin-ifconfig        "/sbin/ifconfig"                          "/sbin/ifconfig"       "I")
                   (acpi-cmd             "Display battery"                         "/usr/bin/acpi -b"     "B")))
+
+;; run-or-raise instance + deactivating the touchpad
+
+(ror-tpd-off-category
+                 ((terminal             "terminal" "gnome-terminal --hide-menubar" "Gnome-terminal" "x")
+                  (myemacs              "emacs"    "emacsclient -c"                "Emacs24"        "e")
+                  (conkeror             "conkeror" "conkeror"                      "Conkeror"       "c")))
 
 ;; ========================== Fixed binding
 
