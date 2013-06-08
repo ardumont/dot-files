@@ -1,7 +1,12 @@
 ;; -*- lisp -*-
 
+;; ========================== Loading dependency libraries
+
 (load "~/quicklisp/setup.lisp")
 (ql:quickload :fset)
+
+;; ========================== Debugging properties (uncomment first)
+
 ;; (ql:quickload :swank)
 ;; (ql:quickload :clx)
 ;; (ql:quickload :cl-ppcre)
@@ -17,8 +22,9 @@
 
 ;;(swank)
 
-(in-package :stumpwm)
+;; ========================== Beginning setup of stumpwm
 
+(in-package :stumpwm)
 (use-package :ql-clj)
 
 (setf *frame-number-map* "abcdefghijklmnopqrst")
@@ -35,7 +41,7 @@
 
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
-;; ========= personal functions
+;; ========================== Functions
 
 (defun shell-command (command)
   "Run a shell command and display output to screen.
@@ -93,7 +99,7 @@
 ;;Set the mouse focus policy to ignore the mouse
 (setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
 
-;;
+;; ========================== macro definition
 
 (defmacro mapcro (macro args)
   "A macro is not a first class citizen, thus map over macro is not possible.
@@ -221,7 +227,10 @@
                   (audacious            "audacious"            "/usr/bin/audacious"              "Audacious"                   "C-a")
                   (jconsole             "jconsole"             "/usr/bin/jconsole"               "sun-tools-jconsole-JConsole" "C-j")
                   (jvisualvm            "jvisualvm"            "/usr/bin/jvisualvm"              "java-lang-Thread"            "j")
-                  (arduino              "arduino ide"          "arduino"                         "processing-appBase"          "C-c")))
+                  (arduino              "arduino ide"          "arduino"                         "processing-appBase"          "C-c")
+;;                  (eclipse              "eclipse ide"          "~/bin/ide/eclipse.sh"            "Eclipse"                     "i")
+;;                  (intellij-idea        "intellij-idea"        "~/applications/idea/bin/idea.sh" "jetbrains-idea-ce"           "j")
+                  ))
 
 ;; run-or-raise application based on the instance of the window + activating the touchpad
 (ror-id-tpd-on-category
@@ -257,21 +266,11 @@
                  ((top                  "Display a single 'top' frame."             "top -b -n 1 -c -d 1"                                                  "^")
                   (screenshot           "Take a screenshot for the current window." "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png" "C-s")))
 
-;; ========================== Fixed binding
+;; ========================== Fixed binding (migrating from old habits)
 
-;; C-t i - IDE java (unfortunately)
-;; (defcommand eclipse () ()
-;;   "Run a eclipse instance or if already running, switch to it."
-;;   (roraise-and-touchpad-on "~/bin/ide/eclipse.sh" "Eclipse"))
-(define-key *root-map* (kbd "i") "xephyr")
+(define-key *root-map* (kbd "i") "xephyr");; old eclipse binding
 
-;; C-t j - Intellij-idea
-;; (defcommand intellij-idea () ()
-;;   "Run a intellij-idea instance or if already running, switch to it."
-;;   (roraise-and-touchpad-on "~/applications/idea/bin/idea.sh" "jetbrains-idea-ce"))
-;;(define-key *root-map* (kbd "j") "xephyr")
-
-;; ========================== Launch commands
+;; ========================== Launch commands at startup time
 
 (relaunch-panel)
 (run-shell-command "/usr/bin/gnome-settings-daemon")
