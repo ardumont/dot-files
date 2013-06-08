@@ -137,4 +137,4 @@
 (run-shell-command "nautilus --no-default-window")
 ;; start an emacs server in background
 (run-shell-command "emacs --daemon &")
-;;(terminal)
+(terminal)
