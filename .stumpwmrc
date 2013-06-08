@@ -190,6 +190,8 @@
 ;;Set the mouse focus policy to ignore the mouse
 (setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
 
+;; map over macro
+
 (defmacro mapcro (macro args)
   "Iterate over a list of list of parameters and executes the macro 'macro' on such args."
   `(progn
@@ -198,8 +200,8 @@
 
 ;; zenity - shell command with result inside a pop-up window
 
-(defmacro zenity-cmd (cmd)
-  (destructuring-bind (fn-name doc-string command binding) cmd
+(defmacro zenity-cmd (metacmd)
+  (destructuring-bind (fn-name doc-string command binding) metacmd
     `(progn
        (defcommand ,fn-name () ()
          ,doc-string
