@@ -2,18 +2,18 @@
 
 (load "~/quicklisp/setup.lisp")
 (ql:quickload :fset)
-(ql:quickload :swank)
-(ql:quickload :clx)
-(ql:quickload :cl-ppcre)
-(ql:quickload :stumpwm)
+;; (ql:quickload :swank)
+;; (ql:quickload :clx)
+;; (ql:quickload :cl-ppcre)
+;; (ql:quickload :stumpwm)
 
-(defun swank ()
-  (setf *top-level-error-action* :break)
-  (swank:create-server :port 4005
-                       :style swank:*communication-style*
-                       :dont-close t)
-  (echo-string (current-screen)
-               "Starting swank. M-x slime-connect RET RET, then (in-package stumpwm)."))
+;; (defun swank ()
+;;   (setf *top-level-error-action* :break)
+;;   (swank:create-server :port 4005
+;;                        :style swank:*communication-style*
+;;                        :dont-close t)
+;;   (echo-string (current-screen)
+;;                "Starting swank. M-x slime-connect RET RET, then (in-package stumpwm)."))
 
 ;;(swank)
 
