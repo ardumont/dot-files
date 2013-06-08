@@ -85,85 +85,6 @@
   (stumpwm::banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
-;; ----------------- run-shell-commands commands
-
-;; C-t C-S
-(defcommand suspend () ()
-  "Suspend"
-  (run-shell-command "gksudo pm-suspend"))
-(define-key *root-map* (kbd "C-S") "suspend")
-
-;; C-t C-H
-(defcommand hibernate () ()
-  "Hibernate"
-  (run-shell-command "gksudo pm-hibernate"))
-(define-key *root-map* (kbd "C-H") "hibernate")
-
-;; C-t A - Load the identities from the ~/.ssh-agent-identities file
-(defcommand ssh-add-identities () ()
-  "Add the identities present in ~/.ssh-agent-identities script."
-  (run-shell-command "~/bin/ssh/ssh-add.sh"))
-(define-key *root-map* (kbd "A") "ssh-add-identities")
-
-;; C-t p - Activate the proxy (ask for su rights)
-(defcommand switch-to-proxy () ()
-  "Switch to proxy."
-  (run-shell-command "gksudo ~/bin/proxy/proxy.sh on && killall nm-applet"))
-(define-key *root-map* (kbd "p") "switch-to-proxy")
-
-;; C-t P - Deactivate the proxy
-(defcommand switch-to-no-proxy () ()
-  "Switch to no proxy."
-  (run-shell-command "gksudo ~/bin/proxy/proxy.sh off && killall nm-applet"))
-(define-key *root-map* (kbd "P") "switch-to-no-proxy")
-
-;; C-t F6 - Decrement the brightness by 5
-(defcommand dec-brightness () ()
-  "Brightness decrement"
-  (run-shell-command "~/bin/brightness/dec-brightness.sh 5"))
-(define-key *root-map* (kbd "F5") "dec-brightness")
-
-;; C-t F5 - Increment the brightness by 5
-(defcommand inc-brightness () ()
-  "Brightness increment"
-  (run-shell-command "~/bin/brightness/inc-brightness.sh 5"))
-(define-key *root-map* (kbd "F6") "inc-brightness")
-
-;; C-t m - Min brightness
-(defcommand min-brightness () ()
-  "Minimum screen brightness"
-  (run-shell-command "~/bin/brightness/min-brightness.sh"))
-(define-key *root-map* (kbd "m") "min-brightness")
-
-(defcommand half-brightness () ()
-  "Half screen brightness"
-  (run-shell-command "~/bin/brightness/half-brightness.sh"))
-(define-key *root-map* (kbd "C-M") "half-brightness")
-
-;; C-t M - Max brightness
-(defcommand max-brightness () ()
-  "Maximum screen brightness"
-  (run-shell-command "~/bin/brightness/max-brightness.sh"))
-(define-key *root-map* (kbd "M") "max-brightness")
-
-;; C-t C-o - wifi off
-(defcommand wifi-off () ()
-  "wifi off"
-  (run-shell-command "~/bin/wifi/wifi-off.sh"))
-(define-key *root-map* (kbd "C-o") "wifi-off")
-
-;; C-t O - wifi on
-(defcommand wifi-on () ()
-  "wifi on"
-  (run-shell-command "~/bin/wifi/wifi-on.sh"))
-(define-key *root-map* (kbd "O") "wifi-on")
-
-;; C-t C-p - relaunch panel
-(defcommand relaunch-panel () ()
-  "Relaunch panel"
-  (run-shell-command "~/bin/panel/relaunch-panel.sh"))
-(define-key *root-map* (kbd "C-p") "relaunch-panel")
-
 ;; C-t ^ - top
 (defcommand top () ()
   "Display a single 'top' frame."
@@ -262,6 +183,19 @@
 (defmacro ror-id-tpd-on-category (data)
   `(mapcro ror-id-touchpad-on-cmd ,data))
 
+;; ========================== run-shell-command
+
+(defmacro run-shell-command-cmd (metacmd)
+  (destructuring-bind (fn-name doc-string command binding) metacmd
+    `(progn
+       (defcommand ,fn-name () ()
+         ,doc-string
+         (run-shell-command ,command))
+       (define-key *root-map* (kbd ,binding) (string-downcase (symbol-name ',fn-name))))))
+
+(defmacro run-shell-command-category (data)
+  `(mapcro run-shell-command-cmd ,data))
+
 ;; ========================== setup
 
 ;; xenity - shell command with output inside a zenity popup window
@@ -307,6 +241,20 @@
                   (gparted              "gparted"          "gksudo /usr/sbin/gparted"  "gpartedbin"             "G")
                   (file-progress        "file progress"    ""                          "file_progress"          "F")))
 
+(run-shell-command-category
+                  ((suspend              "Suspend"                                                       "gksudo pm-suspend"                                    "C-S")
+                   (hibernate            "Hibernate"                                                     "gksudo pm-hibernate"                                  "C-H")
+                   (ssh-add-identities   "Add the identities present in ~/.ssh-agent-identities script." "~/bin/ssh/ssh-add.sh"                                 "A")
+                   (switch-to-proxy      "Switch to proxy."                                              "gksudo ~/bin/proxy/proxy.sh on && killall nm-applet"  "p")
+                   (switch-to-no-proxy   "Switch to no proxy."                                           "gksudo ~/bin/proxy/proxy.sh off && killall nm-applet" "P")
+                   (dec-brightness       "Brightness decrement"                                          "~/bin/brightness/dec-brightness.sh 5"                 "F5")
+                   (inc-brightness       "Brightness increment"                                          "~/bin/brightness/inc-brightness.sh 5"                 "F6")
+                   (min-brightness       "Minimum screen brightness"                                     "~/bin/brightness/min-brightness.sh"                   "m")
+                   (half-brightness      "Half screen brightness"                                        "~/bin/brightness/half-brightness.sh"                  "C-M")
+                   (max-brightness       "Maximum screen brightness"                                     "~/bin/brightness/max-brightness.sh"                   "M")
+                   (wifi-off             "wifi off"                                                      "~/bin/wifi/wifi-off.sh"                               "C-o")
+                   (wifi-on              "wifi on"                                                       "~/bin/wifi/wifi-on.sh"                                "O")
+                   (relaunch-panel       "Relaunch panel"                                                "~/bin/panel/relaunch-panel.sh"                        "C-p")))
 ;; ========================== Fixed binding
 
 ;; C-t i - IDE java (unfortunately)
