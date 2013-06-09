@@ -37,7 +37,7 @@ myBorderWidth  = 0
 -- I prefer using windows key
 --
 myModMask :: KeyMask
-myModMask       = mod4Mask
+myModMask = mod4Mask
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
