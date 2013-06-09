@@ -14,49 +14,8 @@ import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
---
-myTerminal :: String
-myTerminal = "urxvt"
-
--- Whether focus follows the mouse pointer.
-myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
-
--- Width of the window border in pixels.
---
-myBorderWidth :: Dimension
-myBorderWidth  = 0
-
--- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
--- "windows key" is usually mod4Mask.
--- Until I found out how to use xmonad as I use stumpwm (with C-t as a prefix key)
--- I prefer using windows key
---
-myModMask :: KeyMask
-myModMask       = mod4Mask
-
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
---
-myWorkspaces :: [[Char]]
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
-
--- Border colors for unfocused and focused windows, respectively.
---
-myNormalBorderColor :: String
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor :: String
-myFocusedBorderColor = "#ff0000"
+import XMonad.Util.Paste
+import XMonad.Actions.Submap
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -152,6 +111,65 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
+myPrefix :: (KeyMask, KeySym)
+myPrefix = (xK_Control_L .|. xK_t, xK_t)
+
+myPrefixKeys :: t -> [((KeyMask, KeySym), X ())]
+myPrefixKeys _ = [ (myPrefix, sendKey (fst myPrefix) (snd myPrefix)) ]
+
+prefixKey :: Ord k => k -> XConfig Layout -> M.Map k (X ())
+--prefixKey pfx@(modifier, keycode) x =
+prefixKey pfx x =
+  M.fromList $
+     let oldKeys = XMonad.keys defaultConfig x
+         mine = M.fromList (myPrefixKeys x)
+         merged = M.union (M.union oldKeys mine) (myKeys x)
+     in
+        [ (pfx, submap merged) ]
+
+-- The preferred terminal program, which is used in a binding below and by
+-- certain contrib modules.
+--
+myTerminal :: String
+myTerminal = "urxvt"
+
+-- Whether focus follows the mouse pointer.
+myFocusFollowsMouse :: Bool
+myFocusFollowsMouse = True
+
+-- Width of the window border in pixels.
+--
+myBorderWidth :: Dimension
+myBorderWidth  = 0
+
+-- modMask lets you specify which modkey you want to use. The default
+-- is mod1Mask ("left alt").  You may also consider using mod3Mask
+-- ("right alt"), which does not conflict with emacs keybindings. The
+-- "windows key" is usually mod4Mask.
+-- Until I found out how to use xmonad as I use stumpwm (with C-t as a prefix key)
+-- I prefer using windows key
+--
+myModMask :: KeyMask
+myModMask = mod4Mask
+
+-- The default number of workspaces (virtual screens) and their names.
+-- By default we use numeric strings, but any string may be used as a
+-- workspace name. The number of workspaces is determined by the length
+-- of this list.
+--
+-- A tagging example:
+--
+-- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
+--
+myWorkspaces :: [[Char]]
+myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+
+-- Border colors for unfocused and focused windows, respectively.
+--
+myNormalBorderColor :: String
+myNormalBorderColor  = "#dddddd"
+myFocusedBorderColor :: String
+myFocusedBorderColor = "#ff0000"
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
@@ -279,7 +297,7 @@ defaults = defaultConfig {
         focusedBorderColor = myFocusedBorderColor,
 
       -- key bindings
-        keys               = myKeys,
+        keys               = prefixKey myPrefix,
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
