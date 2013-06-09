@@ -4,24 +4,34 @@ import XMonad.Util.Paste
 import Data.Map as M
 import qualified XMonad.StackSet as W
 
+main :: IO ()
 main = xmonad defaultConfig {
      XMonad.keys = prefixKey myPrefix,
      XMonad.modMask = 0,
      XMonad.mouseBindings = myMouseBindings
   }
 
-prefixKey pfx@(modifier, keycode) x = M.fromList $
+prefixKey :: (Ord t1, Ord t) => (t, t1) -> XConfig Layout -> Map (t, t1) (X ())
+--prefixKey pfx@(modifier, keycode) x =
+prefixKey pfx x =
+  M.fromList $
      let oldKeys = XMonad.keys defaultConfig x
          mine = M.fromList (myKeys x)
          merged = M.union oldKeys mine
      in
         [ (pfx, submap merged) ]
 
+myMouseMod :: KeyMask
 myMouseMod = mod4Mask
-myPrefix = (0, xK_Escape)
-myKeys x = [ (myPrefix, sendKey (fst myPrefix) (snd myPrefix)) ]
 
-myMouseBindings x = M.fromList $
+myPrefix :: (KeyMask, KeySym)
+myPrefix = (0, xK_Escape)
+
+myKeys :: t -> [((KeyMask, KeySym), X ())]
+myKeys _ = [ (myPrefix, sendKey (fst myPrefix) (snd myPrefix)) ]
+
+myMouseBindings :: t -> Map (KeyMask, Button) (Window -> X ())
+myMouseBindings _ = M.fromList $
        -- mod-button1 %! Set the window to floating mode and move by dragging
     [ ((myMouseMod, button1), (\w -> focus w >> mouseMoveWindow w
                                           >> windows W.shiftMaster))
