@@ -13,6 +13,7 @@ import System.Exit
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+import XMonad.Util.EZConfig
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -61,66 +62,61 @@ myFocusedBorderColor = "#ff0000"
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
+
+-- prefix key
+prefix :: String -> String
+prefix key = "C-t " ++ key
+
+-- keybinding
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
-
-    -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-
-    -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
-
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
-
+myKeys = \conf -> mkKeymap conf $
+     [
+    -- terminal
+      (prefix "x", spawn $ terminal conf)
+    -- some help message
+    , (prefix "h", spawn "xmessage 'hello world!!! using prefix key in haskell!'")  -- type C-t then w to pop up 'woohoo!'
+    -- reload the setup from xmonad
+    , (prefix "L", spawn "xmonad --recompile; xmonad --restart")
+    -- spawning firefox
+    , (prefix "f", spawn "firefox")
+    -- dmenu
+    , (prefix "p", spawn "dmenu_run")
+    -- another menu
+    , (prefix "C-p", spawn "gmrun")
+    -- emacs client (emacs daemon is launched at startup)
+    , (prefix "e", spawn "emacsclient -c")
     -- close focused window
-    , ((modm .|. shiftMask, xK_c     ), kill)
-
-     -- Rotate through the available layout algorithms
-    , ((modm,               xK_space ), sendMessage NextLayout)
-
+    , (prefix "c", kill)
+    -- Rotate through the available layout algorithms
+    , (prefix "<Space>", sendMessage NextLayout)
     --  Reset the layouts on the current workspace to default
-    , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
-
+    , (prefix "C-<Space>", setLayout $ XMonad.layoutHook conf)
     -- Resize viewed windows to the correct size
-    , ((modm,               xK_n     ), refresh)
-
+    , (prefix "n", refresh)
     -- Move focus to the next window
-    , ((modm,               xK_Tab   ), windows W.focusDown)
-
+    , (prefix "<Tab>", windows W.focusDown)
     -- Move focus to the next window
-    , ((modm,               xK_j     ), windows W.focusDown)
-
+    , (prefix "j", windows W.focusDown)
     -- Move focus to the previous window
-    , ((modm,               xK_k     ), windows W.focusUp  )
-
+    , (prefix "k", windows W.focusUp  )
     -- Move focus to the master window
-    , ((modm,               xK_m     ), windows W.focusMaster  )
-
+    , (prefix "m", windows W.focusMaster  )
     -- Swap the focused window and the master window
-    , ((modm,               xK_Return), windows W.swapMaster)
-
+    , (prefix "<Return>", windows W.swapMaster)
     -- Swap the focused window with the next window
-    , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
-
+    , (prefix "C-j", windows W.swapDown  )
     -- Swap the focused window with the previous window
-    , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
-
+    , (prefix "C-k", windows W.swapUp    )
     -- Shrink the master area
-    , ((modm,               xK_h     ), sendMessage Shrink)
-
+    , (prefix "C-h", sendMessage Shrink)
     -- Expand the master area
-    , ((modm,               xK_l     ), sendMessage Expand)
-
+    , (prefix "C-l", sendMessage Expand)
     -- Push window back into tiling
-    , ((modm,               xK_t     ), withFocused $ windows . W.sink)
-
+    , (prefix "t", withFocused $ windows . W.sink)
     -- Increment the number of windows in the master area
-    , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
-
+    , (prefix ",", sendMessage (IncMasterN 1))
     -- Deincrement the number of windows in the master area
-    , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
-
+    , (prefix ":", sendMessage (IncMasterN (-1)))
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
@@ -128,30 +124,26 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
-
-    -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    , (prefix "C-Q", io (exitWith ExitSuccess))
     ]
-    ++
+    -- ++
 
-    --
-    -- mod-[1..9], Switch to workspace N
-    -- mod-shift-[1..9], Move client to workspace N
-    --
-    [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
+    -- --
+    -- -- mod-[1..9], Switch to workspace N
+    -- -- mod-shift-[1..9], Move client to workspace N
+    -- --
+    -- [((m .|. modm, k), windows $ f i)
+    --     | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+    --     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+    -- ++
 
-    --
-    -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
-    -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
-    --
-    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-
+    -- --
+    -- -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
+    -- -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
+    -- --
+    -- [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+    --     | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+    --     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
@@ -289,3 +281,53 @@ defaults = defaultConfig {
         logHook            = myLogHook,
         startupHook        = myStartupHook
     }
+
+ -- <Backspace>
+ -- <Tab>
+ -- <Return>
+ -- <Pause>
+ -- <Scroll_lock>
+ -- <Sys_Req>
+ -- <Print>
+ -- <Escape>, <Esc>
+ -- <Delete>
+ -- <Home>
+ -- <Left>, <L>
+ -- <Up>, <U>
+ -- <Right>, <R>
+ -- <Down>, <D>
+ -- <Page_Up>
+ -- <Page_Down>
+ -- <End>
+ -- <Insert>
+ -- <Break>
+ -- <Space>
+ -- <F1>-<F24>
+ -- <KP_Space>
+ -- <KP_Tab>
+ -- <KP_Enter>
+ -- <KP_F1>
+ -- <KP_F2>
+ -- <KP_F3>
+ -- <KP_F4>
+ -- <KP_Home>
+ -- <KP_Left>
+ -- <KP_Up>
+ -- <KP_Right>
+ -- <KP_Down>
+ -- <KP_Prior>
+ -- <KP_Page_Up>
+ -- <KP_Next>
+ -- <KP_Page_Down>
+ -- <KP_End>
+ -- <KP_Begin>
+ -- <KP_Insert>
+ -- <KP_Delete>
+ -- <KP_Equal>
+ -- <KP_Multiply>
+ -- <KP_Add>
+ -- <KP_Separator>
+ -- <KP_Subtract>
+ -- <KP_Decimal>
+ -- <KP_Divide>
+ -- <KP_0>-<KP_9>
