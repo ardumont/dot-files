@@ -17,7 +17,8 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "xterm"
+myTerminal :: String
+myTerminal = "gnome-terminal"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -25,14 +26,18 @@ myFocusFollowsMouse = True
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth :: Dimension
+myBorderWidth  = 1
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
+-- Until I found out how to use xmonad as I use stumpwm (with C-t as a prefix key)
+-- I prefer using windows key
 --
-myModMask       = mod1Mask
+myModMask :: KeyMask
+myModMask       = mod4Mask
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -43,16 +48,20 @@ myModMask       = mod1Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
+myWorkspaces :: [[Char]]
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
+myNormalBorderColor :: String
 myNormalBorderColor  = "#dddddd"
+myFocusedBorderColor :: String
 myFocusedBorderColor = "#ff0000"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
+myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
@@ -147,6 +156,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
 --
+myMouseBindings :: XConfig t -> M.Map (KeyMask, Button) (Window -> X ())
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- mod-button1, Set the window to floating mode and move by dragging
@@ -174,6 +184,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
+myLayout :: Choose Tall (Choose (Mirror Tall) Full) a
 myLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -203,6 +214,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
+myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
@@ -218,6 +230,7 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
+myEventHook :: Event -> X All
 myEventHook = mempty
 
 ------------------------------------------------------------------------
@@ -226,6 +239,7 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
+myLogHook :: X ()
 myLogHook = return ()
 
 ------------------------------------------------------------------------
@@ -236,6 +250,7 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
+myStartupHook :: X ()
 myStartupHook = return ()
 
 ------------------------------------------------------------------------
@@ -243,6 +258,7 @@ myStartupHook = return ()
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
+main :: IO ()
 main = xmonad defaults
 
 -- A structure containing your configuration settings, overriding
@@ -251,6 +267,7 @@ main = xmonad defaults
 --
 -- No need to modify this.
 --
+defaults :: XConfig (Choose Tall (Choose (Mirror Tall) Full))
 defaults = defaultConfig {
       -- simple stuff
         terminal           = myTerminal,
