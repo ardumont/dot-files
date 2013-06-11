@@ -3,7 +3,6 @@
 ;; ========================== Loading dependency libraries
 
 (load "~/quicklisp/setup.lisp")
-(ql:quickload :fset)
 
 ;; ========================== Debugging properties (uncomment first)
 
