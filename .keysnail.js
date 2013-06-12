@@ -431,14 +431,6 @@ key.setCaretKey('f', function (ev) {
     command.focusElement(command.elementsRetrieverTextarea, 0);
 }, 'Focus to the first textarea', true);
 
-key.setCaretKey('M-p', function (ev) {
-    command.walkInputElement(command.elementsRetrieverButton, true, true);
-}, 'Focus to the next button');
-
-key.setCaretKey('M-n', function (ev) {
-    command.walkInputElement(command.elementsRetrieverButton, false, true);
-}, 'Focus to the previous button');
-
 // hok
 
 key.setViewKey('e', function (aEvent, aArg) {
