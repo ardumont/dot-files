@@ -186,7 +186,7 @@ key.setViewKey([['M->'], ['G']], function (ev) {
     goDoCommand("cmd_scrollBottom");
 }, 'Scroll to the bottom of the page', true);
 
-key.setViewKey('R', function (ev) {
+key.setViewKey([['R'], ['C-c', 'r']], function (ev) {
     BrowserReload();
 }, 'Reload the page', true);
 
@@ -411,7 +411,7 @@ key.setCaretKey([['C-SPC'], ['C-@']], function (ev) {
     command.setMark(ev);
 }, 'Set the mark', true);
 
-key.setCaretKey('R', function (ev) {
+key.setCaretKey([['R'], ['C-c', 'r']], function (ev) {
     BrowserReload();
 }, 'Reload the page', true);
 
