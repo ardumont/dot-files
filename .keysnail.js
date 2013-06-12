@@ -456,3 +456,21 @@ key.setViewKey(';', function (aEvent, aArg) {
 key.setViewKey(['C-c', 'C-e'], function (aEvent, aArg) {
     ext.exec("hok-start-continuous-mode", aArg);
 }, 'Start continuous HaH', true);
+
+// list bookmarks
+
+key.setViewKey([':', 'b'], function (ev, arg) {
+    ext.exec("bmany-list-all-bookmarks", arg, ev);
+}, 'bmany - List all bookmarks');
+
+key.setViewKey([':', 'B'], function (ev, arg) {
+    ext.exec("bmany-list-bookmarklets", arg, ev);
+}, "bmany - List all bookmarklets");
+
+key.setViewKey([':', 'k'], function (ev, arg) {
+    ext.exec("bmany-list-bookmarks-with-keyword", arg, ev);
+}, "bmany - List bookmarks with keyword");
+
+key.setViewKey([':', 't'], function (ev, arg) {
+    ext.exec("bmany-list-bookmarks-with-tag", arg, ev);
+}, "bmany - List bookmarks with tag");
