@@ -206,7 +206,7 @@ key.setEditKey(['C-x', 'h'], function (ev) {
     command.selectAll(ev);
 }, 'Select whole text', true);
 
-key.setEditKey([['C-x', 'u'], ['C-_']], function (ev) {
+key.setEditKey([['C-x', 'u'], ['C-/']], function (ev) {
     display.echoStatusBar("Undo!", 2000);
     goDoCommand("cmd_undo");
 }, 'Undo');
