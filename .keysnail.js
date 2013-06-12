@@ -431,13 +431,13 @@ key.setCaretKey('f', function (ev) {
     command.focusElement(command.elementsRetrieverTextarea, 0);
 }, 'Focus to the first textarea', true);
 
-// hok
+// ==================== hok
 
-key.setViewKey('e', function (aEvent, aArg) {
+key.setViewKey('f', function (aEvent, aArg) {
     ext.exec("hok-start-foreground-mode", aArg);
 }, 'Hok - Foreground hint mode', true);
 
-key.setViewKey('E', function (aEvent, aArg) {
+key.setViewKey('j', function (aEvent, aArg) {
     ext.exec("hok-start-background-mode", aArg);
 }, 'HoK - Background hint mode', true);
 
@@ -449,24 +449,33 @@ key.setViewKey(['C-c', 'C-e'], function (aEvent, aArg) {
     ext.exec("hok-start-continuous-mode", aArg);
 }, 'Start continuous HaH', true);
 
-// list bookmarks
+plugins.options["hok.hint_base_style"] = {
+    "position"       : 'absolute',
+    "z-index"        : '2147483647',
+    "color"          : '#000',
+    "font-family"    : 'monospace',
+    "font-size"      : '9pt',
+    "font-weight"    : 'italic',
+    "line-height"    : '10pt',
+    "padding"        : '2px',
+    "margin"         : '0px',
+    "text-transform" : 'lowercase'
+};
 
-key.setViewKey([':', 'b'], function (ev, arg) {
-    ext.exec("bmany-list-all-bookmarks", arg, ev);
-}, 'bmany - List all bookmarks');
+// ==================== list bookmarks
 
-key.setViewKey([':', 'B'], function (ev, arg) {
-    ext.exec("bmany-list-bookmarklets", arg, ev);
-}, "bmany - List all bookmarklets");
+// key.setViewKey([':', 'b'], function (ev, arg) {
+//     ext.exec("bmany-list-all-bookmarks", arg, ev);
+// }, 'bmany - List all bookmarks');
 
-key.setViewKey([':', 'k'], function (ev, arg) {
-    ext.exec("bmany-list-bookmarks-with-keyword", arg, ev);
-}, "bmany - List bookmarks with keyword");
+// key.setViewKey([':', 'B'], function (ev, arg) {
+//     ext.exec("bmany-list-bookmarklets", arg, ev);
+// }, "bmany - List all bookmarklets");
 
-key.setViewKey([':', 't'], function (ev, arg) {
-    ext.exec("bmany-list-bookmarks-with-tag", arg, ev);
-}, "bmany - List bookmarks with tag");
+// key.setViewKey([':', 'k'], function (ev, arg) {
+//     ext.exec("bmany-list-bookmarks-with-keyword", arg, ev);
+// }, "bmany - List bookmarks with keyword");
 
-// kill native shortcuts from github.
-
-//plugins.options["kkk.sites"] = ["^https?://([0-9a-zA-Z]+\\.)?github\\.com/"];
+// key.setViewKey([':', 't'], function (ev, arg) {
+//     ext.exec("bmany-list-bookmarks-with-tag", arg, ev);
+// }, "bmany - List bookmarks with tag");
