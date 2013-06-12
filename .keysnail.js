@@ -462,6 +462,8 @@ plugins.options["hok.hint_base_style"] = {
     "text-transform" : 'lowercase'
 };
 
+plugins.options["hok.hint_keys"] = "qwertyuiopzcvbnasdghkl";
+
 // ==================== list bookmarks
 
 // key.setViewKey([':', 'b'], function (ev, arg) {
