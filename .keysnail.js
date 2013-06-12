@@ -13,8 +13,8 @@
 key.quitKey              = "C-g";
 key.helpKey              = "<f1>";
 key.escapeKey            = "C-q";
-key.macroStartKey        = "<f3>";
-key.macroEndKey          = "<f4>";
+key.macroStartKey        = "C-x (";
+key.macroEndKey          = "C-x )";
 key.universalArgumentKey = "C-u";
 key.negativeArgument1Key = "C--";
 key.negativeArgument2Key = "C-M--";
