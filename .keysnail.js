@@ -474,3 +474,7 @@ key.setViewKey([':', 'k'], function (ev, arg) {
 key.setViewKey([':', 't'], function (ev, arg) {
     ext.exec("bmany-list-bookmarks-with-tag", arg, ev);
 }, "bmany - List bookmarks with tag");
+
+// kill native shortcuts from github.
+
+//plugins.options["kkk.sites"] = ["^https?://([0-9a-zA-Z]+\\.)?github\\.com/"];
