@@ -48,6 +48,19 @@ hook.setHook('KeyBoardQuit', function (aEvent) {
     }
 });
 
+// ============================== Black list =============================== //
+
+hook.addToHook("LocationChange", function (aNsURI) {
+    var URL = aNsURI ? aNsURI.spec : null;
+    key.suspendWhenMatched(URL, key.blackList);
+});
+
+key.blackList = [
+    'http://gmail.com/',
+    'http*://mail.google.com/*',
+    'http://gmail.com/*'
+];
+
 // ============================= Key bindings ============================== //
 
 key.setGlobalKey('C-M-r', function (ev) {
