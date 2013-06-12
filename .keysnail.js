@@ -475,7 +475,8 @@ plugins.options["hok.hint_base_style"] = {
     "text-transform" : 'lowercase'
 };
 
-plugins.options["hok.hint_keys"] = "qwertyizcvbasdhkl";
+// creating links
+plugins.options["hok.hint_keys"] = "qwertyzcvbasdhkl";
 
 // ==================== list bookmarks
 
