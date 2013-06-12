@@ -190,11 +190,11 @@ key.setViewKey([['R'], ['C-c', 'r']], function (ev) {
     BrowserReload();
 }, 'Reload the page', true);
 
-key.setViewKey('B', function (ev) {
+key.setViewKey([['B'], ['C-c', 'b']], function (ev) {
     BrowserBack();
 }, 'Back');
 
-key.setViewKey('F', function (ev) {
+key.setViewKey([['F'], ['C-c', 'f']], function (ev) {
     BrowserForward();
 }, 'Forward');
 
@@ -415,11 +415,11 @@ key.setCaretKey([['R'], ['C-c', 'r']], function (ev) {
     BrowserReload();
 }, 'Reload the page', true);
 
-key.setCaretKey('B', function (ev) {
+key.setCaretKey([['B'], ['C-c', 'b']], function (ev) {
     BrowserBack();
 }, 'Back');
 
-key.setCaretKey('F', function (ev) {
+key.setCaretKey([['F'], ['C-c', 'f']], function (ev) {
     BrowserForward();
 }, 'Forward');
 
