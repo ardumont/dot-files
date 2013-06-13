@@ -441,10 +441,6 @@ key.setCaretKey(['C-x', 'h'], function (ev) {
     goDoCommand("cmd_selectAll");
 }, 'Select all', true);
 
-key.setCaretKey('f', function (ev) {
-    command.focusElement(command.elementsRetrieverTextarea, 0);
-}, 'Focus to the first textarea', true);
-
 // ==================== hok
 
 key.setViewKey('f', function (aEvent, aArg) {
