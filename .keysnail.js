@@ -443,11 +443,11 @@ key.setCaretKey(['C-x', 'h'], function (ev) {
 
 // ==================== hok
 
-key.setViewKey('f', function (aEvent, aArg) {
+key.setViewKey('d', function (aEvent, aArg) {
     ext.exec("hok-start-foreground-mode", aArg);
 }, 'Hok - Foreground hint mode', true);
 
-key.setViewKey('j', function (aEvent, aArg) {
+key.setViewKey('f', function (aEvent, aArg) {
     ext.exec("hok-start-background-mode", aArg);
 }, 'HoK - Background hint mode', true);
 
@@ -473,7 +473,7 @@ plugins.options["hok.hint_base_style"] = {
 };
 
 // creating links
-plugins.options["hok.hint_keys"] = "qwertyzcvbasdhkl";
+plugins.options["hok.hint_keys"] = "qwertyzcvbashkl";
 
 // ==================== list bookmarks
 
