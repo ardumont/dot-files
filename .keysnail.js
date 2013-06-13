@@ -56,10 +56,10 @@ hook.addToHook("LocationChange", function (aNsURI) {
 });
 
 key.blackList = [
-    'http://mail.google.com/*',
-    'https://mail.google.com/*',
-    'http://gmail.com/*',
-    'https://gmail.com/*'
+    // 'http://mail.google.com/*',
+    // 'https://mail.google.com/*',
+    // 'http://gmail.com/*',
+    // 'https://gmail.com/*'
 ];
 
 // ============================= Key bindings ============================== //
