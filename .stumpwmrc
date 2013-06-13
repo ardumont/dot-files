@@ -75,8 +75,8 @@
   (jconsole             "jconsole"             "/usr/bin/jconsole"               "sun-tools-jconsole-JConsole" "C-j")
   (jvisualvm            "jvisualvm"            "/usr/bin/jvisualvm"              "java-lang-Thread"            "j")
   (arduino              "arduino ide"          "arduino"                         "processing-appBase"          "C-c")
-  ;;                  (eclipse              "eclipse ide"          "~/bin/ide/eclipse.sh"            "Eclipse"                     "i")
-  ;;                  (intellij-idea        "intellij-idea"        "~/applications/idea/bin/idea.sh" "jetbrains-idea-ce"           "j")
+  ;; (intellij-idea        "intellij-idea"        "~/bin/ide/idea.sh"               "jetbrains-idea-ce"           "j")
+  ;; (eclipse              "eclipse ide"          "~/bin/ide/eclipse.sh"            "Eclipse"                     "i")
   ))
 
 ;; run-or-raise application based on the instance of the window + activating the touchpad
