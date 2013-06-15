@@ -91,8 +91,9 @@ fi
 # sources /etc/bash.bashrc).
 [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
 
-# a bashrc specific to work
-[ -f ~/.xmodmaprc ] && xmodmap -display $DISPLAY ~/.xmodmaprc
+# keyboard mapping
+#[ -f ~/.xmodmaprc ] && xmodmap -display $DISPLAY ~/.xmodmaprc
+[ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
 
 # autojump (sudo aptitude install autojump) your way in your filesystem
 [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
