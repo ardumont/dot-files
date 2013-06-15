@@ -91,8 +91,8 @@ fi
 # sources /etc/bash.bashrc).
 [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
 
-# To remap my keyboard (CAPSLOCK is CTRL, ALT-GR is ALT)
-[ -f ~/bin/kbd/remap-alt-gr-and-capslock.sh ] && ! shopt -oq posix && . ~/bin/kbd/remap-alt-gr-and-capslock.sh
+# a bashrc specific to work
+[ -f ~/.xmodmaprc ] && xmodmap -display $DISPLAY ~/.xmodmaprc
 
 # autojump (sudo aptitude install autojump) your way in your filesystem
 [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
