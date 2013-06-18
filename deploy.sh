@@ -47,5 +47,5 @@ ln -nsf $REPO_DOTFILES/profiles.clj $HOME/.lein/profiles.clj
 
 ## for scala
 
-mkdir -p ~/.sbt/plugins/
-ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt $HOME/.sbt/plugins
+mkdir -p ~/project/plugins/
+ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
