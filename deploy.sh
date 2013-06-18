@@ -37,8 +37,15 @@ if [ -d $REPO_WORK ]; then
     create-links-from-list $FILES_WORK
 fi
 
-# some stuff for clojure
+# specific setup
+
+## for clojure
 
 mkdir -p ~/.lein
 rm -f $HOME/.lein/profiles.clj
 ln -nsf $REPO_DOTFILES/profiles.clj $HOME/.lein/profiles.clj
+
+## for scala
+
+mkdir -p ~/.sbt/plugins/
+ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt $HOME/.sbt/plugins
