@@ -26,7 +26,7 @@
 (in-package :stumpwm)
 (use-package :ql-clj)
 (load "~/.stumpwm-functions.lisp")
-(set-prefix-key (kbd "C-i"))
+(set-prefix-key (kbd "C-t"))
 
 (setf *message-window-gravity* :center)
 (setf *input-window-gravity* :center)
