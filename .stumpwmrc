@@ -26,6 +26,7 @@
 (in-package :stumpwm)
 (use-package :ql-clj)
 (load "~/.stumpwm-functions.lisp")
+(set-prefix-key (kbd "C-i"))
 
 (setf *frame-number-map* "abcdefghijklmnopqrst")
 
