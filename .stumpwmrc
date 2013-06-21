@@ -28,6 +28,9 @@
 (load "~/.stumpwm-functions.lisp")
 (set-prefix-key (kbd "C-i"))
 
+(setf *message-window-gravity* :center)
+(setf *input-window-gravity* :center)
+
 (setf *frame-number-map* "abcdefghijklmnopqrst")
 
 (setf *window-format* "%m%n%s nm=%50t cl=%c id=%i")
