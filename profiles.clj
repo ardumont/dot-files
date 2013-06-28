@@ -1,4 +1,5 @@
-{:user {:plugins [[lein-swank                "1.4.4"]
+{:user {:plugins [
+                  [lein-swank                "1.4.4"]
                   [lein-ritz                 "0.7.0"]
                   [lein-cljs                 "0.2.2"]
                   [lein-difftest             "1.3.7"]
@@ -10,7 +11,7 @@
                   [com.stuartsierra/lazytest "1.2.3"]
                   [com.palletops/pallet-lein "0.6.0-beta.7"]
                   [pallet/lein-template      "0.2.10"]
-                  [hiccup-bridge             "1.0.0-SNAPSHOT"]
+                  ;; [hiccup-bridge             "1.0.0-SNAPSHOT"]
                   [lein-cljsbuild            "0.3.0"]
                   [lein-droid                "0.1.0-beta6"]
                   ;; [lein-outdated             "1.0.0"]
