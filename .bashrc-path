@@ -18,7 +18,7 @@ done
 # Personal shell scripts in $HOME/bin/
 ###
 
-FILES="/usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOME/applications/wine $HOME/applications/bin /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-6-oracle $HOME/applications/apache-maven-3.0.4 $HOME/.lein $HOME/.lein/bin $HOME/.lein/plugins /opt/vagrant/bin $HOME/applications/adt-bundle-linux-x85/sdk/platform-tools $HOME/applications/appengine/bin $HOME/.carton/bin/"
+FILES="/usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOME/applications/wine $HOME/applications/bin /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-6-oracle $HOME/applications/apache-maven-3.0.4 $HOME/.lein $HOME/.lein/bin $HOME/.lein/plugins /opt/vagrant/bin $HOME/applications/adt-bundle-linux-x85/sdk/platform-tools $HOME/applications/appengine/bin $HOME/.carton/bin/ $HOME/applications/play"
 
 for d in $FILES; do
     [ -d $d ] && export PATH="$d:$PATH"
