@@ -1,3 +1,5 @@
+# -*- sh -*-
+
 # a function to simplify the aliasing of directory movement with a predetermined path
 # $1 will be the prefix directory (fixed by the alias)
 # $2 will be the directory asked by the user when calling the alias
