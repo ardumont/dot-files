@@ -67,7 +67,7 @@
 ;; run-or-raise application based on the class name of the window + activating the touchpad
 (ror-tpd-on-category
  ((firefox              "firefox"              "firefox"                         "Firefox"                     "f")
-  (chromium-browser     "chrome"               "google-chrome --no-proxy-server" "Google-chrome"               "b")
+  (chromium-browser     "chrome"               "google-chrome --no-proxy-server" "X-www-browser"               "b")
   (gnome-control-center "gnome-control-center" "gnome-control-center"            "Gnome-Control-Center"        ",")
   (video-player         "totem"                "totem"                           "Totem"                       ".")
   (evince               "evince"               "evince"                          "Evince"                      "C-e")
