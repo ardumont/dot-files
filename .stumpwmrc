@@ -95,7 +95,8 @@
   (unetbootin           "unetbootin"       "unetbootin"                "unetbootin"             "u")
   (transmission         "transmission-gtk" "/usr/bin/transmission-gtk" "transmission-gtk"       "/")
   (gparted              "gparted"          "gksudo /usr/sbin/gparted"  "gpartedbin"             "G")
-  (file-progress        "file progress"    ""                          "file_progress"          "F")))
+  (file-progress        "file progress"    ""                          "file_progress"          "F")
+  (xosview              "xosview"          "xosview"                   "xosview"                "X")))
 
 ;; run shell command - Simply execute shell command
 (run-shell-command-category
