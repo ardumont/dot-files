@@ -22,7 +22,7 @@ export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 export TERM=screen-256color
 
 # OPAM configuration
-. ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+[ -f $HOME/.opam/opam-init/init.sh ] && ( . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null )
 
 # fix awt & co. in stumpwm/xmonad
 export _JAVA_AWT_WM_NONREPARENTING=1
