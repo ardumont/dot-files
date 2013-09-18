@@ -20,7 +20,7 @@ done
 # Personal shell scripts in $HOME/bin/
 ###
 
-FILES="/usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOME/applications/wine $HOME/applications/bin /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-6-oracle $HOME/applications/apache-maven $HOME/.lein $HOME/.lein/bin $HOME/.lein/plugins /opt/vagrant/bin $HOME/applications/adt-bundle-linux-x85/sdk/platform-tools $HOME/applications/appengine/bin $HOME/.cask/bin/ $HOME/.carton/bin/ $HOME/applications/play $HOME/applications/scala/bin $HOME/applications/gradle/bin"
+FILES="/usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOME/applications/wine $HOME/applications/bin /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-6-oracle $HOME/applications/apache-maven/bin $HOME/.lein $HOME/.lein/bin $HOME/.lein/plugins /opt/vagrant/bin $HOME/applications/adt-bundle-linux-x85/sdk/platform-tools $HOME/applications/appengine/bin $HOME/.cask/bin/ $HOME/.carton/bin/ $HOME/applications/play $HOME/applications/scala/bin $HOME/applications/gradle/bin"
 
 for d in $FILES; do
     [ -d $d ] && export PATH="$d:$PATH"
