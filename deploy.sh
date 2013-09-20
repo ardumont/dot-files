@@ -41,9 +41,12 @@ fi
 
 ## for clojure
 
-mkdir -p ~/.lein
+mkdir -p $HOME/.lein
 rm -f $HOME/.lein/profiles.clj
-ln -nsf $REPO_DOTFILES/profiles.clj $HOME/.lein/profiles.clj
+ln -nsf $REPO_DOTFILES/profiles.clj $HOME/.lein/
+
+mkdir -p $HOME/.gradle
+ln -nsf $REPO_DOTFILES/gradle.properties $HOME/.gradle/
 
 ## for scala
 
