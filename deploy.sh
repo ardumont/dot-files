@@ -47,6 +47,7 @@ ln -nsf $REPO_DOTFILES/profiles.clj $HOME/.lein/
 
 mkdir -p $HOME/.gradle
 ln -nsf $REPO_DOTFILES/gradle.properties $HOME/.gradle/
+ln -nsf $REPO_DOTFILES/init.gradle $HOME/.gradle/
 
 ## for scala
 
