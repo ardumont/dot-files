@@ -30,3 +30,4 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # scala setup in emacs - for installation of ensime, see https://github.com/ardumont/sh/blob/master/scala/deploy-ensime.sh
 [ -d $HOME/applications/ensime ] && export ENSIME_ROOT=$HOME/applications/ensime
 [ -d $HOME/applications/gradle ] && export GRADLE_HOME=$HOME/applications/gradle
+[ -d $HOME/applications/scala/scala ] && export SCALA_HOME=$HOME/applications/scala/scala
