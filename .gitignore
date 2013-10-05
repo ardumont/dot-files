@@ -27,3 +27,4 @@ history
 /.xmonad/xmonad.errors
 /.xmonad/xmonad.hi
 /.xmonad/xmonad.o
+/quicklisp/cache/
