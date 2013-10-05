@@ -49,6 +49,9 @@ mkdir -p $HOME/.gradle
 ln -nsf $REPO_DOTFILES/gradle.properties $HOME/.gradle/
 ln -nsf $REPO_DOTFILES/init.gradle $HOME/.gradle/
 
+mkdir -p $HOME/.sbt/plugins
+ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt ~/.sbt/plugins
+
 ## for scala
 
 mkdir -p ~/project/plugins/
