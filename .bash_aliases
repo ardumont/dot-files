@@ -105,3 +105,7 @@ alias gfa='git fetch --all -p'
 # git push
 alias gpo='git push origin'
 alias gpu='git push upstream'
+
+################ OS
+
+alias upg="sudo aptitude update ; sudo aptitude safe-upgrade -y"
