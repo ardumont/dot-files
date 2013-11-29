@@ -39,7 +39,7 @@ prompt_command () {
     # delete ${TITLEBAR} because it doesn't work inside the shell emacs or in the tty screen
     export PS1="${DKBLUE}\u${DKBLUE}@${DKBLUE}\
 \h${DKCYAN}(${LOAD}) ${WHITE}${TIME} ${DKRED}$ERRPROMPT${DKBLUE}\
-\w${DKGREEN}${BRANCH}${DEFAULT}$ "
+\w${DKGREEN}${BRANCH}${DEFAULT}\n ${DKBLUE}$ ${DEFAULT}"
 }
 PROMPT_COMMAND=prompt_command
 
