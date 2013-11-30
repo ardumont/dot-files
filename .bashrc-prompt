@@ -37,7 +37,7 @@ prompt_command () {
     # return color to Terminal setting for text color
     local DEFAULT="\[\033[0;39m\]"
     # delete ${TITLEBAR} because it doesn't work inside the shell emacs or in the tty screen
-    export PS1="╭─${DKBLUE}\u${DKBLUE}@${DKBLUE}\
+    export PS1="\n╭─${DKBLUE}\u${DKBLUE}@${DKBLUE}\
 \h${DKCYAN}(${LOAD}) ${WHITE}${TIME} ${DKRED}$ERRPROMPT${DKBLUE}\
 \w${DKGREEN}${BRANCH}${DEFAULT}\n╰─➤ ${DKBLUE} ${DEFAULT}"
     export PS2=" ─➤ "
