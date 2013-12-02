@@ -72,6 +72,8 @@ alias cdl='cd $HOME/repo/perso/lazyposse'
 # cd ~/repo/pro/wikeo
 alias cdw='cd $HOME/repo/pro/wikeo'
 
+alias m='make'
+
 ################ Git aliases
 
 # use hub to access easily github
