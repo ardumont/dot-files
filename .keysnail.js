@@ -197,13 +197,13 @@ key.setGlobalKey(["C-x", "n"], function (ev) {
                 OpenBrowserWindow();
             }, 'Open new window', false);
 
-key.setGlobalKey('C-M-l', function (ev) {
-                getBrowser().mTabContainer.advanceSelectedTab(1, true);
-            }, 'Select next tab', false);
+// key.setGlobalKey('C-M-l', function (ev) {
+//                 getBrowser().mTabContainer.advanceSelectedTab(1, true);
+//             }, 'Select next tab', false);
 
-key.setGlobalKey('C-M-h', function (ev) {
-                getBrowser().mTabContainer.advanceSelectedTab(-1, true);
-            }, 'Select previous tab', false);
+// key.setGlobalKey('C-M-h', function (ev) {
+//                 getBrowser().mTabContainer.advanceSelectedTab(-1, true);
+//             }, 'Select previous tab', false);
 
 key.setGlobalKey(["C-x", "C-c"], function (ev) {
                 goQuitApplication();
@@ -384,13 +384,13 @@ key.setEditKey(["C-x", "r", "y"], function (ev) {
                 command.yankRectangle(ev.originalTarget, command.kill.buffer);
             }, 'Yank the last killed rectangle with upper left corner at point', true);
 
-key.setEditKey('M-n', function (ev) {
-                command.walkInputElement(command.elementsRetrieverTextarea, true, true);
-            }, 'Focus to the next text area', false);
+// key.setEditKey('M-n', function (ev) {
+//                 command.walkInputElement(command.elementsRetrieverTextarea, true, true);
+//             }, 'Focus to the next text area', false);
 
-key.setEditKey('M-p', function (ev) {
-                command.walkInputElement(command.elementsRetrieverTextarea, false, true);
-            }, 'Focus to the previous text area', false);
+// key.setEditKey('M-p', function (ev) {
+//                 command.walkInputElement(command.elementsRetrieverTextarea, false, true);
+//             }, 'Focus to the previous text area', false);
 
 key.setViewKey([["C-n"], ["j"]], function (ev) {
                 key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
@@ -424,13 +424,13 @@ key.setViewKey([["M->"], ["G"]], function (ev) {
                 goDoCommand("cmd_scrollBottom");
             }, 'Scroll to the bottom of the page', true);
 
-key.setViewKey('l', function (ev) {
-                getBrowser().mTabContainer.advanceSelectedTab(1, true);
-            }, 'Select next tab', false);
+// key.setViewKey('l', function (ev) {
+//                 getBrowser().mTabContainer.advanceSelectedTab(1, true);
+//             }, 'Select next tab', false);
 
-key.setViewKey('h', function (ev) {
-                getBrowser().mTabContainer.advanceSelectedTab(-1, true);
-            }, 'Select previous tab', false);
+// key.setViewKey('h', function (ev) {
+//                 getBrowser().mTabContainer.advanceSelectedTab(-1, true);
+//             }, 'Select previous tab', false);
 
 key.setViewKey(':', function (ev, arg) {
                 shell.input(null, arg);
@@ -455,14 +455,6 @@ key.setViewKey(["C-x", "h"], function (ev) {
 key.setViewKey('f', function (ev) {
                 command.focusElement(command.elementsRetrieverTextarea, 0);
             }, 'Focus to the first textarea', true);
-
-key.setViewKey('M-p', function (ev) {
-                command.walkInputElement(command.elementsRetrieverButton, true, true);
-            }, 'Focus to the next button', false);
-
-key.setViewKey('M-n', function (ev) {
-                command.walkInputElement(command.elementsRetrieverButton, false, true);
-            }, 'Focus to the previous button', false);
 
 key.setCaretKey([["C-a"], ["^"]], function (ev) {
                 ev.target.ksMarked ? goDoCommand("cmd_selectBeginLine") : goDoCommand("cmd_beginLine");
@@ -562,10 +554,10 @@ key.setCaretKey('f', function (ev) {
                 command.focusElement(command.elementsRetrieverTextarea, 0);
             }, 'Focus to the first textarea', true);
 
-key.setCaretKey('M-p', function (ev) {
-                command.walkInputElement(command.elementsRetrieverButton, true, true);
-            }, 'Focus to the next button', false);
+// key.setCaretKey('M-p', function (ev) {
+//                 command.walkInputElement(command.elementsRetrieverButton, true, true);
+//             }, 'Focus to the next button', false);
 
-key.setCaretKey('M-n', function (ev) {
-                command.walkInputElement(command.elementsRetrieverButton, false, true);
-            }, 'Focus to the previous button', false);
+// key.setCaretKey('M-n', function (ev) {
+//                 command.walkInputElement(command.elementsRetrieverButton, false, true);
+//             }, 'Focus to the previous button', false);
