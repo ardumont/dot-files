@@ -12,6 +12,7 @@
       // 'http://gmail.com/*',
       // 'https://gmail.com/*'
   ];
+
   key.setGlobalKey('M-n', function (ev) {
       getBrowser().mTabContainer.advanceSelectedTab(1, true);
   }, 'Select next tab');
@@ -20,9 +21,19 @@
       getBrowser().mTabContainer.advanceSelectedTab(-1, true);
   }, 'Select previous tab');
 
+  key.setEditKey([["C-x", "u"], ["C-_"], ["C-/"]], function (ev) {
+                display.echoStatusBar("Undo!", 2000);
+                goDoCommand("cmd_undo");
+            }, 'Undo', false);
+
   // ==================== hok
 
-  key.setViewKey('d', function (aEvent, aArg) {
+  key.setGlobalKey('C-M-r', function (ev) {
+                display.echoStatusBar("Reload the initialization file!", 2000);
+                userscript.reload();
+            }, 'Reload the initialization file', true);
+
+    key.setViewKey('d', function (aEvent, aArg) {
       ext.exec("hok-start-foreground-mode", aArg);
   }, 'Hok - Foreground hint mode', true);
 
@@ -129,9 +140,9 @@ hook.addToHook('KeyBoardQuit', function (aEvent) {
 
 // ============================= Key bindings ============================== //
 
-key.setGlobalKey('C-M-r', function (ev) {
-                userscript.reload();
-            }, 'Reload the initialization file', true);
+// key.setGlobalKey('C-M-r', function (ev) {
+//                 userscript.reload();
+//             }, 'Reload the initialization file', true);
 
 key.setGlobalKey('M-x', function (ev, arg) {
                 ext.select(arg, ev);
@@ -245,10 +256,10 @@ key.setEditKey('C-o', function (ev) {
                 command.openLine(ev);
             }, 'Open line', false);
 
-key.setEditKey([["C-x", "u"], ["C-_"]], function (ev) {
-                display.echoStatusBar("Undo!", 2000);
-                goDoCommand("cmd_undo");
-            }, 'Undo', false);
+// key.setEditKey([["C-x", "u"], ["C-_"]], function (ev) {
+//                 display.echoStatusBar("Undo!", 2000);
+//                 goDoCommand("cmd_undo");
+//             }, 'Undo', false);
 
 key.setEditKey('C-\\', function (ev) {
                 display.echoStatusBar("Redo!", 2000);
