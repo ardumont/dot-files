@@ -56,3 +56,7 @@ ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt ~/.sbt/plugins
 
 mkdir -p ~/project/plugins/
 ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
+
+# global gitignore
+
+ln -nsf $REPO_DOTFILES/.global-gitignore $HOME/.gitignore
