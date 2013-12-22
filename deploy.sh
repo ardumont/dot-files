@@ -22,7 +22,7 @@ REPO_DOTFILES=$(dirname $0)
 REPO_WORK=~/work/
 
 # standard files
-FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .bashrc-work .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .keysnail.js .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp .ctags"
+FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .bashrc-work .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .keysnail.js .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp .ctags .gitignore_global"
 
 # some more specific work files
 FILES_WORK=".bashrc-work"
@@ -56,7 +56,3 @@ ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt ~/.sbt/plugins
 
 mkdir -p ~/project/plugins/
 ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
-
-# global gitignore
-
-ln -nsf $REPO_DOTFILES/.global-gitignore $HOME/.gitignore
