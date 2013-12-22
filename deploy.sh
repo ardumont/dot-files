@@ -22,7 +22,7 @@ REPO_DOTFILES=$(dirname $0)
 REPO_WORK=~/work/
 
 # standard files
-FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .bashrc-work .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .keysnail.js .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp"
+FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .bashrc-work .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .keysnail.js .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp .ctags"
 
 # some more specific work files
 FILES_WORK=".bashrc-work"
