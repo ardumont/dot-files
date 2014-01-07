@@ -556,6 +556,39 @@ local["^https?://github.com/"] = [
     ["r", null]
 ];
 
+local["^https?://twitter.com/"] = [
+    pass(['g', 'h']),
+    pass(['g', 'c']),
+    pass(['g', 'a']),
+    pass(['g', 'r']),
+    pass(['g', 'd']),
+    pass(['g', 'p']),
+    pass(['g', 'f']),
+    pass(['g', 'l']),
+    pass(['g', 'm']),
+    pass(['g', 's']),
+    pass(['g', 'u']),
+    // navigation
+    ["j", null],
+    ["k", null],
+    ["?", null],
+    [".", null],
+    ["o", null],
+    // actions
+    ["n", null],
+    ["f", null],
+    ["r", null],
+    ["t", null],
+    ["b", null],
+    ["u", null],
+    ["l", null],
+    ["/", null],
+    ["b", null],
+    ["b", null],
+    ["b", null],
+    ["b", null],
+    ["b", null]
+];
 
 local["^https?://mail.google.com/mail/"] = [
     pass(['g', 'i']),
