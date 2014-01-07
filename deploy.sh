@@ -19,10 +19,10 @@ create-links-from-list() {
 ## Main
 
 REPO_DOTFILES=$(dirname $0)
-REPO_WORK=~/work/
+REPO_WORK=$HOME/work/
 
 # standard files
-FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .bashrc-work .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .keysnail.js .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp .ctags .gitignore_global"
+FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .bashrc-work .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp .ctags .gitignore_global"
 
 # some more specific work files
 FILES_WORK=".bashrc-work"
@@ -39,7 +39,7 @@ fi
 
 # specific setup
 
-## for clojure
+## clojure
 
 mkdir -p $HOME/.lein
 rm -f $HOME/.lein/profiles.clj
@@ -50,9 +50,13 @@ ln -nsf $REPO_DOTFILES/gradle.properties $HOME/.gradle/
 ln -nsf $REPO_DOTFILES/init.gradle $HOME/.gradle/
 
 mkdir -p $HOME/.sbt/plugins
-ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt ~/.sbt/plugins
+ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt $HOME/.sbt/plugins
 
-## for scala
+## scala
 
-mkdir -p ~/project/plugins/
+mkdir -p $HOME/project/plugins/
 ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
+
+## KeySnail
+
+$REPO_DOTFILES/deploy-keysnail.sh
