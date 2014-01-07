@@ -478,7 +478,7 @@ plugins.options["hok.hint_base_style"] = {
 };
 
 // creating links
-plugins.options["hok.hint_keys"] = "qwertyzcvbashkl";
+plugins.options["hok.hint_keys"] = "qwertyzvbashkl";
 
 // ==================== list bookmarks
 
