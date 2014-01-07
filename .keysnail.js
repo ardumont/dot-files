@@ -524,3 +524,121 @@ key.setViewKey("a", function (ev, arg) {
 //     "C"     : "localClipU",
 //     "e"     : "localMovetoend"
 // };
+
+// ==================== site local keymap
+
+key.setGlobalKey("C-;", function (ev, arg) {
+    ext.exec("site-local-keymap-toggle-status", arg, ev);
+}, 'Site local keymap', true);
+
+
+var local = {};
+plugins.options["site_local_keymap.local_keymap"] = local;
+
+function fake(k, i) function () { key.feed(k, i); };
+function pass(k, i) [k, fake(k, i)];
+function ignore(k, i) [k, null];
+
+local["^https?://mail.google.com/mail/"] = [
+    pass(['g', 'i']),
+    pass(['g', 's']),
+    pass(['g', 't']),
+    pass(['g', 'd']),
+    pass(['g', 'a']),
+    pass(['g', 'c']),
+    pass(['g', 'k']),
+    // thread list
+    pass(['*', 'a']),
+    pass(['*', 'n']),
+    pass(['*', 'r']),
+    pass(['*', 'u']),
+    pass(['*', 's']),
+    pass(['*', 't']),
+    // navigation
+    ['u', null],
+    ['k', null],
+    ['j', null],
+    ['o', null],
+    ['p', null],
+    ['n', null],
+    // application
+    ['c', null],
+    ['/', null],
+    ['q', null],
+    ['?', null],
+    // manipulation
+    ['x', null],
+    ['s', null],
+    ['y', null],
+    ['e', null],
+    ['m', null],
+    ['!', null],
+    ['#', null],
+    ['r', null],
+    ['R', null],
+    ['a', null],
+    ['A', null],
+    ['f', null],
+    ['F', null],
+    ['N', null],
+    pass(['<tab>', 'RET']),
+    ['ESC', null],
+    [']', null],
+    ['[', null],
+    ['z', null],
+    ['.', null],
+    ['I', null],
+    ['U', null],
+    ['C-s', null],
+    ['T', null]
+];
+
+local["^http://www.google.(co.jp|com)/reader/view/"] = [
+    // jump
+    pass(["g", "h"]),
+    pass(["g", "a"]),
+    pass(["g", "s"]),
+    pass(["g", "S"]),
+    pass(["g", "u"]),
+    pass(["g", "t"]),
+    pass(["g", "T"]),
+    pass(["g", "d"]),
+    pass(["g", "f"]),
+    pass(["g", "F"]),
+    pass(["g", "c"]),
+    pass(["g", "C"]),
+    pass(["g", "e"]),
+    pass(["g", "p"]),
+    // navigation
+    ["j", null],
+    ["k", null],
+    ["n", null],
+    ["p", null],
+    ["N", null],
+    ["P", null],
+    ["X", null],
+    ["o", null],
+    // item
+    ["s", null],
+    ["L", null],
+    ["t", null],
+    ["e", null],
+    ["S", null],
+    ["d", null],
+    ["v", null],
+    ["o", null],
+    ["c", null],
+    ["C", null],
+    ["m", null],
+    ["A", null],
+    ["T", null],
+    // application
+    ["r", null],
+    ["u", null],
+    ["1", null],
+    ["2", null],
+    ["/", null],
+    ["a", null],
+    ["=", null],
+    ["-", null]
+];
