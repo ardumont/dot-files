@@ -547,6 +547,7 @@ local["^https?://mail.google.com/mail/"] = [
     pass(['g', 'a']),
     pass(['g', 'c']),
     pass(['g', 'k']),
+    pass(['g', 'l']),
     // thread list
     pass(['*', 'a']),
     pass(['*', 'n']),
