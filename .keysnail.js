@@ -531,13 +531,31 @@ key.setGlobalKey("C-;", function (ev, arg) {
     ext.exec("site-local-keymap-toggle-status", arg, ev);
 }, 'Site local keymap', true);
 
-
 var local = {};
 plugins.options["site_local_keymap.local_keymap"] = local;
 
 function fake(k, i) function () { key.feed(k, i); };
 function pass(k, i) [k, fake(k, i)];
 function ignore(k, i) [k, null];
+
+local["^https?://github.com/"] = [
+    pass(['g', 'i']),
+    pass(['g', 'c']),
+    pass(['g', 'p'])
+    // navigation
+    ["j", null],
+    ["k", null],
+    ["?", null],
+    ["x", null],
+    ["o", null],
+    // actions
+    ["c", null],
+    ["l", null],
+    ["u", null],
+    ["/", null],
+    ["r", null]
+];
+
 
 local["^https?://mail.google.com/mail/"] = [
     pass(['g', 'i']),
