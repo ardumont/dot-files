@@ -533,6 +533,7 @@ key.setGlobalKey("C-;", function (ev, arg) {
 
 var local = {};
 plugins.options["site_local_keymap.local_keymap"] = local;
+plugins.options["site_local_keymap.disable_in_textarea"] = true;
 
 function fake(k, i) function () { key.feed(k, i); };
 function pass(k, i) [k, fake(k, i)];
