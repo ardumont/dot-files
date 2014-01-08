@@ -24,25 +24,27 @@ key.suspendKey           = "<f2>";
 // ================================= Hooks ================================= //
 
 hook.setHook('KeyBoardQuit', function (aEvent) {
-    if (key.currentKeySequence.length) return;
+    if (key.currentKeySequence.length) {
+        return;
+    }
 
     command.closeFindBar();
 
-    let marked = command.marked(aEvent);
+    var marked = command.marked(aEvent);
 
     if (util.isCaretEnabled()) {
         if (marked) {
             command.resetMark(aEvent);
         } else {
-            if ("blur" in aEvent.target) aEvent.target.blur();
-
+            if ("blur" in aEvent.target) {
+                aEvent.target.blur();
+            }
             gBrowser.focus();
             _content.focus();
         }
     } else {
         goDoCommand("cmd_selectNone");
     }
-
     if (KeySnail.windowType === "navigator:browser" && !marked) {
         key.generateKey(aEvent.originalTarget, KeyEvent.DOM_VK_ESCAPE, true);
     }
