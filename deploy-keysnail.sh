@@ -18,8 +18,12 @@ FOLDER_DESTINATION_RELATIVE=$(grep "Path=" $FF_FOLDER/profiles.ini | tail -1 | c
 FOLDER_DESTINATION=$FF_FOLDER/$FOLDER_DESTINATION_RELATIVE
 FOLDER_KEYSNAIL=$FOLDER_DESTINATION/keysnail
 
-# Cleanup old folder
+# Cleanup eventual old folder
 [ -d $FOLDER_KEYSNAIL -a ! -h $FOLDER_KEYSNAIL ] && rm -rf $FOLDER_KEYSNAIL
+
+# Reference the keysnail extension
+cp "$FOLDER_DESTINATION/extensions.ini" "$FOLDER_DESTINATION/extensions.bak.ini"
+runhaskell $REPO_DOTFILES/hs/LoadAndUpdateIni.hs "$FOLDER_DESTINATION/extensions.bak.ini" "$FOLDER_KEYSNAIL/extensions/keysnail@mooz.github.com" > "$FOLDER_DESTINATION/extensions.ini"
 
 # Force link creation
 ln -nsf $REPO_DOTFILES/keysnail $FOLDER_KEYSNAIL
