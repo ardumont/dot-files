@@ -585,12 +585,7 @@ local["^https?://twitter.com/"] = [
     ["b", null],
     ["u", null],
     ["l", null],
-    ["/", null],
-    ["b", null],
-    ["b", null],
-    ["b", null],
-    ["b", null],
-    ["b", null]
+    ["/", null]
 ];
 
 local["^https?://mail.google.com/mail/"] = [
