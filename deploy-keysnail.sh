@@ -23,7 +23,7 @@ FOLDER_KEYSNAIL=$FOLDER_DESTINATION/keysnail
 
 # Reference the keysnail extension
 cp "$FOLDER_DESTINATION/extensions.ini" "$FOLDER_DESTINATION/extensions.bak.ini"
-runhaskell $REPO_DOTFILES/hs/LoadAndUpdateIni.hs "$FOLDER_DESTINATION/extensions.bak.ini" "$FOLDER_KEYSNAIL/extensions/keysnail@mooz.github.com" > "$FOLDER_DESTINATION/extensions.ini"
+runhaskell $REPO_DOTFILES/hs/LoadAndUpdateIni.hs "$FOLDER_DESTINATION/extensions.bak.ini" "$FOLDER_DESTINATION/extensions/keysnail@mooz.github.com" > "$FOLDER_DESTINATION/extensions.ini"
 
 # Force link creation
 ln -nsf $REPO_DOTFILES/keysnail $FOLDER_KEYSNAIL
