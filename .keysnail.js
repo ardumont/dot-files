@@ -502,7 +502,7 @@ key.setViewKey([':', 't'], function (ev, arg) {
 
 // ==================== tanything
 
-key.setViewKey("a", function (ev, arg) {
+key.setViewKey("z", function (ev, arg) {
                    ext.exec("tanything", arg);
                }, "view all tabs", true);
 
