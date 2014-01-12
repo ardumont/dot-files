@@ -562,7 +562,6 @@ local["^https?://github.com/"] = [
 local["^https?://twitter.com/"] = [
     pass(['g', 'h']),
     pass(['g', 'c']),
-    pass(['g', 'a']),
     pass(['g', 'r']),
     pass(['g', 'd']),
     pass(['g', 'p']),
