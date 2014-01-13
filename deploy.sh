@@ -51,20 +51,9 @@ ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt $HOME/.sbt/plugins
 mkdir -p $HOME/project/plugins/
 ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
 
-## KeySnail
-
-$REPO_DOTFILES/deploy-keysnail.sh
-
-## Work files
-
-REPO_WORK=$HOME/work
-FILES_WORK=".bashrc-work"
-
-[ -d $REPO_WORK/ ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK
+## org
 
 REPO_PERSO=$REPO_DOTFILES/..
-
-## org
 
 [ ! -d $REPO_PERSO/org ] && git clone git@github.com:ardumont/org.git $REPO_PERSO/org
 
@@ -81,3 +70,14 @@ ln -nsf $REPO_PERSO/sh $HOME/bin
 [ ! -d $REPO_PERSO/oh-my-zsh ] && git clone git@github.com:ardumont/oh-my-zsh.git $REPO_PERSO/oh-my-zsh
 
 ln -nsf $REPO_PERSO/oh-my-zsh $HOME/.oh-my-zsh
+
+## KeySnail
+
+$REPO_DOTFILES/deploy-keysnail.sh
+
+## Work files
+
+REPO_WORK=$HOME/work
+FILES_WORK=".bashrc-work"
+
+[ -d $REPO_WORK/ ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK
