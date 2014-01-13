@@ -59,3 +59,9 @@ REPO_WORK=$HOME/work
 FILES_WORK=".bashrc-work"
 
 [ -d $REPO_WORK/ ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK
+
+## oh-my-zsh
+
+[ ! -d $HOME/repo/perso/oh-my-zsh ] && git clone git@github.com:ardumont/oh-my-zsh.git $HOME/repo/perso/oh-my-zsh
+
+ln -nsf $HOME/.oh-my-zsh $HOME/repo/perso/oh-my-zsh
