@@ -60,14 +60,22 @@ FILES_WORK=".bashrc-work"
 
 [ -d $REPO_WORK/ ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK
 
+REPO_PERSO=$REPO_DOTFILES/..
+
+## org
+
+[ ! -d $REPO_PERSO/org ] && git clone git@github.com:ardumont/org.git $REPO_PERSO/org
+
+ln -nsf $REPO_PERSO/org $HOME/
+
 ## sh
 
-[ ! -d $HOME/repo/perso/sh ] && git clone git@github.com:ardumont/sh.git $HOME/repo/perso/sh
+[ ! -d $REPO_PERSO/sh ] && git clone git@github.com:ardumont/sh.git $REPO_PERSO/sh
 
-ln -nsf $HOME/repo/perso/sh $HOME/bin
+ln -nsf $REPO_PERSO/sh $HOME/bin
 
 ## oh-my-zsh
 
-[ ! -d $HOME/repo/perso/oh-my-zsh ] && git clone git@github.com:ardumont/oh-my-zsh.git $HOME/repo/perso/oh-my-zsh
+[ ! -d $REPO_PERSO/oh-my-zsh ] && git clone git@github.com:ardumont/oh-my-zsh.git $REPO_PERSO/oh-my-zsh
 
-ln -nsf $HOME/repo/perso/oh-my-zsh $HOME/.oh-my-zsh
+ln -nsf $REPO_PERSO/oh-my-zsh $HOME/.oh-my-zsh
