@@ -8,34 +8,33 @@
 ## Functions
 
 create-links-from-list() {
+    WDIR=$1 # folder from where the source files will be (working dir)
+    DDIR=$2 # folder to where deploy the links to the files (deploy dir)
+    shift
+    shift
+
     for i in $*; do
         # destroy any existing file
-        rm -f $HOME/$i
+        rm -f $DDIR/$i
         # then create the link
-        ln -nsf $REPO_DOTFILES/$i $HOME/
+        ln -nsf $WDIR/$i $DDIR/
     done
 }
 
 ## Main
 
 REPO_DOTFILES=$(dirname $0)
-REPO_WORK=$HOME/work/
-
 # standard files
-FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .bashrc-work .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp .ctags .gitignore_global"
+FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp .ctags .gitignore_global"
 
-# some more specific work files
+create-links-from-list $REPO_DOTFILES $HOME $FILES
+
+# possible work files
+
+REPO_WORK=$HOME/work
 FILES_WORK=".bashrc-work"
 
-# Simple dot-files
-
-create-links-from-list $FILES
-
-# possible work dot-files
-
-if [ -d $REPO_WORK ]; then
-    create-links-from-list $FILES_WORK
-fi
+[ -d $REPO_WORK ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK
 
 # specific setup
 
