@@ -37,14 +37,16 @@ mkdir -p $HOME/.lein
 rm -f $HOME/.lein/profiles.clj
 ln -nsf $REPO_DOTFILES/profiles.clj $HOME/.lein/
 
+## gradle
+
 mkdir -p $HOME/.gradle
 ln -nsf $REPO_DOTFILES/gradle.properties $HOME/.gradle/
 ln -nsf $REPO_DOTFILES/init.gradle $HOME/.gradle/
 
+## sbt/scala
+
 mkdir -p $HOME/.sbt/plugins
 ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt $HOME/.sbt/plugins
-
-## scala
 
 mkdir -p $HOME/project/plugins/
 ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
@@ -53,7 +55,7 @@ ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
 
 $REPO_DOTFILES/deploy-keysnail.sh
 
-# Work files
+## Work files
 
 REPO_WORK=$HOME/work
 FILES_WORK=".bashrc-work"
