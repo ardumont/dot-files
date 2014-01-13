@@ -47,6 +47,8 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
+source $HOME/.bashrc
+
 source $ZSH/oh-my-zsh.sh
 
 # # Preferred editor for local and remote sessions
