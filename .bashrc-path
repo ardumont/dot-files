@@ -25,3 +25,5 @@ FILES="$HOME/.cabal/bin /usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOM
 for d in $FILES; do
     [ -d $d ] && export PATH="$d:$PATH"
 done
+
+export MANPATH="/usr/local/man:$MANPATH"
