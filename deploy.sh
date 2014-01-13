@@ -29,13 +29,6 @@ FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-p
 
 create-links-from-list $REPO_DOTFILES $HOME $FILES
 
-# possible work files
-
-REPO_WORK=$HOME/work
-FILES_WORK=".bashrc-work"
-
-[ -d $REPO_WORK ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK
-
 # specific setup
 
 ## clojure
@@ -59,3 +52,10 @@ ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
 ## KeySnail
 
 $REPO_DOTFILES/deploy-keysnail.sh
+
+# Work files
+
+REPO_WORK=$HOME/work
+FILES_WORK=".bashrc-work"
+
+[ -d $REPO_WORK/ ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK
