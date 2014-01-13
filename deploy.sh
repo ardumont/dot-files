@@ -64,10 +64,10 @@ FILES_WORK=".bashrc-work"
 
 [ ! -d $HOME/repo/perso/sh ] && git clone git@github.com:ardumont/sh.git $HOME/repo/perso/sh
 
-ln -nsf $HOME/bin $HOME/repo/perso/sh
+ln -nsf $HOME/repo/perso/sh $HOME/bin
 
 ## oh-my-zsh
 
 [ ! -d $HOME/repo/perso/oh-my-zsh ] && git clone git@github.com:ardumont/oh-my-zsh.git $HOME/repo/perso/oh-my-zsh
 
-ln -nsf $HOME/.oh-my-zsh $HOME/repo/perso/oh-my-zsh
+ln -nsf $HOME/repo/perso/oh-my-zsh $HOME/.oh-my-zsh
