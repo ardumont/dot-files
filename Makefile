@@ -7,3 +7,5 @@ push:
 upg: pull
 	cd ~/bin/ && make pull
 	cd ~/org/ && make pull
+	cd ~/.emacs.d && make pull
+	cd ~/.emacs-live-packs && make pull
