@@ -66,6 +66,18 @@ ln -nsf $REPO_PERSO/org $HOME/
 
 ln -nsf $REPO_PERSO/sh $HOME/bin
 
+## emacs-live
+
+[ ! -d $REPO_PERSO/emacs-live ] && git clone git@github.com:ardumont/emacs-live.git $REPO_PERSO/emacs-live
+
+ln -nsf $REPO_PERSO/emacs-live $HOME/.emacs.d
+
+## emacs-live-packs
+
+[ ! -d $REPO_PERSO/emacs-live-packs ] && git clone git@github.com:ardumont/emacs-live-packs.git $REPO_PERSO/emacs-live-packs
+
+$REPO_PERSO/emacs-live-packs/deploy.sh
+
 ## oh-my-zsh
 
 [ ! -d $REPO_PERSO/oh-my-zsh ] && git clone git@github.com:ardumont/oh-my-zsh.git $REPO_PERSO/oh-my-zsh
