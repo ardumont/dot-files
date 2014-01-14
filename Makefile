@@ -1,11 +1,13 @@
+REPO_DOTFILES=~/repo/perso/dot-files
+
 deploy:
-	~/repo/perso/dot-files/deploy.sh
+	$(REPO_DOTFILES)/deploy.sh
 
 pull:
-	git pull --rebase --prune origin master
+	cd $(REPO_DOTFILES) && git pull --rebase --prune origin master
 
 push:
-	git push origin master
+	cd $(REPO_DOTFILES) && git push origin master
 
 upg: pull
 	cd ~/bin/ && make pull
