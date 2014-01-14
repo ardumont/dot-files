@@ -1,5 +1,5 @@
 pull:
-	git pull --rebase origin master
+	git pull --rebase --prune origin master
 
 push:
 	git push origin master
