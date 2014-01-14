@@ -1,3 +1,6 @@
+deploy:
+	~/repo/perso/dot-files/deploy.sh
+
 pull:
 	git pull --rebase --prune origin master
 
