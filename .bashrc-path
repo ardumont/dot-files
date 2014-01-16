@@ -8,16 +8,16 @@
 
 HOMEBIN=$HOME/bin/
 
-[ -d $HOMEBIN ] && export PATH=$HOMEBIN:$PATH
+[ -d $HOMEBIN ] && PATH=$HOMEBIN:$PATH
 
 for d in $(ls -l $HOMEBIN | grep '^d' | awk '{print $9}');
 do
     FOLDER=${HOMEBIN}${d}
-    [ -d $FOLDER ] && export PATH="$FOLDER:$PATH"
+    [ -d $FOLDER ] && PATH="$FOLDER:$PATH"
 done
 
 ###
-# Personal shell scripts in $HOME/bin/
+# Other applications
 ###
 
 FILES="$HOME/.cabal/bin /usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOME/applications/wine $HOME/applications/bin /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-6-oracle $HOME/applications/apache-maven/bin $HOME/.lein $HOME/.lein/bin $HOME/.lein/plugins /opt/vagrant/bin $HOME/applications/adt-bundle-linux-x85/sdk/platform-tools $HOME/applications/appengine/bin $HOME/.cask/bin/ $HOME/.carton/bin/ $HOME/applications/play $HOME/applications/scala/bin $HOME/applications/gradle/bin $HOME/applications/groovy/bin $HOME/applications/visualvm/bin"
@@ -25,6 +25,10 @@ FILES="$HOME/.cabal/bin /usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOM
 for d in $FILES; do
     [ -d $d ] && PATH="$d:$PATH"
 done
+
+###
+# Export part
+###
 
 export PATH
 
