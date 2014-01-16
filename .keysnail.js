@@ -599,7 +599,7 @@ local["^https?://mail.google.com/mail/"] = [
     // thread list
     pass(['*', 'a']),
     pass(['*', 'n']),
-    pass(['*', 'r']),
+    // pass(['*', 'r']),
     pass(['*', 'u']),
     pass(['*', 's']),
     pass(['*', 't']),
@@ -623,7 +623,7 @@ local["^https?://mail.google.com/mail/"] = [
     ['m', null],
     ['!', null],
     ['#', null],
-    ['r', null],
+//    ['r', null],
     ['R', null],
     ['a', null],
     ['A', null],
