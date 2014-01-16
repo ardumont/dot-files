@@ -62,7 +62,8 @@ key.blackList = [
     // 'https://mail.google.com/*',
     // 'http://gmail.com/*',
     // 'https://gmail.com/*'
-    'https://www.docker.io/gettingstarted/#'
+    'https://www.docker.io/gettingstarted/#',
+    'https://trello.com/*'
 ];
 
 // ============================= Key bindings ============================== //
