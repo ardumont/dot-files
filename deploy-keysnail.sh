@@ -27,7 +27,9 @@ FOLDER_KEYSNAIL_EXTENSIONS=$FOLDER_USER_PROFILE/keysnail
 
 # Reference the keysnail extension
 cp "$FOLDER_USER_PROFILE/extensions.ini" "$FOLDER_USER_PROFILE/extensions.bak.ini"
-runhaskell $REPO_DOTFILES/hs/LoadAndUpdateIni.hs "$FOLDER_USER_PROFILE/extensions.bak.ini" "$FOLDER_FIREFOX_EXTENSIONS/$KEYSNAIL_EXTENSION" > "$FOLDER_USER_PROFILE/extensions.ini"
+
+[ "$(grep -c $FOLDER_FIREFOX_EXTENSIONS/$KEYSNAIL_EXTENSION $FOLDER_USER_PROFILE/extensions.ini)" != "1" ] &&
+    runhaskell $REPO_DOTFILES/hs/LoadAndUpdateIni.hs "$FOLDER_USER_PROFILE/extensions.bak.ini" "$FOLDER_FIREFOX_EXTENSIONS/$KEYSNAIL_EXTENSION" > "$FOLDER_USER_PROFILE/extensions.ini"
 
 # Force link creation
 ln -nsf $REPO_DOTFILES/$KEYSNAIL_EXTENSION $FOLDER_FIREFOX_EXTENSIONS # install firefox extension keysnail

@@ -20,3 +20,6 @@ pupg: push
 	cd ~/org/ && make push
 	cd ~/.emacs.d && make push
 	cd ~/.emacs-live-packs && make push
+
+deploy-keysnail:
+	~/repo/perso/dot-files/deploy-keysnail.sh
