@@ -3,6 +3,9 @@ REPO_DOTFILES=~/repo/perso/dot-files
 deploy:
 	$(REPO_DOTFILES)/deploy.sh
 
+deploy-keysnail:
+	$(REPO_DOTFILES)/deploy-keysnail.sh
+
 pull:
 	cd $(REPO_DOTFILES) && git pull --rebase --prune origin master
 
@@ -20,6 +23,3 @@ pupg: push
 	cd ~/org/ && make push
 	cd ~/.emacs.d && make push
 	cd ~/.emacs-live-packs && make push
-
-deploy-keysnail:
-	~/repo/perso/dot-files/deploy-keysnail.sh
