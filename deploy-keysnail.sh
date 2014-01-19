@@ -10,6 +10,8 @@ FF_FOLDER=$HOME/.mozilla/firefox
 
 ######### PREPARE
 
+~/bin/deploy/install.sh haskell-platform
+
 mkdir -p $FF_FOLDER
 
 ######### DEPLOY
