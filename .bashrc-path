@@ -6,15 +6,15 @@
 # Personal shell scripts in $HOME/bin/
 ###
 
-HOMEBIN=$HOME/bin/
+HOMEBIN=$HOME/bin
 
-[ -d $HOMEBIN ] && PATH=$HOMEBIN:$PATH
+if [ -d $HOMEBIN ]; then
+    PATH=$HOMEBIN:$PATH
 
-for d in $(ls -l $HOMEBIN | grep '^d' | awk '{print $9}');
-do
-    FOLDER=${HOMEBIN}${d}
-    [ -d $FOLDER ] && PATH="$FOLDER:$PATH"
-done
+    for file in $HOMEBIN/*; do
+        [ -d $file ] && PATH="$file:$PATH"
+    done
+fi
 
 ###
 # Other applications
