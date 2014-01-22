@@ -1,17 +1,10 @@
 # dot-files
 
-My . files setup for my linux boxes.
+. files setup for my linux boxes.
 
 # Usage
 
 Clone this repository and then link all this files/folders in your home.
-
-Something along those lines should do the trick:
-
-```sh
-REPO=/path/to/your/clones/dot-files
-for i in $(ls $REPO); do ln -s $REPO/$i ~; done
-```
 
 # Deploy script
 
@@ -20,3 +13,5 @@ This will create links into your home folders for all the . files present in thi
 ```sh
 /path/to/dot-files/deploy.sh
 ```
+
+plus clone some of my personal repositories (ardumont/sh, ardumont/oh-my-zsh, etc...)
