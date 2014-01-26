@@ -10,8 +10,8 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="half-life"
 #ZSH_THEME="lambda"
 #ZSH_THEME="linuxonly"
-#ZSH_THEME="ys"
-ZSH_THEME="terminalparty"
+ZSH_THEME="ys"
+#ZSH_THEME="terminalparty"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
