@@ -690,3 +690,9 @@ local["^http://www.google.(co.jp|com)/reader/view/"] = [
     ["=", null],
     ["-", null]
 ];
+
+// ==================== read-it-later/pocket
+
+key.setViewKey(['C-c', 'p', 't'], function (aEvent, aArg) {
+    ext.exec("ril-toggle", aArg);
+}, 'Start continuous HaH', true);
