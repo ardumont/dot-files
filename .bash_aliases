@@ -109,6 +109,8 @@ alias gfa='git fetch --all -p'
 alias gpo='git push origin'
 alias gpu='git push upstream'
 
+alias gpurge='git branch --merged | xargs git branch -d'
+
 ################ OS
 
 alias upg="sudo aptitude update ; sudo aptitude safe-upgrade -y"
