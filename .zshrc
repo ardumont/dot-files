@@ -53,7 +53,7 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras git-prompt ruby rvm vagrant lein autojump cabal cake colored-man debian docker heroku mosh mvn rsync scala tmux)
 
-source $HOME/.bashrc
+[ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
 source $ZSH/oh-my-zsh.sh
 
