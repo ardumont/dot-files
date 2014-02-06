@@ -84,7 +84,7 @@ alias git='hub'
 alias gitka='gitk --all'
 
 # git status
-alias gst='git status'
+alias gst='git status -sb'
 
 # git commit -v
 alias gci='git commit -v'
