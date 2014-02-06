@@ -96,7 +96,7 @@ alias gco='git checkout'
 alias gbr='git branch'
 
 # git diff
-alias gdf='git diff'
+alias gdf='git diff --word-diff'
 
 # pretty log
 alias gl='git log --oneline --graph --remotes --decorate --all'
