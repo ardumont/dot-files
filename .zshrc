@@ -53,9 +53,9 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras git-prompt ruby rvm vagrant lein autojump cabal cake colored-man debian docker heroku mosh mvn rsync scala tmux)
 
-[ -f $HOME/.bashrc ] && source $HOME/.bashrc
-
 source $ZSH/oh-my-zsh.sh
+
+[ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
