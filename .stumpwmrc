@@ -98,7 +98,8 @@
   (file-progress        "file progress"    ""                          "file_progress"          "F")
   (xosview              "xosview"          "xosview"                   "xosview"                "X")
   (chromium-browser     "chromium"         "chromium-browser"          "chromium-browser"       "b")
-  (gitk                 "gitk"             "gitk"                      "gitk"                   "z")))
+  (gitk                 "gitk"             "gitk"                      "gitk"                   "z")
+  (lighttable           "LightTable"       "~/application/LightTable/LightTable" "ltbin"        "C")))
 
 ;; run shell command - Simply execute shell command
 (run-shell-command-category
