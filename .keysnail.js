@@ -176,11 +176,11 @@ key.setGlobalKey(['C-c', 'c', 'u'], function (ev) {
 }, 'Copy document url', true);
 
 key.setGlobalKey(['C-i'], function (ev) {
-    document.commandDispatcher.advanceFocus()
+    document.commandDispatcher.advanceFocus();
 }, 'tab', true);
 
 key.setGlobalKey(['C-M-i'], function (ev) {
-    document.commandDispatcher.rewindFocus()
+    document.commandDispatcher.rewindFocus();
 }, 'tab', true);
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
