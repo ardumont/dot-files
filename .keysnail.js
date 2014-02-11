@@ -175,6 +175,9 @@ key.setGlobalKey(['C-c', 'c', 'u'], function (ev) {
     command.setClipboardText(content.location.href);
 }, 'Copy document url', true);
 
+key.setGlobalKey(['C-i'], function (ev) {
+    document.commandDispatcher.advanceFocus()
+}, 'tab', true);
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
 }, 'Scroll line down');
