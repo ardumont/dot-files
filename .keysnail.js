@@ -23,6 +23,21 @@ key.suspendKey           = "<f2>";
 
 // ================================= Hooks ================================= //
 
+ext.add("activate-caret-mode",
+        function (ev, arg) {
+            setCaretMode(true);
+        }, M({ja: "activate-caret-mode", en: "activate-caret-mode"}));
+
+ext.add("deactivate-caret-mode",
+        function (ev, arg) {
+            setCaretMode(false);
+        }, M({ja: "deactivate-caret-mode", en: "deactivate-caret-mode"}));
+
+function setCaretMode(b) {
+    display.echoStatusBar((b ? "A" : "Dea") + "ctivate the caret mode", 2000);
+    util.setBoolPref("accessibility.browsewithcaret", b);
+}
+
 hook.setHook('KeyBoardQuit', function (aEvent) {
     if (key.currentKeySequence.length) {
         return;
@@ -136,13 +151,16 @@ key.setGlobalKey(['C-x', 'C-s'], function (ev) {
 
 key.setGlobalKey('M-w', function (ev) {
     command.copyRegion(ev);
+    setCaretMode(false);
 }, 'Copy selected text', true);
 
 key.setGlobalKey('C-s', function (ev) {
+    setCaretMode(true);
     command.iSearchForwardKs(ev);
 }, 'Emacs like incremental search forward', true);
 
 key.setGlobalKey('C-r', function (ev) {
+    setCaretMode(true);
     command.iSearchBackwardKs(ev);
 }, 'Emacs like incremental search backward', true);
 
