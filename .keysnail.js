@@ -177,15 +177,15 @@ key.setGlobalKey(['C-c', 'c', 'u'], function (ev) {
 
 key.setGlobalKey(['C-i'], function (ev) {
     document.commandDispatcher.advanceFocus();
-}, 'tab', true);
+}, 'Tabulation', true);
 
 key.setGlobalKey(['C-M-i'], function (ev) {
     document.commandDispatcher.rewindFocus();
-}, 'tab', true);
+}, 'Shift-tabulation', true);
 
 key.setGlobalKey(['C-j'], function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RETURN, true);
-}, 'Trying to send enter', true);
+}, 'Enter', true);
 
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
