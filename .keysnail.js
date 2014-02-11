@@ -171,9 +171,9 @@ key.setGlobalKey('M-p', function (ev) {
 }, 'Select previous tab');
 
 key.setGlobalKey(['C-c', 'c', 'u'], function (ev) {
-    display.echoStatusBar("Copy document url!", 2000);
+    display.echoStatusBar("Copy document url '" + content.location.href + "' to clipboard!", 2000);
     command.setClipboardText(content.location.href);
-}, 'Select all', true);
+}, 'Copy document url', true);
 
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
