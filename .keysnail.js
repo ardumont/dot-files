@@ -182,6 +182,11 @@ key.setGlobalKey(['C-i'], function (ev) {
 key.setGlobalKey(['C-M-i'], function (ev) {
     document.commandDispatcher.rewindFocus();
 }, 'tab', true);
+
+key.setGlobalKey(['C-j'], function (ev) {
+    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RETURN, true);
+}, 'Trying to send enter', true);
+
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
 }, 'Scroll line down');
