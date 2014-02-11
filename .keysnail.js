@@ -345,7 +345,7 @@ key.setEditKey('M-d', function (ev) {
     command.deleteForwardWord(ev);
 }, 'Delete forward word');
 
-key.setEditKey([['C-<backspace>'], ['M-<delete>']], function (ev) {
+key.setEditKey([['C-<backspace>'], ['M-<delete>'], ['C-M-h']], function (ev) {
     command.deleteBackwardWord(ev);
 }, 'Delete backward word');
 
