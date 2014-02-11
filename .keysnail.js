@@ -86,10 +86,6 @@ key.setGlobalKey(['<f1>', 'F'], function (ev) {
     openHelpLink("firefox-help");
 }, 'Display Firefox help');
 
-key.setGlobalKey('C-m', function (ev) {
-    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RETURN, true);
-}, 'Generate the return key code');
-
 key.setGlobalKey(['C-x', 'l'], function (ev) {
     command.focusToById("urlbar");
 }, 'Focus to the location bar', true);
