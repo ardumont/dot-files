@@ -273,6 +273,9 @@ key.setEditKey(['C-x', 'r', 'y'], function (ev) {
 }, 'Yank the last killed rectangle with upper left corner at point', true);
 
 key.setEditKey([['C-SPC'], ['C-@']], function (ev) {
+    if(!util.isCaretEnabled()) {// we need to activate the caret mode, F7 to do so
+        key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_LEFT, true);
+    }
     command.setMark(ev);
 }, 'Set the mark', true);
 
