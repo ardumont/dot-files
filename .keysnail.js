@@ -170,6 +170,11 @@ key.setGlobalKey('M-p', function (ev) {
     getBrowser().mTabContainer.advanceSelectedTab(-1, true);
 }, 'Select previous tab');
 
+key.setGlobalKey(['C-c', 'c', 'u'], function (ev) {
+    display.echoStatusBar("Copy document url!", 2000);
+    command.setClipboardText(content.location.href);
+}, 'Select all', true);
+
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
 }, 'Scroll line down');
