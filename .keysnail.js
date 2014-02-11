@@ -178,6 +178,10 @@ key.setGlobalKey(['C-c', 'c', 'u'], function (ev) {
 key.setGlobalKey(['C-i'], function (ev) {
     document.commandDispatcher.advanceFocus()
 }, 'tab', true);
+
+key.setGlobalKey(['C-M-i'], function (ev) {
+    document.commandDispatcher.rewindFocus()
+}, 'tab', true);
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
 }, 'Scroll line down');
