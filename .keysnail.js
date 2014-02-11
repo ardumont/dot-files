@@ -10,7 +10,7 @@
 
 // ========================= Special key settings ========================== //
 
-key.quitKey              = "";
+key.quitKey              = "C-g";
 key.helpKey              = "<f1>";
 key.escapeKey            = "C-q";
 key.macroStartKey        = "C-x (";
@@ -187,10 +187,10 @@ key.setGlobalKey(['C-j'], function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RETURN, true);
 }, 'Enter', true);
 
-key.setGlobalKey('C-g', function (ev) {
-    display.echoStatusBar("Escaping...", 2000);
-    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_ESCAPE, true);
-}, 'Quit');
+// key.setGlobalKey('C-g', function (ev) {
+//     display.echoStatusBar("Escaping...", 2000);
+//     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_ESCAPE, true);
+// }, 'Quit');
 
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
