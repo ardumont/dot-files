@@ -39,6 +39,7 @@ function setCaretMode(b) {
 }
 
 hook.setHook('KeyBoardQuit', function (aEvent) {
+    setCaretMode(false);
     if (key.currentKeySequence.length) {
         return;
     }
