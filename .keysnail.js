@@ -541,8 +541,8 @@ key.setViewKey([':', 't'], function (ev, arg) {
 // ==================== tanything
 
 key.setViewKey(['C-x', 'b'], function (ev, arg) {
-                   ext.exec("tanything", arg);
-               }, "view all tabs", true);
+    ext.exec("tanything", arg);
+}, "view all tabs", true);
 
 // plugins.options["tanything_opt.keymap"] = {
 //     "C-z"   : "prompt-toggle-edit-mode",
