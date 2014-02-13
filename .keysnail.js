@@ -57,6 +57,7 @@ hook.setHook('KeyBoardQuit', function (aEvent) {
             gBrowser.focus();
             _content.focus();
         }
+        setCaretMode(false);
     } else {
         goDoCommand("cmd_selectNone");
     }
