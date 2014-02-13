@@ -110,6 +110,7 @@ alias gpo='git push origin'
 alias gpu='git push upstream'
 
 alias gpurge='git branch --merged | xargs git branch -d'
+alias gcob='git checkout -b'
 
 ################ OS
 
