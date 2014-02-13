@@ -117,6 +117,8 @@ let pOptions = plugins.setupOptions("tanything_opt", {
     }
 }, PLUGIN_INFO);
 
+var lastSelectedIndex = 0;
+
 var tanything =
     (function () {
          var currentCollection;
@@ -179,11 +181,15 @@ var tanything =
                  return [util.getFaviconPath(url), title, url, tab];
              }
 
+             function selectLastTabIndex() {
+                 return lastSelectedIndex;
+             }
+
              currentCollection = [getInfoForTab(tab) for each (tab in getTabs())];
 
              prompt.selector({
                  message             : "select tab: ",
-                 initialIndex        : gBrowser.mTabContainer.selectedIndex,
+                 initialIndex        : selectLastTabIndex(),
                  flags               : [ICON | IGNORE, 0, 0, IGNORE | HIDDEN],
                  collection          : currentCollection,
                  header              : ["title", "url"],
@@ -210,10 +216,13 @@ var tanything =
          }
 
          function open(aIndex) {
+             lastSelectedIndex = gBrowser.mTabContainer.selectedIndex; // keep the last selected index
              gBrowser.mTabContainer.selectedIndex = aIndex;
          }
 
          function close(aIndex) {
+             // if lastSelectedIndex is to the right of the tab we close, then this index is decremented by 1
+             if(lastSelectedIndex > aIndex) lastSelectedIndex--;
              if (currentCollection.length === 1)
              {
                  prompt.finish(true);
