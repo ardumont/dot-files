@@ -1,3 +1,6 @@
+keysym Super_L = Num_Lock
 remove lock = Caps_Lock
 keysym Caps_Lock = Control_L
 add control = Control_L
+clear mod5
+add mod1 = Mode_switch
