@@ -26,7 +26,7 @@ create-links-from-list() {
 REPO_DOTFILES=$(dirname $0)
 
 # standard files
-FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .git-completion.bash .conkerorrc .sbclrc .xmonad quicklisp .ctags .gitignore_global .zshrc Makefile"
+FILES=".stumpwmrc .stumpwm-functions.lisp .profile .bashrc .bashrc-env .bashrc-path .bash_aliases .bashrc-prompt .tmux.conf .ratpoisonrc .xmodmaprc .vimrc .git-completion.bash .conkerorrc .sbclrc .xmonad .Xmodmap quicklisp .ctags .gitignore_global .zshrc Makefile"
 
 create-links-from-list $REPO_DOTFILES $HOME $FILES
 
