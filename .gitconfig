@@ -1,0 +1,25 @@
+[user]
+	name = Antoine R. Dumont
+	email = antoine.romain.dumont@gmail.com
+[core]
+	editor = emacsclient -nw
+	excludesfile = /home/tony/.gitignore_global
+[color]
+	ui = true
+[merge]
+	tool = meld
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD~ --
+	last = log -1 HEAD
+	r = reset
+	r1 = reset HEAD^
+	r2 = reset HEAD^^
+	rh = reset --hard
+	rh1 = reset HEAD^ --hard
+	rh2 = reset HEAD^^ --hard
+[help]
+	autocorrect = 1
