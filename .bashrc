@@ -93,7 +93,6 @@ HISTCONTROL=ignoreboth
 # [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
 
 # keyboard mapping
-#[ -f ~/.xmodmaprc ] && xmodmap -display $DISPLAY ~/.xmodmaprc
 [ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
 
 # autojump (sudo aptitude install autojump) your way in your filesystem
