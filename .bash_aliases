@@ -111,6 +111,7 @@ alias gpu='git push upstream'
 
 alias gpurge='git branch --merged | xargs git branch -d'
 alias gcob='git checkout -b'
+alias gmc='git merge origin/$(current_branch)'
 
 ################ OS
 
