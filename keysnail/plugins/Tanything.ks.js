@@ -125,8 +125,8 @@ let pOptions = plugins.setupOptions("tanything_opt", {
 userscript.require("tabs.js");
 
 // state of the index regarding currently selected and last selected
-var lastSelectedIndex = 0;
-var currentIndex = 0;
+var lastSelectedIndex = gBrowser.mTabContainer.selectedIndex;
+var currentIndex = lastSelectedIndex;
 
 var tanything =
     (function () {
