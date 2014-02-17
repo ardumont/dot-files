@@ -12,6 +12,10 @@ var PLUGIN_INFO =
     <license lang="ja">MIT ライセンス</license>
     <minVersion>1.8.5</minVersion>
     <include>main</include>
+    <require>
+      <script>https://raw2.github.com/mozilla/addon-sdk/master/lib/sdk/tabs/tabs.js</script>
+      <script>https://raw2.github.com/mozilla/addon-sdk/master/lib/sdk/tabs/tab-firefox.js</script>
+    </require>
     <detail><![CDATA[
 ==== What's this ====
 
@@ -117,7 +121,12 @@ let pOptions = plugins.setupOptions("tanything_opt", {
     }
 }, PLUGIN_INFO);
 
+// load the tabs.js to permit the Tab events loading
+userscript.require("tabs.js");
+
+// state of the index regarding currently selected and last selected
 var lastSelectedIndex = 0;
+var currentIndex = 0;
 
 var tanything =
     (function () {
@@ -163,6 +172,21 @@ var tanything =
          ];
 
          function getTabs() Array.slice(gBrowser.mTabContainer.childNodes);
+
+         function selectTab(event) {
+             lastSelectedIndex = currentIndex;
+             currentIndex = gBrowser.mTabContainer.selectedIndex;
+         }
+
+         function closeTab(event) {
+             if(currentIndex < lastSelectedIndex) lastSelectedIndex--;
+             currentIndex = gBrowser.mTabContainer.selectedIndex;
+         }
+
+         var container = gBrowser.mTabContainer;
+         container.addEventListener("TabOpen", selectTab);
+         container.addEventListener("TabSelect", selectTab);
+         container.addEventListener("TabClose", closeTab);
 
          function callSelector() {
              function getIconFor(tab) {
@@ -216,13 +240,10 @@ var tanything =
          }
 
          function open(aIndex) {
-             lastSelectedIndex = gBrowser.mTabContainer.selectedIndex; // keep the last selected index
              gBrowser.mTabContainer.selectedIndex = aIndex;
          }
 
          function close(aIndex) {
-             // if lastSelectedIndex is to the right of the tab we close, then this index is decremented by 1
-             if(lastSelectedIndex > aIndex) lastSelectedIndex--;
              if (currentCollection.length === 1)
              {
                  prompt.finish(true);
