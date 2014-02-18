@@ -13,8 +13,8 @@
 key.quitKey              = "C-g";
 key.helpKey              = "<f1>";
 key.escapeKey            = "C-q";
-key.macroStartKey        = ["C-x", "("];
-key.macroEndKey          = ["C-x", ")"];
+key.macroStartKey        = "C-1";
+key.macroEndKey          = "C-0";
 key.universalArgumentKey = "C-u";
 key.negativeArgument1Key = "C--";
 key.negativeArgument2Key = "C-M--";
@@ -81,6 +81,22 @@ key.blackList = [
 ];
 
 // ============================= Key bindings ============================== //
+
+key.setGlobalKey(["C-x", "("], function (ev) {
+    ev.target.dispatchEvent(key.stringToKeyEvent(key.macroStartKey));
+}, "Start macro recording");
+
+key.setGlobalKey(["C-x", ")"], function (ev) {
+    if (key.inputtingMacro) {
+        key.currentMacro.pop();       /* trash )   */
+        key.currentMacro.pop();       /* trash C-x */
+    }
+    ev.target.dispatchEvent(key.stringToKeyEvent(key.macroEndKey));
+}, "End macro recording");
+
+key.setGlobalKey(["C-x", "e"], function (ev) {
+    ev.target.dispatchEvent(key.stringToKeyEvent(key.macroEndKey));
+}, "Replay macro recording");
 
 key.setGlobalKey('C-M-r', function (ev) {
     userscript.reload();
