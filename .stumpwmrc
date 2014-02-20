@@ -28,8 +28,9 @@
 (load "~/.stumpwm-functions.lisp")
 (set-prefix-key (kbd "C-t"))
 
-(setf *message-window-gravity* :center)
-(setf *input-window-gravity* :center)
+(set-normal-gravity :bottom)
+(setf *message-window-gravity* :bottom-left)
+(setf *input-window-gravity* :bottom-left)
 
 (setf *frame-number-map* "abcdefghijklmnopqrst")
 
