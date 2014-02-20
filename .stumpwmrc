@@ -150,6 +150,8 @@
 (define-key *root-map* (kbd "C-d") "move-window down")
 (define-key *root-map* (kbd "C-l") "move-window left")
 
+(define-key *root-map* (kbd "M-x") "colon")
+
 ;; ========================== Launch commands at startup time
 
 (relaunch-panel)
