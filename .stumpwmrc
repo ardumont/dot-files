@@ -150,6 +150,11 @@
 (define-key *root-map* (kbd "C-d") "move-window down")
 (define-key *root-map* (kbd "C-l") "move-window left")
 
+(undefine-key *root-map* (kbd "M-Up"))
+(undefine-key *root-map* (kbd "M-Right"))
+(undefine-key *root-map* (kbd "M-Down"))
+(undefine-key *root-map* (kbd "M-Left"))
+
 (define-key *root-map* (kbd "M-x") "colon")
 
 ;; ========================== Launch commands at startup time
