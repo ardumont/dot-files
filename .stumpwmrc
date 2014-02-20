@@ -145,8 +145,6 @@
 
 (define-key *root-map* (kbd "C-L") "quit")
 
-(define-key *root-map* (kbd "i") "xephyr");; old eclipse binding
-
 ;; ========================== Launch commands at startup time
 
 (relaunch-panel)
