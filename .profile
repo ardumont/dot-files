@@ -8,5 +8,3 @@
 #umask 022
 
 [ -n "$BASH_VERSION" ] && [ -f ~/.bashrc ] && . ~/.bashrc # running bash
-
-[ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
