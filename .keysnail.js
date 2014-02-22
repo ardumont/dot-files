@@ -217,6 +217,9 @@ key.setGlobalKey(['C-j'], function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RETURN, true);
 }, 'Enter', true);
 
+key.setGlobalKey(['C-m'], function (ev) {
+    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_RETURN, true);
+}, 'Enter', true);
 key.setGlobalKey(['C-c', 'm', 'l'], function (ev, arg) {
     ext.exec("move-selected-tab-left", arg);
 }, 'Move selected tab to the left.', true);
