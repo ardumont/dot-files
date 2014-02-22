@@ -60,7 +60,7 @@ HISTCONTROL=ignoreboth
 # unset color_prompt force_color_prompt
 
 # play the file to have a nice ps1 prompt
-[ -f ~/.bashrc-prompt ] && . ~/.bashrc-prompt
+#[ -f ~/.bashrc-prompt ] && . ~/.bashrc-prompt
 
 # enable color support of ls and also add handy aliases
 # if [ -x /usr/bin/dircolors ]; then
