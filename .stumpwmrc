@@ -180,8 +180,6 @@
 ;; ========================== Launch commands at startup time
 
 (relaunch-panel)
-;; start an emacs server in background
-(run-shell-command "emacs --daemon &")
 (run-shell-command "nautilus --no-default-window")
 (run-shell-command "/usr/bin/gnome-settings-daemon")
 (run-shell-command "killall nm-applet && /usr/bin/nm-applet &")
