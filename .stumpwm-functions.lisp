@@ -1,4 +1,3 @@
-;; -*- lisp -*-
 ;; -*- stumpwm -*-
 
 (in-package :stumpwm)
