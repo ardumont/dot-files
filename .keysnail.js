@@ -56,6 +56,7 @@ hook.setHook('KeyBoardQuit', function (aEvent) {
     if (util.isCaretEnabled()) {
         if (marked) {
             command.resetMark(aEvent);
+            setCaretMode(false);
         } else {
             if ("blur" in aEvent.target) {
                 aEvent.target.blur();
