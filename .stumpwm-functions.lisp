@@ -1,3 +1,6 @@
+;; -*- lisp -*-
+;; -*- stumpwm -*-
+
 (in-package :stumpwm)
 
 ;; ========================== Functions
