@@ -35,9 +35,12 @@ ext.add("deactivate-caret-mode",
 
 ext.add("status-caret-mode",
         function (ev, arg) {
-            b = util.getBoolPref("accessibility.browsewithcaret");
-            display.echoStatusBar("caret mode " + (b ? "a" : "dea") + "ctivated!", 2000);
+            display.echoStatusBar("caret mode " + (isCaretMode() ? "a" : "dea") + "ctivated!", 2000);
         }, M({ja: "status-caret-mode", en: "status-caret-mode"}));
+
+function isCaretMode() {
+    return util.getBoolPref("accessibility.browsewithcaret");
+}
 
 function setCaretMode(b) {
     display.echoStatusBar((b ? "A" : "Dea") + "ctivate the caret mode", 2000);
