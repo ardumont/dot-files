@@ -35,7 +35,7 @@ ext.add("deactivate-caret-mode",
 
 ext.add("status-caret-mode",
         function (ev, arg) {
-            display.echoStatusBar("caret mode " + (isCaretMode() ? "a" : "dea") + "ctivated!", 2000);
+            display.echoStatusBar("Caret mode " + (isCaretMode() ? "a" : "dea") + "ctivated!", 2000);
         }, M({ja: "status-caret-mode", en: "status-caret-mode"}));
 
 function isCaretMode() {
@@ -43,8 +43,8 @@ function isCaretMode() {
 }
 
 function setCaretMode(b) {
-    display.echoStatusBar((b ? "A" : "Dea") + "ctivate the caret mode", 2000);
     util.setBoolPref("accessibility.browsewithcaret", b);
+    display.echoStatusBar("Caret mode " + (isCaretMode() ? "a" : "dea") + "ctivated!", 2000);
 }
 
 hook.setHook('KeyBoardQuit', function (aEvent) {
