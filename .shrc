@@ -1,6 +1,3 @@
-# play the file to have a nice ps1 prompt
-[ -f ~/.bashrc-prompt ] && . ~/.bashrc-prompt
-
 # Load aliases
 [ -f ~/.shrc-aliases ] && . ~/.shrc-aliases
 
