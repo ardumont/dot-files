@@ -29,6 +29,8 @@
 (load "~/.stumpwm-functions.lisp")
 ;; (set-prefix-key (kbd "C-t"))
 
+(setf *contrib-dir* "~/applications/stumpwm/contrib/")
+
 (set-normal-gravity :bottom)
 (setf *message-window-gravity* :bottom-left)
 (setf *input-window-gravity* :bottom-left)
