@@ -13,7 +13,10 @@
            #:ensure-file-exists
            #:split-spaces
            #:first-line
-           #:file-size))
+           #:file-size
+           #:safely-read
+           #:safely-read-file
+           #:make-versions-url))
 
 (defpackage #:ql-setup
   (:documentation
@@ -110,8 +113,7 @@
   (:documentation
    "A simple implementation of unpacking the 'tar' file format.")
   (:use #:cl)
-  (:export #:tarball-contents
-           #:unpack-tarball))
+  (:export #:unpack-tarball))
 
 (defpackage #:ql-gunzipper
   (:documentation
@@ -138,6 +140,8 @@
         #:ql-setup
         #:ql-gunzipper
         #:ql-minitar)
+  (:intern #:dist-version
+           #:dist-url)
   (:import-from #:ql-impl-util
                 #:delete-directory-tree
                 #:directory-entries
@@ -159,6 +163,7 @@
   (:export #:all-dists
            #:enabled-dists
            #:find-dist
+           #:find-dist-or-lose
            #:find-system
            #:find-release
            #:dist
@@ -235,7 +240,8 @@
            #:system-definition-searcher
            #:system-apropos
            #:dependency-tree
-           #:clean))
+           #:clean
+           #:unknown-dist))
 
 (defpackage #:ql-dist-user
   (:documentation
@@ -259,6 +265,11 @@
         #:ql-minitar
         #:ql-gunzipper)
   (:shadow #:uninstall)
+  (:shadowing-import-from #:ql-dist
+                          #:dist-version
+                          #:dist-url)
+  (:export #:dist-version
+           #:dist-url)
   (:export #:quickload
            #:*quickload-prompt*
            #:*quickload-verbose*
@@ -276,9 +287,14 @@
            #:provided-systems
            #:system-apropos
            #:system-list
+           #:client-version
+           #:client-url
+           #:available-client-versions
+           #:install-client
            #:update-client
            #:update-dist
            #:update-all-dists
+           #:available-dist-versions
            #:add-to-init-file
            #:use-only-quicklisp-systems
            #:write-asdf-manifest-file

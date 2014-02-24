@@ -449,12 +449,8 @@
 
 (defmethod slot-unbound (class (dist dist) (slot (eql 'available-versions-url)))
   (declare (ignore class))
-  (let* ((subscription-url (distinfo-subscription-url dist))
-         (suffix-pos (position #\. subscription-url :from-end t))
-         (new-url (concatenate 'string
-                               (subseq subscription-url 0 suffix-pos)
-                               "-versions.txt")))
-    (setf (available-versions-url dist) new-url)))
+  (setf (available-versions-url dist)
+        (make-versions-url (distinfo-subscription-url dist))))
 
 
 (defmethod ensure-system-index-file ((dist dist))
@@ -1089,3 +1085,27 @@ FUN."
                   (split-spaces line)
                 (setf versions (acons version url versions)))))
       versions)))
+
+
+;;;
+;;; User interface bits to re-export from QL
+;;;
+
+(define-condition unknown-dist (error)
+  ((name
+    :initarg :name
+    :reader unknown-dist-name))
+  (:report (lambda (condition stream)
+             (format stream "No dist known by that name -- ~S"
+                     (unknown-dist-name condition)))))
+
+(defun find-dist-or-lose (name)
+  (let ((dist (find-dist name)))
+    (or dist
+        (error 'unknown-dist :name name))))
+
+(defun dist-url (name)
+  (canonical-distinfo-url  (find-dist-or-lose name)))
+
+(defun dist-version (name)
+  (version (find-dist-or-lose name)))
