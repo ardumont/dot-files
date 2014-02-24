@@ -72,11 +72,6 @@ hook.setHook('KeyBoardQuit', function (aEvent) {
     if (KeySnail.windowType === "navigator:browser" && !marked) {
         key.generateKey(aEvent.originalTarget, KeyEvent.DOM_VK_ESCAPE, true);
     }
-
-    // Deactivate caret mode
-    if(isCaretMode()) {
-        setCaretMode(false);
-    }
 });
 
 // ============================== Black list =============================== //
