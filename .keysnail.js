@@ -56,10 +56,6 @@ hook.setHook('KeyBoardQuit', function (aEvent) {
 
     var marked = command.marked(aEvent);
 
-    if(isCaretMode()) {
-        setCaretMode(false);
-    }
-
     if (util.isCaretEnabled()) {
         if (marked) {
             command.resetMark(aEvent);
@@ -75,6 +71,11 @@ hook.setHook('KeyBoardQuit', function (aEvent) {
     }
     if (KeySnail.windowType === "navigator:browser" && !marked) {
         key.generateKey(aEvent.originalTarget, KeyEvent.DOM_VK_ESCAPE, true);
+    }
+
+    // Deactivate caret mode
+    if(isCaretMode()) {
+        setCaretMode(false);
     }
 });
 
@@ -332,9 +333,11 @@ key.setEditKey(['C-x', 'r', 'y'], function (ev) {
 }, 'Yank the last killed rectangle with upper left corner at point', true);
 
 key.setEditKey([['C-SPC'], ['C-@']], function (ev) {
-    if(!util.isCaretEnabled()) {// we need to activate the caret mode, F7 to do so
-        key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_LEFT, true);
-    }
+    // closing the find bar
+    command.closeFindBar();
+    // activate the caret mode if not already enabled
+    setCaretMode(true);
+    // at last activate the mark
     command.setMark(ev);
 }, 'Set the mark', true);
 
