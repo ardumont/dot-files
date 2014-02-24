@@ -59,9 +59,6 @@ HISTCONTROL=ignoreboth
 # fi
 # unset color_prompt force_color_prompt
 
-# play the file to have a nice ps1 prompt
-#[ -f ~/.bashrc-prompt ] && . ~/.bashrc-prompt
-
 # enable color support of ls and also add handy aliases
 # if [ -x /usr/bin/dircolors ]; then
 #     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -75,24 +72,10 @@ HISTCONTROL=ignoreboth
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-# standard
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-
-# the path to reference have been set in a file
-[ -f ~/.bashrc-path ] && . ~/.bashrc-path
-
-# the env variable have been set in a file
-[ -f ~/.bashrc-env ] && . ~/.bashrc-env
-
-# a bashrc specific to work
-[ -f ~/.bashrc-work ] && . ~/.bashrc-work
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 # [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
 
-[ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
-
-# autojump (sudo aptitude install autojump) your way in your filesystem
-[ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
+# extend bashrc
+[ -f ~/.shrc ] && . ~/.shrc

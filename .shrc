@@ -1,0 +1,20 @@
+# play the file to have a nice ps1 prompt
+[ -f ~/.bashrc-prompt ] && . ~/.bashrc-prompt
+
+# Load aliases
+[ -f ~/.shrc-aliases ] && . ~/.shrc-aliases
+
+# Load path
+[ -f ~/.shrc-path ] && . ~/.shrc-path
+
+# Load env variable
+[ -f ~/.shrc-env ] && . ~/.shrc-env
+
+# Load specific work shrc
+[ -f ~/.shrc-work ] && . ~/.shrc-work
+
+# keyboard mapping
+[ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
+
+# autojump (sudo aptitude install autojump) your way in your filesystem
+[ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh

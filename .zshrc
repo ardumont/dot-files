@@ -55,8 +55,6 @@ plugins=(git git-extras vagrant lein cabal colored-man debian docker heroku rsyn
 
 source $ZSH/oh-my-zsh.sh
 
-[ -f $HOME/.bashrc ] && source $HOME/.bashrc
-
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -69,3 +67,5 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+[ -f ~/.shrc ] && . ~/.shrc
