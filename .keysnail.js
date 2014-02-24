@@ -242,11 +242,6 @@ key.setGlobalKey(['C-c', 'm', 'r'], function (ev, arg) {
     ext.exec("move-selected-tab-right", arg);
 }, 'Move selected tab to the right.', true);
 
-// key.setGlobalKey('C-g', function (ev) {
-//     display.echoStatusBar("Escaping...", 2000);
-//     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_ESCAPE, true);
-// }, 'Quit');
-
 key.setViewKey('C-n', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
 }, 'Scroll line down');
