@@ -10,7 +10,7 @@
 
 // ========================= Special key settings ========================== //
 
-key.quitKey              = "C-g";
+key.quitKey              = "Q";
 key.helpKey              = "<f1>";
 key.escapeKey            = "C-q";
 key.macroStartKey        = "C-1";
@@ -104,6 +104,12 @@ key.setGlobalKey(["C-x", ")"], function (ev) {
 
 key.setGlobalKey(["C-x", "e"], function (ev) {
     ev.target.dispatchEvent(key.stringToKeyEvent(key.macroEndKey));
+}, "Replay macro recording");
+
+key.setGlobalKey("C-g", function (ev) {
+    setCaretMode(false);
+    tmpTarget=ev.target || ev.originalTarget;
+    tmpTarget.dispatchEvent(key.stringToKeyEvent(key.quitKey));
 }, "Replay macro recording");
 
 key.setGlobalKey('C-M-r', function (ev) {
