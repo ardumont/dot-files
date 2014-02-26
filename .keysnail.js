@@ -623,6 +623,8 @@ function pass(k, i) [k, fake(k, i)];
 function ignore(k, i) [k, null];
 
 local["^https?://github.com/"] = [
+    ignore(['C-x', 'g']),
+    ignore(['C-x', 'b']),
     pass(['g', 'i']),
     pass(['g', 'c']),
     pass(['g', 'p'])
@@ -643,6 +645,7 @@ local["^https?://github.com/"] = [
 
 local["^https?://twitter.com/"] = [
     ignore(['C-x', 'g']),
+    ignore(['C-x', 'b']),
     pass(['g', 'h']),
     pass(['g', 'c']),
     pass(['g', 'r']),
@@ -671,6 +674,7 @@ local["^https?://twitter.com/"] = [
 
 local["^https?://mail.google.com/mail/"] = [
     ignore(['C-x', 'g']),
+    ignore(['C-x', 'b']),
     pass(['g', 'i']),
     pass(['g', 's']),
     pass(['g', 't']),
@@ -727,6 +731,7 @@ local["^https?://mail.google.com/mail/"] = [
 
 local["^http://www.google.(co.jp|com)/reader/view/"] = [
     ignore(['C-x', 'g']),
+    ignore(['C-x', 'b']),
     // jump
     pass(["g", "h"]),
     pass(["g", "a"]),
