@@ -664,7 +664,6 @@ local["^https?://twitter.com/"] = [
     ["f", null],
     ["r", null],
     ["t", null],
-    ["b", null],
     ["u", null],
     ["l", null],
     ["/", null]
