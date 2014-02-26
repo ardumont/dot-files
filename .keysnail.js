@@ -626,6 +626,7 @@ local["^https?://github.com/"] = [
     pass(['g', 'i']),
     pass(['g', 'c']),
     pass(['g', 'p'])
+
     // navigation
     ["j", null],
     ["k", null],
@@ -641,6 +642,7 @@ local["^https?://github.com/"] = [
 ];
 
 local["^https?://twitter.com/"] = [
+    ignore(['C-x', 'g']),
     pass(['g', 'h']),
     pass(['g', 'c']),
     pass(['g', 'r']),
@@ -669,6 +671,7 @@ local["^https?://twitter.com/"] = [
 ];
 
 local["^https?://mail.google.com/mail/"] = [
+    ignore(['C-x', 'g']),
     pass(['g', 'i']),
     pass(['g', 's']),
     pass(['g', 't']),
@@ -724,6 +727,7 @@ local["^https?://mail.google.com/mail/"] = [
 ];
 
 local["^http://www.google.(co.jp|com)/reader/view/"] = [
+    ignore(['C-x', 'g']),
     // jump
     pass(["g", "h"]),
     pass(["g", "a"]),
