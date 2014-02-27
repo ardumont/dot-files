@@ -10,7 +10,7 @@
 
 // ========================= Special key settings ========================== //
 
-key.quitKey              = "Q";
+key.quitKey              = "<f12>";
 key.helpKey              = "<f1>";
 key.escapeKey            = "C-q";
 key.macroStartKey        = "C-1";
