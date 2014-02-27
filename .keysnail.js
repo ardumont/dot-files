@@ -113,6 +113,7 @@ key.setGlobalKey("C-g", function (ev) {
 }, "Quit");
 
 key.setGlobalKey('C-M-r', function (ev) {
+    setCaretMode(false);
     userscript.reload();
 }, 'Reload the initialization file', true);
 
