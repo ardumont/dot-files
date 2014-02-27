@@ -110,7 +110,7 @@ key.setGlobalKey("C-g", function (ev) {
     setCaretMode(false);
     tmpTarget=ev.target || ev.originalTarget;
     tmpTarget.dispatchEvent(key.stringToKeyEvent(key.quitKey));
-}, "Replay macro recording");
+}, "Quit");
 
 key.setGlobalKey('C-M-r', function (ev) {
     userscript.reload();
