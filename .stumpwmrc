@@ -113,6 +113,7 @@
   (xosview              "xosview"          "xosview"                   "xosview"                "X")
   (chromium-browser     "chromium"         "chromium-browser"          "chromium-browser"       "b")
   (gitk                 "gitk"             "gitk"                      "gitk"                   "z")
+  (fbreader             "fbreader"         "fbreader"                  "fbreader"               "C-f")
   (lighttable           "LightTable"       "~/application/LightTable/LightTable" "ltbin"        "C")))
 
 ;; run shell command - Simply execute shell command
