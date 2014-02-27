@@ -32,7 +32,3 @@ history
 /.FBReader/books.db
 /.FBReader/network.db
 /.FBReader/state.db
-/.FBReader/options.xml
-/.FBReader/state.xml
-/.FBReader/system.xml
-/.FBReader/ui.xml
