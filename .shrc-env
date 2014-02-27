@@ -31,3 +31,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 [ -d $HOME/applications/ensime ] && export ENSIME_ROOT=$HOME/applications/ensime
 [ -d $HOME/applications/gradle ] && export GRADLE_HOME=$HOME/applications/gradle
 [ -d $HOME/applications/scala/scala ] && export SCALA_HOME=$HOME/applications/scala/scala
+
+export BROWSER=firefox
