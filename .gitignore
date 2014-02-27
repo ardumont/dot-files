@@ -29,3 +29,6 @@ history
 /.xmonad/xmonad.o
 /quicklisp/cache/
 /keysnail/persistent/prompt_history.json
+/.FBReader/books.db
+/.FBReader/network.db
+/.FBReader/state.db

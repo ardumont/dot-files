@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <group name="Keys">
+    <option name="Action0" value="pageBackward" category="options"/>
+    <option name="Action1" value="lineForward" category="options"/>
+    <option name="Action2" value="lineBackward" category="options"/>
+    <option name="Action3" value="pageForward" category="options"/>
+    <option name="Key0" value="&lt;Alt&gt;+&lt;V&gt;" category="options"/>
+    <option name="Key1" value="&lt;Ctrl&gt;+&lt;N&gt;" category="options"/>
+    <option name="Key2" value="&lt;Ctrl&gt;+&lt;P&gt;" category="options"/>
+    <option name="Key3" value="&lt;Ctrl&gt;+&lt;V&gt;" category="options"/>
+    <option name="Number" value="4" category="options"/>
+  </group>
+  <group name="LastState">
+    <option name="Valid" value="true" category="state"/>
+    <option name="Char"/>
+    <option name="Paragraph"/>
+    <option name="Word"/>
+  </group>
+  <group name="OptionsDialog">
+    <option name="SelectedTab" value="Web" category="ui"/>
+    <option name="Width" value="500" category="ui"/>
+  </group>
+  <group name="Style">
+    <option name="Base:fontFamily" value="DejaVu Sans" category="ui"/>
+  </group>
+  <group name="ToggleButtonGroup">
+    <option name="booksOrder" value="byAuthor" category="ui"/>
+  </group>
+  <group name="Version">
+    <option name="FBReaderVersion" value="0.12.10" category="system"/>
+  </group>
+  <group name="Web Browser">
+    <option name="Name" value="Browser" category="options"/>
+  </group>
+</config>
