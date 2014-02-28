@@ -10,11 +10,11 @@
 
 // ========================= Special key settings ========================== //
 
-key.quitKey              = "C-2";
+key.quitKey              = "C-3";
 key.helpKey              = "<f1>";
 key.escapeKey            = "C-q";
-key.macroStartKey        = "C-1";
-key.macroEndKey          = "C-0";
+key.macroStartKey        = "C-4";
+key.macroEndKey          = "C-2";
 key.universalArgumentKey = "C-u";
 key.negativeArgument1Key = "C--";
 key.negativeArgument2Key = "C-M--";
