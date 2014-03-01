@@ -68,7 +68,7 @@ ln -nsf $REPO_PERSO/sh $HOME/bin
 
 ## emacs
 
-$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO "live"
+$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO "prelude"
 
 ## oh-my-zsh
 
