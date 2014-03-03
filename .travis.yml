@@ -8,8 +8,9 @@ before_install:
   - sed -e 's/git@github.com:/http:\/\/git@github.com\//g' -i deploy-emacs.sh
   - sed -e 's/git@github.com:/http:\/\/git@github.com\//g' -i deploy-emacs-live-packs.sh
   - sed -e 's/git@github.com:/http:\/\/git@github.com\//g' -i deploy-emacs-prelude-packs.sh
+  - pwd
   # clone the dependency on ardumont/sh as ~/bin
-  - git clone git@github.com/ardumont/sh.git ~/bin
+  - git clone http://git@github.com/ardumont/sh.git ~/bin
   # install ffx
   - sudo apt-get update -qq && sudo apt-get install -y firefox
   - if [ "$EMACS" = 'emacs-snapshot' ]; then
@@ -24,8 +25,7 @@ before_install:
       sudo apt-get install -qq
           emacs24 emacs24-el emacs24-common-non-dfsg;
     fi
-  - pwd
-
+  
 env:
   #- EMACS=emacs
   - EMACS=emacs24
