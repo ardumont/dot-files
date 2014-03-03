@@ -22,6 +22,8 @@ before_install:
       sudo apt-get install -qq
           emacs24 emacs24-el emacs24-common-non-dfsg;
     fi
+  - pwd
+
 env:
   #- EMACS=emacs
   - EMACS=emacs24
