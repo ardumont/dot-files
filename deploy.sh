@@ -81,10 +81,3 @@ ln -nsf $REPO_PERSO/oh-my-zsh $HOME/.oh-my-zsh
 ## KeySnail
 
 $REPO_DOTFILES/deploy-keysnail.sh
-
-## Work files
-
-REPO_WORK=$HOME/work
-FILES_WORK=".bashrc-work"
-
-[ -d $REPO_WORK/ ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK
