@@ -10,6 +10,6 @@ ln -nsf $REPO_PERSO/emacs-live $HOME/.emacs.d
 
 ## emacs-live-packs
 
-[ ! -d $REPO_PERSO/emacs-live-packs ] && git clone git@github.com:ardumont/emacs-live-packs.git $REPO_PERSO/emacs-live-packs
+[ ! -d $REPO_PERSO/emacs-live-packs ] && git clone --recurse-submodules git@github.com:ardumont/emacs-live-packs.git $REPO_PERSO/emacs-live-packs
 
 $REPO_PERSO/emacs-live-packs/deploy.sh

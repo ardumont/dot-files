@@ -12,6 +12,6 @@ ln -nsf $REPO_PERSO/prelude $HOME/.emacs.d
 
 ## prelude-packs
 
-[ ! -d $REPO_PERSO/prelude-packs ] && git clone git@github.com:ardumont/prelude-packs.git $REPO_PERSO/prelude-packs
+[ ! -d $REPO_PERSO/prelude-packs ] && git clone --recurse-submodules git@github.com:ardumont/prelude-packs.git $REPO_PERSO/prelude-packs
 
 $REPO_PERSO/prelude-packs/deploy.sh
