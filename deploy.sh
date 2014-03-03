@@ -17,10 +17,9 @@ create-links-from-list() {
     shift
 
     for i in $*; do
-        # destroy any existing file
-        rm -f $DDIR/$i
-        # then create the link
-        ln -nsf $WDIR/$i $DDIR/
+        [ -f $DDIR/$i ] && rm -f $DDIR/$i         # cleanup any previous existing directory
+
+        [ -f $WDIR/$i ] && ln -sf $WDIR/$i $DDIR/ # then create the link
     done
 }
 
