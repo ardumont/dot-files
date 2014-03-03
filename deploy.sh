@@ -8,6 +8,7 @@
 ## Functions
 
 WITH_EMACS_ENV=${1-"prelude"}
+CI=${2-"n"}
 
 create-links-from-list() {
     WDIR=$1 # folder from where the source files will be (working dir)
@@ -16,10 +17,9 @@ create-links-from-list() {
     shift
 
     for i in $*; do
-        # destroy any existing file
-        rm -f $DDIR/$i
-        # then create the link
-        ln -nsf $WDIR/$i $DDIR/
+        [ -f $DDIR/$i ] && rm -f $DDIR/$i         # cleanup any previous existing directory
+
+        [ -f $WDIR/$i -o -d $WDIR/$i ] && ln -sf $WDIR/$i $DDIR/ # then create the link
     done
 }
 
@@ -70,7 +70,7 @@ ln -nsf $REPO_PERSO/sh $HOME/bin
 
 ## emacs
 
-$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO $WITH_EMACS_ENV
+$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO $WITH_EMACS_ENV $CI
 
 ## oh-my-zsh
 
@@ -81,10 +81,3 @@ ln -nsf $REPO_PERSO/oh-my-zsh $HOME/.oh-my-zsh
 ## KeySnail
 
 $REPO_DOTFILES/deploy-keysnail.sh
-
-## Work files
-
-REPO_WORK=$HOME/work
-FILES_WORK=".bashrc-work"
-
-[ -d $REPO_WORK/ ] && create-links-from-list $REPO_WORK $HOME $FILES_WORK

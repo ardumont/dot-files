@@ -1,8 +1,9 @@
 REPO_DOTFILES=~/repo/perso/dot-files
 WITH_EMACS_ENV="prelude"
+CI=n
 
 deploy:
-	$(REPO_DOTFILES)/deploy.sh $(WITH_EMACS_ENV)
+	$(REPO_DOTFILES)/deploy.sh $(WITH_EMACS_ENV) $(CI)
 
 deploy-keysnail:
 	$(REPO_DOTFILES)/deploy-keysnail.sh
@@ -24,3 +25,5 @@ pupg: push
 	cd ~/org/ && make push
 	cd ~/.emacs.d && make push
 	cd ~/.emacs-live-packs && make push
+
+test: deploy

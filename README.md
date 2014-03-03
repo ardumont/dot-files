@@ -1,17 +1,18 @@
-# dot-files
+dot-files [![Build Status](https://travis-ci.org/ardumont/dot-files.png?branch=master)](https://travis-ci.org/ardumont/dot-files)
+=========
 
-. files setup for my linux boxes.
+dot files setup.
 
 # Usage
 
-Clone this repository and then link all this files/folders in your home.
+Duplicate my new box.
 
 # Deploy script
 
-This will create links into your home folders for all the . files present in this repository.
+This will create links in the current user's home folder for all the . files present in this repository.
 
 ```sh
 /path/to/dot-files/deploy.sh
 ```
 
-plus clone some of my personal repositories (ardumont/sh, ardumont/oh-my-zsh, etc...)
+*Note* This will clone some other repositories (ardumont/sh, ardumont/oh-my-zsh, ardumont/emacs-live-packs, etc...) and link on them

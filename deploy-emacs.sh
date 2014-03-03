@@ -5,5 +5,6 @@
 WDIR=$(dirname $0)
 REPO_PERSO=${1-"$HOME/repo/perso"}
 EMACS=${2-"live"}
+CI=${3-"n"}
 
-[ "$EMACS" = "live" ] && $WDIR/deploy-emacs-live-packs.sh $REPO_PERSO || $WDIR/deploy-emacs-prelude-packs.sh $REPO_PERSO
+[ "$EMACS" = "live" ] && $WDIR/deploy-emacs-live-packs.sh $REPO_PERSO $CI || $WDIR/deploy-emacs-prelude-packs.sh $REPO_PERSO $CI

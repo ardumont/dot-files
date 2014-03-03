@@ -1,15 +1,22 @@
 #!/bin/bash
 
 REPO_PERSO=$1
+CI=${2:"n"}
 
 ## emacs-live
 
 [ ! -d $REPO_PERSO/emacs-live ] && git clone git@github.com:ardumont/emacs-live.git $REPO_PERSO/emacs-live
 
-ln -nsf $REPO_PERSO/emacs-live $HOME/.emacs.d
+[ ! -f $HOME/.emacs.d ] && ln -nsf $REPO_PERSO/emacs-live $HOME/.emacs.d
 
 ## emacs-live-packs
 
-[ ! -d $REPO_PERSO/emacs-live-packs ] && git clone --recurse-submodules git@github.com:ardumont/emacs-live-packs.git $REPO_PERSO/emacs-live-packs
+if [ ! -d $REPO_PERSO/emacs-live-packs ]; then
+    git clone git@github.com:ardumont/emacs-live-packs.git $REPO_PERSO/emacs-live-packs
+    if [ $CI = "y" ]; then
+        sed -e 's/git@github.com:/http:\/\/git@github.com\//g' -i .gitmodules
+    fi
+    git submodule update --init
+fi
 
 $REPO_PERSO/emacs-live-packs/deploy.sh
