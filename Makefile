@@ -24,3 +24,5 @@ pupg: push
 	cd ~/org/ && make push
 	cd ~/.emacs.d && make push
 	cd ~/.emacs-live-packs && make push
+
+test: deploy
