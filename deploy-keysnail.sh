@@ -8,6 +8,8 @@
 REPO_DOTFILES=$(dirname $0)
 FF_FOLDER=$HOME/.mozilla/firefox
 
+[ ! -d $FF_FOLDER ] && echo "Firefox not installed" && exit 0
+
 ######### PREPARE
 
 ~/bin/deploy/install.sh haskell-platform
