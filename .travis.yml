@@ -1,7 +1,7 @@
 language: emacs-lisp
-# git:
-#   # deactivate ci-travis's automatic dealing with submodules when cloning - http://docs.travis-ci.com/user/build-configuration/#Git-Submodules
-#   submodules: false
+git:
+  # deactivate ci-travis's automatic dealing with submodules when cloning - http://docs.travis-ci.com/user/build-configuration/#Git-Submodules
+  submodules: false
 before_install:
   # change to public git url
   - sed -e 's/git@github.com:/http:\/\/git@github.com\//g' -i deploy.sh
