@@ -7,6 +7,8 @@
 
 ## Functions
 
+WITH_EMACS_ENV=${1-"prelude"}
+
 create-links-from-list() {
     WDIR=$1 # folder from where the source files will be (working dir)
     DDIR=$2 # folder to where deploy the links to the files (deploy dir)
@@ -68,7 +70,7 @@ ln -nsf $REPO_PERSO/sh $HOME/bin
 
 ## emacs
 
-$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO "prelude"
+$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO $WITH_EMACS_ENV
 
 ## oh-my-zsh
 
