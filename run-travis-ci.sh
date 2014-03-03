@@ -10,4 +10,4 @@ echo "CURRENT_EMACS = $CURRENT_EMACS"
 
 $CURRENT_EMACS --version
 
-make test REPO_DOTFILES=/home/admin/dot-files/
+make test REPO_DOTFILES=/home/admin/dot-files
