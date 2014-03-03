@@ -1,6 +1,7 @@
 #!/bin/bash
 
 REPO_PERSO=$1
+CI=${2-"n"}
 
 ## prelude
 
@@ -8,10 +9,16 @@ REPO_PERSO=$1
 
 cd $REPO_PERSO/prelude && git checkout personal && cd -
 
-ln -nsf $REPO_PERSO/prelude $HOME/.emacs.d
+[ ! -f $HOME/.emacs.d ] && ln -nsf $REPO_PERSO/prelude $HOME/.emacs.d
 
 ## prelude-packs
 
-[ ! -d $REPO_PERSO/prelude-packs ] && git clone --recurse-submodules git@github.com:ardumont/prelude-packs.git $REPO_PERSO/prelude-packs
+if [ ! -d $REPO_PERSO/prelude-packs ]; then
+    git clone git@github.com:ardumont/prelude-packs.git $REPO_PERSO/prelude-packs
+    if [ $CI = "y" ]; then
+        sed -e 's/git@github.com:/http:\/\/git@github.com\//g' -i .gitmodules
+    fi
+    git submodule update --init
+fi
 
 $REPO_PERSO/prelude-packs/deploy.sh

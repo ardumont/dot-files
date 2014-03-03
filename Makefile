@@ -1,8 +1,9 @@
 REPO_DOTFILES=~/repo/perso/dot-files
 WITH_EMACS_ENV="prelude"
+CI=n
 
 deploy:
-	$(REPO_DOTFILES)/deploy.sh $(WITH_EMACS_ENV)
+	$(REPO_DOTFILES)/deploy.sh $(WITH_EMACS_ENV) $(CI)
 
 deploy-keysnail:
 	$(REPO_DOTFILES)/deploy-keysnail.sh

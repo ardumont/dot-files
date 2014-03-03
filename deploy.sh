@@ -8,6 +8,7 @@
 ## Functions
 
 WITH_EMACS_ENV=${1-"prelude"}
+CI=${2-"n"}
 
 create-links-from-list() {
     WDIR=$1 # folder from where the source files will be (working dir)
@@ -70,7 +71,7 @@ ln -nsf $REPO_PERSO/sh $HOME/bin
 
 ## emacs
 
-$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO $WITH_EMACS_ENV
+$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO $WITH_EMACS_ENV $CI
 
 ## oh-my-zsh
 
