@@ -19,7 +19,7 @@ create-links-from-list() {
     for i in $*; do
         [ -f $DDIR/$i ] && rm -f $DDIR/$i         # cleanup any previous existing directory
 
-        [ -f $WDIR/$i ] && ln -sf $WDIR/$i $DDIR/ # then create the link
+        [ -f $WDIR/$i -o -d $WDIR/$i ] && ln -sf $WDIR/$i $DDIR/ # then create the link
     done
 }
 
