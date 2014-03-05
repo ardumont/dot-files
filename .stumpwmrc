@@ -31,6 +31,8 @@
 
 (setf *contrib-dir* "~/repo/perso/stumpwm/contrib/")
 
+;; up the debug level (see ~/.xsession-errors)
+;; (setf stumpwm::*debug-level* 0)
 (set-normal-gravity :bottom)
 (setf *message-window-gravity* :bottom-left)
 (setf *input-window-gravity* :bottom-left)
