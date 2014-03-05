@@ -38,8 +38,19 @@
 ;;                         "net"
 ;;                         "wifi"
 ;;                         "disk"))
+
 ;; up the debug level (see ~/.xsession-errors)
 ;; (setf stumpwm::*debug-level* 0)
+
+;; set the font for the message bar and input bar
+;; (set-font "-*-FreeMono-medium-r-*-*-6*")
+;; (set-font "-adobe-helvetica-medium-r-normal--1*")
+;; (set-font "-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-7")
+;; (set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-7")
+;; (set-font "-*-dina-medium-r-normal-*-*-*-*-*-*-*-*-*")
+;; (set-font "-lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*")
+;; (set-font "-artwiz-smoothansi-medium-r-normal--13-130-75-75-m-60-iso8859-1")
+
 (set-normal-gravity :bottom)
 (setf *message-window-gravity* :bottom-left)
 (setf *input-window-gravity* :bottom-left)
