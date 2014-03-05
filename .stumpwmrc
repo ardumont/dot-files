@@ -183,6 +183,7 @@
 (relaunch-panel)
 (run-shell-command "nautilus --no-default-window &")
 (run-shell-command "/usr/bin/gnome-settings-daemon &")
+(run-shell-command "/usr/bin/gnome-power-manager &")
 (run-shell-command "/usr/bin/xscreensaver &")
 (run-shell-command "~/bin/wifi/nm-applet.sh restart")
 (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
