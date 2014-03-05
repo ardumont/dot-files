@@ -118,8 +118,6 @@
 
 ;; run shell command - Simply execute shell command
 (run-shell-command-category
- ((suspend              "Suspend"                                                       "gksudo pm-suspend"                                    "C-S")
-  (hibernate            "Hibernate"                                                     "gksudo pm-hibernate"                                  "C-H")
   (ssh-add-identities   "Add the identities present in ~/.ssh-agent-identities script." "~/bin/ssh/ssh-add.sh"                                 "A")
   (switch-to-proxy      "Switch to proxy."                                              "gksudo ~/bin/proxy/proxy.sh on && ~/bin/wifi/nm-applet.sh stop"  "p")
   (switch-to-no-proxy   "Switch to no proxy."                                           "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop" "P")
@@ -133,6 +131,8 @@
   (relaunch-panel       "Relaunch panel"                                                "~/bin/service/service.sh restart stalonetray -t --window-type=normal" "C-p")
   (lock-session         "Lock the session"                                              "~/bin/session/lock.sh"                                "C-M-l")
   (evince-haskell-prog  "read functional approach in haskell"                           "evince \"/home/tony/books/haskell/Algorithms - A Functional Programming HASKELL Approach.pdf\"" "'")))
+ ((suspend              "Suspend"                              "gksudo pm-suspend; ~/bin/session/lock.sh"                                            "C-S")
+  (hibernate            "Hibernate"                            "gksudo pm-hibernate; ~/bin/session/lock.sh"                                          "C-H")
 
 ;; shell command - Simply execute shell command and possibly output the result in the screen
 (shell-command-category
