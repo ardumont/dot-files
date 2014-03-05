@@ -77,7 +77,7 @@
   (declare (ignore key))
   (or (eq *top-map* *resize-map*)
       (stringp cmd)
-      (let ((*message-window-gravity* :bottom-left))
+      (let ((*message-window-gravity* :bottom-right))
         (message "~A" (print-key-seq (reverse key-seq))))))
 
 (add-hook *key-press-hook* 'key-seq-msg)
