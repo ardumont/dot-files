@@ -131,6 +131,7 @@
   (wifi-off             "wifi off"                                                      "~/bin/wifi/wifi-off.sh"                               "C-o")
   (wifi-on              "wifi on"                                                       "~/bin/wifi/wifi-on.sh"                                "O")
   (relaunch-panel       "Relaunch panel"                                                "~/bin/service/service.sh restart stalonetray -t --window-type=normal" "C-p")
+  (lock-session         "Lock the session"                                              "/usr/bin/xcreensaver-command --lock"                  "C-M-l")
   (evince-haskell-prog  "read functional approach in haskell"                           "evince \"/home/tony/books/haskell/Algorithms - A Functional Programming HASKELL Approach.pdf\"" "'")))
 
 ;; shell command - Simply execute shell command and possibly output the result in the screen
@@ -159,12 +160,6 @@
 (define-key *root-map* (kbd "L") "loadrc")
 
 (define-key *root-map* (kbd "C-L") "quit")
-
-(defcommand lock-session () ()
-  "Lock session."
-  (run-shell-command "/usr/bin/xcreensaver-command --lock"))
-
-(define-key *root-map* (kbd "C-M-l") "lock-session")
 
 (define-key *root-map* (kbd "C-u") "move-window up")
 (define-key *root-map* (kbd "C-r") "move-window right")
