@@ -31,6 +31,13 @@
 
 (setf *contrib-dir* "~/repo/perso/stumpwm/contrib/")
 
+;; load a few modules
+;; (mapcar #'load-module '("cpu"
+;;                         "mem"
+;;                         "battery-portable"
+;;                         "net"
+;;                         "wifi"
+;;                         "disk"))
 ;; up the debug level (see ~/.xsession-errors)
 ;; (setf stumpwm::*debug-level* 0)
 (set-normal-gravity :bottom)
