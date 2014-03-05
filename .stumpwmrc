@@ -162,7 +162,7 @@
 
 (defcommand lock-session () ()
   "Lock session."
-  (run-shl "/usr/bin/xcreensaver-command --lock"))
+  (run-shell-command "/usr/bin/xcreensaver-command --lock"))
 
 (define-key *root-map* (kbd "C-M-l") "lock-session")
 
