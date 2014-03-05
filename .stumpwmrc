@@ -160,6 +160,8 @@
 
 (define-key *root-map* (kbd "C-L") "quit")
 
+(define-key *root-map* (kbd "C-M-l") "xscreensaver")
+
 (define-key *root-map* (kbd "C-u") "move-window up")
 (define-key *root-map* (kbd "C-r") "move-window right")
 (define-key *root-map* (kbd "C-d") "move-window down")
