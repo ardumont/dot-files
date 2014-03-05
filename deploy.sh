@@ -62,7 +62,7 @@ REPO_PERSO=$REPO_DOTFILES/..
 
 ln -nsf $REPO_PERSO/org $HOME/
 
-## sh
+## bin
 
 [ ! -d $REPO_PERSO/sh ] && git clone git@github.com:ardumont/sh.git $REPO_PERSO/sh
 
