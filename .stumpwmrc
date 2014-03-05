@@ -118,21 +118,21 @@
 
 ;; run shell command - Simply execute shell command
 (run-shell-command-category
-  (ssh-add-identities   "Add the identities present in ~/.ssh-agent-identities script." "~/bin/ssh/ssh-add.sh"                                 "A")
-  (switch-to-proxy      "Switch to proxy."                                              "gksudo ~/bin/proxy/proxy.sh on && ~/bin/wifi/nm-applet.sh stop"  "p")
-  (switch-to-no-proxy   "Switch to no proxy."                                           "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop" "P")
-  (dec-brightness       "Brightness decrement"                                          "~/bin/brightness/dec-brightness.sh 5"                 "F5")
-  (inc-brightness       "Brightness increment"                                          "~/bin/brightness/inc-brightness.sh 5"                 "F6")
-  (min-brightness       "Minimum screen brightness"                                     "~/bin/brightness/min-brightness.sh"                   "m")
-  (half-brightness      "Half screen brightness"                                        "~/bin/brightness/half-brightness.sh"                  "C-M")
-  (max-brightness       "Maximum screen brightness"                                     "~/bin/brightness/max-brightness.sh"                   "M")
-  (wifi-off             "wifi off"                                                      "~/bin/wifi/wifi-off.sh"                               "C-o")
-  (wifi-on              "wifi on"                                                       "~/bin/wifi/wifi-on.sh"                                "O")
-  (relaunch-panel       "Relaunch panel"                                                "~/bin/service/service.sh restart stalonetray -t --window-type=normal" "C-p")
-  (lock-session         "Lock the session"                                              "~/bin/session/lock.sh"                                "C-M-l")
-  (evince-haskell-prog  "read functional approach in haskell"                           "evince \"/home/tony/books/haskell/Algorithms - A Functional Programming HASKELL Approach.pdf\"" "'")))
  ((suspend              "Suspend"                              "gksudo pm-suspend; ~/bin/session/lock.sh"                                            "C-S")
   (hibernate            "Hibernate"                            "gksudo pm-hibernate; ~/bin/session/lock.sh"                                          "C-H")
+  (ssh-add-identities   "Load ssh identities in ssh-agent"     "~/bin/ssh/ssh-add.sh"                                                                "A")
+  (switch-to-proxy      "Switch to proxy."                     "gksudo ~/bin/proxy/proxy.sh on && ~/bin/wifi/nm-applet.sh stop"                      "p")
+  (switch-to-no-proxy   "Switch to no proxy."                  "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop"                     "P")
+  (dec-brightness       "Brightness decrement"                 "~/bin/brightness/dec-brightness.sh 5"                                                "F5")
+  (inc-brightness       "Brightness increment"                 "~/bin/brightness/inc-brightness.sh 5"                                                "F6")
+  (min-brightness       "Minimum screen brightness"            "~/bin/brightness/min-brightness.sh"                                                  "m")
+  (half-brightness      "Half screen brightness"               "~/bin/brightness/half-brightness.sh"                                                 "C-M")
+  (max-brightness       "Maximum screen brightness"            "~/bin/brightness/max-brightness.sh"                                                  "M")
+  (wifi-off             "wifi off"                             "~/bin/wifi/wifi-off.sh"                                                              "C-o")
+  (wifi-on              "wifi on"                              "~/bin/wifi/wifi-on.sh"                                                               "O")
+  (relaunch-panel       "Relaunch panel"                       "~/bin/service/service.sh restart stalonetray -t --window-type=normal"                "C-p")
+  (lock-session         "Lock the session"                     "~/bin/session/lock.sh"                                                               "C-M-l")
+  (evince-haskell-prog  "read functional approach in haskell"  "evince ~/books/haskell/Algorithms - A Functional Programming HASKELL Approach.pdf\"" "'")))
 
 ;; shell command - Simply execute shell command and possibly output the result in the screen
 (shell-command-category
