@@ -178,6 +178,18 @@
 (define-key *input-map* (kbd "M-p")   'input-history-back)
 (define-key *input-map* (kbd "M-n")   'input-history-forward)
 
+;; ========================== Help 
+
+(setf *help-map*
+      (let ((m (make-sparse-keymap)))
+        (define-key m (kbd "m") "man")
+        (define-key m (kbd "i") "info")
+        (define-key m (kbd "v") "describe-variable")
+        (define-key m (kbd "f") "describe-function")
+        (define-key m (kbd "k") "describe-key")
+        (define-key m (kbd "w") "where-is")
+        m))
+
 ;; ========================== Launch commands at startup time
 
 (relaunch-panel)
