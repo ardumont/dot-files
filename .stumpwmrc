@@ -188,4 +188,3 @@
 ;; (run-shell-command "eval $(keychain --eval)")
 (run-shell-command "eval $(ssh-agent)")
 (run-shell-command "dropbox start &")
-(terminal)
