@@ -168,14 +168,14 @@
 
 (define-key *root-map* (kbd "M-x") "colon")
 
-(define-key *input-map* (kbd "C-h") 'input-delete-backward-char)
+(define-key *input-map* (kbd "C-h")   'input-delete-backward-char)
 (define-key *input-map* (kbd "C-M-h") 'input-backward-kill-word)
-(define-key *input-map* (kbd "C-j") 'input-submit)
-(define-key *input-map* (kbd "C-m") 'input-submit)
-(define-key *input-map* (kbd "C-i") 'input-complete-forward)
+(define-key *input-map* (kbd "C-j")   'input-submit)
+(define-key *input-map* (kbd "C-m")   'input-submit)
+(define-key *input-map* (kbd "C-i")   'input-complete-forward)
 
-(define-key *input-map* (kbd "M-p") 'input-history-back)
-(define-key *input-map* (kbd "M-n") 'input-history-forward)
+(define-key *input-map* (kbd "M-p")   'input-history-back)
+(define-key *input-map* (kbd "M-n")   'input-history-forward)
 
 ;; ========================== Launch commands at startup time
 
