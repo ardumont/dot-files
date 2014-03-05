@@ -162,9 +162,9 @@
 
 (defcommand lock-session () ()
   "Lock session."
-  (run-shl "/usr/bin/xscreensaver-command -lock"))
+  (run-shl "/usr/bin/xcreensaver-command --lock"))
 
-(define-key *root-map* (kbd "C-M-l") lock-session)
+(define-key *root-map* (kbd "C-M-l") "lock-session")
 
 (define-key *root-map* (kbd "C-u") "move-window up")
 (define-key *root-map* (kbd "C-r") "move-window right")
