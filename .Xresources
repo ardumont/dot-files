@@ -1,0 +1,6 @@
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintlight
+Xft.rgba: rgb
+URxvt.font: xft:DejaVu Sans Mono-8
+URxvt.letterSpace: -1
