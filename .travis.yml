@@ -9,8 +9,6 @@ before_install:
   - sed -e 's/git@github.com:/http:\/\/git@github.com\//g' -i deploy-emacs-live-packs.sh
   - sed -e 's/git@github.com:/http:\/\/git@github.com\//g' -i deploy-emacs-prelude-packs.sh
   - pwd
-  # clone the dependency on ardumont/sh as ~/bin
-  - git clone http://git@github.com/ardumont/sh.git ~/bin
   # install ffx
   - sudo apt-get update -qq && sudo apt-get install -y firefox
   - if [ "$EMACS" = 'emacs-snapshot' ]; then
