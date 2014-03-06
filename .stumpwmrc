@@ -101,7 +101,8 @@
 ;; run-or-raise application based on the class name of the window + activating the touchpad
 (ror-tpd-on-category
  ((firefox              "firefox"              "firefox"                                                    "Firefox"                     "f")
-  (gnome-control-center "gnome-control-center" "gnome-control-center"                                       "Gnome-Control-Center"        ",")
+  ;; (gnome-control-center "gnome-control-center" "gnome-control-center"                                       "Gnome-Control-Center"        ",")
+  (control-center       "cinnamon-control-center" "cinnamon-control-center"                                 "Cinnamon-control-Center"              ",")
   (video-player         "totem"                "totem"                                                      "Totem"                       ".")
   (evince               "evince"               "evince"                                                     "Evince"                      "C-e")
   (eog                  "eog"                  "eog"                                                        "Eog"                         "C-i")
