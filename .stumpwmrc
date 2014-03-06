@@ -139,8 +139,8 @@
 
 ;; run shell command - Simply execute shell command
 (run-shell-command-category
- ((suspend              "Suspend"                              "gksudo pm-suspend; ~/bin/session/lock.sh"                                            "C-S")
-  (hibernate            "Hibernate"                            "gksudo pm-hibernate; ~/bin/session/lock.sh"                                          "C-H")
+ ((suspend              "Suspend"                              "gksudo pm-suspend"                                                                   "C-S")
+  (hibernate            "Hibernate"                            "gksudo pm-hibernate"                                                                 "C-H")
   (ssh-add-identities   "Load ssh identities in ssh-agent"     "~/bin/ssh/ssh-add.sh"                                                                "A")
   (switch-to-proxy      "Switch to proxy."                     "gksudo ~/bin/proxy/proxy.sh on && ~/bin/wifi/nm-applet.sh stop"                      "p")
   (switch-to-no-proxy   "Switch to no proxy."                  "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop"                     "P")
