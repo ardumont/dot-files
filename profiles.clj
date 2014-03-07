@@ -20,15 +20,24 @@
                  :source-paths ["src"] :resource-paths []}
         :dependencies [
                        ;; [ritz/ritz-nrepl-middleware "0.7.0"]
-                       [clojure-complete           "0.2.3"]
-                       [leiningen "2.3.4"]
-                       [im.chit/vinyasa "0.1.8"]]
+                       [clojure-complete            "0.2.3"]
+                       [leiningen                   "2.3.4"]
+                       [im.chit/vinyasa             "0.1.8"]
+                       [org.clojure/tools.namespace "0.2.4"]
+                       [expectations                "1.4.53"]
+]
         :injections [(require '[vinyasa.inject :as inj])
                      (inj/inject 'clojure.core
-                       '[[vinyasa.inject inject]
-                         [vinyasa.pull pull]
-                         [vinyasa.lein lein]
-                         [vinyasa.reimport reimport]])]
+                                 '[[vinyasa.inject inject]
+                                   [vinyasa.pull pull]
+                                   [vinyasa.lein lein]
+                                   [vinyasa.reimport reimport]
+                                   [cemerick.pomegranate add-classpath get-classpath resources]
+                                   [clojure.tools.namespace.repl refresh]
+                                   ;; [clojure.repl apropos dir doc find-doc source pst
+                                   ;;  [root-cause >cause]]
+                                   [clojure.pprint pprint]
+                                   [clojure.java.shell sh]])]
 
         ;; :repl-options {:nrepl-middleware
         ;;                [ritz.nrepl.middleware.javadoc/wrap-javadoc
