@@ -20,7 +20,16 @@
                  :source-paths ["src"] :resource-paths []}
         :dependencies [
                        ;; [ritz/ritz-nrepl-middleware "0.7.0"]
-                       [clojure-complete           "0.2.3"]]
+                       [clojure-complete           "0.2.3"]
+                       [leiningen "2.3.4"]
+                       [im.chit/vinyasa "0.1.8"]]
+        :injections [(require '[vinyasa.inject :as inj])
+                     (inj/inject 'clojure.core
+                       '[[vinyasa.inject inject]
+                         [vinyasa.pull pull]
+                         [vinyasa.lein lein]
+                         [vinyasa.reimport reimport]])]
+
         ;; :repl-options {:nrepl-middleware
         ;;                [ritz.nrepl.middleware.javadoc/wrap-javadoc
         ;;                 ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
