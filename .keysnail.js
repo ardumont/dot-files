@@ -788,3 +788,9 @@ local["^http://www.google.(co.jp|com)/reader/view/"] = [
 key.setViewKey(['C-c', 'p', 't'], function (aEvent, aArg) {
     ext.exec("ril-toggle", aArg);
 }, 'Start continuous HaH', true);
+
+// ==================== history
+
+key.setViewKey(['C-c', 'h'], function (aEvent, aArg) {
+    ext.exec("history-show", aArg);
+}, 'Show history', true);
