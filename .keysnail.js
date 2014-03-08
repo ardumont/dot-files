@@ -153,6 +153,10 @@ key.setGlobalKey(['C-x', 'k'], function (ev) {
     BrowserCloseTabOrWindow();
 }, 'Close tab / window');
 
+key.setGlobalKey(['C-x', 'C-k'], function (ev) {
+    BrowserCloseTabOrWindow();
+}, 'Close tab / window -> sometimes, the k is preempted by website');
+
 key.setGlobalKey(['C-x', 'K'], function (ev) {
     closeWindow(true);
 }, 'Close the window');
