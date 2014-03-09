@@ -35,7 +35,7 @@
                                    [clojure.tools.namespace.repl refresh]
                                    ;; [clojure.repl apropos dir doc find-doc source pst
                                    ;;  [root-cause >cause]]
-                                   [clojure.pprint pprint]
+                                   ;; [clojure.pprint pprint]
                                    [clojure.java.shell sh]])]
 
         ;; :repl-options {:nrepl-middleware
