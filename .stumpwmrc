@@ -136,7 +136,7 @@
   (chromium-browser     "chromium"         "chromium"                            "chromium"               "b")
   (gitk                 "gitk"             "gitk"                                "gitk"                   "z")
   (fbreader             "fbreader"         "fbreader"                            "fbreader"               "C-f")
-  (lighttable           "LightTable"       "~/application/LightTable/LightTable" "ltbin"                  "C")))
+  (lighttable           "LightTable"       "~/applications/LightTable/LightTable" "ltbin"                  "C")))
 
 ;; run shell command - Simply execute shell command
 (run-shell-command-category
