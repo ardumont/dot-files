@@ -34,6 +34,11 @@ create-links-from-list $REPO_DOTFILES $HOME $FILES
 
 # specific setup
 
+## LightTable
+
+mkdir -p $HOME/.config/LightTable
+ln -nsf $REPO_DOTFILES/lighttable-settings $HOME/.config/LightTable/settings
+
 ## clojure
 
 mkdir -p $HOME/.lein

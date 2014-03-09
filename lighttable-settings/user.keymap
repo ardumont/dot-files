@@ -1,0 +1,93 @@
+;; User keymap
+;; -----------------------------
+;; Keymaps are stored as a set of diffs that are merged together together
+;; to create the final set of keys. You can modify these diffs to either add
+;; or subtract bindings.
+;;
+;; Like behaviors, keys are bound by tag. When objects with those tags are active
+;; the key bindings are live. Keys can be bound to any number of Light Table commands,
+;; allowing you the flexibility to execute multiple operations together. To see a list
+;; of all the commands you can execute, start typing a word related to the thing you
+;; want to do in between the square brackets (e.g. type "or").
+
+;; rework default keymap
+{
+;;   :- {:app {"ctrl-n"}
+
+;;      :tabs ["pmeta-w"]}
+
+ :+ {:editor.keys.hinting.active {"ctrl-i" [:auto-complete]
+                                  "ctrl-m" [:auto-complete.force]
+                                  "ctrl-g" [:auto-complete.remove]
+                                  }
+
+     :tabs {"meta-n" [:tabs.next]
+            "meta-p" [:tabs.prev]
+            "alt-n" [:tabs.next]
+            "alt-p" [:tabs.prev]}
+
+     :filter-list {"ctrl-n" [(:filter-list.input.move-selection 1)]
+                   "ctrl-p" [(:filter-list.input.move-selection -1)]
+                   "ctrl-i" [:auto-complete]
+                   "ctrl-m" [:auto-complete.force]
+                   "ctrl-g" [:auto-complete.remove]
+                   }
+
+     :app {"ctrl-space" [:show-commandbar-transient]
+          }
+
+     :editor {"ctrl-x ctrl-e" [:eval-editor-form]
+              "ctrl-x ctrl-k" [:eval-editor]
+              }
+
+     :editor.keymap {"alt-n" [:tabs.next]
+                     "alt-p" [:tabs.prev]}
+
+     :editor.keys.normal {"ctrl-i" [:auto-complete]
+                          "ctrl-h" [:editor.delete-char-left]
+                          "ctrl-h" [:editor.delete-char-left]}
+
+     :popup {"ctrl-f" [(:popup.move-active 1)],
+             "ctrl-b" [(:popup.move-active -1)],
+             "ctrl-[" [(:popup.escape)],
+             "ctrl-g" [(:popup.escape)],
+             "ctrl-i" [(:popup.move-active 1)],
+             "ctrl-m" [(:popup.exec-active)]}
+
+     :popup.input {"ctrl-f" [:passthrough],
+                   "ctrl-b" [:passthrough]}
+     :plugin-manager.search {"ctrl-m" [:plugin-manager.search]}
+     :sidebar.clients {"ctrl-g" [:hide-connect]}
+     :sidebar.doc.search.input {"ctrl-m" [:docs.search.exec]
+                                "ctrl-[" [:docs.search.hide]
+                                "ctrl-g" [:docs.search.hide]}
+     :searcher.search {"ctrl-m" [:searcher.search]}
+     :searcher.replace {"ctrl-shift-m" [:searcher.replace-all]}
+     :searcher.location {"ctrl-m" [:searcher.search]}
+     :find-bar {"ctrl-shift-m" [:find.prev],
+                "ctrl-g" [:find.clear :find.hide],
+                "ctrl-[" [:find.clear :find.hide],
+                "ctrl-s" [:find.next]
+                "ctrl-r" [:find.prev]
+                "ctrl-m" [:find.next]}
+     :find-bar.replace {"ctrl-shift-m" [:find.replace-all],
+                        "ctrl-s" [:find.next]
+                        "ctrl-r" [:find.prev]
+                        "ctrl-[" [:find.clear :find.hide],
+                        "ctrl-g" [:find.clear :find.hide],
+                        "ctrl-m" [:find.replace]}
+     :browser { "pmeta-l" [:browser.url-bar.focus] }
+     :browser.url-bar {"ctrl-m" [:browser.url-bar.navigate!]
+                       "ctrl-g" [:browser.focus-content]
+                       "ctrl-[" [:browser.focus-content]},
+     :filter-list.input {"ctrl-n" [(:filter-list.input.move-selection 1)],
+                         "ctrl-[" [(:filter-list.input.escape! :force)],
+                         "ctrl-m" [:filter-list.input.select!],
+                         "ctrl-p" [(:filter-list.input.move-selection -1)]}
+     :options-input {"ctrl-[" [:options-input.escape!],
+                     "ctrl-g" [:options-input.escape!],
+                     "ctrl-m" [:options-input.select!]}
+     :tree.rename {"ctrl-g" [:workspace.rename.cancel!]
+                   "ctrl-[" [:workspace.rename.cancel!]
+                   "ctrl-m" [:workspace.rename.submit!]}
+}}
