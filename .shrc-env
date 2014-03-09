@@ -32,4 +32,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 [ -d $HOME/applications/gradle ] && export GRADLE_HOME=$HOME/applications/gradle
 [ -d $HOME/applications/scala/scala ] && export SCALA_HOME=$HOME/applications/scala/scala
 
-export BROWSER=firefox
+export BROWSER=/usr/bin/firefox
+
+ln -nsf $BROWSER /etc/alternatives/www-browser
+ln -nsf $BROWSER /etc/alternatives/x-www-browser
+ln -nsf $BROWSER /etc/alternatives/gnome-www-browser
