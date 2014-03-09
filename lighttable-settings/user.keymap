@@ -11,10 +11,8 @@
 ;; want to do in between the square brackets (e.g. type "or").
 
 ;; rework default keymap
-{
-;;   :- {:app {"ctrl-n"}
-
-;;      :tabs ["pmeta-w"]}
+{:- {:app {}
+     :tabs {"pmeta-w" [:tabs.close]}}
 
  :+ {:editor.keys.hinting.active {"ctrl-i" [:auto-complete]
                                   "ctrl-m" [:auto-complete.force]
