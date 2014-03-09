@@ -35,6 +35,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export BROWSER=/usr/bin/firefox
 
-ln -nsf $BROWSER /etc/alternatives/www-browser
-ln -nsf $BROWSER /etc/alternatives/x-www-browser
-ln -nsf $BROWSER /etc/alternatives/gnome-www-browser
+[ "$(readlink /etc/alternatives/www-browser)" != "$BROWSER" ] \
+  && sudo ln -nsf $BROWSER /etc/alternatives/www-browser \
+  && sudo ln -nsf $BROWSER /etc/alternatives/x-www-browser \
+  && sudo ln -nsf $BROWSER /etc/alternatives/gnome-www-browser
