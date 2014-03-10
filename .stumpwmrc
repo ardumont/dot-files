@@ -27,7 +27,7 @@
 (in-package :stumpwm)
 (use-package :ql-clj)
 (load "~/.stumpwm-functions.lisp")
-;; (set-prefix-key (kbd "C-t"))
+(set-prefix-key (kbd "C-z"))
 
 (setf *contrib-dir* "~/repo/perso/stumpwm/contrib/")
 
