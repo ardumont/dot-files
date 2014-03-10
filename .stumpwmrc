@@ -165,20 +165,6 @@
   (screenshot       "Take a screenshot for the current window." "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png"                                            "C-s")
   (screenshot-mouse "Take a screenshot with mouse selection."   "~/bin/stumpwm/toggle-touchpad-manual.sh 1; /usr/bin/scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png" "M-s")))
 
-;; (defun toggle-mode-line-hook (key key-seq cmd)
-;;   (declare (ignore key key-seq cmd))
-;;   (stumpwm::mode-line))
-
-;; (add-hook *key-press-hook* 'toggle-mode-line-hook)
-
-;; Turn on the modeline
-;; (if (not (head-mode-line (current-head)))
-;;      (toggle-mode-line (current-screen) (current-head)))
-
-;; ;; Show time, cpu usage and network traffic in the modeline
-;; (setf *screen-mode-line-format*
-;;       (list '(:eval (run-shell-command "date '+%R, %F %a'|tr -d [:cntrl:]" t)) " | %t | %c| %l | [^B%n^b] %W"))
-
 ;; ========================== simple binding
 
 (define-key *root-map* (kbd "o") "fselect")
