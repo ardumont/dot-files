@@ -793,6 +793,11 @@ key.setViewKey(['C-c', 'p', 't'], function (aEvent, aArg) {
     ext.exec("ril-toggle", aArg);
 }, 'Start continuous HaH', true);
 
+
+key.setViewKey(['C-c', 'p', 's'], function (aEvent, aArg) {
+    ext.exec("ril-show-reading-list", aArg);
+}, 'Search pocket', true);
+
 // ==================== history
 
 key.setViewKey(['C-c', 'h'], function (aEvent, aArg) {
