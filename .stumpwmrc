@@ -157,7 +157,7 @@
   (wifi-on              "wifi on"                              "~/bin/wifi/wifi-on.sh"                                                               "O")
   (relaunch-panel       "Relaunch panel"                       "~/bin/service/service.sh restart stalonetray -t --window-type=normal"                "C-p")
   (lock-session         "Lock the session"                     "~/bin/session/lock.sh"                                                               "C-M-l")
-  (evince-haskell-prog  "read functional approach in haskell"  "evince ~/books/haskell/Algorithms - A Functional Programming HASKELL Approach.pdf\"" "'")))
+  (evince-haskell-prog  "read functional approach in haskell"  "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf"      "'")))
 
 ;; shell command - Simply execute shell command and possibly output the result in the screen
 (shell-command-category
