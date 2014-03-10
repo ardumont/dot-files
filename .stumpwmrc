@@ -178,6 +178,9 @@
 (define-key *root-map* (kbd "C-d") "move-window down")
 (define-key *root-map* (kbd "C-l") "move-window left")
 
+(define-key *root-map* (kbd "-") "vsplit")
+(define-key *root-map* (kbd "|") "hsplit")
+
 (define-key *root-map* (kbd "M-x") "colon")
 
 (define-key *input-map* (kbd "C-h")   'input-delete-backward-char)
