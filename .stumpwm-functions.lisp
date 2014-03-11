@@ -51,6 +51,15 @@
   (banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 
+(defun play-command (command)
+  "Given a command, send it to the current window."
+  (cond ((stringp command) (eval-command command))
+        (t                 (send-fake-key (current-window) command))))
+
+(defun play-commands (&rest commands)
+  "Given a list of commands, send them to the current window."
+  (mapcar 'play-command commands))
+
 ;; ========================== macro definition
 
 (defmacro mapcro (macro args)

@@ -24,19 +24,6 @@
         (pop *keybindings-recording*))
     (message "No macro defined...")))
 
-(defun play-command (command)
-  "Given a command, send it to the current window."
-  (cond ((stringp command) (window-send-string command))
-        (t                 (send-fake-key (current-window) command))))
-
-(defun play-commands (commands)
-  "Given a list of commands, send them to the current window."
-  (mapcar 'play-command commands))
-
-;; (play-command "hello")
-;; (play-command (kbd "M-x"))
-;; (play-commands `(,(kbd "M-x") "package"))
-
 (defcommand replay-macros () ()
   "Start the bindings recording"
   (message "Replay macros...")

@@ -192,6 +192,16 @@
 (define-key *input-map* (kbd "M-p")   'input-history-back)
 (define-key *input-map* (kbd "M-n")   'input-history-forward)
 
+(defcommand scroll-forward-browser () ()
+  "Scroll forward in firefox"
+  (play-commands "firefox" (kbd "C-v") "myemacs"))
+(define-key *root-map* (kbd "C-M-]") "scroll-forward-browser")
+
+(defcommand scroll-backward-browser () ()
+  "Scroll backward in firefox"
+  (play-commands "firefox" (kbd "M-v") "myemacs"))
+(define-key *root-map* (kbd "C-M-[") "scroll-backward-browser")
+
 ;; ========================== Help 
 
 (setf *help-map*
