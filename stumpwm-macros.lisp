@@ -22,22 +22,27 @@
         (remove-hook *key-press-hook* 'key-recorder-fn)
         ;; remove last call
         (pop *keybindings-recording*))
-      (message "No macro defined...")))
+    (message "No macro defined...")))
+
+(defun play-command (command)
+  "Given a command, send it to the current window."
+  (cond ((stringp command) (window-send-string command))
+        (t                 (send-fake-key (current-window) command))))
+
+(defun play-commands (commands)
+  "Given a list of commands, send them to the current window."
+  (mapcar 'play-command commands))
+
+;; (play-command "hello")
+;; (play-command (kbd "M-x"))
+;; (play-commands `(,(kbd "M-x") "package"))
 
 (defcommand replay-macros () ()
   "Start the bindings recording"
   (message "Replay macros...")
   (if *keybindings-recording*
-      (mapcar (lambda (key)
-                (message "sending ~A" key)
-                (send-fake-key (current-window) key)) *keybindings-recording*)
+      (play-commands *keybindings-recording*)
     (message "No macro defined...")))
-
-;; (window-send-string "hello")
-;; (send-fake-key (current-window) (kbd "M-x"))
-
-:; (mapcar (lambda (k) (cond ((stringp k) (window-send-string k))
-;;                           (t           (send-fake-key (current-window) k)))) `(,(kbd "M-x") "package"))
 
 (defvar *key-macro-start*  (kbd "(") "Binding to start the key bindings recording.")
 (defvar *key-macro-stop*   (kbd ")") "Binding to stop the key bindings recording.")
