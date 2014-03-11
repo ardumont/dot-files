@@ -34,7 +34,10 @@
     (message "No macro defined...")))
 
 ;; (window-send-string "hello")
-;; (send-fake-key (current-window) (kbd "h"))
+;; (send-fake-key (current-window) (kbd "M-x"))
+
+:; (mapcar (lambda (k) (cond ((stringp k) (window-send-string k))
+;;                           (t           (send-fake-key (current-window) k)))) `(,(kbd "M-x") "package"))
 
 (defvar *key-macro-start*  (kbd "(") "Binding to start the key bindings recording.")
 (defvar *key-macro-stop*   (kbd ")") "Binding to stop the key bindings recording.")
