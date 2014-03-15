@@ -86,3 +86,7 @@ ln -nsf $REPO_PERSO/oh-my-zsh $HOME/.oh-my-zsh
 ## KeySnail
 
 $REPO_DOTFILES/deploy-keysnail.sh
+
+## emacs
+
+ln -nsf $REPO_DOTFILES/.mc-lists.el ~/.emacs.d
