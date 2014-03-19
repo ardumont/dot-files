@@ -4,7 +4,9 @@
 (setq mc/cmds-to-run-for-all
       '(
         end-of-buffer
+        flymake-display-err-menu-for-current-line
         forward-sexp
+        haskell-indentation-delete-char
         kill-region
         magit-key-mode-popup-fetching
         mark-sexp
@@ -17,6 +19,8 @@
         paredit-open-round
         paredit-splice-sexp
         prelude-move-beginning-of-line
+        sgml-slash
+        yaml-electric-dash-and-dot
         ))
 
 (setq mc/cmds-to-run-once
