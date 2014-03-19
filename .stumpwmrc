@@ -214,6 +214,14 @@
         (define-key m (kbd "w") "where-is")
         m))
 
+;; gimp
+
+(define-frame-preference "gimp"
+  (1 t t :create "gimp-dump" :class "Gimp" :title nil :role nil)
+  (0 t t :create "gimp-dump" :class "Gimp" :title nil :role "gimp-toolbox")
+  (2 t t :create "gimp-dump" :class "Gimp" :title nil :role "gimp-dock")
+  (1 t t :create "gimp-dump" :class "Gimp" :title nil :role "gimp-image-window"))
+
 ;; ========================== Launch commands at startup time
 
 (relaunch-panel)
