@@ -108,7 +108,7 @@
   (evince               "evince"                  "evince"                                                  "Evince"                      "C-e")
   (eog                  "eog"                     "eog"                                                     "Eog"                         "C-i")
   (pinta                "pinta"                   "pinta"                                                   "Pinta"                       "d")
-  (gimp                 "gimp"                    "gimp"                                                    "Gimp"                        "C-G")
+  (gimp                 "gimp"                    "gimp"                                                    "Gimp"                        "I")
   (skype                "skype"                   "/usr/bin/skype"                                          "Skype"                       "C-c")
   (audacious            "audacious"               "/usr/bin/audacious"                                      "Audacious"                   "C-a")
   (jconsole             "jconsole"                "/usr/bin/jconsole"                                       "sun-tools-jconsole-JConsole" "C-j")
