@@ -8,6 +8,7 @@
 
 ;; (ql:quickload :swank)
 ;; (ql:quickload :clx)
+;; (ql:quickload "clx-truetype")
 ;; (ql:quickload :cl-ppcre)
 ;; (ql:quickload :cl-xembed)
 ;; (ql:quickload :stumpwm)
