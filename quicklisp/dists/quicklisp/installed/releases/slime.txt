@@ -1,1 +1,1 @@
-dists/quicklisp/software/slime-20131211-cvs/
+dists/quicklisp/software/slime-2.4/

@@ -1,1 +1,1 @@
-dists/quicklisp/software/stumpwm-20140211-git/stumpwm.asd
+dists/quicklisp/software/stumpwm-20140316-git/stumpwm.asd

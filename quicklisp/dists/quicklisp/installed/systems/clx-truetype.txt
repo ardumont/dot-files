@@ -1,0 +1,1 @@
+dists/quicklisp/software/clx-truetype-20130312-git/clx-truetype.asd

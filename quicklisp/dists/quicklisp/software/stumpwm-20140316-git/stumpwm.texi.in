@@ -1,0 +1,2006 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename stumpwm.info
+@settitle StumpWM Manual
+@setchapternewpage odd
+@c %**end of header
+
+@dircategory X11
+@direntry
+* StumpWM: (stumpwm).       A Common Lisp window manager
+@end direntry
+
+@ifinfo
+This is the Stump Window Manager user manual.
+
+Copyright @copyright{} 2000-2008 Shawn Betts
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+@ignore
+Permission is granted to process this file through TeX
+and print the results, provided the printed document
+carries a copying permission notice identical to this
+one except for the removal of this paragraph (this
+paragraph not being relevant to the printed manual).
+
+@end ignore
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled ``Copying'' and ``GNU General Public License''
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.
+@end ifinfo
+
+@iftex
+@kbdinputstyle code
+@end iftex
+
+@titlepage
+@sp 10
+@titlefont{The Stump Window Manager}
+@author Shawn Betts
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 2000-2008 Shawn Betts
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled ``Copying'' and ``GNU General Public License''
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.
+@end titlepage
+
+@node Top, Introduction, (dir), (dir)
+
+@ifinfo
+This document explains how to use The Stump Window Manager.
+@end ifinfo
+
+@menu
+* Introduction::
+* Key Bindings::
+* Commands::
+* Message and Input Bar::
+* Windows::
+* Frames::
+* Mode-line::
+* Groups::
+* Screens::
+* Interacting With Unix::
+* Interacting With X11::
+* Miscellaneous Commands::
+* Colors::
+* Hooks::
+* Modules::
+* Hacking::
+* Command and Function Index::
+* Variable Index::
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Introduction
+
+* Starting StumpWM::
+* Basic Usage::
+* Basic Concepts::
+* Manipulating Frames and Windows::
+* Interacting with the Lisp process::
+* Contact the StumpWM developers::
+
+Basic Concepts
+
+* Screens and Heads::
+* Group Basics::
+* Floating Group Basics::
+* Frame Basics::
+* Window Basics::
+* System Trays and the Mode Line::
+
+Manipulating Frames and Windows
+
+* Moving Between Frames::
+* Manipulating Windows::
+
+Key Bindings
+
+* List of Default Keybindings::
+* Binding Keys::
+* Modifiers::
+
+Message and Input Bar
+
+* Customizing The Bar::
+* Using The Input Bar::
+* Programming The Message Bar::
+* Programming the Input Bar::
+
+Windows
+
+* Window Marks::
+* Customizing Window Appearance::
+* Controlling Raise And Map Requests::
+* Programming With Windows::
+* Rule Based Window Placement::
+
+Frames
+
+* Interactively Resizing Frames::
+* Frame Dumping::
+
+Groups
+
+* Customizing Groups::
+
+Screens
+
+* Xinerama::
+* Programming With Screens::
+
+Miscellaneous Commands
+
+* Menus::
+* StumpWM's Data Directory::
+* Debugging StumpWM::
+* Timers::
+* Getting Help::
+
+Colors
+
+* Behind The Scenes Look At Colors::
+
+Hacking
+
+* General Advice::
+* Using git with StumpWM::
+* Sending Patches::
+
+@end detailmenu
+@end menu
+
+@node Introduction, Key Bindings, Top, Top
+@chapter Introduction
+StumpWM is an X11 window manager written entirely in Common Lisp. Its
+user interface goals are similar to ratpoison's but with an emphasis on
+customizability, completeness, and cushiness.
+
+@menu
+* Starting StumpWM::
+* Basic Usage::
+* Basic Concepts::
+* Manipulating Frames and Windows::
+* Interacting with the Lisp process::
+* Contact the StumpWM developers::
+@end menu
+
+@node Starting StumpWM, Basic Usage, Introduction, Introduction
+@section Starting StumpWM
+There are a number of ways to start StumpWM but the most straight
+forward method is as follows. This assumes you have a copy of the
+StumpWM source code and are using the @samp{SBCL} Common Lisp
+environment.
+
+@enumerate
+@item
+Install the prerequisites and build StumpWM as described in
+@file{README}.  This should give you a @file{stumpwm} executable.
+
+@item
+In your @file{~/.xinitrc} file include the line
+@command{/path/to/stumpwm}. Remember to replace @samp{/path/to/}
+with the actual path.
+
+@item
+Finally, start X windows with @command{startx}. Cross your
+fingers. You should see a @samp{Welcome To the Stump Window Manager}
+message pop up in the upper, right corner. At this point, you have
+successfully started StumpWM.
+@end enumerate
+
+@node Basic Usage, Basic Concepts, Starting StumpWM, Introduction
+@section Basic Usage
+Once you have StumpWM up and running, the first thing you might want
+to do is start @command{emacs}. Type @kbd{C-t e}, or in other words
+@kbd{Control + t} followed by @kbd{e}. Now perhaps you want an
+@command{xterm}. Type @kbd{C-t c}. Now you have some programs running.
+
+To see a list of windows StumpWM is managing, type @kbd{C-t w}. The
+highlighted window is the one you're looking at right now. It's the
+focused window.
+
+All of StumpWM's keys are bound to named commands, which can be
+executed not only by keys but also from the input bar. Type @kbd{C-t
+;} to open a command prompt. Now type @command{time} and press
+return. Note, @command{time} can also be called by typing @kbd{C-t a}.
+Throughout this manual you'll find definitions for commands,
+functions, and variables. Any command you see in this manual can be
+executed from the input bar or bound to a key.
+
+At this point you probably want to switch back from your new
+@command{xterm} to @command{emacs}. Type @kbd{C-t C-t}. This runs the
+@command{other} command. Type it again and you're back to xterm.
+
+Perhaps you'd like to see @command{emacs} and @command{xterm}
+side-by-side. Type @kbd{C-t s}. You have now split the screen into 2
+@command{frames}. For more information see @ref{Frames}. To switch to the
+empty frame type @kbd{C-t TAB}. Now let's pull the xterm window into
+this empty frame. Type @kbd{C-t w} for a window listing. Find the
+@command{xterm} window. See the number beside it? Type @kbd{C-t} followed
+by @command{xterm}'s window number.
+
+Another common activity is browsing the interwebs. Type @kbd{C-t !}.
+The input bar pops up again. You can now run a shell command.  Let's
+start a web browser: type @command{firefox} into the input bar and press
+return.
+
+Unfortunately, @command{firefox} probably isn't wide enough because it's
+in one of the frames. Type @kbd{C-t Q} to remove all frames but the
+current one and resize it to fit the screen.
+
+For a full list of key bindings, see @ref{List of Default Keybindings}.
+
+@node Basic Concepts, Manipulating Frames and Windows, Basic Usage, Introduction
+@section Basic Concepts
+
+An introduction to some of the basic concepts used by StumpWM.
+
+@menu
+* Screens and Heads::
+* Group Basics::
+* Floating Group Basics::
+* Frame Basics::
+* Window Basics::
+* System Trays and the Mode Line::
+@end menu
+
+@node Screens and Heads, Group Basics, Basic Concepts, Basic Concepts
+@subsection Screens and Heads
+A screen is an Xlib concept representing a section of video memory
+onto which physical monitors, called ``heads'', are mapped. A screen can
+be thought of as an abstract rectangle containing all the heads
+arranged in a particular layout.
+
+With most modern systems, you'll only have a single screen no matter
+how many heads are connected to your computer. Each head will have its
+own frame, and you can move between heads using the normal frame
+movement commands.
+
+The layout of the heads within the screen can be specified in one of two
+ways: either at startup using your system's Xorg configuration files, or
+on the fly using tools like XRandR. If the computer is booted with
+multiple monitors attached, but without specifying a layout for them,
+they will all show identical output.
+
+StumpWM will attempt to detect the layout of the heads once at
+startup, or any time a RandR command is issued.
+
+In rarer setups you may have multiple screens, with one head per
+screen. That means that you'll move between heads using screen
+movement commands (`snext', `sprev', and `sother') rather than frame
+movement commands.
+
+@node Group Basics, Floating Group Basics, Screens and Heads, Basic Concepts
+@subsection Group Basics
+A group is usually referred to as a ``desktop'' or ``workspace'' in other
+window managers. StumpWM starts with a single group, called ``Default''.
+Each group has its own configuration of frames and windows that is
+separate from and independent of other groups. You can't have
+different groups display in different monitors: when you switch
+groups, all monitors switch to that group.
+
+Each group contains an ordered list of frames.
+
+@node Floating Group Basics, Frame Basics, Group Basics, Basic Concepts
+@subsection Floating Group Basics
+Within a floating group, windows behave more like they do in traditional
+window managers: rather than being arranged into frames, they each have
+their own box, which can be freely resized and repositioned, and allowed
+to overlap. Each window has a thicker border at the top. Left click in
+this border and drag to move the window, or right click and drag to
+resize it.
+
+Most of the window-switching commands listed below do not function in
+a floating group. You're restricted to `other', the `select-window-*'
+commands, and `windowlist'.
+
+@node Frame Basics, Window Basics, Floating Group Basics, Basic Concepts
+@subsection Frame Basics
+Frames are the boxes within which windows are displayed. StumpWM
+starts with a single frame per head, meaning that each monitor shows a
+single window, full screen. If you want to see windows side-by-side,
+you can ``split'' this frame in two, either vertically or horizontally.
+These frames can be further split, creating nested boxes.
+
+Technically speaking, frames live within a ``frame tree''. When you
+split a frame, the command actually creates @emph{two} new frames
+side-by-side within the original parent frame. This makes no practical
+difference, unless you use the `sibling' command, which will move to
+the other child frame within the parent frame.
+
+Within this frame tree model, all frames either contain other frames,
+or windows. The command `fclear' will hide all a frame's windows and
+show the background.
+
+@node Window Basics, System Trays and the Mode Line, Frame Basics, Basic Concepts
+@subsection Window Basics
+Windows are created by programs to display their output. They take the
+shape of the frame in which they are created. The windows within a
+frame are ordered by how recently that window was focused. Only the
+top window in the stack is visible.
+
+@node System Trays and the Mode Line,  , Window Basics, Basic Concepts
+@subsection System Trays and the Mode Line
+Many users choose to sacrifice a little screen real-estate to display
+some generally useful information: the current time and date, wireless
+network connections, the names of open windows, etc. StumpWM allows
+you to display this information in a bar across either the top or the
+bottom of the screen. There are two ways to do this: using external
+programs called system trays, or using StumpWM's own mode line.
+
+System trays are a special kind of X window. They advertise to running
+programs that they are available for embedding icons or notifications
+from those programs. They often also display clickable icons for each
+open window. Common tray programs include the GNOME panel or KDE's
+kicker, or simpler programs such as stalonetray. Simply starting one
+of these programs is usually enough for StumpWM to detect it, place it
+correctly, and allow it to function normally.
+
+The mode line, a concept borrowed from Emacs, is a built-in part of
+StumpWM. It is essentially a string of text that can include a variety
+of information about your current session, including the names of
+current groups and windows. Several contrib modules provide for
+different types of information. @xref{Mode-line, Mode Line}, (and the contrib
+directory) for more.
+
+@node Manipulating Frames and Windows, Interacting with the Lisp process, Basic Concepts, Introduction
+@section Manipulating Frames and Windows
+Frames and windows are concepts borrowed from Emacs and the GNU Screen
+program, and should be familiar to users of those programs. Others may
+find the terms a little confusing. In other window managers, a
+``window'' usually refers to a bounded box on the screen, showing output
+from a single program. StumpWM splits this into two concepts: the
+``frame'' is the bounded box, the ``window'' is the visible output of a
+program.
+
+One frame can contain many windows. As new windows are created, they
+appear at the top of the window-stack of the current frame. This is
+also a little different from other tiling window managers, many of
+which automatically create new frames for new windows.
+
+Both frames and windows are ordered by when they were last focused. In
+the following commands and documentation, the terms ``next'' and
+``previous'' refer to this order. ``Other'' refers to the most-recently
+focused object. Calling ``other'' commands multiple times will bounce
+back and forth between the two most recent objects.
+
+By default, StumpWM starts with a single group, called ``Default'',
+which contains one full-screen frame per head. You can split individual
+frames horizontally or vertically using the `hsplit' and `vsplit'
+commands, bound to ``C-t S'' and ``C-t s'' by default. When a frame is
+split, the next-most-recently-focused window is pulled into the new
+frame. @xref{Frames}, and @ref{Windows}, for a complete listing of
+commands.
+
+
+@menu
+* Moving Between Frames::
+* Manipulating Windows::
+@end menu
+
+@node Moving Between Frames, Manipulating Windows, Manipulating Frames and Windows, Manipulating Frames and Windows
+@subsection Moving Between Frames
+Once you have multiple frames, you can move between them in various
+ways:
+
+@itemize
+@item 
+@command{fnext} (@kbd{C-t o} or @kbd{C-t TAB}) jumps to the next frame in
+the current group's frame list.
+
+@item 
+@command{fother} (@kbd{C-t M-TAB}) jumps to the last frame that had
+focus.
+
+@item 
+@command{fselect} (@kbd{C-t f}) displays numbers on each visible frame: hit a
+number key to move to that frame.
+
+@item 
+@command{move-focus} (@kbd{C-t <arrow key>}) focus the frame in the direction of
+the arrow key pressed.
+
+@item 
+@command{sibling} (unbound by default) focus the frame from which the
+current frame was split.
+
+@end itemize
+
+@node Manipulating Windows,  , Moving Between Frames, Manipulating Frames and Windows
+@subsection Manipulating Windows
+
+Some commands change which window is currently focused, some move
+windows between frames, and some may do both at once.
+
+There are two general ways to move focus between windows: either
+between windows belonging to the current frame, or between all windows
+within the current group. Within a single frame:
+
+@itemize
+@item 
+@command{next-in-frame} (@kbd{C-t C-M-n}) focus the next window in the current
+frame's list of windows.
+
+@item 
+@command{prev-in-frame} (@kbd{C-t C-M-p}) focus the previous window in the
+current frame's list of windows.
+
+@item 
+@command{other-in-frame} (@kbd{C-t M-t}) focus the most recently focused window
+in the current frame's list of windows.
+
+@item 
+@command{frame-windowlist} (unbound by default) display a menu of windows in
+the currently-focused frame, and allow the user to choose one.
+Alternately, the command @command{frame-windows} will simply display the
+list of window names, with no menu choice available.
+
+@end itemize
+
+Within the current group, the following commands will go straight to
+the specified window. They will never move a window from its original
+frame, and so may result in focus switching frames.
+
+@itemize
+@item 
+@command{next} (@kbd{C-t M-n}) focus the next window in the current group.
+
+@item 
+@command{prev} (@kbd{C-t M-p}) focus the previous window in the current group.
+
+@item 
+@command{other} or @command{other-window} (unbound by default) focus the
+most recently focused window in the current group.
+
+@item 
+@command{next-urgent} (@kbd{C-t C-u}) focus the next window that has marked
+itself ``urgent''.
+
+@item 
+@command{select} or @command{select-window} (@kbd{C-t '}) prompt for the
+title of a window and focus it. Works with partial completion of the
+title.
+
+@item 
+@command{select-window-by-name} (unbound by default) prompt for the
+title of a window and focus it. Requires the window title to be entered
+exactly.
+
+@item 
+@command{select-window-by-number} (@kbd{C-t <number>}) choose a window by
+number.
+
+@item 
+@command{windowlist} (``C-t "") display a menu of windows in the
+currently-focused group, and allow the user to choose one.
+
+@end itemize
+
+The following commands always keep the current frame focused. If the
+selected window is not in the current frame, it will be pulled there
+from wherever it is (hence the ``pull'' naming scheme).
+
+@itemize
+@item 
+@command{pull} or @command{pull-window-by-number} (@kbd{C-t C-<number>})
+pull the numbered window into the current frame.
+
+@item 
+@command{pull-hidden-next} (@kbd{C-t n} or @kbd{C-t SPC}) pull the next
+currently undisplayed window in the window list into the current frame.
+
+@item 
+@command{pull-hidden-previous} (@kbd{C-t p}) pull the previous currently
+undisplayed window in the window list into the current frame.
+
+@item 
+@command{pull-hidden-other} (@kbd{C-t C-t}) pull the most recently
+focused, currently undisplayed window into the current frame.
+
+@end itemize
+
+The following commands move the current window from one frame to
+another, bringing focus with them.
+
+@itemize
+@item 
+@command{move-window} (@kbd{C-t M-<arrow>}) move the currently focused
+window in the direction indicated by the arrow key.
+
+@item 
+@command{exchange-direction} (unbound by default) prompt for a
+direction, then swap the currently focused window with the top window of
+the frame in that direction.
+
+@end itemize
+
+@node Interacting with the Lisp process, Contact the StumpWM developers, Manipulating Frames and Windows, Introduction
+@section Interacting with the Lisp process
+
+Since StumpWM is a Lisp program, there is a way for you to evaluate
+Lisp code directly, on the same Lisp process that StumpWM is running on.
+Type @kbd{C-t :} and an input box will appear. Then type some Lisp
+expression.
+
+When you call @command{eval} this way, you will be in the STUMPWM-USER
+package, which imports all the exported symbols from the main STUMPWM
+package.
+
+@table @code
+@item *mode-line-border-width*
+Reads the value of @var{*mode-line-border-width*}.
+
+@item (setf *mode-line-border-width* 3)
+Sets the variable @var{*mode-line-border-width*} to 3.
+
+@item (set-prefix-key (kbd "C-M-H-s-z"))
+Calls the @code{set-prefix-key} function (and sets a new keyboard prefix)
+@end table
+
+
+@node Contact the StumpWM developers,  , Interacting with the Lisp process, Introduction
+@section Contact the StumpWM developers
+The StumpWM home page is @url{http://stumpwm.nongnu.org/}.
+
+You can reach Shawn Betts at @email{sabetts at vcn.bc.ca}.
+
+The StumpWM mailing list is @email{stumpwm-devel@@nongnu.org} which
+you can subscribe to at
+@url{http://mail.nongnu.org/mailman/listinfo/stumpwm-devel}. Posting
+is restricted to subscribers to keep spam out of the archives.
+
+The StumpWM IRC channel can be found on Freenode at
+@uref{irc://irc.freenode.net/#stumpwm, @code{#stumpwm}}.
+
+@node Key Bindings, Commands, Introduction, Top
+@chapter Key Bindings
+StumpWM is controlled entirely by keystrokes and Lisp commands. It
+mimics GNU Screen's keyboard handling. StumpWM's default prefix key is
+@kbd{C-t}.
+
+@menu
+* List of Default Keybindings::
+* Binding Keys::
+* Modifiers::
+@end menu
+
+@node List of Default Keybindings, Binding Keys, Key Bindings, Key Bindings
+@section List of Default Keybindings
+The following is a list of keybindings.
+
+@table @kbd
+@item C-t @var{d}
+Select the window with the corresponding digit@tie{}@var{d}
+
+@item C-t C-@var{d}
+Pull the window with the corresponding digit@tie{}@var{d} into the current frame
+
+@item C-t n
+@itemx C-t C-n
+@itemx C-t Space
+Go to the next window in the window list
+
+@item C-t p
+@itemx C-t C-p
+Go to the previous window in the window list
+
+@item C-t '
+Go to a window by name
+
+@item C-t "
+Select a window from a list and focus the window.
+
+@item C-t C-g
+Abort the current command. This is useful if you accidentally hit @kbd{C-t}
+
+@item C-t w
+List all the windows
+
+@item C-t i
+Display information about the current window.
+
+@item C-t f
+Select a frame by number
+
+@item C-t s
+Split current frame vertically
+
+@item C-t S
+Split current frame horizontally
+
+@item C-t k
+@itemx C-t C-k
+Sends a kill message to the current frame and the running program.
+
+@item C-t K
+Kills the current frame and running program; like a @command{kill -9}.
+
+@item C-t c
+@itemx C-t C-c
+Run an X terminal; by default @command{xterm}
+
+@item C-t e
+@itemx C-t C-e
+Run Emacs or raise it if it is already running.
+
+@item C-t t
+Sends a @kbd{C-t} to the frame; this is useful for applications like Firefox
+which make heavy use of @kbd{C-t} (in Firefox's case, for opening a new
+tab). This is similar to how GNU screen uses @kbd{C-a a}.
+
+@item C-t w
+@itemx C-t C-w
+Prints out a list of the windows, their number, and their name.
+
+@item C-t b
+@itemx C-t C-b
+Banish the mouse point to the lower right corner of the screen.
+
+@item C-t a
+@itemx C-t C-a
+Display the current time and date, much like the Unix command @command{date}.
+
+@item C-t C-t
+Switch to the last window to have focus in the current frame.
+
+@item C-t !
+Prompt for a shell command to run via @file{/bin/sh}. All output is discarded.
+
+@item C-t R
+If the screen is split into multiple frames, one split will be
+undone. If there is only one split, the effect will be the same as @kbd{C-t Q}.
+
+@item C-t o
+@itemx C-t TAB
+If the screen is split into multiple frames, focus shifts to the
+@command{next} frame, where it cycles to the right and then down; analogous
+to @kbd{C-x o} in Emacs.
+
+@item C-t F
+Display ``Current Frame'' in the frame which has focus.
+
+@item C-t ;
+Opens the input box. StumpWM commands can be run from here, and the
+input history moved through.
+
+@item C-t :
+Opens the input box, but all things typed in here will be sent to the
+Common Lisp interpreter where they will be ran as Lisp programs; thus,
+input should be valid Common Lisp.
+
+@item C-t C-h
+@itemx C-t ?
+The help.
+
+@item C-t -
+Hide all frames and show the root window.
+
+@item C-t Q
+Removes all splits and maximizes the frame with focus.
+
+@item C-t Up
+@itemx C-t Down
+@itemx C-t Left
+@itemx C-t Right
+Shift focus to an adjacent frame in the specified direction. @kbd{C-t Up} will
+shift focus up, if possible, @kbd{C-t Down} will shift downwards, etc.
+
+@item C-t v
+Prints out the version of the running StumpWM.
+
+@item C-t #
+Toggle the mark on the current window
+
+@item C-t m
+@itemx C-t C-m
+Display the last message. Hitting this keybinding again displays the
+message before that, and so on.
+
+@item C-t l
+@itemx C-t C-l
+redisplay the current window and force it to take up the entire frame.
+
+@item C-t G
+Display all groups and windows in each group. For more information see @ref{Groups}.
+
+@item C-t F@var{n}
+Jump to the corresponding group @var{n}. @kbd{C-t F1} jumps to group 1 and so on.
+
+@item C-t g g
+Show the list of groups.
+
+@item C-t g c
+Create a new group.
+
+@item C-t g n
+@itemx C-t g C-n
+@itemx C-t g SPC
+@itemx C-t g C-SPC
+Go to the next group in the list.
+
+@item C-t g N
+Go to the next group in the list and bring the current window along.
+
+@item C-t g p
+@itemx C-t g C-p
+Go to the previous group in the list.
+
+@item C-t g P
+Go to the previous group in the list and bring the current window along.
+
+@item C-t g '
+Select a group by name or by number.
+
+@item C-t g "
+Select a group from a list and switch to it.
+
+@item C-t g m
+Move the current window to the specified group.
+
+@item C-t g k
+Kill the current group. All windows are merged into the next group.
+
+@item C-t g A
+@itemx C-t g r
+Change the current group's name.
+
+@item C-t g @var{d}
+Go to the group with digit @var{d}. @kbd{C-t g 1} jumps to group 1 and so on.
+
+@item C-t +
+Make frames the same height or width in the current frame's subtree.
+
+@item C-t h k
+Describe the specified key binding.
+
+@item C-t h f
+Describe the specified function.
+
+@item C-t h v
+Describe the specified variable.
+
+@item C-t h w
+List all key sequences that are bound to the specified command
+
+@item C-t h c
+Describe the specified command.
+@end table
+
+@node Binding Keys, Modifiers, List of Default Keybindings, Key Bindings
+@section Binding Keys
+
+@@@ define-key
+@@@ undefine-key
+@@@ kbd
+!!! set-prefix-key
+
+@@@ make-sparse-keymap
+
+### *root-map*
+### *top-map*
+### *groups-map*
+### *exchange-window-map*
+
+!!! bind
+
+@node Modifiers,  , Binding Keys, Key Bindings
+@section Modifiers
+
+Many users have had some difficulty with setting up modifiers for
+StumpWM keybindings. This is caused by a combination of how StumpWM
+handles modifiers and the default modifiers list for many users' X
+servers.
+
+@itemize
+
+@item
+My ``Super'' key doesn't work!
+
+This is most likely caused by having the Hyper and Super keys listed
+as the same modifier in the modifier list.
+
+@example
+$ xmodmap
+xmodmap:  up to 3 keys per modifier, (keycodes in parentheses):
+
+shift       Shift_L (0x32),  Shift_R (0x3e)
+lock        Caps_Lock (0x42)
+control     Control_L (0x25),  Control_R (0x6d)
+mod1        Alt_L (0x40),  Alt_R (0x71),  Meta_L (0x9c)
+mod2        Num_Lock (0x4d)
+mod3
+mod4        Super_L (0x7f),  Hyper_L (0x80)
+mod5        Mode_switch (0x5d),  ISO_Level3_Shift (0x7c)
+@end example
+
+The problem is in the line beginning with ``mod4''. The way to set up
+the modifier list correctly is to have just the Super key as the mod4
+modifier. The following @command{xmodmap} commands will do just that.
+
+@example
+# clear out the mod4 modifier
+$ xmodmap -e 'clear mod4'
+$ xmodmap
+xmodmap:  up to 3 keys per modifier, (keycodes in parentheses):
+
+shift       Shift_L (0x32),  Shift_R (0x3e)
+lock        Caps_Lock (0x42)
+control     Control_L (0x25),  Control_R (0x6d)
+mod1        Alt_L (0x40),  Alt_R (0x71),  Meta_L (0x9c)
+mod2        Num_Lock (0x4d)
+mod3
+mod4
+mod5        Mode_switch (0x5d),  ISO_Level3_Shift (0x7c)
+
+# add Super as a mod4 modifier
+$ xmodmap -e 'add mod4 = Super_L'
+$ xmodmap
+xmodmap:  up to 3 keys per modifier, (keycodes in parentheses):
+
+shift       Shift_L (0x32),  Shift_R (0x3e)
+lock        Caps_Lock (0x42)
+control     Control_L (0x25),  Control_R (0x6d)
+mod1        Alt_L (0x40),  Alt_R (0x71),  Meta_L (0x9c)
+mod2        Num_Lock (0x4d)
+mod3
+mod4        Super_L (0x73),  Super_L (0x7f)
+mod5        Mode_switch (0x5d),  ISO_Level3_Shift (0x7c)
+@end example
+
+You can automate this by storing the commands in a file and calling
+xmodmap when you start your X session.
+
+@example
+$ cat ~/.Xmodmap
+clear mod4
+add mod4 = Super_L
+@end example
+
+If you use @command{startx}, modify your @file{~/.xsession} or @file{~/.xinitrc} file.
+
+@example
+$ cat ~/.xsession
+#!/bin/sh
+
+xmodmap ~/.Xmodmap
+exec /usr/bin/stumpwm
+@end example
+
+If you use a graphical login manager (GDM, KDM, etc.), your @file{~/.Xmodmap}
+file should be fed to @command{xmodmap} when you log in. FIXME: verify this.
+
+@item
+Handling Meta and Alt: when do I use @kbd{M-} and @kbd{A-}?
+
+If you have no Meta keys defined (see the output of the @command{xmodmap}
+command), then StumpWM will treat the @kbd{M-} prefix in keybindings to
+mean Alt. However, if there are Meta keys defined, then the @kbd{M-}
+prefix refers to them, and the @kbd{A-} prefix refers to Alt.
+
+Most users will simply use @kbd{M-} to refer to their Alt keys. However,
+users that define separate Meta and Alt keys will use @kbd{M-} to refer
+to the former, and @kbd{A-} to refer to the latter.
+
+@item
+How can I set up a Hyper key and use it with StumpWM?
+
+To set up a Hyper key, you need to do two things: bind a physical key
+to be a Hyper key, and add that key to the modifiers list.
+
+The following example shows how to bind the control key at the
+bottom-left of most keyboards to be Hyper. This is useful if you've
+made Caps Lock into a control key, and have no use for the bottom-left
+key.
+
+@example
+$ xmodmap -e 'keycode 37 = Hyper_L'
+$ xmodmap -e 'clear mod5'
+$ xmodmap -e 'add mod5 = Hyper_L'
+@end example
+
+To use a different key for Hyper, replace the keycode ``37'' above.
+Use the @command{xev} program to see the keycode that any physical key has.
+Refer to the section above on setting up the Super key to see how to
+automate setting the Hyper key when you start X.
+
+Now you can use @kbd{H-} as a prefix in StumpWM bindings.
+
+@example
+(define-key *top-map* (kbd "H-RET") "fullscreen")
+(define-key *top-map* (kbd "H-Left") "gprev")
+(define-key *top-map* (kbd "H-Right") "gnext")
+(define-key *top-map* (kbd "H-TAB") "other")
+@end example
+
+Since essentially no programs have Hyper bindings, you can safely bind
+commands to the @var{*top-map*}.
+
+@end itemize
+
+@node Commands, Message and Input Bar, Key Bindings, Top
+@chapter Commands
+If you've used emacs before you'll find commands and functions
+familiar. Commands are functions that can be bound to keys and
+executed interactively from StumpWM's input bar. A command expects a
+certain number of arguments and any that are not supplied will be
+prompted for.
+
+FIXME: actually write some docs here
+
+@node Message and Input Bar, Windows, Commands, Top
+@chapter Message and Input Bar
+
+!!! echo
+!!! colon
+
+@menu
+* Customizing The Bar::
+* Using The Input Bar::
+* Programming The Message Bar::
+* Programming the Input Bar::
+@end menu
+
+@node Customizing The Bar, Using The Input Bar, Message and Input Bar, Message and Input Bar
+@section Customizing The Bar
+The bar's appearance and behavior can be modified with the following
+functions and variables.
+
+@@@ set-fg-color
+@@@ set-bg-color
+@@@ set-border-color
+@@@ set-msg-border-width
+@@@ set-font
+
+### *message-window-padding*
+### *message-window-gravity*
+### *timeout-wait*
+### *input-window-gravity*
+
+@node Using The Input Bar, Programming The Message Bar, Customizing The Bar, Message and Input Bar
+@section Using The Input Bar
+
+The following is a list of keybindings for the Input Bar. Users of Emacs
+will recognize them.
+
+@table @kbd
+@item DEL
+Delete the character before point (@code{delete-backward-char}).
+
+@item M-DEL
+Kill back to the beginning of the previous word (@code{backward-kill-word}).
+
+@item C-d
+@itemx Delete
+Delete the character after point (@code{delete-forward-char}).
+
+@item M-d
+Kill forward to the end of the next word (@code{forward-kill-word}).
+
+@item C-f
+@itemx Right
+Move forward one character (@code{forward-char}).
+
+@item M-f
+Move forward one word (@code{forward-word}).
+
+@item C-b
+@itemx Left
+Move backward one character (@code{backward-char}).
+
+@item M-b
+Move backward one word (@code{backward-word}).
+
+@item C-a
+@itemx Home
+Move to the beginning of the current line (@code{move-beginning-of-line}).
+
+@item C-e
+@itemx End
+Move to the end of the current line (@code{move-end-of-line}).
+
+@item C-k
+Kill to the end of the line (@code{kill-line}).
+
+@item C-u
+Kill to the beginning of the line (@code{kill-to-beginning}),
+the same as @kbd{C-a C-k}.
+
+@item C-p
+@itemx Up
+Move to the next earlier entry saved in the command history (@command{history-back}).
+
+@item C-n
+@itemx Down
+Move to the next later entry saved in the command history (@command{history-forward}).
+
+@item RET
+Submit the entered command (@command{submit}).
+
+@item C-g
+Abort the current action by closing the Input Bar (@command{abort}).
+
+@item C-y
+Paste text from clipboard into the Input Bar (@command{yank-selection}).
+
+@item TAB
+Clockwise tab complete the current string, if possible. Press @kbd{TAB} again to
+cycle through completions.
+ 
+@item S-TAB
+Counter-clockwise tab complete the current string, if possible. Press @kbd{S-TAB} again to
+cycle through completions.
+
+@end table
+
+@node Programming The Message Bar, Programming the Input Bar, Using The Input Bar, Message and Input Bar
+@section Programming The Message Bar
+
+@@@ echo-string
+@@@ message
+### *input-history-ignore-duplicates*
+!!! copy-last-message
+
+@node Programming the Input Bar,  , Programming The Message Bar, Message and Input Bar
+@section Programming the Input Bar
+New input behavior can be added to the input bar by creating editing
+functions and binding them to keys in the @var{*input-map*} using
+@command{define-key}, just like other key bindings.
+
+An input function takes 2 arguments: the input structure and the key pressed.
+
+@@@ read-one-line
+@@@ read-one-char
+@@@ completing-read
+@@@ input-insert-string
+@@@ input-insert-char
+
+### *input-map*
+
+@node Windows, Frames, Message and Input Bar, Top
+@chapter Windows
+
+!!! next
+!!! pull-hidden-next
+!!! prev
+!!! pull-hidden-previous
+!!! delete-window
+!!! kill-window
+!!! echo-windows
+!!! other-window
+!!! pull-hidden-other
+!!! renumber
+!!! meta
+!!! select-window
+!!! select-window-by-number
+!!! title
+!!! windowlist
+!!! fullscreen
+!!! info
+!!! refresh
+!!! redisplay
+
+### *window-format*
+### *window-name-source*
+### *new-window-prefered-frame*
+
+@menu
+* Window Marks::
+* Customizing Window Appearance::
+* Controlling Raise And Map Requests::
+* Programming With Windows::
+* Rule Based Window Placement::
+@end menu
+
+@node Window Marks, Customizing Window Appearance, Windows, Windows
+@section Window Marks
+Windows can be marked. A marked window has a # beside it in the window
+list. Some commands operate only on marked windows.
+
+!!! mark
+!!! clear-window-marks
+!!! pull-marked
+
+@node Customizing Window Appearance, Controlling Raise And Map Requests, Window Marks, Windows
+@section Customizing Window Appearance
+
+### *maxsize-border-width*
+### *transient-border-width*
+### *normal-border-width*
+### *window-border-style*
+
+@@@ set-win-bg-color
+@@@ set-focus-color
+@@@ set-unfocus-color
+@@@ set-float-focus-color
+@@@ set-float-unfocus-color
+@@@ set-normal-gravity
+@@@ set-maxsize-gravity
+@@@ set-transient-gravity
+
+!!! gravity
+
+@node Controlling Raise And Map Requests, Programming With Windows, Customizing Window Appearance, Windows
+@section Controlling Raise And Map Requests
+It is sometimes handy to deny a window's request to be focused. The
+following variables determine such behavior.
+
+A map request occurs when a new or withdrawn window requests to be
+mapped for the first time.
+
+A raise request occurs when a client asks the window manager to give
+an existing window focus.
+
+### *deny-map-request*
+### *deny-raise-request*
+### *suppress-deny-messages*
+
+Some examples follow.
+
+@example
+;; Deny the firefox window from taking focus when clicked upon.
+(push '(:class "gecko") stumpwm:*deny-raise-request*)
+
+;; Deny all map requests
+(setf stumpwm:*deny-map-request* t)
+
+;; Deny transient raise requests
+(push '(:transient) stumpwm:*deny-map-request*)
+
+;; Deny the all windows in the xterm class from taking focus.
+(push '(:class "Xterm") stumpwm:*deny-raise-request*)
+@end example
+
+@node Programming With Windows, Rule Based Window Placement, Controlling Raise And Map Requests, Windows
+@section Programming With Windows
+
+%%% define-window-slot
+
+@@@ window-send-string
+### *default-window-name*
+
+@node Rule Based Window Placement,  , Programming With Windows, Windows
+@section Rule Based Window Placement
+
+%%% define-frame-preference
+@@@ clear-window-placement-rules
+
+!!! remember
+!!! forget
+!!! dump-window-placement-rules
+!!! restore-window-placement-rules
+
+@node Frames, Mode-line, Windows, Top
+@chapter Frames
+Frames contain windows. All windows exist within a frame.
+
+Those used to ratpoison will notice that this differs from ratpoison's
+window pool, where windows and frames are not so tightly connected.
+
+!!! pull-window-by-number
+!!! hsplit
+!!! vsplit
+!!! remove-split
+!!! only
+!!! curframe
+!!! fnext
+!!! sibling
+!!! fother
+!!! fselect
+!!! resize
+!!! balance-frames
+!!! fclear
+!!! move-focus
+!!! move-window
+!!! next-in-frame
+!!! prev-in-frame
+!!! other-in-frame
+!!! echo-frame-windows
+!!! exchange-direction
+
+### *min-frame-width*
+### *min-frame-height*
+### *new-frame-action*
+
+@menu
+* Interactively Resizing Frames::
+* Frame Dumping::
+@end menu
+
+@node Interactively Resizing Frames, Frame Dumping, Frames, Frames
+@section Interactively Resizing Frames
+There is a mode called @code{iresize} that lets you interactively
+resize the current frame. To enter the mode use the @code{iresize}
+command or type @key{C-t r}.
+
+The following keybindings apply to the mode:
+@table @kbd
+@item C-p
+@itemx Up
+@itemx k
+Shrink the frame vertically.
+
+@item C-n
+@itemx Down
+@itemx j
+Expand the frame vertically.
+
+@item C-f
+@itemx Right
+@itemx l
+Expand the frame horizontally.
+
+@item C-b
+@itemx Left
+@itemx h
+Shrink the frame horizontally.
+
+@item C-g
+@itemx ESC
+Abort the interactive resize. NOTE: This currently doesn't work.
+
+@item RET
+Select the highlighted option.
+
+@end table
+
+!!! iresize
+!!! abort-iresize
+!!! exit-iresize
+
+### *resize-increment*
+
+@node Frame Dumping,  , Interactively Resizing Frames, Frames
+@section Frame Dumping
+The configuration of frames and groups can be saved and restored using
+the following commands.
+
+!!! dump-desktop-to-file
+!!! dump-group-to-file
+!!! dump-screen-to-file
+!!! restore-from-file
+!!! place-existing-windows
+
+@node Mode-line, Groups, Frames, Top
+@chapter The Mode Line
+The mode line is a bar that runs across either the top or bottom of
+a head and is used to display information. By default the mode line
+displays the list of windows, similar to the output @kbd{C-t w} produces.
+
+Alternatively, external panel applications such as the GNOME panel and
+KDE's kicker may be used. Simply starting one of these programs is enough
+to set it as the mode line of the head it would like to be on (if the
+panel is Xinerama aware) or whichever head is available. In order to
+avoid problems displaying menus, configure your panel application for
+positioning at the top or bottom of the head rather than relying on
+@var{*mode-line-position*}
+
+The mode line can be turned on and off with the @command{mode-line}
+command or the lisp function @code{stumpwm:toggle-mode-line}. Each
+head has its own mode line. For example:
+
+@example
+;; turn on/off the mode line for the current head only.
+(stumpwm:toggle-mode-line (stumpwm:current-screen)
+                          (stumpwm:current-head))
+@end example
+
+The mode line is updated after every StumpWM command.
+
+To display the window list and the current date on the modeline, one
+might do the following:
+
+@example
+(setf stumpwm:*screen-mode-line-format*
+      (list "%w | "
+            '(:eval (stumpwm:run-shell-command "date" t))))
+@end example
+
+@code{(stumpwm:run-shell-command "date" t)} runs the command
+@command{date} and returns its output as a string.
+
+!!! mode-line
+
+@@@ toggle-mode-line
+
+### *screen-mode-line-format*
+
+The following variables control the color, position, and size of the
+mode line.
+
+### *mode-line-position*
+### *mode-line-border-width* 1
+### *mode-line-pad-x* 
+### *mode-line-pad-y* 
+### *mode-line-background-color* 
+### *mode-line-foreground-color* 
+### *mode-line-border-color* 
+### *mode-line-timeout*
+
+@node Groups, Screens, Mode-line, Top
+@chapter Groups
+Groups in StumpWM are more commonly known as @dfn{virtual desktops} or
+@dfn{workspaces}. Why not create a new term for it?
+
+!!! gnew
+!!! gnew-float
+!!! gnewbg
+!!! gnewbg-float
+!!! gnext
+!!! gprev
+!!! gnext-with-window
+!!! gprev-with-window
+!!! gother
+!!! gmerge
+!!! groups
+!!! vgroups
+!!! gselect
+!!! gmove
+!!! gkill
+!!! grename
+!!! grouplist
+
+@menu
+* Customizing Groups::
+@end menu
+
+@node Customizing Groups,  , Groups, Groups
+@section Customizing Groups
+
+### *group-formatters*
+### *group-format*
+
+@@@ current-group
+
+@node Screens, Interacting With Unix, Groups, Top
+@chapter Screens
+StumpWM handles multiple screens.
+
+!!! snext
+!!! sprev
+!!! sother
+
+@menu
+* Xinerama::
+* Programming With Screens::
+@end menu
+
+@node Xinerama, Programming With Screens, Screens, Screens
+@section Xinerama
+StumpWM will attempt to detect Xinerama heads at startup (and at no other
+time.) Heads are logically contained by screens. In a dual-monitor Xinerama
+configuration, there will be one screen with two heads. Non-rectangular layouts
+are supported (frames will not be created in the 'dead zone'.) And message
+windows will be displayed on the current head--that is, the head to which the
+currently focused frame belongs.
+
+@node Programming With Screens,  , Xinerama, Screens
+@section Programming With Screens
+
+@@@ current-screen
+
+@@@ screen-current-window
+
+@@@ current-window
+
+### *screen-list*
+        
+@node Interacting With Unix, Interacting With X11, Screens, Top
+@chapter Interacting With Unix
+
+!!! run-shell-command
+
+@@@ programs-in-path
+@@@ pathname-is-executable-p
+
+### *shell-program*
+
+@@@ getenv
+@@@ (setf getenv)
+
+@node Interacting With X11, Miscellaneous Commands, Interacting With Unix, Top
+@chapter Interacting With X11
+
+@@@ set-x-selection
+@@@ get-x-selection
+
+@node Miscellaneous Commands, Colors, Interacting With X11, Top
+@chapter Miscellaneous Commands
+The following is a list of commands that don't really fit in any other
+section.
+
+!!! emacs
+!!! banish
+!!! ratwarp
+!!! ratrelwarp
+!!! ratclick
+!!! echo-date
+!!! eval-line
+!!! window-send-string
+!!! reload
+!!! loadrc
+!!! keyboard-quit
+!!! quit
+!!! restart-hard
+!!! restart-soft
+!!! getsel
+!!! putsel
+!!! command-mode
+!!! copy-unhandled-error
+!!! commands
+!!! lastmsg
+!!! list-window-properties
+
+@@@ run-commands
+
+%%% defcommand
+%%% define-stumpwm-type
+
+@@@ run-or-raise
+
+@@@ run-or-pull
+
+### *run-or-raise-all-groups*
+### *run-or-raise-all-screens*
+
+@@@ restarts-menu
+
+%%% with-restarts-menu
+
+### *startup-message*
+### *suppress-abort-messages*
+### *default-package*
+
+%%% defprogram-shortcut
+
+### *initializing*
+
+@menu
+* Menus::
+* StumpWM's Data Directory::
+* Debugging StumpWM::
+* Timers::
+* Getting Help::
+@end menu
+
+@node Menus, StumpWM's Data Directory, Miscellaneous Commands, Miscellaneous Commands
+@section Menus
+Some commands present the options in a menu. The following are the menu key bindings:
+
+@table @kbd
+@item C-p
+@itemx Up
+@itemx k
+Highlight the previous menu option.
+
+@item C-n
+@itemx Down
+@itemx j
+Highlight the next menu option.
+
+@item C-g
+@itemx ESC
+Abort the menu.
+
+@item RET
+Select the highlighted option.
+
+@end table
+
+@node StumpWM's Data Directory, Debugging StumpWM, Menus, Miscellaneous Commands
+@section StumpWM's Data Directory
+If you want to store StumpWM data between sessions, the recommended
+method is to store them in @file{~/.stumpwm.d/}. StumpWM supplies
+some functions to make doing this easier.
+
+### *data-dir*
+@@@ data-dir-file
+%%% with-data-file
+
+@node Debugging StumpWM, Timers, StumpWM's Data Directory, Miscellaneous Commands
+@section Debugging StumpWM
+
+### *debug-level*
+### *debug-stream*
+@@@ redirect-all-output
+
+@node Timers, Getting Help, Debugging StumpWM, Miscellaneous Commands
+@section Timers
+StumpWM has a timer system similar to that of @dfn{Emacs}.
+
+@@@ run-with-timer
+@@@ cancel-timer
+
+@defun timer-p @var{timer}
+Return T if TIMER is a timer structure.
+@end defun
+
+@node Getting Help,  , Timers, Miscellaneous Commands
+@section Getting Help
+
+!!! describe-key
+!!! describe-variable
+!!! describe-function
+!!! where-is
+!!! modifiers
+
+@node Colors, Hooks, Miscellaneous Commands, Top
+@chapter Colors
+All text printed by stumpwm is run through a coloring engine before
+being displayed. All color commands start with a @samp{^} (caret)
+character and apply to all text after it.
+
+@table @code
+@item ^0-9
+A caret followed by a single digit number changes the foreground color
+to the specified color. A @samp{*} can be used to specify the normal
+color. See the color listing below.
+
+@item ^0-90-9
+A caret followed by two digits sets the foreground and background
+color. The first digit refers to the foreground color and the second
+digit to the background color. A @samp{*} can be used in place of
+either digit to specify the normal color. See the color listing below.
+
+@item ^B
+Turn on bright colors.
+
+@item ^b
+Turn off bright colors.
+
+@item ^n
+Use the normal background and foreground color.
+
+@item ^R
+Reverse the foreground and background colors.
+
+@item ^r
+Turn off reverse colors.
+
+@item ^[
+Push the current colors onto the color stack. The current colors remain unchanged.
+
+@item ^]
+Pop the colors off the color stack.
+
+@item ^^
+Print a regular caret.
+@end table
+
+The default colors are made to resemble the 16 VGA colors and are:
+@table @asis
+@item 0 black
+@item 1 red
+@item 2 green
+@item 3 yellow
+@item 4 blue
+@item 5 magenta
+@item 6 cyan
+@item 7 white
+@end table
+
+There are only 8 colors by default but 10 available digits. The last
+two digits are left up to the user. @ref{Behind The Scenes Look At
+Colors} for information on customizing colors.
+
+@menu
+* Behind The Scenes Look At Colors::
+@end menu
+
+@node Behind The Scenes Look At Colors,  , Colors, Colors
+@section Behind The Scenes Look At Colors
+
+Color indexes are stored in @var{*colors*} as a list. The default list
+of colors leave 2 slots for the user to choose. If you'd like to use
+@samp{Papaya Whip} and @samp{Dark Golden Rod 3} you might eval the
+following:
+
+@example
+(setf *colors* (append *colors*
+                       (list "PapayaWhip"
+                             "DarkGoldenRod3")))
+(update-color-map (current-screen))
+@end example
+
+Of course, you can change all the colors if you like.
+
+@@@ parse-color-string
+@@@ uncolorify
+### *colors*
+@@@ update-color-map
+
+@node Hooks, Modules, Colors, Top
+@chapter Hooks
+StumpWM exports a number of hooks you can use to add customizations;
+like hooks in Emacs, you add to a hook with the @code{add-hook}
+function. for example:
+
+@example
+(stumpwm:add-hook 'stumpwm:*new-window-hook* 'my-new-window-custos)
+@end example
+
+adds your @code{my-new-window-custos} function to the list of
+functions called when a new window appears.
+
+%%% add-hook
+%%% remove-hook
+
+The following hooks are available:
+
+$$$ *new-window-hook*
+$$$ *destroy-window-hook*
+$$$ *focus-window-hook*
+$$$ *place-window-hook*
+$$$ *start-hook*
+$$$ *internal-loop-hook*
+$$$ *focus-frame-hook*
+$$$ *new-frame-hook*
+$$$ *message-hook*
+$$$ *top-level-error-hook*
+$$$ *focus-group-hook*
+$$$ *key-press-hook*
+$$$ *root-click-hook*
+$$$ *mode-line-click-hook*
+$$$ *urgent-window-hook*
+$$$ *event-processing-hook*
+
+@node Modules, Hacking, Hooks, Top
+@chapter Modules
+StumpWM has a growing number of modules not loaded by default. All
+modules exist in the @file{contrib/} directory of StumpWM's archive.
+
+!!! load-module
+
+@node Hacking, Command and Function Index, Modules, Top
+@chapter Hacking
+
+For those of you who have worked on Free Software projects before,
+this part should probably be fairly intuitive.
+
+@menu
+* General Advice::
+* Using git with StumpWM::
+* Sending Patches::
+@end menu
+
+@node General Advice, Using git with StumpWM, Hacking, Hacking
+@section Hacking:  General Advice
+
+@enumerate
+
+@item
+Pay attention to file names and contents. If you're making changes to
+mode-line related code, don't put it in @file{core.lisp}. If you're
+introducing some completely new featureset, consider putting all of
+the new code in a new file.
+
+@item
+Does a command need to be user-visible (``interactive'') or is it just
+called by other commands?
+
+@itemize
+@item
+If it's not going to be user-visible, you can just use the familiar
+@code{(defun foo () ...)} syntax.
+
+@item
+If you want the command to be used interactively, you use StumpWM's
+@code{defcommand} syntax, as in the examples below.
+
+@example
+(defcommand test (foo bar)
+   ((:string "How you're going to prompt for variable foo: ")
+    (:number "How you want to prompt for variable bar: "))
+   "This command is a test"
+   (body...))
+
+(defcommand test2 () ()
+   "This is also a test"
+   (body...))
+
+(defcommand title (args) (interactive-args)
+   "Doc string"
+   (body...))
+@end example
+
+So basically, inside the first set of parentheses after the
+function name, you specify what (if any) arguments will be passed to
+the command. The second set of parentheses tells StumpWM how to get
+those arguments if they're not explicitly passed to the command. For
+example,
+
+@example
+((:string "What do you want to do: "))
+@end example
+
+will read a string from the input the user provides. The quoted
+text is the prompt the user will see. Of course, if you were to, say,
+call the command test, as defined above, from another piece of code,
+it wouldn't give the prompt as long as you fed it arguments.
+@end itemize
+
+@item
+Note that all commands defined using the @code{defcommand} syntax are
+available both to be called with @kbd{C-t ;} and from within other lisp
+programs, as though they had been defun-ned (which, in fact, they
+have).
+
+@item
+Any code that depends on external libraries or programs that some
+users might not have installed should be placed in the @file{contrib/}
+directory.
+
+@item
+Don't be afraid to submit your patches to the StumpWM mailing list!
+It may not immediately make it into the official git repository, but
+individual users might find it useful and apply it to their own setup,
+or might be willing to offer suggestions on how to improve the code.
+
+@item
+Remember:  StumpWM is designed to run on both clisp and on SBCL. If
+you must use code specific to one or the other, at the very least warn
+people that it only works with one lisp implementation. Better yet,
+figure out how to do it in the other distribution and write a
+statement like this:
+
+@example
+#+clisp
+(your-clisp-code)
+#+sbcl
+(your-sbcl-code)
+@end example
+
+#to wrap the code for each lisp. Of course, the best option is to
+find a way to use the same code for clisp and SBCL.
+@end enumerate
+
+@node Using git with StumpWM, Sending Patches, General Advice, Hacking
+@section Hacking:  Using git with StumpWM
+
+For quite a while now, StumpWM has been using the git version control
+system for development. If you're one using one of the official
+releases or still using the now-obsolete CVS version, you can get the
+bleeding-edge source code from the official git repository with
+a single command:
+
+@example
+$ git clone git@@github.com:sabetts/stumpwm.git
+@end example
+
+After this, you'll have a complete git repository, along with the
+complete revision history since the switch. Feel free to play around;
+git has some important features that actually make this safe!
+
+Before we get to that stuff, though, you're going to want to tell git
+about yourself so that your information is included in your commits
+and patches. The very minimum you're going to want to do is:
+
+@example
+$ git config --global user.name "Anne N. O'Nymous"
+$ git config --global user.email "anonymous@@foo.org"
+@end example
+
+Be sure to check out the manual for @command{git-config}--there are several
+options you might want to set, such as enabling colorized output or
+changing the editor and pager you use when making commits and viewing
+logs.
+
+For the sake of argument, let's say you want to make some major
+changes to both @file{user.lisp} and @file{core.lisp}, add a file called
+@file{DANGEROUS_EXPERIMENT_DO_NOT_USE_OR_@-ELSE.lisp}, and remove the manual
+because you're too 1337 for such things. However, you don't want to
+break your entire StumpWM setup and start over. Thankfully, you don't
+have to. Before you get started, issue this command from the stumpwm
+directory:
+
+@example
+$ git checkout -b experimental
+@end example
+
+You should now find yourself in a new branch, called experimental. To
+confirm this, type @command{git branch}; there should be
+an asterisk next to the branch you're currently viewing. At any time,
+you can type @command{git checkout master} to return to your master branch,
+and at any time you can have as many branches of the project as you
+like. If you want to create a new branch based not on the master
+branch but on your experimental branch, for example, you'd type:
+
+@example
+$ git checkout -b new-experiment experimental
+@end example
+
+This will place you in a newly-created branch called ``new-experiment''
+which should be identical to your experimental branch as of the last
+commit (more on that soon). If you're actually typing out the
+directions, switch back to your old experimental branch like so:
+
+@example
+$ git checkout experimental
+@end example
+
+Anyway, now that you have a new branch, create that new file with the
+long name, which I'll just call @file{danger.lisp} for brevity. Make whatever
+changes you want to it, and when you're done, tell git about your new
+file.
+
+@example
+$ git add dangerous.lisp
+@end example
+
+Now, let's pretend you're done making changes. Tell git you're done
+for now:
+
+@example
+$ git commit -a
+@end example
+
+This will open up a prompt in your editor of choice for you to
+describe your changes. Try to keep the first line short, and then add
+more explanation underneath (for an example, run the command @command{git log}
+and take a look at some of the longer commit explanations). Save that
+file and then do this:
+
+@example
+$ git checkout master
+$ ls
+@end example
+
+Then look for your new file. It's not there! That's because you've
+done all of your work in another branch, which git is currently hiding
+from you so that you can ``check out'' the branch called ``master.'' All
+is as it should be--your master repository is still safe.
+
+@example
+$ git checkout experimental
+@end example
+
+Now, delete @file{manual.lisp} and @file{stumpwm.texi}. That's right. Wipe them off
+the face of the Earth, or at least off the hard drive of your
+computer. When you're done, you don't have to tell git you've deleted
+them; it'll figure it out on its own (though things may not compile
+properly unless you edit @file{Makefile.in} and @file{stumpwm.asd}. Anyway, go ahead
+and edit @file{core.lisp} and @file{user.lisp}. Really break 'em. Run free! When
+you're done, do another commit, as above, and give it a stupid title
+like ``lolz i b0rked stUmpwm guys wTF!?!?!!111!'' Now try to compile.
+Just try. It won't work. If it does, you're some kind of savant or
+something. Keep up the good work. If you've actually managed to break
+StumpWM like you were supposed to, never fear! You have two options at
+this point.
+
+One is to go back to the master branch (with another git checkout) and
+just delete your experimental branch, like so:
+
+@example
+$ git branch -D
+@end example
+
+The ``@code{-D}'' means to force a delete, even if the changes you've made
+aren't available elsewhere. A ``@code{-d}'' means to delete the branch if and
+only if you've merged the changes in elsewhere.
+
+The other option is to create patches for each of your commits so far,
+delete the branch, and then apply any working/wanted patches in a new
+branch. Create your patches (after committing) like so:
+
+@example
+$ git format-patch -o patches origin
+@end example
+
+(Before doing that you can review your changes with @command{git log origin..})
+
+You can also use the @command{format-patch} command to create a patch of working
+code to send in to the mailing list.
+
+A developer might ask you to try out something they're working on. To
+fetch their master branch, you'd do this:
+
+@example
+$ git remote add -f -m master -t master foo git://bar.org/~foo/stumpwm
+@end example
+
+Here, ``foo'' is the shorthand name you'll use to refer to that
+repository in the future. To checkout a local copy of that repository,
+you'd then do
+
+@example
+$ git checkout --track -b foo-master foo/master
+@end example
+
+Later you could use @command{git pull foo} to update while looking at that
+branch (and note that @command{git pull} with no arguments, in the master
+branch, will update your StumpWM from the official repository).
+
+Finally, if you want to move your experimental changes into your
+master branch, you'd checkout your master branch and run:
+
+@example
+$ git merge experimental
+@end example
+
+If there are file conflicts, @command{git diff} will show you where they are;
+you have to fix them by hand. When you're done, do another
+
+@example
+$ git commit -a
+@end example
+
+to finalize the changes to your master branch. You can then delete
+your experimental branch. Alternately, you can wait until your changes
+(assuming you sent them in) make it into the official repository
+before deleting your experimental branch.
+
+@node Sending Patches,  , Using git with StumpWM, Hacking
+@section Sending Patches
+When sending patches to the mailing list for inclusion in StumpWM,
+there are a few guidelines that will make everything go smoother.
+
+@itemize
+@item
+Make sure it applies clean to the main git repository
+
+@item
+Ensure that you aren't introducing tabs, extra blank lines, or whitespace at the end of lines.
+
+@item
+Ensure your patch doesn't contain irrelevant indenting or reformatting changes.
+
+@item
+Try to make your patch address a single issue. If your patch changes
+two unrelated issues, break them into two seperate patches that can
+stand on their own.
+
+@item
+Don't send intermediate patches. When you're working on a feature you
+might make several commits to your local repository as you refine it
+and work out the bugs. When it's polished and ready to ship, send it
+as one patch! Sometimes it makes sense to send it as multiple patches
+if each patch contains a discrete feature or bug fix that can stand on
+its own. If one of your patches changes code that was added or
+modified in an earlier patch, consider merging them together and
+sending them as one.
+
+@end itemize
+
+@node Command and Function Index, Variable Index, Hacking, Top
+@unnumbered Command and Function Index
+@printindex fn
+
+@node Variable Index,  , Command and Function Index, Top
+@unnumbered Variable Index
+@printindex vr
+
+@bye
