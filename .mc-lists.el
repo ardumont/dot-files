@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        backward-sexp
         end-of-buffer
         flymake-display-err-menu-for-current-line
         forward-sexp
@@ -10,6 +11,7 @@
         kill-region
         magit-key-mode-popup-fetching
         mark-sexp
+        markdown-exdent-or-delete
         org-delete-char
         paredit-doublequote
         paredit-forward
