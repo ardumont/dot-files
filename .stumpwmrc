@@ -71,7 +71,7 @@
 ;;(run-commands "restore-from-file ~/.stumpwm.screendump")
 
 ;;Set the mouse focus policy to ignore the mouse
-(setf *mouse-focus-policy* :ignore) ;; :click, :ignore, :sloppy
+(setf *mouse-focus-policy* :click) ;; :click, :ignore, :sloppy
 
 (defun key-seq-msg (key key-seq cmd)
   "Show a message with current incomplete key sequence."
