@@ -1,0 +1,5 @@
+((1="gimp" 0. t t :class "gimp" :instance "gimp" :title nil :role "gimp-toolbox")
+ (1 1 t t :create "gimp-dump" :class "gimp" :title nil :role "gimp-image-window")
+ (1 2 t t :create "gimp-dump" :class "gimp" :title nil :role "gimp-dock")
+ (1 0 t t :create "gimp-dump" :class "gimp" :title nil :role "gimp-toolbox")
+ (1 1 t t :create "gimp-dump" :class "gimp" :title nil :role nil))

@@ -223,6 +223,29 @@
   (2 t t :create "gimp-dump" :class "Gimp" :title nil :role "gimp-dock")
   (1 t t :create "gimp-dump" :class "Gimp" :title nil :role "gimp-image-window"))
 
+;; courtesy of Peter Seibel
+;; (defmacro with-gensyms ((&rest names) &body body)
+;;   `(let ,(loop for n in names collect `(,n (gensym)))
+;;      ,@body))
+
+;; (defmacro program-with-layout (name &key (command (string-downcase (string name)))
+;;                                     (props `'(:class ,(string-capitalize command))))
+;;   (with-gensyms (s w h files-path layout rules)
+;;                 `(defcommand ,name () ()
+;;                    (let* ((,s (current-screen))
+;;                           (,w (prin1-to-string (screen-width ,s)))
+;;                           (,h (prin1-to-string (screen-height ,s)))
+;;                           (,files-path "/home/tony/.gimp")
+;;                           (,layout (concat ,files-path ,command "-layout-" ,w "x" ,h))
+;;                           (,rules (concat ,files-path ,command "-rules")))
+;;                      (gnew ,command)
+;;                      (restore-from-file ,layout)
+;;                      (restore-window-placement-rules ,rules)
+;;                      (run-or-raise ,command ,props)
+;;                      (place-existing-windows)))))
+
+;; (program-with-layout gimp)
+
 ;; ========================== Launch commands at startup time
 
 (relaunch-panel)
