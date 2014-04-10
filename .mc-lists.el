@@ -8,11 +8,13 @@
         flymake-display-err-menu-for-current-line
         forward-sexp
         haskell-indentation-delete-char
+        indent-for-tab-command
         kill-region
         magit-key-mode-popup-fetching
         mark-sexp
         markdown-exdent-or-delete
         org-delete-char
+        paredit-backward
         paredit-doublequote
         paredit-forward
         paredit-forward-delete
@@ -23,6 +25,7 @@
         paredit-splice-sexp
         prelude-move-beginning-of-line
         sgml-slash
+        sp--self-insert-command
         yaml-electric-dash-and-dot
         ))
 
