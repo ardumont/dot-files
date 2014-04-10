@@ -203,7 +203,7 @@
   (play-commands "firefox" (kbd "M-v") "myemacs"))
 (define-key *root-map* (kbd "C-M-[") "scroll-backward-browser")
 
-;; ========================== Help 
+;; ========================== Help
 
 (setf *help-map*
       (let ((m (make-sparse-keymap)))
