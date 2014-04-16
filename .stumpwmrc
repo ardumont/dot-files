@@ -254,11 +254,6 @@
 (relaunch-panel)
 (run-shell-command "nautilus --no-default-window &")
 (run-shell-command "/usr/bin/cinnamon-settings-daemon &")
-
-(when (string/= "dagobah
-" (hostname))
-  (run-shell-command "/usr/bin/xscreensaver &"))
-
 (run-shell-command "~/bin/wifi/nm-applet.sh restart")
 (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
 ;; (run-shell-command "eval $(ssh-agent)")
