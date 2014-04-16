@@ -256,5 +256,6 @@
 (run-shell-command "/usr/bin/cinnamon-settings-daemon &")
 (run-shell-command "~/bin/wifi/nm-applet.sh restart")
 (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
+(run-shell-command "/usr/bin/xautolock -time 10 -locker slock &")
 ;; (run-shell-command "eval $(ssh-agent)")
 (run-shell-command "dropbox start &")
