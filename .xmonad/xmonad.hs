@@ -65,7 +65,7 @@ myFocusedBorderColor = "#ff0000"
 
 -- prefix key
 prefix :: String -> String
-prefix key = "C-t " ++ key
+prefix key = "C-; " ++ key
 
 -- keybinding
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
@@ -74,7 +74,7 @@ myKeys = \conf -> mkKeymap conf $
     -- terminal
       (prefix "x", spawn $ terminal conf)
     -- some help message
-    , (prefix "h", spawn "xmessage 'hello world!!! using prefix key in haskell!'")  -- type C-t then w to pop up 'woohoo!'
+    , (prefix "h", spawn "xmessage 'hello world!!! using prefix key in haskell!'")
     -- reload the setup from xmonad
     , (prefix "L", spawn "xmonad --recompile; xmonad --restart")
     -- spawning firefox
