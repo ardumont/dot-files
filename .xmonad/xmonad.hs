@@ -19,7 +19,7 @@ import XMonad.Util.EZConfig
 -- certain contrib modules.
 --
 myTerminal :: String
-myTerminal = "urxvt"
+myTerminal = "gnome-terminal"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -50,12 +50,12 @@ myModMask = mod4Mask
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 myWorkspaces :: [[Char]]
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces = map show [1..9]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor :: String
-myNormalBorderColor  = "#dddddd"
+myNormalBorderColor = "#dddddd"
 myFocusedBorderColor :: String
 myFocusedBorderColor = "#ff0000"
 
