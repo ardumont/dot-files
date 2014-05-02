@@ -1,5 +1,6 @@
 [general]
 accounts = eniotna
+pythonfile=~/bin/offlineimap/offlineimap-helpers.py
 
 [Account eniotna]
 localrepository = Local
@@ -12,5 +13,6 @@ localfolders = ~/.mails/eniotna.t/
 [Repository Remote]
 type = Gmail
 remotehost = imap.gmail.com
-remoteuser = eniotna.t
+remoteuser = eniotna.t@gmail.com
+remotepasseval = get_password_emacs("imap.gmail.com", "eniotna.t@gmail.com", "993")
 maxconnections = 3
