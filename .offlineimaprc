@@ -15,4 +15,6 @@ type = Gmail
 remotehost = imap.gmail.com
 remoteuser = eniotna.t@gmail.com
 remotepasseval = get_password_emacs("imap.gmail.com", "eniotna.t@gmail.com", "993")
+realdelete = yes
+ssl = yes
 maxconnections = 3
