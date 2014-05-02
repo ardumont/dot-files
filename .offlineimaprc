@@ -1,0 +1,16 @@
+[general]
+accounts = eniotna
+
+[Account eniotna]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/.mails/eniotna.t/
+
+[Repository Remote]
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = eniotna.t
+maxconnections = 3
