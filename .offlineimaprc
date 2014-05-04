@@ -1,5 +1,5 @@
 [general]
-accounts = eniotna
+accounts = eniotna, ard
 pythonfile=~/bin/offlineimap/offlineimap-helpers.py
 
 [Account eniotna]
@@ -15,6 +15,23 @@ type = Gmail
 remotehost = imap.gmail.com
 remoteuser = eniotna.t@gmail.com
 remotepasseval = get_password_emacs("imap.gmail.com", "eniotna.t@gmail.com", "993")
-realdelete = yes
+realdelete = no
+ssl = yes
+maxconnections = 3
+
+[Account ard]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/.mails/antoine.romain.dumont/
+
+[Repository Remote]
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = antoine.romain.dumont@gmail.com
+remotepasseval = get_password_emacs("2-imap.gmail.com", "antoine.romain.dumont@gmail.com", "993")
+realdelete = no
 ssl = yes
 maxconnections = 3
