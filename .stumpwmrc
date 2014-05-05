@@ -252,8 +252,8 @@
 ;; ========================== Launch commands at startup time
 
 (relaunch-panel)
-(run-shell-command "nautilus --no-default-window &")
 (run-shell-command "/usr/bin/cinnamon-settings-daemon &")
+(run-shell-command "nemo --no-default-window &")
 (run-shell-command "~/bin/wifi/nm-applet.sh restart")
 (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
 (run-shell-command "/usr/bin/xautolock -time 10 -locker slock &")
