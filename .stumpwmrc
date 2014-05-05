@@ -123,7 +123,7 @@
 (ror-id-tpd-on-category
  ((xephyr               "xephyr.sh"        "~/bin/xephyr/xephyr.sh"               "Xephyr"                 "C-x")
   (wireshark            "wireshark"        "gksudo wireshark"                     "wireshark"              "C-w")
-  (nautilus             "nautilus"         "nautilus"                             "nautilus"               "n")
+  ;; (nautilus             "nautilus"         "nautilus"                             "nautilus"               "n")
   (nemo                 "nemo"             "nemo"                                 "nemo"                   "n")
   (thunar               "thunar"           "thunar"                               "thunar"                 "N")
   (yEd                  "yed"              "~/bin/app/yed.sh"                     "sun-awt-X11-XFramePeer" "y")
