@@ -89,4 +89,4 @@ $REPO_DOTFILES/deploy-keysnail.sh
 
 ## emacs
 
-ln -nsf $REPO_DOTFILES/.mc-lists.el ~/.emacs.d
+ln -nsf $REPO_DOTFILES/.mc-lists.el ~/.emacs.d/
