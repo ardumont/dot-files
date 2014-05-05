@@ -5,21 +5,21 @@
       '(
         backward-kill-sexp
         backward-sexp
+        c-electric-delete-forward
+        c-electric-semi&comma
         end-of-buffer
         flymake-display-err-menu-for-current-line
         forward-sexp
         haskell-indentation-delete-char
         indent-for-tab-command
-        c-electric-delete-forward
-        c-electric-semi&comma
         kill-region
-        magit-key-mode-popup-fetching
         kmacro-start-macro
+        magit-key-mode-popup-fetching
         magit-status
         mark-sexp
+        mark-whole-buffer
         markdown-exdent-or-delete
         org-delete-char
-        mark-whole-buffer
         org-self-insert-command
         paredit-backward
         paredit-close-round
@@ -36,11 +36,12 @@
         sgml-slash
         smex
         sp--self-insert-command
-        yaml-electric-dash-and-dot
         sp-backward-sexp
         sp-forward-sexp
         sp-forward-slurp-sexp
+        sp-kill-word
         transpose-words
+        yaml-electric-dash-and-dot
         ))
 
 (setq mc/cmds-to-run-once
