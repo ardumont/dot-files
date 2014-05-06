@@ -803,6 +803,6 @@ plugins.options["ril.list_sort_type"] = 0;
 
 // ==================== history
 
-key.setViewKey(['C-c', 'h'], function (aEvent, aArg) {
+key.setViewKey(['C-c', 'h', 's'], function (aEvent, aArg) {
     ext.exec("history-show", aArg);
 }, 'Show history', true);
