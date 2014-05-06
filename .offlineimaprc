@@ -1,6 +1,6 @@
 [general]
 accounts = eniotna, ard
-pythonfile=~/bin/offlineimap/offlineimap-helpers.py
+pythonfile=~/.offlineimap-helpers.py
 
 [Account eniotna]
 localrepository = Local
