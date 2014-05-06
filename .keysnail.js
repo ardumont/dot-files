@@ -798,6 +798,9 @@ key.setViewKey(['C-c', 'p', 's'], function (aEvent, aArg) {
     ext.exec("ril-show-reading-list", aArg);
 }, 'Search pocket', true);
 
+// sort pocket url by date ASC
+plugins.options["ril.list_sort_type"] = 0;
+
 // ==================== history
 
 key.setViewKey(['C-c', 'h'], function (aEvent, aArg) {
