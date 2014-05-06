@@ -22,3 +22,7 @@ def get_secure_credentials(filename, machine, login, port):
 def get_plain_credentials(filename, machine, login, port):
     authinfo = read_cmd_from_shell("cat %s" % filename)
     return retrieve_password(authinfo, machine, login, port)
+
+# def oimaptransfolder_account(account_name, foldername):
+#     retval = account_name if (foldername == "INBOX") else ("%s.%s" % (account_name, foldername))
+#     return re.sub("/", ".", retval)
