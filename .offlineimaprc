@@ -1,6 +1,7 @@
 [general]
 accounts = eniotna, ard
-pythonfile=~/.offlineimap-helpers.py
+pythonfile = ~/.offlineimap-helpers.py
+# ui = ttyui or blinkenlights
 
 [Account eniotna]
 localrepository = Local
@@ -19,6 +20,8 @@ realdelete = no
 ssl = yes
 maxconnections = 3
 folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+# status_backend = sqlite
+# fsync = true
 
 [Account ard]
 localrepository = Local
@@ -37,3 +40,5 @@ realdelete = no
 ssl = yes
 maxconnections = 3
 folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+# status_backend = sqlite
+# fsync = true
