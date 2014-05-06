@@ -19,9 +19,10 @@ remotepasseval = get_secure_credentials("~/.authinfo.gpg", "imap.gmail.com", "en
 realdelete = no
 ssl = yes
 maxconnections = 3
-folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+# folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
 # status_backend = sqlite
 # fsync = true
+# holdconnectionopen = no
 
 [Account ard]
 localrepository = Local
@@ -39,6 +40,7 @@ remotepasseval = get_secure_credentials("~/.authinfo.gpg", "imap.gmail.com", "an
 realdelete = no
 ssl = yes
 maxconnections = 3
-folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+# folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
 # status_backend = sqlite
 # fsync = true
+# holdconnectionopen = no
