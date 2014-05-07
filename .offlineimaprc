@@ -4,14 +4,14 @@ pythonfile = ~/.offlineimap-helpers.py
 # ui = ttyui or blinkenlights
 
 [Account eniotna]
-localrepository = Local
-remoterepository = Remote
+localrepository = eniotna-local
+remoterepository = eniotna-remote
 
-[Repository Local]
+[Repository eniotna-local]
 type = Maildir
 localfolders = ~/.mails/eniotna.t/
 
-[Repository Remote]
+[Repository eniotna-remote]
 type = Gmail
 remotehost = imap.gmail.com
 remoteuser = eniotna.t@gmail.com
@@ -26,14 +26,14 @@ maxconnections = 3
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 [Account ard]
-localrepository = Local
-remoterepository = Remote
+localrepository = ard-local
+remoterepository = ard-remote
 
-[Repository Local]
+[Repository ard-local]
 type = Maildir
 localfolders = ~/.mails/antoine.romain.dumont/
 
-[Repository Remote]
+[Repository ard-remote]
 type = Gmail
 remotehost = imap.gmail.com
 remoteuser = antoine.romain.dumont@gmail.com
