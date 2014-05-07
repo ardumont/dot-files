@@ -19,6 +19,7 @@
         mark-sexp
         mark-whole-buffer
         markdown-exdent-or-delete
+        org-beginning-of-line
         org-delete-char
         org-self-insert-command
         paredit-backward
