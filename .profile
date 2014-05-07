@@ -8,3 +8,5 @@
 #umask 022
 
 [ -n "$BASH_VERSION" ] && [ -f ~/.bashrc ] && . ~/.bashrc # running bash
+
+eval $(keychain --eval)
