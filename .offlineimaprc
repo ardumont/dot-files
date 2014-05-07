@@ -23,6 +23,7 @@ maxconnections = 3
 # status_backend = sqlite
 # fsync = true
 # holdconnectionopen = no
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 [Account ard]
 localrepository = Local
@@ -44,3 +45,4 @@ maxconnections = 3
 # status_backend = sqlite
 # fsync = true
 # holdconnectionopen = no
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
