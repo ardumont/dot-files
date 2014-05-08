@@ -249,6 +249,14 @@
 
 (defun hostname () (run-shell-command "/bin/hostname" t))
 
+;; ========================== cursor - https://github.com/stumpwm/stumpwm/wiki/GrabbedPointer
+
+(setf *grab-pointer-foreground* (xlib:make-color :red 0.1 :green 0.25 :blue 0.5))
+(setf *grab-pointer-background* (lookup-color (current-screen) "DeepSkyBlue"))
+(setf *grab-pointer-character* 88)
+(setf *grab-pointer-character-mask* 88)
+(setf *grab-pointer-font* "fixed")
+
 ;; ========================== Launch commands at startup time
 
 (relaunch-panel)
