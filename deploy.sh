@@ -5,10 +5,12 @@
 # Example: ~/repo/perso/dot-files/deploy.sh
 # The use of the absolute name for calling the script is unavoidable
 
-## Functions
+### Setup from CLI
 
 WITH_EMACS_ENV=${1-"prelude"}
 CI=${2-"n"}
+
+### Functions definition
 
 create-links-from-list() {
     WDIR=$1 # folder from where the source files will be (working dir)
@@ -23,7 +25,7 @@ create-links-from-list() {
     done
 }
 
-## Main
+### Main
 
 REPO_DOTFILES=$(dirname $0)
 
