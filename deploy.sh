@@ -95,4 +95,4 @@ ln -nsf $REPO_DOTFILES/.mc-lists.el ~/.emacs.d/
 
 ### Adjust system configuration
 
-./adjust-system-configuration.sh
+$WDIR/adjust-system-configuration.sh
