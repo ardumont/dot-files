@@ -92,3 +92,7 @@ $REPO_DOTFILES/deploy-keysnail.sh
 ## emacs
 
 ln -nsf $REPO_DOTFILES/.mc-lists.el ~/.emacs.d/
+
+### Adjust system configuration
+
+./adjust-system-configuration.sh
