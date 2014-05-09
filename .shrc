@@ -13,5 +13,8 @@
 # keyboard mapping
 [ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
 
+# keyboard mapping
+[ -f ~/bin/touchpad/setup-touchpad.sh ] && . ~/bin/touchpad/setup-touchpad.sh
+
 # autojump (sudo aptitude install autojump) your way in your filesystem
 [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
