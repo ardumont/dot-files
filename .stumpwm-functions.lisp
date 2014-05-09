@@ -17,7 +17,7 @@
 
 (defun toggle-touchpad-manual (status)
   "Activate/Deactivate the touchpad depending on the status parameter (0/1)."
-  (run-shl "~/bin/stumpwm/toggle-touchpad-manual.sh " status)
+  (run-shl "~/bin/touchpad/toggle-touchpad-manual.sh " status)
   ;; banish the mouse from the screen when we deactivate the touchpad
   (if (equal "0" status) (banish)))
 
@@ -47,7 +47,7 @@
 ;; C-t T - Toggle on/off the touchpad
 (defcommand toggle-touchpad-auto () ()
   "Activate/Deactivate automatically the touchpad depending on the current status."
-  (run-shl "~/bin/stumpwm/toggle-touchpad.sh")
+  (run-shl "~/bin/touchpad/toggle-touchpad.sh")
   (banish))
 (define-key *root-map* (kbd "T") "toggle-touchpad-auto")
 

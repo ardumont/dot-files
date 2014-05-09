@@ -165,7 +165,7 @@
 (shell-command-category
  ((top              "Display a single 'top' frame."             "top -b -n 1 -c -d 1"                                                                                             "^")
   (screenshot       "Take a screenshot for the current window." "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png"                                            "C-s")
-  (screenshot-mouse "Take a screenshot with mouse selection."   "~/bin/stumpwm/toggle-touchpad-manual.sh 1; /usr/bin/scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png" "M-s")))
+  (screenshot-mouse "Take a screenshot with mouse selection."   "~/bin/touchpad/toggle-touchpad-manual.sh 1; /usr/bin/scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png" "M-s")))
 
 ;; ========================== simple binding
 
