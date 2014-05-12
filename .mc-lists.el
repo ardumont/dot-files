@@ -7,10 +7,13 @@
         backward-sexp
         c-electric-delete-forward
         c-electric-semi&comma
+        easy-kill
+        easy-mark
         end-of-buffer
         flymake-display-err-menu-for-current-line
         forward-sexp
         haskell-indentation-delete-char
+        ido-switch-buffer
         indent-for-tab-command
         kill-region
         kmacro-start-macro
@@ -37,6 +40,7 @@
         sgml-slash
         smex
         sp--self-insert-command
+        sp-backward-delete-char
         sp-backward-sexp
         sp-forward-sexp
         sp-forward-slurp-sexp
