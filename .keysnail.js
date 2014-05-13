@@ -519,11 +519,11 @@ key.setCaretKey([['R'], ['C-c', 'r']], function (ev) {
     BrowserReload();
 }, 'Reload the page', true);
 
-key.setCaretKey([['B'], ['C-c', 'b']], function (ev) {
+key.setCaretKey([['B']], function (ev) {
     BrowserBack();
 }, 'Back');
 
-key.setCaretKey([['F'], ['C-c', 'f']], function (ev) {
+key.setCaretKey([['F']], function (ev) {
     BrowserForward();
 }, 'Forward');
 
@@ -571,19 +571,23 @@ plugins.options["hok.hint_keys"] = "qwertyzvbshkl";
 
 // ==================== list bookmarks
 
-key.setViewKey([':', 'b'], function (ev, arg) {
+key.setViewKey(['C-c', 'b', 'b'], function (ev, arg) {
     ext.exec("bmany-list-all-bookmarks", arg, ev);
 }, 'bmany - List all bookmarks');
 
-key.setViewKey([':', 'B'], function (ev, arg) {
+key.setViewKey(['C-c', 'b', 't'], function (ev, arg) {
+    ext.exec("bmany-list-toolbar-bookmarks", arg, ev);
+}, "bmany - List all bookmarklets");
+
+key.setViewKey(['C-c', 'b', 'B'], function (ev, arg) {
     ext.exec("bmany-list-bookmarklets", arg, ev);
 }, "bmany - List all bookmarklets");
 
-key.setViewKey([':', 'k'], function (ev, arg) {
+key.setViewKey(['C-c', 'b', 'k'], function (ev, arg) {
     ext.exec("bmany-list-bookmarks-with-keyword", arg, ev);
 }, "bmany - List bookmarks with keyword");
 
-key.setViewKey([':', 't'], function (ev, arg) {
+key.setViewKey(['C-c', 'b', 'T'], function (ev, arg) {
     ext.exec("bmany-list-bookmarks-with-tag", arg, ev);
 }, "bmany - List bookmarks with tag");
 
