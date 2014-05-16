@@ -19,8 +19,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias rgrep='rgrep --color=auto'
 
-alias mount='mount | column -t'
-
 alias wget='wget -c'
 
 # emacs for the win
