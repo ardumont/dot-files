@@ -41,9 +41,9 @@
         ;; :repl-options {:nrepl-middleware
         ;;                [ritz.nrepl.middleware.javadoc/wrap-javadoc
         ;;                 ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
-        :search-page-size "30"
-        :repositories {"stuart"              "http://stuartsierra.com/maven2"
-                       "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
-                       "google-api-services" "http://google-api-client-libraries.appspot.com/mavenrepo"
-                       "sonatype"            "http://oss.sonatype.org/content/repositories/releases"
-                       "sonatype-snapshots"  "http://oss.sonatype.org/content/repositories/snapshots"}}}
+        :search-page-size "30"}
+ :repositories {"stuart"              "http://stuartsierra.com/maven2"
+                "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
+                "google-api-services" "http://google-api-client-libraries.appspot.com/mavenrepo"
+                "sonatype"            "http://oss.sonatype.org/content/repositories/releases"
+                "sonatype-snapshots"  "http://oss.sonatype.org/content/repositories/snapshots"}}
