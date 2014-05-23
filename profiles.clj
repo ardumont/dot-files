@@ -23,8 +23,7 @@
                        [leiningen                   "2.3.4"]
                        [im.chit/vinyasa             "0.1.8"]
                        [org.clojure/tools.namespace "0.2.4"]
-                       [expectations                "2.0.4"]
-]
+                       [expectations                "2.0.4"]]
         :injections [(require '[vinyasa.inject :as inj])
                      (inj/inject 'clojure.core
                                  '[[vinyasa.inject inject]
