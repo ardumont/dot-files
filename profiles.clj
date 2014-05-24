@@ -9,12 +9,10 @@
                   [lein-noir                 "1.2.1"]
                   [com.palletops/pallet-lein "0.6.0-beta.7"]
                   [pallet/lein-template      "0.2.10"]
-                  [lein-cljsbuild            "0.3.0"]
-                  ]
+                  [lein-cljsbuild            "0.3.0"]]
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
-        :dependencies [
-                       [clojure-complete            "0.2.3"]
+        :dependencies [[clojure-complete            "0.2.3"]
                        [leiningen                   #=(leiningen.core.main/leiningen-version)]
                        [im.chit/vinyasa             "0.2.0"]
                        [org.clojure/tools.namespace "0.2.4"]
