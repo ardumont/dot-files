@@ -7,17 +7,13 @@
                   [lein-pprint               "1.1.1"]
                   [lein-midje                "3.0.1"]
                   [lein-noir                 "1.2.1"]
-                  ;; [lein-localrepo            "0.5.0"]
                   [com.palletops/pallet-lein "0.6.0-beta.7"]
                   [pallet/lein-template      "0.2.10"]
-                  ;; [hiccup-bridge             "1.0.0-SNAPSHOT"]
                   [lein-cljsbuild            "0.3.0"]
-                  ;; [lein-outdated             "1.0.0"]
                   ]
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
         :dependencies [
-                       ;; [ritz/ritz-nrepl-middleware "0.7.0"]
                        [clojure-complete            "0.2.3"]
                        [leiningen                   "2.3.4"]
                        [im.chit/vinyasa             "0.2.0"]
@@ -35,10 +31,6 @@
                                    ;;  [root-cause >cause]]
                                    ;; [clojure.pprint pprint]
                                    [clojure.java.shell sh]])]
-
-        ;; :repl-options {:nrepl-middleware
-        ;;                [ritz.nrepl.middleware.javadoc/wrap-javadoc
-        ;;                 ritz.nrepl.middleware.simple-complete/wrap-simple-complete]}
         :search-page-size "30"}
  :repositories {"stuart"              "http://stuartsierra.com/maven2"
                 "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
