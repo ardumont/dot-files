@@ -15,7 +15,7 @@
                  :source-paths ["src"] :resource-paths []}
         :dependencies [
                        [clojure-complete            "0.2.3"]
-                       [leiningen                   "2.3.4"]
+                       [leiningen                   #=(leiningen.core.main/leiningen-version)]
                        [im.chit/vinyasa             "0.2.0"]
                        [org.clojure/tools.namespace "0.2.4"]
                        [expectations                "2.0.4"]]
