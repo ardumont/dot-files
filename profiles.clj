@@ -8,7 +8,6 @@
                   [lein-midje                "3.0.1"]
                   [lein-noir                 "1.2.1"]
                   ;; [lein-localrepo            "0.5.0"]
-                  [com.stuartsierra/lazytest "1.2.3"]
                   [com.palletops/pallet-lein "0.6.0-beta.7"]
                   [pallet/lein-template      "0.2.10"]
                   ;; [hiccup-bridge             "1.0.0-SNAPSHOT"]
