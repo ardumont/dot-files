@@ -18,16 +18,17 @@
                        [org.clojure/tools.namespace "0.2.4"]
                        [expectations                "2.0.7"]]
         :injections [(require '[vinyasa.inject :as inj])
-                     (inj/inject 'clojure.core '>
+                     (inj/inject 'clojure.core
                                  '[[vinyasa.inject inject]
                                    [vinyasa.pull pull]
                                    [vinyasa.lein lein]
-                                   [vinyasa.reimport reimport]
-                                   [cemerick.pomegranate add-classpath get-classpath resources]
+                                   [vinyasa.reimport reimport]])
+                     (inj/inject 'clojure.core '>
+                                 '[[cemerick.pomegranate add-classpath get-classpath resources]
                                    [clojure.tools.namespace.repl refresh]
-                                   ;; [clojure.repl apropos dir doc find-doc source pst
-                                   ;;  [root-cause >cause]]
-                                   ;; [clojure.pprint pprint]
+                                   [clojure.repl apropos dir doc find-doc source pst
+                                    [root-cause >cause]]
+                                   [clojure.pprint pprint]
                                    [clojure.java.shell sh]])]
         :search-page-size "30"}
  :repositories {"stuart"              "http://stuartsierra.com/maven2"
