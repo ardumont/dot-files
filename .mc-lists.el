@@ -39,6 +39,7 @@
         paredit-open-round
         paredit-semicolon
         paredit-splice-sexp
+        prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
         sgml-slash
         smex
