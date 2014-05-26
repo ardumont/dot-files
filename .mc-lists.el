@@ -8,6 +8,8 @@
         c-electric-delete-forward
         c-electric-semi&comma
         easy-kill
+        easy-kill-digit-argument
+        easy-kill-region
         easy-mark
         end-of-buffer
         flymake-display-err-menu-for-current-line
