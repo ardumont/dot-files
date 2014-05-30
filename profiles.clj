@@ -9,7 +9,8 @@
                   [lein-noir                 "1.2.1"]
                   [com.palletops/pallet-lein "0.8.0-alpha.1"]
                   [pallet/lein-template      "0.2.10"]
-                  [lein-cljsbuild            "0.3.0"]]
+                  [lein-cljsbuild            "0.3.0"]
+                  [cider/cider-nrepl         "0.6.0"]]
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
         :dependencies [[clojure-complete            "0.2.3"]
