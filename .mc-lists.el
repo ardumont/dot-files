@@ -37,6 +37,7 @@
         paredit-forward-slurp-sexp
         paredit-kill
         paredit-open-round
+        paredit-open-square
         paredit-semicolon
         paredit-splice-sexp
         prelude-decrement-integer-at-point
