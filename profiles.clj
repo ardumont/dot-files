@@ -10,7 +10,8 @@
                   [com.palletops/pallet-lein "0.8.0-alpha.1"]
                   [pallet/lein-template      "0.2.10"]
                   [lein-cljsbuild            "0.3.0"]
-                  [cider/cider-nrepl         "0.6.0"]]
+                  [cider/cider-nrepl         "0.6.0"]
+                  [lein-expectations         "0.0.8"]]
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
         :dependencies [[clojure-complete            "0.2.3"]
@@ -18,7 +19,8 @@
                        [im.chit/vinyasa             "0.2.0"]
                        [com.cemerick/pomegranate    "0.3.0"]
                        [org.clojure/tools.namespace "0.2.4"]
-                       [expectations                "2.0.7"]]
+                       [expectations                "2.0.7"]
+                       [midje                       "1.6.3"]]
         :injections [(require '[vinyasa.inject :as inj])
                      (inj/inject 'clojure.core
                                  '[[vinyasa.inject inject]
@@ -31,7 +33,8 @@
                                    [clojure.repl apropos dir doc find-doc source pst
                                     [root-cause >cause]]
                                    [clojure.pprint pprint]
-                                   [clojure.java.shell sh]])]
+                                   [clojure.java.shell sh]
+                                   [midje.repl autotest]])]
         :search-page-size "30"}
  :repositories {"stuart"              "http://stuartsierra.com/maven2"
                 "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
