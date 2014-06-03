@@ -110,7 +110,6 @@
   (eog                  "eog"                     "eog"                                                     "Eog"                         "C-i")
   (pinta                "pinta"                   "pinta"                                                   "Pinta"                       "d")
   (gimp                 "gimp"                    "gimp"                                                    "Gimp"                        "I")
-  (skype                "skype"                   "/usr/bin/skype"                                          "Skype"                       "C-c")
   (audacious            "audacious"               "/usr/bin/audacious"                                      "Audacious"                   "C-a")
   (jconsole             "jconsole"                "/usr/bin/jconsole"                                       "sun-tools-jconsole-JConsole" "C-j")
   (jvisualvm            "visualvm"                "~/applications/visualvm/bin/visualvm"                    "java-lang-Thread"            "j")
@@ -138,7 +137,8 @@
   (gitk                 "gitk"             "gitk"                                 "gitk"                   "z")
   (fbreader             "fbreader"         "fbreader"                             "fbreader"               "C-f")
   (lighttable           "LightTable"       "~/applications/LightTable/LightTable" "ltbin"                  "C")
-  (tux-guitar           "TuxGuitar"        "/usr/bin/tuxguitar"                   "TuxGuitar"              "M-r")))
+  (tux-guitar           "TuxGuitar"        "/usr/bin/tuxguitar"                   "TuxGuitar"              "M-r")
+  (skype                "skype"            "/usr/bin/skype"                       "skype"                  "C-c")))
 
 ;; run shell command - Simply execute shell command
 (run-shell-command-category
