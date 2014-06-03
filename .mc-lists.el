@@ -7,6 +7,7 @@
         backward-sexp
         c-electric-delete-forward
         c-electric-semi&comma
+        completion-at-point
         easy-kill
         easy-kill-digit-argument
         easy-kill-region
