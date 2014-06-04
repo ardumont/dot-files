@@ -95,21 +95,25 @@ myKeys conf =
                  -- Move focus to the next window
                  , (prefix "<Tab>", windows W.focusDown)
                  -- Move focus to the next window
+                 , (prefix "C-i", windows W.focusDown)
+                 -- Move focus to the next window
                  , (prefix "j", windows W.focusDown)
                  -- Move focus to the previous window
-                 , (prefix "k", windows W.focusUp  )
+                 , (prefix "k", windows W.focusUp)
                  -- Move focus to the master window
-                 , (prefix "m", windows W.focusMaster  )
+                 , (prefix "m", windows W.focusMaster)
                  -- Swap the focused window and the master window
                  , (prefix "<Return>", windows W.swapMaster)
+                 -- Swap the focused window and the master window
+                 , (prefix "C-m", windows W.swapMaster)
                  -- Swap the focused window with the next window
-                 , (prefix "C-j", windows W.swapDown  )
+                 , (prefix "C-j", windows W.swapDown)
                  -- Swap the focused window with the previous window
-                 , (prefix "C-k", windows W.swapUp    )
+                 , (prefix "C-k", windows W.swapUp)
                  -- Shrink the master area
-                 , (prefix "C-h", sendMessage Shrink)
+                 , (prefix "C--", sendMessage Shrink)
                  -- Expand the master area
-                 , (prefix "C-l", sendMessage Expand)
+                 , (prefix "C-+", sendMessage Expand)
                  -- Push window back into tiling
                  , (prefix "t", withFocused $ windows . W.sink)
                  -- Increment the number of windows in the master area
