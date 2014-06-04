@@ -78,13 +78,13 @@ myKeys conf =
                  , (prefix "C-e", spawn "emacsclient -c")
                  , (prefix "e", runOrRaise "emacs" (className =? "Emacs"))
                  -- some help message
-                 , (prefix "h", spawn "zenith --info --text 'Hello from xmonad with prefix key!'")
+                 , (prefix "h", spawn "zenity --info --text 'Hello from xmonad with prefix key!'")
                  -- reload the setup from xmonad
                  , (prefix "C-r", recompile True >> restart "/usr/bin/xmonad" True)
                  -- dmenu
                  , (prefix "p", spawn "dmenu_run")
                  -- another menu launcher (equivalent to F2 in gnome2)
-                 , (prefix "C-p", spawn "gm run")
+                 , (prefix "C-p", spawn "gmrun")
                  -- close focused window
                  , (prefix "c", kill)
                  -- Rotate through the available layout algorithms
