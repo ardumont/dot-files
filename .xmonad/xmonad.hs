@@ -74,12 +74,13 @@ myKeys conf =
                    (prefix "x", runOrRaise (terminal conf) (className =? "Gnome-terminal"))
                  -- spawning firefox
                  , (prefix "f", runOrRaise "firefox" (className =? "Firefox"))
-                 -- emacs (beware, you need to launch emacs daemon first with at least one frame)
+                 -- emacs
+                 , (prefix "C-e", spawn "emacsclient -c")
                  , (prefix "e", runOrRaise "emacs" (className =? "Emacs"))
                  -- some help message
                  , (prefix "h", spawn "zenith --info --text 'Hello from xmonad with prefix key!'")
                  -- reload the setup from xmonad
-                 , (prefix "L", spawn "xmonad --recompile; xmonad --restart")
+                 , (prefix "C-r", recompile True >> restart "/usr/bin/xmonad" True)
                  -- dmenu
                  , (prefix "p", spawn "dmenu_run")
                  -- another menu launcher (equivalent to F2 in gnome2)
