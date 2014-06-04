@@ -111,7 +111,9 @@ myKeys conf =
                  , (prefix "C-c", runOrRaise "/usr/bin/skype"                       (className =? "skype"))
                  -- spawning firefox
                  , (prefix "f",   runOrRaise "firefox"                              (className =? "Firefox"))
-                   -- some help message
+                   -- some show message
+                 , (prefix "h",   spawn . zenityText $ "hello")
+                   -- some commands
                  , (prefix "S-k",   spawn . zenityCmd $ "ssh-add -l")
                  , (prefix "S-e",   spawn . zenityCmd $ "cat /etc/environment")
                  , (prefix "S-h",   spawn . zenityCmd $ "cat /etc/hosts")
