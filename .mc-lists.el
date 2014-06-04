@@ -25,6 +25,7 @@
         mark-sexp
         mark-whole-buffer
         markdown-exdent-or-delete
+        mouse-buffer-menu
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
