@@ -68,63 +68,61 @@ prefix key = "C-; " ++ key
 -- keybinding
 --
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys = \conf -> mkKeymap conf $
-     [
-    -- terminal
-      (prefix "x", spawn $ terminal conf)
-    -- some help message
-    , (prefix "h", spawn "xmessage 'hello world!!! using prefix key in haskell!'")
-    -- reload the setup from xmonad
-    , (prefix "L", spawn "xmonad --recompile; xmonad --restart")
-    -- spawning firefox
-    , (prefix "f", spawn "firefox")
-    -- dmenu
-    , (prefix "p", spawn "dmenu_run")
-    -- another menu
-    , (prefix "C-p", spawn "gmrun")
-    -- emacs client (emacs daemon is launched at startup)
-    , (prefix "e", spawn "emacsclient -c")
-    -- close focused window
-    , (prefix "c", kill)
-    -- Rotate through the available layout algorithms
-    , (prefix "<Space>", sendMessage NextLayout)
-    --  Reset the layouts on the current workspace to default
-    , (prefix "C-<Space>", setLayout $ XMonad.layoutHook conf)
-    -- Resize viewed windows to the correct size
-    , (prefix "n", refresh)
-    -- Move focus to the next window
-    , (prefix "<Tab>", windows W.focusDown)
-    -- Move focus to the next window
-    , (prefix "j", windows W.focusDown)
-    -- Move focus to the previous window
-    , (prefix "k", windows W.focusUp  )
-    -- Move focus to the master window
-    , (prefix "m", windows W.focusMaster  )
-    -- Swap the focused window and the master window
-    , (prefix "<Return>", windows W.swapMaster)
-    -- Swap the focused window with the next window
-    , (prefix "C-j", windows W.swapDown  )
-    -- Swap the focused window with the previous window
-    , (prefix "C-k", windows W.swapUp    )
-    -- Shrink the master area
-    , (prefix "C-h", sendMessage Shrink)
-    -- Expand the master area
-    , (prefix "C-l", sendMessage Expand)
-    -- Push window back into tiling
-    , (prefix "t", withFocused $ windows . W.sink)
-    -- Increment the number of windows in the master area
-    , (prefix ",", sendMessage (IncMasterN 1))
-    -- Deincrement the number of windows in the master area
-    , (prefix ":", sendMessage (IncMasterN (-1)))
-    -- Toggle the status bar gap
-    -- Use this binding with avoidStruts from Hooks.ManageDocks.
-    -- See also the statusBar function from Hooks.DynamicLog.
-    --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+myKeys conf =
+  mkKeymap conf [-- terminal
+                 (prefix "x", spawn $ terminal conf)
+                 -- some help message
+                 , (prefix "h", spawn "xmessage 'hello world!!! using prefix key in haskell!'")
+                 -- reload the setup from xmonad
+                 , (prefix "L", spawn "xmonad --recompile; xmonad --restart")
+                 -- spawning firefox
+                 , (prefix "f", spawn "firefox")
+                 -- dmenu
+                 , (prefix "p", spawn "dmenu_run")
+                 -- another menu
+                 , (prefix "C-p", spawn "gmrun")
+                 -- emacs client (emacs daemon is launched at startup)
+                 , (prefix "e", spawn "emacsclient -c")
+                 -- close focused window
+                 , (prefix "c", kill)
+                 -- Rotate through the available layout algorithms
+                 , (prefix "<Space>", sendMessage NextLayout)
+                 --  Reset the layouts on the current workspace to default
+                 , (prefix "C-<Space>", setLayout $ XMonad.layoutHook conf)
+                 -- Resize viewed windows to the correct size
+                 , (prefix "n", refresh)
+                 -- Move focus to the next window
+                 , (prefix "<Tab>", windows W.focusDown)
+                 -- Move focus to the next window
+                 , (prefix "j", windows W.focusDown)
+                 -- Move focus to the previous window
+                 , (prefix "k", windows W.focusUp  )
+                 -- Move focus to the master window
+                 , (prefix "m", windows W.focusMaster  )
+                 -- Swap the focused window and the master window
+                 , (prefix "<Return>", windows W.swapMaster)
+                 -- Swap the focused window with the next window
+                 , (prefix "C-j", windows W.swapDown  )
+                 -- Swap the focused window with the previous window
+                 , (prefix "C-k", windows W.swapUp    )
+                 -- Shrink the master area
+                 , (prefix "C-h", sendMessage Shrink)
+                 -- Expand the master area
+                 , (prefix "C-l", sendMessage Expand)
+                 -- Push window back into tiling
+                 , (prefix "t", withFocused $ windows . W.sink)
+                 -- Increment the number of windows in the master area
+                 , (prefix ",", sendMessage (IncMasterN 1))
+                 -- Deincrement the number of windows in the master area
+                 , (prefix ":", sendMessage (IncMasterN (-1)))
+                 -- Toggle the status bar gap
+                 -- Use this binding with avoidStruts from Hooks.ManageDocks.
+                 -- See also the statusBar function from Hooks.DynamicLog.
+                 --
+                 -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
-    -- Quit xmonad
-    , (prefix "C-Q", io (exitWith ExitSuccess))
-    ]
+                 -- Quit xmonad
+                 , (prefix "C-Q", io exitSuccess)]
     -- ++
 
     -- --
