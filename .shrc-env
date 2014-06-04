@@ -38,3 +38,5 @@ export BROWSER=/usr/bin/firefox
   && sudo ln -nsf $BROWSER /etc/alternatives/www-browser \
   && sudo ln -nsf $BROWSER /etc/alternatives/x-www-browser \
   && sudo ln -nsf $BROWSER /etc/alternatives/gnome-www-browser
+
+[ -f $HOME/applications/ide/eclipse/eclipse/eclipse ] && export ECLIPSE_HOME=$HOME/applications/ide/eclipse/eclipse
