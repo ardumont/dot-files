@@ -9,6 +9,7 @@ import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Util.EZConfig
+import XMonad.Actions.WindowGo (runOrRaise)
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -63,26 +64,26 @@ myFocusedBorderColor = "#ff0000"
 -- Prefix key
 --
 prefix :: String -> String
-prefix key = "C-; " ++ key
+prefix key = "C-t " ++ key
 
 -- keybinding
 --
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf =
   mkKeymap conf [-- terminal
-                 (prefix "x", spawn $ terminal conf)
+                   (prefix "x", runOrRaise (terminal conf) (className =? "Gnome-terminal"))
+                 -- spawning firefox
+                 , (prefix "f", runOrRaise "firefox" (className =? "Firefox"))
+                 -- emacs (beware, you need to launch emacs daemon first with at least one frame)
+                 , (prefix "e", runOrRaise "emacs" (className =? "Emacs"))
                  -- some help message
-                 , (prefix "h", spawn "xmessage 'hello world!!! using prefix key in haskell!'")
+                 , (prefix "h", spawn "zenith --info --text 'Hello from xmonad with prefix key!'")
                  -- reload the setup from xmonad
                  , (prefix "L", spawn "xmonad --recompile; xmonad --restart")
-                 -- spawning firefox
-                 , (prefix "f", spawn "firefox")
                  -- dmenu
                  , (prefix "p", spawn "dmenu_run")
-                 -- another menu
-                 , (prefix "C-p", spawn "gmrun")
-                 -- emacs client (emacs daemon is launched at startup)
-                 , (prefix "e", spawn "emacsclient -c")
+                 -- another menu launcher (equivalent to F2 in gnome2)
+                 , (prefix "C-p", spawn "gm run")
                  -- close focused window
                  , (prefix "c", kill)
                  -- Rotate through the available layout algorithms
