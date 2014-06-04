@@ -66,25 +66,85 @@ myFocusedBorderColor = "#ff0000"
 prefix :: String -> String
 prefix key = "C-t " ++ key
 
+zenityText :: String -> String
+zenityText s = "zenity --info --text '" ++ s ++ "'"
+
+zenityCmd :: String -> String
+zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
+
 -- keybinding
 --
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf =
-  mkKeymap conf [-- terminal
-                   (prefix "x", runOrRaise (terminal conf) (className =? "Gnome-terminal"))
+  mkKeymap conf [-- run or raise commands
+                   (prefix "x",   runOrRaise (terminal conf)                        (className =? "Gnome-terminal"))
                  -- spawning firefox
-                 , (prefix "f", runOrRaise "firefox" (className =? "Firefox"))
-                 -- emacs
-                 , (prefix "C-e", spawn "emacsclient -c")
-                 , (prefix "e", runOrRaise "emacs" (className =? "Emacs"))
-                 -- some help message
-                 , (prefix "h", spawn "zenity --info --text 'Hello from xmonad with prefix key!'")
+                 , (prefix "f",   runOrRaise "firefox"                              (className =? "Firefox"))
+                 , (prefix "C-e", runOrRaise "emacs"                                (className =? "Emacs"))
+                 , (prefix "e",   spawn "emacsclient -c")
+                 --
+                 , (prefix ",",   runOrRaise "cinnamon-settings"                    (className =? "cinnamon-settings"))
+                 , (prefix ".",   runOrRaise "totem"                                (className =? "Totem"))
+                 , (prefix "C-e", runOrRaise "evince"                               (className =? "Evince"))
+                 , (prefix "C-i", runOrRaise "eog"                                  (className =? "Eog"))
+                 , (prefix "d",   runOrRaise "pinta"                                (className =? "Pinta"))
+                 , (prefix "I",   runOrRaise "gimp"                                 (className =?  "Gimp"))
+                 , (prefix "C-a", runOrRaise "/usr/bin/audacious"                   (className =? "Audacious"))
+                 , (prefix "C-j", runOrRaise "/usr/bin/jconsole"                    (className =? "sun-tools-jconsole-JConsole"))
+                 , (prefix "j",   runOrRaise "~/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
+                 , (prefix "C-c", runOrRaise "arduino"                              (className =? "processing-appBase"))
+                 , (prefix "C-x", runOrRaise "~/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
+                 , (prefix "C-w", runOrRaise "gksudo wireshark"                     (className =? "wireshark"))
+                 , (prefix "n",   runOrRaise "nemo"                                 (className =? "nemo"))
+                 , (prefix "N",   runOrRaise "thunar"                               (className =? "thunar"))
+                 , (prefix "y",   runOrRaise "~/bin/app/yed.sh"                     (className =? "sun-awt-X11-XFramePeer"))
+                 , (prefix "C-f", runOrRaise "/usr/bin/filezilla"                   (className =? "filezilla"))
+                 , (prefix "C-v", runOrRaise "virtualbox"                           (className =? "Qt-subapplication"))
+                 , (prefix "u",   runOrRaise "unetbootin"                           (className =?  "unetbootin"))
+                 , (prefix "/",   runOrRaise "/usr/bin/transmission-gtk"            (className =? "transmission-gtk"))
+                 , (prefix "G",   runOrRaise "gksudo /usr/sbin/gparted"             (className =? "gpartedbin"))
+                 , (prefix "F",   runOrRaise ""                                     (className =? "file_progress"))
+                 , (prefix "X",   runOrRaise "xosview"                              (className =? "xosview"))
+                 , (prefix "b",   runOrRaise "baobab"                               (className =? "baobab"))
+                 , (prefix "z",   runOrRaise "gitk"                                 (className =? "gitk"))
+                 , (prefix "C-f", runOrRaise "fbreader"                             (className =? "fbreader"))
+                 , (prefix "C",   runOrRaise "~/applications/LightTable/LightTable" (className =? "ltbin"))
+                 , (prefix "M-r", runOrRaise "/usr/bin/tuxguitar"                   (className =? "TuxGuitar"))
+                 , (prefix "C-c", runOrRaise "/usr/bin/skype"                       (className =? "skype"))
+                   -- some help message
+                 , (prefix "<H>",   spawn . zenityText $ "Hello from xmonad with prefix key!")
+                 , (prefix "<K>",   spawn . zenityCmd $ "ssh-add -l")
+                 , (prefix "<E>",   spawn . zenityCmd $ "cat /etc/environment")
+                 , (prefix "<H>",   spawn . zenityCmd $ "cat /etc/hosts")
+                 , (prefix "<I>",   spawn . zenityCmd $ "/sbin/ifconfig")
+                 , (prefix "<B>",   spawn . zenityCmd $ "/usr/bin/acpi -b")
+                 , (prefix "^",     spawn . zenityCmd $ "top -b -n 1 -c -d 1")
+                 , (prefix "C-s",   spawn . zenityCmd $ "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
+                 , (prefix "M-s",   spawn . zenityCmd $ "~/bin/touchpad/toggle-touchpad-manual.sh 1; /usr/bin/scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
+                 , (prefix "C-S",   spawn . zenityCmd $ "gksudo pm-suspend")
+                 , (prefix "C-H",   spawn . zenityCmd $ "gksudo pm-hibernate")
+                 , (prefix "A",     spawn . zenityCmd $ "~/bin/ssh/ssh-add.sh")
+                 , (prefix "p",     spawn . zenityCmd $ "gksudo ~/bin/proxy/proxy.sh on && ~/bin/wifi/nm-applet.sh stop")
+                 , (prefix "P",     spawn . zenityCmd $ "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop")
+                 , (prefix "C-b",   spawn . zenityCmd $ "~/bin/brightness/dec-brightness.sh 5")
+                 , (prefix "C-f",   spawn . zenityCmd $ "~/bin/brightness/inc-brightness.sh 5")
+                 , (prefix "m",     spawn . zenityCmd $ "~/bin/brightness/min-brightness.sh")
+                 , (prefix "C-M",   spawn . zenityCmd $ "~/bin/brightness/half-brightness.sh")
+                 , (prefix "M",     spawn . zenityCmd $ "~/bin/brightness/max-brightness.sh")
+                 , (prefix "M-f",   spawn . zenityCmd $ "exec amixer set Master 5%+")
+                 , (prefix "M-b",   spawn . zenityCmd $ "exec amixer set Master 5%-")
+                 , (prefix "M-m",   spawn . zenityCmd $ "exec amixer set Master toggle")
+                 , (prefix "C-o",   spawn . zenityCmd $ "~/bin/wifi/wifi-off.sh")
+                 , (prefix "O",     spawn . zenityCmd $ "~/bin/wifi/wifi-on.sh")
+                 , (prefix "C-p",   spawn . zenityCmd $ "~/bin/service/service.sh restart stalonetray -t --window-type=normal")
+                 , (prefix "C-M-l", spawn . zenityCmd $ "~/bin/session/lock.sh")
+                 , (prefix "'",     spawn . zenityCmd $ "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
                  -- reload the setup from xmonad
-                 , (prefix "C-r", recompile True >> restart "/usr/bin/xmonad" True)
+                 , (prefix "<L>", recompile True >> restart "/usr/bin/xmonad" True)
                  -- dmenu
-                 , (prefix "p", spawn "dmenu_run")
+                 , (prefix "p",     spawn "dmenu_run")
                  -- another menu launcher (equivalent to F2 in gnome2)
-                 , (prefix "C-p", spawn "gmrun")
+                 , (prefix "C-p",   spawn "gmrun")
                  -- close focused window
                  , (prefix "c", kill)
                  -- Rotate through the available layout algorithms
