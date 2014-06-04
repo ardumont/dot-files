@@ -22,6 +22,7 @@ myTerminal :: String
 myTerminal = "gnome-terminal"
 
 -- Whether focus follows the mouse pointer.
+--
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
 
@@ -34,7 +35,8 @@ myBorderWidth  = 0
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
--- Until I found out how to use xmonad as I use stumpwm (with C-t as a prefix key)
+-- I'm used to prefix key because of emacs, stumpwm, conkeror and firefox with keysnail
+-- So, until I found out how to use xmonad the same way (with C-; as a prefix key)
 -- I prefer using windows key
 --
 myModMask :: KeyMask
@@ -49,7 +51,7 @@ myModMask = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces :: [[Char]]
+myWorkspaces :: [String]
 myWorkspaces = map show [1..9]
 
 -- Border colors for unfocused and focused windows, respectively.
@@ -63,11 +65,13 @@ myFocusedBorderColor = "#ff0000"
 -- Key bindings. Add, modify or remove key bindings here.
 --
 
--- prefix key
+-- Prefix key
+--
 prefix :: String -> String
 prefix key = "C-; " ++ key
 
 -- keybinding
+--
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys = \conf -> mkKeymap conf $
      [
