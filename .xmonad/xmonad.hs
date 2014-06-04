@@ -258,6 +258,32 @@ main = xmonad defaults
 -- use the defaults defined in xmonad/XMonad/Config.hs
 --
 -- No need to modify this.
+
+-- myFont :: String
+-- myFont = "xft:DejaVu Sans:size=10"
+-- --myFont = "xft:Ubuntu:weight=bold:size=10"
+
+-- myBgColor :: String
+-- myBgColor = "#001070"
+
+-- myFgColor :: String
+-- myFgColor = "#bbbbdd"
+
+-- myBgHLight :: String
+-- myBgHLight = "#4444aa"
+
+-- myFgHLight :: String
+-- myFgHLight = "#ddddff"
+
+-- myXPConfig :: XPConfig
+-- myXPConfig = defaultXPConfig
+--               { font        = myFont
+--               , bgColor     = myBgColor
+--               , fgColor     = myFgColor
+--               , bgHLight    = myBgHLight
+--               , fgHLight    = myFgHLight
+--               , borderColor = myNormalBorderColor}
+
 --
 defaults :: XConfig (Choose Tall (Choose (Mirror Tall) Full))
 defaults = defaultConfig {
