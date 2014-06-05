@@ -109,6 +109,7 @@ myKeys conf =
                  , (prefix "C",   runOrRaise "~/applications/LightTable/LightTable" (className =? "ltbin"))
                  , (prefix "M-r", runOrRaise "/usr/bin/tuxguitar"                   (className =? "TuxGuitar"))
                  , (prefix "C-c", runOrRaise "/usr/bin/skype"                       (className =? "skype"))
+                 , (prefix "i",   runOrRaise "~/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
                  -- spawning firefox
                  , (prefix "f",   runOrRaise "firefox"                              (className =? "Firefox"))
                    -- some show message
