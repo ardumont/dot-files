@@ -131,7 +131,7 @@ myKeys home conf =
                  , (prefix "C-S-h", spawn . zenityCmd $ "gksudo pm-hibernate")
                  , (prefix "S-a",   spawn . zenityCmd $ "~/bin/ssh/ssh-add.sh")
                  , (prefix "p",     spawn . zenityCmd $ "gksudo ~/bin/proxy/proxy.sh on && ~/bin/wifi/nm-applet.sh stop")
-                 , (prefix "P",     spawn . zenityCmd $ "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop")
+                 , (prefix "S-p",   spawn . zenityCmd $ "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop")
                  , (prefix "C-b",   spawn . zenityCmd $ "~/bin/brightness/dec-brightness.sh 5")
                  , (prefix "C-f",   spawn . zenityCmd $ "~/bin/brightness/inc-brightness.sh 5")
                  , (prefix "m",     spawn . zenityCmd $ "~/bin/brightness/min-brightness.sh")
