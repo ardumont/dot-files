@@ -54,10 +54,7 @@
         sp-kill-word
         transpose-words
         yaml-electric-dash-and-dot
-        ))
-
-(setq mc/cmds-to-run-once
-      '(
+        haskell-indentation-delete-backward-char
         magit-discard-item
         markdown-exdent-or-delete
         ))
