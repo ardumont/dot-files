@@ -120,7 +120,8 @@
 
 ;; run-or-raise application based on the instance of the window + activating the touchpad
 (ror-id-tpd-on-category
- ((xephyr               "xephyr.sh"        "~/bin/xephyr/xephyr.sh"               "Xephyr"                 "C-x")
+ ((xephyr-gnome         "xephyr - gnome"  "~/bin/xephyr/xephyr.sh gnome"         "Xephyr"                 "C-x")
+  (xephyr-xmonad        "xephyr - xmonad" "~/bin/xephyr/xephyr.sh xmonad"        "Xephyr"                 "C-X")
   (wireshark            "wireshark"        "gksudo wireshark"                     "wireshark"              "C-w")
   ;; (nautilus             "nautilus"         "nautilus"                             "nautilus"               "n")
   (nemo                 "nemo"             "nemo"                                 "nemo"                   "n")
