@@ -96,7 +96,7 @@
 ;; run-or-raise application based on the class name of the window + deactivating the touchpad
 (ror-tpd-off-category
  ((terminal             "terminal" "gnome-terminal --hide-menubar -x tmux" "Gnome-terminal" "x")
-  (myemacs              "emacs"    "emacsclient -c"                        "Emacs"          "e")
+  (myemacs              "emacs"    "~/bin/emacs/emacs.sh"                  "Emacs"          "e")
   (conkeror             "conkeror" "conkeror"                              "Conkeror"       "c")))
 
 ;; run-or-raise application based on the class name of the window + activating the touchpad
