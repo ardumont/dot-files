@@ -375,6 +375,5 @@ defaults home = defaultConfig {
 -- Now run xmonad with all the defaults we set up.
 
 main :: IO ()
-main = do
-  Just home <- getEnv "HOME"
-  xmonad $ defaults home
+main =
+    getEnv "HOME" >>= \ (Just home) -> xmonad $ defaults home
