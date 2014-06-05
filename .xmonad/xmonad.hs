@@ -62,7 +62,7 @@ zenityCmd :: String -> String
 zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
 
 myRunOrRaise :: String -> String -> Query Bool -> X ()
-myRunOrRaise home = \ cmd query -> runOrRaise (home ++ cmd) query
+myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 
 -- keybinding
 --
