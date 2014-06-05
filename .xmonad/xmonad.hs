@@ -39,18 +39,6 @@ myBorderWidth  = 0
 myModMask :: KeyMask
 myModMask = mod4Mask
 
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
---
-myWorkspaces :: [String]
-myWorkspaces = map show [1..9]
-
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor :: String
@@ -256,6 +244,19 @@ myLayout = tiled ||| Mirror tiled ||| Full
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
 
+-- The default number of workspaces (virtual screens) and their names.
+-- By default we use numeric strings, but any string may be used as a
+-- workspace name. The number of workspaces is determined by the length
+-- of this list.
+--
+-- A tagging example:
+--
+-- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
+--
+myWorkspaces :: [String]
+-- myWorkspaces = ["emacs", "terminal", "web", "code", "irc", "ide" ] ++ map show [4..9]
+myWorkspaces = map show [1..9]
+
 ------------------------------------------------------------------------
 -- Window rules:
 
@@ -276,7 +277,12 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore
+    -- , className =? "Emacs"            --> doShift "emacs"
+    --  ,className =? "Gnome-terminal"   --> doShift "terminal"
+    --  ,className =? "jetbrains-ide-ce" --> doShift "ide"
+    --  ,className =? "Firefox"          --> doShift "web"
+     ]
 
 ------------------------------------------------------------------------
 -- Event handling
