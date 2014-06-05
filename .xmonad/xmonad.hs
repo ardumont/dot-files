@@ -77,8 +77,7 @@ zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf =
   mkKeymap conf [-- emacs
-                   (prefix "C-e", runOrRaise "emacs"                                (className =? "Emacs"))
-                 , (prefix "e",   spawn "emacsclient -c")
+                   (prefix "e",   runOrRaise "~/bin/emacs/emacs.sh"                 (className =? "Emacs"))
                  -- run or raise commands
                  , (prefix "x",   runOrRaise (terminal conf)                        (className =? "Gnome-terminal"))
                  , (prefix ",",   runOrRaise "cinnamon-settings"                    (className =? "cinnamon-settings"))
