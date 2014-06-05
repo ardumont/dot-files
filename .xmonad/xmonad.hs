@@ -10,6 +10,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Util.EZConfig
 import XMonad.Actions.WindowGo (runOrRaise)
+-- import System.Posix.Env (getEnv)
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
