@@ -253,9 +253,32 @@ myLayout = tiled ||| Mirror tiled ||| Full
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
+
+workspaceEmacs :: String
+workspaceEmacs = "1:emacs"
+
+workspaceTerminal :: String
+workspaceTerminal = "2:terminal"
+
+workspaceWeb :: String
+workspaceWeb = "3:web"
+
+workspaceCode :: String
+workspaceCode = "4:code"
+
+workspaceIrc :: String
+workspaceIrc = "5:irc"
+
+workspaceIde :: String
+workspaceIde = "6:ide"
+
 myWorkspaces :: [String]
--- myWorkspaces = ["emacs", "terminal", "web", "code", "irc", "ide" ] ++ map show [4..9]
-myWorkspaces = map show [1..9]
+myWorkspaces = [ workspaceEmacs
+               , workspaceTerminal
+               , workspaceWeb
+               , workspaceCode
+               , workspaceIrc
+               , workspaceIde] ++ map show [7..9]
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -274,15 +297,14 @@ myWorkspaces = map show [1..9]
 --
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore
-    -- , className =? "Emacs"            --> doShift "emacs"
-    --  ,className =? "Gnome-terminal"   --> doShift "terminal"
-    --  ,className =? "jetbrains-ide-ce" --> doShift "ide"
-    --  ,className =? "Firefox"          --> doShift "web"
-     ]
+    [ className =? "MPlayer"          --> doFloat
+    , className =? "Gimp"             --> doFloat
+    , resource  =? "desktop_window"   --> doIgnore
+    , resource  =? "kdesktop"         --> doIgnore
+    , className =? "Emacs"            --> doShift workspaceEmacs
+    , className =? "Gnome-terminal"   --> doShift workspaceTerminal
+    , className =? "jetbrains-ide-ce" --> doShift workspaceIde
+    , className =? "Firefox"          --> doShift workspaceWeb]
 
 ------------------------------------------------------------------------
 -- Event handling
