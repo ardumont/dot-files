@@ -10,8 +10,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Util.EZConfig
 import XMonad.Actions.WindowGo (runOrRaise)
--- import System.Posix.Env (getEnv)
--- import System.Environment (getEnv)
+import System.Posix.Env (getEnv)
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -311,14 +310,6 @@ myLogHook = return ()
 myStartupHook :: X ()
 myStartupHook = return ()
 
-------------------------------------------------------------------------
--- Now run xmonad with all the defaults we set up.
-
--- Run xmonad with the settings you specify. No need to modify this.
---
-main :: IO ()
-main = xmonad defaults
-
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
@@ -351,8 +342,8 @@ main = xmonad defaults
 --               , borderColor = myNormalBorderColor}
 
 --
-defaults :: XConfig (Choose Tall (Choose (Mirror Tall) Full))
-defaults = defaultConfig {
+defaults :: String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
+defaults home = defaultConfig {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
@@ -363,7 +354,7 @@ defaults = defaultConfig {
         focusedBorderColor = myFocusedBorderColor,
 
       -- key bindings
-        keys               = myKeys "/home/tony",
+        keys               = myKeys home,
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
@@ -423,3 +414,10 @@ defaults = defaultConfig {
  -- <KP_Decimal>
  -- <KP_Divide>
  -- <KP_0>-<KP_9>
+------------------------------------------------------------------------
+-- Now run xmonad with all the defaults we set up.
+
+main :: IO ()
+main = do
+  Just home <- getEnv "HOME"
+  xmonad $ defaults home
