@@ -11,6 +11,7 @@ import qualified Data.Map        as M
 import XMonad.Util.EZConfig
 import XMonad.Actions.WindowGo (runOrRaise)
 -- import System.Posix.Env (getEnv)
+-- import System.Environment (getEnv)
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -73,45 +74,48 @@ zenityText s = "zenity --info --text '" ++ s ++ "'"
 zenityCmd :: String -> String
 zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
 
+myRunOrRaise :: String -> String -> Query Bool -> X ()
+myRunOrRaise home = \ cmd query -> runOrRaise (home ++ cmd) query
+
 -- keybinding
 --
-myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys conf =
+myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
+myKeys home conf =
   mkKeymap conf [-- emacs
-                   (prefix "e",   runOrRaise "~/bin/emacs/emacs.sh"                 (className =? "Emacs"))
+                   (prefix "e",   myRunOrRaise home "/bin/emacs/emacs.sh"                 (className =? "Emacs"))
                  -- run or raise commands
-                 , (prefix "x",   runOrRaise (terminal conf)                        (className =? "Gnome-terminal"))
-                 , (prefix ",",   runOrRaise "cinnamon-settings"                    (className =? "cinnamon-settings"))
-                 , (prefix ".",   runOrRaise "totem"                                (className =? "Totem"))
-                 , (prefix "C-e", runOrRaise "evince"                               (className =? "Evince"))
-                 , (prefix "C-i", runOrRaise "eog"                                  (className =? "Eog"))
-                 , (prefix "d",   runOrRaise "pinta"                                (className =? "Pinta"))
-                 , (prefix "S-i", runOrRaise "gimp"                                 (className =? "Gimp"))
-                 , (prefix "C-a", runOrRaise "/usr/bin/audacious"                   (className =? "Audacious"))
-                 , (prefix "C-j", runOrRaise "/usr/bin/jconsole"                    (className =? "sun-tools-jconsole-JConsole"))
-                 , (prefix "j",   runOrRaise "~/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
-                 , (prefix "C-c", runOrRaise "arduino"                              (className =? "processing-appBase"))
-                 , (prefix "C-x", runOrRaise "~/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
-                 , (prefix "C-w", runOrRaise "gksudo wireshark"                     (className =? "wireshark"))
-                 , (prefix "n",   runOrRaise "nemo"                                 (className =? "nemo"))
-                 , (prefix "S-n", runOrRaise "thunar"                               (className =? "thunar"))
-                 , (prefix "y",   runOrRaise "~/bin/app/yed.sh"                     (className =? "sun-awt-X11-XFramePeer"))
-                 , (prefix "C-f", runOrRaise "/usr/bin/filezilla"                   (className =? "filezilla"))
-                 , (prefix "C-v", runOrRaise "virtualbox"                           (className =? "Qt-subapplication"))
-                 , (prefix "u",   runOrRaise "unetbootin"                           (className =? "unetbootin"))
-                 , (prefix "/",   runOrRaise "/usr/bin/transmission-gtk"            (className =? "transmission-gtk"))
-                 , (prefix "S-g", runOrRaise "gksudo /usr/sbin/gparted"             (className =? "gpartedbin"))
-                 , (prefix "S-f", runOrRaise ""                                     (className =? "file_progress"))
-                 , (prefix "S-x", runOrRaise "xosview"                              (className =? "xosview"))
-                 , (prefix "b",   runOrRaise "baobab"                               (className =? "baobab"))
-                 , (prefix "z",   runOrRaise "gitk"                                 (className =? "gitk"))
-                 , (prefix "C-f", runOrRaise "fbreader"                             (className =? "fbreader"))
-                 , (prefix "S-c", runOrRaise "~/applications/LightTable/LightTable" (className =? "ltbin"))
-                 , (prefix "M-r", runOrRaise "/usr/bin/tuxguitar"                   (className =? "TuxGuitar"))
-                 , (prefix "C-c", runOrRaise "/usr/bin/skype"                       (className =? "skype"))
-                 , (prefix "i",   runOrRaise "~/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
+                 , (prefix "x",   runOrRaise (terminal conf)                              (className =? "Gnome-terminal"))
+                 , (prefix ",",   runOrRaise "cinnamon-settings"                          (className =? "cinnamon-settings"))
+                 , (prefix ".",   runOrRaise "totem"                                      (className =? "Totem"))
+                 , (prefix "C-e", runOrRaise "evince"                                     (className =? "Evince"))
+                 , (prefix "C-i", runOrRaise "eog"                                        (className =? "Eog"))
+                 , (prefix "d",   runOrRaise "pinta"                                      (className =? "Pinta"))
+                 , (prefix "S-i", runOrRaise "gimp"                                       (className =? "Gimp"))
+                 , (prefix "C-a", runOrRaise "/usr/bin/audacious"                         (className =? "Audacious"))
+                 , (prefix "C-j", runOrRaise "/usr/bin/jconsole"                          (className =? "sun-tools-jconsole-JConsole"))
+                 , (prefix "j",   myRunOrRaise home "/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
+                 , (prefix "C-c", runOrRaise "arduino"                                    (className =? "processing-appBase"))
+                 , (prefix "C-x", myRunOrRaise home "/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
+                 , (prefix "C-w", runOrRaise "gksudo wireshark"                           (className =? "wireshark"))
+                 , (prefix "n",   runOrRaise "nemo"                                       (className =? "nemo"))
+                 , (prefix "S-n", runOrRaise "thunar"                                     (className =? "thunar"))
+                 , (prefix "y",   myRunOrRaise home "/bin/app/yed.sh"                     (className =? "sun-awt-X11-XFramePeer"))
+                 , (prefix "C-f", runOrRaise "/usr/bin/filezilla"                         (className =? "filezilla"))
+                 , (prefix "C-v", runOrRaise "virtualbox"                                 (className =? "Qt-subapplication"))
+                 , (prefix "u",   runOrRaise "unetbootin"                                 (className =? "unetbootin"))
+                 , (prefix "/",   runOrRaise "/usr/bin/transmission-gtk"                  (className =? "transmission-gtk"))
+                 , (prefix "S-g", runOrRaise "gksudo /usr/sbin/gparted"                   (className =? "gpartedbin"))
+                 , (prefix "S-f", runOrRaise ""                                           (className =? "file_progress"))
+                 , (prefix "S-x", runOrRaise "xosview"                                    (className =? "xosview"))
+                 , (prefix "b",   runOrRaise "baobab"                                     (className =? "baobab"))
+                 , (prefix "z",   runOrRaise "gitk"                                       (className =? "gitk"))
+                 , (prefix "C-f", runOrRaise "fbreader"                                   (className =? "fbreader"))
+                 , (prefix "S-c", myRunOrRaise home "/applications/LightTable/LightTable" (className =? "ltbin"))
+                 , (prefix "M-r", runOrRaise "/usr/bin/tuxguitar"                         (className =? "TuxGuitar"))
+                 , (prefix "C-c", runOrRaise "/usr/bin/skype"                             (className =? "skype"))
+                 , (prefix "i",   myRunOrRaise home "/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
                  -- spawning firefox
-                 , (prefix "f",   runOrRaise "firefox"                              (className =? "Firefox"))
+                 , (prefix "f",   runOrRaise "firefox"                                    (className =? "Firefox"))
                    -- some show message
                  , (prefix "h",   spawn . zenityText $ "hello")
                    -- some commands
@@ -359,7 +363,7 @@ defaults = defaultConfig {
         focusedBorderColor = myFocusedBorderColor,
 
       -- key bindings
-        keys               = myKeys,
+        keys               = myKeys "/home/tony",
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
