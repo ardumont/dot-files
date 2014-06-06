@@ -69,7 +69,7 @@ myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys home conf@(XConfig {terminal = myTerm,
                            layoutHook = myLayoutHook}) =
-  M.union
+  -- M.union
   (mkKeymap conf [-- personal script launcher
                    (prefix "e",   myRunOrRaise home "/bin/emacs/emacs.sh"                 (className =? "Emacs"))
                  , (prefix "C-x", myRunOrRaise home "/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
@@ -178,17 +178,17 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix ":", sendMessage (IncMasterN (-1)))
                  -- Quit xmonad
                  , (prefix "C-S-q", io exitSuccess)])
-  (myStandardKeys conf)
+--   (myStandardKeys conf)
 
-myStandardKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myStandardKeys conf@(XConfig {modMask = modm}) =
-  -- mod-[1..9], Switch to workspace N
-  -- mod-shift-[1..9], Move client to workspace N
-  M.fromList [((m .|. modm, k), windows $ f i) | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-                                               , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+-- myStandardKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
+-- myStandardKeys conf@(XConfig {modMask = modm}) =
+--   -- mod-[1..9], Switch to workspace N
+--   -- mod-shift-[1..9], Move client to workspace N
+--   M.fromList [((m .|. modm, k), windows $ f i) | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+--                                                , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
--- Mouse bindings: default actions bound to mouse events
+-- mouse bindings: default actions bound to mouse events
 --
 myMouseBindings :: XConfig t -> M.Map (KeyMask, Button) (Window -> X ())
 myMouseBindings (XConfig {XMonad.modMask = modm}) =
@@ -284,10 +284,11 @@ myManageHook = composeAll
     , className =? "Gimp"             --> doFloat
     , resource  =? "desktop_window"   --> doIgnore
     , resource  =? "kdesktop"         --> doIgnore
-    , className =? "Emacs"            --> doShift workspaceEmacs
-    , className =? "Gnome-terminal"   --> doShift workspaceTerminal
-    , className =? "jetbrains-ide-ce" --> doShift workspaceIde
-    , className =? "Firefox"          --> doShift workspaceWeb]
+    -- , className =? "Emacs"            --> doShift workspaceEmacs
+    -- , className =? "Gnome-terminal"   --> doShift workspaceTerminal
+    -- , className =? "jetbrains-ide-ce" --> doShift workspaceIde
+    -- , className =? "Firefox"          --> doShift workspaceWeb
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling
