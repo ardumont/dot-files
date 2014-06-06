@@ -15,8 +15,8 @@ export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 
 #export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
 
-[ -d "/usr/lib/jvm/java-6-oracle" ] && export JAVA_HOME="/usr/lib/jvm/java-6-oracle"
 [ -d "/usr/lib/jvm/java-7-openjdk-amd64" ] && export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
+[ -d "/usr/lib/jvm/java-6-oracle" ] && export JAVA_HOME="/usr/lib/jvm/java-6-oracle"
 
 # force the 256 color on the terminal
 export TERM=screen-256color
