@@ -176,29 +176,16 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix ",", sendMessage (IncMasterN 1))
                  -- Deincrement the number of windows in the master area
                  , (prefix ":", sendMessage (IncMasterN (-1)))
-                 -- Toggle the status bar gap
-                 -- Use this binding with avoidStruts from Hooks.ManageDocks.
-                 -- See also the statusBar function from Hooks.DynamicLog.
-                 --
-                 -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
-
                  -- Quit xmonad
-                 , (prefix "C-S-q", io exitSuccess)]
-    --
-    -- mod-[1..9], Switch to workspace N
-    -- mod-shift-[1..9], Move client to workspace N
-    ++
-    [(m .|. modMask conf, k, windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    where conf = defaults "/home/tony"
-    -- ++
-    -- -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
-    -- -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
-    -- --
-    -- [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-    --     | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-    --     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+                 , (prefix "C-S-q", io exitSuccess)])
+  (myStandardKeys conf)
+
+myStandardKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
+myStandardKeys conf@(XConfig {modMask = modm}) =
+  -- mod-[1..9], Switch to workspace N
+  -- mod-shift-[1..9], Move client to workspace N
+  M.fromList [((m .|. modm, k), windows $ f i) | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+                                               , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
