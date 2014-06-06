@@ -67,8 +67,10 @@ myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 -- key binding
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys home conf@(XConfig {modMask = modm}) =
-  mkKeymap conf [-- personal script launcher
+myKeys home conf@(XConfig {terminal = myTerm,
+                           layoutHook = myLayoutHook}) =
+  M.union
+  (mkKeymap conf [-- personal script launcher
                    (prefix "e",   myRunOrRaise home "/bin/emacs/emacs.sh"                 (className =? "Emacs"))
                  , (prefix "C-x", myRunOrRaise home "/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
                  , (prefix "y",   myRunOrRaise home "/bin/app/yed.sh"                     (className =? "sun-awt-X11-XFramePeer"))
@@ -76,7 +78,7 @@ myKeys home conf@(XConfig {modMask = modm}) =
                  , (prefix "i",   myRunOrRaise home "/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
                  , (prefix "j",   myRunOrRaise home "/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
                  -- run or raise commands
-                 , (prefix "x",   runOrRaise (terminal conf)                                     (className =? "Gnome-terminal"))
+                 , (prefix "x",   runOrRaise myTerm                                       (className =? "Gnome-terminal"))
                  , (prefix ",",   runOrRaise "/usr/bin/cinnamon-settings"                 (className =? "Cinnamon-settings.py"))
                  , (prefix ".",   runOrRaise "/usr/bin/totem"                             (className =? "Totem"))
                  , (prefix "C-e", runOrRaise "/usr/bin/evince"                            (className =? "Evince"))
@@ -143,7 +145,7 @@ myKeys home conf@(XConfig {modMask = modm}) =
                  -- Rotate through the available layout algorithms
                  , (prefix "<Space>", sendMessage NextLayout)
                  --  Reset the layouts on the current workspace to default
-                 , (prefix "C-<Space>", setLayout $ XMonad.layoutHook conf)
+                 , (prefix "C-<Space>", setLayout $ myLayoutHook)
                  -- Resize viewed windows to the correct size
                  , (prefix "n", refresh)
                  -- Move focus to the next window
