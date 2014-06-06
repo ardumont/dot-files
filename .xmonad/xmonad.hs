@@ -64,7 +64,7 @@ zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 
--- keybinding
+-- key binding
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys home conf =
@@ -231,18 +231,14 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) =
 --
 myLayout :: Choose Tall (Choose (Mirror Tall) Full) a
 myLayout = tiled ||| Mirror tiled ||| Full
-  where
-     -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
-
-     -- The default number of windows in the master pane
-     nmaster = 1
-
-     -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
-
-     -- Percent of screen to increment by when resizing panes
-     delta   = 3/100
+  where -- default tiling algorithm partitions the screen into two panes
+        tiled   = Tall nmaster delta ratio
+        -- The default number of windows in the master pane
+        nmaster = 1
+        -- Default proportion of screen occupied by master pane
+        ratio   = 1/2
+        -- Percent of screen to increment by when resizing panes
+        delta   = 3/100
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -346,7 +342,7 @@ myStartupHook = return ()
 
 -- myFont :: String
 -- myFont = "xft:DejaVu Sans:size=10"
--- --myFont = "xft:Ubuntu:weight=bold:size=10"
+-- myFont = "xft:Ubuntu:weight=bold:size=10"
 
 -- myBgColor :: String
 -- myBgColor = "#001070"
