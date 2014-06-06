@@ -260,7 +260,8 @@ myWorkspaces = [ workspaceEmacs
                , workspaceWeb
                , workspaceCode
                , workspaceIrc
-               , workspaceIde] ++ map show [7..9]
+               , workspaceIde] ++
+               map show [7..9]
 
 ------------------------------------------------------------------------
 -- Window rules:
