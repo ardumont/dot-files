@@ -67,7 +67,7 @@ myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 -- key binding
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys home conf =
+myKeys home conf@(XConfig {modMask = modm}) =
   mkKeymap conf [-- personal script launcher
                    (prefix "e",   myRunOrRaise home "/bin/emacs/emacs.sh"                 (className =? "Emacs"))
                  , (prefix "C-x", myRunOrRaise home "/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
@@ -76,7 +76,7 @@ myKeys home conf =
                  , (prefix "i",   myRunOrRaise home "/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
                  , (prefix "j",   myRunOrRaise home "/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
                  -- run or raise commands
-                 , (prefix "x",   runOrRaise (terminal conf)                              (className =? "Gnome-terminal"))
+                 , (prefix "x",   runOrRaise (terminal conf)                                     (className =? "Gnome-terminal"))
                  , (prefix ",",   runOrRaise "/usr/bin/cinnamon-settings"                 (className =? "Cinnamon-settings.py"))
                  , (prefix ".",   runOrRaise "/usr/bin/totem"                             (className =? "Totem"))
                  , (prefix "C-e", runOrRaise "/usr/bin/evince"                            (className =? "Evince"))
@@ -182,18 +182,15 @@ myKeys home conf =
 
                  -- Quit xmonad
                  , (prefix "C-S-q", io exitSuccess)]
+    --
+    -- mod-[1..9], Switch to workspace N
+    -- mod-shift-[1..9], Move client to workspace N
+    ++
+    [(m .|. modMask conf, k, windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+    where conf = defaults "/home/tony"
     -- ++
-
-    -- --
-    -- -- mod-[1..9], Switch to workspace N
-    -- -- mod-shift-[1..9], Move client to workspace N
-    -- --
-    -- [((m .|. modm, k), windows $ f i)
-    --     | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-    --     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    -- ++
-
-    -- --
     -- -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     -- --
