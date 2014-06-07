@@ -51,6 +51,7 @@
 ;; (set-font "-*-dina-medium-r-normal-*-*-*-*-*-*-*-*-*")
 ;; (set-font "-lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*")
 ;; (set-font "-artwiz-smoothansi-medium-r-normal--13-130-75-75-m-60-iso8859-1")
+(set-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
 
 (set-normal-gravity :bottom)
 (setf *message-window-gravity* :bottom-left)
