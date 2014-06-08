@@ -136,12 +136,12 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- , (prefix "C-p",    spawn "~/bin/service/service.sh restart stalonetray -t --window-type=normal")
                  , (prefix "C-M1-l", spawn "~/bin/session/lock.sh")
                  , (prefix "\\",     spawn "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
-                 -- reload the setup from xmonad
-                 , (prefix "S-l", recompile True >> restart "/usr/bin/xmonad" True)
                  -- dmenu
                  , (prefix "p",      spawn "dmenu_run")
                  -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "C-p",    spawn "gmrun")
+                 -- reload the setup from xmonad
+                 , (prefix "S-l", recompile True >> restart "/usr/bin/xmonad" True)
                  -- close focused window
                  , (prefix "c", kill)
                  -- Rotate through the available layout algorithms
