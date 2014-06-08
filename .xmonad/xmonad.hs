@@ -30,13 +30,8 @@ myFocusFollowsMouse = True
 myBorderWidth :: Dimension
 myBorderWidth  = 0
 
--- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
--- "windows key" is usually mod4Mask.
+-- modMask lets you specify which modkey you want to use. mod4mask is window key
 -- I'm used to prefix key because of emacs, stumpwm, conkeror and firefox with keysnail
--- So, until I found out how to use xmonad the same way (with C-; as a prefix key)
--- I prefer using windows key
 --
 myModMask :: KeyMask
 myModMask = mod4Mask
