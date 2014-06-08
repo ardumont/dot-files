@@ -54,7 +54,7 @@ myFocusedBorderColor = "#ff0000"
 -- Prefix key
 --
 prefix :: String -> String
-prefix = ("C-t " ++)
+prefix = ("C-; " ++)
 
 zenityText :: String -> String
 zenityText s = "zenity --info --text '" ++ s ++ "'"
