@@ -70,23 +70,23 @@ myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys home conf@(XConfig {terminal = myTerm,
                            layoutHook = myLayoutHook}) =
   -- M.union
-  (mkKeymap conf [-- personal script launcher
+  mkKeymap conf [-- personal script launcher
                    (prefix "e",   myRunOrRaise home "/bin/emacs/emacs.sh"                 (className =? "Emacs"))
                  , (prefix "C-x", myRunOrRaise home "/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
                  , (prefix "y",   myRunOrRaise home "/bin/app/yed.sh"                     (className =? "sun-awt-X11-XFramePeer"))
                  , (prefix "S-c", myRunOrRaise home "/applications/LightTable/LightTable" (className =? "ltbin"))
                  , (prefix "i",   myRunOrRaise home "/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
-                 , (prefix "j",   myRunOrRaise home "/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
+                 , (prefix "S-j", myRunOrRaise home "/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
                  -- run or raise commands
                  , (prefix "x",   runOrRaise myTerm                                       (className =? "Gnome-terminal"))
-                 , (prefix ",",   runOrRaise "/usr/bin/cinnamon-settings"                 (className =? "Cinnamon-settings.py"))
-                 , (prefix ".",   runOrRaise "/usr/bin/totem"                             (className =? "Totem"))
+                 , (prefix "S-s", runOrRaise "/usr/bin/cinnamon-settings"                 (className =? "Cinnamon-settings.py"))
+                 , (prefix "S-t", runOrRaise "/usr/bin/totem"                             (className =? "Totem"))
                  , (prefix "C-e", runOrRaise "/usr/bin/evince"                            (className =? "Evince"))
                  , (prefix "C-i", runOrRaise "/usr/bin/eog"                               (className =? "Eog"))
                  , (prefix "d",   runOrRaise "/usr/bin/pinta"                             (className =? "Pinta"))
                  , (prefix "S-i", runOrRaise "/usr/bin/gimp"                              (className =? "Gimp"))
                  , (prefix "C-a", runOrRaise "/usr/bin/audacious"                         (className =? "Audacious"))
-                 , (prefix "C-j", runOrRaise "/usr/bin/jconsole"                          (className =? "sun-tools-jconsole-JConsole"))
+                 , (prefix "M1-j", runOrRaise "/usr/bin/jconsole"                          (className =? "sun-tools-jconsole-JConsole"))
                  , (prefix "C-c", runOrRaise "/usr/bin/arduino"                           (className =? "processing-appBase"))
                  , (prefix "C-w", runOrRaise "gksudo /usr/bin/wireshark"                  (className =? "wireshark"))
                  , (prefix "n",   runOrRaise "/usr/bin/nemo"                              (className =? "nemo"))
@@ -101,12 +101,12 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "b",   runOrRaise "/usr/bin/baobab"                            (className =? "baobab"))
                  , (prefix "z",   runOrRaise "/usr/bin/gitk"                              (className =? "gitk"))
                  , (prefix "C-f", runOrRaise "/usr/bin/fbreader"                          (className =? "fbreader"))
-                 , (prefix "M-r", runOrRaise "/usr/bin/tuxguitar"                         (className =? "TuxGuitar"))
+                 , (prefix "M1-r", runOrRaise "/usr/bin/tuxguitar"                         (className =? "TuxGuitar"))
                  , (prefix "C-c", runOrRaise "/usr/bin/skype"                             (className =? "skype"))
                  -- spawning firefox
                  , (prefix "f",   runOrRaise "/usr/bin/firefox"                           (className =? "Firefox"))
                    -- some show message
-                 , (prefix "h",   spawn . zenityText $ "hello")
+                 , (prefix "S-h",   spawn . zenityText $ "hello")
                    -- some commands
                  , (prefix "S-k",   spawn . zenityCmd $ "ssh-add -l")
                  , (prefix "S-e",   spawn . zenityCmd $ "cat /etc/environment")
@@ -115,7 +115,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "S-b",   spawn . zenityCmd $ "/usr/bin/acpi -b")
                  , (prefix "^",     spawn . zenityCmd $ "top -b -n 1 -c -d 1")
                  , (prefix "C-s",   spawn . zenityCmd $ "/usr/bin/scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
-                 , (prefix "M-s",   spawn . zenityCmd $ "~/bin/touchpad/toggle-touchpad-manual.sh 1; /usr/bin/scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
+                 , (prefix "M3-s",  spawn . zenityCmd $ "~/bin/touchpad/toggle-touchpad-manual.sh 1; /usr/bin/scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
                  , (prefix "C-S-s", spawn . zenityCmd $ "gksudo pm-suspend")
                  , (prefix "C-S-h", spawn . zenityCmd $ "gksudo pm-hibernate")
                  , (prefix "S-a",   spawn . zenityCmd $ "~/bin/ssh/ssh-add.sh")
@@ -126,14 +126,14 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "m",     spawn . zenityCmd $ "~/bin/brightness/min-brightness.sh")
                  , (prefix "C-S-m", spawn . zenityCmd $ "~/bin/brightness/half-brightness.sh")
                  , (prefix "S-m",   spawn . zenityCmd $ "~/bin/brightness/max-brightness.sh")
-                 , (prefix "M-f",   spawn . zenityCmd $ "exec amixer set Master 5%+")
-                 , (prefix "M-b",   spawn . zenityCmd $ "exec amixer set Master 5%-")
-                 , (prefix "M-m",   spawn . zenityCmd $ "exec amixer set Master toggle")
+                 , (prefix "M3-f",  spawn . zenityCmd $ "exec amixer set Master 5%+")
+                 , (prefix "M1-b",  spawn . zenityCmd $ "exec amixer set Master 5%-")
+                 , (prefix "M1-m",  spawn . zenityCmd $ "exec amixer set Master toggle")
                  , (prefix "C-o",   spawn . zenityCmd $ "~/bin/wifi/wifi-off.sh")
                  , (prefix "S-o",   spawn . zenityCmd $ "~/bin/wifi/wifi-on.sh")
                  , (prefix "C-p",   spawn . zenityCmd $ "~/bin/service/service.sh restart stalonetray -t --window-type=normal")
-                 , (prefix "C-M-l", spawn . zenityCmd $ "~/bin/session/lock.sh")
-                 , (prefix "'",     spawn . zenityCmd $ "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
+                 , (prefix "C-M1-l", spawn . zenityCmd $ "~/bin/session/lock.sh")
+                 , (prefix "\\",    spawn . zenityCmd $ "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
                  -- reload the setup from xmonad
                  , (prefix "S-l", recompile True >> restart "/usr/bin/xmonad" True)
                  -- dmenu
@@ -145,7 +145,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- Rotate through the available layout algorithms
                  , (prefix "<Space>", sendMessage NextLayout)
                  --  Reset the layouts on the current workspace to default
-                 , (prefix "C-<Space>", setLayout $ myLayoutHook)
+                 , (prefix "C-<Space>", setLayout myLayoutHook)
                  -- Resize viewed windows to the correct size
                  , (prefix "n", refresh)
                  -- Move focus to the next window
@@ -167,17 +167,17 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- Swap the focused window with the previous window
                  , (prefix "C-k", windows W.swapUp)
                  -- Shrink the master area
-                 , (prefix "C--", sendMessage Shrink)
+                 , (prefix "S-l", sendMessage Shrink)
                  -- Expand the master area
-                 , (prefix "C-+", sendMessage Expand)
+                 , (prefix "S-h", sendMessage Expand)
                  -- Push window back into tiling
                  , (prefix "t", withFocused $ windows . W.sink)
                  -- Increment the number of windows in the master area
-                 , (prefix ",", sendMessage (IncMasterN 1))
+                 , (prefix "h", sendMessage (IncMasterN 1))
                  -- Deincrement the number of windows in the master area
-                 , (prefix ":", sendMessage (IncMasterN (-1)))
+                 , (prefix "l", sendMessage (IncMasterN (-1)))
                  -- Quit xmonad
-                 , (prefix "C-S-q", io exitSuccess)])
+                 , (prefix "C-S-q", io exitSuccess)]
 --   (myStandardKeys conf)
 
 -- myStandardKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
