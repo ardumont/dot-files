@@ -8,6 +8,7 @@ import System.Exit
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+import XMonad.Config.Desktop
 import XMonad.Util.EZConfig
 import XMonad.Actions.WindowGo (runOrRaise)
 import System.Posix.Env (getEnv)
@@ -355,7 +356,7 @@ myStartupHook = return ()
 
 --
 defaults :: String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
-defaults home = defaultConfig {
+defaults home = desktopConfig {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
