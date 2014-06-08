@@ -106,8 +106,6 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "C-c",  runOrRaise "/usr/bin/skype"                            (className =? "skype"))
                  -- spawning firefox
                  , (prefix "f",   runOrRaise "/usr/bin/firefox"                           (className =? "Firefox"))
-                   -- some show message
-                 , (prefix "S-h",   spawn . zenityText $ "hello")
                    -- some commands
                  , (prefix "S-k",   spawn . zenityCmd $ "ssh-add -l")
                  , (prefix "S-e",   spawn . zenityCmd $ "cat /etc/environment")
