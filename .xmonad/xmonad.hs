@@ -92,7 +92,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "M1-j",   runOrRaise "/usr/bin/jconsole"                         (className =? "sun-tools-jconsole-JConsole"))
                  , (prefix "C-c",    runOrRaise "/usr/bin/arduino"                          (className =? "processing-appBase"))
                  , (prefix "C-w",    runOrRaise "gksudo /usr/bin/wireshark"                 (className =? "wireshark"))
-                 , (prefix "C-n",    runOrRaise "/usr/bin/nemo"                             (className =? "Nemo"))
+                 , (prefix "n",      runOrRaise "/usr/bin/nemo"                             (className =? "Nemo"))
                  , (prefix "S-n",    runOrRaise "/usr/bin/thunar"                           (className =? "thunar"))
                  , (prefix "C-M1-f", runOrRaise "/usr/bin/filezilla"                        (className =? "Filezilla"))
                  , (prefix "C-v",    runOrRaise "/usr/bin/virtualbox"                       (className =? "Qt-subapplication"))
@@ -149,7 +149,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  --  Reset the layouts on the current workspace to default
                  , (prefix "C-<Space>", setLayout myLayoutHook)
                  -- Resize viewed windows to the correct size
-                 , (prefix "n", refresh)
+                 , (prefix "C-n", refresh)
                  -- Move focus to the next window
                  , (prefix "<Tab>", windows W.focusDown)
                  -- Move focus to the next window
