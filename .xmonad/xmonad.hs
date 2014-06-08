@@ -11,6 +11,7 @@ import qualified Data.Map        as M
 import XMonad.Config.Desktop
 import XMonad.Util.EZConfig
 import XMonad.Actions.WindowGo (runOrRaise)
+import XMonad.Actions.Promote (promote)
 import System.Posix.Env (getEnv)
 
 -- The preferred terminal program, which is used in a binding below and by
@@ -53,8 +54,12 @@ myFocusedBorderColor = "#ff0000"
 
 -- Prefix key
 --
+
+prefixKey :: String
+prefixKey = "C-;"
+
 prefix :: String -> String
-prefix = ("C-; " ++)
+prefix = ((prefixKey ++) " " ++)
 
 zenityText :: String -> String
 zenityText s = "zenity --info --text '" ++ s ++ "'"
@@ -78,6 +83,8 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "S-c", myRunOrRaise home "/applications/LightTable/LightTable" (className =? "ltbin"))
                  , (prefix "i",   myRunOrRaise home "/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
                  , (prefix "S-j", myRunOrRaise home "/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
+                 -- swap
+                 , (prefix prefixKey, promote)
                  -- run or raise commands
                  , (prefix "x",    runOrRaise myTerm                                      (className =? "Gnome-terminal"))
                  , (prefix "S-s",  runOrRaise "/usr/bin/cinnamon-settings"                (className =? "Cinnamon-settings.py"))
