@@ -114,6 +114,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- spawning firefox
                  , (prefix "f",   runOrRaise "/usr/bin/firefox"                           (className =? "Firefox"))
                    -- some commands
+                 , (prefix "a",     spawn . zenityCmd $ "date")
                  , (prefix "S-k",   spawn . zenityCmd $ "ssh-add -l")
                  , (prefix "S-e",   spawn . zenityCmd $ "cat /etc/environment")
                  , (prefix "S-h",   spawn . zenityCmd $ "cat /etc/hosts")
