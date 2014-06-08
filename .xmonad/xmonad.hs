@@ -150,8 +150,6 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- Move focus to the next window
                  , (prefix "<Tab>", windows W.focusDown)
                  -- Move focus to the next window
-                 , (prefix "C-i", windows W.focusDown)
-                 -- Move focus to the next window
                  , (prefix "j", windows W.focusDown)
                  -- Move focus to the previous window
                  , (prefix "k", windows W.focusUp)
@@ -159,8 +157,6 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "m", windows W.focusMaster)
                  -- Swap the focused window and the master window
                  , (prefix "<Return>", windows W.swapMaster)
-                 -- Swap the focused window and the master window
-                 , (prefix "C-m", windows W.swapMaster)
                  -- Swap the focused window with the next window
                  , (prefix "C-j", windows W.swapDown)
                  -- Swap the focused window with the previous window
