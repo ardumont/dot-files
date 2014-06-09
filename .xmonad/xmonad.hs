@@ -56,11 +56,15 @@ prefixKey = "C-;"
 prefix :: String -> String
 prefix = ((prefixKey ++ " ") ++)
 
-zenityText :: String -> String
-zenityText s = "zenity --info --text '" ++ s ++ "'"
+spawnZenityCmd :: String -> X ()
+spawnZenityCmd = spawn . zenityCmd
+                 where zenityCmd :: String -> String
+                       zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
 
-zenityCmd :: String -> String
-zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
+spawnZenityText :: String -> X ()
+spawnZenityText = spawn . zenityText
+                  where zenityText :: String -> String
+                        zenityText s = "zenity --info --text '" ++ s ++ "'"
 
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaise (home ++ cmd)
@@ -108,13 +112,13 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "C-c",    runOrRaise "skype"                    (className =? "skype"))
                  , (prefix "f",      runOrRaise "firefox"                  (className =? "Firefox"))
                  -- some commands
-                 , (prefix "a",      spawn . zenityCmd $ "date")
-                 , (prefix "S-k",    spawn . zenityCmd $ "ssh-add -l")
-                 , (prefix "S-e",    spawn . zenityCmd $ "cat /etc/environment")
-                 , (prefix "S-h",    spawn . zenityCmd $ "cat /etc/hosts")
-                 , (prefix "S-i",    spawn . zenityCmd $ "/sbin/ifconfig")
-                 , (prefix "S-b",    spawn . zenityCmd $ "acpi -b")
-                 , (prefix "^",      spawn . zenityCmd $ "top -b -n 1 -c -d 1")
+                 , (prefix "a",      spawnZenityCmd "date")
+                 , (prefix "S-k",    spawnZenityCmd "ssh-add -l")
+                 , (prefix "S-e",    spawnZenityCmd "cat /etc/environment")
+                 , (prefix "S-h",    spawnZenityCmd "cat /etc/hosts")
+                 , (prefix "S-i",    spawnZenityCmd "/sbin/ifconfig")
+                 , (prefix "S-b",    spawnZenityCmd "acpi -b")
+                 , (prefix "^",      spawnZenityCmd "top -b -n 1 -c -d 1")
                  -- shell command
                  , (prefix "C-s",    spawn "scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
                  , (prefix "M1-s",   spawn "~/bin/touchpad/toggle-touchpad-manual.sh 1; scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
