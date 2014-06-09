@@ -189,7 +189,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- Deincrement the number of windows in the master area
                  , (prefix "l", sendMessage (IncMasterN (-1)))
                  -- Quit xmonad
-                 , (prefix "C-S-q", io exitSuccess)]
+                 , (prefix "M1-q", io exitSuccess)]
 --   (myStandardKeys conf)
 
 -- myStandardKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
