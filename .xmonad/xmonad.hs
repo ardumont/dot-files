@@ -16,6 +16,8 @@ import System.Posix.Env (getEnv)
 import XMonad.Prompt
 import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad
+import qualified XMonad.Actions.Submap as SM
+import qualified XMonad.Actions.Search as S
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -149,6 +151,7 @@ myKeys home conf@(XConfig { terminal   = myTerm
                  , (prefix "C-M1-l",    spawn "~/bin/session/lock.sh")
                  , (prefix "\\",        spawn "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
                  -- dmenu
+                 , (prefix "s",         search)
                  , (prefix "r",         spawn dmenuCmd)
                  , (prefix "S-1",       spawn "gmrun")                           -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "g",         windowPromptGoto myXPConfig)             -- prompt to help in selecting window to move to
@@ -175,6 +178,16 @@ myKeys home conf@(XConfig { terminal   = myTerm
                  -- S-n  - Move the client to workspace with id n
                   [(prefix $ pk ++ k, windows $ f i) | (i, k) <- zip myWss (map show [1..9])
                                                      , (f, pk) <- [(W.greedyView, "M1-"), (W.shift, "S-")]])
+  where searchSite = S.promptSearchBrowser myXPConfig "firefox"
+        search     = SM.submap . mkKeymap conf $
+                     [("g", searchSite S.google)
+                     ,("h", searchSite S.hoogle)
+                     ,("a", searchSite S.amazon)
+                     ,("i", searchSite S.imdb)
+                     ,("y", searchSite S.youtube)
+                     ,("w", searchSite S.wikipedia)]
+
+
 
 ------------------------------------------------------------------------
 -- mouse bindings: default actions bound to mouse events
