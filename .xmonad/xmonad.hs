@@ -130,6 +130,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- shell command
                  , (prefix "C-s",    spawn "scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
                  , (prefix "M1-s",   spawn "~/bin/touchpad/toggle-touchpad-manual.sh 1; scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
+                 , (prefix "C-t",    spawn "~/bin/touchpad/toggle-touchpad.sh")
                  , (prefix "C-S-s",  spawn "gksudo pm-suspend")
                  , (prefix "C-S-h",  spawn "gksudo pm-hibernate")
                  , (prefix "S-a",    spawn "~/bin/ssh/ssh-add.sh")
