@@ -161,7 +161,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  --  Reset the layouts on the current workspace to default
                  , (prefix "C-<Space>", setLayout myLayoutHook)
                  -- Resize viewed windows to the correct size
-                 , (prefix "C-n", refresh)
+                 , (prefix "M1-n", refresh)
                  -- Move focus to the next window
                  , (prefix "<Tab>", windows W.focusDown)
                  -- Move focus to the next window
@@ -177,9 +177,9 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- Swap the focused window with the previous window
                  , (prefix "C-k", windows W.swapUp)
                  -- Shrink the master area
-                 , (prefix "S-l", sendMessage Shrink)
+                 , (prefix "M1-l", sendMessage Shrink)
                  -- Expand the master area
-                 , (prefix "S-h", sendMessage Expand)
+                 , (prefix "M1-h", sendMessage Expand)
                  -- Push window back into tiling
                  , (prefix "t", withFocused $ windows . W.sink)
                  -- Increment the number of windows in the master area
