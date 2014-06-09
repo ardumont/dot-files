@@ -137,7 +137,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "C-M1-l", spawn "~/bin/session/lock.sh")
                  , (prefix "\\",     spawn "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
                  -- dmenu
-                 , (prefix "p",      spawn "dmenu_run")
+                 , (prefix "r",      spawn "dmenu_run")
                  -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "S-1",    spawn "gmrun")
                  -- reload the setup from xmonad
