@@ -341,9 +341,7 @@ myStartupHook = return ()
 -- My font to try and use everywhere
 --
 myFont :: String
-myFont = "xft:DejaVu Sans:size=10"
--- myFont = "xft:Ubuntu:weight=bold:size=10"
--- myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
+myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
 
 -- Border colors for unfocused and focused windows, respectively.
 --
