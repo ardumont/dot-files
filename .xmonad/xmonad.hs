@@ -82,7 +82,7 @@ dmenuCmd = "dmenu_run -i -fn '" ++ myFont ++ "' -p 'Run:'"
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys home conf@(XConfig { terminal   = myTerm
                           , layoutHook = myLayoutHook
-                          , workspaces = myWorkspaces}) =
+                          , workspaces = myWss}) =
   mkKeymap conf ([-- personal script launcher
                    (prefix "e",         myRunOrRaise home "/bin/emacs/emacs.sh"                 (className =? "Emacs"))
                  , (prefix "C-x",       myRunOrRaise home "/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
@@ -171,7 +171,7 @@ myKeys home conf@(XConfig { terminal   = myTerm
                  , (prefix "l",         sendMessage (IncMasterN (-1)))           -- Deincrement the number of windows in the master area
                  , (prefix "S-q",       recompile True >> restart "xmonad" True) -- reload the setup from xmonad
                  , (prefix "M1-q",      io exitSuccess)] ++                      -- Quit xmonad
-                  [(prefix $ "M1-" ++ k, windows $ W.greedyView i) | (i, k) <- zip myWorkspaces (map show [1..9])])
+                  [(prefix $ "M1-" ++ k, windows $ W.greedyView i) | (i, k) <- zip myWss (map show [1..9])])
 
 ------------------------------------------------------------------------
 -- mouse bindings: default actions bound to mouse events
