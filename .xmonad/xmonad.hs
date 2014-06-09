@@ -171,7 +171,10 @@ myKeys home conf@(XConfig { terminal   = myTerm
                  , (prefix "l",         sendMessage (IncMasterN (-1)))           -- Deincrement the number of windows in the master area
                  , (prefix "S-q",       recompile True >> restart "xmonad" True) -- reload the setup from xmonad
                  , (prefix "M1-q",      io exitSuccess)] ++                      -- Quit xmonad
-                  [(prefix $ "M1-" ++ k, windows $ W.greedyView i) | (i, k) <- zip myWss (map show [1..9])])
+                 -- M1-n - Switch to workspace with id n
+                 -- S-n  - Move the client to workspace with id n
+                  [(prefix $ pk ++ k, windows $ f i) | (i, k) <- zip myWss (map show [1..9])
+                                                     , (f, pk) <- [(W.greedyView, "M1-"), (W.shift, "S-")]])
 
 ------------------------------------------------------------------------
 -- mouse bindings: default actions bound to mouse events
