@@ -80,10 +80,10 @@ dmenuCmd = "dmenu_run -i -fn '" ++ myFont ++ "' -p 'Run:'"
 -- key bindings
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys home conf@(XConfig {terminal = myTerm,
-                           layoutHook = myLayoutHook}) =
-  -- M.union
-  mkKeymap conf [-- personal script launcher
+myKeys home conf@(XConfig { terminal   = myTerm
+                          , layoutHook = myLayoutHook
+                          , workspaces = myWorkspaces}) =
+  mkKeymap conf ([-- personal script launcher
                    (prefix "e",   myRunOrRaise home "/bin/emacs/emacs.sh"                 (className =? "Emacs"))
                  , (prefix "C-x", myRunOrRaise home "/bin/xephyr/xephyr.sh"               (className =? "Xephyr"))
                  , (prefix "y",   myRunOrRaise home "/bin/app/yed.sh"                     (className =? "sun-awt-X11-XFramePeer"))
@@ -170,15 +170,8 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "h",         sendMessage (IncMasterN 1))              -- Increment the number of windows in the master area
                  , (prefix "l",         sendMessage (IncMasterN (-1)))           -- Deincrement the number of windows in the master area
                  , (prefix "S-q",       recompile True >> restart "xmonad" True) -- reload the setup from xmonad
-                 , (prefix "M1-q",      io exitSuccess)]                         -- Quit xmonad
---   (myStandardKeys conf)
-
--- myStandardKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
--- myStandardKeys conf@(XConfig {modMask = modm}) =
---   -- mod-[1..9], Switch to workspace N
---   -- mod-shift-[1..9], Move client to workspace N
---   M.fromList [((m .|. modm, k), windows $ f i) | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
---                                                , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+                 , (prefix "M1-q",      io exitSuccess)] ++                      -- Quit xmonad
+                  [(prefix $ "M1-" ++ k, windows $ W.greedyView i) | (i, k) <- zip myWorkspaces (map show [1..9])])
 
 ------------------------------------------------------------------------
 -- mouse bindings: default actions bound to mouse events
@@ -278,10 +271,10 @@ myManageHook = composeAll
     , className =? "Zenity"           --> doFloat
     , resource  =? "desktop_window"   --> doIgnore
     , resource  =? "kdesktop"         --> doIgnore
-    -- , className =? "Emacs"            --> doShift workspaceEmacs
-    -- , className =? "Gnome-terminal"   --> doShift workspaceTerminal
-    -- , className =? "jetbrains-ide-ce" --> doShift workspaceIde
-    -- , className =? "Firefox"          --> doShift workspaceWeb
+    , className =? "Emacs"            --> doShift workspaceEmacs
+    , className =? "Gnome-terminal"   --> doShift workspaceTerminal
+    , className =? "jetbrains-ide-ce" --> doShift workspaceIde
+    , className =? "Firefox"          --> doShift workspaceWeb
     ]
 
 ------------------------------------------------------------------------
