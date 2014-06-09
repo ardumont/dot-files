@@ -25,6 +25,11 @@ import qualified XMonad.Actions.Search as S
 myTerminal :: String
 myTerminal = "gnome-terminal"
 
+-- My preferential browser
+--
+myBrowser :: String
+myBrowser = "firefox"
+
 -- Whether focus follows the mouse pointer.
 --
 myFocusFollowsMouse :: Bool
@@ -120,7 +125,7 @@ myKeys home conf@(XConfig { terminal   = myTerm
                  , (prefix "S-f",       runOrRaise "fbreader"                 (className =? "fbreader"))
                  , (prefix "M1-r",      runOrRaise "tuxguitar"                (className =? "TuxGuitar"))
                  , (prefix "C-c",       runOrRaise "skype"                    (className =? "skype"))
-                 , (prefix "f",         runOrRaise "firefox"                  (className =? "Firefox"))
+                 , (prefix "f",         runOrRaise myBrowser                  (className =? "Firefox"))
                  -- some commands
                  , (prefix "a",         spawnZenityCmd "date")
                  , (prefix "S-k",       spawnZenityCmd "ssh-add -l")
@@ -178,7 +183,7 @@ myKeys home conf@(XConfig { terminal   = myTerm
                  -- S-n  - Move the client to workspace with id n
                   [(prefix $ pk ++ k, windows $ f i) | (i, k) <- zip myWss (map show [1..9])
                                                      , (f, pk) <- [(W.greedyView, "M1-"), (W.shift, "S-")]])
-  where searchSite = S.promptSearchBrowser myXPConfig "firefox"
+  where searchSite = S.promptSearchBrowser myXPConfig myBrowser
         search     = SM.submap . mkKeymap conf $
                      [("g", searchSite S.google)
                      ,("h", searchSite S.hoogle)
