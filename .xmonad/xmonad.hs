@@ -54,7 +54,7 @@ prefixKey :: String
 prefixKey = "C-;"
 
 prefix :: String -> String
-prefix = ((prefixKey ++) " " ++)
+prefix = ((prefixKey ++ " ") ++)
 
 zenityText :: String -> String
 zenityText s = "zenity --info --text '" ++ s ++ "'"
