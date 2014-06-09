@@ -153,7 +153,9 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "S-1",    spawn "gmrun")
                  -- reload the setup from xmonad
-                 , (prefix "S-l", recompile True >> restart "xmonad" True)
+                 , (prefix "S-l",    recompile True >> restart "xmonad" True)
+                 -- reload the setup from xmonad
+                 , (prefix "C-g",    spawnZenityText "hello from C-g")
                  -- close focused window
                  , (prefix "c", kill)
                  -- Rotate through the available layout algorithms
