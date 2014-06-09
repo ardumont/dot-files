@@ -74,7 +74,10 @@ spawnZenityText = spawn . zenityText
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 
--- key binding
+dmenuCmd :: String
+dmenuCmd = "dmenu_run -i -fn '-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*' -p 'Run:'"
+
+-- key bindings
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys home conf@(XConfig {terminal = myTerm,
@@ -146,7 +149,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "C-M1-l", spawn "~/bin/session/lock.sh")
                  , (prefix "\\",     spawn "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
                  -- dmenu
-                 , (prefix "r",      spawn "dmenu_run")
+                 , (prefix "r",      spawn dmenuCmd)
                  -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "S-1",    spawn "gmrun")
                  -- reload the setup from xmonad
