@@ -160,8 +160,9 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "r",      spawn dmenuCmd)
                  -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "S-1",    spawn "gmrun")
-                 -- reload the setup from xmonad
-                 --, (prefix "C-g",    windowPromptGoto conf)
+                 -- prompt to help in selecting window to move to
+                 , (prefix "C-g",    windowPromptGoto myXPConfig)
+                 -- a prompt to show the current possible commands
                  , (prefix "M1-x",    xmonadPrompt myXPConfig)
                  -- close focused window
                  , (prefix "c", kill)
