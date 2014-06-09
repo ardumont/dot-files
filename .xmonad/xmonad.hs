@@ -360,8 +360,8 @@ myXPConfig = defaultXPConfig
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
 --
-defaults :: String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
-defaults home = desktopConfig {
+myConfig :: String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
+myConfig home = desktopConfig {
         -- simple stuff
           terminal           = myTerminal
         , focusFollowsMouse  = myFocusFollowsMouse
@@ -397,4 +397,4 @@ main =
                   , "~/bin/service/service.sh restart xscreensaver &"
                   , "~/bin/service/service.sh restart dropbox start &"] >>
     getEnv "HOME" >>=
-    \ (Just home) -> xmonad $ defaults home
+    \ (Just home) -> xmonad $ myConfig home
