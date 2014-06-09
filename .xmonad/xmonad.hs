@@ -151,48 +151,27 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "\\",     spawn "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
                  -- dmenu
                  , (prefix "r",      spawn dmenuCmd)
-                 -- another menu launcher (equivalent to F2 in gnome2)
-                 , (prefix "S-1",    spawn "gmrun")
-                 -- prompt to help in selecting window to move to
-                 , (prefix "g",         windowPromptGoto myXPConfig)
-                 -- a prompt to show the current possible commands
-                 , (prefix "M1-x",    xmonadPrompt myXPConfig)
-                 -- close focused window
-                 , (prefix "c", kill)
-                 -- Rotate through the available layout algorithms
-                 , (prefix "<Space>", sendMessage NextLayout)
-                 --  Reset the layouts on the current workspace to default
-                 , (prefix "C-<Space>", setLayout myLayoutHook)
-                 -- Resize viewed windows to the correct size
-                 , (prefix "M1-n", refresh)
-                 -- Move focus to the next window
-                 , (prefix "<Tab>", windows W.focusDown)
-                 -- Move focus to the next window
-                 , (prefix "j", windows W.focusDown)
-                 -- Move focus to the previous window
-                 , (prefix "k", windows W.focusUp)
-                 -- Move focus to the master window
-                 , (prefix "m", windows W.focusMaster)
-                 -- Swap the focused window and the master window
-                 , (prefix "<Return>", windows W.swapMaster)
-                 -- Swap the focused window with the next window
-                 , (prefix "C-j", windows W.swapDown)
-                 -- Swap the focused window with the previous window
-                 , (prefix "C-k", windows W.swapUp)
-                 -- Shrink the master area
-                 , (prefix "M1-l", sendMessage Shrink)
-                 -- Expand the master area
-                 , (prefix "M1-h", sendMessage Expand)
-                 -- Push window back into tiling
-                 , (prefix "t", withFocused $ windows . W.sink)
-                 -- Increment the number of windows in the master area
-                 , (prefix "h", sendMessage (IncMasterN 1))
-                 -- Deincrement the number of windows in the master area
-                 , (prefix "l", sendMessage (IncMasterN (-1)))
-                 -- reload the setup from xmonad
-                 , (prefix "S-q", recompile True >> restart "xmonad" True)
-                 -- Quit xmonad
-                 , (prefix "M1-q", io exitSuccess)]
+                 , (prefix "S-1",    spawn "gmrun")                              -- another menu launcher (equivalent to F2 in gnome2)
+                 , (prefix "g",         windowPromptGoto myXPConfig)             -- prompt to help in selecting window to move to
+                 , (prefix "M1-x",      xmonadPrompt myXPConfig)                 -- a prompt to show the current possible commands
+                 , (prefix "c", kill)                                            -- close focused window
+                 , (prefix "<Space>",   sendMessage NextLayout)                  -- Rotate through the available layout algorithms
+                 , (prefix "C-<Space>", setLayout myLayoutHook)                  -- Reset the layouts on the current workspace to default
+                 , (prefix "M1-n",      refresh)                                 -- Resize viewed windows to the correct size
+                 , (prefix "<Tab>",     windows W.focusDown)                     -- Move focus to the next window
+                 , (prefix "j",         windows W.focusDown)                     -- Move focus to the next window
+                 , (prefix "k",         windows W.focusUp)                       -- Move focus to the previous window
+                 , (prefix "m",         windows W.focusMaster)                   -- Move focus to the master window
+                 , (prefix "<Return>",  windows W.swapMaster)                    -- Swap the focused window and the master window
+                 , (prefix "C-j",       windows W.swapDown)                      -- Swap the focused window with the next window
+                 , (prefix "C-k",       windows W.swapUp)                        -- Swap the focused window with the previous window
+                 , (prefix "M1-l",      sendMessage Shrink)                      -- Shrink the master area
+                 , (prefix "M1-h",      sendMessage Expand)                      -- Expand the master area
+                 , (prefix "t",         withFocused $ windows . W.sink)          -- Push window back into tiling
+                 , (prefix "h",         sendMessage (IncMasterN 1))              -- Increment the number of windows in the master area
+                 , (prefix "l",         sendMessage (IncMasterN (-1)))           -- Deincrement the number of windows in the master area
+                 , (prefix "S-q",       recompile True >> restart "xmonad" True) -- reload the setup from xmonad
+                 , (prefix "M1-q",      io exitSuccess)]                         -- Quit xmonad
 --   (myStandardKeys conf)
 
 -- myStandardKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
@@ -403,8 +382,8 @@ spawnCommands = mapM_ spawn
 
 main :: IO ()
 main =
-    spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
-                  , "~/bin/service/service.sh restart xscreensaver &"
-                  , "~/bin/service/service.sh restart dropbox start &"] >>
+    -- spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
+    --               , "~/bin/service/service.sh restart xscreensaver &"
+    --               , "~/bin/service/service.sh restart dropbox start &"] >>
     getEnv "HOME" >>=
     \ (Just home) -> xmonad $ defaults home
