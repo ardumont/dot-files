@@ -366,25 +366,25 @@ myStartupHook = return ()
 --
 defaults :: String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
 defaults home = desktopConfig {
-      -- simple stuff
-        terminal           = myTerminal,
-        focusFollowsMouse  = myFocusFollowsMouse,
-        borderWidth        = myBorderWidth,
-        modMask            = myModMask,
-        workspaces         = myWorkspaces,
-        normalBorderColor  = myNormalBorderColor,
-        focusedBorderColor = myFocusedBorderColor,
+        -- simple stuff
+          terminal           = myTerminal
+        , focusFollowsMouse  = myFocusFollowsMouse
+        , borderWidth        = myBorderWidth
+        , modMask            = myModMask
+        , workspaces         = myWorkspaces
+        , normalBorderColor  = myNormalBorderColor
+        , focusedBorderColor = myFocusedBorderColor
 
-      -- key bindings
-        keys               = myKeys home,
-        mouseBindings      = myMouseBindings,
+        -- key bindings
+        , keys               = myKeys home
+        , mouseBindings      = myMouseBindings
 
       -- hooks, layouts
-        layoutHook         = myLayout,
-        manageHook         = myManageHook,
-        handleEventHook    = myEventHook,
-        logHook            = myLogHook,
-        startupHook        = myStartupHook
+        , layoutHook         = myLayout
+        , manageHook         = myManageHook
+        , handleEventHook    = myEventHook
+        , logHook            = myLogHook
+        , startupHook        = myStartupHook
     }
 
 ------------------------------------------------------------------------
