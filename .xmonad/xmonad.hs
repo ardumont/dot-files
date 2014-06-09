@@ -13,11 +13,8 @@ import XMonad.Util.EZConfig
 import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.Promote (promote)
 import System.Posix.Env (getEnv)
-
--- My font to try and use everywhere
---
-myFont :: String
-myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
+import XMonad.Prompt
+import XMonad.Prompt.Window
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -163,7 +160,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "S-1",    spawn "gmrun")
                  -- reload the setup from xmonad
-                 , (prefix "C-g",    spawnZenityText "hello from C-g")
+                 --, (prefix "C-g",    windowPromptGoto conf)
                  -- close focused window
                  , (prefix "c", kill)
                  -- Rotate through the available layout algorithms
@@ -345,37 +342,29 @@ myLogHook = return ()
 myStartupHook :: X ()
 myStartupHook = return ()
 
+-- My font to try and use everywhere
+--
+myFont :: String
+myFont = "xft:DejaVu Sans:size=10"
+-- myFont = "xft:Ubuntu:weight=bold:size=10"
+-- myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
+
+myXPConfig :: XPConfig
+myXPConfig = defaultXPConfig
+              { font        = myFont
+              , bgColor     = myBgColor
+              , fgColor     = myFgColor
+              , bgHLight    = myBgHLight
+              , fgHLight    = myFgHLight
+              , borderColor = myNormalBorderColor}
+              where myBgColor = "#001070"
+                    myFgColor = "#bbbbdd"
+                    myBgHLight = "#4444aa"
+                    myFgHLight = "#ddddff"
+
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
---
--- No need to modify this.
-
--- myFont :: String
--- myFont = "xft:DejaVu Sans:size=10"
--- myFont = "xft:Ubuntu:weight=bold:size=10"
-
--- myBgColor :: String
--- myBgColor = "#001070"
-
--- myFgColor :: String
--- myFgColor = "#bbbbdd"
-
--- myBgHLight :: String
--- myBgHLight = "#4444aa"
-
--- myFgHLight :: String
--- myFgHLight = "#ddddff"
-
--- myXPConfig :: XPConfig
--- myXPConfig = defaultXPConfig
---               { font        = myFont
---               , bgColor     = myBgColor
---               , fgColor     = myFgColor
---               , bgHLight    = myBgHLight
---               , fgHLight    = myFgHLight
---               , borderColor = myNormalBorderColor}
-
 --
 defaults :: String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
 defaults home = desktopConfig {
