@@ -138,7 +138,6 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- , (prefix "S-p",    spawn "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop")
                  , (prefix "C-b",    spawn "~/bin/brightness/dec-brightness.sh 5")
                  , (prefix "C-f",    spawn "~/bin/brightness/inc-brightness.sh 5")
-                 , (prefix "m",      spawn "~/bin/brightness/min-brightness.sh")
                  , (prefix "C-S-m",  spawn "~/bin/brightness/half-brightness.sh")
                  , (prefix "S-m",    spawn "~/bin/brightness/max-brightness.sh")
                  , (prefix "M1-f",   spawn "exec amixer set Master 5%+")
