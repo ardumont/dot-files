@@ -124,7 +124,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "S-k",    spawnZenityCmd "ssh-add -l")
                  , (prefix "S-e",    spawnZenityCmd "cat /etc/environment")
                  , (prefix "S-h",    spawnZenityCmd "cat /etc/hosts")
-                 , (prefix "S-i",    spawnZenityCmd "/sbin/ifconfig")
+                 , (prefix "C-S-i",  spawnZenityCmd "/sbin/ifconfig")
                  , (prefix "S-b",    spawnZenityCmd "acpi -b")
                  , (prefix "^",      spawnZenityCmd "top -b -n 1 -c -d 1")
                  -- shell command
