@@ -294,6 +294,7 @@ myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doFloat
     , className =? "Gimp"             --> doFloat
+    , className =? "Zenity"           --> doFloat
     , resource  =? "desktop_window"   --> doIgnore
     , resource  =? "kdesktop"         --> doIgnore
     -- , className =? "Emacs"            --> doShift workspaceEmacs
