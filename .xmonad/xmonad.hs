@@ -14,6 +14,11 @@ import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.Promote (promote)
 import System.Posix.Env (getEnv)
 
+-- My favourite font
+--
+myFont :: String
+myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
