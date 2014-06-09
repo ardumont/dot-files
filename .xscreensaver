@@ -1,11 +1,11 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.23 for tony on Wed Mar  5 09:51:23 2014.
+# Written by xscreensaver-demo 5.23 for tony on Mon Jun  9 10:54:15 2014.
 # http://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
 cycle:		0:10:00
 lock:		True
-lockTimeout:	0:04:00
+lockTimeout:	0:05:00
 passwdTimeout:	0:00:30
 visualID:	default
 installColormap:    True
@@ -26,7 +26,7 @@ ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
 dpmsEnabled:	True
 dpmsQuickOff:	False
-dpmsStandby:	0:01:00
+dpmsStandby:	0:05:00
 dpmsSuspend:	0:05:00
 dpmsOff:	0:00:00
 grabDesktopImages:  False
@@ -37,7 +37,7 @@ imageDirectory:
 mode:		random
 selected:	-1
 
-textMode:	url
+textMode:	program
 textLiteral:	XScreenSaver
 textFile:	
 textProgram:	fortune
