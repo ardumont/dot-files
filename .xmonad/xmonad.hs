@@ -391,9 +391,18 @@ defaults home = desktopConfig {
         , startupHook        = myStartupHook
     }
 
+-- Spawn a list of multiple commands
+--
+spawnCommands :: [String] -> IO ()
+spawnCommands = mapM_ spawn
+
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 main :: IO ()
 main =
-    getEnv "HOME" >>= \ (Just home) -> xmonad $ defaults home
+    spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
+                  , "~/bin/service/service.sh restart xscreensaver &"
+                  , "~/bin/service/service.sh restart dropbox start &"] >>
+    getEnv "HOME" >>=
+    \ (Just home) -> xmonad $ defaults home
