@@ -15,6 +15,7 @@ import XMonad.Actions.Promote (promote)
 import System.Posix.Env (getEnv)
 import XMonad.Prompt
 import XMonad.Prompt.Window
+import XMonad.Prompt.XMonad
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -161,6 +162,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "S-1",    spawn "gmrun")
                  -- reload the setup from xmonad
                  --, (prefix "C-g",    windowPromptGoto conf)
+                 , (prefix "M1-x",    xmonadPrompt myXPConfig)
                  -- close focused window
                  , (prefix "c", kill)
                  -- Rotate through the available layout algorithms
