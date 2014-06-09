@@ -359,9 +359,10 @@ myXPConfig = defaultXPConfig
               , fgColor     = myFgColor
               , bgHLight    = myBgHLight
               , fgHLight    = myFgHLight
-              , borderColor = myNormalBorderColor}
-              where myBgColor = "#001070"
-                    myFgColor = "#bbbbdd"
+              , borderColor = myNormalBorderColor
+              , position    = Top}
+              where myBgColor  = "#001070"
+                    myFgColor  = "#bbbbdd"
                     myBgHLight = "#4444aa"
                     myFgHLight = "#ddddff"
 
