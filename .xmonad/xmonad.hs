@@ -39,13 +39,6 @@ myBorderWidth  = 0
 myModMask :: KeyMask
 myModMask = mod4Mask
 
--- Border colors for unfocused and focused windows, respectively.
---
-myNormalBorderColor :: String
-myNormalBorderColor = "#dddddd"
-myFocusedBorderColor :: String
-myFocusedBorderColor = "#ff0000"
-
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -352,6 +345,15 @@ myFont = "xft:DejaVu Sans:size=10"
 -- myFont = "xft:Ubuntu:weight=bold:size=10"
 -- myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
 
+-- Border colors for unfocused and focused windows, respectively.
+--
+myNormalBorderColor :: String
+myNormalBorderColor = "#dddddd"
+myFocusedBorderColor :: String
+myFocusedBorderColor = "#ff0000"
+
+-- Default configuration for prompt
+--
 myXPConfig :: XPConfig
 myXPConfig = defaultXPConfig
               { font        = myFont
