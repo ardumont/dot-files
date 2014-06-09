@@ -153,8 +153,6 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "S-1",    spawn "gmrun")
                  -- reload the setup from xmonad
-                 , (prefix "S-l",    recompile True >> restart "xmonad" True)
-                 -- reload the setup from xmonad
                  , (prefix "C-g",    spawnZenityText "hello from C-g")
                  -- close focused window
                  , (prefix "c", kill)
@@ -188,6 +186,8 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  , (prefix "h", sendMessage (IncMasterN 1))
                  -- Deincrement the number of windows in the master area
                  , (prefix "l", sendMessage (IncMasterN (-1)))
+                 -- reload the setup from xmonad
+                 , (prefix "S-q", recompile True >> restart "xmonad" True)
                  -- Quit xmonad
                  , (prefix "M1-q", io exitSuccess)]
 --   (myStandardKeys conf)
