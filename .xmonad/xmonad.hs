@@ -14,7 +14,7 @@ import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.Promote (promote)
 import System.Posix.Env (getEnv)
 
--- My favourite font
+-- My font to try and use everywhere
 --
 myFont :: String
 myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
@@ -54,26 +54,35 @@ myFocusedBorderColor = "#ff0000"
 
 -- Prefix key
 --
-
 prefixKey :: String
 prefixKey = "C-;"
 
+-- A utility function to compute the final binding with the prefix key
+--
 prefix :: String -> String
 prefix = ((prefixKey ++ " ") ++)
 
+-- Execute a command and show its result in a zenity window dialog
+--
 spawnZenityCmd :: String -> X ()
 spawnZenityCmd = spawn . zenityCmd
                  where zenityCmd :: String -> String
                        zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
 
+-- Display some data in a zenity window dialog
+--
 spawnZenityText :: String -> X ()
 spawnZenityText = spawn . zenityText
                   where zenityText :: String -> String
                         zenityText s = "zenity --info --text '" ++ s ++ "'"
 
+-- run or raise with a default config folder from which finding the command
+--
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 
+-- dmenu command with some specific format
+--
 dmenuCmd :: String
 dmenuCmd = "dmenu_run -i -fn '-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*' -p 'Run:'"
 
