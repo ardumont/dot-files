@@ -154,7 +154,7 @@ myKeys home conf@(XConfig {terminal = myTerm,
                  -- another menu launcher (equivalent to F2 in gnome2)
                  , (prefix "S-1",    spawn "gmrun")
                  -- prompt to help in selecting window to move to
-                 , (prefix "C-g",    windowPromptGoto myXPConfig)
+                 , (prefix "g",         windowPromptGoto myXPConfig)
                  -- a prompt to show the current possible commands
                  , (prefix "M1-x",    xmonadPrompt myXPConfig)
                  -- close focused window
