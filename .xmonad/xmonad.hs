@@ -72,10 +72,10 @@ spawnZenityText = spawn . zenityText
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 
--- dmenu command with some specific format
+-- dmenu_run command with some specific format (my font for one)
 --
 dmenuCmd :: String
-dmenuCmd = "dmenu_run -i -fn '-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*' -p 'Run:'"
+dmenuCmd = "dmenu_run -i -fn '" ++ myFont ++ "' -p 'Run:'"
 
 -- key bindings
 --
