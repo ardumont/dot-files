@@ -379,7 +379,9 @@ main = do
   xmproc <- spawnPipe "xmobar"
   spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
                 , "~/bin/service/service.sh restart xscreensaver &"
-                , "~/bin/service/service.sh restart dropbox start &"]
+                , "~/bin/service/service.sh restart dropbox start &"
+                , "~/bin/service/service.sh restart nm-applet &"
+                , "~/bin/service/service.sh restart trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000 &"]
   xmonad $ desktopConfig {
                 -- Simple stuff
                   terminal           = myTerminal
@@ -395,7 +397,7 @@ main = do
                 , mouseBindings      = myMouseBindings
 
               -- hooks, layouts
-                , layoutHook         = myLayout
+                , layoutHook         = avoidStruts $ layoutHook defaultConfig
                 , manageHook         = manageDocks <+> myManageHook
                 , handleEventHook    = myEventHook
                 -- Status bars and logging
