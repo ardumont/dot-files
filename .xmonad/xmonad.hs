@@ -69,10 +69,10 @@ spawnZenityCmd = spawn . zenityCmd
 
 -- Display some data in a zenity window dialog
 --
-spawnZenityText :: String -> X ()
-spawnZenityText = spawn . zenityText
-                  where zenityText :: String -> String
-                        zenityText s = "zenity --info --text '" ++ s ++ "'"
+-- spawnZenityText :: String -> X ()
+-- spawnZenityText = spawn . zenityText
+--                   where zenityText :: String -> String
+--                         zenityText s = "zenity --info --text '" ++ s ++ "'"
 
 -- run or raise with a default config folder from which finding the command
 --
@@ -181,7 +181,7 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-q",      io exitSuccess)] ++                      -- Quit xmonad
   -- M1-n - Switch to workspace with id n
   -- S-n  - Move the client to workspace with id n
-  [(prefix $ pk ++ k, windows $ f i) | (i, k) <- zip myWss (map show [1..9])
+  [(prefix $ pk ++ k, windows $ f i) | (i, k) <- zip myWss $ map show ([1..9] :: [Integer])
                                      , (f, pk) <- [(W.greedyView, "M1-"), (W.shift, "S-")]]
   where searchSite = S.promptSearchBrowser myXPConfig myBrowser
         search     = SM.submap . mkKeymap conf $
@@ -271,7 +271,7 @@ myWorkspaces = [ workspaceEmacs
                , workspaceCode
                , workspaceIrc
                , workspaceIde] ++
-               map show [7..9]
+               map show ([7..9] :: [Integer])
 
 ------------------------------------------------------------------------
 -- Window rules:
