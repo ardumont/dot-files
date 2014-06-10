@@ -397,7 +397,7 @@ main = do
                 , mouseBindings      = myMouseBindings
 
               -- hooks, layouts
-                , layoutHook         = avoidStruts $ layoutHook defaultConfig
+                , layoutHook         = avoidStruts myLayout
                 , manageHook         = manageDocks <+> myManageHook
                 , handleEventHook    = myEventHook
                 -- Status bars and logging
