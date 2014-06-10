@@ -18,6 +18,10 @@ import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad
 import qualified XMonad.Actions.Submap as SM
 import qualified XMonad.Actions.Search as S
+import XMonad.Hooks.DynamicLog
+import System.IO
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run (spawnPipe)
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -311,15 +315,6 @@ myEventHook :: Event -> X All
 myEventHook = mempty
 
 ------------------------------------------------------------------------
--- Status bars and logging
-
--- Perform an arbitrary action on each internal state change or X event.
--- See the 'XMonad.Hooks.DynamicLog' extension for examples.
---
-myLogHook :: X ()
-myLogHook = return ()
-
-------------------------------------------------------------------------
 -- Startup hook
 
 -- Perform an arbitrary action each time xmonad starts or is restarted
@@ -381,7 +376,34 @@ spawnCommands = mapM_ spawn
 main :: IO ()
 main = do
   Just home <- getEnv "HOME"
+  xmproc <- spawnPipe "xmobar"
   spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
                 , "~/bin/service/service.sh restart xscreensaver &"
                 , "~/bin/service/service.sh restart dropbox start &"]
-  xmonad $ myConfig home
+  xmonad $ desktopConfig {
+                -- Simple stuff
+                  terminal           = myTerminal
+                , focusFollowsMouse  = myFocusFollowsMouse
+                , borderWidth        = myBorderWidth
+                , modMask            = myModMask
+                , workspaces         = myWorkspaces
+                , normalBorderColor  = myNormalBorderColor
+                , focusedBorderColor = myFocusedBorderColor
+
+                -- key bindings
+                , keys               = myKeys home
+                , mouseBindings      = myMouseBindings
+
+              -- hooks, layouts
+                , layoutHook         = myLayout
+                , manageHook         = manageDocks <+> myManageHook
+                , handleEventHook    = myEventHook
+                -- Status bars and logging
+                -- Perform an arbitrary action on each internal state change or X event.
+                -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
+                --
+                , logHook = dynamicLogWithPP $ xmobarPP
+                        { ppOutput = hPutStrLn xmproc
+                        , ppTitle = xmobarColor "green" "" . shorten 50}
+                , startupHook        = myStartupHook
+            }
