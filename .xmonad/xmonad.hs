@@ -33,7 +33,7 @@ myBrowser = "firefox"
 -- Whether focus follows the mouse pointer.
 --
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
+myFocusFollowsMouse = False
 
 -- Width of the window border in pixels.
 --
