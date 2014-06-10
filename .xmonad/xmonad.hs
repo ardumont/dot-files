@@ -79,11 +79,6 @@ spawnZenityCmd = spawn . zenityCmd
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaise (home ++ cmd)
 
--- dmenu_run command with some specific format (my font for one)
---
-dmenuCmd :: String
-dmenuCmd = "dmenu_run -i -fn '" ++ myFont ++ "' -p 'Run:'"
-
 -- My keymap (with prefix keys and all -> need to be transformed through mkKeymap)
 --
 myKeymap :: String -> XConfig Layout -> [(String, X ())]
@@ -346,6 +341,8 @@ myNormalBorderColor :: String
 myNormalBorderColor = "#dddddd"
 myFocusedBorderColor :: String
 myFocusedBorderColor = "#5193f7"
+myNormalTextColor :: String
+myNormalTextColor = "#ffffff"
 
 -- Default configuration for prompt
 --
@@ -361,34 +358,16 @@ myXPConfig = defaultXPConfig
               , historySize = 256
               , promptBorderWidth = 1}
               where myColor0 = myFocusedBorderColor
-                    myColor1 = "#ffffff"
+                    myColor1 = myNormalTextColor
 
--- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will
--- use the defaults defined in xmonad/XMonad/Config.hs
+-- dmenu_run command with some specific format (my font for one)
 --
-myConfig :: String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
-myConfig home = desktopConfig {
-        -- simple stuff
-          terminal           = myTerminal
-        , focusFollowsMouse  = myFocusFollowsMouse
-        , borderWidth        = myBorderWidth
-        , modMask            = myModMask
-        , workspaces         = myWorkspaces
-        , normalBorderColor  = myNormalBorderColor
-        , focusedBorderColor = myFocusedBorderColor
+dmenuCmd :: String
+dmenuCmd =
+  "dmenu_run -i -fn '" ++ myFont ++ "' -nb '" ++ myColor0 ++ "' -nf '" ++ myColor1 ++ "' -sb '" ++ myColor1 ++ "' -sf '"++ myColor0 ++ "' -p 'Run:'"
+  where myColor0 = myFocusedBorderColor
+        myColor1 = myNormalTextColor
 
-        -- key bindings
-        , keys               = myKeys home
-        , mouseBindings      = myMouseBindings
-
-      -- hooks, layouts
-        , layoutHook         = myLayout
-        , manageHook         = myManageHook
-        , handleEventHook    = myEventHook
-        , logHook            = myLogHook
-        , startupHook        = myStartupHook
-    }
 
 -- Spawn a list of multiple commands
 --
