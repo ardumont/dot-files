@@ -15,7 +15,8 @@
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
         :dependencies [[clojure-complete            "0.2.3"]
-                       [leiningen                   #=(leiningen.core.main/leiningen-version)]
+                       ;; [leiningen                   #=(leiningen.core.main/leiningen-version)]
+                       [leiningen                   "2.3.0"]
                        [im.chit/vinyasa             "0.2.0"]
                        [com.cemerick/pomegranate    "0.3.0"]
                        [org.clojure/tools.namespace "0.2.4"]
