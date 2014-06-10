@@ -352,14 +352,16 @@ myFocusedBorderColor = "#5193f7"
 myXPConfig :: XPConfig
 myXPConfig = defaultXPConfig
               { font        = myFont
-              , bgColor     = myFocusedBorderColor -- "#001070" -- "black"
-              , fgColor     = "#ffffff"
-              , bgHLight    = "#4444aa"
-              , fgHLight    = "#ddddff"
+              , bgColor     = myColor0
+              , fgColor     = myColor1
+              , bgHLight    = myColor1
+              , fgHLight    = myColor0
               , borderColor = myNormalBorderColor
               , position    = Top
               , historySize = 256
               , promptBorderWidth = 1}
+              where myColor0 = myFocusedBorderColor
+                    myColor1 = "#ffffff"
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
