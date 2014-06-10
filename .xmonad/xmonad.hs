@@ -399,9 +399,9 @@ spawnCommands = mapM_ spawn
 -- Now run xmonad with all the defaults we set up.
 
 main :: IO ()
-main =
-    spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
-                  , "~/bin/service/service.sh restart xscreensaver &"
-                  , "~/bin/service/service.sh restart dropbox start &"] >>
-    getEnv "HOME" >>=
-    \ (Just home) -> xmonad $ myConfig home
+main = do
+  Just home <- getEnv "HOME"
+  spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
+                , "~/bin/service/service.sh restart xscreensaver &"
+                , "~/bin/service/service.sh restart dropbox start &"]
+  xmonad $ myConfig home
