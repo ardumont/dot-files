@@ -98,6 +98,7 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "i",         myRunOrRaise home "/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
   , (prefix "C-x",       myRunOrRaise home "/bin/ide/idea.sh"                    (className =? "jetbrains-idea-ce"))
   , (prefix "S-j",       myRunOrRaise home "/applications/visualvm/bin/visualvm" (className =? "java-lang-Thread"))
+  , (prefix "S-l",       myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (className =? "sun-awt-X11-XFramePeer"))
     -- swap
   , (prefix prefixKey,   promote)
     -- run or raise commands
