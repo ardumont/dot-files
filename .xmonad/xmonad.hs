@@ -154,7 +154,7 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "\\",        spawn "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
     -- dmenu
   , (prefix "s",         search)
-  , (prefix "r",         spawn dmenuCmd)
+  , (prefix "r",         spawn $ dmenuCmd myXPConfig)
   , (prefix "S-1",       spawn "gmrun")                           -- another menu launcher (equivalent to F2 in gnome2)
   , (prefix "g",         windowPromptGoto myXPConfig)             -- prompt to help in selecting window to move to
   , (prefix "M1-x",      xmonadPrompt myXPConfig)                 -- a prompt to show the current possible commands
@@ -332,8 +332,8 @@ myStartupHook = return ()
 
 -- My font to try and use everywhere
 --
-myFont :: String
-myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
+myDefaultFont :: String
+myDefaultFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -348,7 +348,7 @@ myNormalTextColor = "#ffffff"
 --
 myXPConfig :: XPConfig
 myXPConfig = defaultXPConfig
-              { font        = myFont
+              { font        = myDefaultFont
               , bgColor     = myColor0
               , fgColor     = myColor1
               , bgHLight    = myColor1
@@ -362,12 +362,13 @@ myXPConfig = defaultXPConfig
 
 -- dmenu_run command with some specific format (my font for one)
 --
-dmenuCmd :: String
-dmenuCmd =
-  "dmenu_run -i -fn '" ++ myFont ++ "' -nb '" ++ myColor0 ++ "' -nf '" ++ myColor1 ++ "' -sb '" ++ myColor1 ++ "' -sf '"++ myColor0 ++ "' -p 'Run:'"
-  where myColor0 = myFocusedBorderColor
-        myColor1 = myNormalTextColor
-
+dmenuCmd :: XPConfig -> String
+dmenuCmd (XPC { font        = myFont
+              , bgColor     = myBgColor
+              , fgColor     = myFgColor
+              , bgHLight    = myBgHlight
+              , fgHLight    = myFgHLight}) =
+  "dmenu_run -i -fn '" ++ myFont ++ "' -nb '" ++ myBgColor ++ "' -nf '" ++ myFgColor ++ "' -sb '" ++ myBgHlight ++ "' -sf '"++ myFgHLight ++ "' -p 'Run:'"
 
 -- Spawn a list of multiple commands
 --
