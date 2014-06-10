@@ -1,7 +1,7 @@
 Config { font = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
        , bgColor = "black"
        , fgColor = "grey"
-       , position = TopW L 98
+       , position = TopW L 85
        , commands = [ Run Network "wlan0" ["-L","0","-H","32","--normal","green","--high","red"] 10
                     , Run Cpu ["-L","15","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10, Run Swap [] 10
