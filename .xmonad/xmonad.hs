@@ -67,6 +67,13 @@ spawnZenityCmd = spawn . zenityCmd
                  where zenityCmd :: String -> String
                        zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
 
+-- Execute a command and show its result in a zenity window dialog
+--
+notifySendCmd :: String -> X ()
+notifySendCmd = spawn . zenityCmd
+                where zenityCmd :: String -> String
+                      zenityCmd cmd = "notify-send \"$(" ++ cmd ++ ")\""
+
 -- Display some data in a zenity window dialog
 --
 -- spawnZenityText :: String -> X ()
@@ -128,13 +135,13 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "C-c",       runOrRaise "skype"                    (className =? "skype"))
   , (prefix "f",         runOrRaise myBrowser                  (className =? "Firefox"))
     -- some commands
-  , (prefix "a",         spawnZenityCmd "date")
-  , (prefix "S-k",       spawnZenityCmd "ssh-add -l")
-  , (prefix "S-e",       spawnZenityCmd "cat /etc/environment")
-  , (prefix "S-h",       spawnZenityCmd "cat /etc/hosts")
-  , (prefix "C-S-i",     spawnZenityCmd "/sbin/ifconfig")
-  , (prefix "S-b",       spawnZenityCmd "acpi -b")
-  , (prefix "^",         spawnZenityCmd "top -b -n 1 -c -d 1")
+  , (prefix "a",         notifySendCmd "date")
+  , (prefix "S-k",       notifySendCmd "ssh-add -l")
+  , (prefix "S-e",       notifySendCmd "cat /etc/environment")
+  , (prefix "S-h",       notifySendCmd "cat /etc/hosts")
+  , (prefix "C-S-i",     notifySendCmd "/sbin/ifconfig")
+  , (prefix "S-b",       notifySendCmd "acpi -b")
+  , (prefix "^",         notifySendCmd "top -b -n 1 -c -d 1")
     -- shell command
   , (prefix "C-s",       spawn "scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
   , (prefix "M1-s",      spawn "~/bin/touchpad/toggle-touchpad-manual.sh 1; scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
