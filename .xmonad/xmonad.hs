@@ -18,6 +18,9 @@ import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad
 import qualified XMonad.Actions.Submap as SM
 import qualified XMonad.Actions.Search as S
+import XMonad.Util.Run (spawnPipe)
+import XMonad.Hooks.DynamicLog
+import System.IO
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -66,7 +69,6 @@ spawnZenityCmd :: String -> X ()
 spawnZenityCmd = spawn . zenityCmd
                  where zenityCmd :: String -> String
                        zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
-
 -- Display some data in a zenity window dialog
 --
 -- spawnZenityText :: String -> X ()
@@ -315,15 +317,6 @@ myEventHook :: Event -> X All
 myEventHook = mempty
 
 ------------------------------------------------------------------------
--- Status bars and logging
-
--- Perform an arbitrary action on each internal state change or X event.
--- See the 'XMonad.Hooks.DynamicLog' extension for examples.
---
-myLogHook :: X ()
-myLogHook = return ()
-
-------------------------------------------------------------------------
 -- Startup hook
 
 -- Perform an arbitrary action each time xmonad starts or is restarted
@@ -360,12 +353,22 @@ myXPConfig = defaultXPConfig
               , historySize = 256
               , promptBorderWidth = 1}
 
--- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will
--- use the defaults defined in xmonad/XMonad/Config.hs
+-- Spawn a list of multiple commands
 --
-myConfig :: String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
-myConfig home = desktopConfig {
+spawnCommands :: [String] -> IO ()
+spawnCommands = mapM_ spawn
+
+------------------------------------------------------------------------
+-- Now run xmonad with all the defaults we set up.
+
+main :: IO ()
+main = do
+    xmproc <- spawnPipe "xmobar"
+    spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
+                  , "~/bin/service/service.sh restart xscreensaver &"
+                  , "~/bin/service/service.sh restart dropbox start &"]
+    Just home <- getEnv "HOME"
+    xmonad $ desktopConfig {
         -- simple stuff
           terminal           = myTerminal
         , focusFollowsMouse  = myFocusFollowsMouse
@@ -383,22 +386,13 @@ myConfig home = desktopConfig {
         , layoutHook         = myLayout
         , manageHook         = myManageHook
         , handleEventHook    = myEventHook
-        , logHook            = myLogHook
+          -- Status bars and logging
+          -- Perform an arbitrary action on each internal state change or X event.
+          -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
+          --
+        , logHook            = dynamicLogWithPP $ xmobarPP {
+                                 ppOutput = hPutStrLn xmproc
+                               , ppTitle  = xmobarColor "green" "" . shorten 50
+                             }
         , startupHook        = myStartupHook
     }
-
--- Spawn a list of multiple commands
---
-spawnCommands :: [String] -> IO ()
-spawnCommands = mapM_ spawn
-
-------------------------------------------------------------------------
--- Now run xmonad with all the defaults we set up.
-
-main :: IO ()
-main =
-    spawnCommands [ "~/bin/service/service.sh restart nemo --no-default-window &"
-                  , "~/bin/service/service.sh restart xscreensaver &"
-                  , "~/bin/service/service.sh restart dropbox start &"] >>
-    getEnv "HOME" >>=
-    \ (Just home) -> xmonad $ myConfig home
