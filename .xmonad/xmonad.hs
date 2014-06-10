@@ -38,7 +38,7 @@ myFocusFollowsMouse = False
 -- Width of the window border in pixels.
 --
 myBorderWidth :: Dimension
-myBorderWidth  = 0
+myBorderWidth  = 1
 
 -- modMask lets you specify which modkey you want to use. mod4mask is window key
 -- I'm used to prefix key because of emacs, stumpwm, conkeror and firefox with keysnail
@@ -345,7 +345,7 @@ myFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646
 myNormalBorderColor :: String
 myNormalBorderColor = "#dddddd"
 myFocusedBorderColor :: String
-myFocusedBorderColor = "#ff0000"
+myFocusedBorderColor = "#7FBC71" -- "#ff0000"
 
 -- Default configuration for prompt
 --
