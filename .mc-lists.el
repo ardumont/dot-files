@@ -15,15 +15,18 @@
         end-of-buffer
         flymake-display-err-menu-for-current-line
         forward-sexp
+        haskell-indentation-delete-backward-char
         haskell-indentation-delete-char
         ido-switch-buffer
         indent-for-tab-command
         kill-region
         kmacro-start-macro
+        magit-discard-item
         magit-key-mode-popup-fetching
         magit-status
         mark-sexp
         mark-whole-buffer
+        markdown-exdent-or-delete
         markdown-exdent-or-delete
         mouse-buffer-menu
         org-beginning-of-line
@@ -52,9 +55,8 @@
         sp-forward-sexp
         sp-forward-slurp-sexp
         sp-kill-word
+        sp-remove-active-pair-overlay
         transpose-words
         yaml-electric-dash-and-dot
-        haskell-indentation-delete-backward-char
-        magit-discard-item
-        markdown-exdent-or-delete
+        ))
         ))
