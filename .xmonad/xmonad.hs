@@ -15,7 +15,7 @@ import XMonad.Actions.Promote (promote)
 import System.Posix.Env (getEnv)
 import XMonad.Prompt
 import XMonad.Prompt.Window
-import XMonad.Prompt.XMonad
+import XMonad.Prompt.XMonad (xmonadPromptC)
 import XMonad.Prompt.AppLauncher (launchApp)
 import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
 
@@ -93,105 +93,97 @@ myRunOrRaise home cmd = runOrRaiseNext (home ++ cmd)
 
 -- My keymap (with prefix keys and all -> need to be transformed through mkKeymap)
 --
-myKeymap :: String -> XConfig Layout -> [(String, X ())]
-myKeymap home conf @(XConfig { terminal   = myTerm
+myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
+myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
                              , layoutHook = myLayoutHook
                              , workspaces = myWss}) =
-  [-- personal script launcher
-    (prefix "e",         myRunOrRaise home "/bin/emacs/emacs.sh"                        (className =? "Emacs"))
-  , (prefix "C-x",       myRunOrRaise home "/bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
-  , (prefix "y",         myRunOrRaise home "/bin/app/yed.sh"                            (className =? "sun-awt-X11-XFramePeer"))
-  , (prefix "S-c",       myRunOrRaise home "/applications/LightTable/LightTable"        (className =? "ltbin"))
-  , (prefix "i",         myRunOrRaise home "/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce"))
-  , (prefix "S-j",       myRunOrRaise home "/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
-  , (prefix "S-l",       myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (className =? "sun-awt-X11-XFramePeer"))
-    -- swap
-  , (prefix prefixKey,   promote)
-    -- run or raise commands
-  , (prefix "x",         runOrRaiseNext myTerm                     (className =? "Gnome-terminal"))
-  , (prefix "S-s",       runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
-  , (prefix "S-t",       runOrRaiseNext "totem"                    (className =? "Totem"))
-  , (prefix "C-e",       runOrRaiseNext "evince"                   (className =? "Evince"))
-  , (prefix "C-i",       runOrRaiseNext "eog"                      (className =? "Eog"))
-  , (prefix "d",         runOrRaiseNext "pinta"                    (className =? "Pinta"))
-  , (prefix "S-i",       runOrRaiseNext "gimp"                     (className =? "Gimp"))
-  , (prefix "C-a",       runOrRaiseNext "audacious"                (className =? "Audacious"))
-  , (prefix "M1-j",      runOrRaiseNext "jconsole"                 (className =? "sun-tools-jconsole-JConsole"))
-  , (prefix "C-c",       runOrRaiseNext "arduino"                  (className =? "processing-appBase"))
-  , (prefix "C-w",       runOrRaiseNext "gksudo wireshark"         (className =? "wireshark"))
-  , (prefix "n",         runOrRaiseNext "nemo"                     (className =? "Nemo"))
-  , (prefix "S-n",       runOrRaiseNext "thunar"                   (className =? "thunar"))
-  , (prefix "C-M1-f",    runOrRaiseNext "filezilla"                (className =? "Filezilla"))
-  , (prefix "C-v",       runOrRaiseNext "virtualbox"               (className =? "Qt-subapplication"))
-  , (prefix "u",         runOrRaiseNext "unetbootin"               (className =? "unetbootin"))
-  , (prefix "/",         runOrRaiseNext "transmission-gtk"         (className =? "transmission-gtk"))
-  , (prefix "S-g",       runOrRaiseNext "gksudo /usr/sbin/gparted" (className =? "gpartedbin"))
-  , (prefix "S-f",       runOrRaiseNext ""                         (className =? "file_progress"))
-  , (prefix "S-x",       runOrRaiseNext "xosview"                  (className =? "xosview"))
-  , (prefix "b",         runOrRaiseNext "baobab"                   (className =? "baobab"))
-  , (prefix "z",         runOrRaiseNext "gitk"                     (className =? "gitk"))
-  , (prefix "S-f",       runOrRaiseNext "fbreader"                 (className =? "fbreader"))
-  , (prefix "M1-t",      runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
-  , (prefix "C-c",       runOrRaiseNext "skype"                    (className =? "skype"))
-  , (prefix "f",         runOrRaiseNext myBrowser                  (className =? "Firefox"))
-    -- some commands
-  , (prefix "a",         spawnZenityCmd "date")
-  , (prefix "S-k",       spawnZenityCmd "ssh-add -l")
-  , (prefix "S-e",       spawnZenityCmd "cat /etc/environment")
-  , (prefix "S-h",       spawnZenityCmd "cat /etc/hosts")
-  , (prefix "C-S-i",     spawnZenityCmd "/sbin/ifconfig")
-  , (prefix "S-b",       spawnZenityCmd "acpi -b")
-  , (prefix "^",         spawnZenityCmd "top -b -n 1 -c -d 1")
-    -- shell command
-  , (prefix "C-s",       spawn "scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
-  , (prefix "M1-s",      spawn "~/bin/touchpad/toggle-touchpad-manual.sh 1; scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
-  , (prefix "C-t",       spawn "~/bin/touchpad/toggle-touchpad.sh")
-  , (prefix "C-S-s",     spawn "gksudo pm-suspend")
-  , (prefix "C-S-h",     spawn "gksudo pm-hibernate")
-  , (prefix "S-a",       spawn "~/bin/ssh/ssh-add.sh")
-  , (prefix "C-b",       spawn "~/bin/brightness/dec-brightness.sh 5")
-  , (prefix "C-f",       spawn "~/bin/brightness/inc-brightness.sh 5")
-  , (prefix "C-S-m",     spawn "~/bin/brightness/half-brightness.sh")
-  , (prefix "S-m",       spawn "~/bin/brightness/max-brightness.sh")
-  , (prefix "M1-f",      spawn "exec amixer set Master 5%+")
-  , (prefix "M1-b",      spawn "exec amixer set Master 5%-")
-  , (prefix "M1-m",      spawn "exec amixer set Master toggle")
-  , (prefix "C-o",       spawn "~/bin/wifi/wifi-off.sh")
-  , (prefix "S-o",       spawn "~/bin/wifi/wifi-on.sh")
-  , (prefix "C-M1-l",    spawn "~/bin/session/lock.sh")
-  , (prefix "\\",        launchApp myXPConfig "evince")
-    -- search the web
-  , (prefix "s",         search)
-    -- dmenu or shell prompt
-  , (prefix "r",         spawn $ dmenuCmd myXPConfig)
-  , (prefix "M1-r",      runOrRaisePrompt myXPConfig)             -- another menu launcher (equivalent to F2 in gnome2)
-  , (prefix "g",         windowPromptGoto myXPConfig)             -- prompt to help in selecting window to move to
-  , (prefix "M1-x",      xmonadPrompt myXPConfig)                 -- a prompt to show the current possible commands
-    -- close window
-  , (prefix "c",         kill)                                    -- close focused window
-    -- window manipulation
-  , (prefix "<Space>",   sendMessage NextLayout)                  -- Rotate through the available layout algorithms
-  , (prefix "C-<Space>", setLayout myLayoutHook)                  -- Reset the layouts on the current workspace to default
-  , (prefix "M1-n",      refresh)                                 -- Resize viewed windows to the correct size
-  , (prefix "<Tab>",     windows W.focusDown)                     -- Move focus to the next window
-  , (prefix "j",         windows W.focusDown)                     -- Move focus to the next window
-  , (prefix "k",         windows W.focusUp)                       -- Move focus to the previous window
-  , (prefix "m",         windows W.focusMaster)                   -- Move focus to the master window
-  , (prefix "<Return>",  windows W.swapMaster)                    -- Swap the focused window and the master window
-  , (prefix "C-j",       windows W.swapDown)                      -- Swap the focused window with the next window
-  , (prefix "C-k",       windows W.swapUp)                        -- Swap the focused window with the previous window
-  , (prefix "M1-l",      sendMessage Shrink)                      -- Shrink the master area
-  , (prefix "M1-h",      sendMessage Expand)                      -- Expand the master area
-  , (prefix "t",         withFocused $ windows . W.sink)          -- Push window back into tiling
-  , (prefix "h",         sendMessage (IncMasterN 1))              -- Increment the number of windows in the master area
-  , (prefix "l",         sendMessage (IncMasterN (-1)))           -- Deincrement the number of windows in the master area
-  , (prefix "S-q",       broadcastMessage ReleaseResources >> recompile True >> restart "xmonad" True) -- reload the setup from xmonad
-  , (prefix "M1-q",      io exitSuccess)] ++                      -- Quit xmonad
+  [ (prefix "e"         , "emacs"                      , myRunOrRaise home "/bin/emacs/emacs.sh"                        (className =? "Emacs"))
+  , (prefix "C-x"       , "xephyr"                     , myRunOrRaise home "/bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
+  , (prefix "y"         , "yed"                        , myRunOrRaise home "/bin/app/yed.sh"                            (className =? "sun-awt-X11-XFramePeer"))
+  , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "/applications/LightTable/LightTable"        (className =? "ltbin"))
+  , (prefix "i"         , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce"))
+  , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
+  , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (className =? "sun-awt-X11-XFramePeer"))
+  , (prefix prefixKey   , "promote"                    , promote)
+  , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (className =? "Gnome-terminal"))
+  , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
+  , (prefix "S-t"       , "video-player"               , runOrRaiseNext "totem"                    (className =? "Totem"))
+  , (prefix "C-e"       , "pdf-reader"                 , runOrRaiseNext "evince"                   (className =? "Evince"))
+  , (prefix "C-i"       , "image-viewer"               , runOrRaiseNext "eog"                      (className =? "Eog"))
+  , (prefix "d"         , "pinta"                      , runOrRaiseNext "pinta"                    (className =? "Pinta"))
+  , (prefix "S-i"       , "gimp"                       , runOrRaiseNext "gimp"                     (className =? "Gimp"))
+  , (prefix "C-a"       , "music-reader"               , runOrRaiseNext "audacious"                (className =? "Audacious"))
+  , (prefix "M1-j"      , "jconcole"                   , runOrRaiseNext "jconsole"                 (className =? "sun-tools-jconsole-JConsole"))
+  , (prefix "C-c"       , "arduino-ide"                , runOrRaiseNext "arduino"                  (className =? "processing-appBase"))
+  , (prefix "C-w"       , "wireshark"                  , runOrRaiseNext "gksudo wireshark"         (className =? "wireshark"))
+  , (prefix "n"         , "nemo"                       , runOrRaiseNext "nemo"                     (className =? "Nemo"))
+  , (prefix "S-n"       , "thunar"                     , runOrRaiseNext "thunar"                   (className =? "thunar"))
+  , (prefix "C-M1-f"    , "filezilla"                  , runOrRaiseNext "filezilla"                (className =? "Filezilla"))
+  , (prefix "C-v"       , "virtualbox"                 , runOrRaiseNext "virtualbox"               (className =? "Qt-subapplication"))
+  , (prefix "u"         , "unetbootin"                 , runOrRaiseNext "unetbootin"               (className =? "unetbootin"))
+  , (prefix "/"         , "transmission"               , runOrRaiseNext "transmission-gtk"         (className =? "transmission-gtk"))
+  , (prefix "S-g"       , "gparted"                    , runOrRaiseNext "gksudo /usr/sbin/gparted" (className =? "gpartedbin"))
+  , (prefix "S-f"       , "file-progression"           , runOrRaiseNext ""                         (className =? "file_progress"))
+  , (prefix "S-x"       , "xosview"                    , runOrRaiseNext "xosview"                  (className =? "xosview"))
+  , (prefix "b"         , "baobab"                     , runOrRaiseNext "baobab"                   (className =? "baobab"))
+  , (prefix "z"         , "gitk"                       , runOrRaiseNext "gitk"                     (className =? "gitk"))
+  , (prefix "S-f"       , "fbreader"                   , runOrRaiseNext "fbreader"                 (className =? "fbreader"))
+  , (prefix "M1-t"      , "tuxguitar"                  , runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
+  , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (className =? "skype"))
+  , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  (className =? "Firefox"))
+  , (prefix "a"         , "date"                       , spawnZenityCmd "date")
+  , (prefix "S-k"       , "ssh-add-l"                  , spawnZenityCmd "ssh-add -l")
+  , (prefix "S-e"       , "cat-etc-environment"        , spawnZenityCmd "cat /etc/environment")
+  , (prefix "S-h"       , "cat-etc-hosts"              , spawnZenityCmd "cat /etc/hosts")
+  , (prefix "C-S-i"     , "sbin-ifconfig"              , spawnZenityCmd "/sbin/ifconfig")
+  , (prefix "S-b"       , "acpi"                       , spawnZenityCmd "acpi -b")
+  , (prefix "^"         , "top"                        , spawnZenityCmd "top -b -n 1 -c -d 1")
+  , (prefix "C-s"       , "print-screen"               , spawn "scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
+  , (prefix "M1-s"      , "mouse-print-screen"         , spawn "~/bin/touchpad/toggle-touchpad-manual.sh 1; scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
+  , (prefix "C-t"       , "toggle-touchpad"            , spawn "~/bin/touchpad/toggle-touchpad.sh")
+  , (prefix "C-S-s"     , "pm-suspend"                 , spawn "gksudo pm-suspend")
+  , (prefix "C-S-h"     , "pm-hibernate"               , spawn "gksudo pm-hibernate")
+  , (prefix "S-a"       , "ssh-add"                    , spawn "~/bin/ssh/ssh-add.sh")
+  , (prefix "C-b"       , "brightness-decrease"        , spawn "~/bin/brightness/dec-brightness.sh 5")
+  , (prefix "C-f"       , "brightness-increase"        , spawn "~/bin/brightness/inc-brightness.sh 5")
+  , (prefix "C-S-m"     , "brightness-half"            , spawn "~/bin/brightness/half-brightness.sh")
+  , (prefix "S-m"       , "brightness-max"             , spawn "~/bin/brightness/max-brightness.sh")
+  , (prefix "M1-f"      , "sound-increase"             , spawn "exec amixer set Master 5%+")
+  , (prefix "M1-b"      , "sound-decrease"             , spawn "exec amixer set Master 5%-")
+  , (prefix "M1-m"      , "sound-toggle"               , spawn "exec amixer set Master toggle")
+  , (prefix "C-o"       , "wifi-off"                   , spawn "~/bin/wifi/wifi-off.sh")
+  , (prefix "S-o"       , "wifi-on"                    , spawn "~/bin/wifi/wifi-on.sh")
+  , (prefix "C-M1-l"    , "session-lock"               , spawn "~/bin/session/lock.sh")
+  , (prefix "\\"        , "evince-prompt"              , launchApp myXPConfig "evince")
+  , (prefix "s"         , "search-url"                 , search)
+  , (prefix "r"         , "dmenu"                      , spawn $ dmenuCmd myXPConfig)
+  , (prefix "M1-r"      , "exec"                       , runOrRaisePrompt myXPConfig)
+  , (prefix "g"         , "goto"                       , windowPromptGoto myXPConfig)
+  , (prefix "M1-x"      , "meta-x"                     , xmonadPromptC keymapDescription myXPConfig)
+  , (prefix "c"         , "close-current-window"       , kill)
+  , (prefix "<Space>"   , "rotate-layout"              , sendMessage NextLayout)
+  , (prefix "C-<Space>" , "reset-layout"               , setLayout myLayoutHook)
+  , (prefix "M1-n"      , "refresh"                    , refresh)
+  , (prefix "<Tab>"     , "window-move-focus-next"     , windows W.focusDown)
+  , (prefix "j"         , "window-move-focus-next"     , windows W.focusDown)
+  , (prefix "k"         , "window-move-focus-previous" , windows W.focusUp)
+  , (prefix "m"         , "window-move-focus-master"   , windows W.focusMaster)
+  , (prefix "<Return>"  , "window-swap-focus-master"   , windows W.swapMaster)
+  , (prefix "C-j"       , "window-swap-focus-next"     , windows W.swapDown)
+  , (prefix "C-k"       , "window-swap-focus-previous" , windows W.swapUp)
+  , (prefix "M1-l"      , "master-shrink-area"         , sendMessage Shrink)
+  , (prefix "M1-h"      , "master-expand-area"         , sendMessage Expand)
+  , (prefix "t"         , "window-push-back-tiling"    , withFocused $ windows . W.sink)
+  , (prefix "h"         , "window-inc-num-master-area" , sendMessage (IncMasterN 1))
+  , (prefix "l"         , "window-dec-num-master-area" , sendMessage (IncMasterN (-1)))
+  , (prefix "S-q"       , "xmonad-restart"             , broadcastMessage ReleaseResources >> recompile True >> restart "xmonad" True)
+  , (prefix "M1-q"      , "xmonad-quit"                , io exitSuccess)] ++
   -- M1-n - Switch to workspace with id n
   -- S-n  - Move the client to workspace with id n
-  [(prefix $ pk ++ k, windows $ f i) | (i, k) <- zip myWss $ map show ([1..9] :: [Integer])
-                                     , (f, pk) <- [(W.greedyView, "M1-"), (W.shift, "S-")]]
-  where searchSite = S.promptSearchBrowser myXPConfig myBrowser
+  [(prefix $ pk ++ k, desc ++ k , windows $ f i) | (i, k) <- zip myWss $ map show ([1..9] :: [Integer])
+                                                 , (f, pk, desc) <- [(W.greedyView, "M1-", "workspace-switch-to-id-"), (W.shift, "S-", "workspace-move-client-to-id-")]]
+  where -- Permits the search through the system browser
+        searchSite = S.promptSearchBrowser myXPConfig myBrowser
         search     = SM.submap . mkKeymap conf $
                      [ ("g", searchSite S.google)
                      , ("h", searchSite S.hoogle)
@@ -199,12 +191,16 @@ myKeymap home conf @(XConfig { terminal   = myTerm
                      , ("i", searchSite S.imdb)
                      , ("y", searchSite S.youtube)
                      , ("w", searchSite S.wikipedia)]
+        -- Rework the keymap description to extract the command description and the associated actions
+        keymapDescription = map (\ (_, commandDesc, action) -> (commandDesc, action)) fullKeymap
+        fullKeymap = myKeymapWithDescription home conf
 
 -- Key bindings
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys home conf = mkKeymap conf (myKeymap home conf)
-
+myKeys home conf = mkKeymap conf keymap
+                   where keymap = map (\ (keybinding, _, action) -> (keybinding, action)) fullKeymap
+                         fullKeymap = myKeymapWithDescription home conf
 ------------------------------------------------------------------------
 -- mouse bindings: default actions bound to mouse events
 --
