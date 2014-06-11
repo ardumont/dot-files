@@ -155,7 +155,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-o"       , "wifi-off"                   , spawn "~/bin/wifi/wifi-off.sh")
   , (prefix "S-o"       , "wifi-on"                    , spawn "~/bin/wifi/wifi-on.sh")
   , (prefix "C-M1-l"    , "session-lock"               , spawn "~/bin/session/lock.sh")
-  , (prefix "\\"        , "evince-prompt"              , launchApp myXPConfig "evince")
+  , (prefix "M1-e"      , "evince-prompt"              , launchApp myXPConfig "evince")
   , (prefix "s"         , "search-url"                 , search)
   , (prefix "r"         , "dmenu"                      , spawn $ dmenuCmd myXPConfig)
   , (prefix "M1-r"      , "exec"                       , runOrRaisePrompt myXPConfig)
