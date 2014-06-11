@@ -95,8 +95,8 @@ myRunOrRaise home cmd = runOrRaiseNext (home ++ cmd)
 --
 myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
 myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
-                             , layoutHook = myLayoutHook
-                             , workspaces = myWss}) =
+                                            , layoutHook = myLayoutHook
+                                            , workspaces = myWss}) =
   [ (prefix "C-g"       , "abort"                      , spawn "xdotool key Escape")
   , (prefix "e"         , "emacs"                      , myRunOrRaise home "/bin/emacs/emacs.sh"                        (className =? "Emacs"))
   , (prefix "C-x"       , "xephyr"                     , myRunOrRaise home "/bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
@@ -353,7 +353,7 @@ myNormalTextColor = "#ffffff"
 -- Default configuration for prompt
 --
 myXPConfig :: XPConfig
-myXPConfig                        = defaultXPConfig
+myXPConfig = defaultXPConfig
               { font              = myDefaultFont
               , bgColor           = myColor0
               , fgColor           = myColor1
@@ -366,7 +366,7 @@ myXPConfig                        = defaultXPConfig
               where myColor0 = myFocusedBorderColor
                     myColor1 = myNormalTextColor
 
--- dmenu_run command with some specific format (my font for one)
+-- dmenu_run command with shared configuration
 --
 dmenuCmd :: XPConfig -> String
 dmenuCmd (XPC { font        = myFont
@@ -394,7 +394,6 @@ main = do
                 , "nm-applet"
                 , "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000"]
   xmonad $ desktopConfig {
-                -- Simple stuff
                   terminal           = myTerminal
                 , focusFollowsMouse  = myFocusFollowsMouse
                 , clickJustFocuses   = myClickJustFocuses
@@ -403,12 +402,8 @@ main = do
                 , workspaces         = myWorkspaces
                 , normalBorderColor  = myNormalBorderColor
                 , focusedBorderColor = myFocusedBorderColor
-
-                -- key bindings
                 , keys               = myKeys home
                 , mouseBindings      = myMouseBindings
-
-              -- hooks, layouts
                 , layoutHook         = avoidStruts myLayout
                 , manageHook         = manageDocks <+> myManageHook
                 , handleEventHook    = myEventHook
