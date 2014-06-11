@@ -181,7 +181,8 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   -- M1-n - Switch to workspace with id n
   -- S-n  - Move the client to workspace with id n
   [(prefix $ pk ++ k, desc ++ k , windows $ f i) | (i, k) <- zip myWss $ map show ([1..9] :: [Integer])
-                                                 , (f, pk, desc) <- [(W.greedyView, "M1-", "workspace-switch-to-id-"), (W.shift, "S-", "workspace-move-client-to-id-")]]
+                                                 , (f, pk, desc) <- [ (W.greedyView, "M1-", "workspace-switch-to-id-")
+                                                                    , (W.shift, "S-", "workspace-move-client-to-id-")]]
   where -- Permits the search through the system browser
         searchSite = S.promptSearchBrowser myXPConfig myBrowser
         search     = SM.submap . mkKeymap conf $
