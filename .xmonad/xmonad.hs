@@ -178,7 +178,7 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "t",         withFocused $ windows . W.sink)          -- Push window back into tiling
   , (prefix "h",         sendMessage (IncMasterN 1))              -- Increment the number of windows in the master area
   , (prefix "l",         sendMessage (IncMasterN (-1)))           -- Deincrement the number of windows in the master area
-  , (prefix "S-q",       recompile True >> restart "xmonad" True) -- reload the setup from xmonad
+  , (prefix "S-q",       broadcastMessage ReleaseResources >> recompile True >> restart "xmonad" True) -- reload the setup from xmonad
   , (prefix "M1-q",      io exitSuccess)] ++                      -- Quit xmonad
   -- M1-n - Switch to workspace with id n
   -- S-n  - Move the client to workspace with id n
