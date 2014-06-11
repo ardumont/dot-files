@@ -86,25 +86,20 @@ spawnZenityCmd = spawn . zenityCmd
 --                   where zenityText :: String -> String
 --                         zenityText s = "zenity --info --text '" ++ s ++ "'"
 
--- run or raise with a default config folder from which finding the command
---
-myRunOrRaise :: String -> String -> Query Bool -> X ()
-myRunOrRaise home cmd = runOrRaiseNext (home ++ cmd)
-
 -- My keymap as (prefix keybindings, command description, command)
 --
-myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
-myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
-                             , layoutHook = myLayoutHook
-                             , workspaces = myWss}) =
+myKeymapWithDescription :: XConfig Layout -> [(String, String, X ())]
+myKeymapWithDescription conf@(XConfig { terminal   = myTerm
+                                      , layoutHook = myLayoutHook
+                                      , workspaces = myWss}) =
   [ (prefix "C-g"       , "abort"                      , spawn "xdotool key Escape")
-  , (prefix "e"         , "emacs"                      , myRunOrRaise home "/bin/emacs/emacs.sh"                        (className =? "Emacs"))
-  , (prefix "C-x"       , "xephyr"                     , myRunOrRaise home "/bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
-  , (prefix "y"         , "yed"                        , myRunOrRaise home "/bin/app/yed.sh"                            (className =? "sun-awt-X11-XFramePeer"))
-  , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "/applications/LightTable/LightTable"        (className =? "ltbin"))
-  , (prefix "i"         , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce"))
-  , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
-  , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
+  , (prefix "e"         , "emacs"                      , runOrRaiseNext "/home/$USER/bin/emacs/emacs.sh"                        (className =? "Emacs"))
+  , (prefix "C-x"       , "xephyr"                     , runOrRaiseNext "/home/$USER/bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
+  , (prefix "y"         , "yed"                        , runOrRaiseNext "/home/$USER/bin/app/yed.sh"                            (className =? "sun-awt-X11-XFramePeer"))
+  , (prefix "S-c"       , "lighttable"                 , runOrRaiseNext "/home/$USER/applications/LightTable/LightTable"        (className =? "ltbin"))
+  , (prefix "i"         , "ide"                        , runOrRaiseNext "/home/$USER/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce"))
+  , (prefix "S-j"       , "visualvm"                   , runOrRaiseNext "/home/$USER/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
+  , (prefix "S-l"       , "sqldeveloper"               , runOrRaiseNext "/home/$USER/applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (className =? "Gnome-terminal"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
@@ -139,22 +134,22 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-S-i"     , "sbin-ifconfig"              , spawnZenityCmd "/sbin/ifconfig")
   , (prefix "S-b"       , "acpi"                       , spawnZenityCmd "acpi -b")
   , (prefix "^"         , "top"                        , spawnZenityCmd "top -b -n 1 -c -d 1")
-  , (prefix "C-s"       , "print-screen"               , spawn "scrot -u $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
-  , (prefix "M1-s"      , "mouse-print-screen"         , spawn "~/bin/touchpad/toggle-touchpad-manual.sh 1; scrot -s $HOME/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
-  , (prefix "C-t"       , "toggle-touchpad"            , spawn "~/bin/touchpad/toggle-touchpad.sh")
+  , (prefix "C-s"       , "print-screen"               , spawn "scrot -u /home/$USER/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
+  , (prefix "M1-s"      , "mouse-print-screen"         , spawn "/home/$USER/bin/touchpad/toggle-touchpad-manual.sh 1; scrot -s /home/$USER/Pictures/screenshot_$(date +%F_%H-%M-%S).png")
+  , (prefix "C-t"       , "toggle-touchpad"            , spawn "/home/$USER/bin/touchpad/toggle-touchpad.sh")
   , (prefix "C-S-s"     , "pm-suspend"                 , spawn "gksudo pm-suspend")
   , (prefix "C-S-h"     , "pm-hibernate"               , spawn "gksudo pm-hibernate")
-  , (prefix "S-a"       , "ssh-add"                    , spawn "~/bin/ssh/ssh-add.sh")
-  , (prefix "C-b"       , "brightness-decrease"        , spawn "~/bin/brightness/dec-brightness.sh 5")
-  , (prefix "C-f"       , "brightness-increase"        , spawn "~/bin/brightness/inc-brightness.sh 5")
-  , (prefix "C-S-m"     , "brightness-half"            , spawn "~/bin/brightness/half-brightness.sh")
-  , (prefix "S-m"       , "brightness-max"             , spawn "~/bin/brightness/max-brightness.sh")
+  , (prefix "S-a"       , "ssh-add"                    , spawn "/home/$USER/bin/ssh/ssh-add.sh")
+  , (prefix "C-b"       , "brightness-decrease"        , spawn "/home/$USER/bin/brightness/dec-brightness.sh 5")
+  , (prefix "C-f"       , "brightness-increase"        , spawn "/home/$USER/bin/brightness/inc-brightness.sh 5")
+  , (prefix "C-S-m"     , "brightness-half"            , spawn "/home/$USER/bin/brightness/half-brightness.sh")
+  , (prefix "S-m"       , "brightness-max"             , spawn "/home/$USER/bin/brightness/max-brightness.sh")
   , (prefix "M1-f"      , "sound-increase"             , spawn "exec amixer set Master 5%+")
   , (prefix "M1-b"      , "sound-decrease"             , spawn "exec amixer set Master 5%-")
   , (prefix "M1-m"      , "sound-toggle"               , spawn "exec amixer set Master toggle")
-  , (prefix "C-o"       , "wifi-off"                   , spawn "~/bin/wifi/wifi-off.sh")
-  , (prefix "S-o"       , "wifi-on"                    , spawn "~/bin/wifi/wifi-on.sh")
-  , (prefix "C-M1-l"    , "session-lock"               , spawn "~/bin/session/lock.sh")
+  , (prefix "C-o"       , "wifi-off"                   , spawn "/home/$USER/bin/wifi/wifi-off.sh")
+  , (prefix "S-o"       , "wifi-on"                    , spawn "/home/$USER/bin/wifi/wifi-on.sh")
+  , (prefix "C-M1-l"    , "session-lock"               , spawn "/home/$USER/bin/session/lock.sh")
   , (prefix "M1-e"      , "evince-prompt"              , launchApp myXPConfig "evince")
   , (prefix "s"         , "search-url"                 , search)
   , (prefix "r"         , "dmenu"                      , spawn $ dmenuCmd myXPConfig)
@@ -195,14 +190,15 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
                      , ("w", searchSite S.wikipedia)]
         -- Rework the keymap description to extract the command description and the associated actions
         keymapDescription = map (\ (keybinding, xmonadActionDesc, xmonadAction) -> (xmonadActionDesc ++ " - " ++ keybinding, xmonadAction)) fullKeymap
-        fullKeymap = myKeymapWithDescription home conf
+        fullKeymap = myKeymapWithDescription conf
 
 -- Key bindings
 --
-myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys home conf = mkKeymap conf keymap
-                   where keymap = map (\ (keybinding, _, xmonadAction) -> (keybinding, xmonadAction)) fullKeymap
-                         fullKeymap = myKeymapWithDescription home conf
+myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
+myKeys conf =
+  mkKeymap conf keymap
+  where keymap = map (\ (keybinding, _, xmonadAction) -> (keybinding, xmonadAction)) fullKeymap
+        fullKeymap = myKeymapWithDescription conf
 ------------------------------------------------------------------------
 -- mouse bindings: default actions bound to mouse events
 --
@@ -379,14 +375,13 @@ dmenuCmd (XPC { font        = myFont
 -- Spawn multiple services (restart them if already started)
 --
 spawnCommands :: [String] -> IO ()
-spawnCommands = mapM_ $ spawn . (\ service -> "~/bin/service/service.sh restart " ++ service ++ " &")
+spawnCommands = mapM_ $ spawn . (\ service -> "/home/$USER/bin/service/service.sh restart " ++ service ++ " &")
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 main :: IO ()
 main = do
-  Just home <- getEnv "HOME"
   xmproc <- spawnPipe "xmobar"
   spawnCommands [ "nemo --no-default-window"
                 , "xscreensaver"
@@ -405,7 +400,7 @@ main = do
                 , focusedBorderColor = myFocusedBorderColor
 
                 -- key bindings
-                , keys               = myKeys home
+                , keys               = myKeys
                 , mouseBindings      = myMouseBindings
 
               -- hooks, layouts
