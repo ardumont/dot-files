@@ -60,4 +60,3 @@
         transpose-words
         yaml-electric-dash-and-dot
         ))
-        ))
