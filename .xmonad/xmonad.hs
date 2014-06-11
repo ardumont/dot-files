@@ -91,7 +91,7 @@ spawnZenityCmd = spawn . zenityCmd
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaiseNext (home ++ cmd)
 
--- My keymap (with prefix keys and all -> need to be transformed through mkKeymap)
+-- My keymap as (prefix keybindings, command description, command)
 --
 myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
 myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
@@ -192,14 +192,14 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
                      , ("y", searchSite S.youtube)
                      , ("w", searchSite S.wikipedia)]
         -- Rework the keymap description to extract the command description and the associated actions
-        keymapDescription = map (\ (_, commandDesc, action) -> (commandDesc, action)) fullKeymap
+        keymapDescription = map (\ (_, xmonadActionDesc, xmonadAction) -> (xmonadActionDesc, xmonadAction)) fullKeymap
         fullKeymap = myKeymapWithDescription home conf
 
 -- Key bindings
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys home conf = mkKeymap conf keymap
-                   where keymap = map (\ (keybinding, _, action) -> (keybinding, action)) fullKeymap
+                   where keymap = map (\ (keybinding, _, xmonadAction) -> (keybinding, xmonadAction)) fullKeymap
                          fullKeymap = myKeymapWithDescription home conf
 ------------------------------------------------------------------------
 -- mouse bindings: default actions bound to mouse events
