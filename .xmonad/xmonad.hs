@@ -159,7 +159,7 @@ myKeymap home conf @(XConfig { terminal   = myTerm
     -- dmenu
   , (prefix "s",         search)
   , (prefix "r",         spawn $ dmenuCmd myXPConfig)
-  , (prefix "S-1",       spawn "gmrun")                           -- another menu launcher (equivalent to F2 in gnome2)
+  , (prefix "M1-r",       spawn "gmrun")                           -- another menu launcher (equivalent to F2 in gnome2)
   , (prefix "g",         windowPromptGoto myXPConfig)             -- prompt to help in selecting window to move to
   , (prefix "M1-x",      xmonadPrompt myXPConfig)                 -- a prompt to show the current possible commands
   , (prefix "c", kill)                                            -- close focused window
