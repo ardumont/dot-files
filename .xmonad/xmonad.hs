@@ -124,7 +124,7 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "b",         runOrRaise "baobab"                   (className =? "baobab"))
   , (prefix "z",         runOrRaise "gitk"                     (className =? "gitk"))
   , (prefix "S-f",       runOrRaise "fbreader"                 (className =? "fbreader"))
-  , (prefix "M1-r",      runOrRaise "tuxguitar"                (className =? "TuxGuitar"))
+  , (prefix "M1-t",      runOrRaise "tuxguitar"                (className =? "TuxGuitar"))
   , (prefix "C-c",       runOrRaise "skype"                    (className =? "skype"))
   , (prefix "f",         runOrRaise myBrowser                  (className =? "Firefox"))
     -- some commands
