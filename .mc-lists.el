@@ -17,6 +17,7 @@
         forward-sexp
         haskell-indentation-delete-backward-char
         haskell-indentation-delete-char
+        haskell-newline-and-indent
         ido-switch-buffer
         indent-for-tab-command
         kill-region
