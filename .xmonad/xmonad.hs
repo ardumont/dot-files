@@ -91,11 +91,10 @@ myKeymap home conf @(XConfig { terminal   = myTerm
                              , workspaces = myWss}) =
   [-- personal script launcher
     (prefix "e",         myRunOrRaise home "/bin/emacs/emacs.sh"                        (className =? "Emacs"))
-  --, (prefix "C-x",       myRunOrRaise home "/bin/xephyr/xephyr.sh"                      (className =? "Xephyr")) -- Deactivate xephyr in xmonad (a priori no need)
+  , (prefix "C-x",       myRunOrRaise home "/bin/xephyr/xephyr.sh stumpwm"              (className =? "Xephyr"))
   , (prefix "y",         myRunOrRaise home "/bin/app/yed.sh"                            (className =? "sun-awt-X11-XFramePeer"))
   , (prefix "S-c",       myRunOrRaise home "/applications/LightTable/LightTable"        (className =? "ltbin"))
   , (prefix "i",         myRunOrRaise home "/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce"))
-  , (prefix "C-x",       myRunOrRaise home "/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce"))
   , (prefix "S-j",       myRunOrRaise home "/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
   , (prefix "S-l",       myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (className =? "sun-awt-X11-XFramePeer"))
     -- swap
