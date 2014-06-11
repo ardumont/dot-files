@@ -16,6 +16,7 @@ import System.Posix.Env (getEnv)
 import XMonad.Prompt
 import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad
+import XMonad.Prompt.Shell
 import qualified XMonad.Actions.Submap as SM
 import qualified XMonad.Actions.Search as S
 import XMonad.Hooks.DynamicLog
@@ -158,7 +159,7 @@ myKeymap home conf @(XConfig { terminal   = myTerm
     -- dmenu
   , (prefix "s",         search)
   , (prefix "r",         spawn $ dmenuCmd myXPConfig)
-  , (prefix "M1-r",       spawn "gmrun")                           -- another menu launcher (equivalent to F2 in gnome2)
+  , (prefix "M1-r",      shellPrompt myXPConfig)                  -- another menu launcher (equivalent to F2 in gnome2)
   , (prefix "g",         windowPromptGoto myXPConfig)             -- prompt to help in selecting window to move to
   , (prefix "M1-x",      xmonadPrompt myXPConfig)                 -- a prompt to show the current possible commands
   , (prefix "c", kill)                                            -- close focused window
