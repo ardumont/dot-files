@@ -16,6 +16,7 @@ import System.Posix.Env (getEnv)
 import XMonad.Prompt
 import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad
+import XMonad.Prompt.AppLauncher (launchApp)
 import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
 
 import qualified XMonad.Actions.Submap as SM
@@ -158,7 +159,7 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "C-o",       spawn "~/bin/wifi/wifi-off.sh")
   , (prefix "S-o",       spawn "~/bin/wifi/wifi-on.sh")
   , (prefix "C-M1-l",    spawn "~/bin/session/lock.sh")
-  , (prefix "\\",        spawn "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
+  , (prefix "\\",        launchApp myXPConfig "evince")
     -- search the web
   , (prefix "s",         search)
     -- dmenu or shell prompt
