@@ -272,6 +272,9 @@ workspaceIde = "6:ide"
 workspaceFloat :: String
 workspaceFloat = "7:ide"
 
+workspaceBooks :: String
+workspaceBooks = "8:books"
+
 myWorkspaces :: [String]
 myWorkspaces = [ workspaceEmacs
                , workspaceTerminal
@@ -279,8 +282,8 @@ myWorkspaces = [ workspaceEmacs
                , workspaceCode
                , workspaceIrc
                , workspaceIde
-               , workspaceFloat] ++
-               map show ([8..9] :: [Integer])
+               , workspaceFloat
+               , workspaceBooks]
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -307,7 +310,8 @@ myManageHook = composeAll
     , className =? "Emacs"            --> doShift workspaceEmacs
     , className =? "Gnome-terminal"   --> doShift workspaceTerminal
     , className =? "jetbrains-ide-ce" --> doShift workspaceIde
-    , className =? "Firefox"          --> doShift workspaceWeb]
+    , className =? "Firefox"          --> doShift workspaceWeb
+    , className =? "Evince"           --> doShift workspaceBooks]
 
 ------------------------------------------------------------------------
 -- Event handling
