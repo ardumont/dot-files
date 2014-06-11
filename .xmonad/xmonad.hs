@@ -40,6 +40,11 @@ myBrowser = "firefox"
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
 
+-- | Whether a mouse click select the focus or is just passed to the window
+--
+myClickJustFocuses :: Bool
+myClickJustFocuses = True
+
 -- Width of the window border in pixels.
 --
 myBorderWidth :: Dimension
@@ -142,8 +147,6 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "C-S-s",     spawn "gksudo pm-suspend")
   , (prefix "C-S-h",     spawn "gksudo pm-hibernate")
   , (prefix "S-a",       spawn "~/bin/ssh/ssh-add.sh")
-    -- , (prefix "p",         spawn "gksudo ~/bin/proxy/proxy.sh on && ~/bin/wifi/nm-applet.sh stop")
-    -- , (prefix "S-p",       spawn "gksudo ~/bin/proxy/proxy.sh off && ~/bin/wifi/nm-applet.sh stop")
   , (prefix "C-b",       spawn "~/bin/brightness/dec-brightness.sh 5")
   , (prefix "C-f",       spawn "~/bin/brightness/inc-brightness.sh 5")
   , (prefix "C-S-m",     spawn "~/bin/brightness/half-brightness.sh")
@@ -153,16 +156,18 @@ myKeymap home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-m",      spawn "exec amixer set Master toggle")
   , (prefix "C-o",       spawn "~/bin/wifi/wifi-off.sh")
   , (prefix "S-o",       spawn "~/bin/wifi/wifi-on.sh")
-    -- , (prefix "C-p",       spawn "~/bin/service/service.sh restart stalonetray -t --window-type=normal")
   , (prefix "C-M1-l",    spawn "~/bin/session/lock.sh")
   , (prefix "\\",        spawn "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf")
-    -- dmenu
+    -- search the web
   , (prefix "s",         search)
+    -- dmenu or shell prompt
   , (prefix "r",         spawn $ dmenuCmd myXPConfig)
   , (prefix "M1-r",      shellPrompt myXPConfig)                  -- another menu launcher (equivalent to F2 in gnome2)
   , (prefix "g",         windowPromptGoto myXPConfig)             -- prompt to help in selecting window to move to
   , (prefix "M1-x",      xmonadPrompt myXPConfig)                 -- a prompt to show the current possible commands
-  , (prefix "c", kill)                                            -- close focused window
+    -- close window
+  , (prefix "c",         kill)                                    -- close focused window
+    -- window manipulation
   , (prefix "<Space>",   sendMessage NextLayout)                  -- Rotate through the available layout algorithms
   , (prefix "C-<Space>", setLayout myLayoutHook)                  -- Reset the layouts on the current workspace to default
   , (prefix "M1-n",      refresh)                                 -- Resize viewed windows to the correct size
@@ -186,12 +191,12 @@ myKeymap home conf @(XConfig { terminal   = myTerm
                                      , (f, pk) <- [(W.greedyView, "M1-"), (W.shift, "S-")]]
   where searchSite = S.promptSearchBrowser myXPConfig myBrowser
         search     = SM.submap . mkKeymap conf $
-                     [("g", searchSite S.google)
-                     ,("h", searchSite S.hoogle)
-                     ,("a", searchSite S.amazon)
-                     ,("i", searchSite S.imdb)
-                     ,("y", searchSite S.youtube)
-                     ,("w", searchSite S.wikipedia)]
+                     [ ("g", searchSite S.google)
+                     , ("h", searchSite S.hoogle)
+                     , ("a", searchSite S.amazon)
+                     , ("i", searchSite S.imdb)
+                     , ("y", searchSite S.youtube)
+                     , ("w", searchSite S.wikipedia)]
 
 -- Key bindings
 --
@@ -211,9 +216,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) =
     , ((modm, button2), \w -> focus w >> windows W.shiftMaster)
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modm, button3), \w -> focus w >> mouseResizeWindow w
-                                      >> windows W.shiftMaster)
+                                      >> windows W.shiftMaster)]
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
-    ]
 
 ------------------------------------------------------------------------
 -- Layouts:
@@ -303,8 +307,7 @@ myManageHook = composeAll
     , className =? "Emacs"            --> doShift workspaceEmacs
     , className =? "Gnome-terminal"   --> doShift workspaceTerminal
     , className =? "jetbrains-ide-ce" --> doShift workspaceIde
-    , className =? "Firefox"          --> doShift workspaceWeb
-    ]
+    , className =? "Firefox"          --> doShift workspaceWeb]
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -346,15 +349,15 @@ myNormalTextColor = "#ffffff"
 -- Default configuration for prompt
 --
 myXPConfig :: XPConfig
-myXPConfig = defaultXPConfig
-              { font        = myDefaultFont
-              , bgColor     = myColor0
-              , fgColor     = myColor1
-              , bgHLight    = myColor1
-              , fgHLight    = myColor0
-              , borderColor = myNormalBorderColor
-              , position    = Top
-              , historySize = 256
+myXPConfig                        = defaultXPConfig
+              { font              = myDefaultFont
+              , bgColor           = myColor0
+              , fgColor           = myColor1
+              , bgHLight          = myColor1
+              , fgHLight          = myColor0
+              , borderColor       = myNormalBorderColor
+              , position          = Top
+              , historySize       = 256
               , promptBorderWidth = 1}
               where myColor0 = myFocusedBorderColor
                     myColor1 = myNormalTextColor
@@ -390,6 +393,7 @@ main = do
                 -- Simple stuff
                   terminal           = myTerminal
                 , focusFollowsMouse  = myFocusFollowsMouse
+                , clickJustFocuses   = myClickJustFocuses
                 , borderWidth        = myBorderWidth
                 , modMask            = myModMask
                 , workspaces         = myWorkspaces
@@ -408,8 +412,8 @@ main = do
                 -- Perform an arbitrary action on each internal state change or X event.
                 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
                 --
-                , logHook = dynamicLogWithPP $ xmobarPP
-                        { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50}
+                , logHook            = dynamicLogWithPP $ xmobarPP
+                                                        { ppOutput = hPutStrLn xmproc
+                                                        , ppTitle = xmobarColor "green" "" . shorten 50}
                 , startupHook        = myStartupHook
             }
