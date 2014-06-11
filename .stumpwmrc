@@ -139,7 +139,7 @@
   (gitk                 "gitk"             "gitk"                                 "gitk"                   "z")
   (fbreader             "fbreader"         "fbreader"                             "fbreader"               "C-f")
   (lighttable           "LightTable"       "~/applications/LightTable/LightTable" "ltbin"                  "C")
-  (tux-guitar           "TuxGuitar"        "/usr/bin/tuxguitar"                   "TuxGuitar"              "M-r")
+  (tux-guitar           "TuxGuitar"        "/usr/bin/tuxguitar"                   "TuxGuitar"              "M-t")
   (skype                "skype"            "/usr/bin/skype"                       "skype"                  "C-c")))
 
 ;; run shell command - Simply execute shell command
