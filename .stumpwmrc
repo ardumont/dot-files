@@ -253,7 +253,7 @@
 (defun run-shell-commands (commands)
   "Run COMMANDS at startup time.
 If a command is already launched, restart it."
-  (mapc (lambda (c) (run-shell-command (format "~/bin/service/service.sh restart %s &" c))) commands))
+  (mapc (lambda (c) (run-shell-command (concat "~/bin/service/service.sh restart \"" c "\" &"))) commands))
 
 ;; ========================== cursor - https://github.com/stumpwm/stumpwm/wiki/GrabbedPointer
 
@@ -265,8 +265,8 @@ If a command is already launched, restart it."
 
 ;; ========================== Launch commands at startup time
 
-(run-shell-commands ["nemo --no-default-window"
-                     "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000"
-                     "nm-applet"
-                     "/usr/bin/xscreensaver"
-                     "dropbox start"])
+(run-shell-commands '("nemo --no-default-window"
+                      "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000"
+                      "nm-applet"
+                      "/usr/bin/xscreensaver"
+                      "dropbox start"))
