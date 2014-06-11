@@ -177,7 +177,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "t"         , "window-push-back-tiling"    , withFocused $ windows . W.sink)
   , (prefix "h"         , "window-inc-num-master-area" , sendMessage (IncMasterN 1))
   , (prefix "l"         , "window-dec-num-master-area" , sendMessage (IncMasterN (-1)))
-  , (prefix "S-q"       , "xmonad-restart"             , broadcastMessage ReleaseResources >> recompile True >> restart "xmonad" True)
+  , (prefix "S-q"       , "xmonad-restart"             , broadcastMessage ReleaseResources >> restart "xmonad" True)
   , (prefix "M1-q"      , "xmonad-quit"                , io exitSuccess)] ++
   -- M1-n - Switch to workspace with id n
   -- S-n  - Move the client to workspace with id n
