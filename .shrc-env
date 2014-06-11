@@ -26,6 +26,8 @@ export TERM=screen-256color
 
 # fix awt & co. in stumpwm/xmonad
 export _JAVA_AWT_WM_NONREPARENTING=1
+# wmname "LG3D"
+#export AWT_TOOLKIT=MToolkit
 
 # scala setup in emacs - for installation of ensime, see https://github.com/ardumont/sh/blob/master/scala/deploy-ensime.sh
 [ -d $HOME/applications/ensime ] && export ENSIME_ROOT=$HOME/applications/ensime
