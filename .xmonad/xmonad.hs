@@ -265,14 +265,18 @@ workspaceIrc = "5:irc"
 workspaceIde :: String
 workspaceIde = "6:ide"
 
+workspaceFloat :: String
+workspaceFloat = "7:ide"
+
 myWorkspaces :: [String]
 myWorkspaces = [ workspaceEmacs
                , workspaceTerminal
                , workspaceWeb
                , workspaceCode
                , workspaceIrc
-               , workspaceIde] ++
-               map show ([7..9] :: [Integer])
+               , workspaceIde
+               , workspaceFloat] ++
+               map show ([8..9] :: [Integer])
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -291,8 +295,8 @@ myWorkspaces = [ workspaceEmacs
 --
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "MPlayer"          --> doFloat
-    , className =? "Gimp"             --> doFloat
+    [ className =? "MPlayer"          --> doShift workspaceFloat >> doFloat
+    , className =? "Gimp"             --> doShift workspaceFloat >> doFloat
     , className =? "Zenity"           --> doFloat
     , resource  =? "desktop_window"   --> doIgnore
     , resource  =? "kdesktop"         --> doIgnore
