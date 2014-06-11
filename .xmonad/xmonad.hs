@@ -103,7 +103,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "/applications/LightTable/LightTable"        (className =? "ltbin"))
   , (prefix "i"         , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce"))
   , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
-  , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (className =? "sun-awt-X11-XFramePeer"))
+  , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (className =? "Gnome-terminal"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
@@ -294,15 +294,15 @@ myWorkspaces = [ workspaceEmacs
 -- and click on the client you're interested in.
 --
 -- To match on the WM_NAME, you can use 'title' in the same way that
--- 'className' and 'resource' are used below.
+-- 'className' and 'appName' (`resource`) are used below.
 --
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
     [ className =? "MPlayer"          --> doShift workspaceFloat >> doFloat
     , className =? "Gimp"             --> doShift workspaceFloat >> doFloat
     , className =? "Zenity"           --> doFloat
-    , resource  =? "desktop_window"   --> doIgnore
-    , resource  =? "kdesktop"         --> doIgnore
+    , appName  =? "desktop_window"    --> doIgnore
+    , appName  =? "kdesktop"          --> doIgnore
     , className =? "Emacs"            --> doShift workspaceEmacs
     , className =? "Gnome-terminal"   --> doShift workspaceTerminal
     , className =? "jetbrains-ide-ce" --> doShift workspaceIde
