@@ -172,9 +172,9 @@
 
 (define-key *root-map* (kbd "o") "fselect")
 
-(define-key *root-map* (kbd "L") "loadrc")
-
-(define-key *root-map* (kbd "C-Q") "quit")
+(define-key *root-map* (kbd "M-r") "exec")
+(define-key *root-map* (kbd "Q")   "loadrc")
+(define-key *root-map* (kbd "M-q") "quit")
 
 (define-key *root-map* (kbd "C-u") "move-window up")
 (define-key *root-map* (kbd "C-r") "move-window right")
