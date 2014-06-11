@@ -159,7 +159,6 @@
   (toggle-sound         "Toggle sound"                         "exec amixer set Master toggle"                                                       "M-m")
   (wifi-off             "wifi off"                             "~/bin/wifi/wifi-off.sh"                                                              "C-o")
   (wifi-on              "wifi on"                              "~/bin/wifi/wifi-on.sh"                                                               "O")
-  (relaunch-panel       "Relaunch panel"                       "~/bin/service/service.sh restart stalonetray -t --window-type=normal"                "C-p")
   (lock-session         "Lock the session"                     "~/bin/session/lock.sh"                                                               "C-M-l")
   (evince-haskell-prog  "read functional approach in haskell"  "evince ~/books/haskell/algorithms-a-functional-programming-haskell-approach.pdf"      "'")))
 
@@ -251,6 +250,11 @@
 
 (defun hostname () (run-shell-command "/bin/hostname" t))
 
+(defun run-shell-commands (commands)
+  "Run COMMANDS at startup time.
+If a command is already launched, restart it."
+  (mapc (lambda (c) (run-shell-command (format "~/bin/service/service.sh restart %s &" c))) commands))
+
 ;; ========================== cursor - https://github.com/stumpwm/stumpwm/wiki/GrabbedPointer
 
 (setf *grab-pointer-foreground* (xlib:make-color :red 0.1 :green 0.25 :blue 0.5))
@@ -261,8 +265,8 @@
 
 ;; ========================== Launch commands at startup time
 
-(relaunch-panel)
-(run-shell-command "~/bin/service/service.sh restart nemo --no-default-window &")
-(run-shell-command "~/bin/service/service.sh restart nm-applet &")
-(run-shell-command "~/bin/service/service.sh restart /usr/bin/xscreensaver &")
-(run-shell-command "~/bin/service/service.sh restart dropbox start &")
+(run-shell-commands ["nemo --no-default-window"
+                     "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000"
+                     "nm-applet"
+                     "/usr/bin/xscreensaver"
+                     "dropbox start"])
