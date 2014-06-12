@@ -1,7 +1,3 @@
---
--- xmonad configuration file
---
-
 import XMonad
 import Data.Monoid
 import System.Exit
@@ -26,7 +22,7 @@ import System.Directory (getDirectoryContents, getHomeDirectory)
 import System.FilePath.Posix (takeBaseName)
 import XMonad.Prompt
 
---
+------------------------------------------------------------------------
 -- Password section
 --
 
@@ -57,18 +53,18 @@ getPasswords = do
   entries <- getDirectoryContents $ home ++ "/.password-store"
   return $ map takeBaseName entries
 
--- The preferred terminal program, which is used in a binding below and by
+-- | The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
 myTerminal :: String
 myTerminal = "gnome-terminal"
 
--- My preferential browser
+-- | My preferential browser
 --
 myBrowser :: String
 myBrowser = "firefox"
 
--- Whether focus follows the mouse pointer.
+-- | Whether focus follows the mouse pointer.
 --
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
@@ -78,12 +74,12 @@ myFocusFollowsMouse = False
 myClickJustFocuses :: Bool
 myClickJustFocuses = True
 
--- Width of the window border in pixels.
+-- | Width of the window border in pixels.
 --
 myBorderWidth :: Dimension
 myBorderWidth  = 2
 
--- modMask lets you specify which modkey you want to use. mod4mask is window key
+-- | modMask lets you specify which modkey you want to use. mod4mask is window key
 -- I'm used to prefix key because of emacs, stumpwm, conkeror and firefox with keysnail
 --
 myModMask :: KeyMask
@@ -93,36 +89,36 @@ myModMask = mod4Mask
 -- Key bindings. Add, modify or remove key bindings here.
 --
 
--- Prefix key
+-- | Prefix key
 --
 prefixKey :: String
 prefixKey = "C-;"
 
--- A utility function to compute the final binding with the prefix key
+-- | A utility function to compute the final binding with the prefix key
 --
 prefix :: String -> String
 prefix = ((prefixKey ++ " ") ++)
 
--- Execute a command and show its result in a zenity window dialog
+-- | Execute a command and show its result in a zenity window dialog
 --
 spawnZenityCmd :: String -> X ()
 spawnZenityCmd = spawn . zenityCmd
                  where zenityCmd :: String -> String
                        zenityCmd cmd = "zenity --info --text \"$(" ++ cmd ++ ")\""
 
--- Display some data in a zenity window dialog
+-- | Display some data in a zenity window dialog
 --
 -- spawnZenityText :: String -> X ()
 -- spawnZenityText = spawn . zenityText
 --                   where zenityText :: String -> String
 --                         zenityText s = "zenity --info --text '" ++ s ++ "'"
 
--- run or raise with a default config folder from which finding the command
+-- | Run or raise with a default config folder from which finding the command
 --
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaiseNext (home ++ cmd)
 
--- My keymap as (prefix keybindings, command description, command)
+-- | My keymap as (prefix keybindings, command description, command)
 --
 myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
 myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
@@ -230,14 +226,14 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
         keymapDescription = map (\ (keybinding, xmonadActionDesc, xmonadAction) -> (xmonadActionDesc ++ " - " ++ keybinding, xmonadAction)) fullKeymap
         fullKeymap = myKeymapWithDescription home conf
 
--- Key bindings
+-- | Key bindings
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys home conf = mkKeymap conf keymap
                    where keymap = map (\ (keybinding, _, xmonadAction) -> (keybinding, xmonadAction)) fullKeymap
                          fullKeymap = myKeymapWithDescription home conf
-------------------------------------------------------------------------
--- mouse bindings: default actions bound to mouse events
+
+-- | Mouse bindings: default actions bound to mouse events
 --
 myMouseBindings :: XConfig t -> M.Map (KeyMask, Button) (Window -> X ())
 myMouseBindings (XConfig {XMonad.modMask = modm}) =
@@ -263,6 +259,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) =
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
+
+-- | My own layout
+--
 myLayout :: Choose Tall (Choose (Mirror Tall) Full) a
 myLayout = tiled ||| Mirror tiled ||| Full
   where -- default tiling algorithm partitions the screen into two panes
@@ -274,6 +273,9 @@ myLayout = tiled ||| Mirror tiled ||| Full
         -- Percent of screen to increment by when resizing panes
         delta   = 3/100
 
+------------------------------------------------------------------------
+-- Workspaces:
+
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
 -- workspace name. The number of workspaces is determined by the length
@@ -284,32 +286,16 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 
-workspaceEmacs :: String
-workspaceEmacs = "1:emacs"
-
-workspaceTerminal :: String
+workspaceEmacs, workspaceTerminal, workspaceWeb, workspaceCode, workspaceIrc, workspaceIde, workspaceFloat, workspaceBooks, workspaceDb :: String
+workspaceEmacs    = "1:emacs"
 workspaceTerminal = "2:terminal"
-
-workspaceWeb :: String
-workspaceWeb = "3:web"
-
-workspaceCode :: String
-workspaceCode = "4:code"
-
-workspaceIrc :: String
-workspaceIrc = "5:irc"
-
-workspaceIde :: String
-workspaceIde = "6:ide"
-
-workspaceFloat :: String
-workspaceFloat = "7:ide"
-
-workspaceBooks :: String
-workspaceBooks = "8:books"
-
-workspaceDb :: String
-workspaceDb = "9:db"
+workspaceWeb      = "3:web"
+workspaceCode     = "4:code"
+workspaceIrc      = "5:irc"
+workspaceIde      = "6:ide"
+workspaceFloat    = "7:ide"
+workspaceBooks    = "8:books"
+workspaceDb       = "9:db"
 
 myWorkspaces :: [String]
 myWorkspaces = [ workspaceEmacs
@@ -374,19 +360,19 @@ myEventHook = mempty
 myStartupHook :: X ()
 myStartupHook = return ()
 
--- My font to try and use everywhere
+-- | Font
 --
 myDefaultFont :: String
 myDefaultFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"
 
--- Border colors for unfocused and focused windows, respectively.
+-- | Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor :: String
 myNormalBorderColor = "#1e2320"
 myFocusedBorderColor :: String
 myFocusedBorderColor = "#5193f7"
 
--- Default configuration for prompt
+-- | Default configuration for prompt
 --
 myXPConfig :: XPConfig
 myXPConfig = defaultXPConfig
@@ -401,14 +387,12 @@ myXPConfig = defaultXPConfig
               , historySize       = 256
               , promptBorderWidth = 1}
 
--- Spawn multiple services (restart them if already started)
+-- | Spawn multiple services (restart them if already started)
 --
 spawnCommands :: [String] -> IO ()
 spawnCommands = mapM_ $ spawn . (\ service -> "~/bin/service/service.sh restart " ++ service ++ " &")
 
-------------------------------------------------------------------------
--- Now run xmonad with all the defaults we set up.
-
+-- | Now run xmonad with all the defaults we set up.
 main :: IO ()
 main = do
   home <- getHomeDirectory
