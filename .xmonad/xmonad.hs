@@ -5,7 +5,6 @@
 import XMonad
 import Data.Monoid
 import System.Exit
-
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Config.Desktop
@@ -18,7 +17,6 @@ import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad (xmonadPromptC)
 import XMonad.Prompt.AppLauncher (launchApp)
 import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
-
 import qualified XMonad.Actions.Submap as SM
 import qualified XMonad.Actions.Search as S
 import XMonad.Hooks.DynamicLog
