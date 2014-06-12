@@ -11,7 +11,6 @@ import XMonad.Config.Desktop
 import XMonad.Util.EZConfig
 import XMonad.Actions.WindowGo (runOrRaiseNext)
 import XMonad.Actions.Promote (promote)
-import System.Posix.Env (getEnv)
 import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad (xmonadPromptC)
 import XMonad.Prompt.AppLauncher (launchApp)
@@ -412,7 +411,7 @@ spawnCommands = mapM_ $ spawn . (\ service -> "~/bin/service/service.sh restart 
 
 main :: IO ()
 main = do
-  Just home <- getEnv "HOME"
+  home <- getHomeDirectory
   xmproc <- spawnPipe "xmobar"
   spawnCommands [ "nemo --no-default-window"
                 , "xscreensaver"
