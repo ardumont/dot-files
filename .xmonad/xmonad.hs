@@ -12,7 +12,6 @@ import XMonad.Util.EZConfig
 import XMonad.Actions.WindowGo (runOrRaiseNext)
 import XMonad.Actions.Promote (promote)
 import System.Posix.Env (getEnv)
-import XMonad.Prompt
 import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad (xmonadPromptC)
 import XMonad.Prompt.AppLauncher (launchApp)
@@ -23,6 +22,41 @@ import XMonad.Hooks.DynamicLog
 import System.IO
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
+
+import System.Directory (getDirectoryContents, getHomeDirectory)
+import System.FilePath.Posix (takeBaseName)
+import XMonad.Prompt
+
+--
+-- Password section
+--
+
+data Pass = Pass
+
+instance XPrompt Pass where
+  showXPrompt       Pass = "Pass: "
+  commandToComplete _ c  = c
+  nextCompletion      _  = getNextCompletion
+
+-- | A prompt to retrieve password
+--
+passPrompt :: XPConfig -> X ()
+passPrompt c = do
+  li <- io getPasswords
+  mkXPrompt Pass c (mkComplFunFromList li) selectPassword
+
+-- | Select a password
+--
+selectPassword :: String -> X ()
+selectPassword s = spawn $ "pass -c " ++ s
+
+-- | Retrieve the list of passwords
+--
+getPasswords :: IO [String]
+getPasswords = do
+  home <- getHomeDirectory
+  entries <- getDirectoryContents $ home ++ "/.password-store"
+  return $ map takeBaseName entries
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -160,6 +194,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "r"         , "exec"                       , runOrRaisePrompt myXPConfig)
   , (prefix "g"         , "goto"                       , windowPromptGoto myXPConfig)
   , (prefix "M1-x"      , "meta-x"                     , xmonadPromptC keymapDescription myXPConfig)
+  , (prefix "p"         , "pass"                       , passPrompt myXPConfig)
   , (prefix "c"         , "close-current-window"       , kill >> spawn "notify-send 'window closed!'")
   , (prefix "<Space>"   , "rotate-layout"              , sendMessage NextLayout)
   , (prefix "C-<Space>" , "reset-layout"               , setLayout myLayoutHook)
