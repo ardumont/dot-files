@@ -306,17 +306,17 @@ myWorkspaces = [ workspaceEmacs
 --
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "MPlayer"          --> doShift workspaceFloat >> doFloat
-    , className =? "Gimp"             --> doShift workspaceFloat >> doFloat
-    , className =? "Zenity"           --> doFloat
-    , appName   =? "desktop_window"   --> doIgnore
-    , appName   =? "kdesktop"         --> doIgnore
-    , className =? "Emacs"            --> doShift workspaceEmacs
-    , className =? "Gnome-terminal"   --> doShift workspaceTerminal
-    , className =? "jetbrains-ide-ce" --> doShift workspaceIde
-    , className =? "Firefox"          --> doShift workspaceWeb
-    , className =? "Evince"           --> doShift workspaceBooks
-    , appName =? "sun-awt-X11-XFramePeer" --> doShift workspaceDb]
+    [ className =? "MPlayer"                --> doShift workspaceFloat >> doFloat
+    , className =? "Gimp"                   --> doShift workspaceFloat >> doFloat
+    , className =? "Zenity"                 --> doFloat
+    , appName   =? "desktop_window"         --> doIgnore
+    , appName   =? "kdesktop"               --> doIgnore
+    , className =? "Emacs"                  --> doShift workspaceEmacs
+    , className =? "Gnome-terminal"         --> doShift workspaceTerminal
+    , className =? "jetbrains-ide-ce"       --> doShift workspaceIde
+    , className =? "Firefox"                --> doShift workspaceWeb
+    , className =? "Evince"                 --> doShift workspaceBooks
+    , appName   =? "sun-awt-X11-XFramePeer" --> doShift workspaceDb]
 
 ------------------------------------------------------------------------
 -- Event handling
