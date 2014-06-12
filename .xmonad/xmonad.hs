@@ -349,27 +349,24 @@ myDefaultFont = "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-i
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor :: String
-myNormalBorderColor = "#dddddd"
+myNormalBorderColor = "#1e2320"
 myFocusedBorderColor :: String
 myFocusedBorderColor = "#5193f7"
-myNormalTextColor :: String
-myNormalTextColor = "#ffffff"
 
 -- Default configuration for prompt
 --
 myXPConfig :: XPConfig
 myXPConfig = defaultXPConfig
               { font              = myDefaultFont
-              , bgColor           = myColor0
-              , fgColor           = myColor1
-              , bgHLight          = myColor1
-              , fgHLight          = myColor0
-              , borderColor       = myNormalBorderColor
+              , bgColor           = "#1e2320"
+              , fgColor           = "#dddddd"
+              , bgHLight          = "#5f5f5f"
+              , fgHLight          = "#ffffff"
+              , borderColor       = "#1e2320"
+              , height            = 20
               , position          = Top
               , historySize       = 256
               , promptBorderWidth = 1}
-              where myColor0 = myFocusedBorderColor
-                    myColor1 = myNormalTextColor
 
 -- dmenu_run command with shared configuration
 --
