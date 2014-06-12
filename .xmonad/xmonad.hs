@@ -275,6 +275,9 @@ workspaceFloat = "7:ide"
 workspaceBooks :: String
 workspaceBooks = "8:books"
 
+workspaceDb :: String
+workspaceDb = "9:db"
+
 myWorkspaces :: [String]
 myWorkspaces = [ workspaceEmacs
                , workspaceTerminal
@@ -283,7 +286,8 @@ myWorkspaces = [ workspaceEmacs
                , workspaceIrc
                , workspaceIde
                , workspaceFloat
-               , workspaceBooks]
+               , workspaceBooks
+               , workspaceDb]
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -311,7 +315,8 @@ myManageHook = composeAll
     , className =? "Gnome-terminal"   --> doShift workspaceTerminal
     , className =? "jetbrains-ide-ce" --> doShift workspaceIde
     , className =? "Firefox"          --> doShift workspaceWeb
-    , className =? "Evince"           --> doShift workspaceBooks]
+    , className =? "Evince"           --> doShift workspaceBooks
+    , appName =? "sun-awt-X11-XFramePeer" --> doShift workspaceDb]
 
 ------------------------------------------------------------------------
 -- Event handling
