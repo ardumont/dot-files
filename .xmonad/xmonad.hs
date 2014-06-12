@@ -102,7 +102,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-x"       , "xephyr"                     , myRunOrRaise home "/bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
   , (prefix "y"         , "yed"                        , myRunOrRaise home "/bin/app/yed.sh"                            (className =? "sun-awt-X11-XFramePeer"))
   , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "/applications/LightTable/LightTable"        (className =? "ltbin"))
-  , (prefix "i"         , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce"))
+  , (prefix "i"         , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (className =? "jetbrains-idea-ce" <&&> appName =? "sun-awt-X11-XFramePeer"))
   , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
   , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
   , (prefix prefixKey   , "promote"                    , promote)
