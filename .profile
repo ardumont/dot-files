@@ -7,6 +7,4 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-[ -n "$BASH_VERSION" ] && [ -f ~/.bashrc ] && . ~/.bashrc # running bash
-
 eval $(keychain --eval)
