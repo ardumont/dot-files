@@ -157,8 +157,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-M1-l"    , "session-lock"               , spawn "~/bin/session/lock.sh")
   , (prefix "M1-e"      , "evince-prompt"              , launchApp myXPConfig "evince")
   , (prefix "s"         , "search-url"                 , search)
-  , (prefix "r"         , "dmenu"                      , spawn $ dmenuCmd myXPConfig)
-  , (prefix "M1-r"      , "exec"                       , runOrRaisePrompt myXPConfig)
+  , (prefix "r"         , "exec"                       , runOrRaisePrompt myXPConfig)
   , (prefix "g"         , "goto"                       , windowPromptGoto myXPConfig)
   , (prefix "M1-x"      , "meta-x"                     , xmonadPromptC keymapDescription myXPConfig)
   , (prefix "c"         , "close-current-window"       , kill)
@@ -367,16 +366,6 @@ myXPConfig = defaultXPConfig
               , position          = Top
               , historySize       = 256
               , promptBorderWidth = 1}
-
--- dmenu_run command with shared configuration
---
-dmenuCmd :: XPConfig -> String
-dmenuCmd (XPC { font        = myFont
-              , bgColor     = myBgColor
-              , fgColor     = myFgColor
-              , bgHLight    = myBgHlight
-              , fgHLight    = myFgHLight}) =
-  "dmenu_run -i -fn '" ++ myFont ++ "' -nb '" ++ myBgColor ++ "' -nf '" ++ myFgColor ++ "' -sb '" ++ myBgHlight ++ "' -sf '"++ myFgHLight ++ "' -p 'Run:'"
 
 -- Spawn multiple services (restart them if already started)
 --
