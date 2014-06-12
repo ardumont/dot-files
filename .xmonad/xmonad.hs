@@ -160,7 +160,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "r"         , "exec"                       , runOrRaisePrompt myXPConfig)
   , (prefix "g"         , "goto"                       , windowPromptGoto myXPConfig)
   , (prefix "M1-x"      , "meta-x"                     , xmonadPromptC keymapDescription myXPConfig)
-  , (prefix "c"         , "close-current-window"       , kill)
+  , (prefix "c"         , "close-current-window"       , kill >> spawn "notify-send 'window closed!'")
   , (prefix "<Space>"   , "rotate-layout"              , sendMessage NextLayout)
   , (prefix "C-<Space>" , "reset-layout"               , setLayout myLayoutHook)
   , (prefix "M1-n"      , "refresh"                    , refresh)
@@ -176,7 +176,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "t"         , "window-push-back-tiling"    , withFocused $ windows . W.sink)
   , (prefix "h"         , "window-inc-num-master-area" , sendMessage (IncMasterN 1))
   , (prefix "l"         , "window-dec-num-master-area" , sendMessage (IncMasterN (-1)))
-  , (prefix "S-q"       , "xmonad-restart"             , broadcastMessage ReleaseResources >> restart "xmonad" True)
+  , (prefix "S-q"       , "xmonad-restart"             , spawn "xmonad --restart && notify-send 'Restarted XMonad'")
   , (prefix "M1-q"      , "xmonad-quit"                , io exitSuccess)] ++
   -- M1-n - Switch to workspace with id n
   -- S-n  - Move the client to workspace with id n
