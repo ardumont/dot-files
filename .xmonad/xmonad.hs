@@ -132,6 +132,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-t"      , "tuxguitar"                  , runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
   , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (className =? "skype"))
   , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  (className =? "Firefox"))
+  , (prefix "C-S-e"     , "env"                        , spawnZenityCmd "env")
   , (prefix "a"         , "date"                       , spawnZenityCmd "date")
   , (prefix "S-k"       , "ssh-add-l"                  , spawnZenityCmd "ssh-add -l")
   , (prefix "S-e"       , "cat-etc-environment"        , spawnZenityCmd "cat /etc/environment")
