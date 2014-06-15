@@ -33,6 +33,8 @@ instance XPrompt Pass where
   commandToComplete _ c  = c
   nextCompletion      _  = getNextCompletion
 
+-- | A pass prompt factory
+--
 mkPassPrompt :: (String -> X ()) -> XPConfig -> X ()
 mkPassPrompt passwordFunction xpconfig =
   io getPasswords >>=
@@ -44,23 +46,35 @@ passPrompt :: XPConfig -> X ()
 passPrompt = mkPassPrompt selectPassword
 
 -- | A prompt to generate a password for a given entry.
--- This can be used to override an already stored entry
+-- This can be used to override an already stored entry.
+-- (Beware that no confirmation is asked)
 --
 passGeneratePrompt :: XPConfig -> X ()
 passGeneratePrompt = mkPassPrompt generatePassword
 
--- | Select a password
+-- | A prompt to remove a password for a given entry.
+-- (Beware that no confirmation is asked)
+--
+passRemovePrompt :: XPConfig -> X ()
+passRemovePrompt = mkPassPrompt removePassword
+
+-- | Select a password.
 --
 selectPassword :: String -> X ()
 selectPassword s = spawn $ "pass --clip " ++ s
 
 -- | Generate a 30 characters password for a given entry.
--- If the entry already exists, it is updated with a new password
+-- If the entry already exists, it is updated with a new password.
 --
 generatePassword :: String -> X ()
 generatePassword s = spawn $ "pass generate --force " ++ s ++ " 30"
 
--- | Retrieve the list of passwords
+-- | Remove a password stored for a given entry.
+--
+removePassword :: String -> X ()
+removePassword s = spawn $ "pass rm --force " ++ s
+
+-- | Retrieve the list of passwords from the default password storage in $HOME/.password-store
 --
 getPasswords :: IO [String]
 getPasswords = do
@@ -206,6 +220,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-x"      , "meta-x"                     , xmonadPromptC keymapDescription myXPConfig)
   , (prefix "p"         , "pass-read"                  , passPrompt myXPConfig)
   , (prefix "C-p"       , "pass-generate"              , passGeneratePrompt myXPConfig)
+  , (prefix "C-S-p"     , "pass-generate"              , passRemovePrompt myXPConfig)
   , (prefix "c"         , "close-current-window"       , kill >> spawn "notify-send 'window closed!'")
   , (prefix "<Space>"   , "rotate-layout"              , sendMessage NextLayout)
   , (prefix "C-<Space>" , "reset-layout"               , setLayout myLayoutHook)
