@@ -375,7 +375,7 @@ myFocusedBorderColor = "#5193f7"
 -- | Default configuration for prompt
 --
 myXPConfig :: XPConfig
-myXPConfig = def
+myXPConfig = defaultXPConfig
               { font              = myDefaultFont
               , bgColor           = "#1e2320"
               , fgColor           = "#dddddd"
