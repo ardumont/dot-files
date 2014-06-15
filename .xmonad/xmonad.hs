@@ -40,7 +40,7 @@ mkPassPrompt passwordFunction xpconfig =
   io getPasswords >>=
   \ passwords -> mkXPrompt Pass xpconfig (mkComplFunFromList passwords) passwordFunction
 
--- | A prompt to retrieve password
+-- | A prompt to retrieve a password from a given entry.
 --
 passPrompt :: XPConfig -> X ()
 passPrompt = mkPassPrompt selectPassword
