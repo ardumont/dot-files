@@ -33,25 +33,26 @@ instance XPrompt Pass where
   commandToComplete _ c  = c
   nextCompletion      _  = getNextCompletion
 
+mkPassPrompt :: (String -> X ()) -> XPConfig -> X ()
+mkPassPrompt passwordFunction xpconfig =
+  io getPasswords >>=
+  \ passwords -> mkXPrompt Pass xpconfig (mkComplFunFromList passwords) passwordFunction
+
 -- | A prompt to retrieve password
 --
 passPrompt :: XPConfig -> X ()
-passPrompt c = do
-  li <- io getPasswords
-  mkXPrompt Pass c (mkComplFunFromList li) selectPassword
+passPrompt = mkPassPrompt selectPassword
 
 -- | A prompt to generate a password for a given entry.
 -- This can be used to override an already stored entry
 --
 passGeneratePrompt :: XPConfig -> X ()
-passGeneratePrompt c = do
-  li <- io getPasswords
-  mkXPrompt Pass c (mkComplFunFromList li) generatePassword
+passGeneratePrompt = mkPassPrompt generatePassword
 
 -- | Select a password
 --
 selectPassword :: String -> X ()
-selectPassword s = spawn $ "pass -c " ++ s
+selectPassword s = spawn $ "pass --clip " ++ s
 
 -- | Generate a 30 characters password for a given entry.
 -- If the entry already exists, it is updated with a new password
