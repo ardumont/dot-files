@@ -40,10 +40,24 @@ passPrompt c = do
   li <- io getPasswords
   mkXPrompt Pass c (mkComplFunFromList li) selectPassword
 
+-- | A prompt to generate a password for a given entry.
+-- This can be used to override an already stored entry
+--
+passGeneratePrompt :: XPConfig -> X ()
+passGeneratePrompt c = do
+  li <- io getPasswords
+  mkXPrompt Pass c (mkComplFunFromList li) generatePassword
+
 -- | Select a password
 --
 selectPassword :: String -> X ()
 selectPassword s = spawn $ "pass -c " ++ s
+
+-- | Generate a 30 characters password for a given entry.
+-- If the entry already exists, it is updated with a new password
+--
+generatePassword :: String -> X ()
+generatePassword s = spawn $ "pass generate --force " ++ s ++ " 30"
 
 -- | Retrieve the list of passwords
 --
@@ -189,7 +203,8 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "r"         , "exec"                       , runOrRaisePrompt myXPConfig)
   , (prefix "g"         , "goto"                       , windowPromptGoto myXPConfig)
   , (prefix "M1-x"      , "meta-x"                     , xmonadPromptC keymapDescription myXPConfig)
-  , (prefix "p"         , "pass"                       , passPrompt myXPConfig)
+  , (prefix "p"         , "pass-read"                  , passPrompt myXPConfig)
+  , (prefix "C-p"       , "pass-generate"              , passGeneratePrompt myXPConfig)
   , (prefix "c"         , "close-current-window"       , kill >> spawn "notify-send 'window closed!'")
   , (prefix "<Space>"   , "rotate-layout"              , sendMessage NextLayout)
   , (prefix "C-<Space>" , "reset-layout"               , setLayout myLayoutHook)
