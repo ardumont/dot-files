@@ -19,7 +19,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
 
 import System.Directory (getDirectoryContents, getHomeDirectory)
-import System.FilePath.Posix (takeBaseName)
+import System.FilePath (takeBaseName)
 import XMonad.Prompt
 
 ------------------------------------------------------------------------
