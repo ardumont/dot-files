@@ -18,69 +18,9 @@ import System.IO
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
 
-import System.Directory (getDirectoryContents, getHomeDirectory)
-import System.FilePath.Posix (takeBaseName)
+import System.Directory (getHomeDirectory)
 import XMonad.Prompt
-
-------------------------------------------------------------------------
--- Password section
---
-
-data Pass = Pass
-
-instance XPrompt Pass where
-  showXPrompt       Pass = "Pass: "
-  commandToComplete _ c  = c
-  nextCompletion      _  = getNextCompletion
-
--- | A pass prompt factory
---
-mkPassPrompt :: (String -> X ()) -> XPConfig -> X ()
-mkPassPrompt passwordFunction xpconfig =
-  io getPasswords >>=
-  \ passwords -> mkXPrompt Pass xpconfig (mkComplFunFromList passwords) passwordFunction
-
--- | A prompt to retrieve a password from a given entry.
---
-passPrompt :: XPConfig -> X ()
-passPrompt = mkPassPrompt selectPassword
-
--- | A prompt to generate a password for a given entry.
--- This can be used to override an already stored entry.
--- (Beware that no confirmation is asked)
---
-passGeneratePrompt :: XPConfig -> X ()
-passGeneratePrompt = mkPassPrompt generatePassword
-
--- | A prompt to remove a password for a given entry.
--- (Beware that no confirmation is asked)
---
-passRemovePrompt :: XPConfig -> X ()
-passRemovePrompt = mkPassPrompt removePassword
-
--- | Select a password.
---
-selectPassword :: String -> X ()
-selectPassword s = spawn $ "pass --clip " ++ s
-
--- | Generate a 30 characters password for a given entry.
--- If the entry already exists, it is updated with a new password.
---
-generatePassword :: String -> X ()
-generatePassword s = spawn $ "pass generate --force " ++ s ++ " 30"
-
--- | Remove a password stored for a given entry.
---
-removePassword :: String -> X ()
-removePassword s = spawn $ "pass rm --force " ++ s
-
--- | Retrieve the list of passwords from the default password storage in $HOME/.password-store
---
-getPasswords :: IO [String]
-getPasswords = do
-  home <- getHomeDirectory
-  entries <- getDirectoryContents $ home ++ "/.password-store"
-  return $ map takeBaseName entries
+import XMonad.Prompt.Pass (passPrompt, passGeneratePrompt, passRemovePrompt)
 
 -- | The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
