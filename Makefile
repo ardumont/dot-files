@@ -18,12 +18,12 @@ upg: pull
 	cd ~/bin/ && make pull
 	cd ~/org/ && make pull
 	cd ~/.emacs.d && make pull
-	cd ~/.emacs-live-packs && make pull
+	cd ~/.prelude-packs && make pull
 
 pupg: push
 	cd ~/bin/ && make push
 	cd ~/org/ && make push
 	cd ~/.emacs.d && make push
-	cd ~/.emacs-live-packs && make push
+	cd ~/.prelude-packs/ && make push
 
 test: deploy
