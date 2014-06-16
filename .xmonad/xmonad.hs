@@ -366,7 +366,8 @@ myManageHook = composeAll
     , className =? "Firefox"                --> doShift workspaceWeb
     , className =? "Evince"                 --> doShift workspaceBooks
     , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"      --> doShift workspaceIde
-    , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "sun-awt-X11-XFramePeer" --> doShift workspaceDb]
+    , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "sun-awt-X11-XFramePeer" --> doShift workspaceDb
+    , className =? "Skype"                  --> doShift workspaceIrc]
 
 ------------------------------------------------------------------------
 -- Event handling
