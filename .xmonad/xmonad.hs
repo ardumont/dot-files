@@ -423,21 +423,11 @@ myXPConfig = defaultXPConfig
               , historySize       = 256
               , promptBorderWidth = 1}
 
--- | Spawn multiple services (restart them if already started)
---
-spawnCommands :: [String] -> IO ()
-spawnCommands = mapM_ $ spawn . (\ service -> "~/bin/service/service.sh restart " ++ service ++ " &")
-
 -- | Now run xmonad with all the defaults we set up.
 main :: IO ()
 main = do
   home <- getHomeDirectory
   xmproc <- spawnPipe "xmobar"
-  spawnCommands [ "nemo --no-default-window"
-                , "xscreensaver"
-                , "dropbox start"
-                , "nm-applet"
-                , "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000"]
   xmonad $ desktopConfig {
                   terminal           = myTerminal
                 , focusFollowsMouse  = myFocusFollowsMouse
