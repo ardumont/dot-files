@@ -250,11 +250,6 @@
 
 (defun hostname () (run-shell-command "/bin/hostname" t))
 
-(defun run-shell-commands (commands)
-  "Run COMMANDS at startup time.
-If a command is already launched, restart it."
-  (mapc (lambda (c) (run-shell-command (concat "~/bin/service/service.sh restart \"" c "\" &"))) commands))
-
 ;; ========================== cursor - https://github.com/stumpwm/stumpwm/wiki/GrabbedPointer
 
 (setf *grab-pointer-foreground* (xlib:make-color :red 0.1 :green 0.25 :blue 0.5))
@@ -262,11 +257,3 @@ If a command is already launched, restart it."
 (setf *grab-pointer-character* 88)
 (setf *grab-pointer-character-mask* 88)
 (setf *grab-pointer-font* "fixed")
-
-;; ========================== Launch commands at startup time
-
-(run-shell-commands '("nemo --no-default-window"
-                      "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000"
-                      "nm-applet"
-                      "/usr/bin/xscreensaver"
-                      "dropbox start"))
