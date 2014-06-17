@@ -255,7 +255,8 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
                      , ("a"  , searchSite S.amazon)
                      , ("i"  , searchSite S.imdb)
                      , ("y"  , searchSite S.youtube)
-                     , ("w"  , searchSite S.wikipedia)]
+                     , ("w"  , searchSite S.wikipedia)
+                     , ("d"  , searchSite $ S.searchEngine "duckduckgo" "https://duckduckgo.com/?t=lm&q=")]
         -- Rework the keymap description to extract the command description and the associated actions
         keymapDescription = map (\ (keybinding, xmonadActionDesc, xmonadAction) -> (xmonadActionDesc ++ " - " ++ keybinding, xmonadAction)) fullKeymap
         fullKeymap = myKeymapWithDescription home conf
