@@ -15,5 +15,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 ~/bin/service/service.sh start dropbox start &
 ~/bin/service/service.sh start nm-applet &
 
-# Start xmonad
-exec xmonad 
+# Start wm
+exec xmonad
