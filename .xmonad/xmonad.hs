@@ -239,11 +239,13 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "l"         , "window-dec-num-master-area" , sendMessage (IncMasterN (-1)))
   , (prefix "S-q"       , "xmonad-restart"             , spawn "xmonad --restart && notify-send 'XMonad Restarted!'")
   , (prefix "M1-q"      , "xmonad-quit"                , io exitSuccess)] ++
-  -- M1-n - Switch to workspace with id n
-  -- S-n  - Move the client to workspace with id n
+  -- M1-n   - Switch to workspace with id n
+  -- S-n    - Move the client to workspace with id n
+  -- C-M1-n - Switch to the workspace with id n
   [(prefix $ pk ++ k, desc ++ k , windows $ f i) | (i, k) <- zip myWss $ map show [1 .. length myWss]
-                                                 , (f, pk, desc) <- [ (W.greedyView, "M1-", "workspace-switch-to-id-")
-                                                                    , (W.shift, "S-", "workspace-move-client-to-id-")]]
+                                                 , (f, pk, desc) <- [ (W.view      , "M1-"  , "workspace-keep-screen-switch-to-id-")
+                                                                    , (W.shift     , "S-"   , "workspace-move-client-to-id-")
+                                                                    , (W.greedyView, "C-M1-", "workspace-switch-to-id-")]]
   where -- Permits the search through the system browser
         searchSite = S.promptSearchBrowser myXPConfig myBrowser
         search     = SM.submap . mkKeymap conf $
