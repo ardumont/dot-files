@@ -1,4 +1,8 @@
 REPO_DOTFILES=~/repo/perso/dot-files
+REPO_BIN=~/bin
+REPO_ORG=~/org
+REPO_EMACS=~/.emacs.d
+REPO_PACKS=~/.prelude-packs
 WITH_EMACS_ENV="prelude"
 CI=n
 
@@ -16,30 +20,30 @@ pull-dot:
 	cd $(REPO_DOTFILES) && git pull --rebase --prune origin master
 
 pull-bin:
-	cd ~/bin/ && make pull
+	cd $(REPO_BIN) && make pull
 
 pull-org:
-	cd ~/org/ && make pull
+	cd $(REPO_ORG) && make pull
 
 pull-emacs:
-	cd ~/.emacs.d && make pull
+	cd $(REPO_EMACS) && make pull
 
 pull-packs:
-	cd ~/.prelude-packs && make pull
+	cd $(REPO_PACKS) && make pull
 
 push-dot:
 	cd $(REPO_DOTFILES) && git push origin master
 
 push-bin:
-	cd ~/bin/ && make push
+	cd $(REPO_BIN) && make push
 
 push-org:
-	cd ~/org/ && make push
+	cd $(REPO_ORG) && make push
 
 push-emacs:
-	cd ~/.emacs.d && make push
+	cd $(REPO_EMACS) && make push
 
 push-packs:
-	cd ~/.prelude-packs/ && make push
+	cd $(REPO_PACKS) && make push
 
 test: deploy
