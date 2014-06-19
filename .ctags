@@ -1,6 +1,9 @@
 --exclude=.git
 --exclude='.#*'
 --exclude='*~'
+--exclude='*.org'
+--exclude='*.md'
+--exclude='*.txt'
 --langmap=Lisp:+.clj.cljs
 --langdef=scala
 --langmap=scala:.scala
