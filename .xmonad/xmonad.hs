@@ -19,7 +19,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
 
 import System.Directory (getDirectoryContents, getHomeDirectory)
-import System.FilePath (takeBaseName)
+import System.FilePath (takeBaseName, combine)
 import XMonad.Prompt
 
 ------------------------------------------------------------------------
@@ -80,8 +80,12 @@ removePassword s = spawn $ "pass rm --force " ++ s
 getPasswords :: IO [String]
 getPasswords = do
   home <- getHomeDirectory
-  entries <- getDirectoryContents $ home ++ "/.password-store"
+  entries <- getDirectoryContents $ combine home ".password-store"
   return $ map takeBaseName entries
+
+--
+-- End Password section
+------------------------------------------------------------------------
 
 -- | The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
