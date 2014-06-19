@@ -161,7 +161,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "i"         , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"))
   , (prefix "C-x"       , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"))
   , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
-  , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "sun-awt-X11-XFramePeer"))
+  , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (className =? "Gnome-terminal"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
@@ -370,7 +370,7 @@ myManageHook = composeAll
     , className =? "Firefox"                --> doShift workspaceWeb
     , className =? "Evince"                 --> doShift workspaceBooks
     , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"      --> doShift workspaceIde
-    , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "sun-awt-X11-XFramePeer" --> doShift workspaceDb
+    , appName =? "sun-awt-X11-XFramePeer" --> doShift workspaceDb
     , className =? "Skype"                  --> doShift workspaceIrc]
 
 ------------------------------------------------------------------------
