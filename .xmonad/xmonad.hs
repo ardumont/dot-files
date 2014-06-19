@@ -26,37 +26,38 @@ import XMonad.Prompt
 -- Password section
 --
 
-data Pass = Pass
+type PromptLabel = String
+data Pass = Pass PromptLabel
 
 instance XPrompt Pass where
-  showXPrompt       Pass = "Pass: "
-  commandToComplete _ c  = c
-  nextCompletion      _  = getNextCompletion
+  showXPrompt       (Pass prompt) = prompt ++ ": "
+  commandToComplete _ c           = c
+  nextCompletion      _           = getNextCompletion
 
 -- | A pass prompt factory
 --
-mkPassPrompt :: (String -> X ()) -> XPConfig -> X ()
-mkPassPrompt passwordFunction xpconfig =
+mkPassPrompt :: PromptLabel -> (String -> X ()) -> XPConfig -> X ()
+mkPassPrompt promptLabel passwordFunction xpconfig =
   io getPasswords >>=
-  \ passwords -> mkXPrompt Pass xpconfig (mkComplFunFromList passwords) passwordFunction
+  \ passwords -> mkXPrompt (Pass promptLabel) xpconfig (mkComplFunFromList passwords) passwordFunction
 
 -- | A prompt to retrieve a password from a given entry.
 --
 passPrompt :: XPConfig -> X ()
-passPrompt = mkPassPrompt selectPassword
+passPrompt = mkPassPrompt "Select password" selectPassword
 
 -- | A prompt to generate a password for a given entry.
 -- This can be used to override an already stored entry.
 -- (Beware that no confirmation is asked)
 --
 passGeneratePrompt :: XPConfig -> X ()
-passGeneratePrompt = mkPassPrompt generatePassword
+passGeneratePrompt = mkPassPrompt "Generate password" generatePassword
 
 -- | A prompt to remove a password for a given entry.
 -- (Beware that no confirmation is asked)
 --
 passRemovePrompt :: XPConfig -> X ()
-passRemovePrompt = mkPassPrompt removePassword
+passRemovePrompt = mkPassPrompt "Remove password" removePassword
 
 -- | Select a password.
 --
