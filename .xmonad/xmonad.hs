@@ -150,7 +150,7 @@ spawnZenityCmd = spawn . zenityCmd
 -- | Run or raise with a default config folder from which finding the command
 --
 myRunOrRaise :: String -> String -> Query Bool -> X ()
-myRunOrRaise home cmd = runOrRaiseNext (home ++ cmd)
+myRunOrRaise home cmd = runOrRaiseNext $ combine home cmd
 
 -- | My keymap as (prefix keybindings, command description, command)
 --
@@ -159,14 +159,14 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
                                             , layoutHook = myLayoutHook
                                             , workspaces = myWss}) =
   [ (prefix "C-g"       , "abort"                      , spawn "xdotool key Escape")
-  , (prefix "e"         , "emacs"                      , myRunOrRaise home "/bin/emacs/emacs.sh"                        (className =? "Emacs"))
-  , (prefix "S-x"       , "xephyr"                     , myRunOrRaise home "/bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
-  , (prefix "y"         , "yed"                        , myRunOrRaise home "/bin/app/yed.sh"                            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-install4j-runtime-launcher-Launcher"))
-  , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "/applications/LightTable/LightTable"        (className =? "ltbin"))
-  , (prefix "i"         , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"))
-  , (prefix "C-x"       , "ide"                        , myRunOrRaise home "/bin/ide/idea.sh"                           (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"))
-  , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "/applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
-  , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "/applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
+  , (prefix "e"         , "emacs"                      , myRunOrRaise home "bin/emacs/emacs.sh"                        (className =? "Emacs"))
+  , (prefix "S-x"       , "xephyr"                     , myRunOrRaise home "bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
+  , (prefix "y"         , "yed"                        , myRunOrRaise home "bin/app/yed.sh"                            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-install4j-runtime-launcher-Launcher"))
+  , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "applications/LightTable/LightTable"        (className =? "ltbin"))
+  , (prefix "i"         , "ide"                        , myRunOrRaise home "bin/ide/idea.sh"                           (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"))
+  , (prefix "C-x"       , "ide"                        , myRunOrRaise home "bin/ide/idea.sh"                           (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"))
+  , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
+  , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (className =? "Gnome-terminal"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
