@@ -62,18 +62,18 @@ passRemovePrompt = mkPassPrompt "Remove password" removePassword
 -- | Select a password.
 --
 selectPassword :: String -> X ()
-selectPassword s = spawn $ "pass --clip " ++ s
+selectPassword passLabel = spawn $ "pass --clip " ++ passLabel
 
 -- | Generate a 30 characters password for a given entry.
 -- If the entry already exists, it is updated with a new password.
 --
 generatePassword :: String -> X ()
-generatePassword s = spawn $ "pass generate --force " ++ s ++ " 30"
+generatePassword passLabel = spawn $ "pass generate --force " ++ passLabel ++ " 30"
 
 -- | Remove a password stored for a given entry.
 --
 removePassword :: String -> X ()
-removePassword s = spawn $ "pass rm --force " ++ s
+removePassword passLabel = spawn $ "pass rm --force " ++ passLabel
 
 -- | Retrieve the list of passwords from the default password storage in $HOME/.password-store
 --
