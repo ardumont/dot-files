@@ -4,6 +4,7 @@
 --exclude='*.org'
 --exclude='*.md'
 --exclude='*.txt'
+--exclude='*.properties'
 --langmap=Lisp:+.clj.cljs
 --langdef=scala
 --langmap=scala:.scala
