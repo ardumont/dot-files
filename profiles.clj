@@ -10,7 +10,7 @@
                   [com.palletops/pallet-lein "0.8.0-alpha.1"]
                   [pallet/lein-template      "0.2.10"]
                   [lein-cljsbuild            "0.3.0"]
-                  [cider/cider-nrepl         "0.6.0"]
+                  [cider/cider-nrepl         "0.7.0-SNAPSHOT"]
                   [lein-expectations         "0.0.8"]]
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
