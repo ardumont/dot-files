@@ -73,6 +73,8 @@ alias cdw='cd $HOME/repo/pro/wikeo'
 
 alias m='make'
 
+alias ifc='/sbin/ifconfig'
+
 ################ Git aliases
 
 # use hub to access easily github
