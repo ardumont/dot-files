@@ -168,6 +168,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
   , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
   , (prefix "S-g"       , "gparted"                    , myRunOrRaise home "gparted.sh"                                (appName =? "gpartedbin" <&&> className =? "Gpartedbin"))
+  , (prefix "S-u"       , "usb-creator-gtk"            , myRunOrRaise home "usb-creator-gtk"                           (appName =? "usb-creator-gtk" <&&> className =? "Usb-creator-gtk"))
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (className =? "Gnome-terminal"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
