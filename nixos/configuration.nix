@@ -31,6 +31,11 @@
   environment.systemPackages = with pkgs; [
     wget curl
     gnumake
+    dropbox
+    trayer
+    xscreensaver
+#    network_management_applet
+#    nautilus
     xclip pass keychain
     htop 
     emacs texinfo
