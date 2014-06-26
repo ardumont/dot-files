@@ -27,21 +27,22 @@
   };
 
   # List packages installed in system profile. To search by name, run:
-  # -env -qaP | grep wget
+  # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     wget curl
-    xclip pass
+    gnumake
+    xclip pass keychain
     htop 
     emacs texinfo
-    dejavu_fonts 
-    tmux
+    dejavu_fonts xfontsel xlsfonts
+    tmux rxvt_unicode
     git
-    bash zsh python
+    tcsh bash zsh python ruby
     firefox 
     haskellPackages.haskellPlatform
     haskellPackages.xmonad
     haskellPackages.xmobar
-    haskellPackages.xmonadContrib    
+    haskellPackages.xmonadContrib
   ];
 
   # List services that you want to enable:
@@ -58,6 +59,11 @@
     enable = true;
     layout = "us";
     xkbOptions = "eurosign:e";
+
+    # touchpad
+    synaptics.enable = true;
+    synaptics.twoFingerScroll = true;    
+
     # xkbOptions = "ctrl:nocaps,terminate=ctrl_alt_backspace";
 
     # Enable the KDE Desktop Environment.
@@ -67,6 +73,10 @@
     windowManager = {
       default = "xmonad";
       xmonad.enable = true;
+      xmonad.enableContribAndExtras = true;
+      xmonad.extraPackages = haskellPackages: [
+        haskellPackages.xmonadContrib  
+      ];
     };
   };
   users = {
