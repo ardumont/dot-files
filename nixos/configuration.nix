@@ -5,19 +5,21 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [
+      ./hardware-configuration.nix # Include the results of the hardware scan.
     ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub = {
+    enable = true;           # Use GRUB boot loader.
+    version = 2;             # Version 2
+    device = "/dev/sda";     # which hard drive to install it
+    memtest86.enable = true; # Activate the check on memory
+  };
 
-  networking.hostName = "job"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless.
+  networking = {
+    hostName = "job";        # Define your hostname.
+    wireless.enable = true;  # Enables wireless.
+  };
 
   time.timeZone = "Europe/Paris";
 
@@ -31,15 +33,18 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+# Failed packages
+#    nix_repl
+#    zenity
+#    network_management_applet
+#    nautilus
     wget curl
     gnumake
     dropbox
     trayer
     xscreensaver
     xlibs.xmessage
-#    zenity
-#    network_management_applet
-#    nautilus
+    offlineimap mu
     most
     xclip pass keychain
     htop 
@@ -47,7 +52,8 @@
     tmux rxvt_unicode
     git
     tcsh bash zsh python ruby
-    firefox 
+    firefox chromium
+    
     haskellPackages.haskellPlatform
     haskellPackages.haskellPlatform.ghc
     haskellPackages.xmonad
@@ -55,6 +61,13 @@
     haskellPackages.xmonadContrib
     haskellPackages.xmonadExtras
   ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    firefox.enableAdobeFlash = true;  
+    firefox.enableGoogleTalkPlugin = true;
+    chromium.enableAdobeFlash = true; 
+  };
 
   # List services that you want to enable:
   services = {
