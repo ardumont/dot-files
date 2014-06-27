@@ -2,10 +2,47 @@ Xft.antialias: true
 Xft.hinting: true
 Xft.hintstyle: hintlight
 Xft.rgba: rgb
+! XTerm*faceName: DejaVu Sans Mono
+! XTerm*faceSize: 8
+! UXTerm*faceName: DejaVu Sans Mono
+! UXTerm*faceSize: 8
+
+! rxvt-unicode setup
+URxvt*termName: screen-256color
 URxvt.letterSpace: -1
-URxvt*facename: DejaVu Sans Mono
-URxvt*faceSize: 10
-XTerm*faceName: DejaVu Sans Mono
-XTerm*faceSize: 8
-UXTerm*faceName: DejaVu Sans Mono
-UXTerm*faceSize: 8
+! URxvt*facename: DejaVu Sans Mono
+! URxvt*faceSize: 10
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=10
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:autohint=true:pixelsize=12
+URxvt*italicFont: xft:DejaVu Sans Mono:italic:autohint=true:pixelsize=12
+URxvt*boldItalicFont: xft:DejaVu Sans Mono:bold:italic:autohint=true:pixelsize=12
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*scrollBar_floating: false
+URxvt*background: Black
+URxvt*foreground: White
+URxvt*colorUL: yellow
+URxvt*underlineColor: yellow
+! URxvt*geometry: 240x84
+! URxvt*loginShell: true
+! URxvt*scrollColor: #777777
+! URxvt*scrollstyle: plain
+! URxvt*scrollTtyKeypress: true
+! URxvt*scrollTtyOutput: false
+! URxvt*scrollWithBuffer: false
+! URxvt*secondaryScreen: true
+! URxvt*secondaryScroll: true
+! URxvt*skipScroll: true
+! URxvt*fading: 30
+! URxvt*utmpInhibit: false
+! URxvt*urgentOnBell: false
+! URxvt*visualBell: true
+! URxvt*mapAlert: true
+! URxvt*mouseWheelScrollPage: false
+! URxvt*saveLines: 0
+! URxvt*buffered: true
+! URxvt*hold: false
+! URxvt*internalBorder:
+! URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+! URxvt*perl-ext-common:
+! URxvt*perl-ext:
