@@ -93,10 +93,16 @@ getPasswords = do
 myTerminal :: String
 myTerminal = "rxvt"
 
+myTerminalQuery :: Query Bool
+myTerminalQuery = appName =? "rxvt" <&&> className =? "URxvt"
+
 -- | My preferential browser
 --
 myBrowser :: String
 myBrowser = "firefox"
+
+myBrowserQuery :: Query Bool
+myBrowserQuery = className =? "Firefox"
 
 -- | Whether focus follows the mouse pointer.
 --
@@ -170,7 +176,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-g"       , "gparted"                    , myRunOrRaise home "bin/admin/gparted.sh"                      (appName =? "gpartedbin" <&&> className =? "Gpartedbin"))
   , (prefix "S-u"       , "usb-creator-gtk"            , myRunOrRaise home "bin/admin/usb-creator.sh"                  (appName =? "usb-creator-gtk" <&&> className =? "Usb-creator-gtk"))
   , (prefix prefixKey   , "promote"                    , promote)
-  , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (appName =? "rxvt" <&&> className =? "URxvt"))
+  , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     myTerminalQuery)
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
   , (prefix "S-t"       , "video-player"               , runOrRaiseNext "totem"                    (className =? "Totem"))
   , (prefix "C-e"       , "pdf-reader"                 , runOrRaiseNext "evince"                   (className =? "Evince"))
@@ -195,7 +201,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-f"       , "fbreader"                   , runOrRaiseNext "fbreader"                 (className =? "fbreader"))
   , (prefix "M1-t"      , "tuxguitar"                  , runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
   , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (className =? "skype"))
-  , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  (className =? "Firefox"))
+  , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  myBrowserQuery)
   , (prefix "C-S-e"     , "env"                        , spawnZenityCmd "env")
   , (prefix "a"         , "date"                       , spawnZenityCmd "date")
   , (prefix "S-k"       , "ssh-add-l"                  , spawnZenityCmd "ssh-add -l")
@@ -373,8 +379,8 @@ myManageHook = composeAll
     , appName   =? "desktop_window"         --> doIgnore
     , appName   =? "kdesktop"               --> doIgnore
     , className =? "Emacs"                  --> doShift workspaceEmacs
-    , className =? "Gnome-terminal"         --> doShift workspaceTerminal
-    , className =? "Firefox"                --> doShift workspaceWeb
+    , myTerminalQuery                       --> doShift workspaceTerminal
+    , myBrowserQuery                        --> doShift workspaceWeb
     , className =? "Evince"                 --> doShift workspaceBooks
     , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"      --> doShift workspaceIde
     , appName =? "sun-awt-X11-XFramePeer" --> doShift workspaceDb
