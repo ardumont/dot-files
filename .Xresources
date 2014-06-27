@@ -2,5 +2,10 @@ Xft.antialias: true
 Xft.hinting: true
 Xft.hintstyle: hintlight
 Xft.rgba: rgb
-URxvt.font: xft:DejaVu Sans Mono-12
 URxvt.letterSpace: -1
+URxvt*facename: DejaVu Sans Mono
+URxvt*faceSize: 10
+XTerm*faceName: DejaVu Sans Mono
+XTerm*faceSize: 8
+UXTerm*faceName: DejaVu Sans Mono
+UXTerm*faceSize: 8
