@@ -91,7 +91,7 @@ getPasswords = do
 -- certain contrib modules.
 --
 myTerminal :: String
-myTerminal = "gnome-terminal"
+myTerminal = "rxvt"
 
 -- | My preferential browser
 --
@@ -170,7 +170,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-g"       , "gparted"                    , myRunOrRaise home "bin/admin/gparted.sh"                      (appName =? "gpartedbin" <&&> className =? "Gpartedbin"))
   , (prefix "S-u"       , "usb-creator-gtk"            , myRunOrRaise home "bin/admin/usb-creator.sh"                  (appName =? "usb-creator-gtk" <&&> className =? "Usb-creator-gtk"))
   , (prefix prefixKey   , "promote"                    , promote)
-  , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (className =? "Gnome-terminal"))
+  , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     (appName =? "rxvt" <&&> className =? "URxvt"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
   , (prefix "S-t"       , "video-player"               , runOrRaiseNext "totem"                    (className =? "Totem"))
   , (prefix "C-e"       , "pdf-reader"                 , runOrRaiseNext "evince"                   (className =? "Evince"))
