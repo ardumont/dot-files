@@ -91,10 +91,10 @@ getPasswords = do
 -- certain contrib modules.
 --
 myTerminal :: String
-myTerminal = "rxvt"
+myTerminal = "urxvt"
 
 myTerminalQuery :: Query Bool
-myTerminalQuery = appName =? "rxvt" <&&> className =? "URxvt"
+myTerminalQuery = className =? "URxvt"
 
 -- | My preferential browser
 --
