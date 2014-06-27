@@ -27,7 +27,6 @@ alias emc='emacsclient -c'
 alias remc="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 
 # vagrant
-alias v='vagrant'
 
 # aptitude
 alias sp='aptitude search'
@@ -114,6 +113,10 @@ alias gcob='git checkout -b'
 alias gmc='git merge origin/$(current_branch)'
 alias glast="git last | head -1 | cut -d' ' -f2"
 
+################ vagrant
+
+alias v='vagrant'
+alias vsnap='vagrant snapshot'
 
 ################ OS
 
