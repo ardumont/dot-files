@@ -7,4 +7,4 @@ REPO_PERSO=${1-"$HOME/repo/perso"}
 EMACS=${2-"prelude"}
 CI=${3-"n"}
 
-[ "$EMACS" = "live" ] && $WDIR/deploy-emacs-live-packs.sh $REPO_PERSO $CI || $WDIR/deploy-emacs-prelude-packs.sh $REPO_PERSO $CI
+[ "$EMACS" = "live" ] && bash $WDIR/deploy-emacs-live-packs.sh $REPO_PERSO $CI || bash $WDIR/deploy-emacs-prelude-packs.sh $REPO_PERSO $CI

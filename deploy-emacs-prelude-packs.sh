@@ -21,4 +21,4 @@ if [ ! -d $REPO_PERSO/prelude-packs ]; then
     git submodule update --init
 fi
 
-$REPO_PERSO/prelude-packs/deploy.sh
+bash $REPO_PERSO/prelude-packs/deploy.sh

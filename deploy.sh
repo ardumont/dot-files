@@ -33,7 +33,7 @@ create-links-from-list() {
 REPO_DOTFILES=$(dirname $0)
 
 # standard files
-FILES=".xmonad.start .stumpwm.start .stumpwmrc .stumpwm-functions.lisp .profile .bashrc .shrc .shrc-env .shrc-path .shrc-aliases .shrc-prompt .tmux.conf .ratpoisonrc .vimrc .git-completion.bash .conkerorrc .sbclrc .xmonad .Xmodmap quicklisp .ctags .gitignore_global .zshrc Makefile .gitconfig .xinitrc .xsession .stalonetrayrc .FBReader .xscreensaver .gimpgimp-layout-1920x1080 .gimpgimp-rules .offlineimaprc .signature .signature2 .offlineimap-helpers.py .xmobarrc .Xresources"
+FILES=".xmonad.start .stumpwm.start .stumpwmrc .stumpwm-functions.lisp .profile .bashrc .shrc .shrc-env .shrc-path .shrc-aliases .shrc-prompt .tmux.conf .ratpoisonrc .vimrc .git-completion.bash .conkerorrc .sbclrc .xmonad .Xmodmap quicklisp .ctags .gitignore_global .zshrc Makefile .gitconfig .xinitrc .xsession .stalonetrayrc .FBReader .xscreensaver .gimpgimp-layout-1920x1080 .gimpgimp-rules .offlineimaprc .signature .signature2 .offlineimap-helpers.py .xmobarrc .Xresources .nixos-hooks"
 
 create-links-from-list $REPO_DOTFILES $HOME $FILES
 
@@ -85,7 +85,7 @@ ln -nsf $REPO_PERSO/sh $HOME/bin
 
 ## emacs
 
-$REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO $WITH_EMACS_ENV $CI
+bash $REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO $WITH_EMACS_ENV $CI
 
 ## oh-my-zsh
 
@@ -95,7 +95,7 @@ ln -nsf $REPO_PERSO/oh-my-zsh $HOME/.oh-my-zsh
 
 ## KeySnail
 
-$REPO_DOTFILES/deploy-keysnail.sh
+bash $REPO_DOTFILES/deploy-keysnail.sh
 
 ## emacs
 
@@ -103,4 +103,4 @@ ln -nsf $REPO_DOTFILES/.mc-lists.el ~/.emacs.d/
 
 ### Adjust system configuration
 
-$WDIR/adjust-system-configuration.sh
+bash $WDIR/adjust-system-configuration.sh

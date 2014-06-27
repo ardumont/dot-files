@@ -19,4 +19,4 @@ if [ ! -d $REPO_PERSO/emacs-live-packs ]; then
     git submodule update --init
 fi
 
-$REPO_PERSO/emacs-live-packs/deploy.sh
+bash $REPO_PERSO/emacs-live-packs/deploy.sh
