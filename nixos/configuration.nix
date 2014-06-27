@@ -19,9 +19,11 @@
   networking.hostName = "job"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless.
 
+  time.timeZone = "Europe/Paris";
+
   # Select internationalisation properties.
   i18n = {
-    consoleFont = "lat9w-16";
+    # consoleFont = "lat9w-16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
@@ -34,56 +36,96 @@
     dropbox
     trayer
     xscreensaver
+    xlibs.xmessage
+#    zenity
 #    network_management_applet
 #    nautilus
+    most
     xclip pass keychain
     htop 
     emacs texinfo
-    dejavu_fonts xfontsel xlsfonts
     tmux rxvt_unicode
     git
     tcsh bash zsh python ruby
     firefox 
     haskellPackages.haskellPlatform
+    haskellPackages.haskellPlatform.ghc
     haskellPackages.xmonad
     haskellPackages.xmobar
     haskellPackages.xmonadContrib
+    haskellPackages.xmonadExtras
   ];
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    desktopManager.default = "none";
-    enable = true;
-    layout = "us";
-    xkbOptions = "eurosign:e";
-
-    # touchpad
-    synaptics.enable = true;
-    synaptics.twoFingerScroll = true;    
-
-    # xkbOptions = "ctrl:nocaps,terminate=ctrl_alt_backspace";
-
-    # Enable the KDE Desktop Environment.
-    # displayManager.kdm.enable = true;
-    # desktopManager.kde4.enable = true;
-
-    windowManager = {
-      default = "xmonad";
-      xmonad.enable = true;
-      xmonad.enableContribAndExtras = true;
-      xmonad.extraPackages = haskellPackages: [
-        haskellPackages.xmonadContrib  
-      ];
+  services = {
+    openssh.enable = true;  # OpenSSH daemon.
+    printing.enable = true; # CUPS to print documents.
+    ntp.enable = true;      # NTP
+    xserver = {
+      desktopManager.default = "none";
+      enable = true;
+      layout = "us";
+      xkbOptions = "eurosign:e";
+  
+      # touchpad
+      synaptics.enable = true;
+      synaptics.twoFingerScroll = true;    
+  
+      # xkbOptions = "ctrl:nocaps,terminate=ctrl_alt_backspace";
+  
+      # Enable the KDE Desktop Environment.
+      # displayManager.kdm.enable = true;
+      # desktopManager.kde4.enable = true;
+  
+      windowManager = {
+        default = "xmonad";
+        xmonad.enable = true;
+        xmonad.enableContribAndExtras = true;
+        xmonad.extraPackages = haskellPackages: [
+          haskellPackages.xmonad 
+          haskellPackages.xmonadContrib  
+        ];
+      };
     };
+
+    nixosManual.showManual = true; # Add the NixOS Manual on virtual console 8
   };
+
+  fonts = {
+    # enableGhostscriptFonts = true; 
+    # enableCoreFonts = true; # M$'s proprietary Core Fonts.
+    enableFontConfig = true;
+    enableFontDir = true;
+    fonts = [
+       pkgs.dejavu_fonts
+       # pkgs.andagii
+       # pkgs.anonymousPro
+       # pkgs.arkpandora_ttf
+       # pkgs.bakoma_ttf
+       # pkgs.cantarell_fonts
+       # pkgs.corefonts
+       # pkgs.clearlyU
+       # pkgs.cm_unicode
+       # pkgs.freefont_ttf
+       # pkgs.gentium
+       # pkgs.inconsolata
+       # pkgs.liberation_ttf
+       # pkgs.libertine
+       # pkgs.lmodern
+       # pkgs.mph_2b_damase
+       # pkgs.oldstandard
+       # pkgs.theano
+       # pkgs.tempora_lgc
+       # pkgs.terminus_font
+       # pkgs.ttf_bitstream_vera
+       # pkgs.ttf_bitstream_vera_for_powerline
+       # pkgs.ucsFonts
+       # pkgs.unifont
+       # pkgs.vistafonts
+       # pkgs.wqy_zenhei
+    ];
+  };
+
   users = {
     defaultUserShell = "/var/run/current-system/sw/bin/zsh";
     
@@ -99,4 +141,13 @@
       useDefaultShell = true;
     }];
   };
+
+  # sudo setup
+  security.sudo.configFile=
+   ''
+     root	ALL=(ALL) SETENV: ALL
+     %wheel	ALL=(ALL) SETENV: ALL
+     tony	ALL=(ALL) SETENV: ALL
+   '';
+
 }
