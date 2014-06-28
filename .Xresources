@@ -50,8 +50,7 @@ URxvt*underlineColor: yellow
 ! URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
 
 !-*- Perl extensions -*-
-URxvt.perl-ext-common:default,clipboard,matcher,keyboard-select,font-size
-URxvt.keysym.M-u:     perl:url-select:select_next
+URxvt.perl-ext-common:default,clipboard
 URxvt.url-launcher:   /usr/bin/firefox
 URxvt.underlineURLs:  True
 URxvt.matcher.button: 1
