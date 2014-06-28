@@ -4,7 +4,6 @@ Xft.hintstyle: hintlight
 Xft.rgba: rgb
 
 ! rxvt-unicode setup
-URxvt.clipboard.autocopy: true
 URxvt*termName: screen-256color
 URxvt.letterSpace: -1
 
@@ -49,14 +48,36 @@ URxvt*underlineColor: yellow
 ! URxvt*internalBorder:
 ! URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
 
+!URxvt.copyCommand:   xsel -ib
+!URxvt.pasteCommand:  xsel -ob
+
 !-*- Perl extensions -*-
-URxvt.perl-ext-common:default,clipboard,font-size
+! stored in ~/.urxvt/ext/
+URxvt.perl-ext-common: clipboard,font-size,keyboard-select,url-select
 URxvt.url-launcher:   /usr/bin/firefox
 URxvt.underlineURLs:  True
 URxvt.matcher.button: 1
-URxvt.keysym.C-S-Y:    perl:clipboard:paste
-!URxvt.copyCommand:   xsel -ib
-!URxvt.pasteCommand:  xsel -ob
+
+! keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s:        perl:keyboard-select:search
+
+! url-select
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.autocopy:  true ! if set to true, selected URLs are automatically copied to the PRIMARY buffer
+URxvt.url-select.launcher:  /usr/bin/firefox ! browser/command to open selected URL with
+URxvt.url-select.underline: true ! all URLs get underlined
+
+! clipboard
+URxvt.keysym.C-M-w:   perl:clipboard:copy
+URxvt.keysym.C-M-y:   perl:clipboard:paste
+! URxvt.keysym.C-M-y:   perl:clipboard:paste_escaped
+
+URxvt.clipboard.autocopy: true ! the clipboard is automatically updated whenever the PRIMARY selection changes
+! URxvt.clipboard.copycmd:  xsel -ib
+! URxvt.clipboard.pastecmd: xsel -ob
+
+! font-size
 URxvt.keysym.C-Up:     perl:font-size:increase
 URxvt.keysym.C-Down:   perl:font-size:decrease
 URxvt.keysym.C-S-Up:   perl:font-size:incglobal
