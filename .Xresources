@@ -50,10 +50,16 @@ URxvt*underlineColor: yellow
 ! URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
 
 !-*- Perl extensions -*-
-URxvt.perl-ext-common:default,clipboard
+URxvt.perl-ext-common:default,clipboard,font-size
 URxvt.url-launcher:   /usr/bin/firefox
 URxvt.underlineURLs:  True
 URxvt.matcher.button: 1
-URxvt.keysym.Shift-Control-Y: perl:clipboard:paste
+URxvt.keysym.C-S-Y:    perl:clipboard:paste
 !URxvt.copyCommand:   xsel -ib
 !URxvt.pasteCommand:  xsel -ob
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.keysym.C-S-R:    perl:font-size:reset
+URxvt.font-size.step:  4
