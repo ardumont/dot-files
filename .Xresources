@@ -6,6 +6,16 @@ Xft.rgba: rgb
 ! rxvt-unicode setup
 URxvt*termName: screen-256color
 URxvt.letterSpace: -1
+
+! Xft (X FreeType) with Bitstream, DejaVu, Liberation, or Terminus fonts:
+!  Fedora/debian packages: libXft/libxft2
+!  An anti-aliased font setup with Xft looks fantastic; it can be a bit choppy
+!  on older systems. You can always turn off anti-aliasing (antialias=false) if
+!  your terminal is sluggish. Use only ONE of the Xft pairs below:
+! Xft: DejaVu fonts
+!  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
 URxvt*boldFont: xft:DejaVu Sans Mono:bold:antialias=true:hinting=true:pixelsize=12
 URxvt*italicFont: xft:DejaVu Sans Mono:italic:hinting=true:pixelsize=12
