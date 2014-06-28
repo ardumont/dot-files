@@ -16,8 +16,6 @@ URxvt.letterSpace: -1
 !  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
 URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:antialias=true:hinting=true:pixelsize=12
 URxvt*italicFont: xft:DejaVu Sans Mono:italic:hinting=true:pixelsize=12
 URxvt*boldItalicFont: xft:DejaVu Sans Mono:bold:italic:hinting=true:pixelsize=12
 
