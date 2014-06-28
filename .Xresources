@@ -4,6 +4,7 @@ Xft.hintstyle: hintlight
 Xft.rgba: rgb
 
 ! rxvt-unicode setup
+URxvt.clipboard.autocopy: true
 URxvt*termName: screen-256color
 URxvt.letterSpace: -1
 
@@ -47,5 +48,13 @@ URxvt*underlineColor: yellow
 ! URxvt*hold: false
 ! URxvt*internalBorder:
 ! URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
-! URxvt*perl-ext-common:
-! URxvt*perl-ext:
+
+!-*- Perl extensions -*-
+URxvt.perl-ext-common:default,clipboard,matcher,keyboard-select,font-size
+URxvt.keysym.M-u:     perl:url-select:select_next
+URxvt.url-launcher:   /usr/bin/firefox
+URxvt.underlineURLs:  True
+URxvt.matcher.button: 1
+URxvt.keysym.Shift-Control-Y: perl:clipboard:paste
+!URxvt.copyCommand:   xsel -ib
+!URxvt.pasteCommand:  xsel -ob
