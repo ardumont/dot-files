@@ -12,9 +12,9 @@ deploy:
 deploy-keysnail:
 	$(REPO_DOTFILES)/deploy-keysnail.sh
 
-pull: pull-dot pull-bin pull-org pull-emacs pull-packs
+pull: pull-dot pull-bin pull-org pull-packs
 
-push: push-dot push-bin push-org push-emacs push-packs
+push: push-dot push-bin push-org push-packs
 
 pull-dot:
 	cd $(REPO_DOTFILES) && git pull --rebase --prune origin master
