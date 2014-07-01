@@ -104,6 +104,11 @@ myBrowser = "firefox"
 myBrowserQuery :: Query Bool
 myBrowserQuery = className =? "Firefox"
 
+-- | My preferential emacs
+--
+myEmacsQuery :: Query Bool
+myEmacsQuery = appName =? "emacs"
+
 -- | Whether focus follows the mouse pointer.
 --
 myFocusFollowsMouse :: Bool
@@ -165,7 +170,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
                                             , layoutHook = myLayoutHook
                                             , workspaces = myWss}) =
   [ (prefix "C-g"       , "abort"                      , spawn "xdotool key Escape")
-  , (prefix "e"         , "emacs"                      , myRunOrRaise home "bin/emacs/emacs.sh"                        (className =? "Emacs"))
+  , (prefix "e"         , "emacs"                      , myRunOrRaise home "bin/emacs/emacs.sh"                        myEmacsQuery)
   , (prefix "S-x"       , "xephyr"                     , myRunOrRaise home "bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
   , (prefix "y"         , "yed"                        , myRunOrRaise home "bin/app/yed.sh"                            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-install4j-runtime-launcher-Launcher"))
   , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "applications/LightTable/LightTable"        (className =? "ltbin"))
@@ -378,7 +383,7 @@ myManageHook = composeAll
     , className =? "Zenity"                 --> doFloat
     , appName   =? "desktop_window"         --> doIgnore
     , appName   =? "kdesktop"               --> doIgnore
-    , className =? "Emacs"                  --> doShift workspaceEmacs
+    , myEmacsQuery                          --> doShift workspaceEmacs
     , myTerminalQuery                       --> doShift workspaceTerminal
     , myBrowserQuery                        --> doShift workspaceWeb
     , className =? "Evince"                 --> doShift workspaceBooks
