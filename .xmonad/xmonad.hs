@@ -1,26 +1,26 @@
-import XMonad
-import Data.Monoid
-import System.Exit
-import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
-import XMonad.Config.Desktop
-import XMonad.Util.EZConfig
-import XMonad.Actions.WindowGo (runOrRaiseNext)
-import XMonad.Actions.Promote (promote)
-import XMonad.Prompt.Window
-import XMonad.Prompt.XMonad (xmonadPromptC)
-import XMonad.Prompt.AppLauncher (launchApp)
-import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
-import qualified XMonad.Actions.Submap as SM
+import qualified Data.Map as M
+import           Data.Monoid
+import           System.Exit
+import           System.IO
+import           XMonad
+import           XMonad.Actions.Promote (promote)
 import qualified XMonad.Actions.Search as S
-import XMonad.Hooks.DynamicLog
-import System.IO
-import XMonad.Hooks.ManageDocks
-import XMonad.Util.Run (spawnPipe)
+import qualified XMonad.Actions.Submap as SM
+import           XMonad.Actions.WindowGo (runOrRaiseNext)
+import           XMonad.Config.Desktop
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Prompt.AppLauncher (launchApp)
+import           XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
+import           XMonad.Prompt.Window
+import           XMonad.Prompt.XMonad (xmonadPromptC)
+import qualified XMonad.StackSet as W
+import           XMonad.Util.EZConfig
+import           XMonad.Util.Run (spawnPipe)
 
-import System.Directory (getDirectoryContents, getHomeDirectory)
-import System.FilePath (takeBaseName, combine)
-import XMonad.Prompt
+import           System.Directory (getDirectoryContents, getHomeDirectory)
+import           System.FilePath (takeBaseName, combine)
+import           XMonad.Prompt
 
 ------------------------------------------------------------------------
 -- Password section
