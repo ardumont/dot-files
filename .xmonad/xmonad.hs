@@ -195,7 +195,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "n"         , "nemo"                       , runOrRaiseNext "nemo"                     (className =? "Nemo"))
   , (prefix "S-n"       , "thunar"                     , runOrRaiseNext "thunar"                   (className =? "thunar"))
   , (prefix "C-M1-f"    , "filezilla"                  , runOrRaiseNext "filezilla"                (className =? "Filezilla"))
-  , (prefix "C-v"       , "virtualbox"                 , runOrRaiseNext "virtualbox"               (className =? "Qt-subapplication"))
+  , (prefix "C-v"       , "virtualbox"                 , runOrRaiseNext "virtualbox"               (appName =? "Virtualbox" <&&> className =? "Qt-subapplication"))
   , (prefix "u"         , "unetbootin"                 , runOrRaiseNext "unetbootin"               (className =? "unetbootin"))
   , (prefix "/"         , "transmission"               , runOrRaiseNext "transmission-gtk"         (appName =? "transmission-gtk" <&&> className =? "Transmission-gtk"))
   , (prefix "S-g"       , "gparted"                    , runOrRaiseNext "gksudo /usr/sbin/gparted" (className =? "gpartedbin"))
