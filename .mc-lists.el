@@ -33,6 +33,7 @@
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
+        org-force-cycle-archived
         org-self-insert-command
         paredit-backward
         paredit-close-round
