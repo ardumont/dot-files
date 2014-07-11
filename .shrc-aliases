@@ -117,6 +117,8 @@ alias glast="git last | head -1 | cut -d' ' -f2"
 
 alias v='vagrant'
 alias vsnap='vagrant snapshot'
+alias vst='vagrant status'
+alias vls='vagrant snapshot list'
 
 ################ OS
 
