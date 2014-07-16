@@ -41,7 +41,7 @@
     gnupg gnupg1
     pmount
     wget curl
-    gnumake
+    gcc gnumake
     dropbox
     trayer
     xscreensaver
@@ -54,6 +54,7 @@
     tmux rxvt_unicode
     git
     tcsh bash zsh python ruby
+    zlib
     firefox chromium
     acpi    
     haskellPackages.haskellPlatform
@@ -62,6 +63,12 @@
     haskellPackages.xmobar
     haskellPackages.xmonadContrib
     haskellPackages.xmonadExtras
+    haskellPackages.zlib
+    haskellPackages.cabalInstall
+    haskellPackages.cabalDev
+    clojure leiningen
+    gparted
+    binutils
   ];
 
   nixpkgs.config = {
