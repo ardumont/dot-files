@@ -40,7 +40,7 @@
     gitAndTools.tig gitg
     gnupg gnupg1
     pmount
-    wget curl
+    wget curl tree
     gcc gnumake
     dropbox
     trayer
