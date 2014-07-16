@@ -192,7 +192,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-j"      , "jconcole"                   , runOrRaiseNext "jconsole"                 (className =? "sun-tools-jconsole-JConsole"))
   , (prefix "C-c"       , "arduino-ide"                , runOrRaiseNext "arduino"                  (className =? "processing-appBase"))
   , (prefix "C-w"       , "wireshark"                  , runOrRaiseNext "gksudo wireshark"         (className =? "wireshark"))
-  , (prefix "n"         , "nemo"                       , runOrRaiseNext "nemo"                     (className =? "Nemo"))
+  , (prefix "n"         , "nautilus"                   , runOrRaiseNext "nautilus"                 (appName =? "nautilus" <&&> className =? "Nautilus"))
   , (prefix "S-n"       , "thunar"                     , runOrRaiseNext "thunar"                   (className =? "thunar"))
   , (prefix "C-M1-f"    , "filezilla"                  , runOrRaiseNext "filezilla"                (className =? "Filezilla"))
   , (prefix "C-v"       , "virtualbox"                 , runOrRaiseNext "virtualbox"               (appName =? "Virtualbox" <&&> className =? "Qt-subapplication"))
