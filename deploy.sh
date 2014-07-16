@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/usr/bin/env bash -xe
 
 # This script deploys the links to your home:
 # Use: /path/to/the/script/$0

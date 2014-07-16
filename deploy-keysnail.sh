@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/usr/bin/env bash -x
 
 # Use: $0
 # Destined to be called from deploy.sh in dot-files git repository

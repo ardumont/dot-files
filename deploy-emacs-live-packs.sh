@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 REPO_PERSO=$1
 CI=${2:"n"}

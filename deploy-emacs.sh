@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Use: $0 <PACKS>
 # PACKS - live for emacs-live, anything else for prelude
 

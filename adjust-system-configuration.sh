@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/usr/bin/env bash -x
 
 # Use: $0
 # A script to adjust environment settings to match my needs
