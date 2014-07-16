@@ -17,7 +17,7 @@
   };
 
   networking = {
-    hostName = "job";        # Define your hostname.
+    hostName = "dagobah";    # Define your hostname.
     wireless.enable = true;  # Enables wireless.
   };
 
