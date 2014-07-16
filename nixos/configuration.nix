@@ -38,7 +38,7 @@
     networkmanagerapplet
     gnome.zenity
     gitAndTools.tig gitg
-    gnupg
+    gnupg gnupg1
     pmount
     wget curl
     gnumake
