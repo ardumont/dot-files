@@ -33,17 +33,19 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-# Failed packages
-#    nix_repl
-#    zenity
-#    network_management_applet
-#    nautilus
+    nix-repl
+    gnome3.nautilus
+    networkmanagerapplet
+    gnome.zenity
+    gitAndTools.tig gitg
+    gnupg
+    pmount
     wget curl
     gnumake
     dropbox
     trayer
     xscreensaver
-    xlibs.xmessage
+    xlibs.xmessage xlibs.xmodmap
     offlineimap mu
     most
     xclip pass keychain
