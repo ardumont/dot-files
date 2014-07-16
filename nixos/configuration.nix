@@ -35,7 +35,7 @@
   environment.systemPackages = with pkgs; [
     nix-repl
     gnome3.nautilus
-    networkmanagerapplet
+    networkmanager networkmanagerapplet
     gnome.zenity
     gitAndTools.tig gitg
     gnupg gnupg1
