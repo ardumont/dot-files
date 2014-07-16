@@ -55,7 +55,7 @@
     git
     tcsh bash zsh python ruby
     firefox chromium
-    
+    acpi    
     haskellPackages.haskellPlatform
     haskellPackages.haskellPlatform.ghc
     haskellPackages.xmonad
