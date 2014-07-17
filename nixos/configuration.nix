@@ -19,6 +19,11 @@
   networking = {
     hostName = "dagobah";    # Define your hostname.
     wireless.enable = true;  # Enables wireless.
+    extraHosts =
+    ''
+      192.168.0.10 dagobah
+      192.168.0.20 nas
+    '';
   };
 
   time.timeZone = "Europe/Paris";
