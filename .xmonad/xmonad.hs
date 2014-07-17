@@ -205,7 +205,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "z"         , "gitk"                       , runOrRaiseNext "gitk"                     (className =? "gitk"))
   , (prefix "S-f"       , "fbreader"                   , runOrRaiseNext "fbreader"                 (className =? "fbreader"))
   , (prefix "M1-t"      , "tuxguitar"                  , runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
-  , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (className =? "skype"))
+  , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (appName =? "skype" <&&> className =? "Skype"))
   , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  myBrowserQuery)
   , (prefix "C-S-e"     , "env"                        , spawnZenityCmd "env")
   , (prefix "a"         , "date"                       , spawnZenityCmd "date")
