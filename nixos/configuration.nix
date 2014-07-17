@@ -43,7 +43,7 @@
     networkmanager networkmanagerapplet
     gnome.zenity
     gitAndTools.tig gitg
-    gnupg gnupg1
+    gnupg gnupg1 pinentry
     pmount
     wget curl tree
     gcc gnumake
