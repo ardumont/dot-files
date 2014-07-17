@@ -92,13 +92,12 @@
       desktopManager.default = "none";
       enable = true;
       layout = "us";
-      xkbOptions = "eurosign:e";
+      xkbOptions = "eurosign:e,ctrl:nocaps,terminate=ctrl_alt_backspace,altwin:meta_alt";
   
       # touchpad
       synaptics.enable = true;
       synaptics.twoFingerScroll = true;    
   
-      # xkbOptions = "ctrl:nocaps,terminate=ctrl_alt_backspace";
   
       # Enable the KDE Desktop Environment.
       # displayManager.kdm.enable = true;
