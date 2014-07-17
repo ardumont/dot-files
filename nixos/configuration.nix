@@ -75,6 +75,7 @@
     clojure leiningen
     gparted
     binutils
+    pmutils
   ];
 
   nixpkgs.config = {
