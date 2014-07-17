@@ -76,6 +76,7 @@
     gparted
     binutils
     pmutils
+    autojump
   ];
 
   nixpkgs.config = {
