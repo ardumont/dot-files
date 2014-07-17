@@ -39,18 +39,19 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     nix-repl
-    gnome3.nautilus
+    gnome3.nautilus file
+    filezilla
     networkmanager networkmanagerapplet
     gnome.zenity
     gitAndTools.tig gitg
-    gnupg gnupg1 pinentry
+    gnupg pinentry
     pmount
     wget curl tree
     gcc gnumake
     dropbox
     trayer
     xscreensaver
-    xlibs.xmessage xlibs.xmodmap
+    xlibs.xmessage xlibs.xmodmap xdotool
     offlineimap mu
     most
     xclip pass keychain
