@@ -80,7 +80,8 @@ alias ifc='/sbin/ifconfig'
 alias git='hub'
 
 # gitk --all
-alias gitka='gitk --all'
+alias gitka='gitg --all'
+alias gitga='gitg --all'
 
 # git status
 alias gst='git status -sb'
