@@ -109,12 +109,14 @@
   
       windowManager = {
         default = "xmonad";
-        xmonad.enable = true;
-        xmonad.enableContribAndExtras = true;
-        xmonad.extraPackages = haskellPackages: [
-          haskellPackages.xmonad 
-          haskellPackages.xmonadContrib  
-        ];
+        xmonad = {
+          enable = true;
+          enableContribAndExtras = true;
+          extraPackages = haskellPackages: [
+            haskellPackages.xmonad 
+            haskellPackages.xmonadContrib  
+          ];
+        };
       };
     };
 
