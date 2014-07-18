@@ -39,7 +39,8 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     nix-repl
-    gnome3.nautilus file
+    gnome3.nautilus gnome3.gnome_settings_daemon
+    file
     filezilla
     networkmanager networkmanagerapplet
     gnome.zenity
@@ -51,7 +52,7 @@
     dropbox
     trayer
     xscreensaver
-    xlibs.xmessage xlibs.xmodmap xdotool
+    xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass
     offlineimap mu
     most
     xclip pass keychain
@@ -62,9 +63,11 @@
     tcsh bash zsh python ruby
     zlib
     firefox chromium
-    acpi    
+    acpi acpid acpitool
     haskellPackages.haskellPlatform
     haskellPackages.haskellPlatform.ghc
+    haskellPackages.hlint
+    haskellPackages.hdevtools
     haskellPackages.xmonad
     haskellPackages.xmobar
     haskellPackages.xmonadContrib
