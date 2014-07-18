@@ -107,10 +107,6 @@
   
       startGnuPGAgent = true;
   
-      # Enable the KDE Desktop Environment.
-      # displayManager.kdm.enable = true;
-      # desktopManager.kde4.enable = true;
-  
       windowManager = {
         default = "xmonad";
         xmonad.enable = true;
