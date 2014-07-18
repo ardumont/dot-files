@@ -89,6 +89,8 @@
     chromium.enableAdobeFlash = true; 
   };
 
+  programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
+
   # List services that you want to enable:
   services = {
     acpid.enable = true;    # acpi
@@ -96,6 +98,7 @@
     printing.enable = true; # CUPS to print documents.
     ntp.enable = true;      # NTP
     xserver = {
+      startGnuPGAgent = true;
       desktopManager.default = "none";
       enable = true;
       layout = "us";
@@ -104,9 +107,7 @@
       # touchpad
       synaptics.enable = true;
       synaptics.twoFingerScroll = true;    
-  
-      startGnuPGAgent = true;
-  
+    
       windowManager = {
         default = "xmonad";
         xmonad = {
