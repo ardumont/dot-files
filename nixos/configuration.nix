@@ -105,6 +105,7 @@
       synaptics.enable = true;
       synaptics.twoFingerScroll = true;    
   
+      startGnuPGAgent = true;
   
       # Enable the KDE Desktop Environment.
       # displayManager.kdm.enable = true;
