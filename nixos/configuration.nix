@@ -91,7 +91,7 @@
 
   # List services that you want to enable:
   services = {
-    acpid.enable = true;
+    acpid.enable = true;    # acpi
     openssh.enable = true;  # OpenSSH daemon.
     printing.enable = true; # CUPS to print documents.
     ntp.enable = true;      # NTP
