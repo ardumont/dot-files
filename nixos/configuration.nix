@@ -30,7 +30,7 @@
 
   # Select internationalisation properties.
   i18n = {
-    # consoleFont = "lat9w-16";
+    consoleFont = "lat9w-16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
@@ -40,30 +40,32 @@
   environment.systemPackages = with pkgs; [
     nix-repl
     gnome3.nautilus gnome3.gnome_settings_daemon
-    file
+    evince
     filezilla
     networkmanager networkmanagerapplet
     gnome.zenity
-    gitAndTools.tig gitg
+    git gitAndTools.tig gitg
     gnupg gnupg1 pinentry
-    pmount
+    pmount file
     wget curl tree
     gcc gnumake
     dropbox
     trayer
-    xscreensaver
-    xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass
+    xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver
     offlineimap mu
     most
     xclip pass keychain
-    htop 
+    htop powertop
     emacs texinfo
     tmux rxvt_unicode
-    git
     tcsh bash zsh python ruby
     zlib
-    firefox chromium
+    firefox chromium conkeror
+    graphviz
+    nmap netcat wireshark
+    p7zip unrar unzip
     acpi acpid acpitool
+    mplayer vlc
     haskellPackages.haskellPlatform
     haskellPackages.haskellPlatform.ghc
     haskellPackages.hlint
