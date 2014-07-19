@@ -94,8 +94,7 @@
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
 
-  powerManagement.enable = true;
-  powerManagement.resumeCommands = "xscreensaver-command -lock";
+  powerManagement.resumeCommands = "xscreensaver-command -display 0:0 -lock"; #Commands executed after the system resumes from suspend-to-RAM.
 
   # List services that you want to enable:
   services = {
