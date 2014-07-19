@@ -198,5 +198,4 @@
     '';
     setuidPrograms = [ "pmount" "pumount" ];
   };
-
 }
