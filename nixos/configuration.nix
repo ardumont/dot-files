@@ -18,7 +18,11 @@
 
   networking = {
     hostName = "dagobah";    # Define your hostname.
-    wireless.enable = true;  # Enables wireless.
+    wireless = {
+      enable = true;                # Enables wireless
+      userControlled.enable = true; # user can play with wifi
+      interfaces = [ "wlp1s0" ];    # explicit the interfaces the user can modify
+    };
     extraHosts =
     ''
       192.168.0.10 dagobah
