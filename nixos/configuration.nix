@@ -183,7 +183,7 @@
       %wheel ALL=(ALL) SETENV: ALL
       tony   ALL=(ALL) SETENV: ALL
     '';
-    setuidPrograms = [ "pmount" ];
+    setuidPrograms = [ "pmount" "pumount" ];
   };
 
 }
