@@ -103,8 +103,8 @@
       enable = true;     # acpi
       lidEventCommands = # suspend on lid close
         ''
-        echo "$1" | grep -q open /proc/acpi/button/lid/LID0/state && exit 0
-        systemctl suspend
+        # suspend on lid close event or do nothing
+        grep -q open /proc/acpi/button/lid/LID0/state && exit 0 || systemctl suspend
         '';
       };
 
