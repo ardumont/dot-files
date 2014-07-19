@@ -93,9 +93,20 @@
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
 
+  powerManagement.enable = true;
+  powerManagement.resumeCommands = "xscreensaver-command -lock";
+
   # List services that you want to enable:
   services = {
-    acpid.enable = true;    # acpi
+    acpid = {
+      enable = true;     # acpi
+      lidEventCommands = # suspend on lid close
+        ''
+        echo "$1" | grep -q open /proc/acpi/button/lid/LID0/state && exit 0
+        systemctl suspend
+        '';
+      };
+
     openssh.enable = true;  # OpenSSH daemon.
     printing.enable = true; # CUPS to print documents.
     ntp.enable = true;      # NTP
