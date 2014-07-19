@@ -24,4 +24,4 @@ start-if-cmd-exists trayer --edge top --align right --SetDockType true --SetPart
 start-if-cmd-exists dropbox start
 start-if-cmd-exists nm-applet
 
-exec xmonad
+[ -f /etc/NIXOS ] && exec xmonad # Run xmonad on NixOS
