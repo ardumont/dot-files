@@ -82,6 +82,7 @@
     binutils
     pmutils
     autojump
+    inotifyTools
   ];
 
   nixpkgs.config = {
