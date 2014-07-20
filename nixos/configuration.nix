@@ -15,6 +15,10 @@
     device = "/dev/sda";     # which hard drive to install it
     memtest86.enable = true; # Activate the check on memory
   };
+  boot.extraModprobeConfig = ''
+    options snd slots=snd-hda-intel
+    options snd_hda_intel enable=0,1
+  '';
 
   networking = {
     hostName = "dagobah";    # Define your hostname.
