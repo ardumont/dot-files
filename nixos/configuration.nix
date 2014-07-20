@@ -44,9 +44,17 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    firefox.enableAdobeFlash = true;  
-    firefox.enableGoogleTalkPlugin = true;
-    chromium.enableAdobeFlash = true; 
+    
+    firefox = {
+      enableAdobeFlash = true;
+      enableGoogleTalkPlugin = true;
+    };
+    
+    chromium = {
+      enableGoogleTalkPlugin = true;
+      enablePepperFlash = true; # Chromium's non-NSAPI alternative to Adobe Flash
+      enablePepperPDF = true;
+    };
   };
 
   # List packages installed in system profile. To search by name, run:
@@ -79,7 +87,7 @@
     tmux rxvt_unicode
     tcsh bash zsh python ruby
     zlib
-    firefox chromium conkeror
+    firefoxWrapper chromiumWrapper conkeror
     graphviz
     nmap netcat wireshark
     p7zip unrar unzip
