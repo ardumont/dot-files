@@ -27,8 +27,7 @@
       userControlled.enable = true; # user can play with wifi
       interfaces = [ "wlp1s0" ];    # explicit the interfaces the user can modify
     };
-    extraHosts =
-    ''
+    extraHosts = ''
       192.168.0.10 dagobah
       192.168.0.20 nas
     '';
