@@ -378,18 +378,18 @@ myWorkspaces = [ workspaceEmacs
 --
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "MPlayer"                --> doShift workspaceFloat >> doFloat
-    , className =? "Gimp"                   --> doShift workspaceFloat >> doFloat
-    , className =? "Zenity"                 --> doFloat
-    , appName   =? "desktop_window"         --> doIgnore
-    , appName   =? "kdesktop"               --> doIgnore
-    , myEmacsQuery                          --> doShift workspaceEmacs
-    , myTerminalQuery                       --> doShift workspaceTerminal
-    , myBrowserQuery                        --> doShift workspaceWeb
-    , className =? "Evince"                 --> doShift workspaceBooks
-    , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"      --> doShift workspaceIde
-    , appName =? "sun-awt-X11-XFramePeer"   --> doShift workspaceDb
-    , className =? "Skype"                  --> doShift workspaceIrc]
+    [ className =? "MPlayer"                                                    --> doShift workspaceFloat >> doFloat
+    , className =? "Gimp"                                                       --> doShift workspaceFloat >> doFloat
+    , className =? "Zenity"                                                     --> doFloat
+    , appName   =? "desktop_window"                                             --> doIgnore
+    , appName   =? "kdesktop"                                                   --> doIgnore
+    , myEmacsQuery                                                              --> doShift workspaceEmacs
+    , myTerminalQuery                                                           --> doShift workspaceTerminal
+    , myBrowserQuery                                                            --> doShift workspaceWeb
+    , className =? "Evince" <||> className =? ".evince-wrapped"                 --> doShift workspaceBooks
+    , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce" --> doShift workspaceIde
+    , appName =? "sun-awt-X11-XFramePeer"                                       --> doShift workspaceDb
+    , className =? "Skype"                                                      --> doShift workspaceIrc]
 
 ------------------------------------------------------------------------
 -- Event handling
