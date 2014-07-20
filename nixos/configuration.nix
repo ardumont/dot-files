@@ -39,6 +39,13 @@
     defaultLocale = "en_US.UTF-8";
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    firefox.enableAdobeFlash = true;  
+    firefox.enableGoogleTalkPlugin = true;
+    chromium.enableAdobeFlash = true; 
+  };
+
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -96,13 +103,6 @@
     alsaUtils
     lsof
   ];
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    firefox.enableAdobeFlash = true;  
-    firefox.enableGoogleTalkPlugin = true;
-    chromium.enableAdobeFlash = true; 
-  };
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
 
