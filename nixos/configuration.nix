@@ -123,9 +123,10 @@
     printing.enable = true; # CUPS to print documents.
     ntp.enable = true;      # NTP
     xserver = {
+      enable = true;
+
       startGnuPGAgent = true;
       desktopManager.default = "none";
-      enable = true;
       layout = "us";
       xkbOptions = "eurosign:e,ctrl:nocaps,terminate=ctrl_alt_backspace,altwin:meta_alt";
   
