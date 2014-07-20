@@ -157,6 +157,7 @@
           ];
         };
       };
+      vaapiDrivers = [ pkgs.vaapiIntel ];
     };
 
     nixosManual.showManual = true; # Add the NixOS Manual on virtual console 8
