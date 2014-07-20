@@ -79,7 +79,7 @@ alias ifc='/sbin/ifconfig'
 # use hub to access easily github
 alias git='hub'
 
-# gitk --all
+alias gitk='gitg'
 alias gitka='gitg --all'
 alias gitga='gitg --all'
 
