@@ -44,6 +44,7 @@
   environment.systemPackages = with pkgs; [
     nix-repl
     gnome3.nautilus gnome3.gnome_settings_daemon
+    transmission_gtk
     evince
     filezilla
     networkmanager networkmanagerapplet
