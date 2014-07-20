@@ -44,8 +44,12 @@
   environment.systemPackages = with pkgs; [
     nix-repl
     gnome3.nautilus gnome3.gnome_settings_daemon
+    gnome3.eog pinta
+    gnome3.totem vlc mplayer2
     transmission_gtk
-    evince
+    audacious
+    linuxPackages.virtualbox
+    evince fbreader
     filezilla
     networkmanager networkmanagerapplet
     gnome.zenity
@@ -88,6 +92,9 @@
     pmutils
     autojump
     inotifyTools
+    unetbootin
+    alsaUtils
+    lsof
   ];
 
   nixpkgs.config = {
