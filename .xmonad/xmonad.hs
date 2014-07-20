@@ -197,7 +197,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-M1-f"    , "filezilla"                  , runOrRaiseNext "filezilla"                (className =? "Filezilla"))
   , (prefix "C-v"       , "virtualbox"                 , runOrRaiseNext "virtualbox"               (appName =? "Virtualbox" <&&> className =? "Qt-subapplication"))
   , (prefix "u"         , "unetbootin"                 , runOrRaiseNext "unetbootin"               (className =? "unetbootin"))
-  , (prefix "/"         , "transmission"               , runOrRaiseNext "transmission-gtk"         (appName =? "transmission-gtk" <&&> className =? "Transmission-gtk"))
+  , (prefix "/"         , "transmission"               , runOrRaiseNext "transmission-gtk" $       (appName =? "transmission-gtk" <&&> className =? "Transmission-gtk") <||> (appName =? ".transmission-gtk-wrapped" <&&> className =? ".transmission-gtk-wrapped"))
   , (prefix "S-g"       , "gparted"                    , runOrRaiseNext "gksudo /usr/sbin/gparted" (className =? "gpartedbin"))
   , (prefix "S-f"       , "file-progression"           , runOrRaiseNext ""                         (className =? "file_progress"))
   , (prefix "C-S-x"     , "xosview"                    , runOrRaiseNext "xosview"                  (className =? "xosview"))
