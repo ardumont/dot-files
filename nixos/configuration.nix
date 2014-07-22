@@ -213,7 +213,7 @@
       uid = 1000;
       createHome = true;
       home = "/home/tony";
-      extraGroups = [ "users" "wheel" ];
+      extraGroups = [ "users" "wheel" "audio" "video" "vboxusers" ];
       useDefaultShell = true;
     }];
   };
