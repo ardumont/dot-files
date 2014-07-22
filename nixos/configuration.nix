@@ -93,17 +93,6 @@
     p7zip unrar unzip
     acpi acpid acpitool
     mplayer vlc
-    haskellPackages.haskellPlatform.ghc
-    haskellPackages.haskellPlatform
-    haskellPackages.xmonad
-    haskellPackages.xmobar
-    haskellPackages.xmonadContrib
-    haskellPackages.xmonadExtras
-    haskellPackages.hlint
-    haskellPackages.hdevtools
-    haskellPackages.zlib
-    haskellPackages.cabalInstall
-    haskellPackages.cabalDev
     clojure leiningen
     gparted
     binutils
@@ -114,6 +103,22 @@
     alsaUtils
     lsof
     vagrant
+    haskellPackages.haskellPlatform.ghc
+    haskellPackages.haskellPlatform
+    (haskellPackages.ghcWithPackages (self : [
+       self.cabalInstall
+       self.xmonad
+       self.xmonadContrib
+       self.xmonadExtras
+       self.xmobar
+       self.cabal2nix
+       self.lens
+       self.cabalDev
+       self.hlint
+       self.hdevtools
+       self.zlib
+       # self.Agda
+     ]))
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
