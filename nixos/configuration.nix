@@ -113,7 +113,6 @@
        self.xmobar
        self.cabal2nix
        self.lens
-       self.cabalDev
        self.hlint
        self.hdevtools
        self.zlib
