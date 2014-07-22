@@ -62,7 +62,7 @@
   environment.systemPackages = with pkgs; [
     nix-repl
     gnome3.nautilus gnome3.gnome_settings_daemon
-    gnome3.eog pinta
+    gnome3.eog pinta scrot
     gnome3.totem vlc mplayer2 x264
     transmission_gtk
     audacious
