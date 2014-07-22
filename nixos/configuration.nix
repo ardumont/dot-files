@@ -93,14 +93,14 @@
     p7zip unrar unzip
     acpi acpid acpitool
     mplayer vlc
-    haskellPackages.haskellPlatform
     haskellPackages.haskellPlatform.ghc
-    haskellPackages.hlint
-    haskellPackages.hdevtools
+    haskellPackages.haskellPlatform
     haskellPackages.xmonad
     haskellPackages.xmobar
     haskellPackages.xmonadContrib
     haskellPackages.xmonadExtras
+    haskellPackages.hlint
+    haskellPackages.hdevtools
     haskellPackages.zlib
     haskellPackages.cabalInstall
     haskellPackages.cabalDev
