@@ -103,6 +103,7 @@
     alsaUtils
     lsof
     vagrant
+    darcs
     haskellPackages.haskellPlatform.ghc
     haskellPackages.haskellPlatform
     (haskellPackages.ghcWithPackages (self : [
