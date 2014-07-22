@@ -135,6 +135,11 @@
         ''; # suspend on lid close
       };
 
+    locate = {
+      enable = true;
+      period = "00 15 * * *";
+    };
+
     openssh.enable = true;  # OpenSSH daemon.
     printing.enable = true; # CUPS to print documents.
     ntp.enable = true;      # NTP
