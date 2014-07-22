@@ -2,6 +2,7 @@ import qualified Data.Map as M
 import           Data.Monoid
 import           System.Exit
 import           System.IO
+import           Control.Monad (liftM)
 import           XMonad
 import           XMonad.Actions.Promote (promote)
 import qualified XMonad.Actions.Search as S
@@ -21,6 +22,7 @@ import           XMonad.Util.Run (spawnPipe)
 import           System.Directory (getDirectoryContents, getHomeDirectory)
 import           System.FilePath (takeBaseName, combine)
 import           XMonad.Prompt
+import           System.Posix.Env (getEnv)
 
 ------------------------------------------------------------------------
 -- Password section
@@ -34,12 +36,27 @@ instance XPrompt Pass where
   commandToComplete _ c           = c
   nextCompletion      _           = getNextCompletion
 
+-- | Default password store folder in $HOME/.password-store
+--
+passwordStoreFolderDefault :: String -> String
+passwordStoreFolderDefault home = combine home ".password-store"
+
+-- | Compute the password store's location.
+-- Use the PASSWORD_STORE_DIR environment variable to set the password store.
+-- If empty, return the password store located in user's home.
+--
+passwordStoreFolder :: IO String
+passwordStoreFolder =
+  getEnv "PASSWORD_STORE_DIR" >>= computePasswordStoreDir
+  where computePasswordStoreDir Nothing         = liftM passwordStoreFolderDefault getHomeDirectory
+        computePasswordStoreDir (Just storeDir) = return storeDir
+
 -- | A pass prompt factory
 --
 mkPassPrompt :: PromptLabel -> (String -> X ()) -> XPConfig -> X ()
-mkPassPrompt promptLabel passwordFunction xpconfig =
-  io getPasswords >>=
-  \ passwords -> mkXPrompt (Pass promptLabel) xpconfig (mkComplFunFromList passwords) passwordFunction
+mkPassPrompt promptLabel passwordFunction xpconfig = do
+  passwords <- io (passwordStoreFolder >>= getPasswords)
+  mkXPrompt (Pass promptLabel) xpconfig (mkComplFunFromList passwords) passwordFunction
 
 -- | A prompt to retrieve a password from a given entry.
 --
@@ -75,13 +92,10 @@ generatePassword passLabel = spawn $ "pass generate --force " ++ passLabel ++ " 
 removePassword :: String -> X ()
 removePassword passLabel = spawn $ "pass rm --force " ++ passLabel
 
--- | Retrieve the list of passwords from the default password storage in $HOME/.password-store
+-- | Retrieve the list of passwords from the password storage 'passwordStoreDir
 --
-getPasswords :: IO [String]
-getPasswords = do
-  home <- getHomeDirectory
-  entries <- getDirectoryContents $ combine home ".password-store"
-  return $ map takeBaseName entries
+getPasswords :: String -> IO [String]
+getPasswords passwordStoreDir = liftM (map takeBaseName) $ getDirectoryContents passwordStoreDir
 
 --
 -- End Password section
