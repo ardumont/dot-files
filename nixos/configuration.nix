@@ -216,12 +216,10 @@
 
   # sudo setup
   security = {
-    sudo.configFile =
-    ''
+    sudo.configFile = ''
       root   ALL=(ALL) SETENV: ALL
       %wheel ALL=(ALL) SETENV: ALL
-      tony   ALL=(ALL) SETENV: ALL
-    '';
+     '';
     setuidPrograms = [ "pmount" "pumount" ];
   };
 }
