@@ -30,6 +30,7 @@
         markdown-exdent-or-delete
         markdown-exdent-or-delete
         mouse-buffer-menu
+        nxml-electric-slash
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-delete-char
@@ -60,4 +61,8 @@
         sp-remove-active-pair-overlay
         transpose-words
         yaml-electric-dash-and-dot
+        ))
+
+(setq mc/cmds-to-run-once
+      '(
         ))
