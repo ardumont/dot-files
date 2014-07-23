@@ -2,7 +2,6 @@ import qualified Data.Map as M
 import           Data.Monoid
 import           System.Exit
 import           System.IO
-import           Control.Monad (liftM)
 import           XMonad
 import           XMonad.Actions.Promote (promote)
 import qualified XMonad.Actions.Search as S
@@ -11,95 +10,18 @@ import           XMonad.Actions.WindowGo (runOrRaiseNext)
 import           XMonad.Config.Desktop
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
+import           XMonad.Prompt
 import           XMonad.Prompt.AppLauncher (launchApp)
 import           XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
 import           XMonad.Prompt.Window
 import           XMonad.Prompt.XMonad (xmonadPromptC)
+import           XMonad.Prompt.Pass (passPrompt, passGeneratePrompt, passRemovePrompt)
 import qualified XMonad.StackSet as W
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Run (spawnPipe)
 
-import           System.Directory (getDirectoryContents, getHomeDirectory)
-import           System.FilePath (takeBaseName, combine)
-import           XMonad.Prompt
-import           System.Posix.Env (getEnv)
-
-------------------------------------------------------------------------
--- Password section
---
-
-type PromptLabel = String
-data Pass = Pass PromptLabel
-
-instance XPrompt Pass where
-  showXPrompt       (Pass prompt) = prompt ++ ": "
-  commandToComplete _ c           = c
-  nextCompletion      _           = getNextCompletion
-
--- | Default password store folder in $HOME/.password-store
---
-passwordStoreFolderDefault :: String -> String
-passwordStoreFolderDefault home = combine home ".password-store"
-
--- | Compute the password store's location.
--- Use the PASSWORD_STORE_DIR environment variable to set the password store.
--- If empty, return the password store located in user's home.
---
-passwordStoreFolder :: IO String
-passwordStoreFolder =
-  getEnv "PASSWORD_STORE_DIR" >>= computePasswordStoreDir
-  where computePasswordStoreDir Nothing         = liftM passwordStoreFolderDefault getHomeDirectory
-        computePasswordStoreDir (Just storeDir) = return storeDir
-
--- | A pass prompt factory
---
-mkPassPrompt :: PromptLabel -> (String -> X ()) -> XPConfig -> X ()
-mkPassPrompt promptLabel passwordFunction xpconfig = do
-  passwords <- io (passwordStoreFolder >>= getPasswords)
-  mkXPrompt (Pass promptLabel) xpconfig (mkComplFunFromList passwords) passwordFunction
-
--- | A prompt to retrieve a password from a given entry.
---
-passPrompt :: XPConfig -> X ()
-passPrompt = mkPassPrompt "Select password" selectPassword
-
--- | A prompt to generate a password for a given entry.
--- This can be used to override an already stored entry.
--- (Beware that no confirmation is asked)
---
-passGeneratePrompt :: XPConfig -> X ()
-passGeneratePrompt = mkPassPrompt "Generate password" generatePassword
-
--- | A prompt to remove a password for a given entry.
--- (Beware that no confirmation is asked)
---
-passRemovePrompt :: XPConfig -> X ()
-passRemovePrompt = mkPassPrompt "Remove password" removePassword
-
--- | Select a password.
---
-selectPassword :: String -> X ()
-selectPassword passLabel = spawn $ "pass --clip " ++ passLabel
-
--- | Generate a 30 characters password for a given entry.
--- If the entry already exists, it is updated with a new password.
---
-generatePassword :: String -> X ()
-generatePassword passLabel = spawn $ "pass generate --force " ++ passLabel ++ " 30"
-
--- | Remove a password stored for a given entry.
---
-removePassword :: String -> X ()
-removePassword passLabel = spawn $ "pass rm --force " ++ passLabel
-
--- | Retrieve the list of passwords from the password storage 'passwordStoreDir
---
-getPasswords :: String -> IO [String]
-getPasswords passwordStoreDir = liftM (map takeBaseName) $ getDirectoryContents passwordStoreDir
-
---
--- End Password section
-------------------------------------------------------------------------
+import           System.Directory (getHomeDirectory)
+import           System.FilePath (combine)
 
 -- | The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
