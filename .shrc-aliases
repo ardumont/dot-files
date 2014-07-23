@@ -128,5 +128,3 @@ alias upg="sudo aptitude update ; sudo aptitude safe-upgrade -y"
 ################ Haskell
 
 alias hddck='tmp=~/tmp/haddock; [[ -d $tmp/html ]] || mkdir -p $tmp/html; base=`pwd`; haddock --html --source-module file://'$base'/%F --odir $tmp/html '
-
-alias j=autojump
