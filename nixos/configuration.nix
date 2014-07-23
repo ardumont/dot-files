@@ -207,6 +207,8 @@
     ];
   };
 
+  nix.trustedBinaryCaches = [ "http://hydra.nixos.org" "http://cache.nixos.org" ];
+
   users = {
     defaultUserShell = "/var/run/current-system/sw/bin/zsh";
     
