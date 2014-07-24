@@ -23,7 +23,7 @@ folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/Al
 # status_backend = sqlite
 # fsync = true
 # holdconnectionopen = no
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = /etc/ssl/certs/ca-bundle.crt
 
 [Account ard]
 localrepository = ard-local
@@ -45,4 +45,4 @@ folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/Al
 # status_backend = sqlite
 # fsync = true
 # holdconnectionopen = no
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = /etc/ssl/certs/ca-bundle.crt
