@@ -138,7 +138,7 @@
 
     locate = {
       enable = true;
-      period = "00 15 * * *";
+      period = "00 19 * * *"; # update db at 19h every day
     };
 
     openssh.enable = true;  # OpenSSH daemon.
