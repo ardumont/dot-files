@@ -84,7 +84,7 @@
     xclip pass keychain
     htop powertop
     emacs texinfo
-    tmux rxvt_unicode
+    tmux rxvt_unicode bind
     tcsh bash zsh python ruby
     zlib
     firefoxWrapper chromiumWrapper conkeror
