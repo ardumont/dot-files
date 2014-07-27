@@ -9,17 +9,22 @@
       ./hardware-configuration.nix # Include the results of the hardware scan.
     ];
 
-  boot.loader.grub = {
-    enable = true;           # Use GRUB boot loader.
-    version = 2;             # Version 2
-    device = "/dev/sda";     # which hard drive to install it
-    memtest86.enable = true; # Activate the check on memory
+  boot = {
+    loader.grub = {
+      enable = true;           # Use GRUB boot loader.
+      version = 2;             # Version 2
+      device = "/dev/sda";     # which hard drive to install it
+      memtest86.enable = true; # Activate the check on memory
+    };
+    
+    extraModprobeConfig = ''
+      options snd slots=snd-hda-intel
+      options snd_hda_intel enable=0,1
+    '';
+    
+    kernel.sysctl."fs.inotify.max_user_watches" = 100000;
   };
-  boot.extraModprobeConfig = ''
-    options snd slots=snd-hda-intel
-    options snd_hda_intel enable=0,1
-  '';
-
+  
   networking = {
     hostName = "dagobah";    # Define your hostname.
 
@@ -244,6 +249,4 @@
      ''; 
     setuidPrograms = [ "pmount" "pumount" ];
   };
-
-  boot.kernel.sysctl."fs.inotify.max_user_watches" = 100000;
 }
