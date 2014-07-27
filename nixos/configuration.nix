@@ -111,8 +111,8 @@
     lsof
     vagrant
     darcs
-    haskellPackages.haskellPlatform.ghc
     haskellPackages.haskellPlatform
+    haskellPackages.haskellPlatform.ghc
     (haskellPackages.ghcWithPackages (self : [
        self.cabalInstall_1_18_0_3
        self.xmonad
