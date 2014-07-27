@@ -144,9 +144,9 @@
       period = "00 19 * * *"; # update db at 19h every day
     };
 
-    openssh.enable = true;  # OpenSSH daemon.
-    printing.enable = true; # CUPS to print documents.
-    ntp.enable = true;      # NTP
+    openssh.enable = true;  
+    printing.enable = true;
+    ntp.enable = true;     
     xserver = {
       enable = true;
 
