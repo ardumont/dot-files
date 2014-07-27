@@ -11,7 +11,7 @@
 [ -f ~/.shrc-work ] && . ~/.shrc-work
 
 # keyboard mapping
-[ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
+[ ! -f /etc/NIXOS -a -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
 
 # Setup the touchpad's behavior
 [ -f ~/bin/touchpad/setup-touchpad.sh ] && . ~/bin/touchpad/setup-touchpad.sh
