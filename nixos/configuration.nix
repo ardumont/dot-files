@@ -110,7 +110,7 @@
     haskellPackages.haskellPlatform.ghc
     haskellPackages.haskellPlatform
     (haskellPackages.ghcWithPackages (self : [
-       self.cabalInstall
+       self.cabalInstall_1_18_0_3
        self.xmonad
        self.xmonadContrib
        self.xmonadExtras
@@ -120,6 +120,9 @@
        self.hlint
        self.hdevtools
        self.zlib
+       self.mtl
+       self.HUnit
+       self.QuickCheck
        # self.Agda
      ]))
      rlwrap
