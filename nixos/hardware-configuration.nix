@@ -8,7 +8,7 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" ];
+  boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" "usb-storage" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
