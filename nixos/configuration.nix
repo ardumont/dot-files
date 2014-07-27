@@ -132,6 +132,8 @@
 
   powerManagement.resumeCommands = "xscreensaver-command -lock"; #Commands executed after the system resumes from suspend-to-RAM.
 
+  networking.networkmanager.enable = true; # nm, nmcli, etc...
+  
   # List services that you want to enable:
   services = {
     acpid = {
@@ -150,6 +152,7 @@
     openssh.enable = true;  
     printing.enable = true;
     ntp.enable = true;     
+
     xserver = {
       enable = true;
 
@@ -227,7 +230,7 @@
       uid = 1000;
       createHome = true;
       home = "/home/tony";
-      extraGroups = [ "users" "wheel" "audio" "video" "vboxusers" ];
+      extraGroups = [ "users" "wheel" "audio" "video" "vboxusers" "networkmanager" ];
       useDefaultShell = true;
     }];
   };
