@@ -22,11 +22,15 @@
 
   networking = {
     hostName = "dagobah";    # Define your hostname.
-    wireless = {
-      enable = true;                # Enables wireless
-      userControlled.enable = true; # user can play with wifi
-      interfaces = [ "wlp1s0" ];    # explicit the interfaces the user can modify
-    };
+
+    # wireless = {
+    #   enable = true;                # Enables wireless
+    #   userControlled.enable = true; # user can play with wifi
+    #   interfaces = [ "wlp1s0" ];    # explicit the interfaces the user can modify
+    # };
+
+    networkmanager.enable = true; # nm, nmcli, etc... incompatible with networking.wireless
+  
     extraHosts = ''
       192.168.0.10 dagobah
       192.168.0.13 job
@@ -72,7 +76,6 @@
     linuxPackages.virtualbox
     evince fbreader
     filezilla
-    networkmanager networkmanagerapplet
     gnome.zenity
     git gitAndTools.tig gitg
     gnupg gnupg1 pinentry
@@ -81,6 +84,7 @@
     gcc gnumake
     dropbox
     trayer
+    networkmanagerapplet
     xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver
     offlineimap mu
     most
@@ -132,8 +136,6 @@
 
   powerManagement.resumeCommands = "xscreensaver-command -lock"; #Commands executed after the system resumes from suspend-to-RAM.
 
-  networking.networkmanager.enable = true; # nm, nmcli, etc...
-  
   # List services that you want to enable:
   services = {
     acpid = {
@@ -230,7 +232,7 @@
       uid = 1000;
       createHome = true;
       home = "/home/tony";
-      extraGroups = [ "users" "wheel" "audio" "video" "vboxusers" "networkmanager" ];
+      extraGroups = [ "users" "wheel" "audio" "video" "vboxusers" ];
       useDefaultShell = true;
     }];
   };
