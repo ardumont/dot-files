@@ -128,8 +128,8 @@
        self.HUnit
        self.QuickCheck
        # self.Agda
-     ]))
-     rlwrap
+    ]))
+    rlwrap
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
