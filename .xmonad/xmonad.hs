@@ -220,6 +220,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-f"       , "fbreader"                   , runOrRaiseNext "fbreader"                 (className =? "fbreader"))
   , (prefix "M1-t"      , "tuxguitar"                  , runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
   , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (appName =? "skype" <&&> className =? "Skype"))
+  , (prefix "o"         , "libre-office"               , runOrRaiseNext "libreoffice"              (appName =? "libreoffice" <&&> className =? "libreoffice-writer"))
   , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  myBrowserQuery)
   , (prefix "C-S-e"     , "env"                        , spawnZenityCmd "env")
   , (prefix "a"         , "date"                       , spawnZenityCmd "date")
