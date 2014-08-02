@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.23 for tony on Mon Jun  9 10:54:15 2014.
+# Written by xscreensaver-demo 5.26 for tony on Fri Aug  1 21:09:38 2014.
 # http://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -34,8 +34,8 @@ grabVideoFrames:    False
 chooseRandomImages: False
 imageDirectory:	
 
-mode:		random
-selected:	-1
+mode:		one
+selected:	78
 
 textMode:	program
 textLiteral:	XScreenSaver
@@ -249,6 +249,7 @@ programs:								      \
 - GL: 				quasicrystal -root			    \n\
 - GL: 				unknownpleasures -root			    \n\
 				unicode -root				    \n\
+- GL: 				dnalogo -root				    \n\
 
 
 pointerPollTime:    0:00:05
