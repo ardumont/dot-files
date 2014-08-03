@@ -3,7 +3,7 @@ var PLUGIN_INFO =
     <name>bmany</name>
     <description>Search bookmarks incrementally and go!</description>
     <description lang="ja">anything.el 気分でブックマークを操作</description>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <updateURL>http://github.com/mooz/keysnail/raw/master/plugins/bmany.ks.js</updateURL>
     <iconURL>http://github.com/mooz/keysnail/raw/master/plugins/icon/bmany.icon.png</iconURL>
     <author mail="stillpedant@gmail.com" homepage="http://d.hatena.ne.jp/mooz/">mooz</author>
@@ -523,8 +523,11 @@ var bmany =
                  if (typeof getShortcutOrURI === "undefined") {
                      // Firefox 25 ~
                      Task.spawn(function () {
-                         let data = yield getShortcutOrURIAndPostData(aQuery);
-                         aCallback(data.url);
+                         let data = yield getShortcutOrURIAndPostData(aQuery,
+                             // Firefox 31 ~
+                             function (data) aCallback(data.url));
+                         // ~ Firefox 30
+                         if (data) aCallback(data.url);
                      });
                  } else {
                      // ~ Firefox 24
