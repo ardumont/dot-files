@@ -135,7 +135,7 @@
        # self.Agda
     ]))
     rlwrap
-    fortune
+    fortune cowsay
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
