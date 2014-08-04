@@ -131,3 +131,8 @@ alias upg="sudo aptitude update ; sudo aptitude safe-upgrade -y"
 ################ Haskell
 
 alias hddck='tmp=~/tmp/haddock; [[ -d $tmp/html ]] || mkdir -p $tmp/html; base=`pwd`; haddock --html --source-module file://'$base'/%F --odir $tmp/html '
+
+################ ssh
+
+# --server flag to use 'Server binary outside path - http://mosh.mit.edu/#usage'
+alias mosh="mosh --server=$(which mosh-server)"
