@@ -91,6 +91,7 @@
     trayer
     networkmanagerapplet
     xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver
+    mosh
     offlineimap mu
     most
     xclip pass keychain
