@@ -96,7 +96,7 @@
     most
     xclip pass keychain
     htop powertop
-    emacs texinfo
+    emacs texinfo w3m
     tmux rxvt_unicode bind
     tcsh bash zsh python ruby
     zlib
