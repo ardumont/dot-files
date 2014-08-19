@@ -259,7 +259,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "<Space>"   , "rotate-layout"              , sendMessage NextLayout)
   , (prefix "C-<Space>" , "reset-layout"               , setLayout myLayoutHook)
   , (prefix "M1-n"      , "refresh"                    , refresh)
-  , (prefix "C-M1-b"    , "banish-mouse"               , spawn "xdotool mousemove 0 0")
+  , (prefix "C-M1-b"    , "banish-mouse"               , spawn "~/bin/mouse/banish-mouse.sh")
   , (prefix "<Tab>"     , "window-move-focus-next"     , windows W.focusDown)
   , (prefix "j"         , "window-move-focus-next"     , windows W.focusDown)
   , (prefix "k"         , "window-move-focus-previous" , windows W.focusUp)
