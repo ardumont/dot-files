@@ -1,28 +1,29 @@
-import qualified Data.Map as M
+import           Control.Monad             (liftM)
+import qualified Data.Map                  as M
 import           Data.Monoid
 import           System.Exit
 import           System.IO
-import           Control.Monad (liftM)
 import           XMonad
-import           XMonad.Actions.Promote (promote)
-import qualified XMonad.Actions.Search as S
-import qualified XMonad.Actions.Submap as SM
-import           XMonad.Actions.WindowGo (runOrRaiseNext)
+import           XMonad.Actions.Promote    (promote)
+import qualified XMonad.Actions.Search     as S
+import qualified XMonad.Actions.Submap     as SM
+import           XMonad.Actions.WindowGo   (runOrRaiseNext)
 import           XMonad.Config.Desktop
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Prompt.AppLauncher (launchApp)
-import           XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
+import           XMonad.Prompt.RunOrRaise  (runOrRaisePrompt)
 import           XMonad.Prompt.Window
-import           XMonad.Prompt.XMonad (xmonadPromptC)
-import qualified XMonad.StackSet as W
+import           XMonad.Prompt.XMonad      (xmonadPromptC)
+import qualified XMonad.StackSet           as W
 import           XMonad.Util.EZConfig
-import           XMonad.Util.Run (spawnPipe)
+import           XMonad.Util.Run           (spawnPipe)
 
-import           System.Directory (getDirectoryContents, getHomeDirectory)
-import           System.FilePath (takeBaseName, combine)
+import           System.Directory          (getDirectoryContents,
+                                            getHomeDirectory)
+import           System.FilePath           (combine, takeBaseName)
+import           System.Posix.Env          (getEnv)
 import           XMonad.Prompt
-import           System.Posix.Env (getEnv)
 
 ------------------------------------------------------------------------
 -- Password section
