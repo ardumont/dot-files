@@ -55,6 +55,9 @@
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
         sgml-slash
+        shm/backward-node
+        shm/del
+        shm/space
         smex
         sp--self-insert-command
         sp-backward-delete-char
@@ -63,6 +66,7 @@
         sp-forward-slurp-sexp
         sp-kill-word
         sp-remove-active-pair-overlay
+        sp-splice-sexp
         transpose-words
         yaml-electric-dash-and-dot
         ))
