@@ -56,7 +56,9 @@
         prelude-move-beginning-of-line
         sgml-slash
         shm/backward-node
+        shm/comment
         shm/del
+        shm/hyphen
         shm/space
         smex
         sp--self-insert-command
