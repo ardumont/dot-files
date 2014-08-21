@@ -186,6 +186,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
                                             , workspaces = myWss}) =
   [ (prefix "C-g"       , "abort"                      , spawn "xdotool key Escape")
   , (prefix "M1-w"      , "wifi-connect"               , spawn "~/.cabal/bin/hWifi")
+  , (prefix "C-M1-w"    , "wifi-create-and-connect"    , launchApp myXPConfig "~/.cabal/bin/hWifi")
   , (prefix "e"         , "emacs"                      , myRunOrRaise home "bin/emacs/emacs.sh"                        myEmacsQuery)
   , (prefix "S-x"       , "xephyr"                     , myRunOrRaise home "bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
   , (prefix "y"         , "yed"                        , myRunOrRaise home "bin/app/yed.sh"                            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-install4j-runtime-launcher-Launcher"))
