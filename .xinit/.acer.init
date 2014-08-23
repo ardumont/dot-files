@@ -1,0 +1,2 @@
+# On acer machine, there is some strange behavior and removing xscreensaver seems to be the cause
+start-if-cmd-exists xscreensaver stop
