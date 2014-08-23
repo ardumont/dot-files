@@ -8,7 +8,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # wmname "LG3D"
 # export AWT_TOOLKIT=MToolkit
 
-
 LAYOUT_FILE="$HOME/.layouts/$(hostname).sh"
 [ -d ~/.layouts -a -f $LAYOUT_FILE ] && zsh $LAYOUT_FILE
 
