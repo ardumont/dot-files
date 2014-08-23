@@ -90,7 +90,7 @@
     dropbox dropbox-cli
     trayer
     networkmanagerapplet
-    xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight
+    xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo
     mosh
     offlineimap mu
     most
