@@ -27,6 +27,7 @@
         magit-status
         mark-sexp
         mark-whole-buffer
+        markdown-enter-key
         markdown-exdent-or-delete
         markdown-exdent-or-delete
         mouse-buffer-menu
