@@ -112,6 +112,7 @@ alias gpu='git push upstream'
 alias gpurge='git branch --merged | xargs git branch -d'
 alias gcob='git checkout -b'
 alias gmc='git merge origin/$(current_branch)'
+alias gmrc='git merge upstream/$(current_branch)'
 alias glast="git last | head -1 | cut -d' ' -f2"
 
 ################ vagrant
