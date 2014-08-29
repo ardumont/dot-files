@@ -191,6 +191,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-x"       , "xephyr"                     , myRunOrRaise home "bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
   , (prefix "y"         , "yed"                        , myRunOrRaise home "bin/app/yed.sh"                            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-install4j-runtime-launcher-Launcher"))
   , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "applications/LightTable/LightTable"        (className =? "ltbin"))
+  , (prefix "C-r"       , "simplescreenrecorder"       , runOrRaiseNext "simplescreenrecorder"                         (appName =? "simplescreenrecorder" <&&> className =? "Simplescreenrecorder"))
   , (prefix "i"         , "ide"                        , myRunOrRaise home "bin/ide/idea.sh"                           (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"))
   , (prefix "C-x"       , "ide"                        , myRunOrRaise home "bin/ide/idea.sh"                           (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce"))
   , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
