@@ -138,6 +138,7 @@
     rlwrap
     fortune cowsay
     ffmpeg
+    simplescreenrecorder
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
