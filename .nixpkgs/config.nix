@@ -15,15 +15,24 @@
 
      # default haskell environment to provide when dev (install: nix-env -iA nixos.pkgs.hsEnv) 
      hsEnv = self.haskellPackages.ghcWithPackages (pack : [
-       pack.cabalInstall_1_18_0_3
-       pack.cabal2nix
-       pack.lens
-       pack.hlint
-       pack.hdevtools
-       pack.zlib
-       pack.mtl
-       pack.HUnit
-       pack.QuickCheck
+         pack.cabalInstall_1_18_0_3
+         pack.cabal2nix
+         pack.lens
+         pack.hlint
+         pack.hdevtools
+         pack.zlib
+         pack.mtl
+         pack.HUnit
+         pack.QuickCheck
+         # pack.Agda
+      ]);
+
+    xmonadHsEnv = self.haskellPackages.ghcWithPackages (pack : [
+       pack.xmonad
+       pack.xmonadContrib
+       pack.xmonadExtras
+       pack.xmobar
      ]);
+
    };
  }
