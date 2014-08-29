@@ -33,7 +33,8 @@ import           System.Directory           (getDirectoryContents,
 import           System.FilePath            (combine, takeBaseName)
 import           System.Posix.Env           (getEnv)
 import           XMonad.Prompt
-import           XMonad.Prompt.Pass         (passPrompt)
+import           XMonad.Prompt.Pass         (passGeneratePrompt, passPrompt,
+                                             passRemovePrompt)
 
 -- | The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
