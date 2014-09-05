@@ -160,7 +160,7 @@
       period = "00 19 * * *"; # update db at 19h every day
     };
 
-    openssh.enable = true;  
+    openssh.enable = true;
     printing.enable = true;
     ntp.enable = true;     
 
