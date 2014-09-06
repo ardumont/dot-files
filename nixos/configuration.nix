@@ -139,6 +139,7 @@
     fortune cowsay
     ffmpeg
     simplescreenrecorder
+    keymon
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
