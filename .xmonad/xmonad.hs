@@ -185,6 +185,8 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
                                             , layoutHook = myLayoutHook
                                             , workspaces = myWss}) =
   [ (prefix "C-g"       , "abort"                      , spawn "xdotool key Escape")
+  , (prefix "M1-c"      , "mouse-click-at-point"       , spawn "xdotool click 1")
+  , (prefix "M1-d"      , "xdotool-prompt"             , launchApp myXPConfig "xdotool")
   , (prefix "M1-w"      , "wifi-connect"               , spawn "~/.cabal/bin/hWifi")
   , (prefix "C-M1-w"    , "wifi-create-and-connect"    , launchApp myXPConfig "~/.cabal/bin/hWifi")
   , (prefix "e"         , "emacs"                      , myRunOrRaise home "bin/emacs/emacs.sh"                        myEmacsQuery)
