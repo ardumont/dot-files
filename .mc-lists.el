@@ -39,6 +39,7 @@
         org-force-cycle-archived
         org-force-self-insert
         org-metadown
+        org-metaup
         org-return
         org-self-insert-command
         paredit-backward
