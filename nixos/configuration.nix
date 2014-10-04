@@ -38,6 +38,7 @@
   
     extraHosts = ''
       192.168.0.10 dagobah
+      192.168.0.11 chris-host
       192.168.0.13 job
       192.168.0.14 myrkr
       192.168.0.20 nas
@@ -117,6 +118,7 @@
     lsof
     vagrant
     darcs
+    haskellPackages.pandoc
     haskellPackages.haskellPlatform
     haskellPackages.haskellPlatform.ghc
     (haskellPackages.ghcWithPackages (self : [
@@ -141,6 +143,7 @@
     simplescreenrecorder
     keymon
     imagemagick
+    libreoffice
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
