@@ -99,7 +99,8 @@ alias gbr='git branch'
 alias gdf='git diff --word-diff'
 
 # pretty log
-alias gl='git log --oneline --graph --remotes --decorate --all'
+alias gl='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
+alias gl2='git log --oneline --graph --remotes --decorate --all'
 
 # git fetch
 alias gf='git fetch -p'
