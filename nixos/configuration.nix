@@ -99,7 +99,7 @@
     htop powertop
     emacs texinfo w3m
     tmux rxvt_unicode bind
-    tcsh bash zsh python ruby
+    tcsh bash zsh python ruby2
     zlib
     firefoxWrapper chromiumWrapper conkeror
     graphviz
