@@ -117,7 +117,7 @@
     lsof
     vagrant
     darcs
-    rubyLibs.bundler
+#    rubyLibs.bundler
     haskellPackages.pandoc
     haskellPackages.haskellPlatform
     haskellPackages.haskellPlatform.ghc
