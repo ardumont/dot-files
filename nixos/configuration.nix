@@ -145,6 +145,7 @@
     imagemagick
     libreoffice
     docker
+    cups
     telnet
   ];
 
