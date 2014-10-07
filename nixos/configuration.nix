@@ -169,7 +169,6 @@
     };
 
     openssh.enable = true;
-    printing.enable = true;
     ntp.enable = true;
 
     xserver = {
@@ -196,6 +195,12 @@
         };
       };
       vaapiDrivers = [ pkgs.vaapiIntel ];
+    };
+
+    # https://nixos.org/wiki/Printers
+    printing = {
+      enable = true;
+      drivers = [ pkgs.gutenprint ];
     };
 
     nixosManual.showManual = true; # Add the NixOS Manual on virtual console 8
