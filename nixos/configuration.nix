@@ -16,15 +16,15 @@
       device = "/dev/sda";     # which hard drive to install it
       memtest86.enable = true; # Activate the check on memory
     };
-    
+
     extraModprobeConfig = ''
       options snd slots=snd-hda-intel
       options snd_hda_intel enable=0,1
     '';
-    
+
     kernel.sysctl."fs.inotify.max_user_watches" = 100000;
   };
-  
+
   networking = {
     hostName = "dagobah";    # Define your hostname.
 
@@ -35,7 +35,6 @@
     # };
 
     networkmanager.enable = true; # nm, nmcli, etc... incompatible with networking.wireless
-  
     extraHosts = ''
       192.168.0.10 dagobah
       192.168.0.11 chris-host
@@ -57,19 +56,19 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    
+
     firefox = {
       enableAdobeFlash = true;
       enableGoogleTalkPlugin = true;
     };
-    
+
     chromium = {
       enableGoogleTalkPlugin = true;
       enablePepperFlash = true; # Chromium's non-NSAPI alternative to Adobe Flash
       enablePepperPDF = true;
     };
   };
-  
+
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -169,7 +168,7 @@
 
     openssh.enable = true;
     printing.enable = true;
-    ntp.enable = true;     
+    ntp.enable = true;
 
     xserver = {
       enable = true;
@@ -178,19 +177,19 @@
       desktopManager.default = "none";
       layout = "us";
       xkbOptions = "eurosign:e,ctrl:nocaps,terminate=ctrl_alt_backspace,altwin:meta_alt";
-  
+
       # touchpad
       synaptics.enable = true;
-      synaptics.twoFingerScroll = true;    
-    
+      synaptics.twoFingerScroll = true;
+
       windowManager = {
         default = "xmonad";
         xmonad = {
           enable = true;
           enableContribAndExtras = true;
           extraPackages = haskellPackages: [
-            haskellPackages.xmonad 
-            haskellPackages.xmonadContrib  
+            haskellPackages.xmonad
+            haskellPackages.xmonadContrib
           ];
         };
       };
@@ -201,7 +200,7 @@
   };
 
   fonts = {
-    # enableGhostscriptFonts = true; 
+    # enableGhostscriptFonts = true;
     # enableCoreFonts = true; # M$'s proprietary Core Fonts.
     enableFontConfig = true;
     enableFontDir = true;
@@ -239,7 +238,7 @@
 
   users = {
     defaultUserShell = "/var/run/current-system/sw/bin/zsh";
-    
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     extraUsers = [{
       description = "Antoine R. Dumont";
@@ -257,7 +256,7 @@
     sudo.configFile = ''
       root   ALL=(ALL) SETENV: ALL
       %wheel ALL=(ALL) SETENV: ALL
-     ''; 
+     '';
     setuidPrograms = [ "pmount" "pumount" ];
   };
 }
