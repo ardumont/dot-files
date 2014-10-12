@@ -145,7 +145,7 @@
     imagemagick
     libreoffice
     docker
-    cups
+    cups samba
     telnet
   ];
 
@@ -200,7 +200,7 @@
     # https://nixos.org/wiki/Printers
     printing = {
       enable = true;
-      drivers = [ pkgs.gutenprint ];
+      drivers = [ pkgs.gutenprint pkgs.hplip ];
     };
 
     nixosManual.showManual = true; # Add the NixOS Manual on virtual console 8
