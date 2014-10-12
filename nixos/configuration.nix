@@ -147,6 +147,7 @@
     docker
     cups samba
     telnet
+    transmission_gtk
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
