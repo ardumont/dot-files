@@ -190,6 +190,7 @@
           extraPackages = haskellPackages: [
             haskellPackages.xmonad
             haskellPackages.xmonadContrib
+            haskellPackages.xmobar
           ];
         };
       };
