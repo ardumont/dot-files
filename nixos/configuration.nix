@@ -148,6 +148,7 @@
     cups samba
     telnet
     transmission_gtk
+    nodejs nodePackages.npm nodePackages.jshint
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
