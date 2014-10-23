@@ -13,9 +13,9 @@
          buildInputs = [ stdenv SDL SDL_image SDL_ttf SDL_gfx cmake SDL_net pkgconfig ];
      };
 
-     # default haskell environment to provide when dev (install: nix-env -iA nixos.pkgs.hsEnv) 
+     # default haskell environment to provide when dev (install: nix-env -iA nixos.pkgs.hsEnv)
      hsEnv = self.haskellPackages.ghcWithPackages (pack : [
-         pack.cabalInstall_1_18_0_3
+         pack.cabalInstall
          pack.cabal2nix
          pack.lens
          pack.hlint
