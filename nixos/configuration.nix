@@ -98,9 +98,9 @@
     htop powertop
     emacs texinfo w3m
     tmux rxvt_unicode bind
-    tcsh bash zsh python ruby2
+    tcsh bash zsh python ruby
     zlib
-    firefoxWrapper chromiumWrapper conkeror
+    firefoxWrapper chromium conkeror
     graphviz
     nmap netcat wireshark
     p7zip unrar unzip
@@ -119,8 +119,8 @@
     darcs
 #    rubyLibs.bundler
     haskellPackages.pandoc
-    haskellPackages.haskellPlatform
-    haskellPackages.haskellPlatform.ghc
+    haskellPlatform
+    haskellPlatform.ghc
     haskellPackages.ncurses
     (haskellPackages.ghcWithPackages (self : [
        self.cabalInstall_1_18_0_3
