@@ -27,6 +27,16 @@
          # pack.Agda
       ]);
 
+    purescriptEnv = self.myEnvFun {
+      name = "purescript";
+      buildInputs = [
+        nodePackages.npm
+        nodePackages.jshint
+        nodePackages.grunt-cli
+        nodePackages.bower
+      ];
+    };
+
     xmonadHsEnv = self.haskellPackages.ghcWithPackages (pack : [
        pack.xmonad
        pack.xmonadContrib
