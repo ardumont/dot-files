@@ -121,6 +121,7 @@
     haskellPackages.pandoc
     haskellPackages.haskellPlatform
     haskellPackages.haskellPlatform.ghc
+    haskellPackages.ncurses
     (haskellPackages.ghcWithPackages (self : [
        self.cabalInstall_1_18_0_3
        self.xmonad
@@ -149,6 +150,7 @@
     telnet
     transmission_gtk
     nodejs nodePackages.npm nodePackages.jshint rhino
+    ncurses
   ];
 
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
