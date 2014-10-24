@@ -30,6 +30,8 @@
     purescriptEnv = self.myEnvFun {
       name = "purescript";
       buildInputs = [
+        haskellPackages.purescript
+        nodePackages.nodejs
         nodePackages.npm
         nodePackages.jshint
         nodePackages.grunt-cli
