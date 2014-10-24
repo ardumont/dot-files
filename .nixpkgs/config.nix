@@ -3,14 +3,17 @@
 {
   # source: https://nixos.org/wiki/Howto_develop_software_on_nixos
   packageOverrides = self : with pkgs; rec {
+    # install: nix-env -i env-sdl
+    # load: load-env-sdl
     sdlEnv = self.myEnvFun {
         name = "sdl";
         buildInputs = [ stdenv SDL SDL_image SDL_ttf SDL_gfx cmake SDL_net pkgconfig ];
     };
 
     # default haskell environment to provide when dev
-    # install: nix-env -iA nixos.pkgs.hsEnv
-    # load: load-hsEnv
+    # install: nix-env -iA nixos.pkgs.haskell
+    #          nix-env -i env-haskell
+    # load: load-env-haskell
     hsEnv = self.myEnvFun {
       name = "haskell";
       buildInputs = [
