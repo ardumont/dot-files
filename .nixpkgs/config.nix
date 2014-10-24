@@ -1,13 +1,8 @@
 { pkgs }:
 
 {
+  # source: https://nixos.org/wiki/Howto_develop_software_on_nixos
   packageOverrides = self : with pkgs; rec {
-    # dummy env to understand nix-env - https://nixos.org/wiki/Howto_develop_software_on_nixos
-    someEnvNameEnv = self.myEnvFun {
-        name = "someEnvName";
-        buildInputs = [ stdenv pkgconfig ];
-    };
-
     sdlEnv = self.myEnvFun {
         name = "sdl";
         buildInputs = [ stdenv SDL SDL_image SDL_ttf SDL_gfx cmake SDL_net pkgconfig ];
