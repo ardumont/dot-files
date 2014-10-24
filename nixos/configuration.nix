@@ -123,7 +123,7 @@
     haskellPlatform.ghc
     haskellPackages.ncurses
     (haskellPackages.ghcWithPackages (self : [
-       self.cabalInstall_1_18_0_3
+       self.cabalInstall
        self.xmonad
        self.xmonadContrib
        self.xmonadExtras
