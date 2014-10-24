@@ -31,17 +31,17 @@
       # load: load-env-haskell
       hsEnv = defaultDevEnv {
         name = "haskell";
-        buildInputs = [
-          haskellPackages.cabalInstall
-          haskellPackages.cabal2nix
-          haskellPackages.lens
-          haskellPackages.hlint
-          haskellPackages.hdevtools
-          haskellPackages.zlib
-          haskellPackages.mtl
-          haskellPackages.HUnit
-          haskellPackages.QuickCheck
-          # haskellPackages.Agda
+        buildInputs = with pkgs.haskellPackages; [
+          cabalInstall
+          cabal2nix
+          lens
+          hlint
+          hdevtools
+          zlib
+          mtl
+          HUnit
+          QuickCheck
+          # Agda
         ];
       };
 
