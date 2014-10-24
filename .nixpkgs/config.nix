@@ -50,11 +50,11 @@
     # load: load-env-xmonad
     xmonadEnv = self.myEnvFun {
       name = "xmonad";
-      buildInputs = [
-       haskellPackages.xmonad
-       haskellPackages.xmonadContrib
-       haskellPackages.xmonadExtras
-       haskellPackages.xmobar
+      buildInputs = with pkgs.haskellPackages; [
+       xmonad
+       xmonadContrib
+       xmonadExtras
+       xmobar
       ];
     };
 
