@@ -11,9 +11,9 @@
           ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
           ++ [ gitFull zsh keychain ];
         extraCmds = ''
-          ${extraCmds}
           HOME=${builtins.getEnv "HOME"}
-          . ~/.zshrc
+          # . ~/.zshrc
+          ${extraCmds}
         '';
     };
     in rec {
