@@ -149,7 +149,7 @@
     cups samba
     telnet
     transmission_gtk
-    nodejs rhino nodePackages.npm nodePackages.jshint nodePackages.grunt-cli
+    nodejs rhino nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
     ncurses
   ];
 
