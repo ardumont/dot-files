@@ -55,6 +55,7 @@
           haskellPackages.purescript
           nodejs
           nodePackages.npm
+          nodePackages.npm2nix
           nodePackages.jshint
           nodePackages.grunt-cli
           nodePackages.bower
