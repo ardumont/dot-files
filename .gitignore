@@ -32,3 +32,4 @@ history
 /.FBReader/books.db
 /.FBReader/network.db
 /.FBReader/state.db
+/.ghc/ghci_history
