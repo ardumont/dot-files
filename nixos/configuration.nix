@@ -136,6 +136,7 @@
        self.mtl
        self.HUnit
        self.QuickCheck
+       self.hoogle
        # self.Agda
     ]))
     rlwrap
