@@ -60,6 +60,7 @@
         shm/backward-node
         shm/comment
         shm/del
+        shm/double-quote
         shm/hyphen
         shm/space
         smex
