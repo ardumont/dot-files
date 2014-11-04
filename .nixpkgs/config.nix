@@ -74,5 +74,20 @@
          xmobar
         ];
       };
+
+      # default mynodejs environment
+      # install: nix-env -i env-mynodejs
+      # load: load-env-mynodejs
+      myNodeJSEnv = defaultDevEnv {
+        name = "mynodejs";
+        buildInputs = [
+          nodejs
+          nodePackages.npm
+          nodePackages.npm2nix
+          nodePackages.jshint
+          nodePackages.grunt-cli
+          nodePackages.bower
+        ];
+      };
    };
 }
