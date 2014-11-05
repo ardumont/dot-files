@@ -83,10 +83,11 @@
         buildInputs = [
           nodejs
           nodePackages.npm
-          nodePackages.npm2nix
           nodePackages.jshint
-          nodePackages.grunt-cli
           nodePackages.bower
+          nodePackages.grunt-cli
+          nodePackages.npm2nix
+          nodePackages.bower2nix
         ];
       };
    };
