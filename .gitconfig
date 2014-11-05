@@ -23,3 +23,6 @@
 	rh2 = reset HEAD^^ --hard
 [help]
 	autocorrect = 1
+
+# [url "https://"]
+# 	insteadOf = git://
