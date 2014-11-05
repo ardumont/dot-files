@@ -88,6 +88,7 @@
           nodePackages.grunt-cli
           nodePackages.npm2nix
           nodePackages.bower2nix
+          nodePackages.phantomjs
         ];
       };
 
