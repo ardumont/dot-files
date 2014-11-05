@@ -90,5 +90,14 @@
           nodePackages.bower2nix
         ];
       };
+
+      myJavaEnv = defaultDevEnv {
+        name = "myjava";
+        buildInputs = [
+          jdk
+          maven
+        ];
+      };
+
    };
 }
