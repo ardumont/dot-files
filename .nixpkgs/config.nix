@@ -89,6 +89,7 @@
           nodePackages.npm2nix
           nodePackages.bower2nix
           nodePackages.phantomjs
+          nodePackages.nodemon
         ];
       };
 
