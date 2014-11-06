@@ -8,7 +8,7 @@
 [ -f ~/.shrc-env ] && . ~/.shrc-env
 
 # Load specific work shrc
-[ -f ~/.shrc-work ] && . ~/.shrc-work
+[ -f ~/work/.shrc ] && . ~/work/.shrc
 
 # keyboard mapping
 [ ! -f /etc/NIXOS -a -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
