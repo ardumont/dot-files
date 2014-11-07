@@ -48,7 +48,8 @@
     htop powertop
     emacs texinfo w3m
     tmux rxvt_unicode bind
-    tcsh bash zsh python ruby
+    bash zsh ruby
+    python3 python34Packages.pip
     zlib
     firefoxWrapper chromium conkeror
     graphviz
