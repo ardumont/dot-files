@@ -1,0 +1,4 @@
+for i in $(ls ~/work/*/.shrc); do
+    echo "Work - . $i"
+    . $i
+done

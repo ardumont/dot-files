@@ -104,3 +104,5 @@ ln -nsf $REPO_DOTFILES/.mc-lists.el ~/.emacs.d/
 ### Adjust system configuration
 
 bash $WDIR/adjust-system-configuration.sh
+
+[ ! -d $HOME/work ] && mkdir -p $HOME/work && ln -s $WDIR/.shrc-work $HOME/work/.shrc
