@@ -31,7 +31,7 @@
     evince fbreader
     filezilla
     gnome.zenity
-    git gitAndTools.tig gitAndTools.hub gitg
+    git gitAndTools.tig gitAndTools.hub gitg meld
     gnupg gnupg1 pinentry
     pmount file
     wget curl tree
