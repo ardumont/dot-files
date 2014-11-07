@@ -3,7 +3,7 @@
 	email = antoine.romain.dumont@gmail.com
 [core]
 	editor = emacsclient -nw
-	excludesfile = /home/tony/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [color]
 	ui = true
 [merge]
