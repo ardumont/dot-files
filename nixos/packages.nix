@@ -32,6 +32,7 @@
     filezilla
     gnome.zenity
     git gitAndTools.tig gitAndTools.hub gitg meld
+    mercurialFull
     gnupg gnupg1 pinentry
     pmount file
     wget curl tree
