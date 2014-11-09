@@ -22,15 +22,15 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     nix-repl
-    gnome3.nautilus gnome3.gnome_settings_daemon
-    gnome3.eog pinta scrot
-    gnome3.totem vlc mplayer2 x264
+    gnome3_12.nautilus gnome3_12.gnome_settings_daemon
+    gnome3_12.eog pinta scrot
+    gnome3_12.totem vlc mplayer2 x264
+    gnome3_12.zenity
     transmission_gtk
     audacious
-    linuxPackages.virtualbox
+    linuxPackages.virtualbox packer
     evince fbreader
     filezilla
-    gnome.zenity
     git gitAndTools.tig gitAndTools.hub gitg meld
     mercurialFull
     gnupg gnupg1 pinentry
@@ -63,7 +63,7 @@
     pmutils
     autojump
     inotifyTools
-    unetbootin
+    #unetbootin
     alsaUtils
     lsof
     vagrant
@@ -100,7 +100,6 @@
     docker
     cups samba
     telnet
-    transmission_gtk
     nodejs rhino nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
     ncurses
   ];
