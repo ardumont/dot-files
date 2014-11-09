@@ -45,7 +45,7 @@
     xsel xclip pass keychain
     htop powertop
     emacs texinfo w3m
-    tmux rxvt_unicode bind
+    tmux bind rxvt_unicode
     tcsh bash zsh python ruby
     zlib
     firefoxWrapper chromium conkeror
@@ -100,5 +100,5 @@
     transmission_gtk
     nodejs rhino nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
     ncurses
-  ]; 
+  ];
 }
