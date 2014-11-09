@@ -15,7 +15,8 @@
       options snd_hda_intel enable=0,1
     '';
 
-    kernel.sysctl."fs.inotify.max_user_watches" = 100000;
+    # dropbox setting
+    kernel.sysctl."fs.inotify.max_user_watches" = 1000000;
   };
 
   time.timeZone = "Europe/Paris";
