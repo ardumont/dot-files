@@ -43,3 +43,5 @@ export BROWSER=/usr/bin/firefox
 [ -f $HOME/applications/ide/eclipse/eclipse/eclipse ] && export ECLIPSE_HOME=$HOME/applications/ide/eclipse/eclipse
 
 export HISTIGNORE="pass:&"
+
+export CHROME_BIN="/run/current-system/sw/bin/chromium-browser"
