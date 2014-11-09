@@ -9,6 +9,7 @@
       memtest86.enable = true; # Activate the check on memory
     };
 
+    # sound options
     extraModprobeConfig = ''
       options snd slots=snd-hda-intel
       options snd_hda_intel enable=0,1
