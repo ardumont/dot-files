@@ -29,19 +29,11 @@
     supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   };
 
-  programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
-
-#  powerManagement.resumeCommands = "xscreensaver-command -lock"; #Commands executed after the system resumes from suspend-to-RAM.
+  programs.ssh.startAgent = false; # do not start ssh agent (gpg-agent will do)
 
   # List services that you want to enable:
   services = {
-#    acpid = {
-#      enable = true;     # acpi
-#      lidEventCommands = ''
-#        # suspend on lid close event or do nothing
-#        grep -q open /proc/acpi/button/lid/LID0/state && exit 0 || systemctl suspend
-#        ''; # suspend on lid close
-#      };
+    acpid.enable = true;
 
     locate = {
       enable = true;
