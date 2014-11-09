@@ -84,3 +84,6 @@ URxvt.keysym.C-S-Up:   perl:font-size:incglobal
 URxvt.keysym.C-S-Down: perl:font-size:decglobal
 URxvt.keysym.C-S-R:    perl:font-size:reset
 URxvt.font-size.step:  4
+! disable default binding for shift on urxvt
+URxvt.iso14755:        false
+URxvt.iso14755_52:     false
