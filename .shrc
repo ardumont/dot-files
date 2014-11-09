@@ -13,9 +13,6 @@
 # keyboard mapping
 [ ! -f /etc/NIXOS -a -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
 
-# Setup the touchpad's behavior
-[ -f ~/bin/touchpad/setup-touchpad.sh ] && . ~/bin/touchpad/setup-touchpad.sh
-
 # Disable touchpad when typing
 [ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh
 
