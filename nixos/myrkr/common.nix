@@ -5,7 +5,7 @@
     loader.grub = {
       enable = true;           # Use GRUB boot loader.
       version = 2;             # Version 2
-      device = "/dev/sda";     # which hard drive to install it
+      device = "/dev/sdb";     # which hard drive to install it
       memtest86.enable = true; # Activate the check on memory
     };
 
