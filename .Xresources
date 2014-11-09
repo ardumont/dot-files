@@ -68,14 +68,15 @@ URxvt.url-select.autocopy:  true ! if set to true, selected URLs are automatical
 URxvt.url-select.launcher:  firefox ! browser/command to open selected URL with
 URxvt.url-select.underline: true ! all URLs get underlined
 
-! clipboard
+! clipboard - copy/paste selection clipboard
 URxvt.keysym.C-M-w:   perl:clipboard:copy
 URxvt.keysym.C-M-y:   perl:clipboard:paste
-! URxvt.keysym.C-M-y:   perl:clipboard:paste_escaped
-
-URxvt.clipboard.autocopy: true ! the clipboard is automatically updated whenever the PRIMARY selection changes
-! URxvt.clipboard.copycmd:  xsel -ib
-! URxvt.clipboard.pastecmd: xsel -ob
+URxvt.keysym.C-M-S-y: perl:clipboard:paste_escaped
+URxvt.clipboard.autocopy: true ! the clipboard is automatically updated whenever the PRIMARY selection changesx
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
+! URxvt.clipboard.copycmd:  xclip -i selection clipboard
+! URxvt.clipboard.pastecmd: xclip -o selection clipboard
 
 ! font-size
 URxvt.keysym.C-Up:     perl:font-size:increase

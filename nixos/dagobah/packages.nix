@@ -44,7 +44,7 @@
     mosh
     offlineimap mu
     most
-    xclip pass keychain
+    xclip xsel pass keychain
     htop powertop
     emacs texinfo w3m
     tmux bind rxvt_unicode urxvt_perls
