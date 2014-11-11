@@ -102,5 +102,14 @@
         ];
       };
 
+      emacslispEnv = defaultDevEnv {
+        name = "emacslisp";
+        buildInputs = [
+          emacs
+          emacs24Packages.cask
+          python
+        ];
+      };
+
    };
 }
