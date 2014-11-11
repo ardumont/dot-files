@@ -10,7 +10,7 @@
         shell = "/var/run/current-system/sw/bin/zsh";
         buildInputs = buildInputs
           ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
-          ++ [ gitFull zsh keychain ];
+          ++ [ gitFull zsh keychain emacs tmux ];
         extraCmds = ''
           HOME=${builtins.getEnv "HOME"}
           ${extraCmds}
