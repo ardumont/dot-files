@@ -90,6 +90,7 @@
           nodePackages.bower2nix
           nodePackages.phantomjs
           nodePackages.nodemon
+          chromedriver
         ];
       };
 
