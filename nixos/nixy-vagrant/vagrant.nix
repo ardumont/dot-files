@@ -1,0 +1,1 @@
+{ config, pkgs, ... }: { imports = [ ./vagrant-provision.nix ];}
