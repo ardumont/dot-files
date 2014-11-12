@@ -10,7 +10,7 @@
         shell = "/var/run/current-system/sw/bin/zsh";
         buildInputs = buildInputs
           ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
-          ++ [ gitFull zsh keychain emacs tmux ];
+          ++ [ gitFull zsh keychain emacs tmux gnumake ];
         extraCmds = ''
           HOME=${builtins.getEnv "HOME"}
           ${extraCmds}
@@ -42,6 +42,7 @@
           mtl
           HUnit
           QuickCheck
+          hoogle
           # Agda
         ];
       };
