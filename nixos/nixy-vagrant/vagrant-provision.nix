@@ -50,7 +50,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    python34 pypy python34Packages.pip
+    python python34 pypy python34Packages.pip
     nix-repl
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon gnome3_12.zenity gnome3_12.evolution
     gnome3_12.eog pinta scrot
