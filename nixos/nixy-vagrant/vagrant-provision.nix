@@ -63,7 +63,7 @@
 #    linuxPackages.virtualbox
     evince fbreader
     filezilla
-    git gitAndTools.tig gitAndTools.hub gitg mercurialFull
+    git gitAndTools.tig gitAndTools.hub gitg mercurialFull gitAndTools.git-remote-hg
     gnupg gnupg1 pinentry
     pmount file
     wget curl tree
