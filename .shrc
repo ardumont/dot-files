@@ -16,8 +16,8 @@
 # Disable touchpad when typing
 [ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh
 
-# autojump (sudo aptitude install autojump) your way in your filesystem
-[ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
+# autojump
+[ -f $HOME/.nix-profile/etc/profile.d/autojump.zsh ] && . $HOME/.nix-profile/etc/profile.d/autojump.zsh
 
 # nix env (manual install)
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
