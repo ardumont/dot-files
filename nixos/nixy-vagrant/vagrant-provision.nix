@@ -5,6 +5,9 @@
 { config, pkgs, ... }:
 
 {
+
+  imports = [ ./proxy.nix ];
+
   networking = {
 #    firewall.enable = false;
 #    firewall.allowedTCPPorts = [ 80 443 3000 22 ];
