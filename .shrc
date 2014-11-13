@@ -19,7 +19,7 @@
 # autojump (sudo aptitude install autojump) your way in your filesystem
 [ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
 
-# nix env
+# nix env (manual install)
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
 
 fortune | cowsay
