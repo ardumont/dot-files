@@ -105,9 +105,9 @@ alias gfa='git fetch --all -p'
 alias gfh="git fetch http-origin -p"
 
 # git push
-alias gpo='git push origin'
-alias gpu='git push upstream'
-alias gph='git push http-origin'
+alias gpo='git push origin $(current_branch)'
+alias gpu='git push upstream $(current_branch)'
+alias gph='git push http-origin $(current_branch)'
 
 alias gpurge='git branch --merged | xargs git branch -d'
 alias gcob='git checkout -b'
