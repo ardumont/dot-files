@@ -54,6 +54,7 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     python python34 pypy python34Packages.pip
+    peco
     nix-repl
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon gnome3_12.zenity
     gnome3_12.evolution gnome3_12.evolution_data_server
