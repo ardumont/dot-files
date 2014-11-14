@@ -102,6 +102,7 @@ alias gl2='git log --oneline --graph --remotes --decorate --all'
 # git fetch
 alias gf='git fetch -p'
 alias gfa='git fetch --all -p'
+alias gfh="git fetch http-origin -p"
 
 # git push
 alias gpo='git push origin'
