@@ -257,7 +257,8 @@
     sudo.configFile = ''
       root   ALL=(ALL) SETENV: ALL
       %wheel ALL=(ALL) SETENV: ALL
-     '';
+      Defaults env_keep = "http_proxy https_proxy ftp_proxy no_proxy"
+    '';
     setuidPrograms = [ "pmount" "pumount" ];
   };
 }
