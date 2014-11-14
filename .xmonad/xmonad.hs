@@ -200,6 +200,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
   , (prefix "S-g"       , "gparted"                    , myRunOrRaise home "bin/admin/gparted.sh"                      (appName =? "gpartedbin" <&&> className =? "Gpartedbin"))
   , (prefix "S-u"       , "usb-creator-gtk"            , myRunOrRaise home "bin/admin/usb-creator.sh"                  (appName =? "usb-creator-gtk" <&&> className =? "Usb-creator-gtk"))
+  , (prefix "C-m"      ,  "mail"                       , runOrRaiseNext "evolution"                                    (className =? ".evolution-wrapped")
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     myTerminalQuery)
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
