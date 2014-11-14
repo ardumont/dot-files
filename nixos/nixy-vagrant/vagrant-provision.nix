@@ -55,7 +55,8 @@
   environment.systemPackages = with pkgs; [
     python python34 pypy python34Packages.pip
     nix-repl
-    gnome3_12.nautilus gnome3_12.gnome_settings_daemon gnome3_12.zenity gnome3_12.evolution
+    gnome3_12.nautilus gnome3_12.gnome_settings_daemon gnome3_12.zenity
+    gnome3_12.evolution gnome3_12.evolution_data_server
     gnome3_12.eog pinta scrot
 #    gnome3_12.totem vlc mplayer2 x264
     transmission_gtk
