@@ -29,7 +29,7 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     nix-repl
-    pidgin-with-plugins
+    pidgin-with-plugins davmail thunderbird
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon
     gnome3_12.eog pinta scrot
     gnome3_12.totem vlc mplayer2 x264
