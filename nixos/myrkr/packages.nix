@@ -16,12 +16,20 @@
       enablePepperFlash = true; # Chromium's non-NSAPI alternative to Adobe Flash
       enablePepperPDF = true;
     };
+
+    packageOverrides = self: with self; {
+      # override the default pidgin with plugins (empty by default)
+      pidgin-with-plugins = pidgin-with-plugins.override {
+        plugins = [ pidginsipe pidginotr ];
+      };
+    };
   };
 
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     nix-repl
+    pidgin-with-plugins
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon
     gnome3_12.eog pinta scrot
     gnome3_12.totem vlc mplayer2 x264
