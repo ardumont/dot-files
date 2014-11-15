@@ -4,6 +4,9 @@
   # Allow broken content (when using nixpkgs as git)
   allowBroken = true;
 
+  # Allow unfree license
+  allowUnfree = true;
+
   # source: https://nixos.org/wiki/Howto_develop_software_on_nixos
   packageOverrides = self : with pkgs; with sourceAndTags;
     # default dev environment with common needed tools
