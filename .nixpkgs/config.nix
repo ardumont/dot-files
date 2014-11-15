@@ -7,6 +7,11 @@
   # Allow unfree license
   allowUnfree = true;
 
+  # Add pidgin with sipe (lync protocol) by default
+  pkgs.pidgin-with-plugins = with pkgs; pidgin-with-plugins.override {
+    plugins = [ pidgin-sipe ];
+  };
+
   # source: https://nixos.org/wiki/Howto_develop_software_on_nixos
   packageOverrides = self : with pkgs; with sourceAndTags;
     # default dev environment with common needed tools
