@@ -3,7 +3,7 @@
 {
   services.xserver = {
       enable = true;
-      videoDrivers = [ "ati_unfree" ]; 
+      videoDrivers = [ "ati_unfree" ];
 
       startGnuPGAgent = true;
       desktopManager.default = "none";
@@ -19,10 +19,10 @@
         xmonad = {
           enable = true;
           enableContribAndExtras = true;
-          extraPackages = haskellPackages: [
-            haskellPackages.xmonad
-            haskellPackages.xmonadContrib
-            haskellPackages.xmobar
+          extraPackages = self: [
+            self.xmonad
+            self.xmonadContrib
+            self.xmobar
           ];
         };
       };
@@ -30,5 +30,4 @@
       # Enable GPU support (source: https://nixos.org/wiki/Enable_Browser_Plugins)
       vaapiDrivers = [ pkgs.vaapiIntel ];
     };
-  
 }
