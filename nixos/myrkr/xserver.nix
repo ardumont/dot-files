@@ -3,7 +3,6 @@
 {
   services.xserver = {
       enable = true;
-      videoDrivers = [ "ati_unfree" ];
 
       startGnuPGAgent = true;
       desktopManager.default = "none";
