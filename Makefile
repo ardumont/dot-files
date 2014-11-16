@@ -5,6 +5,7 @@ REPO_EMACS=~/.emacs.d
 REPO_PACKS=~/.prelude-packs
 WITH_EMACS_ENV="prelude"
 CI=n
+DISPLAY=:0.0
 
 deploy:
 	$(REPO_DOTFILES)/deploy.sh $(WITH_EMACS_ENV) $(CI)
@@ -47,3 +48,11 @@ push-packs:
 	cd $(REPO_PACKS) && make push
 
 test: deploy
+
+evolution:
+	xhost + && \
+	sudo docker run -it \
+	  -v $(HOME):/home/user \
+	  -v /tmp/.X11-unix:/tmp/.X11-unix \
+	  -e DISPLAY=unix$(DISPLAY) \
+	   ardumont/evolution
