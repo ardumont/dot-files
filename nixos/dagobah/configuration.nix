@@ -12,6 +12,6 @@
       ./users.nix
       ./xserver.nix
       ./packages.nix
-      ./vbox.nix
+      ./virtual.nix
     ];
 }
