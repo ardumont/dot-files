@@ -51,7 +51,7 @@ test: deploy
 
 evolution:
 	xhost + && \
-	sudo docker run -it \
+	docker run -it \
 	  -v $(HOME):/home/user \
 	  -v /tmp/.X11-unix:/tmp/.X11-unix \
 	  -e DISPLAY=unix$(DISPLAY) \
