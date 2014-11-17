@@ -5,6 +5,9 @@
 { config, pkgs, ... }:
 
 {
+  # for dev
+  nix.useChroot = true;
+
   imports = [
       ./hardware-configuration.nix # Include the results of the hardware scan.
       ./common.nix
