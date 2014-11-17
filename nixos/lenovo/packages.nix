@@ -41,7 +41,7 @@
     evince fbreader
     filezilla
     git gitAndTools.tig gitAndTools.hub gitg meld
-    mercurialFull
+    gitAndTools.git-remote-hg mercurialFull
     gnupg gnupg1 pinentry
     pmount file
     wget curl tree
