@@ -21,7 +21,7 @@
         shell = "/var/run/current-system/sw/bin/zsh";
         buildInputs = buildInputs
           ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
-          ++ [ gitFull zsh keychain emacs tmux gnumake ];
+          ++ [ gitFull zsh keychain emacs tmux gnumake gitAndTools.git-remote-hg ];
         extraCmds = ''
           HOME=${builtins.getEnv "HOME"}
           ${extraCmds}
