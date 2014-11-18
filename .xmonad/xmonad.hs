@@ -217,7 +217,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "n"         , "nautilus"                   , runOrRaiseNext "nautilus"                 (appName =? "nautilus" <&&> className =? "Nautilus"))
   , (prefix "S-n"       , "thunar"                     , runOrRaiseNext "thunar"                   (className =? "thunar"))
   , (prefix "C-M1-f"    , "filezilla"                  , runOrRaiseNext "filezilla"                (className =? "Filezilla"))
-  , (prefix "C-v"       , "virtualbox"                 , runOrRaiseNext "virtualbox"               (appName =? "Virtualbox" <&&> className =? "Qt-subapplication"))
+  , (prefix "C-v"       , "virtualbox"                 , runOrRaiseNext "virtualbox"               (appName =? "Qt-subapplication" <&&> className =? "VirtualBox"))
   , (prefix "u"         , "unetbootin"                 , runOrRaiseNext "unetbootin"               (className =? "unetbootin"))
   , (prefix "/"         , "transmission"               , runOrRaiseNext "transmission-gtk" $       (appName =? "transmission-gtk" <&&> className =? "Transmission-gtk") <||> (appName =? ".transmission-gtk-wrapped" <&&> className =? ".transmission-gtk-wrapped"))
   , (prefix "S-g"       , "gparted"                    , runOrRaiseNext "gksudo /usr/sbin/gparted" (className =? "gpartedbin"))
