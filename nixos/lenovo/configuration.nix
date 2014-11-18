@@ -11,6 +11,7 @@
   imports = [
       ./hardware-configuration.nix # Include the results of the hardware scan.
       ./common.nix
+      ./env.nix
       ./proxy.nix
       ./network.nix
       ./users.nix
