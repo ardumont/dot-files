@@ -27,6 +27,11 @@
     supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   };
 
+  system.activationScripts.media =
+  ''
+    mkdir -m 0755 -p /media
+  '';
+
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
 
   powerManagement.resumeCommands = "xscreensaver-command -lock"; #Commands executed after the system resumes from suspend-to-RAM.
