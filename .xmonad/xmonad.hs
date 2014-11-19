@@ -363,7 +363,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 
-workspaceEmacs, workspaceTerminal, workspaceWeb, workspaceCode, workspaceIrc, workspaceIde, workspaceFloat, workspaceBooks, workspaceDb :: String
+workspaceEmacs, workspaceTerminal, workspaceWeb, workspaceCode, workspaceIrc, workspaceIde, workspaceFloat, workspaceBooks, workspaceDb, workspaceVM :: String
 workspaceEmacs    = "1:emacs"
 workspaceTerminal = "2:terminal"
 workspaceWeb      = "3:web"
@@ -373,6 +373,7 @@ workspaceIde      = "6:ide"
 workspaceFloat    = "7:ide"
 workspaceBooks    = "8:books"
 workspaceDb       = "9:db"
+workspaceVM       = "10:vm"
 
 myWorkspaces :: [String]
 myWorkspaces = [ workspaceEmacs
@@ -383,7 +384,8 @@ myWorkspaces = [ workspaceEmacs
                , workspaceIde
                , workspaceFloat
                , workspaceBooks
-               , workspaceDb]
+               , workspaceDb
+               , workspaceVM]
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -415,6 +417,7 @@ myManageHook = composeAll
     , appName =? "sun-awt-X11-XFramePeer"                                       --> doShift workspaceDb
     , className =? "Skype"                                                      --> doShift workspaceIrc
     , className =? "Pidgin"                                                     --> doShift workspaceIrc
+    , className =? "VirtualBox"                                                 --> doShift workspaceVM
     , appName =? "..key-mon-wrapped-wrapped" <&&> className =? "..key-mon-wrapped-wrapped" --> doIgnore
     ]
 
