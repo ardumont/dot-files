@@ -414,6 +414,7 @@ myManageHook = composeAll
     , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce" --> doShift workspaceIde
     , appName =? "sun-awt-X11-XFramePeer"                                       --> doShift workspaceDb
     , className =? "Skype"                                                      --> doShift workspaceIrc
+    , className =? "Pidgin"                                                     --> doShift workspaceIrc
     , appName =? "..key-mon-wrapped-wrapped" <&&> className =? "..key-mon-wrapped-wrapped" --> doIgnore
     ]
 
