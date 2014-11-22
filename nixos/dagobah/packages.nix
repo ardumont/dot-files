@@ -71,8 +71,8 @@
     darcs
 #    rubyLibs.bundler
     haskellPackages.pandoc
-    haskellPlatform
-    haskellPlatform.ghc
+    # haskellPlatform
+    # haskellPlatform.ghc
     haskellPackages.ncurses
     (haskellPackages.ghcWithPackages (self : [
        self.cabalInstall
