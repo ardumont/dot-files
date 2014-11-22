@@ -59,3 +59,12 @@ evolution:
 
 nixos-rebuild:
 	sudo nixos-rebuild switch -I nixpkgs=$(HOME)/repo/perso/nixpkgs
+
+reboot:
+	systemctl kexec
+
+shutdown:
+	systemctl poweroff
+
+suspend:
+	systemctl suspend
