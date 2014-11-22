@@ -12,7 +12,7 @@
       uid = 1000;
       createHome = true;
       home = "/home/tony";
-      extraGroups = [ "users" "wheel" "audio" "video" "vboxusers" "docker" ];
+      extraGroups = [ "users" "wheel" "audio" "video" "vboxusers" "docker" "networkmanager" ];
       useDefaultShell = true;
     }];
   };
