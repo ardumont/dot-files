@@ -9,10 +9,6 @@
       layout = "us";
       xkbOptions = "eurosign:e,ctrl:nocaps,terminate=ctrl_alt_backspace,altwin:meta_alt";
 
-      # touchpad
-#      synaptics.enable = true;
-#      synaptics.twoFingerScroll = true;
-
       windowManager = {
         default = "xmonad";
         xmonad = {
