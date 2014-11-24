@@ -106,11 +106,21 @@
         ];
       };
 
+      myAndroidEnv = defaultDevEnv {
+        name = "myandroid";
+        buildInputs = [
+          androidsdk_4_4
+          idea.android-studio
+          idea.idea-community
+        ];
+      };
+
       myJavaEnv = defaultDevEnv {
         name = "myjava";
         buildInputs = [
           jdk
           maven
+          idea.idea-community
         ];
       };
 
