@@ -120,6 +120,7 @@
         buildInputs = [
           jdk
           maven
+          ant
           idea.idea-community
         ];
       };
