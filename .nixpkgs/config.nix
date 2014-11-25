@@ -143,5 +143,12 @@
           hostapd
         ];
       };
+
+      proEnv =  defaultDevEnv {
+        name = "pro";
+        buildInputs = myAndroidEnv.buildInputs ++
+                      myJavaEnv.buildInputs ++
+                      myNodeJSEnv.buildInputs;
+      };
    };
 }
