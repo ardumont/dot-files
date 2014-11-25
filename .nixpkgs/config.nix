@@ -134,5 +134,13 @@
         ];
       };
 
+      wifiToolsEnv = defaultDevEnv {
+        name = "wifiTools";
+        buildInputs = [
+          bridge_utils
+          wirelesstools
+          hostapd
+        ];
+      };
    };
 }
