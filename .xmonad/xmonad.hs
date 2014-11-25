@@ -363,7 +363,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 
-workspaceEmacs, workspaceTerminal, workspaceWeb, workspaceCode, workspaceIrc, workspaceIde, workspaceFloat, workspaceBooks, workspaceDb, workspaceVM :: String
+workspaceEmacs, workspaceTerminal, workspaceWeb, workspaceCode, workspaceIrc, workspaceIde, workspaceFloat, workspaceBooks, workspaceDb , workspaceVM, workspaceDevVM :: String
 workspaceEmacs    = "1:emacs"
 workspaceTerminal = "2:terminal"
 workspaceWeb      = "3:web"
@@ -371,9 +371,10 @@ workspaceCode     = "4:code"
 workspaceIrc      = "5:irc"
 workspaceIde      = "6:ide"
 workspaceFloat    = "7:ide"
-workspaceBooks    = "8:books"
-workspaceDb       = "9:db"
-workspaceVM       = "10:vm"
+workspaceVM       = "8:vm"
+workspaceDevVM    = "9:dev-vm"
+workspaceBooks    = "10:books"
+workspaceDb       = "11:db"
 
 myWorkspaces :: [String]
 myWorkspaces = [ workspaceEmacs
@@ -381,11 +382,13 @@ myWorkspaces = [ workspaceEmacs
                , workspaceWeb
                , workspaceCode
                , workspaceIrc
+               , workspaceVM
+               , workspaceDevVM
                , workspaceIde
                , workspaceFloat
                , workspaceBooks
                , workspaceDb
-               , workspaceVM]
+               ]
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -418,6 +421,7 @@ myManageHook = composeAll
     , className =? "Skype"                                                      --> doShift workspaceIrc
     , className =? "Pidgin"                                                     --> doShift workspaceIrc
     , className =? "VirtualBox"                                                 --> doShift workspaceVM
+    , className =? ".emulator64-arm-wrapped"                                    --> doShift workspaceDevVM
     , appName =? "..key-mon-wrapped-wrapped" <&&> className =? "..key-mon-wrapped-wrapped" --> doIgnore
     ]
 
