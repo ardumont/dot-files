@@ -204,6 +204,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     myTerminalQuery)
   , (prefix "S-p"       , "chat"                       , runOrRaiseNext "pidgin"                   (className =? "Pidgin"))
+  , (prefix "S-a"       , "android"                    , runOrRaiseNext "android"                  (className =? "Android SDK Manager"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
   , (prefix "S-t"       , "video-player"               , runOrRaiseNext "totem"                    (className =? "Totem"))
   , (prefix "C-e"       , "pdf-reader"                 , runOrRaiseNext "evince"                   (className =? "Evince" <||> className =? ".evince-wrapped"))
@@ -422,6 +423,7 @@ myManageHook = composeAll
     , className =? "Pidgin"                                                     --> doShift workspaceIrc
     , className =? "VirtualBox"                                                 --> doShift workspaceVM
     , className =? ".emulator64-arm-wrapped"                                    --> doShift workspaceDevVM
+    , className =? "Android SDK Manager"                                        --> doShift workspaceDevVM
     , appName =? "..key-mon-wrapped-wrapped" <&&> className =? "..key-mon-wrapped-wrapped" --> doIgnore
     ]
 
