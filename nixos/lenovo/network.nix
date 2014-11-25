@@ -20,6 +20,10 @@
       192.168.0.15 lenovo
       192.168.0.20 nas
     '';
+
+    # do not use wlp3s0 names as it complicates other software use...
+    usePredictableInterfaceNames = false;
+
   };
 
 }
