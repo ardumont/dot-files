@@ -19,6 +19,7 @@
         haskell-indentation-delete-char
         haskell-newline-and-indent
         ido-switch-buffer
+        iedit-mode
         indent-for-tab-command
         kill-region
         kmacro-start-macro
