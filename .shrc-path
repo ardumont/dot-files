@@ -16,6 +16,15 @@ if [ -d $HOMEBIN ]; then
     done
 fi
 
+# add node modules in $HOME in global context
+HOME_NODE_MODULES=$HOME/node_modules
+
+if [ -d $HOME/node_modules ]; then
+    for dir in $HOME_NODE_MODULES/*; do
+       [ -d $dir ] && PATH="$dir/bin:$PATH"
+    done
+fi
+
 ###
 # Other applications
 ###
