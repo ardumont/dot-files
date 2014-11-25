@@ -118,7 +118,8 @@
       myJavaEnv = defaultDevEnv {
         name = "myjava";
         buildInputs = [
-          jdk
+          # jdk
+          oraclejdk7
           maven
           ant
           idea.idea-community
