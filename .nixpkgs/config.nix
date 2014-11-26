@@ -124,6 +124,7 @@
           maven
           ant
           idea.idea-community
+          jd-gui
         ];
       };
 
