@@ -112,6 +112,7 @@
           androidsdk_4_4
           idea.android-studio
           idea.idea-community
+          heimdall
         ];
       };
 
