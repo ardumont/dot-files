@@ -4,6 +4,7 @@
   nix.extraOptions = ''
     gc-keep-outputs = true
     gc-keep-derivations = true
+    build-cores = 0
   '';
 
   nix.gc.automatic = true;
