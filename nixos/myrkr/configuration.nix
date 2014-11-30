@@ -10,6 +10,7 @@
 
   imports =
     [ ./hardware-configuration.nix # Include the results of the hardware scan.
+      ./nix.nix
       ./common.nix
       ./env.nix
       ./network.nix
