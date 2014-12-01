@@ -26,6 +26,11 @@
     # do not use wlp3s0 names as it complicates other software use...
     usePredictableInterfaceNames = false;
 
+    # tryout and fail
+    # bridge only works with same physical devices (ethernet)
+    # bridges = {
+    #   br0 = { interfaces = [ "eth0" "usb0" ]; };
+    # };
   };
 
 }
