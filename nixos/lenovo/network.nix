@@ -1,8 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  # nix.proxy = "http://login:mdp@proxy:port";
   networking = {
+    # firewall.enable = false;
+    firewall.allowedTCPPorts = [ 3000 ];
+
     hostName = "lenovo";    # Define your hostname.
 
     # wireless = {
