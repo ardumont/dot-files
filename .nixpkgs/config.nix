@@ -116,11 +116,9 @@
         ];
       };
 
-      myJavaEnv = defaultDevEnv {
-        name = "myjava";
+      javaEnv = defaultDevEnv {
+        name = "java";
         buildInputs = [
-          # jdk
-          oraclejdk7
           maven
           ant
           idea.idea-community
@@ -128,6 +126,15 @@
         ];
       };
 
+      java6Env = defaultDevEnv {
+        name = "java6";
+        buildInputs = javaEnv.buildInputs ++ [ oraclejdk ];
+      };
+
+      java7Env = defaultDevEnv {
+        name = "java7";
+        buildInputs = javaEnv.buildInputs ++ [ oraclejdk7 ];
+      };
 
       cljEnv = defaultDevEnv {
         name = "clj";
@@ -152,10 +159,10 @@
         ];
       };
 
-      proEnv =  defaultDevEnv {
+      proEnv = defaultDevEnv {
         name = "pro";
         buildInputs = myAndroidEnv.buildInputs ++
-                      myJavaEnv.buildInputs ++
+                      javaEnv.buildInputs ++
                       myNodeJSEnv.buildInputs;
       };
    };
