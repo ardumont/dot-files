@@ -16,18 +16,24 @@
   packageOverrides = self : with pkgs; with sourceAndTags;
     # default dev environment with common needed tools
     let defaultDevEnv = { name, buildInputs ? [], cTags ? [], extraCmds ? ""}:
-      pkgs.myEnvFun {
-        inherit name;
-        shell = "/var/run/current-system/sw/bin/zsh";
-        buildInputs = buildInputs
-          ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
-          ++ [ gitFull zsh keychain emacs tmux gnumake gitAndTools.git-remote-hg ];
-        extraCmds = ''
-          HOME=${builtins.getEnv "HOME"}
-          ${extraCmds}
-        '';
+          pkgs.myEnvFun {
+            inherit name;
+            shell = "/var/run/current-system/sw/bin/zsh";
+            buildInputs = buildInputs
+              ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
+              ++ [ gitFull zsh keychain emacs tmux gnumake gitAndTools.git-remote-hg ];
+            extraCmds = ''
+              HOME=${builtins.getEnv "HOME"}
+              ${extraCmds}
+            '';
+          };
 
-    };
+        defaultJavaEnv = {name, buildInputs ? [] }:
+          defaultDevEnv {
+            inherit name;
+            buildInputs = buildInputs ++ [ maven ant idea.idea-community jd-gui ];
+          };
+
     in rec {
 
       # install: nix-env -i env-sdl
@@ -126,14 +132,14 @@
         ];
       };
 
-      java6Env = defaultDevEnv {
+      java6Env = defaultJavaEnv {
         name = "java6";
-        buildInputs = javaEnv.buildInputs ++ [ oraclejdk ];
+        buildInputs = [ oraclejdk ];
       };
 
-      java7Env = defaultDevEnv {
+      java7Env = defaultJavaEnv {
         name = "java7";
-        buildInputs = javaEnv.buildInputs ++ [ oraclejdk7 ];
+        buildInputs = [ oraclejdk7 ];
       };
 
       cljEnv = defaultDevEnv {
@@ -162,7 +168,7 @@
       proEnv = defaultDevEnv {
         name = "pro";
         buildInputs = myAndroidEnv.buildInputs ++
-                      javaEnv.buildInputs ++
+                      java6Env.buildInputs ++
                       myNodeJSEnv.buildInputs;
       };
    };
