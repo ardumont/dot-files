@@ -128,6 +128,12 @@
         ];
       };
 
+
+      cljEnv = defaultDevEnv {
+        name = "clj";
+        buildInputs = [ jdk clojure leiningen ];
+      };
+
       emacslispEnv = defaultDevEnv {
         name = "emacslisp";
         buildInputs = [
