@@ -34,6 +34,12 @@
             buildInputs = buildInputs ++ [ maven ant idea.idea-community jd-gui ];
           };
 
+        composeDevEnv = { name, envs }:
+          defaultDevEnv {
+            inherit name;
+            buildInputs = pkgs.lib.concatMap (env: env.buildInputs) envs;
+          };
+
     in rec {
 
       # install: nix-env -i env-sdl
@@ -165,11 +171,9 @@
         ];
       };
 
-      proEnv = defaultDevEnv {
+      proEnv = composeDevEnv {
         name = "pro";
-        buildInputs = myAndroidEnv.buildInputs ++
-                      java6Env.buildInputs ++
-                      myNodeJSEnv.buildInputs;
+        envs = [ myAndroidEnv java6Env myNodeJSEnv ];
       };
    };
 }
