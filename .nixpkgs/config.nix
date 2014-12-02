@@ -28,7 +28,7 @@
             '';
           };
 
-        defaultJavaEnv = {name, buildInputs ? [] }:
+        defaultJavaEnv = { name, buildInputs ? [] }:
           defaultDevEnv {
             inherit name;
             buildInputs = buildInputs ++ [ maven ant idea.idea-community jd-gui ];
