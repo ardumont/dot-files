@@ -10,8 +10,8 @@ xrdb -merge ~/.Xresources
 
 # fix awt & co. in stumpwm/xmonad
 export _JAVA_AWT_WM_NONREPARENTING=1
-# wmname "LG3D"
-# export AWT_TOOLKIT=MToolkit
+wmname "LG3D"
+export AWT_TOOLKIT=MToolkit
 
 start-if-cmd-exists () {
   which $1 && ~/bin/service/service.sh restart $* &
