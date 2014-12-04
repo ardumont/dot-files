@@ -113,5 +113,6 @@
     nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
     ncurses
     dos2unix
+    wmname
   ];
 }
