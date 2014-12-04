@@ -9,11 +9,6 @@
   networking = {
     hostName = "dagobah";    # Define your hostname.
 
-    # wireless = {
-    #   enable = true;                # Enables wireless
-    #   userControlled.enable = true; # user can play with wifi
-    #   interfaces = [ "wlp1s0" ];    # explicit the interfaces the user can modify
-    # };
 
     # nm, nmcli, etc... incompatible with networking.wireless
     # also for a user to manager wireless network, add it to networkmanager group
