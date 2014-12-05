@@ -114,6 +114,6 @@
     ncurses
     dos2unix
     wmname
-    x11vnc autocutsel
+    x11vnc tightvnc autocutsel
   ];
 }
