@@ -366,7 +366,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 
-workspaceEmacs, workspaceTerminal, workspaceWeb, workspaceCode, workspaceIrc, workspaceIde, workspaceFloat, workspaceBooks, workspaceDb , workspaceVM, workspaceDevVM :: String
+workspaceEmacs, workspaceTerminal, workspaceWeb, workspaceCode, workspaceIrc, workspaceIde, workspaceFloat, workspaceBooks, workspaceDb , workspaceVM, workspaceDevVM, workspaceRemote :: String
 workspaceEmacs    = "1:emacs"
 workspaceTerminal = "2:terminal"
 workspaceWeb      = "3:web"
@@ -378,6 +378,7 @@ workspaceVM       = "8:vm"
 workspaceDevVM    = "9:dev-vm"
 workspaceBooks    = "10:books"
 workspaceDb       = "11:db"
+workspaceRemote   = "12:remote"
 
 myWorkspaces :: [String]
 myWorkspaces = [ workspaceEmacs
@@ -391,6 +392,7 @@ myWorkspaces = [ workspaceEmacs
                , workspaceFloat
                , workspaceBooks
                , workspaceDb
+               , workspaceRemote
                ]
 
 ------------------------------------------------------------------------
@@ -426,6 +428,7 @@ myManageHook = composeAll
     , className =? "VirtualBox"                                                 --> doShift workspaceVM
     , className =? ".emulator64-arm-wrapped"                                    --> doShift workspaceDevVM
     , className =? "Android SDK Manager"                                        --> doShift workspaceDevVM
+    , className =? ".remmina-wrapped"                                           --> doShift workspaceRemote
     , appName =? "..key-mon-wrapped-wrapped" <&&> className =? "..key-mon-wrapped-wrapped" --> doIgnore
     ]
 
