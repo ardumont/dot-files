@@ -3,7 +3,7 @@
 {
   networking = {
     # firewall.enable = false;
-    firewall.allowedTCPPorts = [ 3000 ];
+    firewall.allowedTCPPorts = [ 3000 5900 ];
 
     hostName = "lenovo";    # Define your hostname.
 
