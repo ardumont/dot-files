@@ -57,6 +57,13 @@ evolution:
 	  -e DISPLAY=unix$(DISPLAY) \
 	   ardumont/evolution
 
+soapui:
+	xhost + && \
+	  docker run -it \
+	  -v /tmp/.X11-unix:/tmp/.X11-unix \
+	  -e DISPLAY=unix$(DISPLAY) \
+	  ardumont/ubuntu-soapui:run
+
 nixos-rebuild:
 	sudo nixos-rebuild switch -I nixpkgs=$(HOME)/repo/perso/nixpkgs
 
