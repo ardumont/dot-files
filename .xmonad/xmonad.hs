@@ -232,6 +232,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-t"      , "tuxguitar"                  , runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
   , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (appName =? "skype" <&&> className =? "Skype"))
   , (prefix "o"         , "libre-office"               , runOrRaiseNext "libreoffice"              (appName =? "libreofficedev" <&&> className =? "libreofficedev-writer"))
+  , (prefix "C-u"       , "soap-ui"                    , runOrRaiseNext "soapui"                   (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-eviware-soapui-SoapUI"))
   , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  myBrowserQuery)
   , (prefix "C-S-e"     , "env"                        , spawnZenityCmd "env")
   , (prefix "a"         , "date"                       , spawnZenityCmd "date")
