@@ -63,7 +63,9 @@
         shm/del
         shm/double-quote
         shm/hyphen
+        shm/kill-line
         shm/space
+        shm/yank
         smex
         sp--self-insert-command
         sp-backward-delete-char
