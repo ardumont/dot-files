@@ -287,11 +287,16 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-q"      , "xmonad-quit"                , io exitSuccess)] ++
   -- M1-n   - Switch to workspace with id n
   -- S-n    - Move the client to workspace with id n
-  -- C-M1-n - Switch to the workspace with id n
   [(prefix $ pk ++ k, desc ++ k , windows $ f i) | (i, k) <- zip myWss $ map show [1 .. length myWss]
-                                                 , (f, pk, desc) <- [ (W.view      , "M1-"  , "workspace-keep-screen-switch-to-id-")
-                                                                    , (W.shift     , "S-"   , "workspace-move-client-to-id-")
-                                                                    , (W.greedyView, "C-M1-", "workspace-switch-to-id-")]]
+                                                 , (f, pk, desc) <- [ (W.view  , "M1-", "workspace-keep-screen-switch-to-id-")
+                                                                    , (W.shift, "S-" , "workspace-move-client-to-id-")]] ++
+    -- S-M1-n   - Switch to physical/Xinerama screen n
+    -- C-M1-n - Move client to screen 1, 2, or 3
+    --
+  [(prefix $ pk ++ show screenNumber, metaXAction ++ show screenNumber, screenWorkspace screenNumber >>= flip whenJust (windows . fnAction))
+    | screenNumber <- [0,1],
+      (fnAction, pk, metaXAction) <- [ (W.view,  "S-M1-", "switch-to-physical-screen-")
+                                    , (W.shift, "C-M1-", "move-client-to-screen-")]]
   where -- Permits the search through the system browser
         searchSite = S.promptSearchBrowser myXPConfig myBrowser
         search     = SM.submap . mkKeymap conf $
@@ -307,7 +312,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
         keymapDescription = map (\ (keybinding, xmonadActionDesc, xmonadAction) -> (xmonadActionDesc ++ " - " ++ keybinding, xmonadAction)) fullKeymap
         fullKeymap = myKeymapWithDescription home conf
 
--- | Key bindings
+-- | key bindings
 --
 myKeys :: String -> XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys home conf = mkKeymap conf keymap
