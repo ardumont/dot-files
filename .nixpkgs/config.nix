@@ -140,7 +140,7 @@
 
       java6Env = defaultJavaEnv {
         name = "java6";
-        buildInputs = [ oraclejdk ];
+        buildInputs = [ oraclejdk tomcat6 ];
       };
 
       java7Env = defaultJavaEnv {
