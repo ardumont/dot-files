@@ -42,6 +42,7 @@
     trayer
     networkmanagerapplet
     x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
+    libxml2
     mosh
     offlineimap mu
     most
