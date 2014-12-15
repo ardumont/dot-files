@@ -62,9 +62,7 @@
   };
 
   fonts = {
-    # enableGhostscriptFonts = true;
-    # enableCoreFonts = true; # M$'s proprietary Core Fonts.
-    enableFontConfig = true;
+    fontconfig.enable = true;
     enableFontDir = true;
     fonts = [
        pkgs.dejavu_fonts
