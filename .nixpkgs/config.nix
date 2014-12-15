@@ -175,5 +175,10 @@
         name = "pro";
         envs = [ myAndroidEnv java6Env myNodeJSEnv ];
       };
+
+      jekyllEnv = defaultDevEnv {
+        name = "static-site";
+        buildInputs = with rubyLibs; [ jekyll bundler ];
+      };
    };
 }
