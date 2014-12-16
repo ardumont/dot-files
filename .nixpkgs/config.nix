@@ -178,7 +178,7 @@
 
       jekyllEnv = defaultDevEnv {
         name = "static-site";
-        buildInputs = with rubyLibs; [ jekyll bundler ];
+        buildInputs = with rubyLibs; [ jekyll bundler nokogiri ];
       };
    };
 }
