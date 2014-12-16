@@ -75,3 +75,6 @@ shutdown:
 
 suspend:
 	systemctl suspend
+
+mount-samba:
+	mount -t cifs -o username=adumont //ibiza/commun2 ~/share/ibiza/
