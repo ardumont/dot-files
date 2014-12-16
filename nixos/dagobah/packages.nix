@@ -21,6 +21,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    which
     peco
     nix-repl
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon
