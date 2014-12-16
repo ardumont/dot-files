@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ <nixos/modules/programs/virtualbox.nix> ];
+  # Use vbox
+  services.virtualboxHost.enable = true;
 
   # no need because defined on the users level
   # users.extraGroups.vboxusers.members = [ "tony" ];
