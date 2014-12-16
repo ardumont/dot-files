@@ -295,7 +295,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
     -- C-M1-n - Move client to screen 1, 2, or 3
     --
   [(prefix $ pk ++ show screenNumber, metaXAction ++ show screenNumber, screenWorkspace screenNumber >>= flip whenJust (windows . fnAction))
-    | screenNumber <- [0,1],
+    | screenNumber <- [1,0],
       (fnAction, pk, metaXAction) <- [ (W.view,  "S-M1-", "switch-to-physical-screen-")
                                     , (W.shift, "C-M1-", "move-client-to-screen-")]]
   where -- Permits the search through the system browser
