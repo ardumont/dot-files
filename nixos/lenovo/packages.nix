@@ -60,7 +60,7 @@
     emacs texinfo w3m
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
-    python3 python34Packages.pip
+    python3 python34Packages.pip python27Full
     zlib
     firefoxWrapper chromium conkeror
     graphviz
@@ -117,5 +117,6 @@
     dos2unix
     wmname
     x11vnc tightvnc autocutsel remmina
+    rubyLibs.nokogiri rubyLibs.jekyll rubyLibs.bundler
   ];
 }
