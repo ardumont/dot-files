@@ -9,7 +9,7 @@
   networking = {
     hostName = "dagobah";    # Define your hostname.
 
-    firewall.allowedTCPPorts = [ 5900 ];
+    firewall.allowedTCPPorts = [ 5900 4000 ];
 
     # nm, nmcli, etc... incompatible with networking.wireless
     # also for a user to manager wireless network, add it to networkmanager group
