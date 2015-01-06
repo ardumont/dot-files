@@ -202,6 +202,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-m"       , "mail"                       , runOrRaiseNext "evolution"                                    (className =? ".evolution-wrapped"))
   , (prefix "M1-r"      , "remmina"                    , runOrRaiseNext "remmina"                                      (className =? ".remmina-wrapped"))
   , (prefix prefixKey   , "promote"                    , promote)
+  , (prefix "M1-g"      , "steam"                      , runOrRaiseNext "steam"                    (appName =? "Steam" <&&> className =? "Steam"))
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     myTerminalQuery)
   , (prefix "C-x"       , "xterm"                      , runOrRaiseNext "xterm"                    (appName =? "xterm" <&&> className =? "XTerm"))
   , (prefix "S-p"       , "chat"                       , runOrRaiseNext "pidgin"                   (className =? "Pidgin"))
