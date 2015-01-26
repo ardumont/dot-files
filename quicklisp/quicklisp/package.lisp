@@ -214,7 +214,7 @@
   (:export #:release
            #:project-name
            #:system-files
-           #:archive-url-suffix
+           #:archive-url
            #:archive-size
            #:ensure-archive-file
            #:archive-content-sha1
@@ -224,6 +224,8 @@
            #:ensure-local-archive-file
            #:check-local-archive-file
            #:invalid-local-archive
+           #:invalid-local-archive-file
+           #:invalid-local-archive-release
            #:missing-local-archive
            #:badly-sized-local-archive
            #:delete-and-retry)
@@ -308,4 +310,3 @@
            #:who-depends-on))
 
 (in-package #:quicklisp-client)
-

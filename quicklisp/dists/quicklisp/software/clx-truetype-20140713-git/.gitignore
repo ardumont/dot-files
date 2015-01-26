@@ -1,0 +1,17 @@
+*.fasl
+*.aux
+*.cp
+*.fn
+*.fns
+*.info
+*.ky
+*.log
+*.pg
+*.toc
+*.tp
+*.tps
+*.vr
+*.rvs
+*.vrs
+include-stamp
+web/

@@ -1,0 +1,27 @@
+language: lisp
+
+env:
+  matrix:
+    - LISP=sbcl
+    - LISP=ccl
+    - LISP=clisp
+    # - LISP=ecl
+
+install:
+  - sudo apt-get install texinfo
+  - if [ -x ./install.sh ] && head -2 ./install.sh | grep '^#cl-travis' > /dev/null;
+    then
+      ./install.sh;
+    else
+      curl https://raw.githubusercontent.com/luismbo/cl-travis/master/install.sh | sh;
+    fi
+
+  - echo "(load \"/home/travis/asdf\")" > "$HOME/.clisprc.lisp"
+  - cl -l clx -l cl-ppcre -e '(ql-util:without-prompting (ql:add-to-init-file))'
+
+before_script:
+  - ./autogen.sh
+  - ./configure
+
+script:
+  - make

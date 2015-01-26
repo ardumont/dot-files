@@ -1,1 +1,1 @@
-dists/quicklisp/software/clx-20131003-git/
+dists/quicklisp/software/clx-20150113-git/

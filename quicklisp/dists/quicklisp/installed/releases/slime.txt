@@ -1,1 +1,1 @@
-dists/quicklisp/software/slime-2.4/
+dists/quicklisp/software/slime-2.12/
