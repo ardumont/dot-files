@@ -40,6 +40,7 @@
         org-end-of-line
         org-force-cycle-archived
         org-force-self-insert
+        org-kill-line
         org-metadown
         org-metaup
         org-return
