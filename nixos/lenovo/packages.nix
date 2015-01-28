@@ -112,7 +112,7 @@
     samba smbnetfs
     telnet
     # rhino
-    nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
+    nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix nodePackages.bower
     ncurses
     dos2unix
     wmname
