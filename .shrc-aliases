@@ -115,6 +115,12 @@ alias gmc='git merge origin/$(current_branch)'
 alias gmrc='git merge upstream/$(current_branch)'
 alias glast="git last | head -1 | cut -d' ' -f2"
 
+################ Mercurial alias
+
+alias hgp='hg pull'
+alias hgs='hg status'
+alias hgd='hg diff'
+
 ################ vagrant
 
 alias v='vagrant'
