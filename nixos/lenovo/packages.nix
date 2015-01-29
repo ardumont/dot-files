@@ -22,6 +22,14 @@
       pidgin-with-plugins = pidgin-with-plugins.override {
         plugins = [ pidginsipe pidginotr ];
       };
+
+      git-remote-hg = git-remote-hg.override {
+        src = fetchgit {
+          inherit rev;
+          url = "https://github.com/fingolfin/git-remote-hg.git";
+          sha256 = "7c61c8f2be47d96c4244f0f8a3c8f9b994994b15dbe1754581f746888d705463";
+        };
+      };
     };
   };
 
