@@ -4,7 +4,7 @@
 /*                     Conkeror config file                                  */
 /* ------------------------------------------------------------------------- */
 
-/* ------------------- url conmpletion --------------------------------------*/
+/* ------------------- url completion --------------------------------------*/
 
 url_completion_use_history = true;
 
@@ -12,15 +12,11 @@ url_completion_use_history = true;
 
 /* ------------------- buffer count indicator ----------------------------------*/
 
-add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
-
-/* ------------------- buffer loading indicator  ----------------------------------*/
-
-add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
+// add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
 
 /* ------------------- remove useless clock ----------------------------------*/
 
-remove_hook("mode_line_hook", mode_line_adder(clock_widget));
+// remove_hook("mode_line_hook", mode_line_adder(clock_widget));
 
 /* Displaying Favicons */
 
@@ -28,9 +24,7 @@ require("favicon");
 
 /* ---------------- favicon in mode line */
 
-/* Doesn't seems to work
-add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
-*/
+// add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
 
 /* ---------------- favicon in mini buffer */
 
