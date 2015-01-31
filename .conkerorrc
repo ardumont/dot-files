@@ -38,7 +38,15 @@ read_buffer_show_icons = true;
 
 /* ---------------- display tabs */
 
-require("new-tabs.js");
+require("new-tabs");
+require("github");
+require("gmail");
+require("youtube");
+require("youtube-player");
+require("twitter");
+require("duckduckgo");
+require("google-calendar");
+require("google-maps");
 
 /* web jumps */
 
