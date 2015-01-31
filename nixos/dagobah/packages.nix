@@ -78,6 +78,7 @@
     # haskellPlatform
     # haskellPlatform.ghc
     haskellPackages.ncurses
+    haskellPackages.stylishHaskell
     (haskellPackages.ghcWithPackages (self : [
        self.cabalInstall
        self.xmonad
