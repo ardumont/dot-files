@@ -51,6 +51,11 @@
     most
     xclip xsel pass keychain
     htop powertop
+    # (pkgs.lib.overrideDerivation pkgs.emacs (attrs: {
+    #       name = "emacs-25.0-pre";
+    #       src = /home/tony/repo/perso/emacs;
+    #       patches = [];
+    # }))
     emacs texinfo w3m emacs24Packages.cask
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
