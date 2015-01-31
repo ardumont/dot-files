@@ -57,9 +57,7 @@ define_webjump("i", "http://imdb.com/find?q=%s");
 define_webjump("g", "http://www.google.fr/search?q=%s");
 define_webjump("w", "http://en.wikipedia.org?search=%s");
 
-
-
-/* TODO : add : 
+/* TODO : add :
    - w wikipedia
    - a amazon */
 
@@ -91,8 +89,4 @@ interactive("jquery-here",
                 jquery_this_doc(I.buffer.document, (yield I.minibuffer.read($prompt = "jq: ", $history = "jquery-here")));
                 // Providing a $history is what allows editing/replay of earlier commands
             });
-
-/* 
-
-  */
 
