@@ -66,7 +66,6 @@
     nmap netcat wireshark
     p7zip unrar unzip
     acpi acpid acpitool
-    mplayer vlc
     clojure leiningen jdk
     gparted
     binutils
