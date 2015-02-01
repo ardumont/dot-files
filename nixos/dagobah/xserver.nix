@@ -5,7 +5,6 @@
     enable = true;
 
     startGnuPGAgent = true;
-    desktopManager.default = "none";
 
     # keyboard
     layout = "us";
@@ -30,6 +29,10 @@
      #   Option "TapButton2" "3"
      #   Option "TapButton3" "2"
      # '';
+    };
+
+    desktopManager = {
+      default = "none";
     };
 
     windowManager = {
