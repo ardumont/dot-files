@@ -42,7 +42,8 @@
     pidgin-with-plugins
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon
     gnome3_12.eog pinta scrot
-    gnome3_12.totem vlc mplayer2 x264
+    # gnome3_12.totem mplayer2
+    vlc x264
     gnome3_12.zenity
 #    transmission_gtk
 #    audacious
@@ -75,7 +76,6 @@
     nmap netcat wireshark
     p7zip unrar unzip
     acpi acpid acpitool
-    mplayer vlc
     gparted
     binutils
     pmutils
