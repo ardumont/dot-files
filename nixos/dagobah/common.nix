@@ -32,8 +32,6 @@
     mkdir -m 0755 -p /media
   '';
 
-  programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
-
   # List services that you want to enable:
   services = {
     acpid = {

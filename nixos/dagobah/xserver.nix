@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  services.xserver = {
-    enable = true;
+  programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
 
+  services.xserver = {
     startGnuPGAgent = true;
+    enable = true;
 
     # keyboard
     layout = "us";
