@@ -17,10 +17,10 @@
       enablePepperPDF = true;
     };
 
-    packageOverrides = self: with self; {
+    packageOverrides = pkgs: {
       # override the default pidgin with plugins (empty by default)
-      pidgin-with-plugins = pidgin-with-plugins.override {
-        plugins = [ pidginsipe pidginotr ];
+      pidgin-with-plugins = pkgs.pidgin-with-plugins.override {
+        plugins = with pkgs; [ pidginsipe pidginotr ];
       };
 
       # gitAndTools = pkgs.gitAndTools // {
