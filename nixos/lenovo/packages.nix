@@ -44,21 +44,21 @@
     pidgin-with-plugins
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon
     gnome3_12.eog pinta scrot
-    # gnome3_12.totem mplayer2
     vlc x264
     gnome3_12.zenity
-#    transmission_gtk
-#    audacious
+    transmission_gtk
+    audacious
     linuxPackages.virtualbox packer
     evince fbreader
     filezilla
     git gitAndTools.tig gitAndTools.hub gitg meld
-    gitAndTools.git-remote-hg mercurialFull
+    gitAndTools.git-remote-hg
+    mercurialFull
     gnupg gnupg1 pinentry
     pmount file
     wget curl tree
     gcc gnumake
-    # dropbox dropbox-cli
+    dropbox dropbox-cli
     trayer
     networkmanagerapplet
     x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
@@ -73,7 +73,8 @@
     bash zsh ruby
     python3 python34Packages.pip python27Full
     zlib
-    firefoxWrapper chromium conkeror
+    firefoxWrapper chromium
+    conkeror
     graphviz
     nmap netcat wireshark
     p7zip unrar unzip
@@ -88,7 +89,6 @@
     lsof
     vagrant
     darcs
-#    rubyLibs.bundler
     haskellPackages.pandoc
 #    haskellPlatform
 #    haskellPlatform.ghc
@@ -122,13 +122,11 @@
     samba smbnetfs
     telnet
     # rhino
-    nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.bower
-    # nodePackages.npm2nix nodePackages.bower2nix
+    nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.bower nodePackages.npm2nix nodePackages.bower2nix
     ncurses
     dos2unix
     wmname
     x11vnc tightvnc autocutsel remmina
-    bundler
-    # rubyLibs.nokogiri rubyLibs.jekyll rubyLibs.bundler
+    rubyLibs.nokogiri rubyLibs.jekyll rubyLibs.bundler
   ];
 }
