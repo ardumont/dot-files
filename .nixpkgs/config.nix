@@ -12,23 +12,6 @@
     plugins = [ pidgin-sipe ];
   };
 
-  # pkgs.emacs = pkgs.emacs.overrides {
-  #   name = "emacs-25-pre0";
-  #   src = /home/tony/repo/perso/emacs;
-  # };
-
-  # pkgs.emacs = (pkgs.lib.overrideDerivation pkgs.emacs (attrs: {
-  #         name = "emacs-25.0-pre";
-  #         src =  /home/tony/repo/perso/emacs;
-  #     }));
-
-  # environment.systemPackages =
-  #   [ (pkgs.lib.overrideDerivation pkgs.emacs (attrs: {
-  #         name = "emacs-25.0-pre";
-  #         src =  /home/tony/repo/perso/emacs;
-  #     }))
-  # ];
-
   # source: https://nixos.org/wiki/Howto_develop_software_on_nixos
   packageOverrides = self : with pkgs; with sourceAndTags;
     # default dev environment with common needed tools
