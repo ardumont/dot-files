@@ -120,11 +120,13 @@
     samba smbnetfs
     telnet
     # rhino
-    nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix nodePackages.bower
+    nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.bower
+    # nodePackages.npm2nix nodePackages.bower2nix
     ncurses
     dos2unix
     wmname
     x11vnc tightvnc autocutsel remmina
-    rubyLibs.nokogiri rubyLibs.jekyll rubyLibs.bundler
+    bundler
+    # rubyLibs.nokogiri rubyLibs.jekyll rubyLibs.bundler
   ];
 }
