@@ -23,8 +23,9 @@
         plugins = with pkgs; [ pidginsipe pidginotr ];
       };
 
-      # gitAndTools = pkgs.gitAndTools // {
-      #   git-remote-hg = pkgs.lib.overrideDerivation pkgs.gitAndTools.git-remote-hg (attrs: attrs // {
+      openssh = pkgs.lib.overrideDerivation pkgs.openssh (attrs: {
+        name = "openssh-6.6p1";
+      });
 
       gitAndTools = pkgs.gitAndTools // {
         git-remote-hg = pkgs.lib.overrideDerivation pkgs.gitAndTools.git-remote-hg (attrs: {
@@ -40,6 +41,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    openssh
     which psmisc
     peco
     nix-repl
