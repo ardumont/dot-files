@@ -3,6 +3,7 @@
 	email = antoine.romain.dumont@gmail.com
 [core]
 	editor = emacsclient -nw
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = ~/.gitignore_global
 [color]
 	ui = true
