@@ -27,8 +27,6 @@
     supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   };
 
-  programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
-
   # List services that you want to enable:
   services = {
     acpid = {
