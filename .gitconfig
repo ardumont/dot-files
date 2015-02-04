@@ -50,8 +50,8 @@
 [help]
 	autocorrect = 1
 
-# [url "https://"]
-# 	insteadOf = git://
-
 [credential]
 	helper = cache --timeout 3600
+
+# [url "https://"]
+# 	insteadOf = git://
