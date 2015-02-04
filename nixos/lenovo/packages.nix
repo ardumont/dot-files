@@ -26,12 +26,14 @@
       # gitAndTools = pkgs.gitAndTools // {
       #   git-remote-hg = pkgs.lib.overrideDerivation pkgs.gitAndTools.git-remote-hg (attrs: attrs // {
 
-      #     src = pkgs.fetchgit {
-      #       url = "https://github.com/fingolfin/git-remote-hg.git";
-      #       sha256 = "7c61c8f2be47d96c4244f0f8a3c8f9b994994b15dbe1754581f746888d705463";
-      #     };
-      #   });
-      # };
+      gitAndTools = pkgs.gitAndTools // {
+        git-remote-hg = pkgs.lib.overrideDerivation pkgs.gitAndTools.git-remote-hg (attrs: {
+          src = pkgs.fetchgit {
+            url = "https://github.com/fingolfin/git-remote-hg.git";
+            sha256 = "0ysgklxms0k7dhg84svzcgsz8lxynrb7ydb2l0mgid0r7dpilfp0";
+          };
+        });
+      };
     };
   };
 
