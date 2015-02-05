@@ -42,7 +42,6 @@
       period = "00 19 * * *"; # update db at 19h every day
     };
 
-    openssh.enable = true;
     ntp.enable = true;
 
     # https://nixos.org/wiki/Printers
