@@ -39,7 +39,7 @@
 
     locate = {
       enable = true;
-      period = "00 19 * * *"; # update db at 19h every day
+      period = "00 * * * *"; # update db at every hour every day
     };
 
     ntp.enable = true;
