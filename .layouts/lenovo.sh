@@ -1,8 +1,15 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # VGA1 is the right screen
 # LVDS1 is the laptop screen
 
-vga1_disconnected=`xrandr | grep -i disconnected | grep VGA1`
+# Possibility to override the disconnection (pass something to the command line, e.g. --disconnect)
+# Otherwise, will determine if needs to connect or not
+
+if [ $# -ne 0 ]; then
+    vga1_disconnected=$1;
+else
+    vga1_disconnected=`xrandr | grep -i disconnected | grep VGA1`
+fi
 
 if [ ! -z "$vga1_disconnected" ]; then
     xrandr --output LVDS1 \
