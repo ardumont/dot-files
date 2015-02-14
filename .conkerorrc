@@ -30,6 +30,10 @@ require("favicon");
 
 read_buffer_show_icons = true;
 
+/* ---------------- Using letters as hints */
+
+hint_digits="qwertyzvbshkl";
+
 /* ---------------- display tabs */
 
 require("new-tabs");
