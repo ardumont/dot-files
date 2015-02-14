@@ -34,6 +34,13 @@ read_buffer_show_icons = true;
 
 hint_digits="qwertyzvbshkl";
 
+// supposed to be set to a number of milliseconds to
+// wait after each keystroke before automatically
+// closing hints mode with the currently selected
+// hint as the final result, when the input has
+// narrowed the selection down to one possibility.
+hints_auto_exit_delay=0.1; // work if only > 0
+
 /* ---------------- display tabs */
 
 require("new-tabs");
