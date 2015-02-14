@@ -84,96 +84,92 @@ interactive("jquery-here",
                 // Providing a $history is what allows editing/replay of earlier commands
             });
 
-// rebind global
-define_key(default_global_keymap, "C-h", "go-back");
+// binding.js is the binding orchestrator
+// -------- basic command.js
+// -------- global.js
 
-// new bindings
-define_key(default_global_keymap, "C-w", "kill-current-buffer");
-
-// rebound from global.js
-define_key(default_global_keymap, "h", "find-url");
 // Base binding for help (C-h by default)
 define_key(default_global_keymap, "M-?", default_help_keymap);
-define_key(default_global_keymap, "b", "switch-to-buffer");
-define_key(default_global_keymap, "C-f", "isearch-forward");
-// note, i had to comment out the "C-f" binding in basic-commands.js to make this work
 
-// rebound from isearch.js
-// define_key(isearch_keymap, "C-f", "isearch-continue-forward");
+// buffer manipulation
+define_key(default_global_keymap, "C-w", "kill-current-buffer"); // default: q
+define_key(default_global_keymap, "C-x k", "kill-current-buffer"); // default: q
+define_key(default_global_keymap, "C-x C-k", "kill-buffer");// default: C-x k
 
-// rebound from normal.js
-// define_key(content_buffer_normal_keymap, "back_space", "go-back");
-// define_key(content_buffer_normal_keymap, "S-back_space", "go-forward");
+// -------- text.js
+
+// rebind global (for help: M-?)
+//define_key(default_global_keymap, "C-h", "go-back");
+
+define_key(text_keymap, "C-h", "cmd_deleteCharBackward"); // default: backspace
+define_key(text_keymap, "M-C-h", "cmd_deleteWordBackward");// default: backspace
+
+// default interesting binding to maybe exploit for selection
+// define_key(text_keymap, "S-home", "cmd_selectBeginLine");
+// define_key(text_keymap, "S-end", "cmd_selectEndLine");
+// define_key(text_keymap, "C-S-left", "cmd_selectWordPrevious");
+// define_key(text_keymap, "C-S-right", "cmd_selectWordNext");
+
+// -------- content-buffer/normal.js
+
+define_key(content_buffer_normal_keymap, "C-c f", "forward");
+define_key(content_buffer_normal_keymap, "C-c b", "back");
+define_key(content_buffer_normal_keymap, "C-c r", "reload");
+
+// define_key(content_buffer_normal_keymap, "C-h", "go-back");
+// define_key(content_buffer_normal_keymap, "S-C-h", "go-forward");
+
+define_key(content_buffer_normal_keymap, "C-i", "browser-focus-next-form-field");
+define_key(content_buffer_normal_keymap, "S-C-i", "browser-focus-previous-form-field");
 
 // rebound from element.js
 //define_key(content_buffer_normal_keymap, "k", "bookmark");
 
-// rebound from basic-commands.js
-// define_key(content_buffer_normal_keymap, "home","beginning-of-line");
-// define_key(content_buffer_normal_keymap, "end","end-of-line");
-// define_key(content_buffer_normal_keymap, "C-home","cmd_scrollTop");
-// define_key(content_buffer_normal_keymap, "C-end","cmd_scrollBottom");
+// --------- minibuffer.js
 
-// Use `C-i` as tab
-define_key(content_buffer_normal_keymap, "C-i", "browser-focus-next-form-field");
+define_key(minibuffer_keymap, "C-m", "exit-minibuffer");// default: return (`enter`)
+
 define_key(minibuffer_keymap, "C-i", "minibuffer-complete");
-define_key(hint_keymap, "C-i", "hints-next");
-define_key(google_gqueues_keymap, "C-i", null, $fallthrough);
-define_key(gmail_keymap, "C-i", null, $fallthrough);
-define_key(google_calendar_keymap, "C-i", null, $fallthrough);
-
-define_key(content_buffer_normal_keymap, "S-C-i", "browser-focus-previous-form-field");
 define_key(minibuffer_keymap, "S-C-i", "minibuffer-complete-previous");
+
+// --------- hints.js
+
+define_key(hint_keymap, "C-h", "hints-backspace");
+define_key(hint_keymap, "C-i", "hints-next");
 define_key(hint_keymap, "S-C-i", "hints-previous");
-define_key(google_gqueues_keymap, "S-C-i", null, $fallthrough);
-
-// Use `C-m` as `return`
-define_key(content_buffer_anchor_keymap, "C-m", "follow", $browser_object = browser_object_focused_element);
-define_key(content_buffer_form_keymap, "C-m", null, $fallthrough);
-define_key(content_buffer_select_keymap, "C-m", null, $fallthrough);
-define_key(content_buffer_button_keymap, "C-m", "follow", $browser_object = browser_object_focused_element);
-define_key(minibuffer_keymap, "C-m", "exit-minibuffer");
 define_key(hint_keymap, "C-m", "hints-exit");
-define_key(gmail_keymap, "C-m", null, $fallthrough);
-define_key(twitter_keymap, "C-m", null, $fallthrough);
-define_key(facebook_keymap, "C-m", null, $fallthrough);
-define_key(google_search_results_keymap, "C-m", "ensure-content-focused", $fallthrough);//BAD
-define_key(google_calendar_keymap, "C-m", null, $fallthrough);
-define_key(duckduckgo_select_keymap, "C-m", "duckduckgo-follow-current");
 
-// rebound from text.js
-// define_key(content_buffer_text_keymap, "home", "cmd_beginLine");
-// define_key(content_buffer_text_keymap, "end", "cmd_endLine");
-// define_key(content_buffer_text_keymap, "C-left", "cmd_wordPrevious");
-// define_key(content_buffer_text_keymap, "C-right", "cmd_wordNext");
-// define_key(content_buffer_text_keymap, "C-y", "cmd_redo");
-define_key(content_buffer_text_keymap, "C-/", "cmd_undo");
-// define_key(content_buffer_text_keymap, "C-v", "cmd_paste");
-// define_key(content_buffer_text_keymap, "C-x", "cmd_cut");
-// define_key(content_buffer_text_keymap, "C-c", "cmd_copy");
+// find a way to use letters instead of number for hint representation
+//define_key(hint_keymap, match_hint_digit, "hints-handle-number");
 
-// new for textarea.js
-// define_key(content_buffer_textarea_keymap, "home", "cmd_beginLine");
-// define_key(content_buffer_textarea_keymap, "end", "cmd_endLine");
-// define_key(content_buffer_textarea_keymap, "C-left", "cmd_wordPrevious");
-// define_key(content_buffer_textarea_keymap, "C-right", "cmd_wordNext");
-// define_key(content_buffer_textarea_keymap, "C-y", "cmd_redo");
-define_key(content_buffer_textarea_keymap, "C-/", "cmd_undo");
-// define_key(content_buffer_textarea_keymap, "C-v", "cmd_paste");
-// define_key(content_buffer_textarea_keymap, "C-x", "cmd_cut");
-// define_key(content_buffer_textarea_keymap, "C-c", "cmd_copy");
 
-// rebound for textarea.js
-// define_key(content_buffer_textarea_keymap, "C-home", "cmd_moveTop");
-// define_key(content_buffer_textarea_keymap, "C-end", "cmd_moveBottom");
+// --------- isearch.js
 
-// rebound from zoom.js
-// define_key(content_buffer_normal_keymap, "C-subtract", "zoom-out-text");
-// define_key(content_buffer_normal_keymap, "C-add", "zoom-in-text");
+define_key(isearch_keymap, "C-h", "isearch-backspace");// default: back_space
 
-// webjumps
-// add_delicious_webjumps ("saltycrane");
-// add_webjump("g", "www.google.com/search?q=%s");
-// add_webjump("d", "del.icio.us/saltycrane/%s");
-// add_webjump("blank", "about:blank");
-// add_webjump("reader", "www.google.com/reader");
+// --------- content-buffer/element.js
+
+define_key(content_buffer_normal_keymap, "d", "follow");// default: f (follow)
+define_key(content_buffer_normal_keymap, "C-d", "delete");// default: d (delete dom element)
+
+// --------- old setup (does not know if this work yet)
+
+// // Use `C-i` as tab
+// define_key(google_gqueues_keymap, "C-i", null, $fallthrough);
+// define_key(gmail_keymap, "C-i", null, $fallthrough);
+// define_key(google_calendar_keymap, "C-i", null, $fallthrough);
+
+// define_key(google_gqueues_keymap, "S-C-i", null, $fallthrough);
+
+// // Use `C-m` as `return`
+// define_key(content_buffer_anchor_keymap, "C-m", "follow", $browser_object = browser_object_focused_element);
+// define_key(content_buffer_form_keymap, "C-m", null, $fallthrough);
+// define_key(content_buffer_select_keymap, "C-m", null, $fallthrough);
+// define_key(content_buffer_button_keymap, "C-m", "follow", $browser_object = browser_object_focused_element);
+
+// define_key(gmail_keymap, "C-m", null, $fallthrough);
+// define_key(twitter_keymap, "C-m", null, $fallthrough);
+// define_key(facebook_keymap, "C-m", null, $fallthrough);
+// define_key(google_search_results_keymap, "C-m", "ensure-content-focused", $fallthrough);//BAD
+// define_key(google_calendar_keymap, "C-m", null, $fallthrough);
+// define_key(duckduckgo_select_keymap, "C-m", "duckduckgo-follow-current");
