@@ -124,7 +124,7 @@ define_key(content_buffer_normal_keymap, "C-c r", "reload");
 // define_key(content_buffer_normal_keymap, "S-C-h", "go-forward");
 
 define_key(content_buffer_normal_keymap, "C-i", "browser-focus-next-form-field");
-define_key(content_buffer_normal_keymap, "S-C-i", "browser-focus-previous-form-field");
+define_key(content_buffer_normal_keymap, "C-S-i", "browser-focus-previous-form-field");
 
 // rebound from element.js
 //define_key(content_buffer_normal_keymap, "k", "bookmark");
@@ -134,13 +134,13 @@ define_key(content_buffer_normal_keymap, "S-C-i", "browser-focus-previous-form-f
 define_key(minibuffer_keymap, "C-m", "exit-minibuffer");// default: return (`enter`)
 
 define_key(minibuffer_keymap, "C-i", "minibuffer-complete");
-define_key(minibuffer_keymap, "S-C-i", "minibuffer-complete-previous");
+define_key(minibuffer_keymap, "C-S-i", "minibuffer-complete-previous");
 
 // --------- hints.js
 
 define_key(hint_keymap, "C-h", "hints-backspace");
 define_key(hint_keymap, "C-i", "hints-next");
-define_key(hint_keymap, "S-C-i", "hints-previous");
+define_key(hint_keymap, "C-S-i", "hints-previous");
 define_key(hint_keymap, "C-m", "hints-exit");
 
 // find a way to use letters instead of number for hint representation
@@ -167,7 +167,7 @@ define_key(content_buffer_normal_keymap, "C-d", "delete");// default: d (delete 
 // define_key(gmail_keymap, "C-i", null, $fallthrough);
 // define_key(google_calendar_keymap, "C-i", null, $fallthrough);
 
-// define_key(google_gqueues_keymap, "S-C-i", null, $fallthrough);
+// define_key(google_gqueues_keymap, "C-S-i", null, $fallthrough);
 
 // // Use `C-m` as `return`
 // define_key(content_buffer_anchor_keymap, "C-m", "follow", $browser_object = browser_object_focused_element);
