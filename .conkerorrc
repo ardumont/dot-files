@@ -147,6 +147,10 @@ define_key(hint_keymap, "C-m", "hints-exit");
 
 define_key(isearch_keymap, "C-h", "isearch-backspace");// default: back_space
 
+// --------- content-buffer/text.js
+
+define_key(content_buffer_text_keymap, "C-i", "");// default: `edit-current-field-in-external-editor` function, use C-x x instead
+
 // --------- content-buffer/element.js
 
 define_key(content_buffer_normal_keymap, "d", "follow");// default: f (follow)
