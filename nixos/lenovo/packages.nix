@@ -41,6 +41,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    traceroute
     p7zip
     openssh
     which psmisc
