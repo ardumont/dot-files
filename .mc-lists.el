@@ -22,6 +22,7 @@
         iedit-mode
         indent-for-tab-command
         kill-region
+        kmacro-end-or-call-macro-repeat
         kmacro-start-macro
         magit-discard-item
         magit-key-mode-popup-fetching
