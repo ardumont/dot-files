@@ -5,6 +5,7 @@
       '(
         backward-kill-sexp
         backward-sexp
+        beginning-of-buffer
         c-electric-delete-forward
         c-electric-semi&comma
         completion-at-point
