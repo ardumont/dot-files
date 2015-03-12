@@ -18,7 +18,6 @@ import           XMonad.Prompt.XMonad      (xmonadPromptC)
 import qualified XMonad.StackSet           as W
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Run           (spawnPipe)
-
 import           System.Directory          (getDirectoryContents,
                                             getHomeDirectory)
 import           System.FilePath           (combine, takeBaseName)
@@ -202,6 +201,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-m"       , "mail"                       , runOrRaiseNext "evolution"                                    (className =? ".evolution-wrapped"))
   , (prefix "M1-r"      , "remmina"                    , runOrRaiseNext "remmina"                                      (className =? ".remmina-wrapped"))
   , (prefix prefixKey   , "promote"                    , promote)
+  , (prefix "M1-S-d"    , "db-visualizer"              , runOrRaiseNext "dbvisguisteam"            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-onseven-dbvis-DbVisualizerGUI"))
   , (prefix "M1-g"      , "steam"                      , runOrRaiseNext "steam"                    (appName =? "Steam" <&&> className =? "Steam"))
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     myTerminalQuery)
   , (prefix "C-x"       , "xterm"                      , runOrRaiseNext "xterm"                    (appName =? "xterm" <&&> className =? "XTerm"))
