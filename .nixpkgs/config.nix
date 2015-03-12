@@ -16,7 +16,7 @@
             shell = "/var/run/current-system/sw/bin/zsh";
             buildInputs = buildInputs
               ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
-              ++ [ gitFull zsh keychain emacs tmux gnumake gitAndTools.git-remote-hg ];
+              ++ [ gitFull zsh keychain emacs tmux gnumake ];
             extraCmds = ''
               HOME=${builtins.getEnv "HOME"}
               ${extraCmds}
@@ -141,6 +141,11 @@
       java7Env = defaultJavaEnv {
         name = "java7";
         buildInputs = [ oraclejdk7 ];
+      };
+
+      java8Env = defaultJavaEnv {
+        name = "java8";
+        buildInputs = [ oraclejdk8 ];
       };
 
       cljEnv = defaultDevEnv {
