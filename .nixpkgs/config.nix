@@ -180,5 +180,10 @@
         name = "static-site";
         buildInputs = with rubyLibs; [ jekyll bundler nokogiri ];
       };
+
+      idrisEnv = defaultDevEnv {
+        name = "idris";
+        buildInputs = [ haskellPackages_ghc783_profiling.idris_plain ];
+      };
    };
 }
