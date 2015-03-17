@@ -253,11 +253,11 @@ key.setGlobalKey(['C-c', 'm', 'r'], function (ev, arg) {
     ext.exec("move-selected-tab-right", arg);
 }, 'Move selected tab to the right.', true);
 
-key.setViewKey([['C-n'], ['j']], function (ev) {
+key.setViewKey([['C-n']], function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
 }, 'Scroll line down');
 
-key.setViewKey([['C-p'], ['k']], function (ev) {
+key.setViewKey([['C-p']], function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_UP, true);
 }, 'Scroll line up');
 
