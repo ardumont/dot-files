@@ -200,6 +200,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-u"       , "usb-creator-gtk"            , myRunOrRaise home "bin/admin/usb-creator.sh"                  (appName =? "usb-creator-gtk" <&&> className =? "Usb-creator-gtk"))
   , (prefix "C-m"       , "mail"                       , runOrRaiseNext "evolution"                                    (className =? ".evolution-wrapped"))
   , (prefix "M1-r"      , "remmina"                    , runOrRaiseNext "remmina"                                      (className =? ".remmina-wrapped"))
+  , (prefix "M1-S-w"    , "putty"                      , runOrRaiseNext "putty"                                        (appName =? "putty" <&&> className =? "Putty"))
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "M1-S-d"    , "db-visualizer"              , runOrRaiseNext "dbvisguisteam"            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-onseven-dbvis-DbVisualizerGUI"))
   , (prefix "M1-g"      , "steam"                      , runOrRaiseNext "steam"                    (appName =? "Steam" <&&> className =? "Steam"))
