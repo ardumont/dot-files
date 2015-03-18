@@ -6,7 +6,7 @@
     enable = true;     # acpi
     lidEventCommands = ''
       # suspend on lid close event or do nothing
-      grep -q open /proc/acpi/button/lid/LID0/state && exit 0 || systemctl suspend
+      grep -q open /proc/acpi/button/lid/LID/state && exit 0 || systemctl suspend
       ''; # suspend on lid close
   };
 }
