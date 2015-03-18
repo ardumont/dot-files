@@ -17,9 +17,9 @@
       twoFingerScroll = true;
 
       # - Activate palm detection
-     palmDetect = false;
+      palmDetect = false;
       # - Activate tap to click
-     tapButtons = true;
+      tapButtons = true;
       # - Activate 2 fingers tapping as right click
       # - Activate 3 fingers tapping as middle click
       buttonsMap = [ 1 3 2 ];
