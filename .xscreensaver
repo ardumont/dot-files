@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.26 for tony on Fri Aug  1 21:09:38 2014.
+# Written by xscreensaver-demo 5.30 for tony on Tue Mar 17 19:09:50 2015.
 # http://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -250,6 +250,9 @@ programs:								      \
 - GL: 				unknownpleasures -root			    \n\
 				unicode -root				    \n\
 - GL: 				dnalogo -root				    \n\
+  GL: 				projectiveplane -root			    \n\
+				tessellimage -root			    \n\
+  GL: 				winduprobot -root			    \n\
 
 
 pointerPollTime:    0:00:05
@@ -260,4 +263,5 @@ GetViewPortIsFullOfLies:False
 procInterrupts:	True
 xinputExtensionDev: False
 overlayStderr:	True
+authWarningSlack:   20
 
