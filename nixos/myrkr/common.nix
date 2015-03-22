@@ -12,7 +12,8 @@
     # sound options
     extraModprobeConfig = ''
       options snd slots=snd-hda-intel
-      options snd_hda_intel enable=0,1
+# to select the second card by default
+#      options snd_hda_intel enable=0,1
     '';
 
     # dropbox setting
