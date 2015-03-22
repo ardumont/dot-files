@@ -38,6 +38,7 @@
         org-beginning-of-line
         org-ctrl-c-ctrl-c
         org-ctrl-c-minus
+        org-cycle
         org-delete-char
         org-end-of-line
         org-force-cycle-archived
