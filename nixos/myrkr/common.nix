@@ -93,6 +93,6 @@
       root   ALL=(ALL) SETENV: ALL
       %wheel ALL=(ALL) SETENV: ALL
      '';
-    setuidPrograms = [ "pmount" "pumount" ];
+    setuidPrograms = [ "fdisk" "pmount" "pumount" ];
   };
 }
