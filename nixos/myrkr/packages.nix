@@ -75,8 +75,8 @@
     darcs
 #    rubyLibs.bundler
     haskellPackages.pandoc
-    haskellPlatform
-    haskellPlatform.ghc
+    # haskellPlatform
+    # haskellPlatform.ghc
     haskellPackages.ncurses
     (haskellPackages.ghcWithPackages (self : [
        self.cabalInstall
@@ -106,7 +106,7 @@
     cups samba
     telnet
     transmission_gtk
-    nodejs rhino nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
+#    nodejs rhino nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
     ncurses
   ];
 }
