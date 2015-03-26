@@ -38,6 +38,11 @@
 
     in rec {
 
+      # xmonad-with-packages = callPackage /home/tony/repo/perso/nixpkgs/pkgs/applications/window-managers/xmonad/wrapper.nix {
+      #   ghcWithPackages = haskellngPackages.ghcWithPackages;
+      #   packages = self: [ haskellPackages.xmonadContrib haskellPackages.xmonadExtras ];
+      # };
+
       # install: nix-env -i env-sdl
       # load: load-env-sdl
       sdlEnv = self.myEnvFun {
