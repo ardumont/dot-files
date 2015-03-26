@@ -177,6 +177,13 @@ spawnZenityCmd = spawn . zenityCmd
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaiseNext $ combine home cmd
 
+
+libreOfficeQuery :: Query Bool
+libreOfficeQuery = appName =? "libreofficedev" <&&>
+                   (className =? "libreofficedev-writer" <||>
+                    className =? "libreofficedev-calc" <||>
+                    className =? "libreofficedev-draw")
+
 -- | My keymap as (prefix keybindings, command description, command)
 --
 myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
@@ -234,7 +241,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-f"       , "fbreader"                   , runOrRaiseNext "fbreader"                 (className =? "fbreader"))
   , (prefix "M1-t"      , "tuxguitar"                  , runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
 --  , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (appName =? "skype" <&&> className =? "Skype"))
-  , (prefix "o"         , "libre-office"               , runOrRaiseNext "libreoffice"              (appName =? "libreofficedev" <&&> className =? "libreofficedev-writer"))
+  , (prefix "o"         , "libre-office"               , runOrRaiseNext "libreoffice"              libreOfficeQuery)
   , (prefix "C-u"       , "soap-ui"                    , runOrRaiseNext "soapui"                   (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-eviware-soapui-SoapUI"))
   , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  myBrowserQuery)
   , (prefix "C-c"       , "chromium"                   , runOrRaiseNext "chromium"                 (appName =? "Chromium" <&&> className =? "Chromium"))
