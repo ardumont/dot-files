@@ -68,13 +68,13 @@ nixos-rebuild:
 	sudo nixos-rebuild switch -I nixpkgs=$(HOME)/repo/perso/nixpkgs
 
 reboot:
-	systemctl kexec
+	sudo systemctl kexec
 
 shutdown:
-	systemctl poweroff
+	sudo systemctl poweroff
 
 suspend:
-	systemctl suspend
 
 mount-samba:
 	mount -t cifs -o username=adumont //ibiza/commun2 ~/share/ibiza/
+	sudo systemctl suspend
