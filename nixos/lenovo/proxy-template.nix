@@ -13,16 +13,17 @@
   services.cntlm = {
     enable = true;
     username = "login";
-    password = "password";
+    password = "password-in-clear"; # bad, need to improve this
     domain ="domain";
     proxy = [ "proxy1:port1" "proxy2:port2"];
     # output of: cntlm -H -u $login@$domain
+    # does not work!
     # will concat this extra sample to /etc/cntlm.conf
-    extraConfig = ''
-PassLM          a
-PassNT          b
-PassNTLMv2      c
-    '';
-  };
+#     extraConfig = ''
+# PassLM          a
+# PassNT          b
+# PassNTLMv2      c
+#     '';
+#   };
 
 }
