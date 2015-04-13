@@ -36,4 +36,4 @@ history
 /.ghc/x86_64-linux-7.6.3/
 /.xmonad/TAGS
 /nixos/lenovo/proxy.nix
-/.ghc/x86_64-linux-7.8.4/
+/.ghc/x86_64-linux-*
