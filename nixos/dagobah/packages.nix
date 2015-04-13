@@ -27,9 +27,9 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
+    # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
     xsane
-    jq
+    # jq
     which
     peco
     nix-repl
@@ -37,13 +37,12 @@
     gnome3_12.eog pinta scrot
     gnome3_12.totem vlc mplayer2 x264
     gnome3_12.zenity
-    transmission_gtk
-    audacious
-    linuxPackages.virtualbox packer
+    # transmission_gtk
+    # audacious
+    linuxPackages.virtualbox packer vagrant docker
     evince fbreader
-    filezilla
+    # filezilla
     git gitAndTools.tig gitAndTools.hub gitg meld
-    mercurialFull
     gnupg gnupg1 pinentry
     pmount file
     wget curl tree
@@ -53,11 +52,11 @@
     networkmanagerapplet
     x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
     libxml2
-    mosh
+    # mosh
     offlineimap mu
     most
     xclip xsel pass keychain
-    htop powertop
+    htop # powertop
     # (pkgs.lib.overrideDerivation pkgs.emacs (attrs: {
     #       name = "emacs-25.0-pre";
     #       src = /home/tony/repo/perso/emacs;
@@ -79,11 +78,10 @@
     pmutils
     autojump
     inotifyTools
-    #unetbootin
+    # unetbootin
     alsaUtils
     lsof
-    vagrant
-    darcs
+    # darcs
 #    rubyLibs.bundler
     haskellPackages.pandoc
     # haskellPlatform
@@ -112,14 +110,13 @@
     ffmpeg
     simplescreenrecorder
     keymon
-    imagemagick
+    # imagemagick
     libreoffice
-    docker
     cups samba
     telnet
     # rhino
-    nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
+    # nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
     ncurses
-    x11vnc tightvnc
+    # x11vnc tightvnc
   ];
 }
