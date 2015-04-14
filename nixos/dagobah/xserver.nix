@@ -42,8 +42,6 @@
         enable = true;
         enableContribAndExtras = true;
         extraPackages = haskellPackages: [
-          haskellPackages.xmonad
-          haskellPackages.xmonadContrib
           haskellPackages.xmobar
         ];
       };
