@@ -32,6 +32,8 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    wmname
+    feh
     # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
     xsane
     # jq
@@ -83,10 +85,11 @@
     lsof
     # darcs
 #    rubyLibs.bundler
-    # haskellPackages.pandoc
-    # haskellPackages.ncurses
-    # haskellPackages.stylishHaskell
-    # (haskellPackages.ghcWithPackages (self : [
+    haskellPackages.pandoc
+    haskellPackages.ncurses
+    haskellPackages.stylishHaskell
+    (haskellPackages.ghcWithPackages (self : [
+       self.xmobar
     #    self.cabalInstall
     #    self.cabal2nix
     #    self.lens
@@ -97,8 +100,7 @@
     #    self.HUnit
     #    self.QuickCheck
     #    self.hoogle
-    #    # self.Agda
-    # ]))
+    ]))
     rlwrap
     fortune cowsay
     ffmpeg
