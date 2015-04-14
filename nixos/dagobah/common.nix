@@ -2,6 +2,7 @@
 
 {
   boot = {
+    cleanTmpDir = true;
     loader.grub = {
       enable = true;           # Use GRUB boot loader.
       version = 2;             # Version 2
