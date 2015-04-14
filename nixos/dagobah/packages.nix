@@ -1,7 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  nix.trustedBinaryCaches = [ "http://hydra.nixos.org" "http://cache.nixos.org" ];
+  nix.trustedBinaryCaches = [
+    http://hydra.nixos.org
+    http://cache.nixos.org
+    http://hydra.nixos.org
+    http://hydra.cryp.to
+  ];
 
   nixpkgs.config = {
     allowUnfree = true;
