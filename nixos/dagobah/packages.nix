@@ -62,11 +62,6 @@
     most
     xclip xsel pass keychain
     htop # powertop
-    # (pkgs.lib.overrideDerivation pkgs.emacs (attrs: {
-    #       name = "emacs-25.0-pre";
-    #       src = /home/tony/repo/perso/emacs;
-    #       patches = [];
-    # }))
     emacs texinfo w3m emacs24Packages.cask
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
@@ -88,28 +83,22 @@
     lsof
     # darcs
 #    rubyLibs.bundler
-    haskellPackages.pandoc
-    # haskellPlatform
-    # haskellPlatform.ghc
-    haskellPackages.ncurses
-    haskellPackages.stylishHaskell
-    (haskellPackages.ghcWithPackages (self : [
-       self.cabalInstall
-       self.xmonad
-       self.xmonadContrib
-       self.xmonadExtras
-       self.xmobar
-       self.cabal2nix
-       self.lens
-       self.hlint
-       self.hdevtools
-       self.zlib
-       self.mtl
-       self.HUnit
-       self.QuickCheck
-       self.hoogle
-       # self.Agda
-    ]))
+    # haskellPackages.pandoc
+    # haskellPackages.ncurses
+    # haskellPackages.stylishHaskell
+    # (haskellPackages.ghcWithPackages (self : [
+    #    self.cabalInstall
+    #    self.cabal2nix
+    #    self.lens
+    #    self.hlint
+    #    self.hdevtools
+    #    self.zlib
+    #    self.mtl
+    #    self.HUnit
+    #    self.QuickCheck
+    #    self.hoogle
+    #    # self.Agda
+    # ]))
     rlwrap
     fortune cowsay
     ffmpeg
