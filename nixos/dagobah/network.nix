@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # nix.proxy = "http://login:mdp@proxy:port";
-  # environment.variables = {
-  #   no_proxy = "127.0.0.1,localhost";
-  # };
-
   networking = {
     hostName = "dagobah";    # Define your hostname.
 
