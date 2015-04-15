@@ -6,6 +6,7 @@
   services.xserver = {
     startGnuPGAgent = true;
     enable = true;
+    exportConfiguration = true; # create link /etc/X11/xorg.conf to real conf
 
     # keyboard
     layout = "us";
