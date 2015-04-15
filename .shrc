@@ -10,11 +10,9 @@
 # Load specific work shrc
 [ -f ~/work/.shrc ] && . ~/work/.shrc
 
-# keyboard mapping
-[ ! -f /etc/NIXOS -a -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
+# When not on nixos
+[ ! -f /etc/NIXOS -a -f ~/.shrc-non-nixos ] && . ~/.shrc-non-nixos
 
-# Disable touchpad when typing
-[ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh
 # nix env (manual install)
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
 

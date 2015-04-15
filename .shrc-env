@@ -15,32 +15,16 @@ export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 
 #export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
 
-[ -d "/usr/lib/jvm/java-7-openjdk-amd64" ] && export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
-
 # force the 256 color on the terminal
 export TERM=screen-256color
 
 # O(caml)PAM configuration
 [ -f $HOME/.opam/opam-init/init.sh ] && ( . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null )
 
-# fix awt & co. in stumpwm/xmonad
-export _JAVA_AWT_WM_NONREPARENTING=1
-# wmname "LG3D"
-# export AWT_TOOLKIT=MToolkit
-
 # scala setup in emacs - for installation of ensime, see https://github.com/ardumont/sh/blob/master/scala/deploy-ensime.sh
 [ -d $HOME/applications/ensime ] && export ENSIME_ROOT=$HOME/applications/ensime
 [ -d $HOME/applications/gradle ] && export GRADLE_HOME=$HOME/applications/gradle
 [ -d $HOME/applications/scala/scala ] && export SCALA_HOME=$HOME/applications/scala/scala
-
-export BROWSER=/usr/bin/firefox
-
-[ -d /etc/alternatives -a "$(readlink /etc/alternatives/www-browser)" != "$BROWSER" ] \
-  && sudo ln -nsf $BROWSER /etc/alternatives/www-browser \
-  && sudo ln -nsf $BROWSER /etc/alternatives/x-www-browser \
-  && sudo ln -nsf $BROWSER /etc/alternatives/gnome-www-browser
-
-[ -f $HOME/applications/ide/eclipse/eclipse/eclipse ] && export ECLIPSE_HOME=$HOME/applications/ide/eclipse/eclipse
 
 export HISTIGNORE="pass:&"
 
