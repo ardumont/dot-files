@@ -85,11 +85,14 @@
     lsof
     # darcs
 #    rubyLibs.bundler
-    haskellPackages.pandoc
-    haskellPackages.ncurses
-    haskellPackages.stylishHaskell
     (haskellPackages.ghcWithPackages (self : [
        self.xmobar
+       self.xmonad
+       self.xmonadContrib
+       self.xmonadExtras
+       self.pandoc
+       self.ncurses
+       self.stylishHaskell
     #    self.cabalInstall
     #    self.cabal2nix
     #    self.lens
