@@ -11,6 +11,3 @@ export BROWSER=/usr/bin/firefox
 
 # keyboard mapping
 [ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
-
-# Disable touchpad when typing
-[ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh

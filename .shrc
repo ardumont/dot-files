@@ -19,4 +19,7 @@
 # autojump
 [ -f $HOME/.nix-profile/etc/profile.d/autojump.zsh ] && . $HOME/.nix-profile/etc/profile.d/autojump.zsh
 
+# Disable touchpad when typing
+[ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh
+
 fortune | cowsay
