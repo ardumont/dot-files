@@ -81,4 +81,4 @@ HISTCONTROL=ignoreboth
 [ -f ~/.shrc ] && . ~/.shrc
 
 # Nice PS1 prompt for bash
-[ -f ~/.bashrc-prompt ] && . ~/.bashrc-prompt
+[ -f ~/.shrc-prompt ] && . ~/.shrc-prompt
