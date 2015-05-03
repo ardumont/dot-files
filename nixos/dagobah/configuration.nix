@@ -16,5 +16,6 @@
     ./xserver.nix
     ./packages.nix
     ./virtual.nix
+    ./mounts.nix
   ];
 }

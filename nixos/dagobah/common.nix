@@ -28,11 +28,6 @@
     supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   };
 
-  system.activationScripts.media =
-  ''
-    mkdir -m 0755 -p /media
-  '';
-
   # List services that you want to enable:
   services = {
     acpid = {
@@ -98,6 +93,6 @@
       root   ALL=(ALL) SETENV: ALL
       %wheel ALL=(ALL) SETENV: ALL
      '';
-    setuidPrograms = [ "pmount" "pumount" ];
+    setuidPrograms = [ "pmount" "pumount" "mount" ];
   };
 }
