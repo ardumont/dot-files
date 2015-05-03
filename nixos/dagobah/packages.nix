@@ -49,7 +49,7 @@
     # transmission_gtk
     # audacious
     linuxPackages.virtualbox packer vagrant docker
-    evince fbreader
+    evince fbreader mcomix
     # filezilla
     git gitAndTools.tig gitAndTools.hub gitg meld
     gnupg gnupg1 pinentry

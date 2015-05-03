@@ -208,6 +208,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-m"       , "mail"                       , runOrRaiseNext "evolution"                                    (className =? ".evolution-wrapped"))
   , (prefix "M1-r"      , "remmina"                    , runOrRaiseNext "remmina"                                      (className =? ".remmina-wrapped"))
   , (prefix "M1-S-w"    , "putty"                      , runOrRaiseNext "putty"                                        (appName =? "putty" <&&> className =? "Putty"))
+  , (prefix "M1-S-x"    , "mcomix"                     , runOrRaiseNext "mcomix"                                       (appName =? "mcomix" <&&> className =? "MComix"))
   , (prefix prefixKey   , "promote"                    , promote)
   , (prefix "M1-S-d"    , "db-visualizer"              , runOrRaiseNext "dbvisguisteam"            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-onseven-dbvis-DbVisualizerGUI"))
   , (prefix "M1-g"      , "steam"                      , runOrRaiseNext "steam"                    (appName =? "Steam" <&&> className =? "Steam"))
