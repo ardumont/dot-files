@@ -32,7 +32,8 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    ntfs3g fuse_exfat dosfstools
+    nox
+    androidsdk_4_4
     wmname
     feh
     # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
@@ -68,14 +69,14 @@
     emacs texinfo w3m emacs24Packages.cask
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
-    python python3 python34Packages.pip
+    # python python3 python34Packages.pip
     zlib
     firefoxWrapper chromium conkeror
     graphviz
     nmap netcat wireshark
     p7zip unrar unzip
     acpi acpid acpitool
-    clojure leiningen jdk
+    # clojure leiningen jdk
     gparted
     binutils
     pmutils
@@ -91,19 +92,19 @@
        self.xmonad
        self.xmonadContrib
        self.xmonadExtras
-       self.pandoc
-       self.ncurses
-       self.stylishHaskell
-    #    self.cabalInstall
-    #    self.cabal2nix
-    #    self.lens
-    #    self.hlint
-    #    self.hdevtools
-    #    self.zlib
-    #    self.mtl
-    #    self.HUnit
-    #    self.QuickCheck
-    #    self.hoogle
+    #    self.pandoc
+    #    self.ncurses
+    #    self.stylishHaskell
+    # #    self.cabalInstall
+    # #    self.cabal2nix
+    # #    self.lens
+    # #    self.hlint
+    # #    self.hdevtools
+    # #    self.zlib
+    # #    self.mtl
+    # #    self.HUnit
+    # #    self.QuickCheck
+    # #    self.hoogle
     ]))
     rlwrap
     fortune cowsay
