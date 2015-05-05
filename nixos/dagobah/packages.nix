@@ -21,6 +21,14 @@
       enablePepperFlash = true; # Chromium's non-NSAPI alternative to Adobe Flash
       enablePepperPDF = true;
     };
+
+    packageOverrides = pkgs: {
+      # override the default pidgin with plugins (empty by default)
+      pidgin-with-plugins = pkgs.pidgin-with-plugins.override {
+        plugins = with pkgs; [ pidginotr ];
+      };
+    };
+
   };
 
   hardware.sane = {
@@ -32,7 +40,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    pidgin
+    pidgin-with-plugins
     openconnect networkmanager_openconnect
     nox
     androidsdk_4_4
