@@ -254,5 +254,13 @@
         ];
       };
 
+      latex = defaultDevEnv {
+        name = "latex";
+        buildInputs = with pkgs; [
+          texLive
+          texLiveBeamer
+        ];
+      };
+
    };
 }
