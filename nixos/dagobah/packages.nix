@@ -79,7 +79,7 @@
     emacs texinfo w3m emacs24Packages.cask
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
-    # python python3 python34Packages.pip
+    python python3 python34Packages.pip
     zlib
     firefoxWrapper chromium conkeror
     graphviz
