@@ -4,20 +4,25 @@
 
 disconnect=$1
 
+width=1920
+height=1080
+res_screen0=${width}x${height}
+res_screen1=1600x1200
+
 if [ ! -z "$disconnect" ]; then
     xrandr --output eDP1 \
-           --mode 1920x1080 \
+           --mode $res_screen0 \
            --pos 0x0 \
            --rotate normal \
            --output HDMI1 \
            --off
 else
     xrandr --output eDP1 \
-           --mode 1920x1080 \
+           --mode $res_screen0 \
            --pos 0x0 \
            --rotate normal \
            --output HDMI1 \
-           --mode 1280x720 \
-           --pos 1920x0 \
+           --mode $res_screen1 \
+           --pos ${width}x0 \
            --rotate normal
 fi
