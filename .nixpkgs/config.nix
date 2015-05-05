@@ -245,5 +245,14 @@
         ];
       };
 
+      aws = defaultDevEnv {
+        name = "aws";
+        buildInputs = with pkgs; [
+          awscli
+          python34Packages.python
+          python34Packages.pip
+        ];
+      };
+
    };
 }
