@@ -5,7 +5,7 @@ in {
   programs.zsh.enable = true;
 
   users = {
-    defaultUserShell = "${zsh}/bin/zsh";
+    defaultUserShell = "${pkgs.zsh}/bin/zsh";
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     # we could also set `mutableUsers = false;` and add a `password = pass;` entry (but then git out this file)
@@ -23,7 +23,7 @@ in {
 
   # Make sure I can use openvpn as a user
   security.sudo.configFile = ''
-    ${defaultUser} localhost = (root) NOPASSWD: ${openvpn}/bin/openvpn
+    ${defaultUser} localhost = (root) NOPASSWD: ${pkgs.openvpn}/bin/openvpn
   '';
 
 }
