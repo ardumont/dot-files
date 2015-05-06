@@ -263,5 +263,15 @@
         ];
       };
 
+      vpn = defaultDevEnv {
+        name = "vpn";
+        buildInputs = with pkgs; [
+          openconnect
+          networkmanager_openconnect
+          openvpn
+          networkmanager_openvpn
+        ];
+      };
+
    };
 }
