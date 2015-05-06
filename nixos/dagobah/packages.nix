@@ -41,7 +41,7 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     pidgin-with-plugins
-    openconnect networkmanager_openconnect
+    openvpn networkmanager_openvpn
     nox
     androidsdk_4_4
     wmname
