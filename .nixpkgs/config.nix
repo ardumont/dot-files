@@ -257,7 +257,8 @@
       latex = defaultDevEnv {
         name = "latex";
         buildInputs = with pkgs; [
-          texLive
+          # texLive
+          texLiveFull
           texLiveBeamer
         ];
       };
