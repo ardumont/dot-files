@@ -4,7 +4,7 @@
   programs.zsh.enable = true;
 
   users = {
-    defaultUserShell = "/var/run/current-system/sw/bin/zsh";
+    defaultUserShell = "${zsh}/bin/zsh";
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     # we could also set `mutableUsers = false;` and add a `password = pass;` entry (but then git out this file)
