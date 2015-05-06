@@ -20,4 +20,10 @@ in {
       useDefaultShell = true;
     }];
   };
+
+  # Make sure I can use openvpn as a user
+  security.sudo.configFile = ''
+    ${defaultUser} localhost = (root) NOPASSWD: ${openvpn}/bin/openvpn
+  '';
+
 }
