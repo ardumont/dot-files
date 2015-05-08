@@ -4,11 +4,14 @@
   networking = {
     hostName = "dagobah";    # Define your hostname.
 
+    # firewall.enable = true;
     # firewall.allowedTCPPorts = [ ];
+    # firewall.allowedUDPPorts = [ ];
 
     # nm, nmcli, etc... incompatible with networking.wireless
     # also for a user to manager wireless network, add it to networkmanager group
     networkmanager.enable = true;
+
     extraHosts = ''
       192.168.0.10 dagobah
       192.168.0.11 chris-host
