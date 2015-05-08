@@ -87,12 +87,4 @@
        # pkgs.wqy_zenhei
     ];
   };
-
-  security = {
-    sudo.configFile = ''
-      root   ALL=(ALL) SETENV: ALL
-      %wheel ALL=(ALL) SETENV: ALL
-     '';
-    setuidPrograms = [ "pmount" "pumount" "mount" ];
-  };
 }

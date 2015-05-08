@@ -22,8 +22,11 @@ in {
   };
 
   # Make sure I can use openvpn as a user
-  security.sudo.configFile = ''
-    ${defaultUser} localhost = (root) NOPASSWD: ${pkgs.openvpn}/bin/openvpn
-  '';
+  security = {
+    sudo.extraConfig = ''
+      ${defaultUser} localhost = (root) NOPASSWD: ${pkgs.openvpn}/bin/openvpn
+     '';
+     setuidPrograms = [ "pmount" "pumount" "mount" "umount" ];
+   };
 
 }
