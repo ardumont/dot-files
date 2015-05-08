@@ -16,7 +16,7 @@ in {
       uid = 1000;
       createHome = true;
       home = "/home/${defaultUser}";
-      extraGroups = [ "users" "wheel" "audio" "video" "vboxusers" "docker" "networkmanager" "dialout" ];
+      extraGroups = [ "wheel" "audio" "video" "vboxusers" "docker" "networkmanager" "dialout" ];
       useDefaultShell = true;
     }];
   };
