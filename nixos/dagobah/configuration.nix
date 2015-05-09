@@ -9,6 +9,7 @@
     ./hardware-configuration.nix # Include the results of the hardware scan.
     ./nix.nix
     ./common.nix
+    ./services.nix
     ./laptop.nix
     ./env.nix
     ./network.nix
