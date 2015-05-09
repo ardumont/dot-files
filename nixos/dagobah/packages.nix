@@ -40,7 +40,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    texLiveFull
+    texLiveFull mysql mysqlWorkbench
     pidgin-with-plugins
     openvpn networkmanager_openvpn
     nox
@@ -103,7 +103,7 @@
        self.xmonad
        self.xmonadContrib
        self.xmonadExtras
-    #    self.pandoc
+       self.pandoc
     #    self.ncurses
     #    self.stylishHaskell
     # #    self.cabalInstall
