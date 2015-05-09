@@ -210,6 +210,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-S-w"    , "putty"                      , runOrRaiseNext "putty"                                        (appName =? "putty" <&&> className =? "Putty"))
   , (prefix "M1-S-x"    , "mcomix"                     , runOrRaiseNext "mcomix"                                       (appName =? "mcomix" <&&> className =? "MComix"))
   , (prefix prefixKey   , "promote"                    , promote)
+  , (prefix "C-d"       , "db-gui"                     , runOrRaiseNext "mysql-workbench"          (appName =? "mysql-workbench-bin" <&&> className =? "Mysql-workbench-bin"))
   , (prefix "M1-S-d"    , "db-visualizer"              , runOrRaiseNext "dbvisguisteam"            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-onseven-dbvis-DbVisualizerGUI"))
   , (prefix "M1-g"      , "steam"                      , runOrRaiseNext "steam"                    (appName =? "Steam" <&&> className =? "Steam"))
   , (prefix "x"         , "terminal"                   , runOrRaiseNext myTerm                     myTerminalQuery)
