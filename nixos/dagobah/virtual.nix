@@ -2,10 +2,7 @@
 
 {
   # Use vbox
-  services.virtualboxHost.enable = true;
-
-  # no need because defined on the users level
-  # users.extraGroups.vboxusers.members = [ "tony" ];
+  services.virtualboxHost.enable = false;
 
   # Activate docker service
   virtualisation.docker.enable = true;
