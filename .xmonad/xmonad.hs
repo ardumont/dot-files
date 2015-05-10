@@ -1,8 +1,12 @@
 import           Control.Monad             (liftM)
 import qualified Data.Map                  as M
 import           Data.Monoid
+import           System.Directory          (getDirectoryContents,
+                                            getHomeDirectory)
 import           System.Exit
+import           System.FilePath           (combine, takeBaseName)
 import           System.IO
+import           System.Posix.Env          (getEnv)
 import           XMonad
 import           XMonad.Actions.Promote    (promote)
 import qualified XMonad.Actions.Search     as S
@@ -11,6 +15,8 @@ import           XMonad.Actions.WindowGo   (runOrRaiseNext)
 import           XMonad.Config.Desktop
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
+import           XMonad.Layout.Monitor
+import           XMonad.Prompt
 import           XMonad.Prompt.AppLauncher (launchApp)
 import           XMonad.Prompt.RunOrRaise  (runOrRaisePrompt)
 import           XMonad.Prompt.Window
@@ -18,17 +24,10 @@ import           XMonad.Prompt.XMonad      (xmonadPromptC)
 import qualified XMonad.StackSet           as W
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Run           (spawnPipe)
-import           System.Directory          (getDirectoryContents,
-                                            getHomeDirectory)
-import           System.FilePath           (combine, takeBaseName)
-import           System.Posix.Env          (getEnv)
-import           XMonad.Prompt
-import           XMonad.Layout.Monitor
 
 ------------------------------------------------------------------------
 -- Password section
 --
-
 type PromptLabel = String
 data Pass = Pass PromptLabel
 
