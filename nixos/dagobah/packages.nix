@@ -40,6 +40,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    python27Packages.screenkey
     texLiveFull mysql mysqlWorkbench
     pidgin-with-plugins
     openvpn networkmanager_openvpn
