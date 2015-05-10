@@ -34,9 +34,9 @@
   # user service. This means I have to pass the "--user" option to
   # systemd when I want to control the service.
   systemd.user.services.emacs = {
-    description                 = "Emacs: the extensible, self-documenting text editor";
+    description = "Emacs: the extensible, self-documenting text editor";
 
-    serviceConfig               = {
+    serviceConfig = {
       Type      = "forking";
       ExecStart = "${pkgs.emacs}/bin/emacs --daemon";
       ExecStop  = "${pkgs.emacs}/bin/emacsclient --eval (kill-emacs)";
