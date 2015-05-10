@@ -1,13 +1,15 @@
 # -*- conf -*-
 
 [general]
-accounts                = eniotna, ard
+accounts                = ard, eniotna
 pythonfile              = ~/.offlineimap-helpers.py
 # ui = ttyui or blinkenlights
 
 [Account eniotna]
 localrepository         = eniotna-local
 remoterepository        = eniotna-remote
+# autorefresh             = 1
+postsynchook            = ~/bin/mu/mu-index.sh
 
 [Repository eniotna-local]
 type                    = Maildir
@@ -30,6 +32,8 @@ sslcacertfile           = /etc/ssl/certs/ca-bundle.crt
 [Account ard]
 localrepository         = ard-local
 remoterepository        = ard-remote
+# autorefresh             = 1
+postsynchook            = ~/bin/mu/mu-index.sh
 
 [Repository ard-local]
 type                    = Maildir
