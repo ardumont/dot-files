@@ -108,7 +108,7 @@
        self.pandoc
     #    self.ncurses
     #    self.stylishHaskell
-    # #    self.cabalInstall
+       self.cabalInstall
     # #    self.cabal2nix
     # #    self.lens
     # #    self.hlint
