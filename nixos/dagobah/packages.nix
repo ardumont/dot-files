@@ -80,6 +80,7 @@
     xclip xsel pass keychain
     htop # powertop
     emacs texinfo w3m emacs24Packages.cask
+    emacs24PackagesNg.structured-haskell-mode
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
     python python3 python34Packages.pip
@@ -106,18 +107,19 @@
        self.xmonadContrib
        self.xmonadExtras
        self.pandoc
-    #    self.ncurses
-    #    self.stylishHaskell
+       # self.ncurses
        self.cabalInstall
-    # #    self.cabal2nix
-    # #    self.lens
-    # #    self.hlint
-    # #    self.hdevtools
-    # #    self.zlib
-    # #    self.mtl
-    # #    self.HUnit
-    # #    self.QuickCheck
-    # #    self.hoogle
+       # haskell-pack deps
+       self.stylishHaskell
+       self.hasktags
+       # self.cabal2nix
+       # self.lens
+       # self.hdevtools
+       # self.zlib
+       # self.mtl
+       # self.HUnit
+       # self.QuickCheck
+       # self.hoogle
     ]))
     rlwrap
     fortune cowsay
