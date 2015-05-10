@@ -143,3 +143,21 @@ alias hddck='tmp=~/tmp/haddock; [[ -d $tmp/html ]] || mkdir -p $tmp/html; base=`
 
 # --server flag to use 'Server binary outside path - http://mosh.mit.edu/#usage'
 alias mosh="mosh --server=$(which mosh-server)"
+
+################ nixos/nix functions
+
+function nix-where() {
+    which $1 | xargs readlink | xargs dirname
+}
+
+function nix-folder() {
+    nix-where $1 | xargs dirname
+}
+
+function nix-package() {
+    nix-folder $1 | xargs basename | cut -d'-' -f2,3
+}
+
+alias nix-where='nix-where'
+alias nix-folder='nix-folder'
+alias nix-package='nix-package'
