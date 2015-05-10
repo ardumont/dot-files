@@ -1,48 +1,50 @@
+# -*- conf -*-
+
 [general]
-accounts = eniotna, ard
-pythonfile = ~/.offlineimap-helpers.py
+accounts                = eniotna, ard
+pythonfile              = ~/.offlineimap-helpers.py
 # ui = ttyui or blinkenlights
 
 [Account eniotna]
-localrepository = eniotna-local
-remoterepository = eniotna-remote
+localrepository         = eniotna-local
+remoterepository        = eniotna-remote
 
 [Repository eniotna-local]
-type = Maildir
-localfolders = ~/.mails/eniotna.t/
+type                    = Maildir
+localfolders            = ~/.mails/eniotna.t/
 
 [Repository eniotna-remote]
-type = Gmail
-remotehost = imap.gmail.com
-remoteuser = eniotna.t@gmail.com
-remotepasseval = get_secure_credentials("~/.authinfo.gpg", "imap.gmail.com", "eniotna.t@gmail.com", "993")
-realdelete = no
-ssl = yes
-maxconnections = 3
-folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail']
+type                    = Gmail
+remotehost              = imap.gmail.com
+remoteuser              = eniotna.t@gmail.com
+remotepasseval          = get_secure_credentials("~/.authinfo.gpg", "imap.gmail.com", "eniotna.t@gmail.com", "993")
+realdelete              = no
+ssl                     = yes
+maxconnections          = 3
+folderfilter            = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail']
 # status_backend = sqlite
 # fsync = true
 # holdconnectionopen = no
-sslcacertfile = /etc/ssl/certs/ca-bundle.crt
+sslcacertfile           = /etc/ssl/certs/ca-bundle.crt
 
 [Account ard]
-localrepository = ard-local
-remoterepository = ard-remote
+localrepository         = ard-local
+remoterepository        = ard-remote
 
 [Repository ard-local]
-type = Maildir
-localfolders = ~/.mails/antoine.romain.dumont/
+type                    = Maildir
+localfolders            = ~/.mails/antoine.romain.dumont/
 
 [Repository ard-remote]
-type = Gmail
-remotehost = imap.gmail.com
-remoteuser = antoine.romain.dumont@gmail.com
-remotepasseval = get_secure_credentials("~/.authinfo.gpg", "imap.gmail.com", "antoine.romain.dumont@gmail.com", "993")
-realdelete = no
-ssl = yes
-maxconnections = 3
-folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail']
+type                    = Gmail
+remotehost              = imap.gmail.com
+remoteuser              = antoine.romain.dumont@gmail.com
+remotepasseval          = get_secure_credentials("~/.authinfo.gpg", "imap.gmail.com", "antoine.romain.dumont@gmail.com", "993")
+realdelete              = no
+ssl                     = yes
+maxconnections          = 3
+folderfilter            = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail']
 # status_backend = sqlite
 # fsync = true
 # holdconnectionopen = no
-sslcacertfile = /etc/ssl/certs/ca-bundle.crt
+sslcacertfile           = /etc/ssl/certs/ca-bundle.crt
