@@ -66,40 +66,6 @@
 
       enable = true;
     };
-
-    offlineimap = {
-      description = "Offlineimap: sync your email maildirs";
-
-      serviceConfig = {
-        Type      = "forking";
-        ExecStart = "${pkgs.offlineimap}/bin/offlineimap";
-        ExecStop  = "${pkgs.procps}/bin/pkill offlineimap";
-        Restart   = "always";
-      };
-
-      # started with the rest of the user services
-      wantedBy = [ "default.target" ];
-
-      # environment = {
-      #   PATH = "{pkgs.gnupg}/bin";
-      # };
-
-      # need the gpg2 utilities in path
-      path = [ pkgs.gnupg ];
-
-      # use the gpg setup
-      preStart = ''
-        ${pkgs.coreutils}/bin/whoami
-
-        [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
-
-        ${pkgs.coreutils}/bin/printenv
-      '';
-
-      requisite = [ "display-manager.service" "network-manager.service" ];
-
-      enable = true;
-    };
   };
 
 }
