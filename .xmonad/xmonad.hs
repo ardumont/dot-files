@@ -23,6 +23,7 @@ import           System.Directory          (getDirectoryContents,
 import           System.FilePath           (combine, takeBaseName)
 import           System.Posix.Env          (getEnv)
 import           XMonad.Prompt
+import           XMonad.Layout.Monitor
 
 ------------------------------------------------------------------------
 -- Password section
@@ -501,6 +502,16 @@ myXPConfig = defaultXPConfig
               , historySize       = 256
               , promptBorderWidth = 1}
 
+-- | Make the screenkey window appear in front of other windows
+--
+screenKeyMonitor :: Monitor a
+screenKeyMonitor = monitor
+     { prop = ClassName "Screenkey"
+     , rect = Rectangle 0 0 15 20 -- rectangle 20x20 in upper left corner
+     , persistent = True
+     , opacity = 0.8
+     }
+
 -- | Now run xmonad with all the defaults we set up.
 main :: IO ()
 main = do
@@ -518,7 +529,7 @@ main = do
                 , keys               = myKeys home
                 , mouseBindings      = myMouseBindings
                 , layoutHook         = avoidStruts myLayout
-                , manageHook         = manageDocks <+> myManageHook
+                , manageHook         = manageDocks <+> myManageHook <+> manageMonitor screenKeyMonitor
                 , handleEventHook    = myEventHook
                 -- Status bars and logging
                 -- Perform an arbitrary action on each internal state change or X event.
