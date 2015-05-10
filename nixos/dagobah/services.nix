@@ -67,22 +67,38 @@
       enable = true;
     };
 
-    # I want the emacs service to be started with the rest of the user services
-    wantedBy = [ "default.target" ];
+    offlineimap = {
+      description = "Offlineimap: sync your email maildirs";
 
-    # Annoyingly, systemd doesn't pass any environment variable to its
-    # services. Below, I set some variables that I missed.
-    environment = {
-      # Some variables for GTK applications I will launch from Emacs
-      # (typically evince and the gnome-terminal)
-      GTK_DATA_PREFIX = config.system.path;
-      GTK_PATH        = "${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0";
+      serviceConfig = {
+        Type      = "forking";
+        ExecStart = "${pkgs.offlineimap}/bin/offlineimap";
+        ExecStop  = "${pkgs.procps}/bin/pkill offlineimap";
+        Restart   = "always";
+      };
 
-      # Make sure aspell will find its dictionaries
-      ASPELL_CONF     = "dict-dir /run/current-system/sw/lib/aspell";
+      # started with the rest of the user services
+      wantedBy = [ "default.target" ];
 
-      # Make sure locate will find its database
-      LOCATE_PATH     = "/var/cache/locatedb";
+      # environment = {
+      #   PATH = "{pkgs.gnupg}/bin";
+      # };
+
+      # need the gpg2 utilities in path
+      path = [ pkgs.gnupg ];
+
+      # use the gpg setup
+      preStart = ''
+        ${pkgs.coreutils}/bin/whoami
+
+        [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
+
+        ${pkgs.coreutils}/bin/printenv
+      '';
+
+      requisite = [ "display-manager.service" "network-manager.service" ];
+
+      enable = true;
     };
   };
 
