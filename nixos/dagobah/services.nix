@@ -62,7 +62,7 @@
         LOCATE_PATH     = "/var/cache/locatedb";
       };
 
-      requisite = [ "display-manager.service" "network-manager.service" ];
+      # requisite = [ "display-manager.service" "network-manager.service" ];
 
       enable = true;
     };
