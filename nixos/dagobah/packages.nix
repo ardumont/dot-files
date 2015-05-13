@@ -107,9 +107,9 @@
        self.xmobar
        self.pandoc
        # self.ncurses
-       self.cabalInstall
+       # self.cabalInstall
        # haskell-pack deps
-       self.stylishHaskell
+       # self.stylishHaskell
        self.hasktags
        # self.cabal2nix
        # self.lens
