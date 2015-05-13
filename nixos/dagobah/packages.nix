@@ -40,6 +40,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    nix-prefetch-scripts
     psmisc # fuser
     python27Packages.screenkey
     texLiveFull mysql mysqlWorkbench
