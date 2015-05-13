@@ -91,7 +91,7 @@
     nmap netcat wireshark
     p7zip unrar unzip
     acpi acpid acpitool
-    # clojure leiningen jdk
+    clojure leiningen jdk
     gparted
     binutils
     pmutils
