@@ -43,7 +43,8 @@
     nix-prefetch-scripts
     psmisc # fuser
     python27Packages.screenkey
-    texLiveFull mysql mysqlWorkbench
+    texLive
+    mysql mysqlWorkbench
     pidgin-with-plugins
     openvpn networkmanager_openvpn
     nox
