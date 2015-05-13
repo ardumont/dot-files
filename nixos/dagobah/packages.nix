@@ -104,9 +104,6 @@
 #    rubyLibs.bundler
     (haskellPackages.ghcWithPackages (self : [
        self.xmobar
-       self.xmonad
-       self.xmonadContrib
-       self.xmonadExtras
        self.pandoc
        # self.ncurses
        self.cabalInstall
