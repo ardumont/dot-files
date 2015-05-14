@@ -16,6 +16,8 @@
 #      options snd_hda_intel enable=0,1
     '';
 
+    blacklistedKernelModules = [ "snd_pcsp" ];
+
     # dropbox setting
     kernel.sysctl."fs.inotify.max_user_watches" = 1000000;
   };
