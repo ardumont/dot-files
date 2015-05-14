@@ -108,6 +108,9 @@
     # darcs
 #    rubyLibs.bundler
     (haskellngPackages.ghcWithPackages (self : [
+       self.xmonad
+       self.xmonad-contrib
+       self.xmonad-extras
        self.xmobar
        self.pandoc
        # self.ncurses
