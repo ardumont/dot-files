@@ -67,7 +67,7 @@
     gnome3_12.zenity
     # transmission_gtk
     # audacious
-    linuxPackages.virtualbox packer vagrant docker
+    linuxPackages.virtualbox packer vagrant # docker
     evince fbreader mcomix
     # filezilla
     git gitAndTools.tig gitAndTools.hub gitg meld

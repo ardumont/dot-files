@@ -5,5 +5,5 @@
   services.virtualboxHost.enable = false;
 
   # Activate docker service
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 }
