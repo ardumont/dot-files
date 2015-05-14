@@ -10,8 +10,10 @@
                   [com.palletops/pallet-lein "0.8.0-alpha.1"]
                   [pallet/lein-template      "0.2.10"]
                   [lein-cljsbuild            "0.3.0"]
-                  [cider/cider-nrepl         "0.8.2"]
-                  [lein-expectations         "0.0.8"]]
+                  [lein-expectations         "0.0.8"]
+                  [cider/cider-nrepl         "0.9.0-SNAPSHOT"]
+                  [org.clojure/tools.nrepl   "0.2.10"]
+                  [refactor-nrepl            "1.0.5"]]
         :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
                  :source-paths ["src"] :resource-paths []}
         :dependencies [[clojure-complete            "0.2.3"]
