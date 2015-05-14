@@ -103,13 +103,13 @@
     lsof
     # darcs
 #    rubyLibs.bundler
-    (haskellPackages.ghcWithPackages (self : [
+    (haskellngPackages.ghcWithPackages (self : [
        self.xmobar
        self.pandoc
        # self.ncurses
-       # self.cabalInstall
+       self.cabal-install
        # haskell-pack deps
-       # self.stylishHaskell
+       self.stylish-haskell
        self.hasktags
        # self.cabal2nix
        # self.lens
