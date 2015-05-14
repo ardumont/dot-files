@@ -27,6 +27,10 @@
       pidgin-with-plugins = pkgs.pidgin-with-plugins.override {
         plugins = with pkgs; [ pidginotr ];
       };
+
+      # xmonad-with-packages = pkgs.xmonad-with-packages.override {
+      #   packages = with pkgs.haskellngPackages.ghcWithPackages; [ xmonad-contrib xmonad-extras ];
+      # };
     };
 
   };
