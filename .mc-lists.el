@@ -13,6 +13,7 @@
         easy-kill-digit-argument
         easy-kill-region
         easy-mark
+        electric-graphviz-dot-semi
         end-of-buffer
         flymake-display-err-menu-for-current-line
         forward-sexp
