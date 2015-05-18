@@ -1,23 +1,27 @@
 { config, pkgs, ... }:
 
 {
-#  nix.proxy = "http://user:pass@proxy:port";
   networking = {
     hostName = "myrkr";    # Define your hostname.
 
-#    wireless = {
-#      enable = true;                # Enables wireless
-#      userControlled.enable = true; # user can play with wifi
-#      interfaces = [ "wlp6s0" ];    # explicit the interfaces the user can modify
-#    };
+    # firewall.enable = true;
+    # firewall.allowedTCPPorts = [ ];
+    # firewall.allowedUDPPorts = [ ];
 
-    networkmanager.enable = true; # nm, nmcli, etc... incompatible with networking.wireless
+    # nm, nmcli, etc... incompatible with networking.wireless
+    # also for a user to manager wireless network, add it to networkmanager group
+    networkmanager.enable = true;
+
     extraHosts = ''
       192.168.0.10 dagobah
       192.168.0.11 chris-host
       192.168.0.13 job
       192.168.0.14 myrkr
+      192.168.0.15 lenovo
       192.168.0.20 nas
+      192.168.0.28 printer-8610
+      192.168.0.254 box
     '';
   };
+
 }

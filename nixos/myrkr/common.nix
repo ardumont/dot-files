@@ -2,6 +2,7 @@
 
 {
   boot = {
+    cleanTmpDir = true;
     loader.grub = {
       enable = true;           # Use GRUB boot loader.
       version = 2;             # Version 2
@@ -9,14 +10,10 @@
       memtest86.enable = true; # Activate the check on memory
     };
 
-    # sound options
     extraModprobeConfig = ''
       options snd slots=snd-hda-intel
-# to select the second card by default
-#      options snd_hda_intel enable=0,1
+      options snd_hda_intel enable=0,1
     '';
-
-    blacklistedKernelModules = [ "snd_pcsp" ];
 
     # dropbox setting
     kernel.sysctl."fs.inotify.max_user_watches" = 1000000;
@@ -32,32 +29,7 @@
     supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   };
 
-  programs.ssh.startAgent = false; # do not start ssh agent (gpg-agent will do)
-
-  # List services that you want to enable:
-  services = {
-    acpid.enable = true;
-
-    locate = {
-      enable = true;
-      period = "00 19 * * *"; # update db at 19h every day
-    };
-
-    openssh.enable = true;
-    ntp.enable = true;
-
-    # https://nixos.org/wiki/Printers
-    printing = {
-      enable = true;
-      drivers = [ pkgs.gutenprint pkgs.hplip ];
-    };
-
-    nixosManual.showManual = true; # Add the NixOS Manual on virtual console 8
-  };
-
   fonts = {
-    # enableGhostscriptFonts = true;
-    # enableCoreFonts = true; # M$'s proprietary Core Fonts.
     fontconfig.enable = true;
     enableFontDir = true;
     fonts = [
@@ -88,13 +60,5 @@
        # pkgs.vistafonts
        # pkgs.wqy_zenhei
     ];
-  };
-
-  security = {
-    sudo.configFile = ''
-      root   ALL=(ALL) SETENV: ALL
-      %wheel ALL=(ALL) SETENV: ALL
-     '';
-    setuidPrograms = [ "fdisk" "pmount" "pumount" ];
   };
 }

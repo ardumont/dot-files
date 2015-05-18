@@ -5,18 +5,18 @@
 { config, pkgs, ... }:
 
 {
-  # for dev purpose
-  nix.useChroot = true;
-
-  imports =
-    [ ./hardware-configuration.nix # Include the results of the hardware scan.
-      ./nix.nix
-      ./common.nix
-      ./env.nix
-      ./network.nix
-      ./users.nix
-      ./xserver.nix
-      ./packages.nix
-      ./virtual.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./nix.nix
+    ./common.nix
+    ./services.nix
+    ./laptop.nix
+    ./env.nix
+    ./network.nix
+    ./users.nix
+    ./xserver.nix
+    ./packages.nix
+    ./virtual.nix
+    ./mounts.nix
+  ];
 }
