@@ -192,58 +192,58 @@
         buildInputs = [ haskellPackages_ghc783_profiling.idris_plain ];
       };
 
-      emacs = emacs24;
+      # emacs = emacs24;
 
-      emacsWithPackages = pkgs.buildEnv {
-        ignoreCollisions = true;
-        name = "emacs-with-packages";
-#        buildInputs = [ mu ];
-        paths = with emacsPackagesNg; [
-          emacs24
-          markdown-mode
-          org-trello
-          auto-complete
-          ac-haskell-process
-          company
-          haskell-mode
-          structured-haskell-mode
-          ace-jump-mode
-          exec-path-from-shell
-          flycheck
-          flycheck-pos-tip
-          gnus
-          god-mode
-          aspell
-          aspellDicts.en
-          magit
-          projectile
-          switch-window
-          smart-mode-line
-          undo-tree
-          use-package
-          dash
-          s
-          deferred
-          diminish
-          popup
+#       emacsWithPackages = pkgs.buildEnv {
+#         ignoreCollisions = true;
+#         name = "emacs-with-packages";
+# #        buildInputs = [ mu ];
+#         paths = with emacsPackagesNg; [
+#           emacs24
+#           markdown-mode
+#           org-trello
+#           auto-complete
+#           ac-haskell-process
+#           company
+#           haskell-mode
+#           structured-haskell-mode
+#           ace-jump-mode
+#           exec-path-from-shell
+#           flycheck
+#           flycheck-pos-tip
+#           gnus
+#           god-mode
+#           aspell
+#           aspellDicts.en
+#           magit
+#           projectile
+#           switch-window
+#           smart-mode-line
+#           undo-tree
+#           use-package
+#           dash
+#           s
+#           deferred
+#           diminish
+#           popup
 
-          # ag
-          # auctex
-          # change-inner
-          # circe
-          # expand-region
-          # helm
-          # helm-swoop
-          # hi2
-          # idris-mode
-          # monokai-theme
-          # org-plus-contrib
-          # smartparens
-          # volatile-highlights
-          # wgrep
-          # zenburn-theme
-        ];
-      };
+#           # ag
+#           # auctex
+#           # change-inner
+#           # circe
+#           # expand-region
+#           # helm
+#           # helm-swoop
+#           # hi2
+#           # idris-mode
+#           # monokai-theme
+#           # org-plus-contrib
+#           # smartparens
+#           # volatile-highlights
+#           # wgrep
+#           # zenburn-theme
+#         ];
+#       };
 
       aws = defaultDevEnv {
         name = "aws";
