@@ -44,14 +44,13 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    nix-prefetch-scripts
-    psmisc # fuser
+    nix-prefetch-scripts nix-repl nixops nox
+    psmisc
     python27Packages.screenkey
-    texLive
+    # texLive
     mysql mysqlWorkbench
     pidgin-with-plugins
     openvpn networkmanager_openvpn
-    nox
     androidsdk_4_4
     wmname
     feh
@@ -65,11 +64,11 @@
     gnome3_12.eog pinta scrot
     vlc x264
     gnome3_12.zenity
-    # transmission_gtk
-    # audacious
-    linuxPackages.virtualbox packer vagrant # docker
+    transmission_gtk
+    audacious
+    linuxPackages.virtualbox packer vagrant docker
     evince fbreader mcomix
-    # filezilla
+    filezilla
     git gitAndTools.tig gitAndTools.hub gitg meld
     gnupg gnupg1 pinentry
     pmount file
@@ -80,7 +79,7 @@
     networkmanagerapplet
     x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
     libxml2
-    # mosh
+    mosh
     offlineimap mu
     most
     xclip xsel pass keychain
@@ -90,6 +89,7 @@
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
     python python3 python34Packages.pip
+    bundler
     zlib
     firefoxWrapper chromium conkeror
     graphviz
@@ -97,7 +97,7 @@
     p7zip unrar unzip
     acpi acpid acpitool
     clojure leiningen jdk
-    gparted
+    gparted testdisk
     binutils
     pmutils
     autojump
@@ -105,8 +105,7 @@
     # unetbootin
     alsaUtils
     lsof
-    # darcs
-#    rubyLibs.bundler
+    darcs
     (haskellngPackages.ghcWithPackages (self : [
        self.xmonad
        self.xmonad-contrib
