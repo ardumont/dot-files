@@ -4,8 +4,8 @@
   networking = {
     hostName = "myrkr";    # Define your hostname.
 
-    # firewall.enable = true;
-    # firewall.allowedTCPPorts = [ ];
+    firewall.enable = true;
+    firewall.allowedTCPPorts = [ 22 ];
     # firewall.allowedUDPPorts = [ ];
 
     # nm, nmcli, etc... incompatible with networking.wireless
