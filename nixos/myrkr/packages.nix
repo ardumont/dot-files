@@ -41,7 +41,7 @@
     nix-prefetch-scripts nix-repl nixops nox
     psmisc
     python27Packages.screenkey
-    # texLive
+    texLive
     mysql mysqlWorkbench
     pidgin-with-plugins
     openvpn networkmanager_openvpn
@@ -56,7 +56,7 @@
     nix-repl
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon
     gnome3_12.eog pinta scrot
-    vlc x264
+    vlc x264 mplayer
     gnome3_12.zenity
     transmission_gtk
     audacious
