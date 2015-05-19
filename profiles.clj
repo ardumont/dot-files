@@ -14,30 +14,31 @@
                   [cider/cider-nrepl         "0.9.0-SNAPSHOT"]
                   [org.clojure/tools.nrepl   "0.2.10"]
                   [refactor-nrepl            "1.0.5"]]
-        :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
-                 :source-paths ["src"] :resource-paths []}
-        :dependencies [[clojure-complete            "0.2.3"]
-                       ;; [leiningen                   #=(leiningen.core.main/leiningen-version)]
-                       [leiningen                   "2.3.0"]
-                       [im.chit/vinyasa             "0.2.0"]
-                       [com.cemerick/pomegranate    "0.3.0"]
-                       [org.clojure/tools.namespace "0.2.4"]
-                       [expectations                "2.0.7"]
-                       [midje                       "1.6.3"]]
-        :injections [(require '[vinyasa.inject :as inj])
-                     (inj/inject 'clojure.core
-                                 '[[vinyasa.inject inject]
-                                   [vinyasa.pull pull]
-                                   [vinyasa.lein lein]
-                                   [vinyasa.reimport reimport]])
-                     (inj/inject 'clojure.core '>
-                                 '[[cemerick.pomegranate add-classpath get-classpath resources]
-                                   [clojure.tools.namespace.repl refresh]
-                                   [clojure.repl apropos dir doc find-doc source pst
-                                    [root-cause >cause]]
-                                   [clojure.pprint pprint]
-                                   [clojure.java.shell sh]
-                                   [midje.repl autotest]])]
+        ;; :pallet {:dependencies [[org.virtualbox/vboxjws "4.2.6"]]
+        ;;          :source-paths ["src"] :resource-paths []}
+        ;; :dependencies [[clojure-complete            "0.2.3"]
+        ;;                ;; [leiningen                   #=(leiningen.core.main/leiningen-version)]
+        ;;                [leiningen                   "2.3.0"]
+        ;;                [im.chit/vinyasa             "0.2.0"]
+        ;;                [com.cemerick/pomegranate    "0.3.0"]
+        ;;                [org.clojure/tools.namespace "0.2.4"]
+        ;;                [expectations                "2.0.7"]
+        ;;                [midje                       "1.6.3"]]
+        ;; :injections [(require '[vinyasa.inject :as inj])
+        ;;              (inj/inject 'clojure.core
+        ;;                          '[[vinyasa.inject inject]
+        ;;                            [vinyasa.pull pull]
+        ;;                            [vinyasa.lein lein]
+        ;;                            [vinyasa.reimport reimport]])
+        ;;              (inj/inject 'clojure.core '>
+        ;;                          '[[cemerick.pomegranate add-classpath get-classpath resources]
+        ;;                            [clojure.tools.namespace.repl refresh]
+        ;;                            [clojure.repl apropos dir doc find-doc source pst
+        ;;                             [root-cause >cause]]
+        ;;                            [clojure.pprint pprint]
+        ;;                            [clojure.java.shell sh]
+        ;;                            [midje.repl autotest]])
+                     ;; ]
         :search-page-size "30"}
  :repositories {"stuart"              "http://stuartsierra.com/maven2"
                 "googleapis"          "http://mavenrepo.google-api-java-client.googlecode.com/hg/"
