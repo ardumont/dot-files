@@ -11,6 +11,7 @@
     ./common.nix
     ./services.nix
     ./laptop.nix
+    ./print.nix
     ./env.nix
     ./network.nix
     ./users.nix
