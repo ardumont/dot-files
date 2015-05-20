@@ -39,6 +39,7 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     html2text
+    pciutils # lspci, etc...
     nix-prefetch-scripts nix-repl nixops nox
     psmisc
     python27Packages.screenkey
