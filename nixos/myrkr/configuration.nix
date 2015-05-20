@@ -10,7 +10,7 @@
     ./nix.nix
     ./common.nix
     ./services.nix
-    # ./print.nix
+    ./print.nix
     ./env.nix
     ./network.nix
     ./users.nix
