@@ -69,3 +69,6 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 [ -f ~/.shrc ] && . ~/.shrc
+
+# autojump
+[ -f $AUTOJUMP_HOME/share/autojump/autojump.zsh ] && . $AUTOJUMP_HOME/share/autojump/autojump.zsh

@@ -16,9 +16,6 @@
 # nix env (manual install)
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
 
-# autojump
-[ -f $HOME/.nix-profile/etc/profile.d/autojump.zsh ] && . $HOME/.nix-profile/etc/profile.d/autojump.zsh
-
 # Disable touchpad when typing
 [ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh
 

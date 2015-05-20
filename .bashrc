@@ -82,3 +82,6 @@ HISTCONTROL=ignoreboth
 
 # Nice PS1 prompt for bash
 [ -f ~/.shrc-prompt ] && . ~/.shrc-prompt
+
+# autojump
+[ -f $AUTOJUMP_HOME/share/autojump/autojump.bash ] && . $AUTOJUMP_HOME/share/autojump/autojump.bash
