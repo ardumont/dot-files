@@ -25,7 +25,7 @@
     packageOverrides = pkgs: {
       # override the default pidgin with plugins (empty by default)
       pidgin-with-plugins = pkgs.pidgin-with-plugins.override {
-        plugins = with pkgs; [ pidginotr ];
+        plugins = with pkgs; [ pidginotr skype4pidgin ];
       };
 
       # xmonad-with-packages = pkgs.xmonad-with-packages.override {
@@ -46,6 +46,7 @@
     texLive
     mysql mysqlWorkbench
     pidgin-with-plugins
+    skype
     openvpn networkmanager_openvpn
     androidsdk_4_4
     wmname
