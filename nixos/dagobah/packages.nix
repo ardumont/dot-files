@@ -78,7 +78,7 @@
     mosh
     offlineimap mu
     most
-    xclip xsel pass keychain
+    xclip xsel pass pwgen keychain
     htop # powertop
     emacs texinfo w3m emacs24Packages.cask
     emacs24PackagesNg.structured-haskell-mode
