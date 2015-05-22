@@ -81,7 +81,7 @@
     most
     xclip xsel pass pwgen keychain
     htop # powertop
-    emacs texinfo w3m emacs24Packages.cask
+    emacs texinfo w3m emacs24Packages.cask aspell aspellDicts.en aspellDicts.fr
     emacs24PackagesNg.structured-haskell-mode
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
