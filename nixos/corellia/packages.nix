@@ -43,23 +43,23 @@
     nix-prefetch-scripts nix-repl nixops nox
     psmisc # fuser
     python27Packages.screenkey
-#    texLive
-#    mysql mysqlWorkbench
+    texLiveFull
+    mysql mysqlWorkbench
     pidgin-with-plugins
-#    skype
+    skype
     openvpn networkmanager_openvpn
-#    androidsdk_4_4
+    androidsdk_4_4
     wmname
     feh
     # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
     xsane
-    # jq
+    jq
     which
     peco
     nix-repl
     gnome3_12.nautilus gnome3_12.gnome_settings_daemon
     gnome3_12.eog pinta scrot
-#    vlc x264 mplayer
+    vlc x264 mplayer
     gnome3_12.zenity
     transmission_gtk
     audacious
@@ -88,7 +88,7 @@
     python python3 python34Packages.pip
     bundler
     zlib
-    firefoxWrapper conkeror # chromium
+    firefoxWrapper conkeror chromium
     graphviz
     nmap netcat wireshark
     p7zip unrar unzip
@@ -99,7 +99,7 @@
     pmutils
     autojump
     inotifyTools
-    # unetbootin
+    unetbootin
     alsaUtils
     lsof
     darcs
@@ -128,8 +128,8 @@
     ffmpeg
     simplescreenrecorder
     keymon
-    # imagemagick
-#    libreoffice
+    imagemagick
+    libreoffice
     cups samba
     telnet
     # rhino
