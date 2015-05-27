@@ -64,6 +64,7 @@
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
         sgml-slash
+        sh-assignment
         shm/backward-node
         shm/comment
         shm/del
