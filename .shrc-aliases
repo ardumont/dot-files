@@ -146,6 +146,10 @@ alias mosh="mosh --server=$(which mosh-server)"
 
 ################ nixos/nix functions
 
+function nix-prefetch-file {
+    nix-prefetch-url file://$1
+}
+
 function nix-where() {
     which $1 | xargs readlink | xargs dirname
 }
