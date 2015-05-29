@@ -249,6 +249,7 @@
         name = "aws";
         buildInputs = with pkgs; [
           awscli
+          s3cmd
           python34Packages.python
           python34Packages.pip
         ];
