@@ -91,7 +91,7 @@
     firefoxWrapper conkeror chromium
     graphviz
     nmap netcat wireshark
-    p7zip unrar unzip
+    p7zip unrar zip unzip
     acpi acpid acpitool
     clojure leiningen jdk
     gparted testdisk
