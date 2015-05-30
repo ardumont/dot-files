@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  system.activationScripts.media =
+  ''
+    mkdir -m 0755 -p /media /share
+  '';
+
   boot = {
     cleanTmpDir = true;
     loader.grub = {
@@ -10,14 +15,8 @@
       memtest86.enable = true; # Activate the check on memory
     };
 
-    extraModprobeConfig = ''
-      options snd slots=snd-hda-intel
-      # disable first card and enable the second one
-      # options snd_hda_intel enable=0,1
-    '';
-
-    # disable pc speaker audio card
-    # blacklistedKernelModules = [ "snd_pcsp" ];
+    # To install dependencies on those filesystems
+    initrd.supportedFilesystems = [ "vfat" "ntfs" "cifs" "nfs" ];
 
     # dropbox setting
     kernel.sysctl."fs.inotify.max_user_watches" = 1000000;

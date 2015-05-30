@@ -6,18 +6,8 @@
 
 {
   imports = [
-    ./hardware-configuration.nix # Include the results of the hardware scan.
-    ./nix.nix
-    ./common.nix
-    ./services.nix
+    ./hardware-configuration.nix
     ./laptop.nix
-    ./print.nix
-    ./env.nix
-    ./network.nix
-    ./users.nix
-    ./xserver.nix
-    ./packages.nix
-    ./virtual.nix
-    ./mounts.nix
+    ./sound.nix
   ];
 }

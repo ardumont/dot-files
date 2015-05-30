@@ -2,7 +2,7 @@
 
 {
   networking = {
-    hostName = "myrkr";    # Define your hostname.
+    # hostName = "corellia";    # Define your hostname.
 
     firewall.enable = true;
     firewall.allowedTCPPorts = [ 22 ];
@@ -15,6 +15,7 @@
     extraHosts = ''
       192.168.0.10 dagobah
       192.168.0.11 chris-host
+      192.168.0.12 corellia
       192.168.0.13 job
       192.168.0.14 myrkr
       192.168.0.15 lenovo
