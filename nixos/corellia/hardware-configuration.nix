@@ -4,12 +4,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    ];
+  imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
 
-  boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" "usbhid" "usb_storage" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" "usb_storage" "usbhid" ];
+  boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
@@ -25,4 +23,7 @@
   swapDevices =
     [ { device = "/dev/sda4"; }
     ];
+
+  nix.maxJobs = 4;
+  hardware.bluetooth.enable = false;
 }

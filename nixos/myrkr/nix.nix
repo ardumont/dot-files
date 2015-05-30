@@ -9,7 +9,6 @@
       gc-keep-derivations = true
       build-cores = 0
     '';
-    maxJobs = 8;
 
     gc = {
       automatic = true;

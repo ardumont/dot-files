@@ -4,9 +4,7 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    ];
+  imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
 
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" "usb_storage" "usbhid" ];
   boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" ];
@@ -26,5 +24,6 @@
     [ { device = "/dev/sda2"; }
     ];
 
+  nix.maxjob = 4;
   hardware.bluetooth.enable = false;
 }
