@@ -24,6 +24,6 @@
     [ { device = "/dev/sda2"; }
     ];
 
-  nix.maxjob = 4;
+  nix.maxJobs = 4;
   hardware.bluetooth.enable = false;
 }
