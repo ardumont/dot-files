@@ -12,6 +12,11 @@
     ntp.enable = true;
 
     nixosManual.showManual = true; # Add the NixOS Manual on virtual console 8
+
+    # postgresql = {
+    #   enable = true;
+    #   package = pkgs.postgresql94;
+    # };
   };
 
   # Create a systemd user service for emacs daemon. This is useful because

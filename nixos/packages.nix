@@ -39,6 +39,7 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     bc
+#    pgadmin
     html2text
     pciutils # lspci, etc...
     nix-prefetch-scripts nix-repl nixops nox
