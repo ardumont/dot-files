@@ -1,9 +1,5 @@
 # -*- sh -*-
 
-# Languages setup
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US.UTF-8"
-
 # pager setup
 export PAGER="most -s"
 export MANPAGER=$PAGER

@@ -10,6 +10,10 @@ if [ -f /etc/NIXOS ]; then # nixos
 
 else # non nixos env
 
+    # Languages setup
+    export LC_ALL="en_US.UTF-8"
+    export LANG="en_US.UTF-8"
+
     export BROWSER=/usr/bin/firefox
 
     [ -d /etc/alternatives -a "$(readlink /etc/alternatives/www-browser)" != "$BROWSER" ] \
