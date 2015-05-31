@@ -22,27 +22,26 @@ prompt_command () {
     local TITLEBAR='\[\e]2;`pwdtail`\a\]'
 
     # colors
-    local GREEN="\[\033[0;32m\]"
-    local DKGREEN="\[\033[1;32m\]"
-    local CYAN="\[\033[0;36m\]"
-    local DKCYAN="\[\033[1;36m\]"
-    local BLUE="\[\033[0;34m\]"
-    local DKBLUE="\[\033[1;34m\]"
-    local GRAY="\[\033[0;37m\]"
-    local DKGRAY="\[\033[1;30m\]"
-    local WHITE="\[\033[1;37m\]"
-    local RED="\[\033[0;31m\]"
-    local DKRED="\[\033[1;31m\]"
+    local GREEN="\e[0;32m"
+    local DKGREEN="\e[1;32m"
+    local CYAN="\e[0;36m"
+    local DKCYAN="\e[1;36m"
+    local BLUE="\e[0;34m"
+    local DKBLUE="\e[1;34m"
+    local GRAY="\e[0;37m"
+    local DKGRAY="\e[1;30m"
+    local WHITE="\e[1;37m"
+    local RED="\e[0;31m"
+    local DKRED="\e[1;31m"
 
     # return color to Terminal setting for text color
-    local DEFAULT="\[\033[0;39m\]"
+    local DEFAULT="\e[0;39m"
     # delete ${TITLEBAR} because it doesn't work inside the shell emacs or in the tty screen
     export PS1="\n╭─${DKBLUE}\u${DKBLUE}@${DKBLUE}\
 \h${DKCYAN}(${LOAD}) ${WHITE}${TIME} ${DKRED}$ERRPROMPT${DKBLUE}\
 \w${DKGREEN}${BRANCH}${DEFAULT}\n╰─➤ ${DKBLUE} ${DEFAULT}"
     export PS2=" ─➤ "
 }
-PROMPT_COMMAND=prompt_command
 
 # Format time just the way I likes it
 fmt_time () {
@@ -66,4 +65,5 @@ chkload () {
     fi
     echo $CURRLOAD
 }
-# `if [ $? = 0 ]; then echo \e[33\;40m\\^\\_\\^\e[0m; else echo \e[36\;40m\\-\e[0m\\_\e[36\;40m\\-\e[0m; fi` \[\033[38m\]\u \[\033[0;36m\]\j \[\033[1;32m\]\!\[\033[01;34m\] \w \[\033[31m\]`ruby -e "print (%x{git branch 2> /dev/null}.split(%q{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')"`\[\033[37m\]$\[\033[00m\]
+
+PROMPT_COMMAND=prompt_command
