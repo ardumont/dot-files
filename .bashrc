@@ -4,7 +4,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-[ -f /etc/environment ] && source /etc/environment
+#[ -f /etc/environment ] && source /etc/environment
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -13,15 +13,17 @@
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
 # ... or force ignoredups and ignorespace
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups:ignoreboth
 
 # append to the history file, don't overwrite it
-# shopt -s histappend
+shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-# shopt -s checkwinsize
+shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
