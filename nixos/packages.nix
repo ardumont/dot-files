@@ -38,6 +38,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    bc
     html2text
     pciutils # lspci, etc...
     nix-prefetch-scripts nix-repl nixops nox
