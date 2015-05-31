@@ -2,7 +2,10 @@
 
 let defaultUser = "tony";
 in {
-  programs.zsh.enable = true;
+  programs = {
+    zsh.enable = true;
+    bash.enableCompletion = true; # for nix-shell
+  };
 
   users = {
     defaultUserShell = "${pkgs.zsh}/bin/zsh";
