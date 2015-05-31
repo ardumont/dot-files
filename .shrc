@@ -10,11 +10,8 @@
 # Load specific work shrc
 [ -f ~/work/.shrc ] && . ~/work/.shrc
 
-# When not on nixos
-[ ! -f /etc/NIXOS -a -f ~/.shrc-non-nixos ] && . ~/.shrc-non-nixos
-
-# nix env (manual install)
-[ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
+# deal with nix-env and non-nix-env
+[ -f ~/.shrc-nix-env ] && . ~/.shrc-nix-env
 
 # Disable touchpad when typing
 [ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh

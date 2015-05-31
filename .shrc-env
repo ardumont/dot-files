@@ -39,5 +39,3 @@ if [ -f $HOME/.gpg-agent-info ]; then
     gpg-connect-agent updatestartuptty /bye 2>&1 >/dev/null
     gpg-connect-agent /bye 2>&1 >/dev/null
 fi
-
-export AUTOJUMP_HOME=$(nix-folder autojump)

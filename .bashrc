@@ -80,6 +80,10 @@ HISTCONTROL=ignoreboth
 # extend bashrc
 [ -f ~/.shrc ] && . ~/.shrc
 
+# load git related bash functions
+[ -f $GIT_HOME/share/git/contrib/completion/git-prompt.sh ] && . $GIT_HOME/share/git/contrib/completion/git-prompt.sh
+[ -f $GIT_HOME/share/git/contrib/completion/git-completion.bash ] && . $GIT_HOME/share/git/contrib/completion/git-completion.bash
+
 # Nice PS1 prompt for bash
 [ -f ~/.shrc-prompt ] && . ~/.shrc-prompt
 
