@@ -162,6 +162,14 @@ function nix-package() {
     nix-folder $1 | xargs basename | cut -d'-' -f2,3
 }
 
+function nix-ls-folder() {
+    ls $(nix-folder $1)
+}
+
+function nix-tree() {
+    tree $(nix-folder $1)
+}
+
 alias nix-where='nix-where'
 alias nix-folder='nix-folder'
 alias nix-package='nix-package'
