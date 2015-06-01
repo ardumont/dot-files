@@ -25,13 +25,3 @@ export TERM=screen-256color
 export HISTIGNORE="pass:&"
 
 export CHROME_BIN="/run/current-system/sw/bin/chromium-browser"
-
-if [ -f $HOME/.gpg-agent-info ]; then
-    . $HOME/.gpg-agent-info
-    export GPG_AGENT_INFO
-    export SSH_AUTH_INFO
-    export GPG_TTY=$(tty)
-    # To work around some issue about ssh (cf. man gpg-agent)
-    gpg-connect-agent updatestartuptty /bye 2>&1 >/dev/null
-    gpg-connect-agent /bye 2>&1 >/dev/null
-fi

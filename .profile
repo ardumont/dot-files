@@ -7,4 +7,23 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-eval $(keychain --eval)
+if [ -f $HOME/.gpg-agent-info ]; then
+
+    . $HOME/.gpg-agent-info
+    export GPG_AGENT_INFO
+    export SSH_AUTH_INFO
+    export GPG_TTY=$(tty)
+
+    if [ -f /etc/NIXOS ]; then
+        # To work around some issue about ssh (cf. man gpg-agent) in my nixos env
+        gpg-connect-agent updatestartuptty /bye 2>&1 >/dev/null
+        gpg-connect-agent /bye 2>&1 >/dev/null
+    fi
+
+elif [ ! -f /etc/NIXOS ]; then # only on non-nixos environment
+
+    # trigger the gpg agent (and it deals with ssh support too!)
+    gpg-agent --daemon --enable-ssh-support \
+      --write-env-file "${HOME}/.gpg-agent-info"
+
+fi

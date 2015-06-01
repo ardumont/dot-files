@@ -1,2 +1,2 @@
-# nix env (manual install)
-[ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
+# this is the equivalent of ~/.profile (bash) for zsh
+[ -f ~/.profile ] && . ~/.profile
