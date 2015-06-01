@@ -44,7 +44,8 @@
     pciutils # lspci, etc...
     nix-prefetch-scripts nix-repl nixops nox
     psmisc # fuser
-    python27Packages.screenkey
+    python python27Packages.screenkey
+    python3 python34Packages.pip python34Packages.flake8 python34Packages.pygit2
     texLiveFull
     mysql mysqlWorkbench
     pidgin-with-plugins
@@ -87,7 +88,6 @@
     emacs24PackagesNg.structured-haskell-mode
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
-    python python3 python34Packages.pip
     bundler
     zlib
     firefoxWrapper conkeror chromium
