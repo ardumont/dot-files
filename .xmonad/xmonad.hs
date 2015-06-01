@@ -116,7 +116,7 @@ myBrowser :: String
 myBrowser = "firefox"
 
 myBrowserQuery :: Query Bool
-myBrowserQuery = className =? "Firefox"
+myBrowserQuery = className =? "Firefox" <||> (appName =? "Navigator" <&&> className =? "Iceweasel")
 
 -- | My preferential emacs
 --
