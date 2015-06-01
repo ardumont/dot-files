@@ -9,5 +9,6 @@
     ./hardware-configuration.nix
     ./laptop.nix
     ./sound.nix
+    ./grub.nix
   ];
 }
