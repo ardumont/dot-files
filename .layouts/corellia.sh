@@ -10,7 +10,7 @@ res_screen0=${width}x${height}
 res_screen1=1600x1200
 
 screen0=eDP1
-screen1=HDMI1
+screen1=DP2
 
 if [ ! -z "$disconnect" ]; then
     xrandr --output $screen0 \
