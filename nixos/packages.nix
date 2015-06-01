@@ -68,7 +68,7 @@
     linuxPackages.virtualbox packer vagrant docker
     evince fbreader mcomix
     filezilla
-    git gitAndTools.tig gitAndTools.hub gitg meld
+    git gitAndTools.tig gitAndTools.hub gitg meld libgit2
     gnupg gnupg1 pinentry
     pmount file
     wget curl tree
