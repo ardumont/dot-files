@@ -8,7 +8,7 @@ if [ ! -f /etc/NIXOS ]; then
     # before starting xmonad, we want a correct X db and a running urxvt daemon
     xrdb -merge ~/.Xresources
 
-    # fix awt & co. in stumpwm/xmonad
+    # fix graphical libraries (awt, swt, etc...) in stumpwm/xmonad (exotic wm)
     export _JAVA_AWT_WM_NONREPARENTING=1
     wmname "LG3D"
     export AWT_TOOLKIT=MToolkit
