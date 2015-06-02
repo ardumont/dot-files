@@ -1,5 +1,8 @@
 # -*- sh -*-
 
+# for gpg-agent (need to be in .bashrc/.zshrc according to man gpg-agent)
+export GPG_TTY=$(tty)
+
 # pager setup
 export PAGER="most -s"
 export MANPAGER=$PAGER

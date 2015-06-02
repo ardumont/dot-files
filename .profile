@@ -11,8 +11,9 @@ if [ -f $HOME/.gpg-agent-info ]; then
 
     . $HOME/.gpg-agent-info
     export GPG_AGENT_INFO
-    export SSH_AUTH_INFO
-    export GPG_TTY=$(tty)
+    #export SSH_AUTH_INFO # typo? Need to check on NixOS
+    export SSH_AUTH_SOCK
+    export SSH_AGENT_PID
 
     if [ -f /etc/NIXOS ]; then
         # To work around some issue about ssh (cf. man gpg-agent) in my nixos env
