@@ -1,14 +1,13 @@
 # -*- sh -*-
 
-# nix env (manual install)
-[ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
-
 if [ -f /etc/NIXOS ]; then # nixos
 
     export AUTOJUMP_HOME=$(nix-folder autojump)
     export GIT_HOME=$(nix-folder git)
 
 else # non nixos env
+    # nix env (manual install)
+    [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
 
     # Languages setup
     export LC_ALL="en_US.UTF-8"
