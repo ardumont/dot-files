@@ -1,2 +1,0 @@
-# On acer machine, there is some strange behavior and xscreensaver seems to be the cause (after removing the service, no more problem)
-start-if-cmd-exists xscreensaver stop

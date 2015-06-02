@@ -26,6 +26,4 @@ if [ ! -f /etc/NIXOS ]; then
 
     # Layout per host divergence possible
     [ -f $LAYOUT_FILE_PER_HOST ] && zsh $LAYOUT_FILE_PER_HOST
-
-    exec xmonad
 fi
