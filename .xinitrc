@@ -2,8 +2,6 @@
 
 # Not supposed to be triggered in NixOS environment (already dealt with)
 if [ ! -f /etc/NIXOS ]; then
-    # Behavior hook which can be different depending on host
-    HOOK_PER_HOST_FILE="~/.xinit/.$(hostname).init"
     # Display layout which can be different depending on host
     LAYOUT_FILE_PER_HOST="$HOME/.layouts/$(hostname).sh"
 
@@ -28,8 +26,6 @@ if [ ! -f /etc/NIXOS ]; then
 
     # Layout per host divergence possible
     [ -f $LAYOUT_FILE_PER_HOST ] && zsh $LAYOUT_FILE_PER_HOST
-    # Service launch per host divergence possible
-    [ -f $HOOK_PER_HOST_FILE ] && . $HOOK_PER_HOST_FILE
 
     exec xmonad
 fi
