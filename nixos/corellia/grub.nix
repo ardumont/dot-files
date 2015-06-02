@@ -42,9 +42,9 @@
             search --no-floppy --fs-uuid --set=root 8af90e9e-cb5d-491b-89f7-d39fa58051fa
           fi
           echo   'Loading Linux 3.16.0-4-amd64 ...'
-          linux  /boot/vmlinuz-3.16.0-4-amd64 root=UUID=8af90e9e-cb5d-491b-89f7-d39fa58051fa ro persistent quiet
+          linux  /vmlinuz root=UUID=8af90e9e-cb5d-491b-89f7-d39fa58051fa ro persistent quiet
           echo   'Loading initial ramdisk ...'
-          initrd /boot/initrd.img-3.16.0-4-amd64
+          initrd /initrd.img
         }
       '';
     # extraEntriesBeforeNixOS = true; # before the default option
