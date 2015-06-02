@@ -18,7 +18,7 @@ if [ ! -f /etc/NIXOS ]; then
     }
 
     # start default user service
-    start-if-cmd-exists nemo --no-default-window
+    start-if-cmd-exists nautilus --no-default-window
     start-if-cmd-exists xscreensaver
     start-if-cmd-exists trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000
     start-if-cmd-exists dropbox start
