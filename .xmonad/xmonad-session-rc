@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+# Script for other distributions than NixOS (typically debian based)
+# In charge of bootstraping the user's needed services
+# including the layout found ~/.layouts/<hostname>.sh
+
 # Not supposed to be triggered in NixOS environment (already dealt with)
 if [ ! -f /etc/NIXOS ]; then
     # Display layout which can be different depending on host
