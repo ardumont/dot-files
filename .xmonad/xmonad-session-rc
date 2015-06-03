@@ -21,6 +21,9 @@ if [ ! -f /etc/NIXOS ]; then
         which $1 && ~/bin/service/service.sh restart $* &
     }
 
+    # my mapping keyboard as expected (did not find the right setup that works - at least dynamically)
+    setxkbmap us -option eurosign:e,ctrl:nocaps,terminate=ctrl_alt_backspace,altwin:meta_alt
+
     # start default user service
     start-if-cmd-exists nautilus --no-default-window
     start-if-cmd-exists xscreensaver
