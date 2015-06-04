@@ -19,7 +19,7 @@
               ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
               ++ [ gitFull zsh keychain emacs tmux gnumake ];
             extraCmds = ''
-              HOME=${builtins.getEnv "HOME"}
+              # HOME=${builtins.getEnv "HOME"}
               ${extraCmds}
             '';
           };
