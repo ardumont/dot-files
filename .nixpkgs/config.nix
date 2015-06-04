@@ -14,7 +14,7 @@
     let defaultDevEnv = { name, buildInputs ? [], cTags ? [], extraCmds ? ""}:
           pkgs.myEnvFun {
             inherit name;
-            shell = "/var/run/current-system/sw/bin/zsh";
+            shell = "${pkgs.zsh}/bin/zsh";
             buildInputs = buildInputs
               ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
               ++ [ gitFull zsh keychain emacs tmux gnumake ];
