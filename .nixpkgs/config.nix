@@ -17,7 +17,7 @@
             shell = "${pkgs.zsh}/bin/zsh";
             buildInputs = buildInputs
               ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
-              ++ [ gitFull zsh keychain emacs tmux gnumake ];
+              ++ [ gitFull zsh emacs tmux gnumake ];
             extraCmds = ''
               # HOME=${builtins.getEnv "HOME"}
               ${extraCmds}
