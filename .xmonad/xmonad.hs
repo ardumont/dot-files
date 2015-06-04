@@ -110,6 +110,15 @@ myTerminal = "urxvt"
 myTerminalQuery :: Query Bool
 myTerminalQuery = className =? "URxvt"
 
+myPdfReader :: String
+--myPdfReader = "evince"
+myPdfReader = "apvlv"
+
+myPdfReaderQuery :: String -> Query Bool
+myPdfReaderQuery "evince" = className =? "Evince" <||> className =? ".evince-wrapped"
+myPdfReaderQuery "apvlv" = appName =? "apvlv" <&&> className =? "Apvlv"
+myPdfReaderQuery _ = error "Undefined"
+
 -- | My preferential browser
 --
 myBrowser :: String
@@ -221,7 +230,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-d"       , "android-emulator"           , runOrRaiseNext "android"                  (className =? ".emulator64-arm-wrapped"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
   , (prefix "S-t"       , "vlc"                        , runOrRaiseNext "vlc"                      (appName =? "vlc" <&&> className =? "Vlc"))
-  , (prefix "C-e"       , "pdf-reader"                 , runOrRaiseNext "evince"                   (className =? "Evince" <||> className =? ".evince-wrapped"))
+  , (prefix "C-e"       , "pdf-reader"                 , runOrRaiseNext myPdfReader                (myPdfReaderQuery myPdfReader))
   , (prefix "C-i"       , "image-viewer"               , runOrRaiseNext "eog"                      (className =? "Eog"))
   , (prefix "d"         , "pinta"                      , runOrRaiseNext "pinta"                    (className =? "Pinta"))
   , (prefix "S-i"       , "gimp"                       , runOrRaiseNext "gimp"                     (className =? "Gimp"))
@@ -272,7 +281,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-o"       , "wifi-off"                   , spawn "~/bin/wifi/wifi-off.sh")
   , (prefix "S-o"       , "wifi-on"                    , spawn "~/bin/wifi/wifi-on.sh")
   , (prefix "C-M1-l"    , "session-lock"               , spawn "~/bin/session/lock.sh")
-  , (prefix "M1-e"      , "evince-prompt"              , launchApp myXPConfig "evince")
+  , (prefix "M1-e"      , "pdf-reader-prompt"          , launchApp myXPConfig myPdfReader)
   , (prefix "s"         , "search-url"                 , search)
   , (prefix "r"         , "exec"                       , runOrRaisePrompt myXPConfig)
   , (prefix "g"         , "goto"                       , windowPromptGoto myXPConfig)
@@ -440,7 +449,7 @@ myManageHook = composeAll
     , myEmacsQuery                                                              --> doShift workspaceEmacs
     , myTerminalQuery                                                           --> doShift workspaceTerminal
     , myBrowserQuery                                                            --> doShift workspaceWeb
-    , className =? "Evince" <||> className =? ".evince-wrapped"                 --> doShift workspaceBooks
+    , myPdfReaderQuery myPdfReader                                              --> doShift workspaceBooks
     , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce" --> doShift workspaceIde
     , appName =? "sun-awt-X11-XFramePeer"                                       --> doShift workspaceDb
     , className =? "Skype"                                                      --> doShift workspaceIrc
