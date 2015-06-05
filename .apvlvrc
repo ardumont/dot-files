@@ -1,0 +1,9 @@
+map <C-v> 15 j
+
+; map <M-v> 15 k ; not working but I want the symmetric way to scroll backward
+
+map <C-s> /
+
+set inverted=yes
+
+defaultdir=~/books
