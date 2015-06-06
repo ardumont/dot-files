@@ -57,7 +57,7 @@
       hsEnv = defaultDevEnv {
         name = "haskell";
         buildInputs = with pkgs.haskellPackages; [
-          cabalInstall
+          cabal-install
           cabal2nix
           lens
           hlint
@@ -184,13 +184,13 @@
 
       jekyllEnv = defaultDevEnv {
         name = "static-site";
-        buildInputs = with rubyLibs; [ jekyll bundler nokogiri ];
+        buildInputs = [ jekyll bundler ];
       };
 
-      idrisEnv = defaultDevEnv {
-        name = "idris";
-        buildInputs = [ haskellPackages_ghc783_profiling.idris_plain ];
-      };
+      # idrisEnv = defaultDevEnv {
+      #   name = "idris";
+      #   buildInputs = [ haskellPackages_ghc783_profiling.idris_plain ];
+      # };
 
       # emacs = emacs24;
 
