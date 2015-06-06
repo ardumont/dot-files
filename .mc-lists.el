@@ -63,6 +63,7 @@
         paredit-splice-sexp
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
+        py-electric-colon
         sgml-slash
         sh-assignment
         shm/backward-node
