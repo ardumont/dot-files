@@ -19,8 +19,9 @@ alias wget='wget -c'
 
 # emacs for the win
 alias em='emacsclient -nw'
+alias sem="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 alias emc='emacsclient -c'
-alias remc="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
+alias semc="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 
 # vagrant
 
