@@ -6,6 +6,7 @@ if [ -f /etc/NIXOS ]; then # nixos
     export GIT_HOME=$(nix-folder git)
 
 else # non nixos env
+    export NIX_CONF_DIR=/etc/nix/nix.conf
     # nix env (manual install)
     [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
 
