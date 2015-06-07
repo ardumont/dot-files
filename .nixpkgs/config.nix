@@ -192,6 +192,11 @@
       #   buildInputs = [ haskellPackages_ghc783_profiling.idris_plain ];
       # };
 
+      ml-env = defaultDevEnv {
+        name = "ml";
+        buildInputs = [ opam ocaml ];
+      };
+
       # emacs = emacs24;
 
 #       emacsWithPackages = pkgs.buildEnv {
