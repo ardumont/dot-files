@@ -316,7 +316,7 @@
           psmisc # fuser
           python python27Packages.screenkey
           python3 python34Packages.pip python34Packages.flake8 python34Packages.pygit2
-          texLiveFull
+          # texLiveFull
           mysql mysqlWorkbench
           pidgin-plugins
           skype
