@@ -294,13 +294,14 @@
         ];
       };
 
-      list-github = defaultDevEnv {
-        name = "list-github";
+      python-dev-git = defaultDevEnv {
+        name = "python-dev-git";
         buildInputs = with pkgs; [
           python34
           python34Packages.sqlalchemy9
           python34Packages.psycopg2
           python34Packages.requests
+          python34Packages.nose
         ];
       };
 
