@@ -64,6 +64,7 @@
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
         py-electric-colon
+        py-indent-or-complete
         sgml-slash
         sh-assignment
         shm/backward-node
