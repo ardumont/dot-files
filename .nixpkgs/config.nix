@@ -309,6 +309,7 @@
       systemToolsEnv = defaultDevEnv {
         name = "system";
         buildInputs = with pkgs; [
+          hexedit
           bc
           pgadmin
           html2text
