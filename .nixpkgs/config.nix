@@ -207,7 +207,7 @@
       #   buildInputs = [ haskellPackages_ghc783_profiling.idris_plain ];
       # };
 
-      ml-env = defaultDevEnv {
+      mlEnv = defaultDevEnv {
         name = "ml";
         buildInputs = [ opam ocaml ];
       };
