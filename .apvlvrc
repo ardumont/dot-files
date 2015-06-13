@@ -4,3 +4,12 @@ map <C-s> /
 
 set inverted=yes
 
+map o O
+
+map <Space> 15 j
+
+map <BackSpace> 15 k
+
+map <C-f> h
+
+map <C-b> l
