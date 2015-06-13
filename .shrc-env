@@ -17,9 +17,6 @@ export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 # force the 256 color on the terminal
 export TERM=screen-256color
 
-# O(caml)PAM configuration
-[ -f $HOME/.opam/opam-init/init.sh ] && ( . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null )
-
 # scala setup in emacs - for installation of ensime, see https://github.com/ardumont/sh/blob/master/scala/deploy-ensime.sh
 [ -d $HOME/applications/ensime ] && export ENSIME_ROOT=$HOME/applications/ensime
 [ -d $HOME/applications/gradle ] && export GRADLE_HOME=$HOME/applications/gradle

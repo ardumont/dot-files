@@ -95,3 +95,6 @@ shopt -s checkwinsize
 
 # autojump
 [ -f $AUTOJUMP_HOME/share/autojump/autojump.bash ] && . $AUTOJUMP_HOME/share/autojump/autojump.bash
+
+# O(caml)PAM configuration
+[ -f $HOME/.opam/opam-init/init.sh ] && ( . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true)
