@@ -209,7 +209,7 @@
 
       mlEnv = defaultDevEnv {
         name = "ml";
-        buildInputs = [ opam ocaml ];
+        buildInputs = [ opam ocaml gnum4 ncurses ];
       };
 
       # emacs = emacs24;
