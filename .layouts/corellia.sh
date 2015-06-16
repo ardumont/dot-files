@@ -5,10 +5,10 @@
 width=1920
 height=1080
 res_screen0=${width}x${height}
-res_screen1=1600x1200
+res_screen1=1920x1200
 
 screen0=eDP1
-screen1=DP2
+screen1=HDMI1
 
 function one_screen {
     echo "one screen"
