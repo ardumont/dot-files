@@ -32,12 +32,6 @@ function two_screens {
            --rotate normal
 }
 
-set -x
+status_connected=$(xrandr | grep -i " connected" | grep -i $screen1)
 
-status_disconnected=$(xrandr | grep -i disconnected | grep -i $screen1)
-
-if [ ! -z "$status_disconnected" ]; then
-    one_screen
-else
-    two_screens
-fi
+[ ! -z "$status_connected" ] && two_screens || one_screen
