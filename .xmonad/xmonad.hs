@@ -193,6 +193,9 @@ libreOfficeQuery = appName =? "libreofficedev" <&&>
                     className =? "libreofficedev-calc" <||>
                     className =? "libreofficedev-draw")
 
+conkerorQuery :: Query Bool
+conkerorQuery = appName =? "Navigator" <&&> className =? "Conkeror"
+
 -- | My keymap as (prefix keybindings, command description, command)
 --
 myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
@@ -247,7 +250,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-g"       , "gparted"                    , runOrRaiseNext "gksudo /usr/sbin/gparted" (className =? "gpartedbin"))
   , (prefix "S-f"       , "file-progression"           , runOrRaiseNext ""                         (className =? "file_progress"))
   , (prefix "C-S-x"     , "xosview"                    , runOrRaiseNext "xosview"                  (className =? "xosview"))
-  , (prefix "b"         , "conkeror"                   , runOrRaiseNext "conkeror"                 (appName =? "Navigator" <&&> className =? "Conkeror"))
+  , (prefix "b"         , "conkeror"                   , runOrRaiseNext "conkeror"                 conkerorQuery)
   , (prefix "B"         , "baobab"                     , runOrRaiseNext "baobab"                   (appName =? "baobab" <&&> className =? "Baobab"))
   , (prefix "z"         , "gitk"                       , runOrRaiseNext "gitk"                     (className =? "gitk"))
   , (prefix "S-f"       , "fbreader"                   , runOrRaiseNext "fbreader"                 (className =? "fbreader"))
@@ -449,6 +452,7 @@ myManageHook = composeAll
     , myEmacsQuery                                                              --> doShift workspaceEmacs
     , myTerminalQuery                                                           --> doShift workspaceTerminal
     , myBrowserQuery                                                            --> doShift workspaceWeb
+    , conkerorQuery                                                             --> doShift workspaceWeb
     , myPdfReaderQuery myPdfReader                                              --> doShift workspaceBooks
     , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce" --> doShift workspaceIde
     , appName =? "sun-awt-X11-XFramePeer"                                       --> doShift workspaceDb
