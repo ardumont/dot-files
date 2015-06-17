@@ -7,6 +7,11 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+pidof gpg-agent 2>&1 > /dev/null
+if [ ! $? = 0 ]; then # clean up the mess left behind
+    rm -f $HOME/.gpg-agent-info
+fi
+
 if [ -f $HOME/.gpg-agent-info ]; then
 
     . $HOME/.gpg-agent-info
@@ -22,7 +27,6 @@ if [ -f $HOME/.gpg-agent-info ]; then
     fi
 
 elif [ ! -f /etc/NIXOS ]; then # only on non-nixos environment
-
     # trigger the gpg agent (and it deals with ssh support too!)
     gpg-agent --daemon --enable-ssh-support \
       --write-env-file "${HOME}/.gpg-agent-info"
