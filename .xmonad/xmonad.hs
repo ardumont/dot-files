@@ -1,29 +1,31 @@
-import           Control.Monad             (liftM)
-import qualified Data.Map                  as M
+import           Control.Monad              (liftM)
+import qualified Data.Map                   as M
 import           Data.Monoid
-import           System.Directory          (getDirectoryContents,
-                                            getHomeDirectory)
+import           System.Directory           (getDirectoryContents,
+                                             getHomeDirectory)
 import           System.Exit
-import           System.FilePath           (combine, takeBaseName)
+import           System.FilePath            (combine, takeBaseName)
 import           System.IO
-import           System.Posix.Env          (getEnv)
+import           System.Posix.Env           (getEnv)
 import           XMonad
-import           XMonad.Actions.Promote    (promote)
-import qualified XMonad.Actions.Search     as S
-import qualified XMonad.Actions.Submap     as SM
-import           XMonad.Actions.WindowGo   (runOrRaiseNext)
+import           XMonad.Actions.Promote     (promote)
+import qualified XMonad.Actions.Search      as S
+import qualified XMonad.Actions.Submap      as SM
+import           XMonad.Actions.WindowGo    (runOrRaiseNext)
 import           XMonad.Config.Desktop
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageHelpers (doFullFloat, isFullscreen)
 import           XMonad.Layout.Monitor
+import           XMonad.Layout.NoBorders    (smartBorders)
 import           XMonad.Prompt
-import           XMonad.Prompt.AppLauncher (launchApp)
-import           XMonad.Prompt.RunOrRaise  (runOrRaisePrompt)
+import           XMonad.Prompt.AppLauncher  (launchApp)
+import           XMonad.Prompt.RunOrRaise   (runOrRaisePrompt)
 import           XMonad.Prompt.Window
-import           XMonad.Prompt.XMonad      (xmonadPromptC)
-import qualified XMonad.StackSet           as W
+import           XMonad.Prompt.XMonad       (xmonadPromptC)
+import qualified XMonad.StackSet            as W
 import           XMonad.Util.EZConfig
-import           XMonad.Util.Run           (spawnPipe)
+import           XMonad.Util.Run            (spawnPipe)
 
 ------------------------------------------------------------------------
 -- Password section
@@ -445,25 +447,30 @@ myWorkspaces = [ workspaceEmacs
 --
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "MPlayer"                                                    --> doShift workspaceFloat >> doFloat
-    , className =? "Gimp"                                                       --> doShift workspaceFloat >> doFloat
-    , className =? "Zenity"                                                     --> doFloat
-    , appName   =? "desktop_window"                                             --> doIgnore
-    , appName   =? "kdesktop"                                                   --> doIgnore
-    , myEmacsQuery                                                              --> doShift workspaceEmacs
-    , myTerminalQuery                                                           --> doShift workspaceTerminal
-    , myBrowserQuery                                                            --> doShift workspaceWeb
-    , conkerorQuery                                                             --> doShift workspaceWeb
-    , myPdfReaderQuery myPdfReader                                              --> doShift workspaceBooks
-    , appName =? "sun-awt-X11-XFramePeer" <&&> className =? "jetbrains-idea-ce" --> doShift workspaceIde
-    , appName =? "sun-awt-X11-XFramePeer"                                       --> doShift workspaceDb
-    , className =? "Skype"                                                      --> doShift workspaceIrc
-    , className =? "Pidgin"                                                     --> doShift workspaceIrc
-    , className =? "VirtualBox"                                                 --> doShift workspaceVM
-    , className =? ".emulator64-arm-wrapped"                                    --> doShift workspaceDevVM
-    , className =? "Android SDK Manager"                                        --> doShift workspaceDevVM
-    , className =? ".remmina-wrapped"                                           --> doShift workspaceRemote
-    , appName =? "..key-mon-wrapped-wrapped" <&&> className =? "..key-mon-wrapped-wrapped" --> doIgnore
+    [ manageDocks
+    , isFullscreen                                --> doFullFloat
+    , className =? "MPlayer"                      --> doShift workspaceFloat >> doFloat
+    , className =? "Gimp"                         --> doShift workspaceFloat >> doFloat
+    , className =? "Zenity"                       --> doFloat
+    , appName   =? "desktop_window"               --> doIgnore
+    , appName   =? "kdesktop"                     --> doIgnore
+    , myEmacsQuery                                --> doShift workspaceEmacs
+    , myTerminalQuery                             --> doShift workspaceTerminal
+    , myBrowserQuery                              --> doShift workspaceWeb
+    , conkerorQuery                               --> doShift workspaceWeb
+    , myPdfReaderQuery myPdfReader                --> doShift workspaceBooks
+    , appName =? "sun-awt-X11-XFramePeer" <&&>
+        className =? "jetbrains-idea-ce"          --> doShift workspaceIde
+    , appName =? "sun-awt-X11-XFramePeer"         --> doShift workspaceDb
+    , className =? "Skype"                        --> doShift workspaceIrc
+    , className =? "Pidgin"                       --> doShift workspaceIrc
+    , className =? "VirtualBox"                   --> doShift workspaceVM
+    , className =? ".emulator64-arm-wrapped"      --> doShift workspaceDevVM
+    , className =? "Android SDK Manager"          --> doShift workspaceDevVM
+    , className =? ".remmina-wrapped"             --> doShift workspaceRemote
+    , appName =? "..key-mon-wrapped-wrapped" <&&>
+        className =? "..key-mon-wrapped-wrapped"  --> doIgnore
+    , manageMonitor screenKeyMonitor
     ]
 
 ------------------------------------------------------------------------
@@ -543,7 +550,7 @@ main = do
                 , keys               = myKeys home
                 , mouseBindings      = myMouseBindings
                 , layoutHook         = avoidStruts myLayout
-                , manageHook         = manageDocks <+> myManageHook <+> manageMonitor screenKeyMonitor
+                , manageHook         = myManageHook
                 , handleEventHook    = myEventHook
                 -- Status bars and logging
                 -- Perform an arbitrary action on each internal state change or X event.
