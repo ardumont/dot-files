@@ -303,6 +303,7 @@
           python34Packages.psycopg2
           python34Packages.requests
           python34Packages.nose
+          python34Packages.ipython
         ];
       };
 
