@@ -549,7 +549,7 @@ main = do
                 , focusedBorderColor = myFocusedBorderColor
                 , keys               = myKeys home
                 , mouseBindings      = myMouseBindings
-                , layoutHook         = avoidStruts myLayout
+                , layoutHook         = smartBorders . avoidStruts $ myLayout
                 , manageHook         = myManageHook
                 , handleEventHook    = myEventHook
                 -- Status bars and logging
