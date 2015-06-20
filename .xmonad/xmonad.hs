@@ -188,7 +188,6 @@ spawnZenityCmd = spawn . zenityCmd
 myRunOrRaise :: String -> String -> Query Bool -> X ()
 myRunOrRaise home cmd = runOrRaiseNext $ combine home cmd
 
-
 libreOfficeQuery :: Query Bool
 libreOfficeQuery = (appName =? "libreofficedev" <||> appName =? "libreoffice") <&&>
                    (className =? "libreofficedev-writer" <||>
@@ -198,6 +197,9 @@ libreOfficeQuery = (appName =? "libreofficedev" <||> appName =? "libreoffice") <
 
 conkerorQuery :: Query Bool
 conkerorQuery = appName =? "Navigator" <&&> className =? "Conkeror"
+
+vlcQuery:: Query Bool
+vlcQuery = appName =? "vlc" <&&> (className =? "vlc" <||> className =? "Vlc")
 
 -- | My keymap as (prefix keybindings, command description, command)
 --
@@ -235,7 +237,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "S-a"       , "android"                    , runOrRaiseNext "android"                  (className =? "Android SDK Manager"))
   , (prefix "S-d"       , "android-emulator"           , runOrRaiseNext "android"                  (className =? ".emulator64-arm-wrapped"))
   , (prefix "S-s"       , "desktop-settings"           , runOrRaiseNext "cinnamon-settings"        (className =? "Cinnamon-settings.py"))
-  , (prefix "S-t"       , "vlc"                        , runOrRaiseNext "vlc"                      (appName =? "vlc" <&&> className =? "Vlc"))
+  , (prefix "S-t"       , "vlc"                        , runOrRaiseNext "vlc"                      vlcQuery)
   , (prefix "C-e"       , "pdf-reader"                 , runOrRaiseNext myPdfReader                (myPdfReaderQuery myPdfReader))
   , (prefix "C-i"       , "image-viewer"               , runOrRaiseNext "eog"                      (className =? "Eog"))
   , (prefix "d"         , "pinta"                      , runOrRaiseNext "pinta"                    (className =? "Pinta"))
@@ -449,7 +451,7 @@ myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
     [ manageDocks
     , isFullscreen                                --> doFullFloat
-    , className =? "MPlayer"                      --> doShift workspaceFloat >> doFloat
+    -- , vlcQuery                                    --> doShift workspaceFloat >> doFloat
     , className =? "Gimp"                         --> doShift workspaceFloat >> doFloat
     , className =? "Zenity"                       --> doFloat
     , appName   =? "desktop_window"               --> doIgnore
