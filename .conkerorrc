@@ -7,6 +7,10 @@
 /* ------------------- url completion --------------------------------------*/
 
 url_completion_use_history = true;
+url_completion_use_bookmarks = true;
+
+/* links opened from other applications open in conkeror */
+url_remoting_fn = load_url_in_new_buffer;
 
 /* mode-line widget config  ----------------------------------*/
 
