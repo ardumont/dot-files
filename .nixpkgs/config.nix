@@ -199,7 +199,7 @@
 
       jekyllEnv = defaultDevEnv {
         name = "static-site";
-        buildInputs = [ jekyll bundler ];
+        buildInputs = [ jekyll bundler ruby_2_1_1 ];
       };
 
       # idrisEnv = defaultDevEnv {
