@@ -47,7 +47,7 @@ hints_auto_exit_delay=0.1; // work if only > 0
 require("new-tabs");
 require("github");
 require("gmail");
-require("~/.conkeror/inbox.js")
+require("~/.conkeror/inbox.js");
 require("youtube");
 require("youtube-player");
 require("twitter");
@@ -73,7 +73,7 @@ define_webjump("w", "http://en.wikipedia.org?search=%s");
 To use this,
 
   M-x jquery-here
-  jq: $("h1").css("backgroundColor", "blue");
+  jq> $("h1").css("backgroundColor", "blue");
   */
 function install_jquery(d) {
     var script_el = d.createElementNS(XHTML_NS, "script");
@@ -93,7 +93,7 @@ function jquery_this_doc(d, js_code) {
 interactive("jquery-here",
             "load jquery.js into this page, then your command",
             function(I) {
-                jquery_this_doc(I.buffer.document, (yield I.minibuffer.read($prompt = "jq: ", $history = "jquery-here")));
+                jquery_this_doc(I.buffer.document, (yield I.minibuffer.read($prompt = "jq> ", $history = "jquery-here")));
                 // Providing a $history is what allows editing/replay of earlier commands
             });
 
