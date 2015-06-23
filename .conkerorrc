@@ -190,3 +190,14 @@ define_key(content_buffer_normal_keymap, "C-d", "delete");// default: d (delete 
 // define_key(google_search_results_keymap, "C-m", "ensure-content-focused", $fallthrough);//BAD
 // define_key(google_calendar_keymap, "C-m", null, $fallthrough);
 // define_key(duckduckgo_select_keymap, "C-m", "duckduckgo-follow-current");
+
+// --------- mozrepl
+
+user_pref('extensions.mozrepl.autoStart', true); /* autostart */
+
+if ('@hyperstruct.net/mozlab/mozrepl;1' in Cc) {
+    let mozrepl = Cc['@hyperstruct.net/mozlab/mozrepl;1']
+        .getService(Ci.nsIMozRepl);
+    if (!mozrepl.isActive())
+        mozrepl.start(4242);
+}
