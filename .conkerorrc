@@ -43,9 +43,11 @@ hints_auto_exit_delay=0.1; // work if only > 0
 
 /* ---------------- display tabs */
 
+
 require("new-tabs");
 require("github");
 require("gmail");
+require("~/.conkeror/inbox.js")
 require("youtube");
 require("youtube-player");
 require("twitter");
