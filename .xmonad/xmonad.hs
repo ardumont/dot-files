@@ -201,6 +201,9 @@ conkerorQuery = appName =? "Navigator" <&&> className =? "Conkeror"
 vlcQuery:: Query Bool
 vlcQuery = appName =? "vlc" <&&> (className =? "vlc" <||> className =? "Vlc")
 
+skypeQuery :: Query Bool
+skypeQuery = appName =? "skype" <&&> className =? "Skype"
+
 -- | My keymap as (prefix keybindings, command description, command)
 --
 myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
@@ -260,7 +263,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "z"         , "gitk"                       , runOrRaiseNext "gitk"                     (className =? "gitk"))
   , (prefix "S-f"       , "fbreader"                   , runOrRaiseNext "fbreader"                 (className =? "fbreader"))
   , (prefix "M1-t"      , "tuxguitar"                  , runOrRaiseNext "tuxguitar"                (className =? "TuxGuitar"))
---  , (prefix "C-c"       , "skype"                      , runOrRaiseNext "skype"                    (appName =? "skype" <&&> className =? "Skype"))
+  , (prefix "C-M1-s"    , "skype"                      , runOrRaiseNext "skype"                    skypeQuery)
   , (prefix "o"         , "libre-office"               , runOrRaiseNext "libreoffice"              libreOfficeQuery)
   , (prefix "C-u"       , "soap-ui"                    , runOrRaiseNext "soapui"                   (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-eviware-soapui-SoapUI"))
   , (prefix "f"         , "browser"                    , runOrRaiseNext myBrowser                  myBrowserQuery)
@@ -464,7 +467,7 @@ myManageHook = composeAll
     , appName =? "sun-awt-X11-XFramePeer" <&&>
         className =? "jetbrains-idea-ce"          --> doShift workspaceIde
     , appName =? "sun-awt-X11-XFramePeer"         --> doShift workspaceDb
-    , className =? "Skype"                        --> doShift workspaceIrc
+    , skypeQuery                                  --> doShift workspaceIrc
     , className =? "Pidgin"                       --> doShift workspaceIrc
     , className =? "VirtualBox"                   --> doShift workspaceVM
     , className =? ".emulator64-arm-wrapped"      --> doShift workspaceDevVM
