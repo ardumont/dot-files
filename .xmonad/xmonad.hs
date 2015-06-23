@@ -191,9 +191,11 @@ myRunOrRaise home cmd = runOrRaiseNext $ combine home cmd
 libreOfficeQuery :: Query Bool
 libreOfficeQuery = (appName =? "libreofficedev" <||> appName =? "libreoffice") <&&>
                    (className =? "libreofficedev-writer" <||>
+                    className =? "libreoffice-writer" <||>
                     className =? "libreofficedev-calc" <||>
+                    className =? "libreoffice-calc" <||>
                     className =? "libreofficedev-draw" <||>
-                    className =? "libreoffice-writer")
+                    className =? "libreoffice-draw")
 
 conkerorQuery :: Query Bool
 conkerorQuery = appName =? "Navigator" <&&> className =? "Conkeror"
