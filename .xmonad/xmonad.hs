@@ -200,7 +200,7 @@ libreOfficeQuery = (appName =? "libreofficedev" <||> appName =? "libreoffice") <
 conkerorQuery :: Query Bool
 conkerorQuery = appName =? "Navigator" <&&> className =? "Conkeror"
 
-vlcQuery:: Query Bool
+vlcQuery :: Query Bool
 vlcQuery = appName =? "vlc" <&&> (className =? "vlc" <||> className =? "Vlc")
 
 skypeQuery :: Query Bool
