@@ -44,6 +44,11 @@ create-links-from-list $REPO_DOTFILES $HOME/.gnupg $SECURITY_FILES
 
 # specific setup
 
+## pidgin
+
+mkdir -p $HOME/.purple
+ln -lns $REPO_DOTFILES/accels $HOME/.purple/
+
 ## LightTable
 
 mkdir -p $HOME/.config/LightTable
