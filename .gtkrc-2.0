@@ -1,4 +1,9 @@
-## PIDGIN
+# Pidgin          -*- sh -*-
+
+## key bindings
+
+# emacs bindings in chat window
+gtk-key-theme-name = "Emacs"
 
 # override some default bindings
 binding "my-pidgin-bindings"
@@ -10,12 +15,11 @@ binding "my-pidgin-bindings"
 }
 widget "*pidgin_conv_entry" binding "my-pidgin-bindings"
 
-# font
-# gtk-font-name = "DejaVu 10"
-
-# emacs bindings in chat window
-gtk-key-theme-name = "Emacs"
-
 # This lets you edit your Pidgin key bindings from within Pidgin,
 # by hovering over a menu item and hitting a key combo.
 # gtk-can-change-accels = 1
+
+## Theme
+
+# font
+gtk-font-name = "DejaVu Sans Mono 10"
