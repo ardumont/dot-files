@@ -1,1 +1,21 @@
+## PIDGIN
+
+# override some default bindings
+binding "my-pidgin-bindings"
+{
+    bind "<ctrl>i" { "insert-at-cursor" ("\t") }
+    bind "<ctrl>j" { "insert-at-cursor" ("\n") }
+    bind "Return" { "message_send" () }
+    bind "<ctrl>m" { "message_send" () }
+}
+widget "*pidgin_conv_entry" binding "my-pidgin-bindings"
+
+# font
+# gtk-font-name = "DejaVu 10"
+
+# emacs bindings in chat window
 gtk-key-theme-name = "Emacs"
+
+# This lets you edit your Pidgin key bindings from within Pidgin,
+# by hovering over a menu item and hitting a key combo.
+# gtk-can-change-accels = 1
