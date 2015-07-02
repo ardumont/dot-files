@@ -44,8 +44,13 @@ create-links-from-list $REPO_DOTFILES $HOME/.gnupg $SECURITY_FILES
 
 # specific setup
 
+# gtk themes
 mkdir -p $HOME/.themes
 ln -nsf $REPO_DOTFILES/.themes/Emacs $HOME/.themes/Emacs
+
+# gtk config
+mkdir -p $REPO_DOTFILES/.config/gtk-3.0
+ln -nsf $REPO_DOTFILES/.config/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/
 
 ## pidgin
 
