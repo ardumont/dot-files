@@ -1,0 +1,11 @@
+# Pidgin          -*- sh -*-
+
+# override some default bindings
+binding "my-pidgin-bindings"
+{
+    bind "<ctrl>i" { "insert-at-cursor" ("\t") }
+    bind "<ctrl>j" { "insert-at-cursor" ("\n") }
+    bind "Return" { "message_send" () }
+    bind "<ctrl>m" { "message_send" () }
+}
+widget "*pidgin_conv_entry" binding "my-pidgin-bindings"

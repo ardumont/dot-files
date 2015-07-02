@@ -44,6 +44,9 @@ create-links-from-list $REPO_DOTFILES $HOME/.gnupg $SECURITY_FILES
 
 # specific setup
 
+mkdir -p $HOME/.themes
+ln -nsf $REPO_DOTFILES/.themes/Emacs $HOME/.themes/Emacs
+
 ## pidgin
 
 mkdir -p $HOME/.purple
