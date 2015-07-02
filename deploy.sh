@@ -50,7 +50,7 @@ ln -nsf $REPO_DOTFILES/.themes/Emacs $HOME/.themes/Emacs
 ## pidgin
 
 mkdir -p $HOME/.purple
-ln -lns $REPO_DOTFILES/accels $HOME/.purple/
+ln -nsf $REPO_DOTFILES/accels $HOME/.purple/
 
 ## LightTable
 
