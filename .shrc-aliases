@@ -174,3 +174,7 @@ function nix-tree() {
 alias nix-where='nix-where'
 alias nix-folder='nix-folder'
 alias nix-package='nix-package'
+
+################ tools
+
+alias pendu='hangman -d /usr/share/dict/french'
