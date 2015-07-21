@@ -9,7 +9,7 @@ pythonfile              = ~/.offlineimap-helpers.py
 localrepository         = eniotna-local
 remoterepository        = eniotna-remote
 # autorefresh             = 1
-postsynchook            = mu index --maildir=~/.mails
+postsynchook            = notmuch new
 
 [Repository eniotna-local]
 type                    = Maildir
@@ -33,7 +33,7 @@ sslcacertfile           = /etc/ssl/certs/ca-bundle.crt
 localrepository         = ard-local
 remoterepository        = ard-remote
 # autorefresh             = 1
-postsynchook            = mu index --maildir=~/.mails
+postsynchook            = notmuch new
 
 [Repository ard-local]
 type                    = Maildir
