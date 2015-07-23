@@ -10,5 +10,6 @@
     ./laptop.nix
     ./sound.nix
     ../mounts.nix
+    ../dev-box/xserver.nix
   ];
 }

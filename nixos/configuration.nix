@@ -13,7 +13,6 @@ in rec {
     ./env.nix
     ./network.nix
     ./users.nix
-    ./xserver.nix
     ./packages.nix
     ./virtual.nix
     ];

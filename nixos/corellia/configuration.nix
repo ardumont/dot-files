@@ -10,5 +10,6 @@
     ./laptop.nix
     ./sound.nix
     ./grub.nix
+    ../dev-box/xserver.nix
   ];
 }
