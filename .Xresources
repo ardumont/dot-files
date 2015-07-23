@@ -53,7 +53,7 @@ URxvt*underlineColor: yellow
 
 !-*- Perl extensions -*-
 ! stored in ~/.urxvt/ext/
-URxvt.perl-ext-common: clipboard,font-size,keyboard-select,url-select
+URxvt.perl-ext-common: clipboard,font-size,keyboard-select,url-select,color-themes
 URxvt.url-launcher:   firefox
 URxvt.underlineURLs:  True
 URxvt.matcher.button: 1
@@ -88,3 +88,13 @@ URxvt.font-size.step:  4
 ! disable default binding for shift on urxvt
 URxvt.iso14755:        false
 URxvt.iso14755_52:     false
+
+URxvt.color-themes.themedir:  ~/.themes/urxvt
+URxvt.color-themes.preprocessor: /usr/bin/cpp
+URxvt.keysym.M-C-n:  perl:color-themes:next
+URxvt.keysym.M-C-p:  perl:color-themes:prev
+
+URxvt.color-themes.state-file: ~/.urxvt-theme
+URxvt.color-themes.autosave: 1
+URxvt.keysym.M-C-l:  perl:color-themes:load-state
+URxvt.keysym.M-C-s:  perl:color-themes:save-state

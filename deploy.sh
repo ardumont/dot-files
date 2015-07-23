@@ -46,7 +46,10 @@ create-links-from-list $REPO_DOTFILES $HOME/.gnupg $SECURITY_FILES
 
 # gtk themes
 mkdir -p $HOME/.themes
-ln -nsf $REPO_DOTFILES/.themes/Emacs $HOME/.themes/Emacs
+
+for i in $($REPO_DOT_FILES/.themes); do
+    ln -nsf $REPO_DOTFILES/.themes/$i $HOME/.themes/
+done
 
 # gtk config
 mkdir -p $REPO_DOTFILES/.config/gtk-3.0
