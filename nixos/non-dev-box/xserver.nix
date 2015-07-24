@@ -4,7 +4,7 @@
   programs.ssh.startAgent = false; # do not start agent
 
   services.xserver = {
-    startGnuPGAgent = false;  # will be dealt with by the desktop manager
+    startGnuPGAgent = true;  # will be dealt with by the desktop manager
     enable = true;
     exportConfiguration = true; # create link /etc/X11/xorg.conf to real conf
 
@@ -34,18 +34,16 @@
     };
 
     desktopManager = {
-      default = "gnome";
-      gnome.enable = true;
-      # gnome3.enable = true;
-      # kde4.enable = true;
-    };
+       default = "gnome3";
+       kde4.enable = true;
+       xfce.enable = true;
+       gnome3.enable = true;
+     };
 
-    displayManager = {
-      gdm = true;
-      # kdm = true;
-      # lightdm = true;
-      # slim = true;
-    };
+     # displayManager.gdm.enable = true;
+     # displayManager.kdm.enable = true;
+     displayManager.lightdm.enable = true;
+     # displayManager.dm.enable = true;
 
     # activate gpu
     vaapiDrivers = [ pkgs.vaapiIntel ];

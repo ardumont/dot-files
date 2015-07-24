@@ -6,11 +6,7 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
-    ./laptop.nix
-    ./sound.nix
-    ./grub.nix
-    ../dev-box/xserver.nix
-    ./packages.nix
+    ./hardware-configuration.nix # Include the results of the hardware scan.
+    ../non-dev-box/xserver.nix
   ];
 }

@@ -12,7 +12,7 @@
     allowUnfree = true;
 
     firefox = {
-      enableAdobeFlash = true;
+      # enableAdobeFlash = true;
       enableGoogleTalkPlugin = true;
     };
 
@@ -40,18 +40,12 @@
   environment.systemPackages = with pkgs; [
     hexedit
     bc
-    pgadmin
     html2text
     pciutils # lspci, etc...
     nix-prefetch-scripts nix-repl nixops nox
     psmisc # fuser
     python python27Packages.screenkey
-    python3 python34Packages.pip python34Packages.flake8 python34Packages.pygit2
-    texLiveFull
-    mysql mysqlWorkbench
     pidgin-with-plugins
-    skype
-    openvpn networkmanager_openvpn
     androidsdk_4_4
     wmname
     feh
@@ -61,10 +55,10 @@
     which
     peco
     nix-repl
-    gnome3_12.nautilus gnome3_12.gnome_settings_daemon
-    gnome3_12.eog pinta scrot
+    gnome3_16.nautilus gnome3_16.gnome_settings_daemon
+    gnome3_16.eog pinta scrot
     vlc x264 mplayer
-    gnome3_12.zenity
+    gnome3_16.zenity
     transmission_gtk
     audacious
     linuxPackages.virtualbox packer vagrant docker
@@ -81,7 +75,7 @@
     x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
     libxml2
     mosh
-    offlineimap mu
+    offlineimap notmuch
     most
     xclip xsel pass pwgen keychain
     htop # powertop
