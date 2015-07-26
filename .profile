@@ -12,9 +12,9 @@ if [ ! $? = 0 ]; then # clean up the mess left behind
     rm -f $HOME/.gpg-agent-info
 fi
 
-if [ -f $HOME/.gpg-agent-info ]; then
+if [ -f $HOME/.gnupg/.gpg-agent-info ]; then
 
-    . $HOME/.gpg-agent-info
+    . $HOME/.gnupg/.gpg-agent-info
     export GPG_AGENT_INFO
     #export SSH_AUTH_INFO # typo? Need to check on NixOS
     export SSH_AUTH_SOCK
@@ -26,9 +26,10 @@ if [ -f $HOME/.gpg-agent-info ]; then
         gpg-connect-agent /bye 2>&1 >/dev/null
     fi
 
-elif [ ! -f /etc/NIXOS ]; then # only on non-nixos environment
+else
+
     # trigger the gpg agent (and it deals with ssh support too!)
     gpg-agent --daemon --enable-ssh-support \
-      --write-env-file "${HOME}/.gpg-agent-info"
+      --write-env-file "${HOME}/.gnupg/.gpg-agent-info"
 
 fi
