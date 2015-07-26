@@ -10,10 +10,9 @@ in {
   users = {
     defaultUserShell = "${pkgs.zsh}/bin/zsh";
 
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    # we could also set `mutableUsers = false;` and add a `password = pass;` entry (but then git out this file)
-    extraUsers = [{
-      description = "Antoine R. Dumont";
+    # Define a user account. # `dummy` password by default
+    extraUsers = [
+    { description = "Antoine R. Dumont";
       name = "${defaultUser}";
       group = "users";
       uid = 1000;
@@ -21,8 +20,17 @@ in {
       home = "/home/${defaultUser}";
       password = "dummy"; # for the first time, make sure to not be locked out passwordless then change it manually
       extraGroups = [ "wheel" "audio" "video" "vboxusers" "docker" "networkmanager" "dialout" ];
-      useDefaultShell = true;
-    }];
+      useDefaultShell = true; }
+    { description = "Christelle Héritier";
+      name = "chris";
+      group = "users";
+      uid = 1001;
+      createHome = true;
+      home = "/home/chris";
+      password = "dummy";  # for the first time, make sure to not be locked out passwordless then change it manually
+      extraGroups = [ "audio" "video" "networkmanager" ];
+      useDefaultShell = true; }
+    ];
   };
 
   # Make sure I can use openvpn as a user
