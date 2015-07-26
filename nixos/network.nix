@@ -5,7 +5,7 @@
     # hostName = "corellia";    # Define your hostname.
 
     firewall.enable = true;
-    firewall.allowedTCPPorts = [ 22 ];
+    firewall.allowedTCPPorts = [ 22 9999 ];
     # firewall.allowedUDPPorts = [ ];
 
     # nm, nmcli, etc... incompatible with networking.wireless
