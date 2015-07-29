@@ -32,17 +32,19 @@
   "Create the paths from the ROOTDIR directory."
   (--> rootdir
        (directory-file-name it)
-       (directory-files it 'with-fullname directory-files-no-dot-files-regexp)
+       expand-file-name
+       (directory-files it 'with-fullname "^\\([^.]\\|.emacs.d|\\.\\([^.]\\|\\..\\)\\).*")
        (-filter 'f-directory? it)
        (mapcar (-compose (-partial 's-join "/") (-rpartial 'list ".emacs.d")) it)))
 
-;; load the init.el file present in each ../<dir>/.emacs.d/init.el file
+;; load the init.el file present in each ~/work/<dir>/.emacs.d/init.el file
 (mapc (lambda (path)
         (let ((init-file (f-join path "init.el")))
-          (add-to-list 'load-path path)
           (when (f-exists? init-file)
+            (add-to-list 'load-path path)
+            (message init-file)
             (load-file init-file))))
-      (create-paths-to-load ".."))
+      (create-paths-to-load "~/work"))
 
 (provide 'init)
 ;;; init.el ends here
