@@ -132,7 +132,7 @@ myBrowserQuery = className =? "Firefox" <||> (appName =? "Navigator" <&&> classN
 -- | My preferential emacs
 --
 myEmacsQuery :: Query Bool
-myEmacsQuery = appName =? "emacs"
+myEmacsQuery = appName =? "emacs" <&&> className ?= "Emacs"
 
 -- | Whether focus follows the mouse pointer.
 --
