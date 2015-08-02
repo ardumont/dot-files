@@ -25,3 +25,5 @@ export TERM=screen-256color
 export HISTIGNORE="pass:&"
 
 export CHROME_BIN="/run/current-system/sw/bin/chromium-browser"
+
+export ORGTRELLO_HOME="$HOME/repo/perso/org-trello"
