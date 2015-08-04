@@ -125,11 +125,12 @@
   '(
     ("discosmo" "dicosmo" nil 1)
     ("heigth" "height" nil 2)
+    ("piding" "pidgin" nil 0)
     ("rdiscomo" "rdicosmo" nil 0)
     ("rdiscosmo" "rdicosmo" nil 0)
     ("reocnnect" "reconnect" nil 0)
     ("tihs" "this" nil 1)
-    ("visisted" "visited" nil 2)
+    ("visisted" "visited" nil 3)
     ("widht" "width" nil 0)
    ))
 
