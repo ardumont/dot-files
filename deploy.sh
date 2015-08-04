@@ -115,7 +115,8 @@ bash $REPO_DOTFILES/deploy-keysnail.sh
 
 ## emacs
 
-ln -nsf $REPO_DOTFILES/.mc-lists.el ~/.emacs.d/
+ln -nsf $REPO_DOTFILES/.emacs.d/.mc-lists.el ~/.emacs.d/.mc-lists.el
+ln -nsf $REPO_DOTFILES/.emacs.d/abbrev_defs ~/.emacs.d/abbrev_defs
 
 ### Adjust system configuration
 
