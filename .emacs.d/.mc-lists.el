@@ -6,6 +6,7 @@
         backward-kill-sexp
         backward-sexp
         beginning-of-buffer
+        buffer-pack/increment-number-at-point
         c-electric-delete-forward
         c-electric-semi&comma
         completion-at-point
@@ -61,6 +62,7 @@
         paredit-open-square
         paredit-semicolon
         paredit-splice-sexp
+        paredit-split-sexp
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
         py-electric-colon
