@@ -1,7 +1,11 @@
 ;;-*-coding: utf-8;-*-
 (define-abbrev-table 'Buffer-menu-mode-abbrev-table '())
 
+(define-abbrev-table 'Custom-mode-abbrev-table '())
+
 (define-abbrev-table 'Info-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'Man-mode-abbrev-table '())
 
 (define-abbrev-table 'anaconda-nav-mode-abbrev-table '())
 
@@ -95,11 +99,17 @@
 
 (define-abbrev-table 'emr-buffer-report-mode-abbrev-table '())
 
+(define-abbrev-table 'ensime-connection-list-mode-abbrev-table '())
+
+(define-abbrev-table 'ensime-inf-mode-abbrev-table '())
+
 (define-abbrev-table 'epa-info-mode-abbrev-table '())
 
 (define-abbrev-table 'epa-key-list-mode-abbrev-table '())
 
 (define-abbrev-table 'epa-key-mode-abbrev-table '())
+
+(define-abbrev-table 'erc-dcc-chat-mode-abbrev-table '())
 
 (define-abbrev-table 'erc-list-menu-mode-abbrev-table '())
 
@@ -123,12 +133,20 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("arudmont" "ardumont" nil 0)
+    ("customisation" "customization" nil 0)
+    ("deafult" "default" nil 0)
     ("discosmo" "dicosmo" nil 1)
     ("heigth" "height" nil 2)
+    ("lenght" "length" nil 0)
     ("piding" "pidgin" nil 0)
     ("rdiscomo" "rdicosmo" nil 0)
     ("rdiscosmo" "rdicosmo" nil 0)
+    ("reivsion" "revision" nil 0)
+    ("remvoe" "remove" nil 0)
     ("reocnnect" "reconnect" nil 0)
+    ("requrie" "require" nil 0)
+    ("stsat" "stats" nil 0)
     ("tihs" "this" nil 1)
     ("visisted" "visited" nil 3)
     ("widht" "width" nil 0)
