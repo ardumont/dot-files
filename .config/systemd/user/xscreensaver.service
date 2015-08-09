@@ -1,0 +1,13 @@
+[Unit]
+Description=xscreensaver: modular screensaver and locker for X11
+Documentation=man:xscreensaver man:xscreensaver-command man:xscreensaver-demo
+
+[Service]
+Type=forking
+ExecStartPre=/usr/bin/xscreensaver-command -exit
+ExecStart=/usr/bin/xscreensaver
+ExecStop=/usr/bin/xscreensaver-command -exit
+
+[Install]
+WantedBy=default.target
+Alias=screensaver.service
