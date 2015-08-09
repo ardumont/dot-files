@@ -51,6 +51,10 @@ for i in $($REPO_DOT_FILES/.themes); do
     ln -nsf $REPO_DOTFILES/.themes/$i $HOME/.themes/
 done
 
+# systemd user service
+mkdir -p $REPO_DOTFILES/.config/
+ln -nsf $REPO_DOTFILES/.config/systemd $HOME/.config/
+
 # gtk config
 mkdir -p $REPO_DOTFILES/.config/gtk-3.0
 ln -nsf $REPO_DOTFILES/.config/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/
