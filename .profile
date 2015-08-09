@@ -29,3 +29,6 @@ fi
 
 gpg-connect-agent updatestartuptty /bye 2>&1 >/dev/null
 gpg-connect-agent /bye 2>&1 >/dev/null
+
+# Make the user units aware of his/her environment
+systemctl --user import-environment GPG_AGENT_INFO SSH_AUTH_SOCK SSH_AGENT_PID PATH DISPLAY XAUTHORITY
