@@ -38,3 +38,4 @@ history
 /nixos/lenovo/proxy.nix
 /.ghc/x86_64-linux-*
 /.FBReader/config.changes
+.FBReader/cache/

@@ -83,6 +83,8 @@
 
 (define-abbrev-table 'dig-mode-abbrev-table '())
 
+(define-abbrev-table 'display-time-world-mode-abbrev-table '())
+
 (define-abbrev-table 'dockerfile-mode-abbrev-table '())
 
 (define-abbrev-table 'doctex-mode-abbrev-table '())
@@ -131,13 +133,20 @@
 
 (define-abbrev-table 'gfm-mode-abbrev-table '())
 
+(define-abbrev-table 'gitconfig-mode-abbrev-table '())
+
+(define-abbrev-table 'gitignore-mode-abbrev-table '())
+
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("appliaction" "application" nil 0)
     ("arudmont" "ardumont" nil 0)
+    ("configuraiton" "configuration" nil 0)
     ("customisation" "customization" nil 0)
     ("deafult" "default" nil 0)
     ("discosmo" "dicosmo" nil 1)
     ("heigth" "height" nil 2)
+    ("heom" "home" nil 0)
     ("lenght" "length" nil 0)
     ("mediawifi" "mediawiki" nil 1)
     ("piding" "pidgin" nil 0)
@@ -146,12 +155,16 @@
     ("reivsion" "revision" nil 0)
     ("remvoe" "remove" nil 0)
     ("reocnnect" "reconnect" nil 0)
+    ("repositroy" "repository" nil 0)
     ("requrie" "require" nil 0)
     ("stast" "stats" nil 1)
+    ("statsu_code" "status_code" nil 0)
     ("stsat" "stats" nil 0)
     ("tihs" "this" nil 1)
+    ("upadte" "update" nil 0)
     ("visisted" "visited" nil 3)
     ("widht" "width" nil 0)
+    ("write_repsonse" "write_response" nil 0)
    ))
 
 (define-abbrev-table 'google-contacts-mode-abbrev-table '())
@@ -324,6 +337,8 @@
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
+(define-abbrev-table 'pascal-mode-abbrev-table '())
+
 (define-abbrev-table 'php-mode-abbrev-table '())
 
 (define-abbrev-table 'pike-mode-abbrev-table
@@ -350,9 +365,7 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'reb-lisp-mode-abbrev-table '())
 
