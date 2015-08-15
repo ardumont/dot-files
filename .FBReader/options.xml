@@ -37,6 +37,9 @@
     <option name="BookPath" value="~/FBooks:~/Books:~/books"/>
     <option name="ScanSubdirs" value="true"/>
   </group>
+  <group name="PreferencesDialog">
+    <option name="LastOpened" value="bookInfo"/>
+  </group>
   <group name="Web Browser">
     <option name="Name" value="Browser"/>
   </group>

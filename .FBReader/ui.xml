@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
+  <group name="InfoDialog">
+    <option name="SelectedTab" value="Common"/>
+    <option name="Width" value="441"/>
+  </group>
   <group name="Options">
-    <option name="Height" value="1080"/>
+    <option name="Height" value="1063"/>
     <option name="Width" value="1920"/>
     <option name="XPosition" value="0"/>
-    <option name="YPosition" value="0"/>
+    <option name="YPosition" value="17"/>
   </group>
   <group name="OptionsDialog">
     <option name="SelectedTab" value="Keys"/>
@@ -12,6 +16,7 @@
   </group>
   <group name="Style">
     <option name="Base:fontFamily" value="DejaVu Sans"/>
+    <option name="Preformatted text:fontFamily" value="Courier"/>
   </group>
   <group name="ToggleButtonGroup">
     <option name="booksOrder" value="byAuthor"/>
