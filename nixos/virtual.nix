@@ -2,7 +2,7 @@
 
 {
   # Use vbox
-  services.virtualboxHost.enable = false;
+  virtualisation.virtualbox.host.enable = false;
 
   # Activate docker service
   virtualisation.docker.enable = true;
