@@ -10,6 +10,8 @@
   boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  hardware.opengl.enable = true;
+
   fileSystems."/" =
     { device = "/dev/sda3";
       fsType = "ext4";
