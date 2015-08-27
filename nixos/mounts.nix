@@ -7,7 +7,7 @@
   # };
 
   fileSystems."/share" = {
-   device = "nas:/volume1/share";
+   device = "naboo:/volume1/share";
    fsType = "nfs";
   };
 }
