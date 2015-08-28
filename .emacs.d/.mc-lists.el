@@ -76,6 +76,7 @@
         shm/hyphen
         shm/kill-line
         shm/space
+        shm/tab
         shm/yank
         smex
         sp--self-insert-command
