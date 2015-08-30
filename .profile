@@ -7,6 +7,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+# for non nixos-machine using nix
+[ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
+
 GPG_AGENT_INFO_PATH=$HOME/.gnupg/.gpg-agent-info
 
 pidof gpg-agent 2>&1 > /dev/null
