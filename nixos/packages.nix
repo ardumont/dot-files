@@ -109,10 +109,12 @@
        self.xmonad-extras
        self.xmobar
        self.pandoc
+       self.stack
        # self.ncurses
        self.cabal-install
        # haskell-pack deps
        self.stylish-haskell
+       self.structured-haskell-mode
        self.hasktags
        # self.cabal2nix
        # self.lens
