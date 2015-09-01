@@ -456,7 +456,7 @@ myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
     [ manageDocks
     , isFullscreen                                --> doFullFloat
-    -- , vlcQuery                                    --> doShift workspaceFloat >> doFloat
+    , vlcQuery                                    --> doShift workspaceFloat >> doFloat
     , className =? "Gimp"                         --> doShift workspaceFloat >> doFloat
     , className =? "Zenity"                       --> doFloat
     , appName   =? "desktop_window"               --> doIgnore
