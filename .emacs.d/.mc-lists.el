@@ -77,6 +77,7 @@
         shm/hyphen
         shm/kill-line
         shm/space
+        shm/splice
         shm/tab
         shm/yank
         smex
