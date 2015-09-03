@@ -20,58 +20,37 @@
   allowUnfree = true;
 
   # source: https://nixos.org/wiki/Howto_develop_software_on_nixos
-  packageOverrides = self : with pkgs; with sourceAndTags;
+  packageOverrides = self : with pkgs;
     # default dev environment with common needed tools
-    let defaultDevEnv = { name, buildInputs ? [], cTags ? [], extraCmds ? ""}:
-          pkgs.myEnvFun {
+    let defaultDevEnv = { name, paths ? []}:
+          pkgs.buildEnv {
             inherit name;
-            shell = "${pkgs.zsh}/bin/zsh";
-            buildInputs = buildInputs
-              ++ map (x : sourceWithTagsDerivation ( (addCTaggingInfo x ).passthru.sourceWithTags ) ) cTags
+            paths = paths
               ++ [ gitFull zsh emacs tmux gnumake rlwrap ];
-            extraCmds = ''
-              # HOME=${builtins.getEnv "HOME"}
-              ${extraCmds}
-            '';
           };
 
-        defaultJavaEnv = { name, buildInputs ? [] }:
+        defaultJavaEnv = { name, paths ? [] }:
           defaultDevEnv {
             inherit name;
-            buildInputs = buildInputs ++ [ maven ant idea.idea-community jd-gui ];
+            paths = paths ++ [ maven ant idea.idea-community jd-gui ];
           };
 
         composeDevEnv = { name, envs }:
           defaultDevEnv {
             inherit name;
-            buildInputs = pkgs.lib.concatMap (env: env.buildInputs) envs;
+            paths = pkgs.lib.concatMap (env: env.paths) envs;
           };
 
     in rec {
 
-      # override the default pidgin with plugins (empty by default)
-      pidgin-plugins = pidgin-with-plugins.override {
-        plugins = [ pidginotr skype4pidgin ];
-      };
-
-      # xmonad-with-packages = pkgs.xmonad-with-packages.override {
-      #   packages = with pkgs.haskellngPackages.ghcWithPackages; [ xmonad-contrib xmonad-extras ];
-      # };
-
-      # install: nix-env -i env-sdl
-      # load: load-env-sdl
-      sdlEnv = self.myEnvFun {
-          name = "sdl";
-          buildInputs = [ stdenv SDL SDL_image SDL_ttf SDL_gfx cmake SDL_net pkgconfig ];
-      };
 
       # default haskell environment to provide when dev
       # install: nix-env -iA nixos.pkgs.haskell
       #          nix-env -i env-haskell
       # load: load-env-haskell
-      hsEnv = defaultDevEnv {
+      hsEnv = buildEnv {
         name = "haskell";
-        buildInputs = with pkgs.haskellPackages; [
+        paths = with pkgs.haskellPackages; [
           cabal-install
           cabal2nix
           lens
@@ -104,12 +83,28 @@
      #    envs = [ hsEnv openGLEnv ];
      #  };
 
+      # override the default pidgin with plugins (empty by default)
+      pidgin-plugins = pidgin-with-plugins.override {
+        plugins = [ pidginotr skype4pidgin ];
+      };
+
+      # xmonad-with-packages = pkgs.xmonad-with-packages.override {
+      #   packages = with pkgs.haskellngPackages.ghcWithPackages; [ xmonad-contrib xmonad-extras ];
+      # };
+
+      # install: nix-env -i env-sdl
+      # load: load-env-sdl
+      sdlEnv = buildEnv {
+          name = "sdl";
+          paths = [ stdenv SDL SDL_image SDL_ttf SDL_gfx cmake SDL_net pkgconfig ];
+      };
+
       # default purescript environment
       # install: nix-env -i env-purescript
       # load: load-env-purescript
       purescriptEnv = defaultDevEnv {
         name = "purescript";
-        buildInputs = [
+        paths = [
           haskellPackages.purescript
           nodejs
           nodePackages.npm
@@ -125,7 +120,7 @@
       # load: load-env-xmonad
       xmonadEnv = defaultDevEnv {
         name = "xmonad";
-        buildInputs = with pkgs.haskellPackages; [
+        paths = with pkgs.haskellPackages; [
          xmonad
          xmonadContrib
          xmonadExtras
@@ -138,7 +133,7 @@
       # load: load-env-mynodejs
       myNodeJSEnv = defaultDevEnv {
         name = "mynodejs";
-        buildInputs = [
+        paths = [
           nodejs
           nodePackages.npm
           nodePackages.jshint
@@ -154,7 +149,7 @@
 
       myAndroidEnv = defaultDevEnv {
         name = "myandroid";
-        buildInputs = [
+        paths = [
           androidsdk_4_4
           idea.android-studio
           idea.idea-community
@@ -164,7 +159,7 @@
 
       javaEnv = defaultDevEnv {
         name = "java";
-        buildInputs = [
+        paths = [
           maven
           ant
           idea.idea-community
@@ -174,27 +169,27 @@
 
       java6Env = defaultJavaEnv {
         name = "java6";
-        buildInputs = [ oraclejdk tomcat6 ];
+        paths = [ oraclejdk tomcat6 ];
       };
 
       java7Env = defaultJavaEnv {
         name = "java7";
-        buildInputs = [ oraclejdk7 ];
+        paths = [ oraclejdk7 ];
       };
 
       java8Env = defaultJavaEnv {
         name = "java8";
-        buildInputs = [ oraclejdk8 ];
+        paths = [ oraclejdk8 ];
       };
 
       cljEnv = defaultDevEnv {
         name = "clj";
-        buildInputs = [ jdk clojure leiningen ];
+        paths = [ jdk clojure leiningen ];
       };
 
       emacslispEnv = defaultDevEnv {
         name = "emacslisp";
-        buildInputs = [
+        paths = [
           emacs
           emacs24Packages.cask
           python
@@ -203,7 +198,7 @@
 
       wifiToolsEnv = defaultDevEnv {
         name = "wifiTools";
-        buildInputs = [
+        paths = [
           bridge_utils
           wirelesstools
           hostapd
@@ -217,17 +212,17 @@
 
       jekyllEnv = defaultDevEnv {
         name = "static-site";
-        buildInputs = [ jekyll bundler ruby_2_1_1 ];
+        paths = [ jekyll bundler ruby_2_1_1 ];
       };
 
       # idrisEnv = defaultDevEnv {
       #   name = "idris";
-      #   buildInputs = [ haskellPackages_ghc783_profiling.idris_plain ];
+      #   paths = [ haskellPackages_ghc783_profiling.idris_plain ];
       # };
 
       mlEnv = defaultDevEnv {
         name = "ml";
-        buildInputs = [ opam ocaml gnum4 ncurses ];
+        paths = [ opam ocaml gnum4 ncurses ];
       };
 
       # emacs = emacs24;
@@ -235,7 +230,7 @@
 #       emacsWithPackages = pkgs.buildEnv {
 #         ignoreCollisions = true;
 #         name = "emacs-with-packages";
-# #        buildInputs = [ mu ];
+# #        paths = [ mu ];
 #         paths = with emacsPackagesNg; [
 #           emacs24
 #           markdown-mode
@@ -285,7 +280,7 @@
 
       aws = defaultDevEnv {
         name = "aws";
-        buildInputs = with pkgs; [
+        paths = with pkgs; [
           awscli
           s3cmd
           python34Packages.python
@@ -295,7 +290,7 @@
 
       latex = defaultDevEnv {
         name = "latex";
-        buildInputs = with pkgs; [
+        paths = with pkgs; [
           # texLive
           texLiveFull
           texLiveBeamer
@@ -304,7 +299,7 @@
 
       vpn = defaultDevEnv {
         name = "vpn";
-        buildInputs = with pkgs; [
+        paths = with pkgs; [
           openconnect
           networkmanager_openconnect
           openvpn
@@ -314,7 +309,7 @@
 
       python-dev-git = defaultDevEnv {
         name = "python-dev-git";
-        buildInputs = with pkgs; [
+        paths = with pkgs; [
           python34
           python34Packages.pygit2
           python34Packages.sqlalchemy9
@@ -327,7 +322,7 @@
 
       systemToolsEnv = defaultDevEnv {
         name = "system";
-        buildInputs = with pkgs; [
+        paths = with pkgs; [
           hexedit
           bc
           pgadmin
