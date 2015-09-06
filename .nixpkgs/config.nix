@@ -86,6 +86,24 @@
         ];
       };
 
+     # openGLEnv = defaultDevEnv {
+     #   name = "opengl";
+     #   buildInputs = [ xorg_sys_opengl mesa_glu freeglut ];
+     #   CABAL_INSTALL_EXTRA_FLAGS = ''
+     #       --extra-lib-dirs=$xorg_sys_opengl/lib \
+     #       --extra-lib-dirs=$mesa_glu/lib \
+     #       --extra-lib-dirs=$freeglut/lib \
+     #       --extra-include-dirs=$xorg_sys_opengl/include \
+     #       --extra-include-dirs=$mesa_glu/include \
+     #       --extra-include-dirs=$freeglut/include \
+     #   '';
+     # };
+
+     # snakeDevEnv = composeDevEnv {
+     #    name = "snake";
+     #    envs = [ hsEnv openGLEnv ];
+     #  };
+
       # default purescript environment
       # install: nix-env -i env-purescript
       # load: load-env-purescript
