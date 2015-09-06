@@ -139,5 +139,7 @@
     ncurses
     # x11vnc tightvnc
     opam
+    ### common-lisp
+    sbcl
   ];
 }
