@@ -71,11 +71,14 @@
         sgml-slash
         sh-assignment
         shm/backward-node
+        shm/comma
         shm/comment
         shm/del
         shm/double-quote
+        shm/forward-node
         shm/hyphen
         shm/kill-line
+        shm/open-paren
         shm/space
         shm/splice
         shm/tab
@@ -87,6 +90,7 @@
         sp-delete-char
         sp-forward-sexp
         sp-forward-slurp-sexp
+        sp-kill-hybrid-sexp
         sp-kill-word
         sp-remove-active-pair-overlay
         sp-splice-sexp
