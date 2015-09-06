@@ -206,6 +206,9 @@ vlcQuery = appName =? "vlc" <&&> (className =? "vlc" <||> className =? "Vlc")
 skypeQuery :: Query Bool
 skypeQuery = appName =? "skype" <&&> className =? "Skype"
 
+xephyrQuery :: Query Bool
+xephyrQuery = appName =? ".Xephyr-wrapped" <&&> className =? "Xephyr"
+
 -- | My keymap as (prefix keybindings, command description, command)
 --
 myKeymapWithDescription :: String -> XConfig Layout -> [(String, String, X ())]
@@ -218,7 +221,7 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "M1-w"      , "wifi-connect"               , spawn "~/.cabal/bin/hWifi")
   , (prefix "C-M1-w"    , "wifi-create-and-connect"    , launchApp myXPConfig "~/.cabal/bin/hWifi")
   , (prefix "e"         , "emacs"                      , myRunOrRaise home "bin/emacs/emacs.sh"                        myEmacsQuery)
-  , (prefix "S-x"       , "xephyr"                     , myRunOrRaise home "bin/xephyr/xephyr-stumpwm.sh"              (className =? "Xephyr"))
+  , (prefix "S-x"       , "xephyr"                     , myRunOrRaise home "bin/xephyr/xephyr-stumpwm.sh"              xephyrQuery)
   , (prefix "y"         , "yed"                        , myRunOrRaise home "bin/app/yed.sh"                            (appName =? "sun-awt-X11-XFramePeer" <&&> className =? "com-install4j-runtime-launcher-Launcher"))
   , (prefix "S-c"       , "lighttable"                 , myRunOrRaise home "applications/LightTable/LightTable"        (className =? "ltbin"))
   , (prefix "C-r"       , "simplescreenrecorder"       , runOrRaiseNext "simplescreenrecorder"                         (appName =? "simplescreenrecorder" <&&> className =? "Simplescreenrecorder"))
@@ -458,6 +461,7 @@ myManageHook = composeAll
     , isFullscreen                                --> doFullFloat
     , vlcQuery                                    --> doShift workspaceFloat >> doFloat
     , className =? "Gimp"                         --> doShift workspaceFloat >> doFloat
+    , xephyrQuery                                 --> doShift workspaceFloat >> doFloat
     , className =? "Zenity"                       --> doFloat
     , appName   =? "desktop_window"               --> doIgnore
     , appName   =? "kdesktop"                     --> doIgnore
