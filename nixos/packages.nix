@@ -83,7 +83,7 @@
     xclip xsel pass pwgen keychain
     htop # powertop
     emacs texinfo w3m emacs24Packages.cask aspell aspellDicts.en aspellDicts.fr
-    emacs24PackagesNg.structured-haskell-mode
+    # emacs24PackagesNg.structured-haskell-mode
     tmux bind rxvt_unicode urxvt_perls
     bash zsh ruby
     bundler
@@ -132,12 +132,16 @@
     keymon
     imagemagick
     libreoffice
+    ### printing
     cups samba
     telnet
+    ncurses
+    ### javascript stack
     # rhino
     # nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
-    ncurses
+    ### communication
     # x11vnc tightvnc
+    ### ocaml
     opam
     ### common-lisp
     sbcl
