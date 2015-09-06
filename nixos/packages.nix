@@ -104,6 +104,7 @@
     lsof
     darcs
     (haskellngPackages.ghcWithPackages (self : [
+       self.cabal-install
        self.xmonad
        self.xmonad-contrib
        self.xmonad-extras
@@ -111,10 +112,10 @@
        self.pandoc
        self.stack
        # self.ncurses
-       self.cabal-install
        # haskell-pack deps
        self.stylish-haskell
        self.structured-haskell-mode
+       self.hlint
        self.hasktags
        # self.cabal2nix
        # self.lens
