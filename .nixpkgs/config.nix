@@ -42,15 +42,13 @@
           };
 
     in rec {
-
-
       # default haskell environment to provide when dev
       # install: nix-env -iA nixos.pkgs.haskell
       #          nix-env -i env-haskell
       # load: load-env-haskell
       hsEnv = buildEnv {
         name = "haskell";
-        paths = with pkgs.haskellPackages; [
+        paths = with pkgs.haskellngPackages; [
           cabal-install
           cabal2nix
           lens
