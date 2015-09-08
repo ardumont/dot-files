@@ -185,6 +185,24 @@
         paths = [ jdk clojure leiningen ];
       };
 
+      # trying to enhance default environment setup for emacs (not tested yet)
+      # emacs = pkgs.emacs.overrideDerivation (args: rec {
+      #   withGTK3 = true;
+      #   withGTK2 = false;
+      #   pythonPath = [];
+      #   buildInputs = with pkgs; (args.buildInputs ++ [
+      #             makeWrapper
+      #             python
+      #             python27Packages.setuptools
+      #             python27Packages.pip
+      #         ]);
+      #   postInstall = with pkgs.python27Packages; (args.postInstall + ''
+      #     echo "This is PYTHONPATH: " $PYTHONPATH
+      #     wrapProgram $out/bin/emacs \
+      #         --prefix PYTHONPATH : "$(toPythonPath ${python}):$(toPythonPath ${ipython}):$(toPythonPath ${setuptools}):$(toPythonPath ${pip}):$PYTHONPATH";
+      #    '');
+      # });
+
       # distribution emacs with other packages
       emacs-env = pkgs.buildEnv {
         name = "emacs-env";
