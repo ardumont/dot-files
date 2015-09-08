@@ -185,6 +185,61 @@
         paths = [ jdk clojure leiningen ];
       };
 
+      # distribution emacs with other packages
+      emacs-env = pkgs.buildEnv {
+        name = "emacs-env";
+        paths = with emacsPackagesNgGen emacs; [
+          emacs
+
+          aspell
+          aspellDicts.en
+          markdown-mode
+          org-trello
+          auto-complete
+          ac-haskell-process
+          company
+          haskell-mode
+          structured-haskell-mode
+          ace-jump-mode
+          exec-path-from-shell
+          flycheck
+          flycheck-pos-tip
+          gnus
+          god-mode
+          aspell
+          aspellDicts.en
+          magit
+          projectile
+          switch-window
+          smart-mode-line
+          undo-tree
+          use-package
+          dash
+          # dash-functional
+          s
+          deferred
+          diminish
+          popup
+
+          # ag
+          # auctex
+          # change-inner
+          # circe
+          # expand-region
+          # helm
+          # helm-swoop
+          # hi2
+          # idris-mode
+          # monokai-theme
+          # org-plus-contrib
+          # smartparens
+          # volatile-highlights
+          # wgrep
+          # zenburn-theme
+
+        ];
+      };
+
       emacslispEnv = defaultDevEnv {
         name = "emacslisp";
         paths = [
@@ -222,59 +277,6 @@
         name = "ml";
         paths = [ opam ocaml gnum4 ncurses ];
       };
-
-      # emacs = emacs24;
-
-#       emacsWithPackages = pkgs.buildEnv {
-#         ignoreCollisions = true;
-#         name = "emacs-with-packages";
-# #        paths = [ mu ];
-#         paths = with emacsPackagesNg; [
-#           emacs24
-#           markdown-mode
-#           org-trello
-#           auto-complete
-#           ac-haskell-process
-#           company
-#           haskell-mode
-#           structured-haskell-mode
-#           ace-jump-mode
-#           exec-path-from-shell
-#           flycheck
-#           flycheck-pos-tip
-#           gnus
-#           god-mode
-#           aspell
-#           aspellDicts.en
-#           magit
-#           projectile
-#           switch-window
-#           smart-mode-line
-#           undo-tree
-#           use-package
-#           dash
-#           s
-#           deferred
-#           diminish
-#           popup
-
-#           # ag
-#           # auctex
-#           # change-inner
-#           # circe
-#           # expand-region
-#           # helm
-#           # helm-swoop
-#           # hi2
-#           # idris-mode
-#           # monokai-theme
-#           # org-plus-contrib
-#           # smartparens
-#           # volatile-highlights
-#           # wgrep
-#           # zenburn-theme
-#         ];
-#       };
 
       aws = defaultDevEnv {
         name = "aws";
