@@ -6,8 +6,8 @@
   #   fsType = "cifs";
   # };
 
-  fileSystems."/share" = {
-   device = "naboo:/volume1/share";
-   fsType = "nfs";
-  };
+  # fileSystems."/share" = {
+  #  device = "naboo:/volume1/share";
+  #  fsType = "nfs";
+  # };
 }
