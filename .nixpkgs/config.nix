@@ -283,7 +283,7 @@
 
       jekyllEnv = defaultDevEnv {
         name = "static-site";
-        paths = [ jekyll bundler ruby_2_1_1 ];
+        paths = [ jekyll bundler ruby_2_1_1 libffi ];
       };
 
       # idrisEnv = defaultDevEnv {
