@@ -211,6 +211,10 @@
 
           aspell
           aspellDicts.en
+          aspellDicts.fr
+          flycheck
+          # flycheck-pos-tip
+
           markdown-mode
           org-trello
           auto-complete
@@ -220,12 +224,8 @@
           structured-haskell-mode
           ace-jump-mode
           exec-path-from-shell
-          flycheck
-          flycheck-pos-tip
           gnus
           god-mode
-          aspell
-          aspellDicts.en
           magit
           projectile
           switch-window
