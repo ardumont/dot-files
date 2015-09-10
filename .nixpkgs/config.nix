@@ -233,7 +233,7 @@
           undo-tree
           use-package
           dash
-          # dash-functional
+          dash-functional
           s
           deferred
           diminish
