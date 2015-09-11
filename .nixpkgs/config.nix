@@ -209,10 +209,10 @@
         paths = with emacsPackagesNgGen emacs; [
           emacs
 
-          aspell
-          aspellDicts.en
-          aspellDicts.fr
-          flycheck
+          # aspell
+          # aspellDicts.en
+          # aspellDicts.fr
+          # flycheck
           # flycheck-pos-tip
 
           markdown-mode
