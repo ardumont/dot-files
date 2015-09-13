@@ -9,5 +9,6 @@
   # fileSystems."/share" = {
   #  device = "naboo:/volume1/share";
   #  fsType = "nfs";
+  #  options = "noauto,noatime,users";
   # };
 }
