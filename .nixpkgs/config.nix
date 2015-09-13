@@ -20,33 +20,11 @@
 
   # source: https://nixos.org/wiki/Howto_develop_software_on_nixos
   packageOverrides = self : with pkgs;
-    # default dev environment with common needed tools
-    let defaultDevEnv = { name, paths ? []}:
-          pkgs.buildEnv {
-            inherit name;
-            paths = paths
-              ++ [ gitFull zsh emacs tmux gnumake rlwrap ];
-          };
-
-        defaultJavaEnv = { name, paths ? [] }:
-          defaultDevEnv {
-            inherit name;
-            paths = paths ++ [ maven ant idea.idea-community jd-gui ];
-          };
-
-        composeDevEnv = { name, envs }:
-          defaultDevEnv {
-            inherit name;
-            paths = pkgs.lib.concatMap (env: env.paths) envs;
-          };
-
-    in rec {
+    rec {
+      # default dev environment with common needed tools
       # default haskell environment to provide when dev
-      # install: nix-env -iA nixos.pkgs.haskell
-      #          nix-env -i env-haskell
-      # load: load-env-haskell
-      hsEnv = buildEnv {
-        name = "haskell";
+      haskellToolsEnv = buildEnv {
+        name = "haskellTools";
         paths = with pkgs.haskellngPackages; [
           cabal-install
           cabal2nix
@@ -60,11 +38,33 @@
           hoogle
           # Agda
         ];
+        # paths = [
+        #   (haskellngPackages.ghcWithPackages (self : [
+        #      self.xmonad
+        #      self.xmonad-contrib
+        #      self.xmonad-extras
+        #      self.xmobar
+        #      self.pandoc
+        #      self.ncurses
+        #      self.cabal-install
+        #      # haskell-pack deps
+        #      self.stylish-haskell
+        #      self.hasktags
+        #      self.cabal2nix
+        #      self.lens
+        #      self.hdevtools
+        #      self.zlib
+        #      self.mtl
+        #      self.HUnit
+        #      self.QuickCheck
+        #      self.hoogle
+        #   ]))
+        # ];
       };
 
-     # openGLEnv = defaultDevEnv {
-     #   name = "opengl";
-     #   buildInputs = [ xorg_sys_opengl mesa_glu freeglut ];
+     openGLToolsEnv = buildEnv {
+       name = "openGLTools";
+       paths = [ xorg_sys_opengl mesa_glu freeglut ];
      #   CABAL_INSTALL_EXTRA_FLAGS = ''
      #       --extra-lib-dirs=$xorg_sys_opengl/lib \
      #       --extra-lib-dirs=$mesa_glu/lib \
@@ -73,12 +73,7 @@
      #       --extra-include-dirs=$mesa_glu/include \
      #       --extra-include-dirs=$freeglut/include \
      #   '';
-     # };
-
-     # snakeDevEnv = composeDevEnv {
-     #    name = "snake";
-     #    envs = [ hsEnv openGLEnv ];
-     #  };
+     };
 
       # override the default pidgin with plugins (empty by default)
       pidgin-plugins = pidgin-with-plugins.override {
@@ -89,21 +84,14 @@
       #   packages = with pkgs.haskellngPackages.ghcWithPackages; [ xmonad-contrib xmonad-extras ];
       # };
 
-      # install: nix-env -i env-sdl
-      # load: load-env-sdl
-      sdlEnv = buildEnv {
-          name = "sdl";
-          paths = [ stdenv SDL SDL_image SDL_ttf SDL_gfx cmake SDL_net pkgconfig ];
-      };
-
       # default purescript environment
       # install: nix-env -i env-purescript
       # load: load-env-purescript
-      purescriptEnv = defaultDevEnv {
-        name = "purescript";
+      purescriptToolsEnv = buildEnv {
+        name = "purescriptTools";
         paths = [
-          haskellPackages.purescript
           nodejs
+          haskellPackages.purescript
           nodePackages.npm
           nodePackages.npm2nix
           nodePackages.jshint
@@ -115,12 +103,12 @@
       # default xmonad env
       # install: nix-env -i env-xmonad
       # load: load-env-xmonad
-      xmonadEnv = defaultDevEnv {
-        name = "xmonad";
+      xmonadToolsEnv = buildEnv {
+        name = "xmonadTools";
         paths = with pkgs.haskellPackages; [
          xmonad
-         xmonadContrib
-         xmonadExtras
+         xmonad-contrib
+         xmonad-extras
          xmobar
         ];
       };
@@ -128,8 +116,8 @@
       # default mynodejs environment
       # install: nix-env -i env-mynodejs
       # load: load-env-mynodejs
-      myNodeJSEnv = defaultDevEnv {
-        name = "mynodejs";
+      nodeJSToolsEnv = buildEnv {
+        name = "nodeJSTools";
         paths = [
           nodejs
           nodePackages.npm
@@ -141,11 +129,13 @@
           nodePackages.phantomjs
           nodePackages.nodemon
           chromedriver
+          # rhino
+          # nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
         ];
       };
 
-      myAndroidEnv = defaultDevEnv {
-        name = "myandroid";
+      androidToolsEnv = buildEnv {
+        name = "androidTools";
         paths = [
           androidsdk_4_4
           idea.android-studio
@@ -154,8 +144,8 @@
         ];
       };
 
-      javaEnv = defaultDevEnv {
-        name = "java";
+      javaToolsEnv = buildEnv {
+        name = "javaTools";
         paths = [
           maven
           ant
@@ -164,23 +154,23 @@
         ];
       };
 
-      java6Env = defaultJavaEnv {
-        name = "java6";
+      java6ToolsEnv = buildEnv {
+        name = "java6Tools";
         paths = [ oraclejdk tomcat6 ];
       };
 
-      java7Env = defaultJavaEnv {
-        name = "java7";
+      java7ToolsEnv = buildEnv {
+        name = "java7Tools";
         paths = [ oraclejdk7 ];
       };
 
-      java8Env = defaultJavaEnv {
-        name = "java8";
+      java8ToolsEnv = buildEnv {
+        name = "java8Tools";
         paths = [ oraclejdk8 ];
       };
 
-      cljEnv = defaultDevEnv {
-        name = "clj";
+      clojureToolsEnv = buildEnv {
+        name = "clojureTools";
         paths = [ jdk clojure leiningen ];
       };
 
@@ -203,8 +193,8 @@
       # });
 
       # distribution emacs with other packages
-      emacs-env = pkgs.buildEnv {
-        name = "emacs-env";
+      emacsToolsEnv = pkgs.buildEnv {
+        name = "emacsTools";
         ignoreCollisions = true;
         paths = [
           (emacsWithPackages
@@ -260,8 +250,8 @@
           )];
         };
 
-      emacslispEnv = defaultDevEnv {
-        name = "emacslisp";
+      emacsLispToolsEnv = buildEnv {
+        name = "emacsLispTools";
         paths = [
           emacs
           emacs24Packages.cask
@@ -269,7 +259,7 @@
         ];
       };
 
-      wifiToolsEnv = defaultDevEnv {
+      wifiToolsEnv = buildEnv {
         name = "wifiTools";
         paths = [
           bridge_utils
@@ -278,28 +268,24 @@
         ];
       };
 
-      proEnv = composeDevEnv {
-        name = "pro";
-        envs = [ myAndroidEnv java6Env myNodeJSEnv ];
-      };
-
-      jekyllEnv = defaultDevEnv {
-        name = "static-site";
+      staticSiteToolsEnv = buildEnv {
+        name = "staticSiteTools";
+        ignoreCollisions = true;
         paths = [ jekyll bundler ruby_2_1_1 libffi ];
       };
 
-      # idrisEnv = defaultDevEnv {
-      #   name = "idris";
-      #   paths = [ haskellPackages_ghc783_profiling.idris_plain ];
-      # };
+      idrisToolsEnv = buildEnv {
+        name = "idrisTools";
+        paths = [ haskellPackages_ghc783_profiling.idris_plain ];
+      };
 
-      mlEnv = defaultDevEnv {
-        name = "ml";
+      mlToolsEnv = buildEnv {
+        name = "mlTools";
         paths = [ opam ocaml gnum4 ncurses ];
       };
 
-      aws = defaultDevEnv {
-        name = "aws";
+      awsToolsEnv = buildEnv {
+        name = "awsTools";
         paths = with pkgs; [
           awscli
           s3cmd
@@ -308,8 +294,8 @@
         ];
       };
 
-      latex = defaultDevEnv {
-        name = "latex";
+      latexToolsEnv = buildEnv {
+        name = "latexTools";
         paths = with pkgs; [
           # texLive
           texLiveFull
@@ -317,8 +303,8 @@
         ];
       };
 
-      vpn = defaultDevEnv {
-        name = "vpn";
+      vpnToolsEnv = buildEnv {
+        name = "vpnTools";
         paths = with pkgs; [
           openconnect
           networkmanager_openconnect
@@ -327,8 +313,8 @@
         ];
       };
 
-      python-dev-git = defaultDevEnv {
-        name = "python-dev-git";
+      python3DevToolsEnv = buildEnv {
+        name = "python3DevTools";
         paths = with pkgs; [
           python34
           python34Packages.pygit2
@@ -337,114 +323,187 @@
           python34Packages.requests
           python34Packages.nose
           python34Packages.ipython
+          python34Packages.pip
+          python34Packages.flake8
         ];
       };
 
-      systemToolsEnv = defaultDevEnv {
-        name = "system";
+      tchatToolsEnv = buildEnv {
+        name = "tchatTools";
         paths = with pkgs; [
-          hexedit
-          bc
-          pgadmin
-          html2text
-          pciutils # lspci, etc...
-          nix-prefetch-scripts nix-repl nixops nox
-          psmisc # fuser
-          python python27Packages.screenkey
-          python3 python34Packages.pip python34Packages.flake8 python34Packages.pygit2
-          # texLiveFull
-          mysql mysqlWorkbench
           pidgin-plugins
           skype
-          openvpn networkmanager_openvpn
-          androidsdk_4_4
-          wmname
-          feh
-          # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
-          xsane
-          jq
-          which
-          peco
+        ];
+      };
+
+      podcastToolsEnv = buildEnv {
+        name = "podcastTools";
+        paths = with pkgs; [
+          python27Packages.screenkey
+          keymon
+          simplescreenrecorder
+        ];
+      };
+
+      mysqlToolsEnv = buildEnv {
+        name = "mysqlTools";
+        paths = with pkgs; [
+          mysql
+          mysqlWorkbench
+        ];
+      };
+
+      pgsqlToolsEnv = buildEnv {
+        name = "pgsqlTools";
+        paths = [
+          pgadmin
+          postgresql
+        ];
+      };
+
+      nixToolsEnv = buildEnv {
+        name = "nixTools";
+        paths = [
+          nix-prefetch-scripts
           nix-repl
-          gnome3.nautilus gnome3.gnome_settings_daemon
-          gnome3.eog pinta scrot
-          vlc x264 mplayer
-          gnome3.zenity
-          transmission_gtk
-          audacious
-          linuxPackages.virtualbox packer vagrant docker
-          evince fbreader mcomix
-          filezilla
-          git gitAndTools.tig gitAndTools.hub gitg meld libgit2
-          gnupg gnupg1 pinentry
+          nixops
+          nox
+        ];
+      };
+
+      mailToolsEnv = buildEnv {
+        name = "mailTools";
+        paths = [
+           offlineimap
+           notmuch
+           # mu
+        ];
+      };
+
+      shellToolsEnv = buildEnv {
+        name = "shellTools";
+        paths = [
+          bc
+          pciutils # lspci, etc...
+          psmisc # fuser
+          which
+          hexedit
           pmount file
           wget curl tree
           gcc gnumake
-          dropbox dropbox-cli
-          trayer
-          networkmanagerapplet
-          x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
-          libxml2
           mosh
-          offlineimap mu
           most
-          xclip xsel pass pwgen keychain
+          pass
+          xclip xsel pwgen keychain
+          html2text
+          wmname
+          feh
+          # texLiveFull
+          jq
+          peco
           htop # powertop
-          emacs texinfo w3m emacs24Packages.cask aspell aspellDicts.en aspellDicts.fr
-          emacs24PackagesNg.structured-haskell-mode
+          filezilla
+          gnupg gnupg1 pinentry
+          autojump
+          inotifyTools
+          alsaUtils
+          lsof
+          rlwrap
+          fortune cowsay
           tmux bind rxvt_unicode urxvt_perls
           bash zsh ruby
-          bundler
-          zlib
-          firefoxWrapper conkeror chromium
           graphviz
-          nmap netcat wireshark
           p7zip unrar zip unzip
           acpi acpid acpitool
-          clojure leiningen jdk
           gparted testdisk
           binutils
           pmutils
-          autojump
-          inotifyTools
           unetbootin
-          alsaUtils
-          lsof
-          darcs
-          # (haskellngPackages.ghcWithPackages (self : [
-             # self.xmonad
-             # self.xmonad-contrib
-             # self.xmonad-extras
-             # self.xmobar
-             # self.pandoc
-             # self.ncurses
-             # self.cabal-install
-             # haskell-pack deps
-             # self.stylish-haskell
-             # self.hasktags
-             # self.cabal2nix
-             # self.lens
-             # self.hdevtools
-             # self.zlib
-             # self.mtl
-             # self.HUnit
-             # self.QuickCheck
-             # self.hoogle
-          # ]))
-          rlwrap
-          fortune cowsay
-          ffmpeg
-          simplescreenrecorder
-          keymon
-          imagemagick
-          libreoffice
-          cups samba
           telnet
-          # rhino
-          # nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
           ncurses
+        ];
+      };
+
+      dvcsToolsEnv = buildEnv {
+        name = "dvcsTools";
+        paths = [
+          git
+          gitAndTools.tig
+          gitAndTools.hub
+          gitg
+          meld
+          libgit2
+          darcs
+        ];
+      };
+
+      readerToolsEnv = buildEnv {
+        name = "readerTools";
+        paths = [
+          evince
+          fbreader
+          mcomix
+        ];
+      };
+
+      multimediaToolsEnv = buildEnv {
+        name = "multimediaTools";
+        paths = [
+          gnome3.eog pinta scrot
+          vlc x264 mplayer
+          audacious
+          ffmpeg
+          imagemagick
+          # gimp
+        ];
+      };
+
+      gnome3ToolsEnv = buildEnv {
+        name = "gnome3Tools";
+        paths = [
+          gnome3.nautilus gnome3.gnome_settings_daemon
+          gnome3.zenity
+          transmission_gtk
+        ];
+      };
+
+      virtualToolsEnv = buildEnv {
+        name = "virtualTools";
+        paths = [ linuxPackages.virtualbox packer vagrant docker ];
+      };
+
+      networkToolsEnv = buildEnv {
+        name = "networkTools";
+        paths = [
+          networkmanagerapplet
+          nmap
+          netcat
+          wireshark
           # x11vnc tightvnc
-          opam
+        ];
+      };
+
+      steamToolsEnv = buildEnv {
+        name = "steamTools";
+        paths = [
+          steam
+          steamChrootEnv # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
+        ];
+      };
+
+      graphicsToolsEnv = buildEnv {
+        name = "graphicsToolsEnv";
+        paths = with pkgs; [
+          trayer
+          x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
+          xscreensaver
+          firefoxWrapper conkeror #chromium
+          libreoffice
+          xsane
+          cups samba
+          # libraries
+          libxml2
+          zlib
         ];
       };
 
