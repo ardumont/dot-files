@@ -1,5 +1,4 @@
-{ pkgs,
-  emacsPackagesNgGen ? (import <nixpkgs> {}).emacsPackagesNgGen }:
+{ pkgs }:
 
 {
   firefox = {
@@ -206,57 +205,60 @@
       # distribution emacs with other packages
       emacs-env = pkgs.buildEnv {
         name = "emacs-env";
-        paths = with emacsPackagesNgGen emacs; [
-          emacs
+        ignoreCollisions = true;
+        paths = [
+          (emacsWithPackages
+            (with emacs24PackagesNg; [
+              aspell
+              aspellDicts.en
+              aspellDicts.fr
+              flycheck
+              flycheck-pos-tip
 
-          # aspell
-          # aspellDicts.en
-          # aspellDicts.fr
-          # flycheck
-          # flycheck-pos-tip
+              markdown-mode
+              markdown-toc
+              org-trello
+              org2jekyll
+              auto-complete
+              ac-haskell-process
+              company
+              haskell-mode
+              structured-haskell-mode
+              ace-jump-mode
+              exec-path-from-shell
+              gnus
+              god-mode
+              magit
+              projectile
+              switch-window
+              smart-mode-line
+              undo-tree
+              use-package
+              dash
+              dash-functional
+              s
+              deferred
+              diminish
+              popup
+              helm
+              helm-swoop
 
-          markdown-mode
-          org-trello
-          auto-complete
-          ac-haskell-process
-          company
-          haskell-mode
-          structured-haskell-mode
-          ace-jump-mode
-          exec-path-from-shell
-          gnus
-          god-mode
-          magit
-          projectile
-          switch-window
-          smart-mode-line
-          undo-tree
-          use-package
-          dash
-          dash-functional
-          s
-          deferred
-          diminish
-          popup
-          helm
-          helm-swoop
-
-          # ag
-          # auctex
-          # change-inner
-          # circe
-          # expand-region
-          # hi2
-          # idris-mode
-          # monokai-theme
-          # org-plus-contrib
-          # smartparens
-          # volatile-highlights
-          # wgrep
-          # zenburn-theme
-
-        ];
-      };
+              # ag
+              # auctex
+              # change-inner
+              # circe
+              # expand-region
+              # hi2
+              # idris-mode
+              # monokai-theme
+              # org-plus-contrib
+              # smartparens
+              # volatile-highlights
+              # wgrep
+              # zenburn-theme
+            ])
+          )];
+        };
 
       emacslispEnv = defaultDevEnv {
         name = "emacslisp";
