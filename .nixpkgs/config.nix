@@ -259,6 +259,13 @@
         ];
       };
 
+      commonLispToolsEnv = buildEnv {
+        name = "commonLispTools";
+        paths = [
+          sbcl
+        ];
+      };
+
       wifiToolsEnv = buildEnv {
         name = "wifiTools";
         paths = [
@@ -390,9 +397,8 @@
           which
           hexedit
           pmount file
-          wget curl tree
+          tree
           gcc gnumake
-          mosh
           most
           pass
           xclip xsel pwgen keychain
@@ -412,7 +418,7 @@
           rlwrap
           fortune cowsay
           tmux bind rxvt_unicode urxvt_perls
-          bash zsh ruby
+          bash zsh
           graphviz
           p7zip unrar zip unzip
           acpi acpid acpitool
@@ -450,8 +456,12 @@
       multimediaToolsEnv = buildEnv {
         name = "multimediaTools";
         paths = [
-          gnome3.eog pinta scrot
-          vlc x264 mplayer
+          gnome3.eog
+          pinta
+          scrot
+          vlc
+          x264
+          # mplayer
           audacious
           ffmpeg
           imagemagick
@@ -470,7 +480,12 @@
 
       virtualToolsEnv = buildEnv {
         name = "virtualTools";
-        paths = [ linuxPackages.virtualbox packer vagrant docker ];
+        paths = [
+          linuxPackages.virtualbox
+          packer
+          vagrant
+          docker
+        ];
       };
 
       networkToolsEnv = buildEnv {
@@ -481,6 +496,24 @@
           netcat
           wireshark
           # x11vnc tightvnc
+          ansible
+          # arcanist
+          # aria
+          cacert
+          # fping
+          # httrack
+          iperf
+          mosh
+          mtr
+          openssl
+          rsync
+          # socat2pre
+          # spiped
+          wget
+          youtubeDL
+          # znc
+          openssh
+          curl
         ];
       };
 
@@ -493,7 +526,7 @@
       };
 
       graphicsToolsEnv = buildEnv {
-        name = "graphicsToolsEnv";
+        name = "graphicsTools";
         paths = with pkgs; [
           trayer
           x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
