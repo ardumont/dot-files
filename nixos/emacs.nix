@@ -1,17 +1,19 @@
 {config, pkgs, ...}:
 
 let emacs = pkgs.emacsWithPackages
-  (with pkgs.emacsPackages; with pkgs.emacsPackagesNg; [
-    aspell
-    aspellDicts.en
-    aspellDicts.fr
+  (with pkgs.emacs24Packages; with pkgs.emacs24PackagesNg; [
+    # aspell
+    # aspellDicts.en
+    # aspellDicts.fr
     flycheck
     flycheck-pos-tip
 
+    structured-haskell-mode
+    cask
     markdown-mode
-    markdown-toc
-    org-trello
-    org2jekyll
+    # markdown-toc
+    # org-trello
+    # org2jekyll
     auto-complete
     ac-haskell-process
     company
@@ -28,7 +30,7 @@ let emacs = pkgs.emacsWithPackages
     undo-tree
     use-package
     dash
-    dash-functional
+    # dash-functional
     s
     deferred
     diminish
@@ -50,9 +52,8 @@ let emacs = pkgs.emacsWithPackages
     # user service. This means I have to pass the "--user" option to
     # systemd when I want to control the service.
 
-    environment.systemPackages = [
-      emacs texinfo w3m emacs24Packages.cask aspell aspellDicts.en aspellDicts.fr
-      # emacs24PackagesNg.structured-haskell-mode
+    environment.systemPackages = with pkgs; [
+      emacs texinfo w3m
     ];
 
     systemd.user.services.emacs = {
