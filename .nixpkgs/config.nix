@@ -404,7 +404,7 @@
           peco
           htop # powertop
           filezilla
-          gnupg gnupg1 pinentry
+          gnupg pinentry
           autojump
           inotifyTools
           alsaUtils
