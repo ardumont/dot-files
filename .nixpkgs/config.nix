@@ -315,16 +315,17 @@
 
       python3DevToolsEnv = buildEnv {
         name = "python3DevTools";
-        paths = with pkgs; [
+        paths = with pkgs; with python34Packages; [
           python34
-          python34Packages.pygit2
-          python34Packages.sqlalchemy9
-          python34Packages.psycopg2
-          python34Packages.requests
-          python34Packages.nose
-          python34Packages.ipython
-          python34Packages.pip
-          python34Packages.flake8
+
+          pygit2
+          sqlalchemy9
+          psycopg2
+          requests
+          nose
+          ipython
+          pip
+          flake8
         ];
       };
 
