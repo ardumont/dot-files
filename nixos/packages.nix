@@ -86,7 +86,7 @@
     bash zsh ruby
     bundler
     zlib
-    firefoxWrapper conkeror chromium
+    firefoxWrapper conkeror #chromium
     graphviz
     nmap netcat wireshark
     p7zip unrar zip unzip
