@@ -1,5 +1,5 @@
 { pkgs,
-  emacsPackagesNg ? (import <nixpkgs> {}).emacsPackagesNg }:
+  emacsPackagesNgGen ? (import <nixpkgs> {}).emacsPackagesNgGen }:
 
 {
   firefox = {
