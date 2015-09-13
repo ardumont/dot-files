@@ -238,14 +238,14 @@
           deferred
           diminish
           popup
+          helm
+          helm-swoop
 
           # ag
           # auctex
           # change-inner
           # circe
           # expand-region
-          # helm
-          # helm-swoop
           # hi2
           # idris-mode
           # monokai-theme
