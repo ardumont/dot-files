@@ -64,7 +64,11 @@
 
      openGLToolsEnv = buildEnv {
        name = "openGLTools";
-       paths = [ xorg_sys_opengl mesa_glu freeglut ];
+       paths = [
+         xorg_sys_opengl
+         mesa_glu
+         freeglut
+       ];
      #   CABAL_INSTALL_EXTRA_FLAGS = ''
      #       --extra-lib-dirs=$xorg_sys_opengl/lib \
      #       --extra-lib-dirs=$mesa_glu/lib \
@@ -333,6 +337,7 @@
           ipython
           pip
           flake8
+          flask
         ];
       };
 
@@ -388,6 +393,14 @@
         ];
       };
 
+      phabricatorToolsEnv = buildEnv {
+        name = "phabricatorTools";
+        paths = [
+           # phabricator
+           arcanist
+        ];
+      };
+
       shellToolsEnv = buildEnv {
         name = "shellTools";
         paths = [
@@ -399,7 +412,7 @@
           pmount file
           tree
           gcc gnumake
-          most
+          #most
           pass
           xclip xsel pwgen keychain
           html2text
@@ -428,7 +441,14 @@
           unetbootin
           telnet
           ncurses
+          ncdu
+          urlview
         ];
+      };
+
+      syncToolsEnv = buildEnv {
+        name = "syncTools";
+        paths = [ syncthing ];
       };
 
       dvcsToolsEnv = buildEnv {
@@ -525,19 +545,54 @@
         ];
       };
 
-      graphicsToolsEnv = buildEnv {
-        name = "graphicsTools";
-        paths = with pkgs; [
-          trayer
-          x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
-          xscreensaver
-          firefoxWrapper conkeror #chromium
-          libreoffice
+      printScanToolsEnv = buildEnv {
+        name = "printScanTools";
+        paths = [
           xsane
-          cups samba
-          # libraries
+          cups
+          samba
+        ];
+      };
+
+      wysiwygEditorToolsEnv = buildEnv {
+        name = "wysiwygEditorTools";
+        paths = [
+          libreoffice
+        ];
+      };
+
+      browserToolsEnv = buildEnv {
+        name = "browserTools";
+        paths = [
+          firefoxWrapper
+          conkeror
+          #chromium
+        ];
+      };
+
+      libDevToolsEnv = buildEnv {
+        name = "libDevTools";
+        paths = [
           libxml2
           zlib
+        ];
+      };
+
+      x11ToolsEnv = buildEnv {
+        name = "x11Tools";
+        paths = with pkgs; [
+          dejavu_fonts
+          trayer
+          x11
+          xlibs.xmessage
+          xlibs.xmodmap
+          xdotool
+          x11_ssh_askpass
+          xlibs.xbacklight
+          xlibs.xdpyinfo
+          xlibs.xkill
+          xlibs.xhost
+          xscreensaver
         ];
       };
 
