@@ -467,9 +467,10 @@
       readerToolsEnv = buildEnv {
         name = "readerTools";
         paths = [
-          evince
+          #evince
           fbreader
           mcomix
+          apvlv
         ];
       };
 
