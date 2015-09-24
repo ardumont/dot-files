@@ -9,6 +9,7 @@
         buffer-pack/increment-number-at-point
         c-electric-delete-forward
         c-electric-semi&comma
+        comint-delchar-or-maybe-eof
         completion-at-point
         easy-kill
         easy-kill-digit-argument
@@ -67,6 +68,7 @@
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
         py-electric-colon
+        py-electric-comment
         py-indent-or-complete
         sgml-slash
         sh-assignment
@@ -87,6 +89,7 @@
         sp--self-insert-command
         sp-backward-delete-char
         sp-backward-sexp
+        sp-backward-slurp-sexp
         sp-delete-char
         sp-forward-sexp
         sp-forward-slurp-sexp
@@ -94,6 +97,7 @@
         sp-kill-word
         sp-remove-active-pair-overlay
         sp-splice-sexp
+        text-scale-decrease
         transpose-words
         yaml-electric-dash-and-dot
         ))
