@@ -179,27 +179,42 @@
       };
 
       # trying to enhance default environment setup for emacs (not tested yet)
-      # emacs = pkgs.emacs.overrideDerivation (args: rec {
-      #   withGTK3 = true;
-      #   withGTK2 = false;
-      #   pythonPath = [];
-      #   buildInputs = with pkgs; (args.buildInputs ++ [
-      #             makeWrapper
-      #             python
-      #             python27Packages.setuptools
-      #             python27Packages.pip
-      #         ]);
-      #   postInstall = with pkgs.python27Packages; (args.postInstall + ''
-      #     echo "This is PYTHONPATH: " $PYTHONPATH
-      #     wrapProgram $out/bin/emacs \
-      #         --prefix PYTHONPATH : "$(toPythonPath ${python}):$(toPythonPath ${ipython}):$(toPythonPath ${setuptools}):$(toPythonPath ${pip}):$PYTHONPATH";
-      #    '');
-      # });
+      emacs24 = self.emacs24.overrideDerivation (args: rec {
+        # withGTK3 = true;
+        # withGTK2 = false;
+        buildInputs = (args.buildInputs ++ [
+          makeWrapper
+          python3
+          python34Packages.elpy
+          python27Packages.rope
+          python34Packages.virtualenv
+          python34Packages.jedi
+          python34Packages.flake8
+          python34Packages.pyflakes
+          python34Packages.autopep8
+          python34Packages.pep8
+          python34Packages.importmagic
+        ]);
+        postInstall = with python34Packages; (args.postInstall + ''
+          echo "This is PYTHONPATH: " $PYTHONPATH
+          wrapProgram $out/bin/emacs \
+              --prefix PYTHONPATH : "$(toPythonPath ${python3}):$(toPythonPath ${ipython}):$(toPythonPath ${pip}):$PYTHONPATH" \
+              --prefix PYTHONPATH : "$(toPythonPath ${virtualenv})" \
+              --prefix PYTHONPATH : "$(toPythonPath ${elpy})" \
+              --prefix PYTHONPATH : "$(toPythonPath ${jedi})" \
+              --prefix PYTHONPATH : "$(toPythonPath ${autopep8})" \
+              --prefix PYTHONPATH : "$(toPythonPath ${pep8})" \
+              --prefix PYTHONPATH : "$(toPythonPath ${flake8})" \
+              --prefix PYTHONPATH : "$(toPythonPath ${pyflakes})" \
+              --prefix PYTHONPATH : "$(toPythonPath ${importmagic})" \
+              --prefix PYTHONPATH : "$(toPythonPath ${python27Packages.rope})";
+         '');
+      });
 
       # distribution emacs with other packages
       emacsToolsEnv = pkgs.buildEnv {
         name = "emacsTools";
-        ignoreCollisions = true;
+#        ignoreCollisions = true;
         paths = [
           (emacsWithPackages
             (with emacs24PackagesNg; [
@@ -220,7 +235,7 @@
               structured-haskell-mode
               ace-jump-mode
               exec-path-from-shell
-              gnus
+#             gnus
               god-mode
               magit
               projectile
@@ -236,7 +251,7 @@
               popup
               helm
               helm-swoop
-
+              elpy
               # ag
               # auctex
               # change-inner
@@ -250,18 +265,11 @@
               # volatile-highlights
               # wgrep
               # zenburn-theme
+
+              emacs24Packages.cask
             ])
           )];
         };
-
-      emacsLispToolsEnv = buildEnv {
-        name = "emacsLispTools";
-        paths = [
-          emacs
-          emacs24Packages.cask
-          python
-        ];
-      };
 
       commonLispToolsEnv = buildEnv {
         name = "commonLispTools";
@@ -328,15 +336,25 @@
         name = "python3DevTools";
         paths = with pkgs; with python34Packages; [
           python34
+          ipython
+          pip
+
+          python27Packages.rope
+
+          elpy
+          virtualenv
+          jedi
+          flake8
+          pyflakes
+          autopep8
+          pep8
+          #importmagic
 
           pygit2
           sqlalchemy9
           psycopg2
           requests
           nose
-          ipython
-          pip
-          flake8
           flask
         ];
       };
