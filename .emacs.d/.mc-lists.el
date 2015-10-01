@@ -100,6 +100,7 @@
         text-scale-decrease
         transpose-words
         yaml-electric-dash-and-dot
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once
