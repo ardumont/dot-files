@@ -5,7 +5,7 @@ var PLUGIN_INFO =
     <name>HoK</name>
     <description>Hit a hint for KeySnail</description>
     <description lang="ja">キーボードでリンクを開く</description>
-    <version>1.4.3</version>
+    <version>1.4.4</version>
     <updateURL>https://github.com/mooz/keysnail/raw/master/plugins/hok.ks.js</updateURL>
     <iconURL>https://github.com/mooz/keysnail/raw/master/plugins/icon/hok.icon.png</iconURL>
     <author mail="stillpedant@gmail.com" homepage="http://d.hatena.ne.jp/mooz/">mooz</author>
@@ -448,7 +448,7 @@ const pOptions = plugins.setupOptions("hok", {
     },
 
     "follow_link_candidate_selector": {
-        preset: "a[href], input:not([type='hidden']), button"
+        preset: "a[href], input:not([type='hidden']), button, img[alt]"
     }
 }, PLUGIN_INFO);
 
@@ -567,7 +567,9 @@ function followRel(doc, rel, pattern) {
     );
 
     for (let [, elem] in Iterator(relLinkCandidates.reverse())) {
-        if (relLinkPattern.test(elem.textContent) /*|| regex.test(elem.value) */) {
+        if (relLinkPattern.test(elem.textContent) ||
+            relLinkPattern.test(elem.alt) ||
+            relLinkPattern.test(elem.title)) {
             followLink(elem, CURRENT_TAB);
             return;
         }
@@ -894,11 +896,10 @@ var hok = function () {
 
         var hintSpan = doc.createElement('span');
 
-        let (st = hintSpan.style) {
-            for (let [prop, value] in Iterator(hintBaseStyle))
-                st[formatPropertyName(prop)] = value;
-            st.backgroundColor = hintColorLink;
-        };
+        let st = hintSpan.style;
+        for (let [prop, value] in Iterator(hintBaseStyle))
+            st[formatPropertyName(prop)] = value;
+        st.backgroundColor = hintColorLink;
 
         // }} ======================================================================= //
 
