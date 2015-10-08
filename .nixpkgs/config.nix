@@ -364,6 +364,9 @@
           pep8
           importmagic
           msgpack
+          dateutil
+          celery
+          retrying
 
           pygit2
           sqlalchemy9
