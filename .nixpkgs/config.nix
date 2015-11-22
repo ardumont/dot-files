@@ -517,6 +517,7 @@
           pinta
           scrot
           vlc
+          mpv
           x264
           # mplayer
           audacious
