@@ -67,11 +67,13 @@
         paredit-split-sexp
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
+        prelude-smart-open-line
         py-electric-colon
         py-electric-comment
         py-indent-or-complete
         sgml-slash
         sh-assignment
+        shm/:
         shm/backward-node
         shm/comma
         shm/comment
