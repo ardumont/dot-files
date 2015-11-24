@@ -20,21 +20,15 @@ import           XMonad.Layout.Monitor
 import           XMonad.Layout.NoBorders    (smartBorders)
 import           XMonad.Prompt
 import           XMonad.Prompt.AppLauncher  (launchApp)
+import           XMonad.Prompt.Pass         (passGeneratePrompt, passPrompt,
+                                             passRemovePrompt)
 import           XMonad.Prompt.RunOrRaise   (runOrRaisePrompt)
 import           XMonad.Prompt.Window
 import           XMonad.Prompt.XMonad       (xmonadPromptC)
 import qualified XMonad.StackSet            as W
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Run            (spawnPipe)
-import           XMonad.Util.Run            (spawnPipe)
 
-import           System.Directory           (getDirectoryContents,
-                                             getHomeDirectory)
-import           System.FilePath            (combine, takeBaseName)
-import           System.Posix.Env           (getEnv)
-import           XMonad.Prompt
-import           XMonad.Prompt.Pass         (passGeneratePrompt, passPrompt,
-                                             passRemovePrompt)
 
 -- | The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
