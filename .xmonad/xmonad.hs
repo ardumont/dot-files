@@ -266,14 +266,19 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   where -- Permits the search through the system browser
         searchSite = S.promptSearchBrowser myXPConfig myBrowser
         search     = SM.submap . mkKeymap conf $
-                     [ ("g"  , searchSite S.google)
+                     [ ("S-g", searchSite S.google)
                      , ("h"  , searchSite S.hoogle)
                      , ("S-h", searchSite S.hackage)
                      , ("a"  , searchSite S.amazon)
                      , ("i"  , searchSite S.imdb)
+                     , ("S-i", searchSite S.images)
+                     , ("d"  , searchSite S.deb)
                      , ("y"  , searchSite S.youtube)
                      , ("w"  , searchSite S.wikipedia)
-                     , ("d"  , searchSite S.duckduckgo)]
+                     , ("d"  , searchSite S.duckduckgo)
+                     , ("s"  , searchSite S.stackage)
+                     , ("S-w", searchSite S.wayback)
+                     , ("g"  , searchSite $ S.searchEngine "github" "search?utf8=✓&q=")]
         -- Rework the keymap description to extract the command description and the associated actions
         keymapDescription = map (\ (keybinding, xmonadActionDesc, xmonadAction) -> (xmonadActionDesc ++ " - " ++ keybinding, xmonadAction)) fullKeymap
         fullKeymap = myKeymapWithDescription home conf
