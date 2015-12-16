@@ -24,11 +24,11 @@ function two_screens {
     echo "two screens"
     xrandr --output $screen0 \
            --mode $res_screen0 \
-           --pos 0x0 \
+           --pos ${width}x0 \
            --rotate normal \
            --output $screen1 \
            --mode $res_screen1 \
-           --pos ${width}x0 \
+           --pos 0x0 \
            --rotate normal
 }
 
