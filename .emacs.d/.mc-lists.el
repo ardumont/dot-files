@@ -17,6 +17,7 @@
         easy-mark
         electric-graphviz-dot-semi
         end-of-buffer
+        end-of-visual-line
         flymake-display-err-menu-for-current-line
         forward-sexp
         haskell-indentation-delete-backward-char
@@ -65,6 +66,8 @@
         paredit-semicolon
         paredit-splice-sexp
         paredit-split-sexp
+        picture-beginning-of-line
+        picture-self-insert
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
         prelude-smart-open-line
@@ -108,4 +111,6 @@
 (setq mc/cmds-to-run-once
       '(
         handle-switch-frame
+        prelude-indent-defun
+        shm/hash
         ))
