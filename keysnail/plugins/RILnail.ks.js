@@ -8,7 +8,7 @@ let PLUGIN_INFO =
     <author>958</author>
     <iconURL>https://sites.google.com/site/958site/Home/files/RILnail.ks.png</iconURL>
     <updateURL>https://gist.github.com/958/895703/raw/RILnail.ks.js</updateURL>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
     <license>MIT</license>
     <minVersion>1.8.0</minVersion>
     <include>main</include>
@@ -95,19 +95,14 @@ hook.addToHook('PluginLoaded', function () {
 
     let AddRIL = function (elem) {
         if (elem) {
-            if (!elem)
-              throw "Not on a link";
             var link = RIL.bubbleToTagName(elem, 'A');
             var title = RIL.APP.stripTags(link.innerHTML);
-            if (title.length == 0) {
-              if (link.firstChild) {
-                //If it doesn't have content then it's probably an image link, so check the image for a title or alt label first
+            if (title.length == 0 && link.firstChild) {
                 if (link.firstChild.title.length > 0) {
-                  title = link.firstChild.title;
+                    title = link.firstChild.title;
                 } else if (link.firstChild.alt.length > 0) {
-                  title = link.firstChild.title;
+                    title = link.firstChild.title;
                 }
-              }
             }
             RIL.saveLink(link.href, title, RIL.xul('clickToSaveTags').value);
             display.echoStatusBar("Append Pocket - " + title, 3000);
@@ -130,7 +125,7 @@ hook.addToHook('PluginLoaded', function () {
 
 plugins.withProvides(function (provide) {
     provide("ril-append",
-        function (ev, arg) {
+        (ev, arg) => {
             let item = RIL.APP.LIST.itemByUrl(window.content.location.href);
             if (!item) {
                 let itemId = RIL.addCurrent();
@@ -139,7 +134,7 @@ plugins.withProvides(function (provide) {
         },
         M({ja: "Pocket - 現在のタブを Pocket に追加", en: "Pocket - Append current tab"}));
     provide("ril-remove",
-        function (ev, arg) {
+        (ev, arg) => {
             let item = RIL.APP.LIST.itemByUrl(window.content.location.href);
             if (item) {
                 RIL.markCurrentAsRead()
@@ -148,7 +143,7 @@ plugins.withProvides(function (provide) {
         },
         M({ja: "Pocket - 現在のタブを Pocket から削除", en: "Pocket - Remove current tab"}));
     provide("ril-toggle",
-        function (ev, arg) {
+        (ev, arg) => {
             let item = RIL.APP.LIST.itemByUrl(window.content.location.href);
             if (item) {
                 RIL.markCurrentAsRead()
@@ -160,7 +155,7 @@ plugins.withProvides(function (provide) {
         },
         M({ja: "Pocket - 現在のタブを Pocket に追加 または 削除", en: "Pocket - Append or remove current tab"}));
     provide("ril-append-and-close",
-        function (ev, arg) {
+        (ev, arg) => {
             let item = RIL.APP.LIST.itemByUrl(window.content.location.href);
             if (!item) {
                 let itemId = RIL.addCurrent();
@@ -172,41 +167,42 @@ plugins.withProvides(function (provide) {
         },
         M({ja: "Pocket - 現在のタブを Pocket に追加してタブを閉じる", en: "Pocket - Append current tab and close"}));
     provide("ril-open-text",
-        function (ev, arg) RIL.retrieveAndOpenTextForUrl(window.content.location.href, 'current'),
+        (ev, arg) => RIL.retrieveAndOpenTextForUrl(window.content.location.href, 'current'),
         M({ja: "Pocket - 現在のタブのテキストビューを表示", en: "Pocket - Open Text View current tab"}));
     provide("ril-open-text-tab",
-        function (ev, arg) RIL.retrieveAndOpenTextForUrl(window.content.location.href, 'tab'),
+        (ev, arg) => RIL.retrieveAndOpenTextForUrl(window.content.location.href, 'tab'),
         M({ja: "Pocket - 現在のタブのテキストビューを新しいタブで表示", en: "Pocket - Open Text View in new tab"}));
     provide("ril-open-text-background-tab",
-        function (ev, arg) RIL.retrieveAndOpenTextForUrl(window.content.location.href, 'tabshifted'),
+        (ev, arg) => RIL.retrieveAndOpenTextForUrl(window.content.location.href, 'tabshifted'),
         M({ja: "Pocket - 現在のタブのテキストビューをバックグラウンドタブで表示", en: "Pocket - Open Text View in new background tab"}));
     provide("ril-show-reading-list",
-        function (ev, arg) {
-            function getFaviconPath(uri, callback) {
-                var faviconService = PlacesUtils.favicons;
-                faviconService.getFaviconURLForPage(
-                    NetUtil.newURI(uri, null, null),
-                    {
-                        onComplete: function(aURI, aDataLen, aData, aMimeType) {
-                            callback((aURI) ? aURI.spec : "chrome://mozapps/skin/places/defaultFavicon.png");
-                        },
-                    }
-                );
+        (ev, arg) => {
+            function getFaviconPath(uri) {
+                return new Promise((resolve, reject) => {
+                    var faviconService = PlacesUtils.favicons;
+                    faviconService.getFaviconURLForPage(
+                        NetUtil.newURI(uri, null, null),
+                        {
+                            onComplete: (aURI, aDataLen, aData, aMimeType) => {
+                                resolve((aURI) ? aURI.spec : "chrome://mozapps/skin/places/defaultFavicon.png");
+                            },
+                        }
+                    );
+                })
             }
             function itemList() {
-                for (let i = 0; i < RIL.APP.LIST.list.length; i++) {
-                    yield {
-                        title: RIL.APP.LIST.list[i].title,
-                        url: RIL.APP.LIST.list[i].url,
-                        time: RIL.APP.LIST.list[i].timeUpdated,
-                        itemId: RIL.APP.LIST.list[i].itemId,
-                    };
-                }
-                yield null;
+                return RIL.APP.LIST.list.map((item) => {
+                    return {
+                        title: item.title,
+                        url: item.url,
+                        time: item.timeUpdated,
+                        itemId: item.itemId,
+                    }
+                });
             }
             function showSelector(collection) {
                 let sortType = pOptions['list_sort_type']
-                collection.sort(function(a,b)(sortType == 0) ?  ((a[4] < b[4]) ? 1 : -1) : ((a[4] < b[4]) ? -1 : 1));
+                collection.sort((a,b) =>(sortType == 0) ?  ((a[4] < b[4]) ? 1 : -1) : ((a[4] < b[4]) ? -1 : 1));
                 prompt.selector( {
                     message    : "pattern:",
                     collection : collection,
@@ -216,7 +212,7 @@ plugins.withProvides(function (provide) {
                     width      : [45, 45, 10],
                     keymap     : pOptions["keymap"],
                     actions    : [
-                        [function (aIndex, items) {
+                        [(aIndex, items) => {
                              if (items.length > 0 && aIndex >= 0) {
                                  let url = items[aIndex][2];
                                  openUILinkIn(url, "tab");
@@ -225,7 +221,7 @@ plugins.withProvides(function (provide) {
                          M({ja: '選択中アイテムを新しいタブで開く',
                             en: "Open in new tab"}),
                          "open"],
-                        [function (aIndex, items) {
+                        [(aIndex, items) => {
                              if (items.length > 0 && aIndex >= 0) {
                                  let url = items[aIndex][2];
                                  openUILinkIn(url, "tabshifted");
@@ -234,7 +230,7 @@ plugins.withProvides(function (provide) {
                          M({ja: '選択中アイテムを新しいバックグラウンドタブで開く',
                             en: "Open in background new tab"}),
                          "open-background"],
-                        [function (aIndex, items) {
+                        [(aIndex, items) => {
                              if (items.length > 0 && aIndex >= 0) {
                                  let url = items[aIndex][2];
                                  RIL.retrieveAndOpenTextForUrl(url, 'tab');
@@ -243,7 +239,7 @@ plugins.withProvides(function (provide) {
                          M({ja: '選択中アイテムのテキストビューを新しいタブで開く',
                             en: "Open Text View in new tab"}),
                          "open-text"],
-                        [function (aIndex, items) {
+                        [(aIndex, items) => {
                              if (items.length > 0 && aIndex >= 0) {
                                  let url = items[aIndex][2];
                                  RIL.retrieveAndOpenTextForUrl(url, 'tabshifted');
@@ -252,14 +248,14 @@ plugins.withProvides(function (provide) {
                          M({ja: '選択中アイテムのテキストビューを新しいバックグラウンドタブで開く',
                             en: "Open Text View in background new tab"}),
                          "open-text-background"],
-                        [function (aIndex, items) {
+                        [(aIndex, items) => {
                              if (items.length > 0 && aIndex >= 0)
                                  removeItem(items, aIndex, true);
                          },
                          M({ja: '選択中アイテムを削除する',
                             en: "Delete"}),
                          "delete,c"],
-                        [function (aIndex, items) {
+                        [(aIndex, items) => {
                              if (RIL.APP.SYNC.syncing && !RIL.APP.SYNC.syncInBackgroundTillResults)
                                  RIL.APP.SYNC.cancelSync();
                              else
@@ -283,13 +279,7 @@ plugins.withProvides(function (provide) {
                      prompt.refresh();
             }
 
-            let items = itemList();
-            let collection = [];
-            let item = items.next();
-            if (!item)
-                return;
-
-            getFaviconPath(item.url, function(favicon) {
+            function collect(favicon) {
                 collection.push([
                     favicon,
                     html.unEscapeTag(item.title).replace(/&amp;/g, '&'),
@@ -300,10 +290,29 @@ plugins.withProvides(function (provide) {
                 ]);
                 item = items.next();
                 if (item)
-                    getFaviconPath(item.url, arguments.callee);
+                    getFaviconPath(item.url).then(collect);
                 else
                     showSelector(collection);
-            });
+            }
+
+            let items = itemList();
+            let collection = [];
+            items.reduce(
+                (promise, item) => {
+                    return getFaviconPath(item.url).then((favicon) => {
+                        collection.push([
+                            favicon,
+                            html.unEscapeTag(item.title).replace(/&amp;/g, '&'),
+                            item.url,
+                            toAgo(item.time * 1000),
+                            item.time,
+                            item.itemId
+                        ]);
+                    });
+                }, Promise.resolve())
+                .then(() => {
+                    showSelector(collection);
+                });
         },
         M({ja: "Pocket - リストを表示", en: "Pocket - Show reading list"}));
 }, PLUGIN_INFO);
