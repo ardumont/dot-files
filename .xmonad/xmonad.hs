@@ -154,7 +154,6 @@ myKeymapWithDescription home conf @(XConfig { terminal   = myTerm
   , (prefix "C-r"       , "simplescreenrecorder"       , runOrRaiseNext "simplescreenrecorder"                         (appName =? "simplescreenrecorder" <&&> className =? "Simplescreenrecorder"))
   , (prefix "S-j"       , "visualvm"                   , myRunOrRaise home "applications/visualvm/bin/visualvm"        (className =? "java-lang-Thread"))
   , (prefix "S-l"       , "sqldeveloper"               , myRunOrRaise home "applications/sqldeveloper/sqldeveloper.sh" (appName =? "sun-awt-X11-XFramePeer"))
-  , (prefix "S-g"       , "gparted"                    , myRunOrRaise home "bin/admin/gparted.sh"                      (appName =? "gpartedbin" <&&> className =? "Gpartedbin"))
   , (prefix "S-u"       , "usb-creator-gtk"            , myRunOrRaise home "bin/admin/usb-creator.sh"                  (appName =? "usb-creator-gtk" <&&> className =? "Usb-creator-gtk"))
   , (prefix "C-m"       , "mail"                       , runOrRaiseNext "evolution"                                    (className =? ".evolution-wrapped"))
   , (prefix "M1-r"      , "remmina"                    , runOrRaiseNext "remmina"                                      (className =? ".remmina-wrapped"))
