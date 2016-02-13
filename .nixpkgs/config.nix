@@ -266,6 +266,7 @@
               popup
               helm
               helm-swoop
+              yasnippet
               # ag
               # auctex
               # change-inner
@@ -278,7 +279,6 @@
               # smartparens
               # volatile-highlights
               # wgrep
-              # zenburn-theme
 
               emacs24Packages.cask
             ])
