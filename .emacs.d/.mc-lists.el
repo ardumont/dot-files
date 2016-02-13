@@ -17,6 +17,7 @@
         easy-mark
         electric-graphviz-dot-semi
         end-of-buffer
+        end-of-defun
         end-of-visual-line
         flymake-display-err-menu-for-current-line
         forward-sexp
