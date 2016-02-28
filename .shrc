@@ -4,14 +4,14 @@
 # Load path
 [ -f ~/.shrc-path ] && . ~/.shrc-path
 
-# Load env variable
+# Load env variables
 [ -f ~/.shrc-env ] && . ~/.shrc-env
 
 # Load specific work shrc
 [ -f ~/work/.shrc ] && . ~/work/.shrc
 
-# deal with nix-env and non-nix-env
-[ -f ~/.shrc-nix-env ] && . ~/.shrc-nix-env
+# completion mechanism
+[ -f ~/.shrc-completion ] && . ~/.shrc-completion
 
 # Disable touchpad when typing
 [ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh

@@ -70,8 +70,5 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.shrc ] && . ~/.shrc
 
-# autojump
-[ -f $AUTOJUMP_HOME/share/autojump/autojump.zsh ] && . $AUTOJUMP_HOME/share/autojump/autojump.zsh
-
 # O(caml)PAM configuration
 [ -f $HOME/.opam/opam-init/init.zsh ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
