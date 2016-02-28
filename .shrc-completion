@@ -3,7 +3,6 @@
 if [ $DISTRIB = "debian" ]; then
 
     [ -f /usr/share/zsh/vendor_completions/_tmuxinator ] && source /usr/share/zsh/vendor_completions/_tmuxinator
-    [ -f /usr/share/autojump/autojump.zsh ] && source /usr/share/autojump/autojump.zsh
 
 elif [ $DISTRIB = "nixos" ]; then
 
