@@ -233,16 +233,16 @@
               notmuch
 
               elpy
-              aspell
-              aspellDicts.en
-              aspellDicts.fr
+              # aspell
+              # aspellDicts.en
+              # aspellDicts.fr
               flycheck
               flycheck-pos-tip
 
-              markdown-mode
-              markdown-toc
-              org-trello
-              org2jekyll
+              # markdown-mode
+              # markdown-toc
+              # org-trello
+              # org2jekyll
               auto-complete
               ac-haskell-process
               company
@@ -267,18 +267,18 @@
               helm
               helm-swoop
               yasnippet
-              # ag
-              # auctex
-              # change-inner
-              # circe
-              # expand-region
-              # hi2
-              # idris-mode
-              # monokai-theme
-              # org-plus-contrib
-              # smartparens
-              # volatile-highlights
-              # wgrep
+              ag
+              auctex
+              change-inner
+              circe
+              expand-region
+              hi2
+              idris-mode
+              monokai-theme
+              org-plus-contrib
+              smartparens
+              volatile-highlights
+              wgrep
 
               emacs24Packages.cask
             ])
