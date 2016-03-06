@@ -9,6 +9,6 @@
     ./hardware-configuration.nix
     ./sound.nix
     ../mounts.nix
-    ../dev-box.nix
+    ../dev-box/xserver.nix
   ];
 }
