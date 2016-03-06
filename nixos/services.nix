@@ -5,7 +5,7 @@
   services = {
     locate = {
       enable = true;
-      period = "00 19 * * *"; # update db at 19h every day
+      interval = "00 19 * * *"; # update db at 19h every day
     };
 
     openssh.enable = true;
