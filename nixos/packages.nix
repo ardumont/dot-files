@@ -8,8 +8,8 @@
     http://hydra.cryp.to
   ];
 
-  # nixpkgs.config = {
-  #   allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
 
   #   firefox = {
   #     # enableAdobeFlash = true;
@@ -32,7 +32,7 @@
   #     #   packages = with pkgs.haskellngPackages.ghcWithPackages; [ xmonad-contrib xmonad-extras ];
   #     # };
   #   };
-  # };
+  };
 
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
@@ -57,10 +57,11 @@
     which
     peco
     nix-repl
-    gnome3_16.nautilus gnome3_16.gnome_settings_daemon
-    gnome3_16.eog pinta scrot
+    # gnome3_16.nautilus gnome3_16.gnome_settings_daemon
+    # gnome3_16.eog
+    pinta scrot
     vlc x264 mplayer
-    gnome3_16.zenity
+    # gnome3_16.zenity
     transmission_gtk
     audacious
     linuxPackages.virtualbox packer vagrant docker
@@ -100,29 +101,29 @@
     alsaUtils
     lsof
     darcs
-    (haskellngPackages.ghcWithPackages (self : [
-       self.cabal-install
-       self.xmonad
-       self.xmonad-contrib
-       self.xmonad-extras
-       self.xmobar
-       self.pandoc
-       self.stack
-       # self.ncurses
-       # haskell-pack deps
-       self.stylish-haskell
-       self.structured-haskell-mode
-       self.hlint
-       self.hasktags
-       # self.cabal2nix
-       # self.lens
-       # self.hdevtools
-       # self.zlib
-       # self.mtl
-       # self.HUnit
-       # self.QuickCheck
-       # self.hoogle
-    ]))
+    # (haskellngPackages.ghcWithPackages (self : [
+    #    self.cabal-install
+    #    self.xmonad
+    #    self.xmonad-contrib
+    #    self.xmonad-extras
+    #    self.xmobar
+    #    self.pandoc
+    #    self.stack
+    #    # self.ncurses
+    #    # haskell-pack deps
+    #    self.stylish-haskell
+    #    self.structured-haskell-mode
+    #    self.hlint
+    #    self.hasktags
+    #    # self.cabal2nix
+    #    # self.lens
+    #    # self.hdevtools
+    #    # self.zlib
+    #    # self.mtl
+    #    # self.HUnit
+    #    # self.QuickCheck
+    #    # self.hoogle
+    # ]))
     rlwrap
     fortune cowsay
     ffmpeg
