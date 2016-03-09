@@ -9,27 +9,28 @@ res_screen1=1920x1200
 
 screen0=eDP1
 
-function one_screen {
-    echo "one screen"
+function plug_screen {
+    echo "$screen0 plugged!"
     xrandr --output $screen0 \
            --mode $res_screen0 \
            --pos 0x0 \
-           --rotate normal \
-           --output $screen1 \
-           --off
+           --rotate normal
+    for screen in $(xrandr | grep " disconnected" | cut -d' ' -f1); do
+        xrandr --output $screen --off
+    done
 }
 
-function two_screens {
-    echo "two screens"
+function plug_screens {
+    echo "$screen0 and $screen1 plugged!"
     screen1=$1
     res_screen1=$2
-    xrandr --output $screen0 \
-           --mode $res_screen0 \
-           --pos ${width}x0 \
-           --rotate normal \
-           --output $screen1 \
+    xrandr --output $screen1 \
            --mode $res_screen1 \
            --pos 0x0 \
+           --rotate normal \
+           --output $screen0 \
+           --right-of $screen1 \
+           --mode $res_screen0 \
            --rotate normal
 }
 
@@ -42,4 +43,5 @@ else
     height1=1080
 fi
 
-[ $status_connected -eq 2 ] && two_screens $screen1 ${width}x${height1} || one_screen $screen0
+[ $status_connected -eq 2 ] && plug_screens $screen1 ${width}x${height1} \
+        || plug_screen $screen0
