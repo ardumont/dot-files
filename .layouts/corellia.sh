@@ -8,7 +8,6 @@ res_screen0=${width}x${height}
 res_screen1=1920x1200
 
 screen0=eDP1
-screen1=HDMI1
 
 function one_screen {
     echo "one screen"
@@ -22,6 +21,8 @@ function one_screen {
 
 function two_screens {
     echo "two screens"
+    screen1=$1
+    res_screen1=$2
     xrandr --output $screen0 \
            --mode $res_screen0 \
            --pos ${width}x0 \
@@ -32,6 +33,13 @@ function two_screens {
            --rotate normal
 }
 
-status_connected=$(xrandr | grep -i " connected" | grep -i $screen1)
+status_connected=$(xrandr | grep -i " connected" | wc -l)
 
-[ ! -z "$status_connected" ] && two_screens || one_screen
+screen1=$(xrandr | grep -i " connected" | grep -v $screen0 | cut -d' ' -f1)
+if [ "$screen1" = "HDMI1" ]; then
+    height1=1200
+else
+    height1=1080
+fi
+
+[ $status_connected -eq 2 ] && two_screens $screen1 ${width}x${height1} || one_screen $screen0
