@@ -10,28 +10,18 @@
 # for non nixos-machine using nix
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
-GPG_AGENT_INFO_PATH=$HOME/.gnupg/.gpg-agent-info
+# from man gpg-agent
 
-pidof gpg-agent 2>&1 > /dev/null
-if [ ! $? = 0 ]; then # clean up the mess left behind
-    rm -f $GPG_AGENT_INFO_PATH
-fi
+GPG_TTY=$(tty)
+export GPG_TTY
 
-if [ -f $GPG_AGENT_INFO_PATH ]; then
-    . $GPG_AGENT_INFO_PATH
-    export GPG_AGENT_INFO
-    #export SSH_AUTH_INFO # typo? Need to check on NixOS
-    export SSH_AUTH_SOCK
-    export SSH_AGENT_PID
-else
-    # trigger the gpg agent (and it deals with ssh support too!)
-    gpg-agent --daemon \
-              --enable-ssh-support \
-              --write-env-file $GPG_AGENT_INFO_PATH
-fi
-
-gpg-connect-agent updatestartuptty /bye 2>&1 >/dev/null
+# start the secure shell agent included in gpg
 gpg-connect-agent /bye 2>&1 >/dev/null
+
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+fi
 
 # Make the user units aware of his/her environment
 systemctl --user import-environment GPG_AGENT_INFO SSH_AUTH_SOCK SSH_AGENT_PID PATH DISPLAY XAUTHORITY
