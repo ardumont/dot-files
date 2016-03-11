@@ -16,4 +16,5 @@
 # Disable touchpad when typing
 [ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh
 
-fortune | cowsay
+(which fortune 2>&1 >/dev/null) && (which cowsay 2>&1 >/dev/null) && \
+    fortune | cowsay
