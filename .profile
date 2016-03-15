@@ -16,7 +16,8 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 # start the secure shell agent included in gpg
-gpg-connect-agent /bye 2>&1 >/dev/null
+gpg-connect-agent --quiet /bye
+gpg-connect-agent --quiet updatestartuptty /bye 2>&1 >/dev/null
 
 unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
