@@ -10,7 +10,7 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="half-life"
 #ZSH_THEME="lambda"
 #ZSH_THEME="linuxonly"
-ZSH_THEME="ys"
+#ZSH_THEME="ys"
 #ZSH_THEME="terminalparty"
 
 # Example aliases
@@ -72,3 +72,5 @@ source $ZSH/oh-my-zsh.sh
 
 # O(caml)PAM configuration
 [ -f $HOME/.opam/opam-init/init.zsh ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
+
+[ -f /usr/share/powerline/bindings/zsh/powerline.zsh ] && . /usr/share/powerline/bindings/zsh/powerline.zsh
