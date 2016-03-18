@@ -30,9 +30,6 @@ values."
      markdown
      org
      python
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
      spell-checking
      syntax-checking
      ;; version-control
