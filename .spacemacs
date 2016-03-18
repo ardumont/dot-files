@@ -259,8 +259,17 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-M-h") 'backward-kill-word)
   (global-set-key (kbd "C-h") 'backward-delete-char)
+  (global-set-key (kbd "C-x b") 'helm-buffers-list)
+  (global-set-key (kbd "M-?") 'help-command)
 
-  (global-set-key (kbd "M-?") 'help-command))
+  (add-hook 'ido-setup-hook
+            (lambda () ;; ~ to go straight home, // to go in /
+              (define-key ido-file-completion-map (kbd "~") (lambda ()
+                                                              (interactive)
+                                                              (if (looking-back "/")
+                                                                  (insert "~/")
+                                                                (call-interactively 'self-insert-command))))))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
