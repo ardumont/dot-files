@@ -29,14 +29,20 @@ values."
      git
      markdown
      org
-     haskell
      python
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
+     spell-checking
+     syntax-checking
      ;; version-control
+     (haskell :variables
+              haskell-enable-hindent-style "chris-done"
+              haskell-enable-shm-support t)
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom
+            shell-default-term-shell "/usr/bin/zsh")
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
