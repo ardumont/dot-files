@@ -266,6 +266,8 @@ layers configuration. You are free to put any user code."
                                                               (if (looking-back "/")
                                                                   (insert "~/")
                                                                 (call-interactively 'self-insert-command))))))
+
+  (setq powerline-default-separator 'arrow)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
