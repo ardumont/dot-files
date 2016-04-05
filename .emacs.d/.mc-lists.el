@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        backward-delete-char
         backward-kill-sexp
         backward-sexp
         beginning-of-buffer
