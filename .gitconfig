@@ -59,3 +59,6 @@
 
 # [url "https://"]
 # 	insteadOf = git://
+
+[commit]
+	gpgsign = true
