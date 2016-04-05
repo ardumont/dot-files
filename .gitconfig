@@ -1,6 +1,7 @@
 [user]
 	name            = Antoine R. Dumont (@ardumont)
 	email		= antoine.romain.dumont@gmail.com
+	signingkey      = 0D10C3B8
 
 [core]
 	editor		= emacsclient -nw
