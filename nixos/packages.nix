@@ -37,7 +37,10 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    python3
+    python3 sshfsFuse
+    python34Packages.powerline
+    powerline-fonts
+    stack
     xorg_sys_opengl mesa_glu freeglut
     cabal2nix
     hexedit
@@ -57,11 +60,11 @@
     which
     peco
     nix-repl
-    # gnome3_16.nautilus gnome3_16.gnome_settings_daemon
-    # gnome3_16.eog
+    # gnome3_18.nautilus gnome3_18.gnome_settings_daemon
+    # gnome3_18.eog
     pinta scrot
     vlc x264 mplayer
-    # gnome3_16.zenity
+    # gnome3_18.zenity
     transmission_gtk
     audacious
     linuxPackages.virtualbox packer vagrant docker
@@ -71,7 +74,7 @@
     gnupg gnupg1 pinentry
     pmount file
     wget curl tree
-    gcc gnumake
+    gcc gnumake qemu
     bittorrentSync20
     trayer
     networkmanagerapplet
