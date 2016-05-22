@@ -73,6 +73,7 @@
     git gitAndTools.tig gitAndTools.hub gitg meld
     libgit2
     gnupg pinentry
+    gnupg gnupg1 pinentry
     pmount file
     wget curl tree
     gcc gnumake qemu
