@@ -64,7 +64,7 @@
     # gnome3_18.eog
     pinta scrot
     vlc x264 mplayer
-    # gnome3_18.zenity
+    gnome3.zenity
     # transmission_gtk
     # audacious
     # linuxPackages.virtualbox packer vagrant docker
