@@ -22,7 +22,7 @@
   #     enablePepperPDF = true;
   #   };
 
-  #   packageOverrides = pkgs: {
+    packageOverrides = pkgs: {
   #     # override the default pidgin with plugins (empty by default)
   #     pidgin-with-plugins = pkgs.pidgin-with-plugins.override {
   #       plugins = with pkgs; [ pidginotr skype4pidgin ];
@@ -31,7 +31,9 @@
   #     # xmonad-with-packages = pkgs.xmonad-with-packages.override {
   #     #   packages = with pkgs.haskellngPackages.ghcWithPackages; [ xmonad-contrib xmonad-extras ];
   #     # };
-  #   };
+
+       gnupg1compat = pkgs.gnupg1compat.override { gnupg = pkgs.gnupg21; };
+    };
   };
 
   # List packages installed in system profile. To search by name, run:
@@ -72,7 +74,7 @@
     # filezilla
     git gitAndTools.tig gitg meld
     # gitAndTools.hub
-    gnupg gnupg1 pinentry
+    gnupg gnupg1compat pinentry
     pmount file
     wget curl tree
     gcc gnumake qemu
