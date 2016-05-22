@@ -75,6 +75,7 @@
     git gitAndTools.tig gitg meld
     # gitAndTools.hub
     gnupg gnupg1compat pinentry
+    cryptsetup
     pmount file
     wget curl tree
     gcc gnumake qemu
