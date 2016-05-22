@@ -7,7 +7,7 @@
     drivers = [
       pkgs.gutenprint
       (pkgs.lib.overrideDerivation pkgs.hplip (attrs: {
-        name = "hplip-3.15.4";
+        # name = "hplip-3.15.4";
         # Support for HP scanners
         withPlugin = true;
       }))
