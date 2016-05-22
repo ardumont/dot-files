@@ -14,15 +14,9 @@
 
 GPG_TTY=$(tty)
 export GPG_TTY
-
-# start the secure shell agent included in gpg
 gpg-connect-agent --quiet /bye
-gpg-connect-agent --quiet updatestartuptty /bye 2>&1 >/dev/null
-
 unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-    export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
-fi
+export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 
 # Make the user units aware of his/her environment
 systemctl --user import-environment GPG_AGENT_INFO SSH_AUTH_SOCK SSH_AGENT_PID PATH DISPLAY XAUTHORITY

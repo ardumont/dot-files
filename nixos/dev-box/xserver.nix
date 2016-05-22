@@ -4,7 +4,6 @@
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
 
   services.xserver = {
-    startGnuPGAgent = true;
     enable = true;
     exportConfiguration = true; # create link /etc/X11/xorg.conf to real conf
 

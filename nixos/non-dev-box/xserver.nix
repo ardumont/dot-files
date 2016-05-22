@@ -4,7 +4,6 @@
   programs.ssh.startAgent = false; # do not start agent
 
   services.xserver = {
-    startGnuPGAgent = true;  # will be dealt with by the desktop manager
     enable = true;
     exportConfiguration = true; # create link /etc/X11/xorg.conf to real conf
 
