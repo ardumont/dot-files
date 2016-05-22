@@ -41,7 +41,7 @@
     python34Packages.powerline
     powerline-fonts
     stack
-    xorg_sys_opengl mesa_glu freeglut
+#    xorg_sys_opengl mesa_glu freeglut
     cabal2nix
     hexedit
     bc
@@ -50,8 +50,8 @@
     nix-prefetch-scripts nix-repl nixops nox
     psmisc # fuser
     python python27Packages.screenkey
-    pidgin-with-plugins
-    androidsdk_4_4
+   # pidgin-with-plugins
+   # androidsdk_4_4
     wmname
     feh
     # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
@@ -65,36 +65,35 @@
     pinta scrot
     vlc x264 mplayer
     # gnome3_18.zenity
-    transmission_gtk
-    audacious
-    linuxPackages.virtualbox packer vagrant docker
+    # transmission_gtk
+    # audacious
+    # linuxPackages.virtualbox packer vagrant docker
     evince fbreader mcomix
-    filezilla
-    git gitAndTools.tig gitAndTools.hub gitg meld libgit2
-    gnupg gnupg1 pinentry
+    # filezilla
+    git gitAndTools.tig gitAndTools.hub gitg meld
+    libgit2
+    gnupg pinentry
     pmount file
     wget curl tree
     gcc gnumake qemu
-    bittorrentSync20
     trayer
     networkmanagerapplet
     x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
     libxml2
-    mosh
     offlineimap notmuch
     most
-    xclip xsel pass pwgen keychain
+    xclip xsel pass pwgen
     htop # powertop
     tmux bind rxvt_unicode urxvt_perls
-    bash zsh ruby
-    bundler
+    bash zsh
+    ruby bundler
     zlib
     firefoxWrapper conkeror #chromium
     graphviz
     nmap netcat wireshark
     p7zip unrar zip unzip
     acpi acpid acpitool
-    clojure leiningen jdk
+    # clojure leiningen jdk
     gparted testdisk
     binutils
     pmutils
