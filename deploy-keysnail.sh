@@ -6,12 +6,13 @@
 ######### STATIC
 
 REPO_DOTFILES=$(dirname $0)
-FF_FOLDER=$HOME/.mozilla/firefox
+FF_FOLDER=${1-$HOME/.mozilla/firefox}
+DOT_KEYSNAIL=${2-$HOME}
 
 if [ -d $FF_FOLDER ]; then
     ######### PREPARE
 
-    bash ~/bin/deploy/install.sh haskell-platform
+    # bash ~/bin/deploy/install.sh haskell-platform
 
     mkdir -p $FF_FOLDER
 
@@ -37,5 +38,5 @@ if [ -d $FF_FOLDER ]; then
     # Force link creation
     ln -nsf $REPO_DOTFILES/$KEYSNAIL_EXTENSION $FOLDER_FIREFOX_EXTENSIONS # install firefox extension keysnail
     ln -nsf $REPO_DOTFILES/keysnail $FOLDER_KEYSNAIL_EXTENSIONS           # install keysnail extensions
-    ln -nsf $REPO_DOTFILES/.keysnail.js $HOME                             # install user's keysnail preference file
+    ln -nsf $REPO_DOTFILES/.keysnail.js $DOT_KEYSNAIL                     # install user's keysnail preference file
 fi
