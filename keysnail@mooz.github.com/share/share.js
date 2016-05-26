@@ -213,15 +213,23 @@ let persist = {
             return null;
         }
 
-        return JSON.parse(str);
+        try {
+            return JSON.parse(str);
+        } catch (x) {
+            return null;
+        }
     }
 };
 
 let share = {
-    get WINDOWS() (let (xr = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime))
-                   (/windows/i.test(xulRuntime.OS))),
-    get MAC() (let (xr = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime))
-               (/darwin/i.test(xulRuntime.OS)))
+    get WINDOWS() {
+      let xr = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
+      return /windows/i.test(xr.OS) || /winnt/i.test(xr.OS);
+    },
+    get MAC() {
+      let xr = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
+      return /darwin/i.test(xr.OS);
+    }
 };
 
 // }} ======================================================================= //
@@ -235,7 +243,7 @@ function hookApplicationQuit() {
 
     quitObserver.prototype = {
         observe: function(subject, topic, data) {
-            for (let [name, obj] in Iterator(persist.registeredObjects))
+            for (let [name, obj] of util.keyValues(persist.registeredObjects))
             {
                 persist.preserve(obj, name);
             }
