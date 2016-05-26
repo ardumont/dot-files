@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  system.autoUpgrade.enable = true;
+
   system.activationScripts.media =
   ''
     mkdir -m 0755 -p /media /share
