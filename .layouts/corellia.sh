@@ -7,7 +7,7 @@ height=1080
 res_screen0=${width}x${height}
 res_screen1=1920x1200
 
-screen0=eDP1
+screen0=eDP-1
 
 function plug_screen {
     screen0=$1
@@ -38,8 +38,8 @@ function plug_screens {
 
 status_connected=$(xrandr | grep -i " connected" | wc -l)
 
-screen1=$(xrandr | grep -i " connected" | grep -v $screen0 | cut -d' ' -f1)
-if [ "$screen1" = "HDMI1" ]; then
+screen1=$(xrandr | grep -i " connected" | grep -v "$screen0" | cut -d' ' -f1)
+if [ "$screen1" = "HDMI-1" ]; then
     height1=1200
 fi
 
