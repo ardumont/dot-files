@@ -44,8 +44,8 @@
      displayManager.lightdm.enable = true;
      # displayManager.dm.enable = true;
 
-    # activate gpu
-    vaapiDrivers = [ pkgs.vaapiIntel ];
   };
 
+  # activate gpu
+  hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
 }

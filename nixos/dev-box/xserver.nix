@@ -75,8 +75,8 @@
       exec ${haskellPackages.xmonad}/bin/xmonad
     '';
 
-    # activate gpu
-    vaapiDrivers = [ pkgs.vaapiIntel ];
   };
 
+  # activate gpu
+  hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
 }
