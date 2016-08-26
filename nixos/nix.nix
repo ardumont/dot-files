@@ -3,7 +3,7 @@
 {
   nix = {
     # for dev
-    useChroot = true;
+    useSandbox = true;
     extraOptions = ''
       gc-keep-outputs = true
       gc-keep-derivations = true
