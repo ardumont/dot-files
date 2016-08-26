@@ -47,7 +47,6 @@
     stack
 #    xorg_sys_opengl mesa_glu freeglut
     qemu
-    sshfs
     cabal2nix
     hexedit
     bc
