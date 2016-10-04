@@ -11,12 +11,12 @@
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
 # from man gpg-agent
-
+gpg-connect-agent /bye
 GPG_TTY=$(tty)
 export GPG_TTY
-gpg-connect-agent --quiet /bye
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+
+unset SSH_AUTH_SOCK
+export SSH_AUTH_SOCK="/run/user/$(id -u ${USER})/gnupg/S.gpg-agent.ssh"
 
 # Make the user units aware of his/her environment
-systemctl --user import-environment GPG_AGENT_INFO SSH_AUTH_SOCK SSH_AGENT_PID PATH DISPLAY XAUTHORITY
+systemctl --user import-environment GPG_AGENT_INFO SSH_AUTH_SOCK PATH DISPLAY XAUTHORITY
