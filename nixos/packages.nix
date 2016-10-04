@@ -39,6 +39,8 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    qemu
+    sshfs
     python3
     # python34Packages.powerline
     powerline-fonts
