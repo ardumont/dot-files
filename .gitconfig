@@ -62,3 +62,7 @@
 
 [commit]
 	gpgsign = true
+
+
+[diff]
+	compactionHeuristic = True
