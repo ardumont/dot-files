@@ -41,7 +41,7 @@
   environment.systemPackages = with pkgs; [
     libzip sqlite xorg.libX11
     python3 sshfsFuse
-    # python34Packages.powerline
+    python34Packages.powerline
     powerline-fonts
     stack
 #    xorg_sys_opengl mesa_glu freeglut
