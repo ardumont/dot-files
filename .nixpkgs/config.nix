@@ -222,6 +222,11 @@
       #    '');
       # });
 
+      # bigEmacs = with pkgs.emacs24PackagesNg; emacsWithPackages (with melpaStablePackages; [
+      # ag # ; search using the 'ag' command (better grep)
+      # ace-link # ; type o in help-mode to go to a link
+      # ... ]);
+
       # distribution emacs with other packages
       emacsToolsEnv = pkgs.buildEnv {
         name = "emacsTools";
