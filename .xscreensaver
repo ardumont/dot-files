@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.30 for tony on Tue Mar 17 19:09:50 2015.
+# Written by xscreensaver-demo 5.33 for tony on Sun Apr  3 14:02:49 2016.
 # http://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -253,6 +253,11 @@ programs:								      \
   GL: 				projectiveplane -root			    \n\
 				tessellimage -root			    \n\
   GL: 				winduprobot -root			    \n\
+				binaryring -root			    \n\
+  GL: 				cityflow -root				    \n\
+  GL: 				geodesicgears -root			    \n\
+  GL: 				romanboy -root				    \n\
+  GL: 				splitflap -root				    \n\
 
 
 pointerPollTime:    0:00:05
