@@ -12,6 +12,7 @@
         c-electric-semi&comma
         comint-delchar-or-maybe-eof
         completion-at-point
+        crux-move-beginning-of-line
         easy-kill
         easy-kill-digit-argument
         easy-kill-region
@@ -22,6 +23,7 @@
         end-of-visual-line
         flymake-display-err-menu-for-current-line
         forward-sexp
+        haskell-indentation-common-electric-command
         haskell-indentation-delete-backward-char
         haskell-indentation-delete-char
         haskell-newline-and-indent
@@ -73,6 +75,7 @@
         prelude-decrement-integer-at-point
         prelude-move-beginning-of-line
         prelude-smart-open-line
+        puppet-interpolate
         py-electric-colon
         py-electric-comment
         py-indent-or-complete
@@ -82,11 +85,13 @@
         shm/backward-node
         shm/comma
         shm/comment
+        shm/copy-region
         shm/del
         shm/double-quote
         shm/forward-node
         shm/hyphen
         shm/kill-line
+        shm/mark-node
         shm/open-paren
         shm/space
         shm/splice
@@ -115,4 +120,5 @@
         handle-switch-frame
         prelude-indent-defun
         shm/hash
+        yaml-electric-backspace
         ))
