@@ -8,20 +8,19 @@ let emacs = pkgs.emacsWithPackages
     flycheck
     flycheck-pos-tip
 
-    structured-haskell-mode
     cask
     markdown-mode
-    # markdown-toc
-    # org-trello
-    # org2jekyll
+    markdown-toc
+    org-trello
+    org2jekyll
     auto-complete
     ac-haskell-process
     company
     haskell-mode
-    structured-haskell-mode
+    # structured-haskell-mode
     ace-jump-mode
     exec-path-from-shell
-    gnus
+    # gnus
     god-mode
     magit
     projectile
