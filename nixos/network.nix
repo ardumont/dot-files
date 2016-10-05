@@ -4,9 +4,10 @@
   networking = {
     # hostName = "corellia";    # Define your hostname.
 
-    firewall.enable = true;
-    firewall.allowedTCPPorts = [ 22 9999 ];
-    # firewall.allowedUDPPorts = [ ];
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 ];
+    };
 
     # nm, nmcli, etc... incompatible with networking.wireless
     # also for a user to manager wireless network, add it to networkmanager group
