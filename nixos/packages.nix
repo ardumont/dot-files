@@ -44,7 +44,7 @@
     python34Packages.powerline
     powerline-fonts
     stack
-#    xorg_sys_opengl mesa_glu freeglut
+    # xorg_sys_opengl mesa_glu freeglut
     qemu
     cabal2nix
     hexedit
@@ -54,8 +54,8 @@
     nix-prefetch-scripts nix-repl nixops nox
     psmisc # fuser
     python python27Packages.screenkey
-   # pidgin-with-plugins
-   # androidsdk_4_4
+    # pidgin-with-plugins
+    # androidsdk_4_4
     wmname
     feh
     # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
