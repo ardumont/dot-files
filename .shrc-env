@@ -36,6 +36,7 @@ if [ -f /etc/NIXOS ]; then # nixos
     export GIT_HOME=$(nix-folder git)
 
     export POWERLINE_HOME=$(dirname $(readlink $(which powerline)))/..
+    export POWERLINE_CONF=$POWERLINE_HOME/share/tmux/powerline.conf
     POWERLINE_COMPLETION=$POWERLINE_HOME/share/zsh/site-contrib/powerline.zsh
     [ -f $POWERLINE_COMPLETION ] && . $POWERLINE_COMPLETION
 
@@ -46,6 +47,7 @@ elif [ -f /etc/debian_version ]; then # non nixos env
     export AUTOJUMP_HOME="/usr"
     export NIX_CONF_DIR=~/.nix/nix.conf
     export POWERLINE_HOME=/usr/share/powerline
+    export POWERLINE_CONF=$POWERLINE_HOME/bindings/tmux/powerline.conf
     POWERLINE_COMPLETION=$POWERLINE_HOME/bindings/zsh/powerline.zsh
 
     # nix env (manual install)
