@@ -24,26 +24,34 @@ export TERM=screen-256color
 
 export HISTIGNORE="pass:&"
 
-export CHROME_BIN="/run/current-system/sw/bin/chromium-browser"
-
 export ORGTRELLO_HOME="$HOME/repo/perso/org-trello"
 
 export QUICKLISP_HOME="$HOME/quicklisp"
 
 if [ -f /etc/NIXOS ]; then # nixos
 
+    export CHROME_BIN="/run/current-system/sw/bin/chromium-browser"
     export DISTRIB="nixos"
     export AUTOJUMP_HOME=$(nix-folder autojump)
     export GIT_HOME=$(nix-folder git)
 
+    export POWERLINE_HOME=$(dirname $(readlink $(which powerline)))/..
+    POWERLINE_COMPLETION=$POWERLINE_HOME/share/zsh/site-contrib/powerline.zsh
+    [ -f $POWERLINE_COMPLETION ] && . $POWERLINE_COMPLETION
+
 elif [ -f /etc/debian_version ]; then # non nixos env
 
+    export CHROME_BIN="/usr/bin/chromium"
     export DISTRIB="debian"
     export AUTOJUMP_HOME="/usr"
     export NIX_CONF_DIR=~/.nix/nix.conf
+    export POWERLINE_HOME=/usr/share/powerline
+    POWERLINE_COMPLETION=$POWERLINE_HOME/bindings/zsh/powerline.zsh
 
     # nix env (manual install)
     [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
+
+    [ -f $POWERLINE_COMPLETION ] && . $POWERLINE_COMPLETION
 
     # Languages setup
     export LC_ALL="en_US.UTF-8"

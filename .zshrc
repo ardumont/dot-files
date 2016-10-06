@@ -72,13 +72,3 @@ source $ZSH/oh-my-zsh.sh
 
 # O(caml)PAM configuration
 [ -f $HOME/.opam/opam-init/init.zsh ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
-
-export POWERLINE_HOME=/usr/share/powerline
-POWERLINE_COMPLETION=$POWERLINE_HOME/bindings/zsh/powerline.zsh
-if [ -f $POWERLINE_COMPLETION ]; then
-    . $POWERLINE_COMPLETION
-else
-    export POWERLINE_HOME=$(dirname $(readlink $(which powerline)))/..
-    POWERLINE_COMPLETION=$POWERLINE_HOME/share/zsh/site-contrib/powerline.zsh
-    [ -f $POWERLINE_completion ] && . $POWERLINE_COMPLETION
-fi
