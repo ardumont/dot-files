@@ -10,12 +10,9 @@
 # for non nixos-machine using nix
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
-# from man gpg-agent
-gpg-connect-agent /bye
+# gpg2 no longer requires to trigger the gpg-agent, it's done as needed
 GPG_TTY=$(tty)
 export GPG_TTY
-
-unset SSH_AUTH_SOCK
 export SSH_AUTH_SOCK="/run/user/$(id -u ${USER})/gnupg/S.gpg-agent.ssh"
 
 # Make the user units aware of his/her environment
