@@ -1,6 +1,9 @@
 # -*- sh -*-
 
-for i in $(ls ~/work/*/.shrc); do
-    echo "Work - . $i"
-    . $i
-done
+count=$(ls ~/work | wc -l)
+
+if [ ! $count -eq 0 ]; then
+    for i in $(ls ~/work/*/.shrc); do
+        . $i
+    done
+fi
