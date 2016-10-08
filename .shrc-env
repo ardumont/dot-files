@@ -35,10 +35,12 @@ if [ -f /etc/NIXOS ]; then # nixos
     export AUTOJUMP_HOME=$(nix-folder autojump)
     export GIT_HOME=$(nix-folder git)
 
-    export POWERLINE_HOME=$(dirname $(readlink $(which powerline)))/..
+    export POWERLINE_HOME=$(nix-folder powerline)
     export POWERLINE_CONF=$POWERLINE_HOME/share/tmux/powerline.conf
     POWERLINE_COMPLETION=$POWERLINE_HOME/share/zsh/site-contrib/powerline.zsh
     [ -f $POWERLINE_COMPLETION ] && . $POWERLINE_COMPLETION
+
+    [ -f $AUTOJUMP_HOME/share/autojump/autojump.zsh ] && . $AUTOJUMP_HOME/share/autojump/autojump.zsh
 
 elif [ -f /etc/debian_version ]; then # non nixos env
 
@@ -54,6 +56,8 @@ elif [ -f /etc/debian_version ]; then # non nixos env
     [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && . ~/.nix-profile/etc/profile.d/nix.sh
 
     [ -f $POWERLINE_COMPLETION ] && . $POWERLINE_COMPLETION
+
+    [ -f $AUTOJUMP_HOME/share/autojump/autojump.zsh ] && . $AUTOJUMP_HOME/share/autojump/autojump.zsh
 
     # Languages setup
     export LC_ALL="en_US.UTF-8"
@@ -72,3 +76,6 @@ elif [ -f /etc/debian_version ]; then # non nixos env
     [ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
 
 fi
+
+# O(caml)PAM configuration
+[ -f $HOME/.opam/opam-init/init.zsh ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null

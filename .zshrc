@@ -69,6 +69,3 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 [ -f ~/.shrc ] && . ~/.shrc
-
-# O(caml)PAM configuration
-[ -f $HOME/.opam/opam-init/init.zsh ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
