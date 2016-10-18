@@ -39,3 +39,4 @@ history
 /.ghc/x86_64-linux-*
 /.FBReader/config.changes
 .FBReader/cache/
+/.nixpkgs/result
