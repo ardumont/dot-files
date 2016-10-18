@@ -1,43 +1,6 @@
 {config, pkgs, ...}:
 
-let emacs = pkgs.emacsWithPackages
-  (with pkgs.emacs24Packages; with pkgs.emacs24PackagesNg; [
-    # aspell
-    # aspellDicts.en
-    # aspellDicts.fr
-    flycheck
-    flycheck-pos-tip
-
-    cask
-    markdown-mode
-    markdown-toc
-    org-trello
-    org2jekyll
-    auto-complete
-    ac-haskell-process
-    company
-    haskell-mode
-    # structured-haskell-mode
-    ace-jump-mode
-    exec-path-from-shell
-    # gnus
-    god-mode
-    magit
-    projectile
-    switch-window
-    smart-mode-line
-    undo-tree
-    use-package
-    dash
-    # dash-functional
-    s
-    deferred
-    diminish
-    popup
-    helm
-    helm-swoop
-  ]);
-
+let emacs = import ./emacs.nix { inherit pkgs; };
   startEmacsServer = pkgs.writeScript "start-emacs-server" ''
     #!/bin/sh
     . ${config.system.build.setEnvironment}
