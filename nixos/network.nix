@@ -14,16 +14,16 @@
     networkmanager.enable = true;
 
     extraHosts = ''
-      192.168.0.10 dagobah
-      192.168.0.11 alderaan
-      192.168.0.12 corellia
-      192.168.0.13 job
-      192.168.0.14 myrkr
-      192.168.0.15 pi1
-      192.168.0.19 chris-host
-      192.168.0.26 rpi3
-      192.168.0.28 printer-8610
-      192.168.0.254 box
+      192.168.150.10 dagobah
+      192.168.150.11 alderaan
+      192.168.150.12 corellia
+      192.168.150.13 job
+      192.168.150.14 myrkr
+      192.168.150.15 pi1
+      192.168.150.19 chris-host
+      192.168.150.26 rpi3
+      192.168.150.28 printer-8610
+      192.168.150.254 box
     '';
   };
 
