@@ -1,1 +1,1 @@
-../nixos/emacs.nix
+/home/tony/repo/perso/dot-files/nixos/emacs.nix
