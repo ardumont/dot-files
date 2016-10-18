@@ -8,7 +8,7 @@ in rec {
     # Include the common parts
     ./common.nix
     ./nix.nix
-    ./emacs.nix
+    ./emacs-setup.nix
     ./services.nix
     ./print.nix
     ./env.nix
