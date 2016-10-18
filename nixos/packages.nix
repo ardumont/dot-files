@@ -119,11 +119,6 @@
     #    self.pandoc
     #    self.stack
     #    # self.ncurses
-    #    # haskell-pack deps
-    #    self.stylish-haskell
-    #    self.structured-haskell-mode
-    #    self.hlint
-    #    self.hasktags
     #    # self.cabal2nix
     #    # self.lens
     #    # self.hdevtools
@@ -149,8 +144,6 @@
     # nodejs nodePackages.npm nodePackages.jshint nodePackages.grunt-cli nodePackages.npm2nix nodePackages.bower2nix
     ### communication
     # x11vnc tightvnc
-    ### ocaml
-    opam
     ### common-lisp
     sbcl
   ];

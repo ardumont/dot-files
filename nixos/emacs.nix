@@ -98,7 +98,7 @@ in
     company
     cljsbuild-mode
     tuareg
-    merlin
+    # merlin
     cask
     dash
     dash-functional
@@ -134,13 +134,14 @@ in
     beacon         # ; highlight my cursor when scrolling
     nameless       # ; hide current package name everywhere in elisp code
   ]) ++ (with pkgs; [
-    notmuch                                   # From main packages set
+    notmuch                                  # From main packages set
     offlineimap
-    haskellPackages.structured-haskell-mode   # From haskell set
+    haskellPackages.structured-haskell-mode  # From haskell set
     haskellPackages.hlint
     haskellPackages.hasktags
     haskellPackages.stylish-haskell
-    ocamlPackages.merlin                      # From ocaml set
+    opam
+    ocamlPackages.merlin                     # From ocaml set
     ocamlPackages.ocpIndent
     dejavu_fonts
   ]))
