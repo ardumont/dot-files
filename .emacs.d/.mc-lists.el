@@ -117,6 +117,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        crux-smart-open-line
         handle-switch-frame
         prelude-indent-defun
         shm/hash
