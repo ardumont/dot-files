@@ -39,6 +39,7 @@
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    pingus
     libzip sqlite xorg.libX11
     python3 sshfsFuse
     python34Packages.powerline
