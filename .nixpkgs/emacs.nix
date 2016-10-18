@@ -1,1 +1,0 @@
-/home/tony/repo/perso/dot-files/nixos/emacs.nix

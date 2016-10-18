@@ -122,6 +122,8 @@ bash $REPO_DOTFILES/deploy-keysnail.sh
 ln -nsf $REPO_DOTFILES/.emacs.d/.mc-lists.el ~/.emacs.d/.mc-lists.el
 ln -nsf $REPO_DOTFILES/.emacs.d/abbrev_defs ~/.emacs.d/abbrev_defs
 
+ln -nsf $REPO_DOTFILES/nixos/emacs.nix ~/.nixpkgs/emacs.nix
+
 ### Adjust system configuration
 
 bash $WDIR/adjust-system-configuration.sh
