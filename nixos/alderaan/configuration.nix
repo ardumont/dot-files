@@ -7,6 +7,6 @@
 {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
-    ../non-dev-box/xserver.nix
+    ./xserver.nix
   ];
 }
