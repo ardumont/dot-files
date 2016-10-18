@@ -40,3 +40,4 @@ history
 /.FBReader/config.changes
 .FBReader/cache/
 /.nixpkgs/result
+/.nixpkgs/emacs.nix
