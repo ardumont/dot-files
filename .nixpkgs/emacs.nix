@@ -142,5 +142,5 @@ in
     haskellPackages.stylish-haskell
     ocamlPackages.merlin                      # From ocaml set
     ocamlPackages.ocpIndent
-
+    dejavu_fonts
   ]))
