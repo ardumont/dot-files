@@ -127,6 +127,7 @@ in
     elpy
     graphviz-dot-mode
     powershell
+    powerline
   ]) ++ (with epkgs.orgPackages; [
      org-plus-contrib
   ]) ++ (with epkgs.elpaPackages; [
