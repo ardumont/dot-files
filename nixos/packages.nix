@@ -5,7 +5,6 @@
     http://hydra.nixos.org
     http://cache.nixos.org
     http://hydra.nixos.org
-    http://hydra.cryp.to
   ];
 
   nixpkgs.config = {
