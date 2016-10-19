@@ -39,9 +39,11 @@ function plug_screens {
 status_connected=$(xrandr | grep -i " connected" | wc -l)
 
 screen1=$(xrandr | grep -i " connected" | grep -v "$screen0" | cut -d' ' -f1)
-if [ "$screen1" = "HDMI-1" ]; then
-    height1=1200
-fi
+case "$screen1" in
+     "HDMI-1") height1=1200;;
+     "DP-1-2") height1=1200;;
+esac
+
 
 ([ $status_connected -eq 2 ] && plug_screens $screen1 ${width}x${height1}) \
         || plug_screen $screen0 ${width}x${height}
