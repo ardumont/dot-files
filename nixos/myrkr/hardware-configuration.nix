@@ -7,8 +7,8 @@
   imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
 
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" "usb_storage" "usbhid" ];
-  boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" "wl" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   boot.blacklistedKernelModules = [ "ath9k" ];
 
   fileSystems."/" =
