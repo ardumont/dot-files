@@ -9,6 +9,7 @@
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" "usb_storage" "usbhid" ];
   boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.blacklistedKernelModules = [ "ath9k" ];
 
   fileSystems."/" =
     { device = "/dev/sda5";
