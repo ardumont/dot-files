@@ -7,9 +7,10 @@
   imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
 
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" "usb_storage" "usbhid" ];
+  networking.enableB43Firmware = false;        # don't want those, they conflict with wl (and do not work)
+  boot.blacklistedKernelModules = [ "ath9k" "b43" "bcma" ];  # force the blacklist on  wifi modules
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];  # wl module for wifi
   boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" "wl" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
-  boot.blacklistedKernelModules = [ "ath9k" ];
 
   fileSystems."/" =
     { device = "/dev/sda5";
