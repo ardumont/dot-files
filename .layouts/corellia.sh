@@ -41,7 +41,7 @@ status_connected=$(xrandr | grep -i " connected" | wc -l)
 screen1=$(xrandr | grep -i " connected" | grep -v "$screen0" | cut -d' ' -f1)
 case "$screen1" in
      "HDMI-1") height1=1200;;
-     "DP-1-2") height1=1200;;
+     "DP-1-1") height1=1200;;
 esac
 
 
