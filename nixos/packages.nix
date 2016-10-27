@@ -10,10 +10,6 @@
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
-
-    packageOverrides = pkgs: {
-       gnupg1compat = pkgs.gnupg1compat.override { gnupg = pkgs.gnupg21; };
-    };
   };
 
   # List packages installed in system profile. To search by name, run:
