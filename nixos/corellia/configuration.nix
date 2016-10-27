@@ -7,10 +7,10 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./laptop.nix
     ./sound.nix
     ./grub.nix
     ../dev-box/xserver.nix
+    ../laptop.nix
     ./packages.nix
   ];
 }

@@ -7,9 +7,9 @@
 {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
-    ./laptop.nix
     ./sound.nix
     ../mounts.nix
     ../dev-box/xserver.nix
+    ../laptop.nix
   ];
 }
