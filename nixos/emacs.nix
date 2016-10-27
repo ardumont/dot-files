@@ -133,15 +133,4 @@ in
     auctex         # ; LaTeX mode
     beacon         # ; highlight my cursor when scrolling
     nameless       # ; hide current package name everywhere in elisp code
-  ]) ++ (with pkgs; [
-    notmuch                                  # From main packages set
-    offlineimap
-    haskellPackages.structured-haskell-mode  # From haskell set
-    haskellPackages.hlint
-    haskellPackages.hasktags
-    haskellPackages.stylish-haskell
-    opam
-    ocamlPackages.merlin                     # From ocaml set
-    ocamlPackages.ocpIndent
-    dejavu_fonts
   ]))

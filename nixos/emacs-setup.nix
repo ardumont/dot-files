@@ -16,6 +16,17 @@ let emacs = import ./emacs.nix { inherit pkgs; };
 
     environment.systemPackages = with pkgs; [
       emacs texinfo w3m
+      # emacs dependencies
+      notmuch                                  # From main packages set
+      offlineimap
+      haskellPackages.structured-haskell-mode  # From haskell set
+      haskellPackages.hlint
+      haskellPackages.hasktags
+      haskellPackages.stylish-haskell
+      ocaml opam gnum4 # aspcud (not yet present in nixos)
+      ocamlPackages.merlin                     # From ocaml set
+      ocamlPackages.ocpIndent
+      dejavu_fonts
     ];
 
     systemd.user.services.emacs = {
