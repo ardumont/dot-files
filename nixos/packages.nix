@@ -16,7 +16,7 @@
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     pingus
-    libzip sqlite xorg.libX11
+    sqlite xorg.libX11
     python3 sshfsFuse
     python34Packages.powerline
     powerline-fonts
@@ -44,7 +44,7 @@
     # gnome3_18.nautilus gnome3_18.gnome_settings_daemon
     # gnome3_18.eog
     pinta scrot
-    vlc x264 mplayer
+    vlc x264 mplayer mpv
     gnome3.zenity
     # transmission_gtk
     # audacious
@@ -62,7 +62,6 @@
     networkmanagerapplet
     x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
     libxml2
-    offlineimap notmuch
     most
     xclip xsel pass pwgen
     htop # powertop
@@ -72,8 +71,9 @@
     zlib
     firefoxWrapper conkeror #chromium
     graphviz
+    coreutils lshw lsof
     nmap netcat wireshark
-    p7zip unrar zip unzip
+    libzip p7zip unrar zip unzip pigz gnutar pv
     acpi acpid acpitool
     # clojure leiningen jdk
     gparted testdisk
@@ -83,7 +83,6 @@
     inotifyTools
     unetbootin
     alsaUtils
-    lsof
     darcs
     # (haskellngPackages.ghcWithPackages (self : [
     #    self.cabal-install
