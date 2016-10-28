@@ -9,6 +9,9 @@ res_screen1=1920x1200
 
 screen0=eDP-1
 
+# Activate connected but seen as disconnected screen
+xrandr --auto
+
 function plug_screen {
     screen0=$1
     res_screen0=$2
