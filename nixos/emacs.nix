@@ -8,6 +8,7 @@ in
     zerodark-theme # ; Nicolas' theme
     jabber
   ]) ++ (with epkgs.melpaPackages; [
+    hydra
     jabber-otr
     repl-toggle
     undo-tree      # ; <C-x u> to show the undo tree
@@ -92,7 +93,6 @@ in
     eval-sexp-fu
     cider
     clojure-mode
-    clj-refactor
     yasnippet
     company
     cljsbuild-mode
@@ -133,4 +133,6 @@ in
     auctex         # ; LaTeX mode
     beacon         # ; highlight my cursor when scrolling
     nameless       # ; hide current package name everywhere in elisp code
+  ]) ++ (with pkgs; [
+    dejavu_fonts
   ]))
