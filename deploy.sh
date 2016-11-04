@@ -37,11 +37,6 @@ FILES=".stumpwm.start .stumpwmrc .stumpwm-functions.lisp .profile .bashrc .shrc 
 
 create-links-from-list $REPO_DOTFILES $HOME $FILES
 
-# security files (in .gnupg directory)
-SECURITY_FILES="gpg.conf gpg-agent.conf"
-
-create-links-from-list $REPO_DOTFILES $SECURITY_FILES
-
 # specific setup
 
 # gtk themes
