@@ -28,6 +28,13 @@ export ORGTRELLO_HOME="$HOME/repo/perso/org-trello"
 
 export QUICKLISP_HOME="$HOME/quicklisp"
 
+if [ -z "$DEBSIGN_KEYID" ]; then
+    [ -f ~/.devscript ] && . ~/.devscript
+    export DEBFULLNAME
+    export DEBEMAIL
+    export DEBSIGN_KEYID
+fi
+
 if [ -f /etc/NIXOS ]; then # nixos
 
     export CHROME_BIN="/run/current-system/sw/bin/chromium-browser"
