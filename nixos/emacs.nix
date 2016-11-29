@@ -8,6 +8,8 @@ in
     zerodark-theme # ; Nicolas' theme
     jabber
   ]) ++ (with epkgs.melpaPackages; [
+    debian-bug
+    # debian-changelog-mode
     hydra
     jabber-otr
     repl-toggle
@@ -44,7 +46,6 @@ in
     yasnippet
     ag
     change-inner
-    circe
     expand-region
     hi2
     el-mock
@@ -67,7 +68,7 @@ in
     iedit
     ace-window
     overseer
-    move-text
+    # move-text
     dockerfile-mode
     htmlize
     google-this
@@ -77,20 +78,20 @@ in
     ox-mediawiki
     deferred
     ghci-completion
-    haskell-mode
+    # haskell-mode
     shm
     ac-math
     git-gutter
     fullframe
     monky
-    highlight
+    # highlight
     paredit
     fold-dwim
     async
     google-contacts
     restclient
     conkeror-minor-mode
-    eval-sexp-fu
+    # eval-sexp-fu
     cider
     clojure-mode
     yasnippet
@@ -103,7 +104,7 @@ in
     dash-functional
     s
     diminish
-    nix-mode
+    # nix-mode
     helm-nixos-options
     company-nixos-options
     exec-path-from-shell
@@ -117,7 +118,7 @@ in
     groovy-mode
     weechat
     creds
-    guide-key
+    # guide-key
     marmalade-client
     purescript-mode
     psci
