@@ -7,6 +7,7 @@
 	editor		= emacsclient -nw
 	whitespace	= fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile	= ~/.gitignore_global
+	autocrlf        = input
 
 [web]
 	browser		= firefox
