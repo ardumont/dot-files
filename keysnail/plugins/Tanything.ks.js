@@ -4,7 +4,7 @@ var PLUGIN_INFO =
     <name lang="ja">Tanything</name>
     <description>Tanything</description>
     <description lang="ja">KeySnailからタブを操作</description>
-    <version>0.1.4</version>
+    <version>0.1.5</version>
     <iconURL>http://github.com/myuhe/KeySnail_Plugin/raw/master/Tanything.png</iconURL>
     <updateURL>http://github.com/myuhe/KeySnail_Plugin/raw/master/Tanything.ks.js</updateURL>
     <author mail="yuhei.maeda_at_gmail.com" homepage="http://sheephead.homelinux.org/">myuhe</author>
@@ -12,10 +12,6 @@ var PLUGIN_INFO =
     <license lang="ja">MIT ライセンス</license>
     <minVersion>1.8.5</minVersion>
     <include>main</include>
-    <require>
-      <script>https://raw2.github.com/mozilla/addon-sdk/master/lib/sdk/tabs/tabs.js</script>
-      <script>https://raw2.github.com/mozilla/addon-sdk/master/lib/sdk/tabs/tab-firefox.js</script>
-    </require>
     <detail><![CDATA[
 ==== What's this ====
 
@@ -121,13 +117,6 @@ let pOptions = plugins.setupOptions("tanything_opt", {
     }
 }, PLUGIN_INFO);
 
-// load the tabs.js to permit the Tab events loading
-userscript.require("tabs.js");
-
-// state of the index regarding currently selected and last selected
-var lastSelectedIndex = gBrowser.mTabContainer.selectedIndex;
-var currentIndex = lastSelectedIndex;
-
 var tanything =
     (function () {
          var currentCollection;
@@ -173,21 +162,6 @@ var tanything =
 
          function getTabs() Array.slice(gBrowser.mTabContainer.childNodes);
 
-         function selectTab(event) {
-             lastSelectedIndex = currentIndex;
-             currentIndex = gBrowser.mTabContainer.selectedIndex;
-         }
-
-         function closeTab(event) {
-             if(currentIndex < lastSelectedIndex) lastSelectedIndex--;
-             currentIndex = gBrowser.mTabContainer.selectedIndex;
-         }
-
-         var container = gBrowser.mTabContainer;
-         container.addEventListener("TabOpen", selectTab);
-         container.addEventListener("TabSelect", selectTab);
-         container.addEventListener("TabClose", closeTab);
-
          function callSelector() {
              function getIconFor(tab) {
                  return (tab.linkedBrowser.__SS_data) ?
@@ -205,15 +179,13 @@ var tanything =
                  return [util.getFaviconPath(url), title, url, tab];
              }
 
-             function selectLastTabIndex() {
-                 return lastSelectedIndex;
-             }
-
-             currentCollection = [getInfoForTab(tab) for each (tab in getTabs())];
+             currentCollection = getTabs().map(function (tab) {
+                 return getInfoForTab(tab);
+             });
 
              prompt.selector({
                  message             : "select tab: ",
-                 initialIndex        : selectLastTabIndex(),
+                 initialIndex        : gBrowser.mTabContainer.selectedIndex,
                  flags               : [ICON | IGNORE, 0, 0, IGNORE | HIDDEN],
                  collection          : currentCollection,
                  header              : ["title", "url"],
