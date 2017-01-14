@@ -28,6 +28,8 @@ folderfilter            = lambda foldername: foldername not in ['[Gmail]/Spam', 
 # fsync = true
 # holdconnectionopen = no
 sslcacertfile           = /etc/ssl/certs/ca-certificates.crt
+# auth_mechanisms         = GSSAPI, CRAM-MD5, XOAUTH2, PLAIN, LOGIN
+auth_mechanisms         = LOGIN
 
 [Account ard]
 localrepository         = ard-local
@@ -52,3 +54,4 @@ folderfilter            = lambda foldername: foldername not in ['[Gmail]/Spam', 
 # fsync = true
 # holdconnectionopen = no
 sslcacertfile           = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms         = LOGIN
