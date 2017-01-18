@@ -48,8 +48,8 @@ URxvt*underlineColor: yellow
 ! URxvt*skipScroll: true
 ! URxvt*fading: 30
 ! URxvt*utmpInhibit: false
-! URxvt*urgentOnBell: false
-! URxvt*visualBell: true
+URxvt*urgentOnBell: true
+URxvt*visualBell: false
 ! URxvt*mapAlert: true
 ! URxvt*mouseWheelScrollPage: false
 ! URxvt*saveLines: 0
