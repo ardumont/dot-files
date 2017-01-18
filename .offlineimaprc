@@ -9,7 +9,7 @@ pythonfile              = ~/.offlineimap-helpers.py
 localrepository         = eniotna-local
 remoterepository        = eniotna-remote
 # autorefresh             = 1
-postsynchook            = notmuch new
+postsynchook            = ionice -c 3 chrt --idle 0 /bin/sh -c "notmuch new && afew --tag --new"
 
 [Repository eniotna-local]
 type                    = Maildir
@@ -35,7 +35,7 @@ auth_mechanisms         = LOGIN
 localrepository         = ard-local
 remoterepository        = ard-remote
 # autorefresh             = 1
-postsynchook            = notmuch new
+postsynchook            = ionice -c 3 chrt --idle 0 /bin/sh -c "notmuch new && afew --tag --new"
 
 [Repository ard-local]
 type                    = Maildir
