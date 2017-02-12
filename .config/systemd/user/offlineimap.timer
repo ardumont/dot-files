@@ -1,5 +1,5 @@
 [Timer]
-OnUnitInactiveSec=120s
+OnUnitInactiveSec=5min
 Unit=offlineimap.service
 
 [Install]
