@@ -20,11 +20,11 @@ if [ ! -f /etc/NIXOS ]; then
     }
 
     # start default user service
-    systemctl --user start emacs.service
     systemctl --user start xscreensaver.service
     systemctl --user start offlineimap.timer
-
-    start-if-cmd-exists restart /usr/lib/notification-daemon/notification-daemon
+    systemctl --user start offlineimap.service
+    # systemctl --user start emacs.service
+    # start-if-cmd-exists emacs --daemon
     start-if-cmd-exists trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000
     start-if-cmd-exists nm-applet
 
