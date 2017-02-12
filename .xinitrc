@@ -13,6 +13,8 @@ if [ ! -f /etc/NIXOS ]; then
     wmname "LG3D"
     export AWT_TOOLKIT=MToolkit
 
+    /usr/lib/notification-daemon/notification-daemon&
+
     start-if-cmd-exists () {
         which $1 && ~/bin/service/service.sh restart $* &
     }
