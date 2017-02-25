@@ -24,7 +24,7 @@ export TERM=screen-256color
 
 export HISTIGNORE="pass:&"
 
-export ORGTRELLO_HOME="$HOME/repo/perso/org-trello"
+export ORGTRELLO_HOME="$HOME/repo/public/org-trello"
 
 export QUICKLISP_HOME="$HOME/quicklisp"
 
