@@ -21,6 +21,7 @@
         end-of-buffer
         end-of-defun
         end-of-visual-line
+        flycheck-list-errors
         flymake-display-err-menu-for-current-line
         forward-sexp
         haskell-indentation-common-electric-command
@@ -38,6 +39,7 @@
         magit-status
         mark-sexp
         mark-whole-buffer
+        mark-word
         markdown-enter-key
         markdown-exdent-or-delete
         markdown-exdent-or-delete
@@ -57,6 +59,7 @@
         org-metaup
         org-return
         org-self-insert-command
+        paredit-backslash
         paredit-backward
         paredit-close-round
         paredit-doublequote
@@ -81,6 +84,7 @@
         py-indent-or-complete
         sgml-slash
         sh-assignment
+        shell-command
         shm/:
         shm/backward-node
         shm/comma
