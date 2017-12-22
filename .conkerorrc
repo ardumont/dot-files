@@ -4,6 +4,12 @@
 /*                     Conkeror config file                                  */
 /* ------------------------------------------------------------------------- */
 
+
+require("global-overlay-keymap");
+define_key_alias("C-m", "return");
+define_key_alias("C-j", "return");
+define_key_alias("C-i", "tab");
+
 /* ------------------- url completion --------------------------------------*/
 
 url_completion_use_history = true;
