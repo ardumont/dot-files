@@ -10,6 +10,15 @@ define_key_alias("C-m", "return");
 define_key_alias("C-j", "return");
 define_key_alias("C-i", "tab");
 
+// reload conkerorrc with C-c r
+interactive("reload-config", "Reload ~/.conkerorrc configuration file",
+    function(I) {
+        load_rc();
+        I.window.minibuffer.message("config reloaded");
+    }
+);
+define_key(default_global_keymap, "C-c r", "reload-config");
+
 // To bind M-[0-9] to switch buffer
 function define_switch_buffer_key(key, buf_num) {
     define_key(default_global_keymap, key,
