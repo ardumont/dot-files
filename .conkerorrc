@@ -107,7 +107,7 @@ xkcd_add_title = true;
 require("new-tabs");
 require("github");
 require("gmail");
-require("~/.conkeror/inbox.js");
+//require("inbox");
 require("youtube");
 require("youtube-player");
 require("twitter");
