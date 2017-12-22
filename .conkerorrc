@@ -31,6 +31,10 @@ url_completion_use_bookmarks = true;
 /* links opened from other applications open in conkeror */
 url_remoting_fn = load_url_in_new_buffer;
 
+// load download buffers in the background in the current
+// window, instead of in new windows.
+download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
+
 /* mode-line widget config  ----------------------------------*/
 
 /* ------------------- buffer count indicator ----------------------------------*/
@@ -63,6 +67,30 @@ hint_digits="qwertyzvbshkl";
 // hint as the final result, when the input has
 // narrowed the selection down to one possibility.
 hints_auto_exit_delay=0.1; // work if only > 0
+
+// default directory for downloads and shell commands.
+cwd = get_home_directory();
+cwd.append("downloads");
+
+// automatically handle some mime types internally.
+content_handlers.set("application/pdf", content_handler_save);
+
+
+// external programs for handling various mime types.
+external_content_handlers.set("application/pdf", "evince");
+external_content_handlers.set("video/*", "urxvtc -e totem");
+
+
+// use vi as external editor.
+editor_shell_command = "emacsclient";
+
+
+// view source in your editor.
+view_source_use_external_editor = true;
+
+
+// let xkcd-mode put the funny alt text into the page.
+xkcd_add_title = true;
 
 /* ---------------- display tabs */
 
