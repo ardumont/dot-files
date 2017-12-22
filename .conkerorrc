@@ -10,6 +10,19 @@ define_key_alias("C-m", "return");
 define_key_alias("C-j", "return");
 define_key_alias("C-i", "tab");
 
+// To bind M-[0-9] to switch buffer
+function define_switch_buffer_key(key, buf_num) {
+    define_key(default_global_keymap, key,
+    function (I) {
+        switch_to_buffer(I.window,
+                         I.window.buffers.get_buffer(buf_num));
+    });
+}
+
+for (let i = 0; i < 10; ++i) {
+    define_switch_buffer_key(String("M-" + (i+1)%10), i);
+}
+
 /* ------------------- url completion --------------------------------------*/
 
 url_completion_use_history = true;
