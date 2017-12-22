@@ -121,12 +121,30 @@ require("google-maps");
 /* type 'i your film' in the mini buffer to search 'your film'  on imdb*/
 
 define_webjump("i", "http://imdb.com/find?q=%s");
-define_webjump("g", "http://www.google.fr/search?q=%s");
+define_webjump("g", "https://duckduckgo.com/?q=%s");
 define_webjump("w", "http://en.wikipedia.org?search=%s");
 
-/* TODO : add :
-   - w wikipedia
-   - a amazon */
+// webjumps
+define_webjump("imdb", "http://www.imdb.com/find?q=%s");
+define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
+define_webjump("youtube-user", "http://youtube.com/profile_videos?user=%s");
+define_webjump("thesaurus","http://www.thefreedictionary.com/%s#Thesaurus");
+define_webjump("urban", "http://www.urbandictionary.com/define.php?term=%s");
+define_webjump("wayback", function (url) {
+    if (url) {
+        return "http://web.archive.org/web/*/" + url;
+    } else {
+        return "javascript:window.location.href='http://web.archive.org/web/*/'+window.location.href;";
+    }
+});
+
+define_webjump("down?", function (url) {
+    if (url) {
+        return "http://downforeveryoneorjustme.com/" + url;
+    } else {
+        return "javascript:window.location.href='http://downforeveryoneorjustme.com/'+window.location.href;";
+    }
+});
 
 /* javascript injection (jquery) */
 /*
