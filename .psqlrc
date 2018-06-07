@@ -1,0 +1,8 @@
+\pset linestyle unicode
+\pset border 2
+\pset null ¤
+\set PROMPT1 '%[%033[33;1m%]%x%[%033[0m%]%[%033[1m%]%/%[%033[0m%]%R%# '
+\set PROMPT1 '%[%033[1;;40m%]%`date +%H:%M:%S`%[%033[0m%] %[%033[33;1m%]%x%[%033[0m%]%[%033[1m%]%/%[%033[0m%]@%[%033[33;1m%]%m%[%033[0m%]:%[%033[33;1m%]%>%[%033[0m%]%R%# '
+
+\timing
+\set comp_keyword_case lower
