@@ -178,3 +178,5 @@ alias nix-package='nix-package'
 ################ tools
 
 alias pendu='hangman -d /usr/share/dict/french'
+
+alias xup="xrdb ~/.Xresources"
