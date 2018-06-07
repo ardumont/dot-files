@@ -28,6 +28,7 @@
         haskell-indentation-delete-backward-char
         haskell-indentation-delete-char
         haskell-newline-and-indent
+        helm-buffers-list
         ido-switch-buffer
         iedit-mode
         indent-for-tab-command
@@ -43,6 +44,7 @@
         markdown-enter-key
         markdown-exdent-or-delete
         markdown-exdent-or-delete
+        markdown-outdent-or-delete
         mouse-buffer-menu
         nxml-electric-slash
         org-beginning-of-line
@@ -101,6 +103,7 @@
         shm/splice
         shm/tab
         shm/yank
+        smartscan-symbol-go-forward
         smex
         sp--self-insert-command
         sp-backward-delete-char
@@ -121,8 +124,10 @@
 
 (setq mc/cmds-to-run-once
       '(
+        ace-window
         crux-smart-open-line
         handle-switch-frame
+        iedit-switch-to-mc-mode
         prelude-indent-defun
         shm/hash
         yaml-electric-backspace
