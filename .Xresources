@@ -7,9 +7,12 @@ URxvt*buffered: true
 URxvt*cursorBlink: true
 
 Xft.antialias: true
+Xft.autohint: true
 Xft.hinting: true
 Xft.hintstyle: hintlight
 Xft.rgba: rgb
+Xft.pixelsize: 14
+Xft.size: 14
 
 ! rxvt-unicode setup
 URxvt*termName: screen-256color
@@ -22,19 +25,22 @@ URxvt.letterSpace: -1
 !  your terminal is sluggish. Use only ONE of the Xft pairs below:
 ! Xft: DejaVu fonts
 !  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu
-URxvt*font: xft:DejaVu Sans Mono for Powerline:pixelsize=12:antialias=true:hinting=true,\
-            xft:inconsolata:size=12,\
-            -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
-URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=12:antialias=true:hinting=true,\
-                xft:inconsolata:size=12,\
+URxvt*font: xft:DejaVu Sans Mono for Powerline,\
+            xft:Noto Sans Mono,\
+            xft:inconsolata:size=14,\
+            -*-unifont-*-*-*-14-*-*-*-*-*-*-*
+URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold,\
+                xft:Noto Sans Mono:bold,\
+                xft:inconsolata:size=14,\
                 -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
-URxvt*italicFont: xft:DejaVu Sans Mono for Powerline:italic:hinting=true:pixelsize=12,\
+URxvt*italicFont: xft:DejaVu Sans Mono for Powerline:italic,\
+                  xft:Noto Sans Mono:italic,\
                   xft:inconsolata:size=12,\
                   -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
-URxvt*boldItalicFont: xft:DejaVu Sans Mono for Powerline:bold:italic:hinting=true:pixelsize=12,\
+URxvt*boldItalicFont: xft:DejaVu Sans Mono for Powerline:bold:italic,\
+                      xft:Noto Sans Mono:bold:italic,\
                       xft:inconsolata:size=12,\
                       -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
-
 
 URxvt*depth: 32
 URxvt*borderless: 1
