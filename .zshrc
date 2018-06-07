@@ -69,3 +69,6 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 [ -f ~/.shrc ] && . ~/.shrc
+
+# emacs and tramp - https://www.emacswiki.org/emacs/TrampMode#toc9
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
