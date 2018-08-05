@@ -84,6 +84,7 @@
         py-electric-colon
         py-electric-comment
         py-indent-or-complete
+        rgrep
         sgml-slash
         sh-assignment
         shell-command
