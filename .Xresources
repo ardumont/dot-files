@@ -99,10 +99,10 @@ URxvt.keysym.C-M-w:   perl:clipboard:copy
 URxvt.keysym.C-M-y:   perl:clipboard:paste
 URxvt.keysym.C-M-S-y: perl:clipboard:paste_escaped
 URxvt.clipboard.autocopy: true ! the clipboard is automatically updated whenever the PRIMARY selection changesx
-URxvt.clipboard.copycmd:  xsel -ib
-URxvt.clipboard.pastecmd: xsel -ob
-! URxvt.clipboard.copycmd:  xclip -i selection clipboard
-! URxvt.clipboard.pastecmd: xclip -o selection clipboard
+URxvt.clipboard.copycmd:  xsel --input --clipboard
+URxvt.clipboard.pastecmd: xsel --output --clipboard
+! URxvt.clipboard.copycmd:  xclip -in -selection clipboard
+! URxvt.clipboard.pastecmd: xclip -out -selection clipboard
 
 ! font-size
 URxvt.keysym.C-Up:     perl:font-size:increase
