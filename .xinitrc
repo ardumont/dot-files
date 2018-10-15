@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export GTK_IM_MODULE=xim
+
 # Not supposed to be triggered in NixOS environment (already dealt with)
 if [ ! -f /etc/NIXOS ]; then
     # Display layout which can be different depending on host
