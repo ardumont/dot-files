@@ -1,0 +1,4 @@
+bind generic <C-P> scroll-line-up
+bind generic <C-N> scroll-line-down
+bind generic <Esc>v scroll-page-up
+bind generic <C-V> scroll-page-down
