@@ -1,6 +1,0 @@
-[Timer]
-OnUnitInactiveSec=5min
-Unit=offlineimap.service
-
-[Install]
-WantedBy=default.target
