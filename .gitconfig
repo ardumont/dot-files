@@ -11,7 +11,7 @@
 
 [web]
 	browser		= firefox
-	
+
 [color]
 	ui		= true
 
@@ -30,7 +30,7 @@
 [color "status"]
 	added		= green bold
 	changed		= yellow bold
-	untracked	= red bold 
+	untracked	= red bold
 
 [push]
 	default		= matching
