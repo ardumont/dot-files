@@ -85,8 +85,8 @@ URxvt.underlineURLs:  True
 URxvt.matcher.button: 1
 
 ! keyboard-select
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s:      perl:keyboard-select:search
+! URxvt.keysym.M-Escape: perl:keyboard-select:activate
+! URxvt.keysym.M-s:      perl:keyboard-select:search
 
 ! url-select
 URxvt.keysym.M-u:           perl:url-select:select_next
