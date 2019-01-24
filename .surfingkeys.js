@@ -8,7 +8,7 @@ addSearchAliasX('D', 'ddgH', 'https://duckduckgo.com/html/?q=', 's', 'https://du
 settings.defaultSearchEngine = 'D';
 
 // Hints settings
-Hints.characters = "asdfghjkl";
-// Hints.scrollKeys = "";
+Hints.characters = "asdfgqwertzxcvb";
+Hints.scrollKeys = "";
 settings.hintAlign = "left";
 settings.smoothScroll = false;
