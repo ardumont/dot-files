@@ -1,3 +1,6 @@
+map('d', 'f'); unmap('f');
+map('f', 'gf'); unmap('gf');
+
 // Search settings
 addSearchAliasX('D', 'ddgH', 'https://duckduckgo.com/html/?q=', 's', 'https://duckduckgo.com/ac/?q=', function(response) {
     var res = JSON.parse(response.text);
