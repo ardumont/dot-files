@@ -9,7 +9,8 @@ map('<Alt-p>', '<Alt-j>'); unmap('<Alt-p>');
 
 // interactively switch tab
 map('T', 'xb'); unmap('T');
-
+// deactivate close tab
+unmap('x');
 // Search settings
 addSearchAliasX('D', 'ddgH', 'https://duckduckgo.com/html/?q=', 's', 'https://duckduckgo.com/ac/?q=', function(response) {
     var res = JSON.parse(response.text);
