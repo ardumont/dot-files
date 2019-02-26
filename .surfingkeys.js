@@ -7,9 +7,12 @@ map('f', 'gf'); unmap('gf');
 // pin/unpin tab
 map('<Alt-p>', '<Alt-j>'); unmap('<Alt-p>');
 
-// interactively switch tab
+// deactivate 'open a bookmark'
 unmap('b');
-map('t', '<Ctrl-x> b'); unmap('t');
+// switch tabs
+map('T', '<Ctrl-x> b'); unmap('T');
+// deactivate 'open a url'
+unmap('t');
 
 // deactivate close tab
 unmap('x');
