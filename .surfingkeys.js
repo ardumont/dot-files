@@ -8,7 +8,8 @@ map('f', 'gf'); unmap('gf');
 map('<Alt-p>', '<Alt-j>'); unmap('<Alt-p>');
 
 // interactively switch tab
-map('T', 'xb'); map('T', '<Ctrl-x> b'); unmap('T');
+unmap('b');
+map('t', '<Ctrl-x> b'); unmap('t');
 
 // deactivate close tab
 unmap('x');
@@ -27,6 +28,7 @@ Hints.characters = "asgqwertzxcvb";
 Hints.scrollKeys = "";
 settings.hintAlign = "left";
 settings.smoothScroll = false;
+settings.aceKeybindings = "emacs";
 
 // deactivate surfingkeys by default on those sites
 settings.blacklist = {
