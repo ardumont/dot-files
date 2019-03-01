@@ -3,9 +3,12 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
+# to avoid pylint warnings all over the place
+config = config  # type: ConfigAPI # noqa: F821 pylint: disable=E0602,C0103
+c = c  # type: ConfigContainer # noqa: F821 pylint: disable=E0602,C0103
+
 # This is here so configs done via the GUI are still loaded.
-# Remove it to not load settings done via the GUI.
-# config.load_autoconfig()
+config.load_autoconfig()
 
 # Aliases for commands. The keys of the given dictionary are the
 # aliases, while the values are the commands they map to.
@@ -19,7 +22,7 @@
 
 # Always restore open sites when qutebrowser is reopened.
 # Type: Bool
-# c.auto_save.session = False
+c.auto_save.session = True
 
 # Backend to use to display websites. qutebrowser supports two different
 # web rendering engines / backends, QtWebKit and QtWebEngine. QtWebKit
@@ -42,343 +45,150 @@
 # when a key is bound (via `bindings.default` or `bindings.commands`),
 # the mapping is ignored.
 # Type: Dict
-# c.bindings.key_mappings = {'<Ctrl-[>': '<Escape>', '<Ctrl-6>': '<Ctrl-^>', '<Ctrl-M>': '<Return>', '<Ctrl-J>': '<Return>', '<Shift-Return>': '<Return>', '<Enter>': '<Return>', '<Shift-Enter>': '<Return>', '<Ctrl-Enter>': '<Ctrl-Return>'}
-
-# Background color of the completion widget category headers.
-# Type: QssColor
-# c.colors.completion.category.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #888888, stop:1 #505050)'
-
-# Bottom border color of the completion widget category headers.
-# Type: QssColor
-# c.colors.completion.category.border.bottom = 'black'
-
-# Top border color of the completion widget category headers.
-# Type: QssColor
-# c.colors.completion.category.border.top = 'black'
-
-# Foreground color of completion widget category headers.
-# Type: QtColor
-# c.colors.completion.category.fg = 'white'
-
-# Background color of the completion widget for even rows.
-# Type: QssColor
-# c.colors.completion.even.bg = '#333333'
-
-# Text color of the completion widget. May be a single color to use for
-# all columns or a list of three colors, one for each column.
-# Type: List of QtColor, or QtColor
-# c.colors.completion.fg = ['white', 'white', 'white']
-
-# Background color of the selected completion item.
-# Type: QssColor
-# c.colors.completion.item.selected.bg = '#e8c000'
-
-# Bottom border color of the selected completion item.
-# Type: QssColor
-# c.colors.completion.item.selected.border.bottom = '#bbbb00'
-
-# Top border color of the completion widget category headers.
-# Type: QssColor
-# c.colors.completion.item.selected.border.top = '#bbbb00'
-
-# Foreground color of the selected completion item.
-# Type: QtColor
-# c.colors.completion.item.selected.fg = 'black'
-
-# Foreground color of the matched text in the completion.
-# Type: QssColor
-# c.colors.completion.match.fg = '#ff4444'
-
-# Background color of the completion widget for odd rows.
-# Type: QssColor
-# c.colors.completion.odd.bg = '#444444'
-
-# Color of the scrollbar in the completion view.
-# Type: QssColor
-# c.colors.completion.scrollbar.bg = '#333333'
-
-# Color of the scrollbar handle in the completion view.
-# Type: QssColor
-# c.colors.completion.scrollbar.fg = 'white'
-
-# Background color for the download bar.
-# Type: QssColor
-# c.colors.downloads.bar.bg = 'black'
-
-# Background color for downloads with errors.
-# Type: QtColor
-# c.colors.downloads.error.bg = 'red'
-
-# Foreground color for downloads with errors.
-# Type: QtColor
-# c.colors.downloads.error.fg = 'white'
-
-# Color gradient start for download backgrounds.
-# Type: QtColor
-# c.colors.downloads.start.bg = '#0000aa'
-
-# Color gradient start for download text.
-# Type: QtColor
-# c.colors.downloads.start.fg = 'white'
-
-# Color gradient stop for download backgrounds.
-# Type: QtColor
-# c.colors.downloads.stop.bg = '#00aa00'
-
-# Color gradient end for download text.
-# Type: QtColor
-# c.colors.downloads.stop.fg = 'white'
-
-# Color gradient interpolation system for download backgrounds.
-# Type: ColorSystem
-# Valid values:
-#   - rgb: Interpolate in the RGB color system.
-#   - hsv: Interpolate in the HSV color system.
-#   - hsl: Interpolate in the HSL color system.
-#   - none: Don't show a gradient.
-# c.colors.downloads.system.bg = 'rgb'
-
-# Color gradient interpolation system for download text.
-# Type: ColorSystem
-# Valid values:
-#   - rgb: Interpolate in the RGB color system.
-#   - hsv: Interpolate in the HSV color system.
-#   - hsl: Interpolate in the HSL color system.
-#   - none: Don't show a gradient.
-# c.colors.downloads.system.fg = 'rgb'
-
-# Background color for hints. Note that you can use a `rgba(...)` value
-# for transparency.
-# Type: QssColor
-# c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
-
-# Font color for hints.
-# Type: QssColor
-# c.colors.hints.fg = 'black'
-
-# Font color for the matched part of hints.
-# Type: QssColor
-# c.colors.hints.match.fg = 'green'
-
-# Background color of the keyhint widget.
-# Type: QssColor
-# c.colors.keyhint.bg = 'rgba(0, 0, 0, 80%)'
-
-# Text color for the keyhint widget.
-# Type: QssColor
-# c.colors.keyhint.fg = '#FFFFFF'
-
-# Highlight color for keys to complete the current keychain.
-# Type: QssColor
-# c.colors.keyhint.suffix.fg = '#FFFF00'
-
-# Background color of an error message.
-# Type: QssColor
-# c.colors.messages.error.bg = 'red'
-
-# Border color of an error message.
-# Type: QssColor
-# c.colors.messages.error.border = '#bb0000'
-
-# Foreground color of an error message.
-# Type: QssColor
-# c.colors.messages.error.fg = 'white'
-
-# Background color of an info message.
-# Type: QssColor
-# c.colors.messages.info.bg = 'black'
-
-# Border color of an info message.
-# Type: QssColor
-# c.colors.messages.info.border = '#333333'
-
-# Foreground color of an info message.
-# Type: QssColor
-# c.colors.messages.info.fg = 'white'
-
-# Background color of a warning message.
-# Type: QssColor
-# c.colors.messages.warning.bg = 'darkorange'
-
-# Border color of a warning message.
-# Type: QssColor
-# c.colors.messages.warning.border = '#d47300'
-
-# Foreground color of a warning message.
-# Type: QssColor
-# c.colors.messages.warning.fg = 'white'
-
-# Background color for prompts.
-# Type: QssColor
-# c.colors.prompts.bg = '#444444'
-
-# Border used around UI elements in prompts.
-# Type: String
-# c.colors.prompts.border = '1px solid gray'
-
-# Foreground color for prompts.
-# Type: QssColor
-# c.colors.prompts.fg = 'white'
-
-# Background color for the selected item in filename prompts.
-# Type: QssColor
-# c.colors.prompts.selected.bg = 'grey'
-
-# Background color of the statusbar in caret mode.
-# Type: QssColor
-# c.colors.statusbar.caret.bg = 'purple'
-
-# Foreground color of the statusbar in caret mode.
-# Type: QssColor
-# c.colors.statusbar.caret.fg = 'white'
-
-# Background color of the statusbar in caret mode with a selection.
-# Type: QssColor
-# c.colors.statusbar.caret.selection.bg = '#a12dff'
-
-# Foreground color of the statusbar in caret mode with a selection.
-# Type: QssColor
-# c.colors.statusbar.caret.selection.fg = 'white'
-
-# Background color of the statusbar in command mode.
-# Type: QssColor
-# c.colors.statusbar.command.bg = 'black'
-
-# Foreground color of the statusbar in command mode.
-# Type: QssColor
-# c.colors.statusbar.command.fg = 'white'
-
-# Background color of the statusbar in private browsing + command mode.
-# Type: QssColor
-# c.colors.statusbar.command.private.bg = 'grey'
-
-# Foreground color of the statusbar in private browsing + command mode.
-# Type: QssColor
-# c.colors.statusbar.command.private.fg = 'white'
-
-# Background color of the statusbar in insert mode.
-# Type: QssColor
-# c.colors.statusbar.insert.bg = 'darkgreen'
-
-# Foreground color of the statusbar in insert mode.
-# Type: QssColor
-# c.colors.statusbar.insert.fg = 'white'
-
-# Background color of the statusbar.
-# Type: QssColor
-# c.colors.statusbar.normal.bg = 'black'
-
-# Foreground color of the statusbar.
-# Type: QssColor
-# c.colors.statusbar.normal.fg = 'white'
-
-# Background color of the statusbar in passthrough mode.
-# Type: QssColor
-# c.colors.statusbar.passthrough.bg = 'darkblue'
-
-# Foreground color of the statusbar in passthrough mode.
-# Type: QssColor
-# c.colors.statusbar.passthrough.fg = 'white'
-
-# Background color of the statusbar in private browsing mode.
-# Type: QssColor
-# c.colors.statusbar.private.bg = '#666666'
-
-# Foreground color of the statusbar in private browsing mode.
-# Type: QssColor
-# c.colors.statusbar.private.fg = 'white'
-
-# Background color of the progress bar.
-# Type: QssColor
-# c.colors.statusbar.progress.bg = 'white'
-
-# Foreground color of the URL in the statusbar on error.
-# Type: QssColor
-# c.colors.statusbar.url.error.fg = 'orange'
-
-# Default foreground color of the URL in the statusbar.
-# Type: QssColor
-# c.colors.statusbar.url.fg = 'white'
-
-# Foreground color of the URL in the statusbar for hovered links.
-# Type: QssColor
-# c.colors.statusbar.url.hover.fg = 'aqua'
-
-# Foreground color of the URL in the statusbar on successful load
-# (http).
-# Type: QssColor
-# c.colors.statusbar.url.success.http.fg = 'white'
-
-# Foreground color of the URL in the statusbar on successful load
-# (https).
-# Type: QssColor
-# c.colors.statusbar.url.success.https.fg = 'lime'
-
-# Foreground color of the URL in the statusbar when there's a warning.
-# Type: QssColor
-# c.colors.statusbar.url.warn.fg = 'yellow'
-
-# Background color of the tab bar.
-# Type: QtColor
-# c.colors.tabs.bar.bg = '#555555'
-
-# Background color of unselected even tabs.
-# Type: QtColor
-# c.colors.tabs.even.bg = 'darkgrey'
-
-# Foreground color of unselected even tabs.
-# Type: QtColor
-# c.colors.tabs.even.fg = 'white'
-
-# Color for the tab indicator on errors.
-# Type: QtColor
-# c.colors.tabs.indicator.error = '#ff0000'
-
-# Color gradient start for the tab indicator.
-# Type: QtColor
-# c.colors.tabs.indicator.start = '#0000aa'
-
-# Color gradient end for the tab indicator.
-# Type: QtColor
-# c.colors.tabs.indicator.stop = '#00aa00'
-
-# Color gradient interpolation system for the tab indicator.
-# Type: ColorSystem
-# Valid values:
-#   - rgb: Interpolate in the RGB color system.
-#   - hsv: Interpolate in the HSV color system.
-#   - hsl: Interpolate in the HSL color system.
-#   - none: Don't show a gradient.
-# c.colors.tabs.indicator.system = 'rgb'
-
-# Background color of unselected odd tabs.
-# Type: QtColor
-# c.colors.tabs.odd.bg = 'grey'
-
-# Foreground color of unselected odd tabs.
-# Type: QtColor
-# c.colors.tabs.odd.fg = 'white'
-
-# Background color of selected even tabs.
-# Type: QtColor
-# c.colors.tabs.selected.even.bg = 'black'
-
-# Foreground color of selected even tabs.
-# Type: QtColor
-# c.colors.tabs.selected.even.fg = 'white'
-
-# Background color of selected odd tabs.
-# Type: QtColor
-# c.colors.tabs.selected.odd.bg = 'black'
-
-# Foreground color of selected odd tabs.
-# Type: QtColor
-# c.colors.tabs.selected.odd.fg = 'white'
-
-# Background color for webpages if unset (or empty to use the theme's
-# color).
-# Type: QtColor
-# c.colors.webpage.bg = 'white'
+# c.bindings.key_mappings = {
+#     '<Ctrl-[>': '<Escape>',
+#     '<Ctrl-6>': '<Ctrl-^>',
+#     '<Ctrl-M>': '<Return>',
+#     '<Ctrl-J>': '<Return>',
+#     '<Shift-Return>': '<Return>',
+#     '<Enter>': '<Return>',
+#     '<Shift-Enter>': '<Return>',
+#     '<Ctrl-Enter>': '<Ctrl-Return>'
+# }
+
+c.bindings.key_mappings = {
+    '<Ctrl-G>': '<Escape>',
+    '<Alt-X>': ':',
+    '<Ctrl-M>': '<Return>',
+    '<Ctrl-J>': '<Return>',
+    '<Ctrl-I>': '<Tab>',
+    '<Ctrl-Shift-I>': '<Shift-Tab>',
+    '<Shift-Return>': '<Return>',
+    '<Enter>': '<Return>',
+    '<Shift-Enter>': '<Return>',
+    '<Ctrl-Enter>': '<Ctrl-Return>',
+}
+
+c.bindings.commands['normal'] = {
+    # visual mode
+    '<space>': 'enter-mode caret',
+    # hint: follow directly link in current tab
+    'd': 'hint',
+    # hint: follow link in new tab
+    'f': 'hint all tab-fg',
+    # hint: copy link
+    'c': 'hint links yank',
+    # undo
+    '<ctrl-/>': 'undo',
+    # Navigation
+    '<ctrl-v>': 'scroll-page 0 0.5',         # scroll forward
+    '<alt-v>': 'scroll-page 0 -0.5',         # scroll backward
+    # Commands
+    '<alt-x>': 'set-cmd-text :',             # M-x
+    '<ctrl-x>b': 'set-cmd-text -s :buffer',  # buffer switch
+    '<ctrl-x>k': 'tab-close',                # kill tab
+    '<Ctrl-x>r': 'reload',                   # reload page
+    '<Ctrl-x><Ctrl-l>': 'config-source',     # reload config
+    '<ctrl-x><ctrl-c>': 'quit',              # quit
+    # searching
+    '<ctrl-s>': 'set-cmd-text /',
+    '<ctrl-r>': 'set-cmd-text ?',
+    # hinting
+    '<alt-s>': 'hint all',
+    # history
+    # FIXME maybe this should be <C-b> <C-n>? Or would that be too confusing?
+    'F': 'forward',
+    'B': 'back',
+    # tabs
+    '<Alt-n>': 'tab-next',
+    '<Alt-p>': 'tab-prev',
+    # open links
+    # '<ctrl-l>': 'set-cmd-text -s :open',
+    # '<alt-l>': 'set-cmd-text -s :open -t',
+
+    # editing
+    '<ctrl-f>': 'fake-key <Right>',
+    '<ctrl-b>': 'fake-key <Left>',
+    '<ctrl-a>': 'fake-key <Home>',
+    '<ctrl-e>': 'fake-key <End>',
+    '<ctrl-n>': 'fake-key <Down>',
+    '<ctrl-p>': 'fake-key <Up>',
+    '<alt-f>': 'fake-key <Ctrl-Right>',
+    '<alt-b>': 'fake-key <Ctrl-Left>',
+    '<ctrl-d>': 'fake-key <Delete>',
+    '<alt-d>': 'fake-key <Ctrl-Delete>',
+    '<Ctrl-alt-h>': 'fake-key <Ctrl-Backspace>',
+    '<ctrl-w>': 'fake-key <Ctrl-backspace>',
+    '<ctrl-y>': 'insert-text {primary}',
+
+    # zooming
+    '+': 'zoom-in',
+    '-': 'zoom-out',
+
+    # Numbers
+    # https://github.com/qutebrowser/qutebrowser/issues/4213
+    '1': 'fake-key 1',
+    '2': 'fake-key 2',
+    '3': 'fake-key 3',
+    '4': 'fake-key 4',
+    '5': 'fake-key 5',
+    '6': 'fake-key 6',
+    '7': 'fake-key 7',
+    '8': 'fake-key 8',
+    '9': 'fake-key 9',
+    '0': 'fake-key 0',
+
+    # escape hatch
+    '<alt-%>': 'set-cmd-text -s :help',
+}
+
+c.bindings.commands['caret'] = {
+    '<Ctrl-e>': 'move-to-end-of-line',
+    '<Ctrl-a>': 'move-to-start-of-line',
+    # '<Ctrl-Space>': 'drop-selection',
+    '<Escape>': 'leave-mode',
+    '<Return>': 'yank selection',
+    '<Space>': 'toggle-selection',
+    '<Alt-Shift-.>': 'move-to-end-of-document',
+    # 'H': 'scroll left',
+    # 'J': 'scroll down',
+    # 'K': 'scroll up',
+    # 'L': 'scroll right',
+    # 'Y': 'yank selection -s',
+    # '[': 'move-to-start-of-prev-block',
+    # ']': 'move-to-start-of-next-block',
+    '<Alt-b>': 'move-to-prev-word',
+    # 'c': 'enter-mode normal',
+    # '<Alt-f>': 'move-to-end-of-word',
+    '<Alt-Shift-,>': 'move-to-start-of-document',
+    '<Ctrl-b>': 'move-to-prev-char',
+    '<Ctrl-n>': 'move-to-next-line',
+    '<Ctrl-p>': 'move-to-prev-line',
+    '<Ctrl-f>': 'move-to-next-char',
+    'v': 'toggle-selection',
+    '<Alt-f>': 'move-to-next-word',
+    '<Alt-w>': 'yank selection',
+    # '{': 'move-to-end-of-prev-block',
+    # '}': 'move-to-end-of-next-block',
+}
+
+c.bindings.commands['insert'] = {
+    '<Ctrl-e>': 'open-editor',
+}
+
+c.bindings.commands['command'] = {
+    '<ctrl-s>': 'search-next',
+    '<ctrl-r>': 'search-prev',
+    '<ctrl-p>': 'completion-item-focus prev',
+    '<ctrl-n>': 'completion-item-focus next',
+    '<alt-p>': 'command-history-prev',
+    '<alt-n>': 'command-history-next',
+}
+
+# unbind specific conflicting bindings
+config.unbind('<Ctrl-x>')
+config.unbind('co')
+config.unbind('cd')
 
 # Number of commands to save in the command history. 0: no history / -1:
 # unlimited
@@ -457,7 +267,7 @@
 # Automatically start playing `<video>` elements. Note: On Qt < 5.11,
 # this option needs a restart and does not support URL patterns.
 # Type: Bool
-# c.content.autoplay = True
+c.content.autoplay = False
 
 # Enable support for the HTML 5 web application cache feature. An
 # application cache acts like an HTTP cache in some sense. For documents
@@ -503,7 +313,7 @@
 # Default encoding to use for websites. The encoding must be a string
 # describing an encoding such as _utf-8_, _iso-8859-1_, etc.
 # Type: String
-# c.content.default_encoding = 'iso-8859-1'
+c.content.default_encoding = 'utf-8'
 
 # Allow websites to share screen content. On Qt < 5.10, a dialog box is
 # always displayed, even if this is set to "true".
@@ -529,7 +339,7 @@
 #   - true
 #   - false
 #   - ask
-# c.content.geolocation = 'ask'
+c.content.geolocation = False
 
 # Value to send in the `Accept-Language` header. Note that the value
 # read from JavaScript is always the global value.
@@ -677,7 +487,7 @@
 # still be downloaded by clicking the download button in the pdf.js
 # viewer.
 # Type: Bool
-# c.content.pdfjs = False
+c.content.pdfjs = True
 
 # Allow websites to request persistent storage quota via
 # `navigator.webkitPersistentStorage.requestQuota`.
@@ -807,6 +617,7 @@
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
 # c.editor.command = ['gvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
+c.editor.command = ['emacsclient', '--create-frame', '{file}']
 
 # Encoding to use for the editor.
 # Type: Encoding
@@ -950,18 +761,22 @@
 # Mode to use for hints.
 # Type: String
 # Valid values:
-#   - number: Use numeric hints. (In this mode you can also type letters from the hinted element to filter and reduce the number of elements that are hinted.)
+#   - number: Use numeric hints. (In this mode you can also type
+#     letters from the hinted element to filter and reduce the number
+#     of elements that are hinted.)
 #   - letter: Use the characters in the `hints.chars` setting.
 #   - word: Use hints words based on the html elements and the extra words.
 # c.hints.mode = 'letter'
 
 # Comma-separated list of regular expressions to use for 'next' links.
 # Type: List of Regex
-# c.hints.next_regexes = ['\\bnext\\b', '\\bmore\\b', '\\bnewer\\b', '\\b[>→≫]\\b', '\\b(>>|»)\\b', '\\bcontinue\\b']
+# c.hints.next_regexes = ['\\bnext\\b', '\\bmore\\b', '\\bnewer\\b',
+#                         '\\b[>→≫]\\b', '\\b(>>|»)\\b', '\\bcontinue\\b']
 
 # Comma-separated list of regular expressions to use for 'prev' links.
 # Type: List of Regex
-# c.hints.prev_regexes = ['\\bprev(ious)?\\b', '\\bback\\b', '\\bolder\\b', '\\b[<←≪]\\b', '\\b(<<|«)\\b']
+# c.hints.prev_regexes = ['\\bprev(ious)?\\b', '\\bback\\b', '\\bolder\\b',
+#                         '\\b[<←≪]\\b', '\\b(<<|«)\\b']
 
 # Scatter hint key chains (like Vimium) or not (like dwb). Ignored for
 # number hints.
@@ -1218,7 +1033,7 @@
 #   - tr-TR: Turkish (Turkey)
 #   - uk-UA: Ukrainian (Ukraine)
 #   - vi-VN: Vietnamese (Viet Nam)
-# c.spellcheck.languages = []
+# c.spellcheck.languages = ['en-US', 'fr-FR']
 
 # Hide the statusbar unless a message is shown.
 # Type: Bool
