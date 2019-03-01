@@ -95,6 +95,9 @@ c.bindings.commands['normal'] = {
     '<ctrl-x>k': 'tab-close',                # kill tab
     '<ctrl-x>r': 'reload',                   # reload page
     '<ctrl-x>h': 'help',                     # help page
+    '<ctrl-x>p': 'tab-pin',                  # pin current tab
+    '<ctrl-x>l': 'tab-move +',               # move tab to the right
+    '<ctrl-x>m': 'tab-move -',               # move tab to the left
     '<ctrl-x><Ctrl-l>': 'config-source',     # reload config
     '<ctrl-x><ctrl-c>': 'quit',              # quit
     # searching
@@ -179,7 +182,34 @@ c.bindings.commands['command'] = {
 }
 
 # unbind specific conflicting bindings
-to_unbind = ['<Ctrl-x>', 'co', 'cd', '<ctrl-h>']
+to_unbind = [
+    '<ctrl-x>',          # 'navigate-decrement'
+    'co',                # 'tab-only'
+    'cd',                # 'download-clear'
+    '<ctrl-B>',          # 'scroll-page 0 -1'
+    '<ctrl-D>',          # 'scroll-page 0 0.5'
+    '<ctrl-F5>',         # 'reload -f'
+    '<ctrl-F>',          # 'scroll-page 0 1'
+    '<ctrl-N>',          # 'open -w'
+    '<ctrl-PgDown>',     # 'tab-next'
+    '<ctrl-PgUp>',       # 'tab-prev'
+    '<ctrl-Q>',          # 'quit'
+    '<ctrl-Return>',     # 'follow-selected -t'
+    '<ctrl-Shift-N>',    # 'open -p'
+    '<ctrl-Shift-T>',    # 'undo'
+    '<ctrl-Shift-Tab>',  # 'nop'
+    '<ctrl-Shift-W>',    # 'close'
+    '<ctrl-T>',          # 'open -t'
+    '<ctrl-Tab>',        # 'tab-focus last'
+    '<ctrl-U>',          # 'scroll-page 0 -0.5'
+    '<ctrl-V>',          # 'enter-mode passthrough'
+    '<ctrl-W>',          # 'tab-close'
+    '<ctrl-X>',          # 'navigate decrement'
+    '<ctrl-^>',          # 'tab-focus last'
+    '<ctrl-h>',          # 'home'
+    '<ctrl-p>',          # 'tab-pin'
+    '<ctrl-s>',          # 'stop'
+]
 for binding in to_unbind:
     config.unbind(binding)
 
