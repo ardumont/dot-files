@@ -57,54 +57,55 @@ c.auto_save.session = True
 # }
 
 c.bindings.key_mappings = {
-    '<Ctrl-G>': '<Escape>',
-    '<Alt-X>': ':',
-    '<Ctrl-M>': '<Return>',
-    '<Ctrl-J>': '<Return>',
-    '<Ctrl-I>': '<Tab>',
-    '<Ctrl-Shift-I>': '<Shift-Tab>',
-    '<Shift-Return>': '<Return>',
-    '<Enter>': '<Return>',
-    '<Shift-Enter>': '<Return>',
-    '<Ctrl-Enter>': '<Ctrl-Return>',
+    '<ctrl-g>': '<escape>',
+    '<alt-x>': ':',
+    '<ctrl-m>': '<return>',
+    '<ctrl-j>': '<return>',
+    '<ctrl-i>': '<tab>',
+    '<ctrl-shift-i>': '<shift-tab>',
+    '<shift-return>': '<return>',
+    '<enter>': '<return>',
+    '<shift-enter>': '<return>',
+    '<ctrl-enter>': '<ctrl-return>',
 }
 
 c.bindings.commands['normal'] = {
     # visual mode
-    '<space>': 'enter-mode caret',
+    '<ctrl-space>': 'enter-mode caret',
+    # hinting
     # hint: follow directly link in current tab
     'd': 'hint',
+    '<ctrl-c>j': 'hint all',
     # hint: follow link in new tab
     'f': 'hint all tab-fg',
     # hint: copy link
     'c': 'hint links yank',
     # undo
     '<ctrl-/>': 'undo',
-    # Navigation
+    # navigation
     '<ctrl-v>': 'scroll-page 0 0.5',         # scroll forward
     '<alt-v>': 'scroll-page 0 -0.5',         # scroll backward
-    # Commands
+    # not working (T.T)
+    '<shift-alt-.>': 'scroll-to-perc',       # to bottom
+    '<shift-alt-,>': 'scroll-to-perc 0',     # to top
+    # commands
     '<alt-x>': 'set-cmd-text :',             # M-x
+    # options
     '<ctrl-x>b': 'set-cmd-text -s :buffer',  # buffer switch
     '<ctrl-x>k': 'tab-close',                # kill tab
-    '<Ctrl-x>r': 'reload',                   # reload page
-    '<Ctrl-x><Ctrl-l>': 'config-source',     # reload config
+    '<ctrl-x>r': 'reload',                   # reload page
+    '<ctrl-x>h': 'help',                     # help page
+    '<ctrl-x><Ctrl-l>': 'config-source',     # reload config
     '<ctrl-x><ctrl-c>': 'quit',              # quit
     # searching
     '<ctrl-s>': 'set-cmd-text /',
     '<ctrl-r>': 'set-cmd-text ?',
-    # hinting
-    '<alt-s>': 'hint all',
     # history
-    # FIXME maybe this should be <C-b> <C-n>? Or would that be too confusing?
     'F': 'forward',
     'B': 'back',
     # tabs
-    '<Alt-n>': 'tab-next',
-    '<Alt-p>': 'tab-prev',
-    # open links
-    # '<ctrl-l>': 'set-cmd-text -s :open',
-    # '<alt-l>': 'set-cmd-text -s :open -t',
+    '<alt-n>': 'tab-next',
+    '<alt-p>': 'tab-prev',
 
     # editing
     '<ctrl-f>': 'fake-key <Right>',
@@ -117,15 +118,11 @@ c.bindings.commands['normal'] = {
     '<alt-b>': 'fake-key <Ctrl-Left>',
     '<ctrl-d>': 'fake-key <Delete>',
     '<alt-d>': 'fake-key <Ctrl-Delete>',
-    '<Ctrl-alt-h>': 'fake-key <Ctrl-Backspace>',
+    '<ctrl-alt-h>': 'fake-key <Ctrl-Backspace>',
     '<ctrl-w>': 'fake-key <Ctrl-backspace>',
     '<ctrl-y>': 'insert-text {primary}',
 
-    # zooming
-    '+': 'zoom-in',
-    '-': 'zoom-out',
-
-    # Numbers
+    # numbers
     # https://github.com/qutebrowser/qutebrowser/issues/4213
     '1': 'fake-key 1',
     '2': 'fake-key 2',
@@ -137,43 +134,39 @@ c.bindings.commands['normal'] = {
     '8': 'fake-key 8',
     '9': 'fake-key 9',
     '0': 'fake-key 0',
-
-    # escape hatch
-    '<alt-%>': 'set-cmd-text -s :help',
 }
 
 c.bindings.commands['caret'] = {
-    '<Ctrl-e>': 'move-to-end-of-line',
-    '<Ctrl-a>': 'move-to-start-of-line',
-    # '<Ctrl-Space>': 'drop-selection',
-    '<Escape>': 'leave-mode',
-    '<Return>': 'yank selection',
-    '<Space>': 'toggle-selection',
-    '<Alt-Shift-.>': 'move-to-end-of-document',
-    # 'H': 'scroll left',
-    # 'J': 'scroll down',
-    # 'K': 'scroll up',
-    # 'L': 'scroll right',
-    # 'Y': 'yank selection -s',
-    # '[': 'move-to-start-of-prev-block',
-    # ']': 'move-to-start-of-next-block',
-    '<Alt-b>': 'move-to-prev-word',
-    # 'c': 'enter-mode normal',
-    # '<Alt-f>': 'move-to-end-of-word',
-    '<Alt-Shift-,>': 'move-to-start-of-document',
-    '<Ctrl-b>': 'move-to-prev-char',
-    '<Ctrl-n>': 'move-to-next-line',
-    '<Ctrl-p>': 'move-to-prev-line',
-    '<Ctrl-f>': 'move-to-next-char',
-    'v': 'toggle-selection',
-    '<Alt-f>': 'move-to-next-word',
-    '<Alt-w>': 'yank selection',
-    # '{': 'move-to-end-of-prev-block',
-    # '}': 'move-to-end-of-next-block',
+    '<ctrl-e>': 'move-to-end-of-line',
+    '<ctrl-a>': 'move-to-start-of-line',
+    '<ctrl-Space>': 'toggle-selection',
+    '<escape>': 'leave-mode',
+    '<return>': 'yank selection',
+    '<alt-b>': 'move-to-prev-word',
+    '<ctrl-b>': 'move-to-prev-char',
+    '<ctrl-n>': 'move-to-next-line',
+    '<ctrl-p>': 'move-to-prev-line',
+    '<ctrl-f>': 'move-to-next-char',
+    '<alt-f>': 'move-to-next-word',
+    '<alt-w>': 'yank selection',
 }
 
 c.bindings.commands['insert'] = {
-    '<Ctrl-e>': 'open-editor',
+    '<escape>': 'leave-mode',
+    '<ctrl-x>e': 'open-editor',
+    '<ctrl-f>': 'fake-key <Right>',
+    '<ctrl-b>': 'fake-key <Left>',
+    '<ctrl-a>': 'fake-key <Home>',
+    '<ctrl-e>': 'fake-key <End>',
+    '<ctrl-n>': 'fake-key <Down>',
+    '<ctrl-p>': 'fake-key <Up>',
+    '<alt-f>': 'fake-key <Ctrl-Right>',
+    '<alt-b>': 'fake-key <Ctrl-Left>',
+    '<ctrl-d>': 'fake-key <Delete>',
+    '<alt-d>': 'fake-key <Ctrl-Delete>',
+    '<ctrl-alt-h>': 'fake-key <Ctrl-Backspace>',
+    '<ctrl-w>': 'fake-key <Ctrl-backspace>',
+    '<ctrl-y>': 'insert-text {primary}',
 }
 
 c.bindings.commands['command'] = {
@@ -186,9 +179,9 @@ c.bindings.commands['command'] = {
 }
 
 # unbind specific conflicting bindings
-config.unbind('<Ctrl-x>')
-config.unbind('co')
-config.unbind('cd')
+to_unbind = ['<Ctrl-x>', 'co', 'cd', '<ctrl-h>']
+for binding in to_unbind:
+    config.unbind(binding)
 
 # Number of commands to save in the command history. 0: no history / -1:
 # unlimited

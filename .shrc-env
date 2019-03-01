@@ -70,7 +70,7 @@ elif [ -f /etc/debian_version ]; then # non nixos env
     export LC_ALL="en_US.UTF-8"
     export LANG="en_US.UTF-8"
 
-    export BROWSER=/usr/bin/firefox
+    export BROWSER=/usr/bin/qutebrowser
 
     [ -d /etc/alternatives -a "$(readlink /etc/alternatives/www-browser)" != "$BROWSER" ] \
         && sudo ln -nsf $BROWSER /etc/alternatives/www-browser \
