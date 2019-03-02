@@ -97,10 +97,12 @@ c.bindings.commands['normal'] = {
     # commands
     '<Alt-x>': 'set-cmd-text :',             # M-x
     # options
+    '<Ctrl-x>a': 'hint links userscript to-sample',  # Append link to sample
     '<Ctrl-x>b': 'set-cmd-text -s :buffer',  # buffer switch
     '<Ctrl-x>k': 'tab-close',                # kill tab
     # '<Ctrl-x>w': 'close',                    # close window (close too much)
     '<Ctrl-x>r': 'reload',                   # reload page
+    '<Ctrl-c>r': 'reload',                   # reload page
     '<Ctrl-x>h': 'help',                     # help page
     '<Ctrl-x>p': 'tab-pin',                  # pin current tab
     '<Ctrl-x>l': 'tab-move +',               # move tab to the right
@@ -1314,7 +1316,6 @@ c.url.searchengines = {
     'r': 'https://reddit.com/r/{}',
     'g': 'https://google.com/search?q={}',
 }
-
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
