@@ -61,14 +61,14 @@ c.auto_save.session = True
 c.bindings.key_mappings = {
     '<Ctrl-g>': '<Escape>',
     '<Alt-x>': ':',
-    '<Ctrl-m>': '<return>',
-    '<Ctrl-j>': '<return>',
-    '<Ctrl-i>': '<tab>',
-    '<Ctrl-shift-i>': '<shift-tab>',
-    '<shift-return>': '<return>',
-    '<Enter>': '<return>',
-    '<shift-Enter>': '<return>',
-    '<Ctrl-Enter>': '<Ctrl-return>',
+    '<Ctrl-m>': '<Return>',
+    '<Ctrl-j>': '<Return>',
+    '<Ctrl-i>': '<Tab>',
+    '<Ctrl-shift-i>': '<Shift-Tab>',
+    '<Shift-return>': '<Return>',
+    '<Enter>': '<Return>',
+    '<shift-Enter>': '<Return>',
+    '<Ctrl-Enter>': '<Ctrl-Return>',
 }
 
 # main mode
