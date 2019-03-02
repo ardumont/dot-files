@@ -71,6 +71,7 @@ c.bindings.key_mappings = {
     '<Ctrl-Enter>': '<Ctrl-return>',
 }
 
+# main mode
 c.bindings.commands['normal'] = {
     # visual mode
     '<Ctrl-Space>': 'enter-mode caret',
@@ -89,14 +90,15 @@ c.bindings.commands['normal'] = {
     # navigation
     '<Ctrl-v>': 'scroll-page 0 0.5',         # scroll forward
     '<Alt-v>': 'scroll-page 0 -0.5',         # scroll backward
-    # not working (T.T)
-    '<shift-Alt-.>': 'scroll-to-perc',       # to bottom
-    '<shift-Alt-,>': 'scroll-to-perc 0',     # to top
+    # not working (T.T) ~> binding is effective though (M-x-ing, we see those)
+    '<Alt-Shift-.>': 'scroll-to-perc',       # to bottom
+    '<Alt-Shift-,>': 'scroll-to-perc 0',     # to top
     # commands
     '<Alt-x>': 'set-cmd-text :',             # M-x
     # options
     '<Ctrl-x>b': 'set-cmd-text -s :buffer',  # buffer switch
     '<Ctrl-x>k': 'tab-close',                # kill tab
+    # '<Ctrl-x>w': 'close',                    # close window (close too much)
     '<Ctrl-x>r': 'reload',                   # reload page
     '<Ctrl-x>h': 'help',                     # help page
     '<Ctrl-x>p': 'tab-pin',                  # pin current tab
@@ -144,6 +146,7 @@ c.bindings.commands['normal'] = {
     '0': 'fake-key 0',
 }
 
+# selection mode
 c.bindings.commands['caret'] = {
     '<Ctrl-g>': 'leave-mode',
     '<Ctrl-e>': 'move-to-end-of-line',
@@ -160,6 +163,7 @@ c.bindings.commands['caret'] = {
     '<Alt-w>': 'yank selection',
 }
 
+# edit mode
 c.bindings.commands['insert'] = {
     '<Escape>': 'leave-mode',
     '<Ctrl-g>': 'leave-mode',
@@ -183,6 +187,14 @@ c.bindings.commands['insert'] = {
 c.bindings.commands['prompt'] = {
     '<Ctrl-y>': 'insert-text {primary}',
 }
+
+# "pass keys directly to the browser" mode
+# somehow the other syntax below won't work
+config.bind('<Ctrl-g>', 'leave-mode', mode='passthrough')
+# c.bindings.command['passthrough'] = {
+#     '<Ctrl-g>': 'leave-mode',
+# }
+
 
 c.bindings.commands['command'] = {
     '<Ctrl-g>': 'leave-mode',
