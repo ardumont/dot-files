@@ -99,7 +99,11 @@ c.bindings.commands['normal'] = {
     # commands
     '<Alt-x>': 'set-cmd-text :',             # M-x
     # options
-    '<Ctrl-x>a': 'hint links userscript to-sample',  # Append link to sample
+    '<Ctrl-x>t': 'hint links userscript to-sample',  # Append link to sample
+    '<Ctrl-x>a': 'hint links userscript dl-audio',   # hint: dl & extract audio
+    '<Ctrl-x>0a': 'spawn --userscript dl-audio',     # same from current url
+    '<Ctrl-x>v': 'hint links userscript dl',         # hint: dl video
+    '<Ctrl-x>0v': 'spawn --userscript dl',           # same from current url
     '<Ctrl-x>b': 'set-cmd-text -s :buffer',  # buffer switch
     '<Ctrl-x>k': 'tab-close',                # kill tab
     # '<Ctrl-x>w': 'close',                    # close window (close too much)
