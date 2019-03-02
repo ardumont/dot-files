@@ -85,6 +85,8 @@ c.bindings.commands['normal'] = {
     'shift-f': 'hint all tab-fg',
     # hint: copy link
     'c': 'hint links yank',
+    # view video through mpv
+    # 'v': 'hint links spawn mpv {hint-url}',
     # undo
     '<Ctrl-/>': 'undo',
     # navigation
