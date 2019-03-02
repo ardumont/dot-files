@@ -978,7 +978,7 @@ c.editor.command = ['emacsclient', '--create-frame', '{file}']
 # Enable smooth scrolling for web pages. Note smooth scrolling does not
 # work with the `:scroll-px` command.
 # Type: Bool
-# c.scrolling.smooth = False
+c.scrolling.smooth = True
 
 # When to find text on a page case-insensitively.
 # Type: String
@@ -1000,7 +1000,7 @@ c.editor.command = ['emacsclient', '--create-frame', '{file}']
 
 # Load a restored tab as soon as it takes focus.
 # Type: Bool
-# c.session.lazy_restore = False
+c.session.lazy_restore = True
 
 # Languages to use for spell checking. You can check for available
 # languages and install dictionaries using scripts/dictcli.py. Run the
