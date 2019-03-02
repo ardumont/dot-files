@@ -1050,7 +1050,9 @@ c.editor.command = ['emacsclient', '--create-frame', '{file}']
 #   - tr-TR: Turkish (Turkey)
 #   - uk-UA: Ukrainian (Ukraine)
 #   - vi-VN: Vietnamese (Viet Nam)
-# c.spellcheck.languages = ['en-US', 'fr-FR']
+# /usr/share/qutebrowser/scripts/dictcli.py install en-US
+# /usr/share/qutebrowser/scripts/dictcli.py install fr-FR
+c.spellcheck.languages = ['en-US', 'fr-FR']
 
 # Hide the statusbar unless a message is shown.
 # Type: Bool
