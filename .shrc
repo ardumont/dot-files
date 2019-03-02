@@ -16,5 +16,8 @@
 # Disable touchpad when typing
 [ -f ~/bin/touchpad/disable-touchpad-when-typing.sh ] && . ~/bin/touchpad/disable-touchpad-when-typing.sh
 
+# Load non public stuff (typically non-versioned stuff)
+[ -f ~/.shrc-private ] && . ~/.shrc-private
+
 (which fortune 2>&1 >/dev/null) && (which cowsay 2>&1 >/dev/null) && \
     fortune | cowsay
