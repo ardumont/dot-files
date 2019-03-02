@@ -90,9 +90,10 @@ c.bindings.commands['normal'] = {
     # navigation
     '<Ctrl-v>': 'scroll-page 0 0.5',         # scroll forward
     '<Alt-v>': 'scroll-page 0 -0.5',         # scroll backward
-    # not working (T.T) ~> binding is effective though (M-x-ing, we see those)
-    '<Alt-Shift-.>': 'scroll-to-perc',       # to bottom
-    '<Alt-Shift-,>': 'scroll-to-perc 0',     # to top
+    # with Shift, it's not working (T.T)
+    # ~> binding is effective though (M-x-ing, we see those)
+    '<Alt-.>': 'scroll-to-perc',       # to bottom
+    '<Alt-,>': 'scroll-to-perc 0',     # to top
     # commands
     '<Alt-x>': 'set-cmd-text :',             # M-x
     # options
