@@ -1315,6 +1315,7 @@ c.url.searchengines = {
     "osm": "https://www.openstreetmap.org/search?query={}",
     'r': 'https://reddit.com/r/{}',
     'g': 'https://google.com/search?q={}',
+    'y': 'https://youtube.com/results?search_query={}',
 }
 
 # Page(s) to open at the start.
