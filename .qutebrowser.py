@@ -1322,6 +1322,9 @@ c.url.searchengines = {
     'r': 'https://reddit.com/r/{}',
     'g': 'https://google.com/search?q={}',
     'y': 'https://youtube.com/results?search_query={}',
+    'gh': 'https://github.com/search?q={}',
+    'gl': 'https://gitlab.com/search?search={}',
+    'py': 'https://www.python.org/search/?q={}&submit='
 }
 
 # Page(s) to open at the start.
