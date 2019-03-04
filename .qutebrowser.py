@@ -64,6 +64,7 @@ c.bindings.key_mappings = {
     '<Ctrl-m>': '<Return>',
     '<Ctrl-i>': '<Tab>',
     '<Ctrl-y>': '<Ctrl-v>',
+    '<Ctrl-w>': '<Ctrl-x>',
     '<Ctrl-shift-i>': '<Shift-Tab>',
     '<Shift-return>': '<Return>',
     '<Enter>': '<Return>',
@@ -140,6 +141,8 @@ c.bindings.commands['normal'] = {
     '<Ctrl-h>': 'fake-key <Backspace>',
     '<Ctrl-w>': 'fake-key <Ctrl-backspace>',
     '<Ctrl-y>': 'insert-text {primary}',
+    '<Ctrl-Shift-y>': 'insert-text {clipboard}',
+    '<Alt-w>': 'yank selection',
 
     # numbers
     # https://github.com/qutebrowser/qutebrowser/issues/4213
@@ -191,11 +194,13 @@ c.bindings.commands['insert'] = {
     '<Ctrl-Alt-h>': 'fake-key <Ctrl-Backspace>',
     '<Ctrl-w>': 'fake-key <Ctrl-backspace>',
     '<Ctrl-y>': 'insert-text {primary}',
+    '<Ctrl-Shift-y>': 'insert-text {clipboard}',
+    '<Alt-w>': 'yank selection',
 }
 
-c.bindings.commands['prompt'] = {
-    '<Ctrl-y>': 'insert-text {primary}',
-}
+# somehow the other syntax below won't work
+config.bind('<Ctrl-y>', 'insert-text {primary}', mode='prompt')
+config.bind('<Ctrl-Shift-y>', 'insert-text {clipboard}', mode='prompt')
 
 # "pass keys directly to the browser" mode
 # somehow the other syntax below won't work
@@ -994,7 +999,7 @@ c.editor.command = ['emacsclient', '--create-frame', '{file}']
 #   - always: Always show the scrollbar.
 #   - never: Never show the scrollbar.
 #   - when-searching: Show the scrollbar when searching for text in the webpage. With the QtWebKit backend, this is equal to `never`.
-# c.scrolling.bar = 'when-searching'
+c.scrolling.bar = 'always'
 
 # Enable smooth scrolling for web pages. Note smooth scrolling does not
 # work with the `:scroll-px` command.
