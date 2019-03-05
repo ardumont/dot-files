@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-let defaultUser = "tony";
+let defaultUser = "tony"; defaultPassword = "dummy";
 in {
   programs = {
     zsh.enable = true;
@@ -18,8 +18,11 @@ in {
       uid = 1000;
       createHome = true;
       home = "/home/${defaultUser}";
-      password = "dummy"; # for the first time, make sure to not be locked out passwordless then change it manually
-      extraGroups = [ "wheel" "audio" "video" "vboxusers" "docker" "networkmanager" "dialout" ];
+      password = "${defaultPassword}";  # for the first time, make sure to not
+                                        # be locked out passwordless then
+					# change it manually
+      extraGroups = [ "wheel" "audio" "video" "vboxusers" "docker"
+                      "networkmanager" "dialout" ];
       useDefaultShell = true; }
     { description = "Christelle Héritier";
       name = "chris";
@@ -27,7 +30,9 @@ in {
       uid = 1001;
       createHome = true;
       home = "/home/chris";
-      password = "dummy";  # for the first time, make sure to not be locked out passwordless then change it manually
+      password = "${defaultPassword}";  # for the first time, make sure to not
+                                        # be locked out passwordless then
+					# change it manually
       extraGroups = [ "audio" "video" "networkmanager" ];
       useDefaultShell = true; }
     ];
