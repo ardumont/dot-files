@@ -45,6 +45,7 @@
     enableFontDir = true;
     fonts = [
        pkgs.dejavu_fonts
+       pkgs.powerline-fonts
        # pkgs.andagii
        # pkgs.anonymousPro
        # pkgs.arkpandora_ttf
