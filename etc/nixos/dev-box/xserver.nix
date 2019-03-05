@@ -38,7 +38,7 @@
       ${networkmanagerapplet}/bin/nm-applet&
       ${feh}/bin/feh --bg-max ~/.wallpaper.jpg
 
-      export BROWSER="firefox";
+      export BROWSER="qutebrowser";
 
       # fix awt & co. in stumpwm/xmonad
       export _JAVA_AWT_WM_NONREPARENTING=1
