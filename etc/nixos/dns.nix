@@ -3,7 +3,7 @@
 let path = "NetworkManager/dnsmasq.d";
 in
 {
-  # overriding default dnsmasq options
+  # extending networkmanager's managed dnsmasq instance
   environment.etc."${path}/cache.conf".text = ''
 cache-size=1000
 '';
