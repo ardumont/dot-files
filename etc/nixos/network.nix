@@ -2,8 +2,6 @@
 
 {
   networking = {
-    # hostName = "corellia";    # Define your hostname.
-
     firewall = {
       enable = true;
       allowedTCPPorts = [ 22 ];
