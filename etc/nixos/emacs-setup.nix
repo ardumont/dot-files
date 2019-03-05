@@ -19,13 +19,12 @@ let emacs = import ./emacs.nix { inherit pkgs; };
       # emacs dependencies
       notmuch                                  # From main packages set
       offlineimap
-      haskellPackages.structured-haskell-mode  # From haskell set
-      haskellPackages.hlint
-      haskellPackages.hasktags
-      haskellPackages.stylish-haskell
-      ocaml opam gnum4 # aspcud (not yet present in nixos)
-      ocamlPackages.merlin                     # From ocaml set
-      ocamlPackages.ocpIndent
+      # haskellPackages.structured-haskell-mode  # From haskell set
+      # haskellPackages.hlint
+      # haskellPackages.hasktags
+      # haskellPackages.stylish-haskell
+      # ocaml opam gnum4 # aspcud (not yet present in nixos)
+      # ocamlPackages.merlin                     # From ocaml set
       dejavu_fonts
     ];
 

@@ -5,16 +5,12 @@ let
 in
   emacsWithPackages (epkgs: (with epkgs.melpaStablePackages; [
     magit          # ; Integrate git <C-x g>
-    zerodark-theme # ; Nicolas' theme
     jabber
   ]) ++ (with epkgs.melpaPackages; [
-    debian-bug
     # debian-changelog-mode
     hydra
     jabber-otr
     repl-toggle
-    undo-tree      # ; <C-x u> to show the undo tree
-    zoom-frm       # ; increase/decrease font size for all buffers %lt;C-x C-+>
     offlineimap
     flycheck
     flycheck-pos-tip
@@ -31,7 +27,6 @@ in
     projectile
     switch-window
     smart-mode-line
-    undo-tree
     use-package
     el-get
     dash
@@ -53,7 +48,7 @@ in
     aggressive-indent
     crux
     smart-mode-line
-    color-theme
+#    color-theme
     spacemacs-theme
     emr
     ert-expectations
@@ -78,7 +73,7 @@ in
     ox-mediawiki
     deferred
     ghci-completion
-    # haskell-mode
+    haskell-mode
     shm
     ac-math
     git-gutter
@@ -91,7 +86,7 @@ in
     google-contacts
     restclient
     conkeror-minor-mode
-    # eval-sexp-fu
+    eval-sexp-fu
     cider
     clojure-mode
     yasnippet
@@ -104,7 +99,7 @@ in
     dash-functional
     s
     diminish
-    # nix-mode
+    nix-mode
     helm-nixos-options
     company-nixos-options
     exec-path-from-shell
@@ -118,7 +113,7 @@ in
     groovy-mode
     weechat
     creds
-    # guide-key
+    guide-key
     marmalade-client
     purescript-mode
     psci
