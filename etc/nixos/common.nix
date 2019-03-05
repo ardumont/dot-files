@@ -5,7 +5,9 @@
 
   system.activationScripts.media =
   ''
-    mkdir -m 0755 -p /media /share
+    mkdir -m 0775 -p /volume/
+    mkdir -m 0775 -p /volume/share
+    chown -R root:users /volume/
   '';
 
   boot = {

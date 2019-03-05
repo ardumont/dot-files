@@ -1,14 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # fileSystems."/share" = {
-  #   device = "//nas/share";
-  #   fsType = "cifs";
-  # };
-
-  # fileSystems."/share" = {
-  #  device = "naboo:/volume1/share";
-  #  fsType = "nfs";
-  #  options = "noauto,noatime,users";
-  # };
+  fileSystems."/volume/share" = {
+   device = "rpi3:/volume/share";
+   fsType = "sshfs";
+   options = "noauto,noatime,users";
+  };
 }
