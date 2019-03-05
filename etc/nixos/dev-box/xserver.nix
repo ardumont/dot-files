@@ -38,9 +38,9 @@
       # set the keyboard repeat rate
       ${xlibs.xset}/bin/xset r rate 200 60
       # start default user service
-      ${xscreensaver}/bin/xscreensaver&
-      ${trayer}/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000&
-      ${networkmanagerapplet}/bin/nm-applet&
+      pkill xscreensaver && ${xscreensaver}/bin/xscreensaver&
+      pkill trayer && ${trayer}/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --height 12 --transparent true --tint 0x000000&
+      pkill nm-applet && ${networkmanagerapplet}/bin/nm-applet&
       ${feh}/bin/feh --bg-max ~/.wallpaper.jpg
 
       export BROWSER="qutebrowser";
@@ -51,12 +51,9 @@
       export AWT_TOOLKIT=MToolkit
 
       # Display layout which can be different depending on host
+      # (Layout per host divergence is possible)
       LAYOUT_FILE_PER_HOST="$HOME/.layouts/$(hostname).sh"
-
-      # Layout per host divergence possible
       [ -f $LAYOUT_FILE_PER_HOST ] && ${zsh}/bin/zsh $LAYOUT_FILE_PER_HOST
-
-      exec ${haskellPackages.xmonad}/bin/xmonad
     '';
 
   };
