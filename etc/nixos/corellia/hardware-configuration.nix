@@ -11,17 +11,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/sda2";
-      fsType = "ext4";
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/sda3";
+    { device = "/dev/sda1";
       fsType = "ext4";
     };
 
   swapDevices =
-    [ { device = "/dev/sda4"; }
+    [ { device = "/dev/sda2"; }
     ];
 
   nix.maxJobs = 4;
