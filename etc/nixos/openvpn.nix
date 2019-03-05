@@ -1,4 +1,4 @@
-{ server, service_name, client, with_credential, ... }:
+{ server, service_name, client, with_credential, device, cipher, ... }:
 
 let path = "/etc/openvpn/keys/${service_name}";
     optional = if with_credential
@@ -11,7 +11,7 @@ in {
    config = ''
 remote ${server} 1194
 client
-dev tun0
+dev ${device}
 proto udp
 comp-lzo
 resolv-retry infinite
@@ -21,7 +21,7 @@ persist-tun
 mute-replay-warnings
 remote-cert-tls server
 key-direction 1
-cipher AES-128-CBC
+cipher ${cipher}
 verb 1
 mute 20
 user nobody

@@ -10,6 +10,8 @@ in {
       service_name = "lan";
       client = client;
       with_credential = true;
+      device = "tun0";
+      cipher = "AES-128-CBC";
     };
 
     work = import ../openvpn.nix {
@@ -17,6 +19,8 @@ in {
       service_name = "work";
       client = client;
       with_credential = false;
+      device = "tun1";
+      cipher = "BF-CBC";
     };
   };
 }
