@@ -10,14 +10,17 @@
   boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/sda1";
+  fileSystems = {
+    "/" = {
+      device = "/dev/sda1";
       fsType = "ext4";
     };
-
-  swapDevices =
-    [ { device = "/dev/sda2"; }
-    ];
+    "/boot" = {
+      device = "/dev/sda3";
+      fsType = "vfat";
+    };
+  };
+  swapDevices = [ { device = "/dev/sda2"; } ];
 
   nix.maxJobs = 4;
   hardware.bluetooth.enable = false;
