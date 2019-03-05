@@ -1,12 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  # Use vbox
-  virtualisation.virtualbox.host.enable = true;
-
-  # Activate docker service
-  virtualisation.docker = {
-    enable = true;
-#    storageDriver = "devicemapper";
+  virtualisation = {
+    # No vbox
+    virtualbox.host.enable = false;
+    # Activate docker service
+    docker = {
+      enable = true;
+      # storageDriver = "devicemapper";
+    };
   };
 }

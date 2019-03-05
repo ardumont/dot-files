@@ -50,40 +50,6 @@ done
 mkdir -p $REPO_DOTFILES/.config/
 ln -nsf $REPO_DOTFILES/.config/systemd $HOME/.config/
 
-# gtk config
-mkdir -p $REPO_DOTFILES/.config/gtk-3.0
-ln -nsf $REPO_DOTFILES/.config/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/
-
-## pidgin
-
-mkdir -p $HOME/.purple
-ln -nsf $REPO_DOTFILES/accels $HOME/.purple/
-
-## LightTable
-
-mkdir -p $HOME/.config/LightTable
-ln -nsf $REPO_DOTFILES/lighttable-settings $HOME/.config/LightTable/settings
-
-## clojure
-
-mkdir -p $HOME/.lein
-rm -f $HOME/.lein/profiles.clj
-ln -nsf $REPO_DOTFILES/profiles.clj $HOME/.lein/
-
-## gradle
-
-mkdir -p $HOME/.gradle
-ln -nsf $REPO_DOTFILES/gradle.properties $HOME/.gradle/
-ln -nsf $REPO_DOTFILES/init.gradle $HOME/.gradle/
-
-## sbt/scala
-
-mkdir -p $HOME/.sbt/plugins
-ln -nsf $REPO_DOTFILES/.sbt/plugins/plugins.sbt $HOME/.sbt/plugins
-
-mkdir -p $HOME/project/plugins/
-ln -nsf $REPO_DOTFILES/project/plugins/plugins.sbt $HOME/project/plugins
-
 ## org
 
 REPO_PERSO=$REPO_DOTFILES/..
@@ -98,26 +64,16 @@ ln -nsf $REPO_PERSO/org $HOME/
 
 ln -nsf $REPO_PERSO/sh $HOME/bin
 
-## emacs
-
-bash $REPO_DOTFILES/deploy-emacs.sh $REPO_PERSO $WITH_EMACS_ENV $CI
-
 ## oh-my-zsh
 
 [ ! -d $REPO_PERSO/oh-my-zsh ] && git clone git@github.com:ardumont/oh-my-zsh.git $REPO_PERSO/oh-my-zsh
 
 ln -nsf $REPO_PERSO/oh-my-zsh $HOME/.oh-my-zsh
 
-## KeySnail
-
-bash $REPO_DOTFILES/deploy-keysnail.sh
-
 ## emacs
 
 ln -nsf $REPO_DOTFILES/.emacs.d/.mc-lists.el ~/.emacs.d/.mc-lists.el
 ln -nsf $REPO_DOTFILES/.emacs.d/abbrev_defs ~/.emacs.d/abbrev_defs
-
-ln -nsf $REPO_DOTFILES/nixos/emacs.nix ~/.nixpkgs/emacs.nix
 
 if [ ! -d $HOME/work ]; then
     mkdir -p $HOME/work

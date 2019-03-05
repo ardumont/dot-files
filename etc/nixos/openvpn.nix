@@ -1,10 +1,10 @@
-{ vpn-server, ... }:
+{ vpn-server, client, ... }:
 
 {
   servers = {
     lan = {
       config = ''
-        remote rpi3.lan 1194
+        remote ${vpn-server} 1194
         client
         dev tun0
         proto udp
@@ -14,19 +14,19 @@
         persist-key
         persist-tun
         mute-replay-warnings
-        ns-cert-type server
+        remote-cert-tls server
         key-direction 1
         cipher AES-128-CBC
         verb 1
         mute 20
         user nobody
         group nogroup
-        log /var/log/openvpn-${vpn-server}.log
-        status /var/log/openvpn-status-${vpn-server}.log
-        # this must be installed manually
+        log /var/log/openvpn-lan.log
+        status /var/log/openvpn-status-lan.log
+        # this must be installed manually (for now)
         ca /etc/openvpn/keys/lan/ca.crt
-        cert /etc/openvpn/keys/lan/${vpn-server}.crt
-        key /etc/openvpn/keys/lan/${vpn-server}.key
+        cert /etc/openvpn/keys/lan/${client}.crt
+        key /etc/openvpn/keys/lan/${client}.key
         tls-auth /etc/openvpn/keys/lan/ta.key
       '';
       autoStart = false;
