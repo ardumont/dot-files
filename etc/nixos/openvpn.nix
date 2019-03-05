@@ -1,9 +1,12 @@
-{ server, client, private, ... }:
+{ server, client, with_credential, ... }:
 
 let network = "lan";
     path = "/etc/openvpn/keys/${network}";
-    optional = if private
-               then "askpass ${path}/private"
+    optional = if with_credential
+               then ''
+tls-auth ${path}/ta.key
+askpass ${path}/private
+''
                else "";
 in {
   servers = {
@@ -27,14 +30,13 @@ mute 20
 user nobody
 group nogroup
 log /var/log/openvpn-${network}.log
-${optional}
 status /var/log/openvpn-status-${network}.log
 # this must be installed manually (for now)
 ca ${path}/ca.crt
 cert ${path}/${client}.crt
 key ${path}/${client}.key
-tls-auth ${path}/ta.key
-      '';
+${optional}
+'';
       autoStart = true;
     };
   };

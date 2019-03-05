@@ -1,12 +1,11 @@
 { config, pkgs, ... }:
 
-let server = "${builtins.readFile /etc/nix-vpn-server}";
-    client = "${config.networking.hostName}";
-    private = true;
+let client = "${config.networking.hostName}";
+    vpn_server_lan = "${builtins.readFile /etc/vpn-server-lan}";
 in {
   services.openvpn = import ../openvpn.nix {
-    inherit server;
-    inherit client;
-    inherit private;
+    server = vpn_server_lan;
+    client = client;
+    with_credential = true;
   };
 }
