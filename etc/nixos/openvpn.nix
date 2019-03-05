@@ -1,7 +1,9 @@
-{ server, client, stuff, ... }:
+{ server, client, private, ... }:
 
-let optional = if stuff
-               then "askpass /etc/openvpn/keys/stuff"
+let network = "lan";
+    path = "/etc/openvpn/keys/${network}";
+    optional = if private
+               then "askpass ${path}/private"
                else "";
 in {
   servers = {
@@ -24,14 +26,14 @@ verb 1
 mute 20
 user nobody
 group nogroup
-log /var/log/openvpn-lan.log
+log /var/log/openvpn-${network}.log
 ${optional}
-status /var/log/openvpn-status-lan.log
+status /var/log/openvpn-status-${network}.log
 # this must be installed manually (for now)
-ca /etc/openvpn/keys/lan/ca.crt
-cert /etc/openvpn/keys/lan/${client}.crt
-key /etc/openvpn/keys/lan/${client}.key
-tls-auth /etc/openvpn/keys/lan/ta.key
+ca ${path}/ca.crt
+cert ${path}/${client}.crt
+key ${path}/${client}.key
+tls-auth ${path}/ta.key
       '';
       autoStart = true;
     };
