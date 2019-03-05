@@ -38,7 +38,5 @@ in {
     sudo.extraConfig = ''
       ${defaultUser} localhost = (root) NOPASSWD: ${pkgs.openvpn}/bin/openvpn
      '';
-     setuidPrograms = [ "pmount" "pumount" "mount" "umount" ];
-   };
-
+  };
 }
