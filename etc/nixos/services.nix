@@ -1,6 +1,8 @@
 {config, pkgs, ...}:
 
 {
+  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+
   # List services that you want to enable:
   services = {
     locate = {
