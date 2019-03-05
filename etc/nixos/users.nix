@@ -12,7 +12,8 @@ in {
 
     # Define a user account. # `dummy` password by default
     extraUsers = [
-    { description = "Antoine R. Dumont";
+    {
+      description = "Antoine R. Dumont (@ardumont)";
       name = "${defaultUser}";
       group = "users";
       uid = 1000;
@@ -23,8 +24,18 @@ in {
 					# change it manually
       extraGroups = [ "wheel" "audio" "video" "vboxusers" "docker"
                       "networkmanager" "dialout" ];
-      useDefaultShell = true; }
-    { description = "Christelle Héritier";
+      useDefaultShell = true;
+      openssh.authorizedKeys.keys = [
+        # (import ./corellia/pubkey.nix)
+        "${builtins.readFile ./corellia/pubkey.nix}"
+        "${builtins.readFile ./dagobah/pubkey.nix}"
+        "${builtins.readFile ./myrkr/pubkey.nix}"
+        "${builtins.readFile ./alderaan/pubkey.nix}"
+      ];
+    }
+
+    {
+      description = "Christelle Héritier";
       name = "chris";
       group = "users";
       uid = 1001;
@@ -34,7 +45,8 @@ in {
                                         # be locked out passwordless then
 					# change it manually
       extraGroups = [ "audio" "video" "networkmanager" ];
-      useDefaultShell = true; }
+      useDefaultShell = true;
+    }
     ];
   };
 
