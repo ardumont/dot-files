@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./openvpn.nix
     ./sound.nix
     ../dev-box/xserver.nix
     ../laptop.nix
