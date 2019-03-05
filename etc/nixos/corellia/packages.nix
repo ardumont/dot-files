@@ -9,6 +9,6 @@
     python36Packages.cffi  python36Packages.vcversioner
     # texLiveFull
     docker docker_compose
-    openvpn networkmanager-openvpn
+    openvpn
   ];
 }
