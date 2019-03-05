@@ -141,6 +141,7 @@ c.bindings.commands['normal'] = {
     '<Ctrl-w>': 'fake-key <Ctrl-backspace>',
     '<Ctrl-y>': 'insert-text {clipboard}',
     '<Ctrl-Shift-y>': 'insert-text {primary}',
+    '<Ctrl-q>': None,
 
     # numbers
     # https://github.com/qutebrowser/qutebrowser/issues/4213
