@@ -1,7 +1,6 @@
-{ server, client, with_credential, ... }:
+{ server, service_name, client, with_credential, ... }:
 
-let network = "lan";
-    path = "/etc/openvpn/keys/${network}";
+let path = "/etc/openvpn/keys/${service_name}";
     optional = if with_credential
                then ''
 tls-auth ${path}/ta.key
@@ -9,9 +8,7 @@ askpass ${path}/private
 ''
                else "";
 in {
-  servers = {
-    lan = {
-      config = ''
+   config = ''
 remote ${server} 1194
 client
 dev tun0
@@ -29,15 +26,12 @@ verb 1
 mute 20
 user nobody
 group nogroup
-log /var/log/openvpn-${network}.log
-status /var/log/openvpn-status-${network}.log
+log /var/log/openvpn-${service_name}.log
+status /var/log/openvpn-status-${service_name}.log
 # this must be installed manually (for now)
 ca ${path}/ca.crt
 cert ${path}/${client}.crt
 key ${path}/${client}.key
 ${optional}
 '';
-      autoStart = true;
-    };
-  };
-}
+  }
