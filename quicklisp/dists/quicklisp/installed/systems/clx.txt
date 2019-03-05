@@ -1,1 +1,0 @@
-dists/quicklisp/software/clx-20150113-git/clx.asd
