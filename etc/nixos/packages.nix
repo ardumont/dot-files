@@ -7,83 +7,75 @@
     http://hydra.nixos.org
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
-  };
+  # Do not activate if not needed
+  # nixpkgs.config = {
+  #   allowUnfree = true;
+  #   allowBroken = true;
+  # };
 
   # List packages installed in system profile. To search by name, run:
   # nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    pingus
-    sqlite xorg.libX11
+    vim nano
+    pass
+    pmount mount
+    sqlite
     python3 sshfsFuse
-    python34Packages.powerline
-    powerline-fonts
+    python36Packages.powerline
+    powerline-fonts powerline-rs
     stack
-    # xorg_sys_opengl mesa_glu freeglut
-    qemu
-    cabal2nix
+    # qemu
     hexedit
     bc
     html2text
     pciutils # lspci, etc...
-    nix-prefetch-scripts nix-repl nixops nox
-    psmisc # fuser
-    python python27Packages.screenkey
-    # pidgin-with-plugins
-    # androidsdk_4_4
+    psmisc
+    python
     wmname
-    feh
-    # steam steamChrootEnv # sudo init-steam-chrootenv mount-steam-chrootenv load-steam-chrootenv
     xsane
     jq
     which
     peco
-    nix-repl
-    # gnome3_18.nautilus gnome3_18.gnome_settings_daemon
-    # gnome3_18.eog
-    pinta scrot
+    # pinta
+    scrot
+    youtube-dl
     vlc x264 mplayer mpv
     gnome3.zenity
-    # transmission_gtk
-    # audacious
-    # linuxPackages.virtualbox packer vagrant docker
+    audacious
     evince fbreader mcomix
-    # filezilla
     git gitAndTools.tig gitg meld
-    # gitAndTools.hub
-    gnupg gnupg1compat pinentry
+    gnupg pinentry
     cryptsetup
-    pmount file
+    file
     wget curl tree
-    gcc gnumake qemu
+    # gcc gnumake
     trayer
-    networkmanagerapplet
-    x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
+    networkmanagerapplet networkmanager
+    # x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
+    # xorg.libX11
     libxml2
     most
     xclip xsel pass pwgen
-    htop # powertop
+    htop
     tmux bind rxvt_unicode urxvt_perls
     bash zsh
     ruby bundler
     zlib
-    firefoxWrapper conkeror #chromium
+    conkeror qutebrowser
     graphviz
     coreutils lshw lsof
     nmap netcat wireshark
-    libzip p7zip unrar zip unzip pigz gnutar pv
+    libzip p7zip zip unzip pigz gnutar pv
+    # unrar # non-free
     acpi acpid acpitool
-    # clojure leiningen jdk
     gparted testdisk
     binutils
     pmutils
     autojump
     inotifyTools
     unetbootin
-    alsaUtils
-    darcs
+    # alsaUtils
+    # darcs
     # (haskellngPackages.ghcWithPackages (self : [
     #    self.cabal-install
     #    self.xmonad
@@ -107,10 +99,10 @@
     ffmpeg
     simplescreenrecorder
     keymon
-    imagemagick
-    libreoffice
+    # imagemagick
     ### printing
-    cups samba
+    # cups
+    # samba
     telnet
     ncurses
     ### javascript stack

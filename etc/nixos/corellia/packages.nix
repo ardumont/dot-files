@@ -2,11 +2,10 @@
 
 {
   environment.systemPackages = with pkgs; [
-    pgadmin
-    python3 python34Packages.pip python34Packages.flake8 python34Packages.pygit2
+    python3
     # texLiveFull
-    mysql mysqlWorkbench
-    skype
-    openvpn networkmanager_openvpn
+    # docker
+    openvpn networkmanager-openvpn
+    git
   ];
 }
