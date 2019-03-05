@@ -12,5 +12,6 @@
     ../dev-box/xserver.nix
     ../laptop.nix
     ./packages.nix
+    ../dns.nix
   ];
 }
