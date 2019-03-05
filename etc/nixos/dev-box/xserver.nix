@@ -3,6 +3,10 @@
 {
   programs.ssh.startAgent = false; # do not start agent (gpg-agent will be started)
 
+  environment.systemPackages = with pkgs; [
+    feh trayer
+  ];
+
   services.xserver = {
     enable = true;
     exportConfiguration = true; # create link /etc/X11/xorg.conf to real conf
@@ -13,7 +17,7 @@
 
     desktopManager = {
       default = "none";
-    };
+ };
 
     windowManager = {
       default = "xmonad";
@@ -22,6 +26,7 @@
         enableContribAndExtras = true;
         extraPackages = haskellPackages: [
           haskellPackages.xmobar
+	  haskellPackages.xmonad-contrib
         ];
       };
     };

@@ -24,13 +24,11 @@
     python36Packages.powerline
     powerline-fonts powerline-rs
     stack
-    # qemu
     hexedit
     bc
     html2text
     pciutils # lspci, etc...
     psmisc
-    python
     wmname
     xsane
     jq
@@ -40,7 +38,7 @@
     scrot
     youtube-dl
     vlc x264 mplayer mpv
-    gnome3.zenity
+    gnome3.zenity gnome3.eog
     audacious
     evince fbreader mcomix
     git gitAndTools.tig gitg meld
@@ -48,24 +46,23 @@
     cryptsetup
     file
     wget curl tree
-    # gcc gnumake
+    gcc gnumake
     trayer
     networkmanagerapplet networkmanager
-    # x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
-    # xorg.libX11
+    x11 xlibs.xmessage xlibs.xmodmap xdotool x11_ssh_askpass xscreensaver xlibs.xbacklight xlibs.xdpyinfo xlibs.xkill xlibs.xhost
+    xorg.libX11
     libxml2
     most
     xclip xsel pass pwgen
-    htop
-    tmux bind rxvt_unicode urxvt_perls
+    htop ncdu
+    tmux bind rxvt_unicode-with-plugins urxvt_perls xterm
     bash zsh
     ruby bundler
-    zlib
     conkeror qutebrowser
     graphviz
     coreutils lshw lsof
     nmap netcat wireshark
-    libzip p7zip zip unzip pigz gnutar pv
+    zlib libzip p7zip zip unzip pigz gnutar pv
     # unrar # non-free
     acpi acpid acpitool
     gparted testdisk
@@ -74,26 +71,8 @@
     autojump
     inotifyTools
     unetbootin
-    # alsaUtils
+    alsaUtils
     # darcs
-    # (haskellngPackages.ghcWithPackages (self : [
-    #    self.cabal-install
-    #    self.xmonad
-    #    self.xmonad-contrib
-    #    self.xmonad-extras
-    #    self.xmobar
-    #    self.pandoc
-    #    self.stack
-    #    # self.ncurses
-    #    # self.cabal2nix
-    #    # self.lens
-    #    # self.hdevtools
-    #    # self.zlib
-    #    # self.mtl
-    #    # self.HUnit
-    #    # self.QuickCheck
-    #    # self.hoogle
-    # ]))
     rlwrap
     fortune cowsay
     ffmpeg
