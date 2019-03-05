@@ -8,7 +8,6 @@
   imports = [
     ./hardware-configuration.nix
     ./sound.nix
-    ./grub.nix
     ../dev-box/xserver.nix
     ../laptop.nix
     ./packages.nix
