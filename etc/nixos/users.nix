@@ -26,7 +26,6 @@ in {
                       "networkmanager" "dialout" ];
       useDefaultShell = true;
       openssh.authorizedKeys.keys = [
-        # (import ./corellia/pubkey.nix)
         "${builtins.readFile ./corellia/pubkey.nix}"
         "${builtins.readFile ./dagobah/pubkey.nix}"
         "${builtins.readFile ./myrkr/pubkey.nix}"
