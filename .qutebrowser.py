@@ -115,6 +115,7 @@ c.bindings.commands['normal'] = {
     '<Ctrl-x>m': 'tab-move -',               # move tab to the left
     '<Ctrl-x><Ctrl-l>': 'config-source',     # reload config
     '<Ctrl-x><Ctrl-c>': 'quit',              # quit
+    '<Ctrl-x><Ctrl-p>': 'enter-mode passthrough',  # mode for conflict
     # searching
     '<Ctrl-s>': 'set-cmd-text /',
     '<Ctrl-r>': 'set-cmd-text ?',
