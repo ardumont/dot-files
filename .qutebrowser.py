@@ -215,6 +215,25 @@ c.bindings.commands['yesno'] = {
 
 c.bindings.commands['passthrough'] = {
     '<Ctrl-g>': 'leave-mode',
+    '<Ctrl-f>': 'fake-key <Right>',
+    '<Ctrl-b>': 'fake-key <Left>',
+    '<Ctrl-a>': 'fake-key <Home>',
+    '<Ctrl-e>': 'fake-key <End>',
+    '<Ctrl-n>': 'fake-key <Down>',
+    '<Ctrl-p>': 'fake-key <Up>',
+    '<Ctrl-i>': 'fake-key <Tab>',
+    '<Ctrl-Shift-i>': 'fake-key <Shift-Tab>',
+    '<Ctrl-m>': 'fake-key <Enter>',
+    '<Alt-f>': 'fake-key <Ctrl-Right>',
+    '<Alt-b>': 'fake-key <Ctrl-Left>',
+    '<Ctrl-d>': 'fake-key <Delete>',
+    '<Ctrl-h>': 'fake-key <Backspace>',
+    '<Alt-d>': 'fake-key <Ctrl-Delete>',
+    '<Ctrl-Alt-h>': 'fake-key <Ctrl-Backspace>',
+    '<Ctrl-w>': 'fake-key <Ctrl-backspace>',
+    '<Ctrl-y>': 'insert-text {clipboard}',
+    '<Ctrl-Shift-y>': 'insert-text {primary}',
+    '<Alt-w>': 'yank',
 }
 
 c.bindings.commands['command'] = {
