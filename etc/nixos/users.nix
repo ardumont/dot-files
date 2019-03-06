@@ -48,11 +48,4 @@ in {
     }
     ];
   };
-
-  # Make sure I can use openvpn as a user
-  security = {
-    sudo.extraConfig = ''
-      ${defaultUser} localhost = (root) NOPASSWD: ${pkgs.openvpn}/bin/openvpn
-     '';
-  };
 }
