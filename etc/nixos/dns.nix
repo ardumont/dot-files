@@ -9,8 +9,8 @@ cache-size=1000
 '';
 
   environment.etc."${path}/lan.conf".text = ''
-server=/.lan/192.168.150.26
-server=/150.168.192.in-addr.arpa/192.168.150.26
+server=/.lan/192.168.150.27
+server=/150.168.192.in-addr.arpa/192.168.150.27
 '';
 
   environment.etc."${path}/vlan.conf".text = ''
