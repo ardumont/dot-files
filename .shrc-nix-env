@@ -1,0 +1,11 @@
+# for non nixos-machine using nix
+if [ ! -f /etc/NIXOS ]; then
+  # mono user install
+  nix_file="~/.nix-profile/etc/profile.d/nix.sh"
+  [ -e $nix_file ] && . $nix_file
+  # multi-user nix install on debian does not find /etc/bashrc nor /etc/zshrc
+  # so those are not modified accordingly
+  nix_file="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+  [ -e $nix_file ] && . $nix_file
+fi
+
