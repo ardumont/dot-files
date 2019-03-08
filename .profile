@@ -8,7 +8,7 @@
 #umask 022
 
 # for non nixos-machine using nix
-[ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
+[ ! -f /etc/NIXOS -a -e ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
 # gpg2 no longer requires to trigger the gpg-agent, it's done as needed
 GPG_TTY=$(tty)
