@@ -5,9 +5,10 @@
     # for dev
     useSandbox = true;
     extraOptions = ''
-      gc-keep-outputs = true
-      gc-keep-derivations = true
-      build-cores = 0
+      keep-outputs = true
+      keep-derivations = true
+      keep-env-derivations = true
+      cores = 4
     '';
 
     gc = {
