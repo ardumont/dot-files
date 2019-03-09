@@ -33,7 +33,7 @@ create-links-from-list() {
 REPO_DOTFILES=$(dirname $0)
 
 # standard files (in home directory)
-FILES=".stumpwm.start .stumpwmrc .stumpwm-functions.lisp .profile .bashrc .shrc .shrc-env .shrc-path .shrc-aliases .shrc-prompt .shrc-completion .tmux.conf .ratpoisonrc .vimrc .git-completion.bash .conkerorrc .conkeror .sbclrc .Xmodmap quicklisp .ctags .gitignore_global .zshrc Makefile .gitconfig .stalonetrayrc .FBReader .xscreensaver .gimpgimp-layout-1920x1080 .gimpgimp-rules  .xmobarrc .Xresources .urxvt .layouts .nixpkgs .xinit .ghc .zshenv .apvlvrc .nix .ocamlinit .gtkrc-2.0 .spacemacs .devscripts .tigrc"
+FILES=".stumpwm.start .stumpwmrc .stumpwm-functions.lisp .profile .bashrc .shrc .shrc-env .shrc-path .shrc-aliases .shrc-prompt .shrc-completion .tmux.conf .ratpoisonrc .vimrc .git-completion.bash .conkerorrc .conkeror .sbclrc .Xmodmap quicklisp .ctags .gitignore_global .zshrc Makefile .gitconfig .stalonetrayrc .FBReader .xscreensaver .gimpgimp-layout-1920x1080 .gimpgimp-rules  .xmobarrc .Xresources .urxvt .layouts .xinit .ghc .zshenv .apvlvrc .nix .ocamlinit .gtkrc-2.0 .spacemacs .devscripts .tigrc"
 
 create-links-from-list $REPO_DOTFILES $HOME $FILES
 
@@ -49,6 +49,7 @@ done
 # systemd user service
 mkdir -p $REPO_DOTFILES/.config/
 ln -nsf $REPO_DOTFILES/.config/systemd $HOME/.config/
+ln -nsf $REPO_DOTFILES/.config/nixpkgs $HOME/.config/
 
 ## org
 
