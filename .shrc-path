@@ -37,6 +37,8 @@ function add-to-path() {
 
 add-to-path $HOME/applications/stack $HOME/.guix-profile/bin $HOME/.local/bin $HOME/.cabal/bin /usr/local/heroku/bin $HOME/team/bin $HOME/work/bin $HOME/applications/wine $HOME/applications/bin /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-6-oracle $HOME/applications/apache-maven/bin $HOME/.lein $HOME/.lein/bin $HOME/.lein/plugins /opt/vagrant/bin $HOME/applications/adt-bundle-linux-x85/sdk/platform-tools $HOME/applications/appengine/bin $HOME/.cask/bin/ $HOME/.carton/bin/ $HOME/applications/play $HOME/applications/scala/scala/bin $HOME/applications/gradle/bin $HOME/applications/groovy/bin $HOME/applications/visualvm/bin $HOME/repo/perso/stumpwm/contrib $HOME/applications/packer $HOME/.evm/bin $HOME/applications/gsutil $HOME/applications/apache-ant/bin $HOME/applications/gatling/bin $HOME/.evm/bin/
 
+PATH=$HOME/repo/private/bin/:$PATH
+
 ###
 # Export part
 ###
