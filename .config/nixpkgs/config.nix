@@ -1,23 +1,6 @@
 { pkgs }:
 
 {
-  firefox = {
-    enableAdobeFlash = true;
-    enableGoogleTalkPlugin = true;
-  };
-
-  chromium = {
-    enableGoogleTalkPlugin = true;
-    enablePepperFlash = true; # Chromium's non-NSAPI alternative to Adobe Flash
-    enablePepperPDF = true;
-  };
-
-  # Allow broken content (when using nixpkgs as git)
-  allowBroken = true;
-
-  # Allow unfree license
-  allowUnfree = true;
-
   # source: https://nixos.org/wiki/Howto_develop_software_on_nixos
   packageOverrides = self : with pkgs;
     rec {
@@ -176,8 +159,6 @@
         name = "clojureTools";
         paths = [ jdk clojure leiningen ];
       };
-
-      bigEmacs = import ./emacs.nix { inherit pkgs; };
 
       commonLispToolsEnv = buildEnv {
         name = "commonLispTools";
