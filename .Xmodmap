@@ -1,5 +1,7 @@
+! use caps-lock as control (without lock)
 keycode 66 = Caps_Lock
 remove lock = Caps_Lock
 keysym Caps_Lock = Control_L
 add control = Control_L
+! use Super_L as compose key
 keycode 133 = Multi_Key

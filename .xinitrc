@@ -4,6 +4,8 @@ export GTK_IM_MODULE=xim
 
 # Not supposed to be triggered in NixOS environment (already dealt with)
 if [ ! -f /etc/NIXOS ]; then
+    [ -e $HOME/.Xmodmap] && xmodmap $HOME/.Xmodmap
+
     # Display layout which can be different depending on host
     LAYOUT_FILE_PER_HOST="$HOME/.layouts/$(hostname).sh"
 
