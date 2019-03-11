@@ -1,0 +1,16 @@
+include "%L"
+
+<Multi_key> <t> <f> : " ▲\n▲ ▲" # triforce ;
+<Multi_key> <d> <u> : "¯\\_(ツ)_/¯"
+<Multi_key> <f> <l> : "(╯°□°）╯︵ ┻━┻"
+
+# accent
+<Multi_key> <a> <`>: "à"
+<Multi_key> <e> <'>: "é"
+<Multi_key> <e> <`>: "è"
+<Multi_key> <e> <^>: "ê"
+<Multi_key> <u> <`>: "ù"
+<Multi_key> <c> <,>: "ç"
+
+# musique
+<Multi_key> <m> <u> : U266B # &#9835; ♫
