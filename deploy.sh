@@ -33,7 +33,7 @@ create-links-from-list() {
 REPO_DOTFILES=$(dirname $0)
 
 # standard files (in home directory)
-FILES=".stumpwm.start .stumpwmrc .stumpwm-functions.lisp .profile .bashrc .shrc .shrc-env .shrc-path .shrc-aliases .shrc-prompt .shrc-completion .tmux.conf .ratpoisonrc .vimrc .git-completion.bash .conkerorrc .conkeror .sbclrc .Xmodmap quicklisp .ctags .gitignore_global .zshrc Makefile .gitconfig .stalonetrayrc .FBReader .xscreensaver .gimpgimp-layout-1920x1080 .gimpgimp-rules  .xmobarrc .Xresources .urxvt .layouts .xinit .ghc .zshenv .apvlvrc .nix .ocamlinit .gtkrc-2.0 .spacemacs .devscripts .tigrc"
+FILES=".profile .bashrc .shrc .shrc-env .shrc-path .shrc-aliases .shrc-prompt .shrc-completion .tmux.conf .conkerorrc .conkeror .Xmodmap .zshrc .xmobarrc .Xresources .urxvt .layouts .xinit .zshenv .nix .devscripts .tigrc"
 
 create-links-from-list $REPO_DOTFILES $HOME $FILES
 
@@ -72,9 +72,6 @@ ln -nsf $REPO_PERSO/sh $HOME/bin
 ln -nsf $REPO_PERSO/oh-my-zsh $HOME/.oh-my-zsh
 
 ## emacs
-
-ln -nsf $REPO_DOTFILES/.emacs.d/.mc-lists.el ~/.emacs.d/.mc-lists.el
-ln -nsf $REPO_DOTFILES/.emacs.d/abbrev_defs ~/.emacs.d/abbrev_defs
 
 if [ ! -d $HOME/work ]; then
     mkdir -p $HOME/work
