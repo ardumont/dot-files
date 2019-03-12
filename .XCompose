@@ -1,7 +1,7 @@
 include "%L"
 
 <Multi_key> <t> <f> : " ▲\n▲ ▲" # triforce ;
-<Multi_key> <d> <u> : "¯\\_(ツ)_/¯"
+<Multi_key> <s> <h> : "¯\\_(ツ)_/¯"
 <Multi_key> <f> <l> : "(╯°□°）╯︵ ┻━┻"
 
 # accent
