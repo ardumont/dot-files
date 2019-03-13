@@ -4,6 +4,7 @@
   imports = [
     ./git.nix
     ./gpg-agent.nix
+    ./afew.nix
   ];
 
   home.packages = with pkgs; [
