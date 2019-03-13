@@ -5,6 +5,7 @@
     ./git.nix
     ./gpg-agent.nix
     ./afew.nix
+    ./htop.nix
   ];
 
   home.packages = with pkgs; [
