@@ -12,13 +12,13 @@
     htop fortune
   ];
 
-  programs.emacs = {
-    enable = true;
-    extraPackages = epkgs: [
-      epkgs.nix-mode
-      epkgs.magit
-    ];
-  };
+  # programs.emacs = {
+  #   enable = true;
+  #   extraPackages = epkgs: [
+  #     epkgs.nix-mode
+  #     epkgs.magit
+  #   ];
+  # };
 
   # programs.firefox = {
   #   enable = true;
