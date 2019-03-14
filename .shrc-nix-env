@@ -10,5 +10,10 @@ if [ ! -f /etc/NIXOS ]; then
 
   # needed for home-manager
   export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+  source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+
+  systemctl --user import-environment GPG_AGENT_INFO SSH_AUTH_SOCK PATH DISPLAY \
+  	  XAUTHORITY LOCALE_ARCHIVE
+
 fi
 
