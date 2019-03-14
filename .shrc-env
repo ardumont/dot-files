@@ -17,16 +17,10 @@ export LEIN_JVM_OPTS="-Xms1G -Xmx1G"
 # force the 256 color on the terminal
 export TERM=screen-256color
 
-# scala setup in emacs - for installation of ensime, see https://github.com/ardumont/sh/blob/master/scala/deploy-ensime.sh
-[ -d $HOME/applications/ensime ] && export ENSIME_ROOT=$HOME/applications/ensime
-[ -d $HOME/applications/gradle ] && export GRADLE_HOME=$HOME/applications/gradle
-[ -d $HOME/applications/scala/scala ] && export SCALA_HOME=$HOME/applications/scala/scala
-
 export HISTIGNORE="pass:&"
+export HISTIGNORE="swhpass:&"
 
 export ORGTRELLO_HOME="$HOME/repo/public/org-trello"
-
-export QUICKLISP_HOME="$HOME/quicklisp"
 
 if [ -z "$DEBSIGN_KEYID" ]; then
     [ -f ~/.devscript ] && . ~/.devscript
@@ -37,7 +31,6 @@ fi
 
 if [ -f /etc/NIXOS ]; then # nixos
 
-    export CHROME_BIN="/run/current-system/sw/bin/chromium-browser"
     export DISTRIB="nixos"
     export AUTOJUMP_HOME=$(nix-folder autojump)
     export GIT_HOME=$(nix-folder git)
@@ -51,7 +44,6 @@ if [ -f /etc/NIXOS ]; then # nixos
 
 elif [ -f /etc/debian_version ]; then # non nixos env
 
-    export CHROME_BIN="/usr/bin/chromium"
     export DISTRIB="debian"
     export AUTOJUMP_HOME="/usr"
     export NIX_CONF_DIR=~/.nix/nix.conf
@@ -67,8 +59,11 @@ elif [ -f /etc/debian_version ]; then # non nixos env
     [ -f $AUTOJUMP_HOME/share/autojump/autojump.zsh ] && . $AUTOJUMP_HOME/share/autojump/autojump.zsh
 
     # Languages setup
-    export LC_ALL="en_US.UTF-8"
-    export LANG="en_US.UTF-8"
+    # export LC_ALL="en_US.utf8"
+    # export LANG="en_US.utf8"
+    # export LANGUAGE="en_US.utf8"
+    # export LC_MONETARY="fr_FR.utf8"
+    # export LC_TIME="fr_FR.utf8"
 
     export BROWSER=/usr/bin/qutebrowser
 
@@ -77,14 +72,6 @@ elif [ -f /etc/debian_version ]; then # non nixos env
         && sudo ln -nsf $BROWSER /etc/alternatives/x-www-browser \
         && sudo ln -nsf $BROWSER /etc/alternatives/gnome-www-browser
 
-    [ -d "/usr/lib/jvm/java-7-openjdk-amd64" ] && export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
-
     # keyboard mapping
     [ -f ~/bin/kbd/remap-keyboard.sh ] && . ~/bin/kbd/remap-keyboard.sh
-
 fi
-
-# O(caml)PAM configuration
-[ -f $HOME/.opam/opam-init/init.zsh ] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null
-
-export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
