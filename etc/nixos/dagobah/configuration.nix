@@ -10,7 +10,7 @@
     ./openvpn.nix
     ./sound.nix
     ../mounts.nix
-    ../dev-box/xserver.nix
+    ../xserver.nix
     ../laptop.nix
   ];
 }
