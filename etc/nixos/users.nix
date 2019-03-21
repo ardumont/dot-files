@@ -34,7 +34,7 @@ in {
     }
 
     {
-      description = "Christelle Héritier";
+      description = "Christelle B. Héritier";
       name = "chris";
       group = "users";
       uid = 1001;
