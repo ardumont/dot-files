@@ -13,17 +13,17 @@
   hardware.opengl.enable = true;
 
   fileSystems."/" =
-    { device = "/dev/sda3";
+    { device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/sda1";
+    { device = "/dev/disk/by-label/boot";
       fsType = "ext4";
     };
 
   swapDevices =
-    [ { device = "/dev/sda2"; }
+    [ { device = "/swap"; }
     ];
 
   nix.maxJobs = 4;
