@@ -27,5 +27,6 @@
     pmutils
     autojump
     rlwrap
+    emacs
   ];
 }
