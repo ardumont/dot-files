@@ -13,5 +13,6 @@
     ../laptop.nix
     ./packages.nix
     ../dns.nix
+    ../xsession.nix
   ];
 }

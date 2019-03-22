@@ -11,5 +11,6 @@
     ./sound.nix
     ../mounts.nix
     ../laptop.nix
+    ../xsession.nix
   ];
 }
