@@ -3,11 +3,13 @@
 {
   system.autoUpgrade.enable = true;
 
-  system.activationScripts.media =
+  system.activationScripts.bootstrap =
   ''
-    mkdir -m 0775 -p /volume/
-    mkdir -m 0775 -p /volume/share
-    chown -R root:users /volume/
+    if [ ! -d /volume/ ]; then
+      mkdir -m 0775 -p /volume
+      mkdir -m 0775 -p /volume/share
+      chown -R root:users /volume/
+    fi
   '';
 
   boot = {
