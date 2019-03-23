@@ -10,6 +10,8 @@
       mkdir -m 0775 -p /volume/share
       chown -R root:users /volume/
     fi
+    chown -R root:input /dev/uinput
+    chmod 0660 /dev/uinput
   '';
 
   boot = {
