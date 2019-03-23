@@ -1,12 +1,9 @@
-{ pkgs, server, service_name, client, with_credential, device, cipher, ... }:
+{ pkgs, server, service_name, client,  device, cipher,
+  with_ta, with_passfile, ... }:
 
 let path = "/etc/openvpn/keys/${service_name}";
-    optional = if with_credential
-               then ''
-tls-auth ${path}/ta.key
-askpass ${path}/private
-''
-               else "";
+    optionalTa = if with_ta then "tls-auth ${path}/ta.key"else "";
+    optionalPassfile = if with_passfile then "askpass ${path}/private" else "";
 in {
   config = ''
 remote ${server} 1194
@@ -32,6 +29,7 @@ status /var/log/openvpn-status-${service_name}.log
 ca ${path}/ca.crt
 cert ${path}/${client}.crt
 key ${path}/${client}.key
-${optional}
+${optionalTa}
+${optionalPassfile}
 '';
   }

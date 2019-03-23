@@ -12,9 +12,10 @@ in {
       server = vpn_server_lan;
       service_name = "lan";
       client = client;
-      with_credential = true;
       device = "tun0";
       cipher = "AES-128-CBC";
+      with_ta = true;
+      with_passfile = false;
     };
 
     work = import ./vpn.nix {
@@ -22,9 +23,10 @@ in {
       server = vpn_server_work;
       service_name = "work";
       client = client;
-      with_credential = false;
       device = "tun1";
       cipher = "BF-CBC";
+      with_ta = false;
+      with_passfile = false;
     };
   };
 }
