@@ -19,7 +19,7 @@
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-label/boot";
-      fsType = "ext4";
+      fsType = "vfat";
     };
 
   swapDevices =
