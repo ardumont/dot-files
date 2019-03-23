@@ -1,4 +1,4 @@
-{ server, service_name, client, with_credential, device, cipher, ... }:
+{ pkgs, server, service_name, client, with_credential, device, cipher, ... }:
 
 let path = "/etc/openvpn/keys/${service_name}";
     optional = if with_credential
@@ -8,7 +8,7 @@ askpass ${path}/private
 ''
                else "";
 in {
-   config = ''
+  config = ''
 remote ${server} 1194
 client
 dev ${device}

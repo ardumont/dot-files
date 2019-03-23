@@ -7,7 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
-    ./openvpn.nix
+    ../openvpn/default.nix
     ./sound.nix
     ../mounts.nix
     ../laptop.nix

@@ -8,7 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../xserver.nix
-    ./openvpn.nix
+    ../openvpn/default.nix
     ./sound.nix
     ../laptop.nix
     ./packages.nix
