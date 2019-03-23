@@ -23,7 +23,7 @@
     };
 
   swapDevices =
-    [ { device = "/swap"; }
+    [ { device = "/dev/disk/by-label/swap"; }
     ];
 
   nix.maxJobs = 4;
