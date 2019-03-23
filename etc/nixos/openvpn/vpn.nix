@@ -23,6 +23,7 @@ verb 1
 mute 20
 user nobody
 group nogroup
+auth-nocache
 log /var/log/openvpn-${service_name}.log
 status /var/log/openvpn-status-${service_name}.log
 # this must be installed manually (for now)
