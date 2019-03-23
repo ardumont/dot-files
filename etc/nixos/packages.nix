@@ -19,7 +19,7 @@
     git which peco file wget curl tree
     most htop ncdu tmux bind xterm
     bash zsh coreutils lshw lsof
-    nmap netcat ngrep
+    nmap netcat ngrep tcpdump
     zlib libzip p7zip zip unzip pigz gnutar pv
     acpi acpid acpitool
     parted testdisk
@@ -28,5 +28,6 @@
     autojump
     rlwrap
     emacs
+    sshfs
   ];
 }
