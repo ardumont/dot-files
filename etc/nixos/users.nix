@@ -23,7 +23,7 @@ in {
                                           # be locked out passwordless then
                                           # change it manually
       extraGroups = [ "wheel" "audio" "video" "vboxusers" "docker"
-                      "networkmanager" "dialout" ];
+                      "networkmanager" "dialout" "input" ];
       useDefaultShell = true;
       openssh.authorizedKeys.keys = [
         "${builtins.readFile ./corellia/pubkey.nix}"
