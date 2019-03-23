@@ -12,5 +12,6 @@
     ../mounts.nix
     ../laptop.nix
     ../xsession.nix
+    ../dns.nix
   ];
 }
