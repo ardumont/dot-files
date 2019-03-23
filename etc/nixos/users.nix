@@ -19,9 +19,9 @@ in {
       uid = 1000;
       createHome = true;
       home = "/home/${defaultUser}";
-      password = "${defaultPassword}";  # for the first time, make sure to not
-                                        # be locked out passwordless then
-                                        # change it manually
+      # password = "${defaultPassword}";  # for the first time, make sure to not
+                                          # be locked out passwordless then
+                                          # change it manually
       extraGroups = [ "wheel" "audio" "video" "vboxusers" "docker"
                       "networkmanager" "dialout" ];
       useDefaultShell = true;
@@ -40,9 +40,9 @@ in {
       uid = 1001;
       createHome = true;
       home = "/home/chris";
-      password = "${defaultPassword}";  # for the first time, make sure to not
-                                        # be locked out passwordless then
-                                        # change it manually
+      # password = "${defaultPassword}";  # for the first time, make sure to not
+                                          # be locked out passwordless then
+                                          # change it manually
       extraGroups = [ "audio" "video" "networkmanager" ];
       useDefaultShell = true;
     }
