@@ -2,7 +2,7 @@
 
 {
   # Commands executed after the system resumes from suspend-to-RAM.
-  powerManagement.resumeCommands = "xscreensaver-command -lock";
+  powerManagement.resumeCommands = "${pkgs.xscreensaver}/bin/xscreensaver-command -lock";
   services = {
     acpid = {
       enable = true;     # acpi
