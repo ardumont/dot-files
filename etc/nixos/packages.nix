@@ -29,5 +29,6 @@
     rlwrap
     emacs
     sshfs
+    docker
   ];
 }
