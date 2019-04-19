@@ -9,21 +9,26 @@
   boot.initrd.availableKernelModules = [ "xhci_hcd" "ehci_pci" "ahci" "usb_storage" "usbhid" ];
   networking.enableB43Firmware = false;        # don't want those, they conflict with wl (and do not work)
   boot.blacklistedKernelModules = [ "ath9k" "b43" "bcma" ];  # force the blacklist on  wifi modules
-  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];  # wl module for wifi
+  # boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];  # wl module for wifi
   boot.kernelModules = [ "acpi-cpufreq" "kvm-intel" "wl" ];
 
   fileSystems."/" =
-    { device = "/dev/sda5";
+    { device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
+    };
+
   fileSystems."/home" =
-    { device = "/dev/sdb1";
+    { device = "/dev/disk/by-label/volume";
       fsType = "ext4";
     };
 
   swapDevices =
-    [ { device = "/dev/sda6"; }
+    [ { device = "/dev/disk/by-label/swap"; }
     ];
 
   nix.maxJobs = 8;
