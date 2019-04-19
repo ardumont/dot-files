@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
-let hostName = "${builtins.readFile /etc/nix-hostname}";
+let hostName = with builtins;
+  "${head (split "\n" (readFile /etc/nix-hostname))}";
 in rec {
   imports = [
     # Include the specifics of the machine
