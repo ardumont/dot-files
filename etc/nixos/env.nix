@@ -8,7 +8,5 @@
     gbr = "git branch";
     gfa = "git fetch --all";
     gf = "git fetch";
-    em = "emacsclient -nw";
-    emc = "emacsclient --create-frame";
   };
 }
