@@ -27,8 +27,7 @@
     pmutils
     autojump
     rlwrap
-    emacs
+    mg
     sshfs
-    docker
   ];
 }
