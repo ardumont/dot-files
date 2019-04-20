@@ -2,7 +2,8 @@
 
 let client = "${config.networking.hostName}";
     path = "/etc/vpn-server-${vpn_name}";
-    vpn_server = "${builtins.readFile path}";
+    read_from_file = with builtins; path: head (split "\n" (readFile path));
+    vpn_server = "${read_from_file path}";
 in {
   environment.systemPackages = [ pkgs.openvpn ];
 
