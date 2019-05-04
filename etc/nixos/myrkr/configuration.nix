@@ -9,7 +9,7 @@
     ./hardware-configuration.nix # Include the results of the hardware scan.
     ./sound.nix
     ../mounts.nix
-    ../xsession.nix
+    ./xsession.nix
     ../dns.nix
     ./network.nix
     (import ../openvpn/default.nix {
