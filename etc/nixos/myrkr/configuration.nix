@@ -11,6 +11,7 @@
     ../mounts.nix
     ../xsession.nix
     ../dns.nix
+    ./network.nix
     (import ../openvpn/default.nix {
       inherit config;
       inherit pkgs;
