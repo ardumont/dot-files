@@ -12,6 +12,7 @@
     ./xsession.nix
     ../dns.nix
     ./network.nix
+    ./packages.nix
     (import ../openvpn/default.nix {
       inherit config;
       inherit pkgs;
