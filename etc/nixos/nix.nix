@@ -2,8 +2,6 @@
 
 {
   nix = {
-    # for dev
-    useSandbox = true;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
