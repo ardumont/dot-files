@@ -8,7 +8,6 @@
       keep-outputs = true
       keep-derivations = true
       keep-env-derivations = true
-      cores = 4
     '';
 
     gc = {
