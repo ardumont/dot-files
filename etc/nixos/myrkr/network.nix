@@ -3,8 +3,5 @@
 {
   environment.systemPackages = [ pkgs.mosh ];
 
-  networking.firewall = {
-    enable = true;
-    allowedUDPPorts = [ 60501 ];
-  };
+  networking.firewall.allowedUDPPorts = [ 60501 ];
 }
