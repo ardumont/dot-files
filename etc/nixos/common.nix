@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade.enable = false;
 
   system.activationScripts.bootstrap =
   ''
