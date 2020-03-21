@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ pkgs, ...}:
 
 {
   # https://nixos.org/wiki/Printers

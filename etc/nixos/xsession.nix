@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.ssh.startAgent = false; # do not start agent
@@ -17,7 +17,4 @@
 
      displayManager.lightdm.enable = true;
   };
-
-  # activate gpu
-  #hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
 }

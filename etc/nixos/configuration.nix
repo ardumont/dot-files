@@ -27,7 +27,7 @@ in {
     ./users.nix
     ./packages.nix
     ./virtual.nix
-    ];
+  ];
 
   networking.hostName = "${hostName}";
 }

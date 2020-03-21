@@ -1,4 +1,4 @@
-{ pkgs, server, service_name, client,  device, cipher,
+{ server, service_name, client,  device, cipher,
   with_ta, with_passfile, ... }:
 
 let path = "/etc/openvpn/keys/${service_name}";

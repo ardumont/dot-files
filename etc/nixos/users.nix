@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let defaultUser = "tony"; defaultPassword = "dummy";
 in {

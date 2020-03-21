@@ -1,4 +1,4 @@
-{ config, pkgs, writeTextFile, ... }:
+{ ... }:
 
 let path = "NetworkManager/dnsmasq.d";
 in
