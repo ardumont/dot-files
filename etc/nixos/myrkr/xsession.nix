@@ -11,13 +11,6 @@
     layout = "us";
     xkbOptions = "eurosign:e,terminate=ctrl_alt_backspace";
 
-    desktopManager = {
-       default = "none";
-       plasma5.enable = true;
-       gnome3.enable = true;
-       mate.enable = true;
-    };
-
     displayManager.lightdm.enable = true;
   };
 }
