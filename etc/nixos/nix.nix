@@ -2,6 +2,11 @@
 
 {
   nix = {
+    trustedBinaryCaches = [
+      https://hydra.nixos.org
+      https://cache.nixos.org
+    ];
+
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
