@@ -11,6 +11,15 @@
     layout = "us";
     xkbOptions = "eurosign:e,terminate=ctrl_alt_backspace";
 
-    displayManager.lightdm.enable = true;
+    desktopManager = {
+      xterm.enable = true;
+      gnome3.enable = true;
+      mate.enable = true;
+    };
+
+    displayManager = {
+      defaultSession = "xterm";
+      lightdm.enable = true;
+    };
   };
 }
