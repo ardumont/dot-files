@@ -11,10 +11,11 @@
     layout = "us";
     xkbOptions = "eurosign:e,terminate=ctrl_alt_backspace";
 
-    desktopManager = {
-       default = "none";
-     };
+    desktopManager.default = "xterm";
 
-     displayManager.lightdm.enable = true;
+    displayManager = {
+      defaultSession = "xterm";
+      lightdm.enable = true;
+    };
   };
 }
